@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Create.css";
 
 function Create() {
