@@ -2,38 +2,22 @@ import React, { useState } from 'react';
 import Profile from './Components/Profile/Profile';
 import Create from './Components/Create/Create';
 import Feed from './Components/Feed/Feed';
+import NavBar from './Components/Navbar/Navbar';
+import Course from './Components/Course/Course'
+import {Route, Routes} from "react-router-dom"
 import "./App.css";
 
 function App() {
-  const [selectedSection, setSelectedSection] = useState('profile');
-
-  const handleButtonClick = (section) => {
-    if (section !== selectedSection) {
-      setSelectedSection(section);
-    }
-  };
-
-  const renderSection = () => {
-    switch (selectedSection) {
-      case 'profile':
-        return <Profile />;
-      case 'create':
-        return <Create />;
-      case 'feed':
-        return <Feed />;
-      default:
-        return null;
-    }
-  };
 
   return (
-    <div>
-      <div>{renderSection()}</div>
-      <div className="bottom-navigation">
-        <button onClick={() => handleButtonClick('profile')}>Про</button>
-        <button onClick={() => handleButtonClick('create')}>Создать</button>
-        <button onClick={() => handleButtonClick('feed')}>Лента</button>
-      </div>
+    <div className='App'>
+        <Routes>
+          <Route index element={<Feed />}/>
+          <Route path={'create'} element={<Create />}/>
+          <Route path={'profile'} element={<Profile />}/>
+          <Route path={'course'} element={<Course />}/>
+        </Routes>
+        <NavBar />
     </div>
   );
 }

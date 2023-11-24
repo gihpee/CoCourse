@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import feed from '../assets/navbar/feed.svg'
+import plus from '../assets/navbar/plus.svg'
+import boy from '../assets/navbar/boy.svg'
 import "./Navbar.css";
 
 const NavBar = () => {
@@ -10,10 +13,10 @@ const NavBar = () => {
 
   
     return (
-      <div className="bottom-navigation">
-        <button onClick={() => handleButtonClick('profile')}>Про</button>
-        <button onClick={() => handleButtonClick('create')}>Создать</button>
-        <button onClick={() => handleButtonClick('feed')}>Лента</button>
+      <div className="navbar">
+        <div className="feed"><a href="/"><img src={feed} alt="" />Лента</a></div>
+        <div className="create"><a href="/create"><img src={plus} alt="" />Создать</a></div>
+        <div className="profile"><a href="/profile"><img src={boy} alt="" />Про</a></div>
       </div>
     );
   }
