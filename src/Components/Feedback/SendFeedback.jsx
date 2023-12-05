@@ -15,7 +15,7 @@ function SendFeedback() {
   };
 
   const handleRevChange = (e) => {
-    const {name, value} = e.target;
+    const {value} = e.target;
     setRevValue(value); 
   };
 

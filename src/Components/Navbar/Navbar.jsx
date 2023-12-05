@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import feed from '../assets/navbar/feed.svg'
 import plus from '../assets/navbar/plus.svg'
 import boy from '../assets/navbar/boy.svg'

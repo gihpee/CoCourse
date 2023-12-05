@@ -32,7 +32,7 @@ function CreateCourse() {
         const { name, value } = e.target;
         setFormData((prevData) => {
             const newTopics = [...prevData.topics];
-            const [field, topicIndex] = name.split('_'); 
+            const [field] = name.split('_'); 
             newTopics[index][field] = value;
             return {
                 ...prevData,
