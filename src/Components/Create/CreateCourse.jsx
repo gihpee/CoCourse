@@ -71,7 +71,7 @@ function CreateCourse() {
         let image = imageSrc
         let feedback = [];
 
-        fetch('http://80.90.189.96:3001/course', {
+        fetch('https://commoncourse.io/course', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ function SendFeedback() {
     console.log(sliderValue, revValue);
     let feedback = [{rate: sliderValue, 
                     review: revValue}];
-    fetch('http://80.90.189.96:3001/sf', {
+    fetch('https://commoncourse.io/sf', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

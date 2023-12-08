@@ -32,7 +32,7 @@ function Course() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch('http://80.90.189.96:3001/');
+            const response = await fetch('https://commoncourse.io/');
             const result = await response.json();
 
             setData(result);
