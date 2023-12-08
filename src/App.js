@@ -13,6 +13,7 @@ function App() {
 
   return (
     <div className='App'>
+      <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <Routes>
           <Route index element={<><Feed /> <NavBar /> </>}/>
           <Route path={'create'} element={<><Create /> <NavBar /> </>}/>
