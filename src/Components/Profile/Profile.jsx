@@ -54,7 +54,7 @@ function Home() {
     };
 
     fetchData();
-  }, []);
+  }, [id, first_name, last_name, username, photo_url]);
 
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
