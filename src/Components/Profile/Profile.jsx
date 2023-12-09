@@ -2,7 +2,8 @@ import React from "react";
 import "./Profile.css";
 
 function Home() {
-  return <div>Содержимое раздела профиль</div>;
+  let id = window.Telegram.WebApp.initDataUnsafe.id
+  return <div>{id}</div>;
 }
 
 export default Home;
