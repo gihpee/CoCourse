@@ -29,7 +29,7 @@ function Home() {
 
         const data = await response.json();
 
-        if (data == {}) {
+        if (data == []) {
           setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
 
           fetch('https://commoncourse.io/user', {
