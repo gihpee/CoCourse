@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://commoncourse.io/profile', {
+        const response = await fetch('https://commoncourse.io/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -29,10 +29,7 @@ function Home() {
 
         const data = await response.json();
 
-        if (data != {}) {
-          setUserData(data);
-        }
-        else {
+        if (data == {}) {
           setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
 
           fetch('https://commoncourse.io/user', {
@@ -46,6 +43,9 @@ function Home() {
             .then(response => {
               return response.text();
           })
+        }
+        else {
+          setUserData(data);
         }
 
       } catch (error) {
