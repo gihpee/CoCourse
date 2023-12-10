@@ -33,18 +33,7 @@ function Home() {
         }
         else {
           setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
-
-          fetch('https://commoncourse.io/createuser', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-
-            body: JSON.stringify({id, first_name, last_name, username, photo_url}),
-            })
-            .then(response => {
-              return response.text();
-          })
+          createUser();
         }
 
       } catch (error) {
@@ -54,6 +43,20 @@ function Home() {
 
     fetchData();
   }, [id, first_name, last_name, username, photo_url]);
+
+  const createUser = () => {
+    fetch('https://commoncourse.io/createuser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify({id, first_name, last_name, username, photo_url}),
+      })
+      .then(response => {
+        return response.text();
+    })
+  }
 
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
