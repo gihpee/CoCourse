@@ -57,10 +57,6 @@ function Home() {
     fetchData();
   }, [id, first_name, last_name, username, photo_url]);
 
-  const saveUser = () => {
-    
-  }
-
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
             <p>{ userData.first_name + ' ' + userData.last_name }</p>
