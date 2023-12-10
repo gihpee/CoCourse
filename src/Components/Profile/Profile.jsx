@@ -30,6 +30,10 @@ function Home() {
         const data = await response.json();
 
         if (data) {
+          setUserData(data);
+        }
+        else {
+          setUserData(data);
           setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
 
           fetch('https://commoncourse.io/user', {
@@ -44,9 +48,6 @@ function Home() {
               return response.text();
           })
         }
-        else {
-          setUserData(data);
-        }
 
       } catch (error) {
         console.error('Ошибка при запросе к серверу:', error);
@@ -55,6 +56,10 @@ function Home() {
 
     fetchData();
   }, [id, first_name, last_name, username, photo_url]);
+
+  const saveUser = () => {
+    
+  }
 
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
