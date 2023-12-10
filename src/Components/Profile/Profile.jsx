@@ -42,7 +42,7 @@ function Home() {
     };
 
     fetchData();
-  }, [id, first_name, last_name, username, photo_url]);
+  }, [id, first_name, last_name, username, photo_url, createUser]);
 
   const createUser = () => {
     fetch('https://commoncourse.io/createuser', {
