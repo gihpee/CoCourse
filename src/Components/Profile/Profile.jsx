@@ -33,7 +33,6 @@ function Home() {
           setUserData(data);
         }
         else {
-          setUserData(data);
           setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
 
           fetch('https://commoncourse.io/user', {
