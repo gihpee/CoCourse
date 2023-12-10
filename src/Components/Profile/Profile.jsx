@@ -10,7 +10,7 @@ import "./Profile.css";
 function Home() {
   const { id, first_name, last_name, username, photo_url } = window.Telegram.WebApp.initDataUnsafe.user;
 
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +34,7 @@ function Home() {
         else {
           setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
 
-          fetch('https://commoncourse.io/createuser', {
+          await fetch('https://commoncourse.io/createuser', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
