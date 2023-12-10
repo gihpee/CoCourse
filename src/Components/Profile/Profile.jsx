@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://commoncourse.io/profile?id=${id}`, {
+        const response = await fetch(`https://commoncourse.io/user?id=${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
