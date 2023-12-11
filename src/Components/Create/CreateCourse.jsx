@@ -4,6 +4,8 @@ import "./CreateCourse.css";
 
 function CreateCourse() {
 
+    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+
     const [formData, setFormData] = useState({
         Name: '',
         Univ: '',
@@ -62,13 +64,20 @@ function CreateCourse() {
     };
 
     const handlePublish = () => {
+        var currentDate = new Date();
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1;
+        var year = currentDate.getFullYear();
+
         let name = formData.Name;
         let university = formData.Univ;
         let course = formData.Course;
         let description = formData.Desc;
         let subjects = formData.Subject;
         let topics = formData.topics; 
-        let image = imageSrc
+        let user = id;
+        let date = day + '-' + month + '-' + year
+        let image = imageSrc;
         let feedback = [];
 
         fetch('https://commoncourse.io/course', {
@@ -77,7 +86,7 @@ function CreateCourse() {
                 'Content-Type': 'application/json',
             },
 
-            body: JSON.stringify({name, university, course, description, subjects, topics, image, feedback}),
+            body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
             })
             .then(response => {
                 return response.text();
