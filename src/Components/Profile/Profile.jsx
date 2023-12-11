@@ -126,7 +126,6 @@ function Home() {
                     <p>{userData.description}</p>
                 </div>
                 <span>Предмет</span>
-                {userSubjects}
             </div>
         </>;
 }
