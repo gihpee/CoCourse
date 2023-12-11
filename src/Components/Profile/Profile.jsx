@@ -4,8 +4,6 @@ import star from '../assets/profile/star.svg'
 import nb from '../assets/profile/nb.svg'
 import chart from '../assets/profile/chart.svg'
 import hash from '../assets/profile/hash.svg'
-import { Link } from 'react-router-dom';
-import cam from "../assets/feed/camera.svg"
 import { useState, useEffect } from 'react';
 import "./Profile.css";
 
