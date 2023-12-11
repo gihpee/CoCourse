@@ -55,11 +55,7 @@ function Home() {
       }
     };
 
-    fetchData();
-  }, [id, first_name, last_name, username, photo_url]);
-
-  useEffect(() => {
-    const fetchData = async () => {
+    const fetchCourses = async () => {
       try {
         const response = await fetch(`https://commoncourse.io/usercourse?id=${id}`);
         const result = await response.json();
@@ -71,7 +67,8 @@ function Home() {
     };
 
     fetchData();
-  }, [id]);
+    fetchCourses();
+  }, [id, first_name, last_name, username, photo_url]);
 
   const userSubjects = userData.subjects.map((item, index) => {
     return (
