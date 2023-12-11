@@ -55,7 +55,7 @@ function Home() {
       }
     };
 
-    const fetchCourses = async () => {
+    /*const fetchCourses = async () => {
       try {
         const response = await fetch(`https://commoncourse.io/usercourse?id=${id}`);
         const result = await response.json();
@@ -64,7 +64,7 @@ function Home() {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    };
+    };*/
 
     fetchData();
     fetchCourses();
@@ -80,7 +80,6 @@ function Home() {
   })
 
   const userCourses = coursesData.map((item, index) => {
-
     return (
       <Link to={`/course/${index}`} key={index} className="course_card">
         <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
