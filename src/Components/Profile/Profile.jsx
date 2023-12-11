@@ -13,7 +13,7 @@ function Home() {
   const { id, first_name, last_name, username, photo_url } = window.Telegram.WebApp.initDataUnsafe.user;
 
   const [userData, setUserData] = useState({});
-  const [coursesData, setCoursesData] = useState([]);
+  /*const [coursesData, setCoursesData] = useState([]);*/
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,7 +67,7 @@ function Home() {
     };*/
 
     fetchData();
-    fetchCourses();
+    /*fetchCourses();*/
   }, [id, first_name, last_name, username, photo_url]);
 
   const userSubjects = userData.subjects.map((item, index) => {
@@ -79,7 +79,7 @@ function Home() {
     )
   })
 
-  const userCourses = coursesData.map((item, index) => {
+  /*const userCourses = coursesData.map((item, index) => {
     return (
       <Link to={`/course/${index}`} key={index} className="course_card">
         <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
@@ -94,7 +94,7 @@ function Home() {
         </div>
       </Link>
     )
-  })
+  })*/
 
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
@@ -129,8 +129,6 @@ function Home() {
                 </div>
                 <span>Предмет</span>
                 {userSubjects}
-                <span></span>
-                {userCourses}
             </div>
         </>;
 }
