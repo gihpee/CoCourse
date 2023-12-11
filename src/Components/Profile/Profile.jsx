@@ -71,7 +71,7 @@ function Home() {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   const userSubjects = userData.subjects.map((item, index) => {
     return (
