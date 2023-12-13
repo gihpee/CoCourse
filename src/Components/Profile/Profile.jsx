@@ -46,7 +46,7 @@ function Home() {
               'Content-Type': 'application/json',
             },
 
-            body: JSON.stringify({id, first_name, last_name, username, photo_url}),
+            body: JSON.stringify({id, first_name, last_name, username, avatar}),
             })
             .then(response => {
               return response.text();
@@ -71,7 +71,7 @@ function Home() {
 
     fetchData();
     fetchCourses();
-  }, [id, first_name, last_name, username, photo_url]);
+  }, [id, first_name, last_name, username, avatar]);
 
   var userSubjects;
   var userCourses;
