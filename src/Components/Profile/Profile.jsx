@@ -105,7 +105,7 @@ function Home() {
   }
 
   return <>
-          <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
+          <div className="prev" style={{backgroundImage: `url(${photo_url})`}}>
             <p>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
           <div className="edit_container">
