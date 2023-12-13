@@ -87,7 +87,7 @@ function Home() {
   if (coursesData) {
     userCourses = coursesData.map((item, index) => {
       return (
-        <Link to={`/course/${index}`} key={index} className="course_card">
+        <Link to={`/course/${item.id}`} key={index} className="course_card">
           <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
           <div className="card_info">
             <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{item.rate}</div>
