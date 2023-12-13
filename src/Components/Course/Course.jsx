@@ -48,7 +48,7 @@ function Course() {
         return <p>Loading...</p>; // или что-то другое, пока данные загружаются
     }
 
-    const topics = data.topics.map((item, index) => {
+    const topics = data[0].topics.map((item, index) => {
         return (
             <>
                 <input type="radio" name="acor" id={index} />
@@ -61,9 +61,9 @@ function Course() {
     })
 
     return <>
-            <div className="prev" style={{backgroundImage: `url(${data.image})`}}>
-                <p>{ data.name }</p>
-                <div className="prev_date"><img src={calend} alt='' />{ data.date }</div>
+            <div className="prev" style={{backgroundImage: `url(${data[0].image})`}}>
+                <p>{ data[0].name }</p>
+                <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
             </div>
             <div className="getContact_container">
                 <div className="billet">
@@ -75,7 +75,7 @@ function Course() {
             <div className="feedback">
                 <div className="rate">
                     <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>
-                    {data.rate}
+                    {data[0].rate}
                 </div>
                 <Link to={`/send-feedback/${id}`}>
                     <div className="billet">
@@ -88,21 +88,21 @@ function Course() {
                 <span>Университет</span>
                 <div className="billet">
                     <img src={nb} alt='' />
-                    <p>{data.university}</p>
+                    <p>{data[0].university}</p>
                 </div>
                 <span>Курс</span>
                 <div className="billet">
                     <img src={circle} alt='' />
-                    <p>{data.course}</p>
+                    <p>{data[0].course}</p>
                 </div>
                 <span>Описание</span>
                 <div className="description">
-                    <p>{data.description}</p>
+                    <p>{data[0].description}</p>
                 </div>
                 <span>Предмет</span>
                 <div className="billet">
                     <img src={hash} alt='' />
-                    <p>{data.subjects}</p>
+                    <p>{data[0].subjects}</p>
                 </div>
             </div>
             <span style={{marginBottom: '0px'}}>Содержание</span>
