@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import "./Profile.css";
 
 function Home() {
-  const { id, first_name, last_name, username, photo_url } = window.Telegram.WebApp.initData.user;
+  const { id, first_name, last_name, username, photo_url } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(photo_url)
 
   const [userData, setUserData] = useState({});
