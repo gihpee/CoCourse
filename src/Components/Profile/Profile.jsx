@@ -71,7 +71,7 @@ function Home() {
 
     fetchData();
     fetchCourses();
-  }, [id, first_name, last_name, username, avatar]);
+  }, [id, first_name, last_name, username]);
 
   var userSubjects;
   var userCourses;
