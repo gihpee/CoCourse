@@ -5,6 +5,7 @@ import nb from '../assets/profile/nb.svg'
 import chart from '../assets/profile/chart.svg'
 import hash from '../assets/profile/hash.svg'
 import cam from "../assets/feed/camera.svg"
+import avatar from '../assets/profile/avatar.png'
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import "./Profile.css";
@@ -13,7 +14,6 @@ function Home() {
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(window.Telegram.WebApp.initDataUnsafe.user)
 
-  var photo_url = "'../assets/profile/avatar.png'"
 
   const [userData, setUserData] = useState({});
   const [coursesData, setCoursesData] = useState([]);
@@ -38,7 +38,7 @@ function Home() {
           setUserData(data[0]);
         }
         else {
-          setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
+          setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: avatar, university: '', course: '', description: ''})
 
           await fetch('https://commoncourse.io/createuser', {
             method: 'POST',
