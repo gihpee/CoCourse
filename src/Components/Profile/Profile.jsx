@@ -13,7 +13,7 @@ function Home() {
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(window.Telegram.WebApp.initDataUnsafe.user)
 
-  var photo_url = "../assets/feed/avatar.png"
+  var photo_url = "../assets/profile/avatar.png"
 
   const [userData, setUserData] = useState({});
   const [coursesData, setCoursesData] = useState([]);
