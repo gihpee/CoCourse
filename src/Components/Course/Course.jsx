@@ -25,14 +25,14 @@ const user = {
 
 
 function Course() {
-    const { index } = useParams();
+    const { id } = useParams();
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch('https://commoncourse.io/');
+            const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`);
             const result = await response.json();
 
             setData(result);
