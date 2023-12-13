@@ -4,6 +4,8 @@ import star from '../assets/profile/star.svg'
 import nb from '../assets/profile/nb.svg'
 import chart from '../assets/profile/chart.svg'
 import hash from '../assets/profile/hash.svg'
+import cam from "../assets/feed/camera.svg"
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import "./Profile.css";
 
@@ -11,7 +13,7 @@ function Home() {
   const { id, first_name, last_name, username, photo_url } = window.Telegram.WebApp.initDataUnsafe.user;
 
   const [userData, setUserData] = useState({});
-  /*const [coursesData, setCoursesData] = useState([]);*/
+  const [coursesData, setCoursesData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +55,7 @@ function Home() {
       }
     };
 
-    /*const fetchCourses = async () => {
+    const fetchCourses = async () => {
       try {
         const response = await fetch(`https://commoncourse.io/usercourse?id=${id}`);
         const result = await response.json();
@@ -62,37 +64,44 @@ function Home() {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    };*/
+    };
 
     fetchData();
-    /*fetchCourses();*/
+    fetchCourses();
   }, [id, first_name, last_name, username, photo_url]);
 
-  const userSubjects = userData.subjects.map((item, index) => {
-    return (
-      <div className="billet">
-        <img src={hash} alt='' />
-        <p>{item}</p>
-      </div>
-    )
-  })
+  var userSubjects;
+  var userCourses;
 
-  /*const userCourses = coursesData.map((item, index) => {
-    return (
-      <Link to={`/course/${index}`} key={index} className="course_card">
-        <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
-        <div className="card_info">
-          <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{item.rate}</div>
-          <div className="points">
-            <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-            <div className="point"><img src={chart} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
-            <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{item.subjects}</div>
-            <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.course}</div>
-          </div>
+  if (userData.subjects){
+    userSubjects = userData.subjects.map((item, index) => {
+      return (
+        <div className="billet">
+          <img src={hash} alt='' />
+          <p>{item}</p>
         </div>
-      </Link>
-    )
-  })*/
+      )
+    })
+  }
+
+  if (coursesData) {
+    userCourses = coursesData.map((item, index) => {
+      return (
+        <Link to={`/course/${index}`} key={index} className="course_card">
+          <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
+          <div className="card_info">
+            <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{item.rate}</div>
+            <div className="points">
+              <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
+              <div className="point"><img src={chart} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
+              <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{item.subjects}</div>
+              <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.course}</div>
+            </div>
+          </div>
+        </Link>
+      )
+    })
+  }
 
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
@@ -126,6 +135,9 @@ function Home() {
                     <p>{userData.description}</p>
                 </div>
                 <span>Предмет</span>
+                {userSubjects}
+                <span>Курсы</span>
+                {userCourses}
             </div>
         </>;
 }
