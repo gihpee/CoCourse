@@ -6,6 +6,8 @@ function CreateCourse() {
 
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
+    var currentDate = new Date();
+
     const [formData, setFormData] = useState({
         Name: '',
         Univ: '',
@@ -64,7 +66,6 @@ function CreateCourse() {
     };
 
     const handlePublish = () => {
-        var currentDate = new Date();
         var day = currentDate.getDate();
         var month = currentDate.getMonth() + 1;
         var year = currentDate.getFullYear();
