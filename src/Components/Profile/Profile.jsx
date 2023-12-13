@@ -10,8 +10,10 @@ import { useState, useEffect } from 'react';
 import "./Profile.css";
 
 function Home() {
-  const { id, first_name, last_name, username, photo_url } = window.Telegram.WebApp.initDataUnsafe.user;
+  const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(window.Telegram.WebApp.initDataUnsafe.user)
+
+  var photo_url = "../assets/feed/avatar.png"
 
   const [userData, setUserData] = useState({});
   const [coursesData, setCoursesData] = useState([]);
@@ -105,15 +107,15 @@ function Home() {
   }
 
   return <>
-          <div className="prev" style={{backgroundImage: `url(${photo_url})`}}>
+          <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
             <p>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
-          <div className="edit_container">
-            <div className="billet">
-              <img src={pencil} alt='' />
-              <p>Редактор</p>
-            </div>
-          </div>
+            <Link to={`/edit-profile/${userData.id}`} className="edit_container">
+              <div className="billet">
+                <img src={pencil} alt='' />
+                <p>Редактор</p>
+              </div>
+            </Link>
           <span>Отзывы</span>
             <div className="feedback">
               <div className="rate">
