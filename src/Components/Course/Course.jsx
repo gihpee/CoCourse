@@ -42,7 +42,7 @@ function Course() {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     if (data.length === 0) {
         return <p>Loading...</p>; // или что-то другое, пока данные загружаются
