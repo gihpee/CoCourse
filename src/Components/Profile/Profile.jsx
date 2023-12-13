@@ -11,7 +11,7 @@ import "./Profile.css";
 
 function Home() {
   const { id, first_name, last_name, username, photo_url } = window.Telegram.WebApp.initDataUnsafe.user;
-  console.log(photo_url)
+  console.log(window.Telegram.WebApp.initDataUnsafe.user)
 
   const [userData, setUserData] = useState({});
   const [coursesData, setCoursesData] = useState([]);
