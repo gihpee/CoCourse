@@ -65,6 +65,7 @@ function Course() {
                 <p>{ data[0].name }</p>
                 <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
             </div>
+            <div className="back_btn" onClick={() => {window.history.back()}}></div>
             <div className="getContact_container">
                 <div className="billet">
                     <img src={chat} alt='' />

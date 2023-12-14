@@ -94,6 +94,7 @@ function CreateCourse() {
         })
         console.log(formData);
         console.log(image);
+        window.history.back()
     };
 
     return <>
@@ -101,6 +102,7 @@ function CreateCourse() {
             <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
             <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})` }}></div>
         </div>
+        <div className="back_btn" onClick={() => {window.history.back()}}></div>
         <div className="column" id='main' style={{marginTop: '-64px', borderRadius: '24px',
         borderBottomLeftRadius: '0px', borderBottomRightRadius: '0px', backgroundColor: 'black', paddingTop: '8px'}}>
             <span>ТЕМА</span>

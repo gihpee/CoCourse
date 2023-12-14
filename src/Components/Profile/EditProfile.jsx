@@ -17,7 +17,7 @@ import "./EditProfile.css";
 function EditProfile() {
     const { id } = useParams();
 
-    const [userData, setUserData] = useState({});
+    const [imageSrc, setImageSrc] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,7 +34,7 @@ function EditProfile() {
             }
     
             const data = await response.json();
-            setUserData(data[0]);
+            setImageSrc(data[0].photo_url);
 
           } catch (error) {
             console.error('Ошибка при запросе к серверу:', error);
@@ -44,7 +44,7 @@ function EditProfile() {
         fetchData();
       }, [id]);
 
-      const [imageSrc, setImageSrc] = useState(userData.photo_url);
+      console.log(imageSrc)
 
       const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -67,9 +67,10 @@ function EditProfile() {
     return <>
             <div className="upload-container">
                 <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
-                <div className="prev" style={{backgroundImage: `url(${imageSrc})`, opacity: 0.6}}></div>
+                <div className="preview-container" id="previewContainer" style={{backgroundImage: `url(${imageSrc})`, opacity: 0.6}}></div>
                 <div className="prev_filter"></div>
             </div>
+            <div className="back_btn" onClick={() => {window.history.back()}}></div>
             <div className="prop_container">
               <Link to={`/edit-bio/${id}`} className="billet">
                 <img src={bio} alt='' />
