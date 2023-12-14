@@ -92,6 +92,7 @@ span {
     height: 428px;
     background-image: url('../assets/course/preview.png');
     background-size: cover;
+    background-position: center;
 }
 
 .prev p {
