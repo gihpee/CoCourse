@@ -44,9 +44,32 @@ function EditProfile() {
         fetchData();
       }, [id]);
 
+      const [imageSrc, setImageSrc] = useState(userData.photo_url);
+
+      const handleImageChange = (e) => {
+        const file = e.target.files[0];
+    
+        if (file) {
+          const reader = new FileReader();
+    
+          reader.onload = () => {
+            if (reader.result) {
+              setImageSrc(reader.result);
+            }
+          };
+    
+          reader.readAsDataURL(file);
+        } else {
+          setImageSrc(null);
+        }
+    };
+
     return <>
-            <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`, opacity: 0.6}}></div>
-            <div className="prev_filter"></div>
+            <div className="upload-container">
+                <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
+                <div className="prev" style={{backgroundImage: `url(${imageSrc})`, opacity: 0.6}}></div>
+                <div className="prev_filter"></div>
+            </div>
             <div className="prop_container">
               <Link to={`/edit-bio/${id}`} className="billet">
                 <img src={bio} alt='' />
