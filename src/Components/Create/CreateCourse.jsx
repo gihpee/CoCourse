@@ -83,21 +83,20 @@ function CreateCourse() {
         let image = imageSrc;
         let feedback = [];
 
-        await fetch('https://commoncourse.io/course', {
+        const response = await fetch('https://commoncourse.io/course', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
 
             body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
-            })
-        .then(response => {
-            return response.text();
-        })
-        .then(() => {
+        });
+        
+        if (response.ok) {
             navigate('/');
-        })
-
+        } else {
+            console.error('error 1')
+        }
     };
 
     return <>
