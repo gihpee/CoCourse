@@ -65,7 +65,7 @@ function CreateCourse() {
         }
     };
 
-    const handlePublish = () => {
+    const handlePublish = async () => {
         var day = currentDate.getDate();
         var month = currentDate.getMonth() + 1;
         var year = currentDate.getFullYear();
@@ -81,7 +81,7 @@ function CreateCourse() {
         let image = imageSrc;
         let feedback = [];
 
-        fetch('https://commoncourse.io/course', {
+        await fetch('https://commoncourse.io/course', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -92,9 +92,8 @@ function CreateCourse() {
         .then(response => {
             return response.text();
         })
-        .then(() => {
-            window.location.href = '/';
-        })
+
+        await window.history.back()
     };
 
     return <>
