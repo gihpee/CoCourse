@@ -92,9 +92,9 @@ function CreateCourse() {
             body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
         });
         
-        if (response.ok) {
+        if (response) {
             console.log('trash')
-            navigate('create');
+            navigate('/create');
         } else {
             console.error('error 1')
         }
