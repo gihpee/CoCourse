@@ -83,7 +83,7 @@ function CreateCourse() {
         let image = imageSrc;
         let feedback = [];
 
-        const response = await fetch('https://commoncourse.io/course', {
+        await fetch('https://commoncourse.io/course', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
