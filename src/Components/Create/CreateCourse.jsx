@@ -92,7 +92,9 @@ function CreateCourse() {
         .then(response => {
             return response.text();
         })
-        .then((window) => {window.history.back()})
+        .then(() => {
+            window.location.href = '/';
+        })
     };
 
     return <>
