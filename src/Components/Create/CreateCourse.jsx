@@ -90,14 +90,8 @@ function CreateCourse() {
             },
 
             body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
-        });
+        }).then(navigate('/create'))
         
-        if (response) {
-            console.log('trash')
-            navigate('/create');
-        } else {
-            console.error('error 1')
-        }
     };
 
     return <>
