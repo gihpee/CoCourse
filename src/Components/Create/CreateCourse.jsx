@@ -89,10 +89,10 @@ function CreateCourse() {
 
             body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
             })
-            .then(response => {
-                window.history.back()
-                return response.text();
+        .then(response => {
+            return response.text();
         })
+        .then(window.history.back())
     };
 
     return <>
