@@ -92,7 +92,7 @@ function CreateCourse() {
         .then(response => {
             return response.text();
         })
-        .then(window.history.back())
+        .then(() => {window.history.back()})
     };
 
     return <>
