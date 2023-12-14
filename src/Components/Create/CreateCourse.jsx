@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import prev from '../assets/course/preview.png'
+import { useHistory } from 'react-router-dom';
 import "./CreateCourse.css";
 
 function CreateCourse() {
@@ -7,6 +8,7 @@ function CreateCourse() {
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
     var currentDate = new Date();
+    const history = useHistory();
 
     const [formData, setFormData] = useState({
         Name: '',
@@ -92,8 +94,10 @@ function CreateCourse() {
         .then(response => {
             return response.text();
         })
+        .then(() => {
+            history.push('/');
+        })
 
-        await window.history.back()
     };
 
     return <>
