@@ -93,7 +93,7 @@ function CreateCourse() {
         });
         
         if (response.ok) {
-            navigate('/');
+            navigate('/create');
         } else {
             console.error('error 1')
         }
