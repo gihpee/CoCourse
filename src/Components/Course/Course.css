@@ -10,6 +10,7 @@ span {
     margin-left: 16px;
     width: 95%;
     margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 .acor-container {

@@ -11,6 +11,7 @@ import magic from '../assets/profile/magic.svg'
 import bell from '../assets/profile/bell.svg'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import "./EditProfile.css";
 
@@ -18,6 +19,9 @@ function EditProfile() {
     const { id } = useParams();
 
     const [imageSrc, setImageSrc] = useState("");
+    const [isNotify, setIsNotify] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,6 +39,7 @@ function EditProfile() {
     
             const data = await response.json();
             setImageSrc(data[0].photo_url);
+            setIsNotify(data[0].notify);
 
           } catch (error) {
             console.error('Ошибка при запросе к серверу:', error);
@@ -62,7 +67,22 @@ function EditProfile() {
         } else {
           setImageSrc(null);
         }
-    };
+      };
+
+      const handleNotify = () => {
+        setIsNotify(!isNotify);
+      };
+
+      const handleSave = async () => {
+        fetch('https://commoncourse.io/update-pn', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+    
+          body: JSON.stringify({id, imageSrc, isNotify}),
+        }).then(navigate(`/profile`))
+      }
 
     return <>
             <div className="upload-container">
@@ -70,7 +90,7 @@ function EditProfile() {
                 <div className="preview-container" id="previewContainer" style={{backgroundImage: `url(${imageSrc})`, opacity: 0.6}}></div>
                 <div className="prev_filter"></div>
             </div>
-            <div className="back_btn" onClick={() => {window.history.back()}}></div>
+            <div className="back_btn" onClick={() => {handleSave()}}></div>
             <div className="prop_container">
               <Link to={`/edit-bio/${id}`} className="billet">
                 <img src={bio} alt='' />
@@ -89,9 +109,13 @@ function EditProfile() {
                 <p>Предметы, которые вы изучаете</p>
               </Link>
               <span>Оповещения о новых курсах</span>
-              <div className="billet">
+              <div className="billet" style={{paddingRight: '8px'}}>
                 <img src={bell} alt='' />
                 <p>Уведомления</p>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="toggle" checked={isNotify} onChange={handleNotify}/>
+                  <label for="toggle"></label>
+                </div>
               </div>
               <span>Обратная связь</span>
               <div className="billet">
