@@ -3,6 +3,7 @@ import prev from '../assets/course/preview.png'
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import hash from '../assets/profile/hash.svg'
 import "./CreateCourse.css";
 
 function EditCourse() {
@@ -17,22 +18,29 @@ function EditCourse() {
         Univ: '',
         Course: '',
         Desc: '',
-        Subject: '',
+        Subjects: [],
         topics: [],
     });
+
+    const [imageSrc, setImageSrc] = useState(prev);
 
     useEffect(() => {
         const fetchCourses = async () => {
           try {
             const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`);
-
             const data = await response.json();
-
-            setFormData(() => ({
-                Name: data[0].name,
-                Univ: data[0].university,
-
-            }));
+    
+            setFormData(() => {
+                return {
+                    Name: data[0].name,
+                    Univ: data[0].university,
+                    Course: data[0].course,
+                    Desc: data[0].description,
+                    Subjects: data[0].subjects,
+                    topics: data[0].topics,
+                }
+            });
+            setImageSrc(data[0].image)
 
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -70,8 +78,6 @@ function EditCourse() {
         });
     };
 
-    const [imageSrc, setImageSrc] = useState(prev);
-
     const handleImageChange = (e) => {
         const file = e.target.files[0];
     
@@ -90,7 +96,31 @@ function EditCourse() {
         }
     };
 
+    const handleSubjectsChange = (event) => {
+        const selectedOption = event.target.value;
+
+        if (!formData.Subjects.includes(selectedOption)) {
+        setFormData((prevData) => {
+            return {
+                ...prevData,
+                Subjects: [...prevData.Subjects, selectedOption],
+            }
+        });
+    }
+    };
+
+    const handleRemoveSubject = (optionToRemove) => {
+        const updatedOptions = formData.Subjects.filter((option) => option !== optionToRemove);
+        setFormData((prevData) => {
+            return {
+                ...prevData,
+                Subjects: updatedOptions,
+            }
+        });
+    };
+
     const handlePublish = async () => {
+        console.log(formData)
         var day = currentDate.getDate();
         var month = currentDate.getMonth() + 1;
         var year = currentDate.getFullYear();
@@ -99,20 +129,18 @@ function EditCourse() {
         let university = formData.Univ;
         let course = formData.Course;
         let description = formData.Desc;
-        let subjects = formData.Subject;
+        let subjects = formData.Subjects;
         let topics = formData.topics; 
-        let user = id;
         let date = day + '-' + month + '-' + year
         let image = imageSrc;
-        let feedback = [];
 
-        await fetch('https://commoncourse.io/course', {
+        await fetch('https://commoncourse.io/edit-course', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
 
-            body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
+            body: JSON.stringify({id, name, university, course, description, subjects, topics, date, image}),
         }).then(navigate('/create'))
         
     };
@@ -158,14 +186,19 @@ function EditCourse() {
                     onChange={handleChange} />
 
             <span>ПРЕДМЕТ</span>
+            {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
+            <div className="billet_del" key={option} onClick={() => handleRemoveSubject(option)}><img src={hash} alt='' /><p>{option}</p></div>
+            ))) : (<></>)}
             <select className="billet_subject"
-                    name="Subject"
-                    value={formData.Subject}
-                    onChange={handleChange}>
+                name="Subject"
+                value='Предмет'
+                onChange={handleSubjectsChange}>
                 <option>Пункт 1</option>
                 <option>Пункт 2</option>
+                <option>Пункт 3</option>
+                <option>Пункт 4</option>
+                <option>Пункт 5</option>
             </select>
-
             <span>СОДЕРЖАНИЕ</span>
             {formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>
@@ -193,7 +226,7 @@ function EditCourse() {
             <button className='billet_add' onClick={addEl}>Add topic</button>
         </div>
         <div className="publish">
-            <button className='publish_btn' onClick={handlePublish}>ОПУБЛИКОВАТЬ</button>
+            <button className='publish_btn' onClick={handlePublish}>Сохранить</button>
         </div>
         </>
 }

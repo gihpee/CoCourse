@@ -71,14 +71,13 @@ function CreateCourse() {
     const handleSubjectsChange = (event) => {
         const selectedOption = event.target.value;
 
-        if (!formData.Subjects.includes(selectedOption) || formData.Subjects.length === 0) {
+        if (!formData.Subjects.includes(selectedOption)) {
         setFormData((prevData) => {
             return {
                 ...prevData,
                 Subjects: [...prevData.Subjects, selectedOption],
             }
         });
-        console.log(formData)
     }
     };
 
@@ -93,6 +92,7 @@ function CreateCourse() {
     };
 
     const handlePublish = async () => {
+        console.log(formData)
         var day = currentDate.getDate();
         var month = currentDate.getMonth() + 1;
         var year = currentDate.getFullYear();
