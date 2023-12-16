@@ -38,6 +38,7 @@ function FeedbackUser() {
         }
 
         averageRate = totalRate / feedbacks.length;
+        averageRate = Math.round(averageRate * 100) / 100;
     }
 
     const cards = feedbacks.map((item, index) => {

@@ -69,6 +69,7 @@ function Course() {
         }
 
         averageRate = totalRate / data[0].feedback.length;
+        averageRate = Math.round(averageRate * 100) / 100;
     }
 
     return <>

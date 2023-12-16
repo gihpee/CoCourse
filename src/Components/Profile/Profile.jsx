@@ -117,6 +117,7 @@ function Home() {
       }
 
       averageRate = totalRate / feedbacks.length;
+      averageRate = Math.round(averageRate * 100) / 100;
   }
 
   return <>
@@ -130,13 +131,13 @@ function Home() {
               </div>
             </Link>
           <span>Отзывы</span>
-            <div className="feedback">
-              <Link to={`user-feedback/${id}`}>
+          <Link to={`user-feedback/${id}`}>
+              <div className="feedback">
                 <div className="rate">
                   <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{averageRate}
                 </div>
-              </Link>
-            </div> 
+              </div> 
+            </Link>
             <div className="about">
                 <span>Университет</span>
                 <div className="billet">
