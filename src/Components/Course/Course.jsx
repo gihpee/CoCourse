@@ -146,7 +146,7 @@ function Course() {
             <div className="card_mentor">
                 <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{average_user_Rate}</div>
                 <Link to={`/user/${userData[0].id}`} className="card_wp">
-                    <img src={userData[0].photo_url} alt='' style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black'}} />
+                    <div style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black', backgroundImage: `url(${userData[0].photo_url})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div>
                     <div className="points_user">
                         <div className="point_user"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{userData[0].username}</b></div>
                         <div className="point_user"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{userData[0].university}</div>

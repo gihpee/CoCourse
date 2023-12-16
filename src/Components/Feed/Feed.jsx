@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import cam from "../assets/feed/camera.svg"
-import chart from "../assets/feed/chart.svg"
+import calendarS from '../assets/feedback/calendarS.svg'
 import hash from "../assets/feed/hash.svg"
 import nb from "../assets/feed/notebook.svg"
 import star from '../assets/feed/star.svg'
@@ -48,9 +48,9 @@ function Feed() {
           <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{averageRate}</div>
           <div className="points">
             <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-            <div className="point"><img src={chart} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
-            <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{item.subjects}</div>
-            <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.course}</div>
+            <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
+            <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{(item.subjects).join(', ')}</div>
+            <div className="point"><img src={calendarS} alt='' style={{ marginRight: '10px' }}/>{item.date}</div>
           </div>
         </div>
       </Link>

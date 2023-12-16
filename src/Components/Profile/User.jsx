@@ -2,9 +2,13 @@ import React from "react";
 import star from '../assets/profile/star.svg'
 import nb from '../assets/profile/nb.svg'
 import chart from '../assets/profile/chart.svg'
+import starF from '../assets/feed/star.svg'
 import hash from '../assets/profile/hash.svg'
 import cam from "../assets/feed/camera.svg"
 import chat from '../assets/course/chat.svg'
+import calendarS from '../assets/feedback/calendarS.svg'
+import hashS from "../assets/feed/hash.svg"
+import nbS from "../assets/feed/notebook.svg"
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -75,15 +79,15 @@ function User() {
       return (
         <Link to={`/course/${item.id}`} key={index} className="course_card">
           <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
-          <div className="card_info">
-            <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{item.rate}</div>
-            <div className="points">
-              <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-              <div className="point"><img src={chart} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
-              <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{item.subjects}</div>
-              <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.course}</div>
+            <div className="card_info">
+                <div className="rate"><img src={starF} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{averageRate}</div>
+                <div className="points">
+                    <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
+                    <div className="point"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
+                    <div className="point"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{(item.subjects).join(', ')}</div>
+                    <div className="point"><img src={calendarS} alt='' style={{ marginRight: '10px' }}/>{item.date}</div>
+                </div>
             </div>
-          </div>
         </Link>
       )
     })
