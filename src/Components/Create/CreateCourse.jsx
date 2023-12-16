@@ -71,7 +71,7 @@ function CreateCourse() {
     const handleSubjectsChange = (event) => {
         const selectedOption = event.target.value;
 
-        if (!formData.Subjects.includes(selectedOption)) {
+        if (!formData.Subjects.includes(selectedOption) || formData.Subjects.length === 0) {
         setFormData((prevData) => {
             return {
                 ...prevData,

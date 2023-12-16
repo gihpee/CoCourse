@@ -29,22 +29,26 @@ function Create() {
     fetchCourses();
   }, [id])
 
-  const appCourses = coursesData.map((item) => {
-    return (
-      <Link to={`/edit-course/${item.id}`} key={item.id} className="course_card">
-        <div className="course_img"></div>
-        <div className="card_info">
-          <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{item.rate}</div>
-          <div className="points">
-            <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-            <div className="point"><img src={chart} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
-            <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{item.tags}</div>
-            <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.course}</div>
+  var userCourses;
+
+  if (coursesData) {
+    userCourses = coursesData.map((item, index) => {
+      return (
+        <Link to={`/edit-course/${item.id}`} key={index} className="course_card">
+          <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
+          <div className="card_info">
+            <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{item.rate}</div>
+            <div className="points">
+              <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
+              <div className="point"><img src={chart} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
+              <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{item.subjects}</div>
+              <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.course}</div>
+            </div>
           </div>
-        </div>
-      </Link>
-    )
-  })
+        </Link>
+      )
+    })
+  }
 
   return <>
       <div className="create_button"><a href='create-course'>
@@ -54,7 +58,7 @@ function Create() {
         </div>
       </a></div>
       <div>
-      {appCourses}
+      {userCourses}
       </div>
       </>;
 }
