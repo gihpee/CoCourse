@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import "./SendFeedback.css";
 
@@ -8,6 +9,9 @@ function SendFeedback() {
   const { username } = window.Telegram.WebApp.initDataUnsafe.user;
   const [userId, setUserId] = useState(0)
   const [courseName, setCourseName] = useState("")
+
+  var currentDate = new Date();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -41,10 +45,17 @@ function SendFeedback() {
 
   const handlePublish = () => {
     console.log(sliderValue, revValue);
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+
+    let date = day + '-' + month + '-' + year
+
     let feedback = [{rate: sliderValue, 
                     review: revValue, 
                     user: username, 
-                    course: courseName}];
+                    course: courseName, 
+                    date: date}];
     fetch('https://commoncourse.io/sf', {
       method: 'POST',
       headers: {
@@ -52,10 +63,7 @@ function SendFeedback() {
       },
 
       body: JSON.stringify({id, userId, feedback}),
-      })
-      .then(response => {
-        return response.text();
-    })
+      }).then(navigate(`/course/${id}`))
   }
 
   return <div className="column">
