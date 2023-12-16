@@ -162,7 +162,7 @@ function Home() {
                 <span>Предметы</span>
                 {userSubjects ? userSubjects : <p>Не указано</p>}
                 <span>Курсы</span>
-                {userCourses ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
+                {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
         </>;
 }

@@ -71,7 +71,7 @@ function Create() {
         </div>
       </a></div>
       <div>
-      {userCourses}
+      {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
       </div>
       </>;
 }
