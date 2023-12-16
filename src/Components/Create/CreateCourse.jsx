@@ -122,7 +122,7 @@ function CreateCourse() {
     return <>
         <div className="upload-container">
             <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
-            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})` }}></div>
+            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
             <div className="prev_filter"></div>
         </div>
         <div className="back_btn" onClick={() => {window.history.back()}}></div>

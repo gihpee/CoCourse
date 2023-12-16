@@ -1,10 +1,30 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./SendFeedback.css";
 
 function SendFeedback() {
   const { id } = useParams();
+  const { username } = window.Telegram.WebApp.initDataUnsafe.user;
+  const [userId, setUserId] = useState(0)
+  const [courseName, setCourseName] = useState("")
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`);
+        const data = await response.json();
+
+        setUserId(data[0].user);
+        setCourseName(data[0].name);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchCourses();
+}, [id])
 
   const [sliderValue, setSliderValue] = useState(3);
   const [revValue, setRevValue] = useState("")
@@ -22,14 +42,16 @@ function SendFeedback() {
   const handlePublish = () => {
     console.log(sliderValue, revValue);
     let feedback = [{rate: sliderValue, 
-                    review: revValue}];
+                    review: revValue, 
+                    user: username, 
+                    course: courseName}];
     fetch('https://commoncourse.io/sf', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
 
-      body: JSON.stringify({id, feedback}),
+      body: JSON.stringify({id, userId, feedback}),
       })
       .then(response => {
         return response.text();
@@ -56,11 +78,11 @@ function SendFeedback() {
             <div className="circle"></div>
             <div className="circle"></div>
           </div>
-          <input type="textarea" 
-                className="fb_rev" 
+          <textarea 
+                className="fb_text" 
                 placeholder="Оставить комментарий. Это очень поможет развитию нашего сервиса."
-                name="fb_rev"
-                onChange={handleRevChange}></input>
+                name="fb_text"
+                onChange={handleRevChange}></textarea>
           <div className="publish" style={{marginTop: '25px'}}>
             <button className='sf_btn' onClick={handlePublish}>СОХРАНИТЬ</button>
           </div>

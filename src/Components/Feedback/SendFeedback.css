@@ -106,11 +106,10 @@ a {
     z-index: 50;
 }
 
-.fb_rev {
-    width: calc(100% - 16px);
+.fb_text {
+    width: calc(100% - 32px);
     min-height: 104px;
     background-color: #161616;
-    margin-top: 16px;
     border: none;
     border-radius: 16px;
     outline: none;
@@ -118,6 +117,7 @@ a {
     font-weight: 300;
     color: white;
     line-break: auto;
+    padding: 8px;
 }
 
 .sf_btn {
