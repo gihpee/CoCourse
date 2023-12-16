@@ -79,10 +79,6 @@ function Home() {
     fetchCourses();
   }, [id, first_name, last_name, username]);
 
-  if (userData.length === 0 || coursesData.length === 0) {
-    return <p>Loading...</p>; // или что-то другое, пока данные загружаются
-  }
-
   var userSubjects;
   var userCourses;
 

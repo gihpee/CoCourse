@@ -60,10 +60,6 @@ function User() {
         fetchCourses();
     }, [id]);
 
-  if (userData.length === 0 || coursesData.length === 0) {
-    return <p>Loading...</p>; // или что-то другое, пока данные загружаются
-  }
-
   var userSubjects;
   var userCourses;
 
