@@ -90,7 +90,13 @@ function EditCourse() {
     };
     
     const handleTopicChange = (index, e) => {
-        const { name, value } = e.target;
+        const { name, value, type } = e.target;
+        
+        if (type === 'textarea') {
+            e.target.style.height = 'auto';
+            e.target.style.height = e.target.scrollHeight + 'px';
+        }
+        
         setFormData((prevData) => {
             const newTopics = [...prevData.topics];
             const [field] = name.split('_'); 
@@ -253,7 +259,7 @@ function EditCourse() {
                         value={topic.topic}
                         onChange={(e) => handleTopicChange(index, e)}
                     />
-                    <input
+                    <textarea
                     className='billet_desc'
                     type='text'
                     placeholder={`Topic ${index + 1} info`}

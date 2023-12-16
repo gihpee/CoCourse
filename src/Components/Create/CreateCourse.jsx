@@ -38,9 +38,13 @@ function CreateCourse() {
     };
     
     const handleTopicChange = (index, e) => {
-        const { name, value } = e.target;
-        e.target.style.height = 'auto';
-        e.target.style.height = e.target.scrollHeight + 'px';
+        const { name, value, type } = e.target;
+        
+        if (type === 'textarea') {
+            e.target.style.height = 'auto';
+            e.target.style.height = e.target.scrollHeight + 'px';
+        }
+
         setFormData((prevData) => {
             const newTopics = [...prevData.topics];
             const [field] = name.split('_'); 
