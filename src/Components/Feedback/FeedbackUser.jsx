@@ -32,13 +32,15 @@ function FeedbackUser() {
     var totalRate = 0;
     var averageRate = 0;
 
-    if (feedbacks.length > 0) {
-        for (var i = 0; i < feedbacks.length; i++) {
-            totalRate += parseFloat(feedbacks[i].rate);
-        }
+    if (feedbacks) {
+        if (feedbacks.length > 0) {
+            for (var i = 0; i < feedbacks.length; i++) {
+                totalRate += parseFloat(feedbacks[i].rate);
+            }
 
-        averageRate = totalRate / feedbacks.length;
-        averageRate = Math.round(averageRate * 100) / 100;
+            averageRate = totalRate / feedbacks.length;
+            averageRate = Math.round(averageRate * 100) / 100;
+        }
     }
 
     const cards = feedbacks.map((item, index) => {
