@@ -79,6 +79,10 @@ function Home() {
     fetchCourses();
   }, [id, first_name, last_name, username]);
 
+  if (userData.length === 0 || coursesData.length === 0) {
+    return <p>Loading...</p>; // или что-то другое, пока данные загружаются
+  }
+
   var userSubjects;
   var userCourses;
 
@@ -148,21 +152,21 @@ function Home() {
                 <span>Университет</span>
                 <div className="billet">
                     <img src={nb} alt='' />
-                    <p>{userData.university.length > 0 ? userData.university : "Не указано"}</p>
+                    <p>{userData.university ? userData.university : "Не указано"}</p>
                 </div>
                 <span>Курс</span>
                 <div className="billet">
                     <img src={chart} alt='' />
-                    <p>{userData.course.length > 0 ? userData.course : "Не указано"}</p>
+                    <p>{userData.course ? userData.course : "Не указано"}</p>
                 </div>
                 <span>Биография</span>
                 <div className="description">
-                    <p>{userData.description.length > 0 ? userData.description : "Не указано"}</p>
+                    <p>{userData.description ? userData.description : "Не указано"}</p>
                 </div>
                 <span>Предметы</span>
-                {userSubjects.length > 0 ? userSubjects : <p>Не указано</p>}
+                {userSubjects ? userSubjects : <p>Не указано</p>}
                 <span>Курсы</span>
-                {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
+                {userCourses ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
         </>;
 }
