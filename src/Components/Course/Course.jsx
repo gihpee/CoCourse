@@ -145,15 +145,13 @@ function Course() {
             <span style={{marginTop: '8px'}}>Ментор</span>
             <div className="card_mentor">
                 <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{average_user_Rate}</div>
-                <Link to={`/user/${userData[0].id}`}>
-                    <div className="card_wp">
-                        <img src={userData[0].photo_url} alt='' style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black'}} />
-                        <div className="points_user">
-                            <div className="point_user"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{userData[0].username}</b></div>
-                            <div className="point_user"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{userData[0].university}</div>
-                            <div className="point_user"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{(userData[0].subjects).join(', ')}</div>
-                            <div className="point_user"><img src={chartS} alt='' style={{ marginRight: '10px' }}/>{userData[0].course}</div>
-                        </div>
+                <Link to={`/user/${userData[0].id}`} className="card_wp">
+                    <img src={userData[0].photo_url} alt='' style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black'}} />
+                    <div className="points_user">
+                        <div className="point_user"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{userData[0].username}</b></div>
+                        <div className="point_user"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{userData[0].university}</div>
+                        <div className="point_user"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{(userData[0].subjects).join(', ')}</div>
+                        <div className="point_user"><img src={chartS} alt='' style={{ marginRight: '10px' }}/>{userData[0].course}</div>
                     </div>
                 </Link>
             </div>

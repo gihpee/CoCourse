@@ -107,6 +107,7 @@ function User() {
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
             <p>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
+          <div className="back_btn" onClick={() => {window.history.back()}}></div>
           <div className="getContact_container">
                 <div className="billet">
                     <img src={chat} alt='' />
