@@ -75,7 +75,13 @@ function EditCourse() {
     }, [id])
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type } = e.target;
+
+        if (type === 'textarea') {
+            e.target.style.height = 'auto';
+            e.target.style.height = e.target.scrollHeight + 'px';
+        }
+        
         setFormData((prevData) => ({
           ...prevData,
           [name]: value,
@@ -96,7 +102,7 @@ function EditCourse() {
             e.target.style.height = 'auto';
             e.target.style.height = e.target.scrollHeight + 'px';
         }
-        
+
         setFormData((prevData) => {
             const newTopics = [...prevData.topics];
             const [field] = name.split('_'); 
@@ -227,7 +233,7 @@ function EditCourse() {
                 <option>Пункт 2</option>
             </select>
             <span>ОПИСАНИЕ</span>
-            <input className='billet_desc'
+            <textarea className='billet_desc'
                     type='text'
                     placeholder="Economics"
                     name="Desc"

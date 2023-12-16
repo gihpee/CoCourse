@@ -130,19 +130,19 @@ function User() {
                 <span>Университет</span>
                 <div className="billet">
                     <img src={nb} alt='' />
-                    <p>{userData.university}</p>
+                    <p>{userData.university.length > 0 ? userData.university : "Не указано"}</p>
                 </div>
                 <span>Курс</span>
                 <div className="billet">
                     <img src={chart} alt='' />
-                    <p>{userData.course}</p>
+                    <p>{userData.course.length > 0 ? userData.course : "Не указано"}</p>
                 </div>
                 <span>Биография</span>
                 <div className="description">
-                    <p>{userData.description}</p>
+                    <p>{userData.description.length > 0 ? userData.description : "Не указано"}</p>
                 </div>
                 <span>Предметы</span>
-                {userSubjects}
+                {userSubjects.length > 0 ? userSubjects : <p>Не указано</p>}
                 <span>Курсы</span>
                 {userCourses}
             </div>

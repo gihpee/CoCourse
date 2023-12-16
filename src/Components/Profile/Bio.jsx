@@ -36,6 +36,8 @@ function Bio() {
 
     const handleBioChange = (e) => {
         const {value} = e.target;
+        e.target.style.height = 'auto';
+        e.target.style.height = e.target.scrollHeight + 'px';
         setBioValue(value); 
     };
 
