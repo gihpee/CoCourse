@@ -26,7 +26,6 @@
 
 .billet_desc {
     width: 92%;
-    min-height: 48px;
     height: auto;
     overflow: hidden;
     resize: none;
