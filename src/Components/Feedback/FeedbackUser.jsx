@@ -18,8 +18,10 @@ function FeedbackUser() {
           try {
             const response = await fetch(`https://commoncourse.io/user?id=${id}`);
             const data = await response.json();
-    
-            setFeedbacks(data[0].feedback);
+            
+            if (data[0].feedback) {
+                setFeedbacks(data[0].feedback);
+            }
     
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -32,15 +34,13 @@ function FeedbackUser() {
     var totalRate = 0;
     var averageRate = 0;
 
-    if (feedbacks) {
-        if (feedbacks.length > 0) {
-            for (var i = 0; i < feedbacks.length; i++) {
-                totalRate += parseFloat(feedbacks[i].rate);
-            }
-
-            averageRate = totalRate / feedbacks.length;
-            averageRate = Math.round(averageRate * 100) / 100;
+    if (feedbacks.length > 0) {
+        for (var i = 0; i < feedbacks.length; i++) {
+            totalRate += parseFloat(feedbacks[i].rate);
         }
+
+        averageRate = totalRate / feedbacks.length;
+        averageRate = Math.round(averageRate * 100) / 100;
     }
 
     const cards = feedbacks.map((item, index) => {
