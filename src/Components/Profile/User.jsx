@@ -115,11 +115,13 @@ function User() {
                 </div>
             </div>
           <span>Отзывы</span>
+          <Link to={`/user-feedback/${userData.id}`}>
               <div className="feedback">
                 <div className="rate">
                   <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{averageRate}
                 </div>
               </div> 
+            </Link>
             <div className="about">
                 <span>Университет</span>
                 <div className="billet">
