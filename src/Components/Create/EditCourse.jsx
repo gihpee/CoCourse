@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import prev from '../assets/course/preview.png'
 import { useNavigate } from 'react-router-dom';
-import hash from '../assets/profile/hash.svg'
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import "./CreateCourse.css";
 
-function CreateCourse() {
+function EditCourse() {
 
-    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+    const { id } = useParams();
 
     var currentDate = new Date();
     const navigate = useNavigate();
@@ -16,11 +17,30 @@ function CreateCourse() {
         Univ: '',
         Course: '',
         Desc: '',
-        Subjects: [],
+        Subject: '',
         topics: [],
     });
 
-    const [imageSrc, setImageSrc] = useState(prev);
+    useEffect(() => {
+        const fetchCourses = async () => {
+          try {
+            const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`);
+
+            const data = await response.json();
+
+            setFormData(() => ({
+                Name: data[0].name,
+                Univ: data[0].university,
+
+            }));
+
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchCourses();
+    }, [id])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -50,6 +70,8 @@ function CreateCourse() {
         });
     };
 
+    const [imageSrc, setImageSrc] = useState(prev);
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
     
@@ -68,30 +90,6 @@ function CreateCourse() {
         }
     };
 
-    const handleSubjectsChange = (event) => {
-        const selectedOption = event.target.value;
-
-        if (!formData.Subjects.includes(selectedOption)) {
-        setFormData((prevData) => {
-            return {
-                ...prevData,
-                Subjects: [...prevData.Subjects, selectedOption],
-            }
-        });
-        console.log(formData)
-    }
-    };
-
-    const handleRemoveSubject = (optionToRemove) => {
-        const updatedOptions = formData.Subjects.filter((option) => option !== optionToRemove);
-        setFormData((prevData) => {
-            return {
-                ...prevData,
-                Subjects: updatedOptions,
-            }
-        });
-    };
-
     const handlePublish = async () => {
         var day = currentDate.getDate();
         var month = currentDate.getMonth() + 1;
@@ -101,7 +99,7 @@ function CreateCourse() {
         let university = formData.Univ;
         let course = formData.Course;
         let description = formData.Desc;
-        let subjects = formData.Subjects;
+        let subjects = formData.Subject;
         let topics = formData.topics; 
         let user = id;
         let date = day + '-' + month + '-' + year
@@ -160,19 +158,14 @@ function CreateCourse() {
                     onChange={handleChange} />
 
             <span>ПРЕДМЕТ</span>
-            {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
-            <div className="billet_del" key={option} onClick={() => handleRemoveSubject(option)}><img src={hash} alt='' /><p>{option}</p></div>
-            ))) : (<></>)}
             <select className="billet_subject"
-                name="Subject"
-                value='Предмет'
-                onChange={handleSubjectsChange}>
+                    name="Subject"
+                    value={formData.Subject}
+                    onChange={handleChange}>
                 <option>Пункт 1</option>
                 <option>Пункт 2</option>
-                <option>Пункт 3</option>
-                <option>Пункт 4</option>
-                <option>Пункт 5</option>
             </select>
+
             <span>СОДЕРЖАНИЕ</span>
             {formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>
@@ -205,4 +198,4 @@ function CreateCourse() {
         </>
 }
 
-export default CreateCourse;
+export default EditCourse;

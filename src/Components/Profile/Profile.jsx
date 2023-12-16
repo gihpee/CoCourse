@@ -137,7 +137,7 @@ function Home() {
                 <div className="description">
                     <p>{userData.description}</p>
                 </div>
-                <span>Предмет</span>
+                <span>Предметы</span>
                 {userSubjects}
                 <span>Курсы</span>
                 {userCourses}

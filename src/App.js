@@ -13,6 +13,7 @@ import Univ from './Components/Profile/Univ'
 import ECourse from './Components/Profile/ECourse'
 import {Route, Routes} from "react-router-dom"
 import "./App.css";
+import EditCourse from './Components/Create/EditCourse';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path={'edit-ecourse/:id'} element={<ECourse />}/>
           <Route path={'edit-subj/:id'} element={<Subj />}/>
           <Route path={'edit-univ/:id'} element={<Univ />}/>
+          <Route path={'edit-course/:id'} element={<EditCourse />}/>
         </Routes>
     </div>
   );
