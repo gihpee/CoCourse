@@ -234,6 +234,7 @@ span {
     background-color: #161616;
     color: #FFF;
     padding-top: 8px;
+    white-space: pre-line;
     padding-bottom: 8px;
 }
 
