@@ -51,7 +51,7 @@ function Course() {
                 <input type="radio" name="acor" id={index} />
                 <label for={index}><img src={hash} alt="" />{item.topic}</label>
                 <div className="acor-body">
-                    <p>{item.desc}</p>
+                    <h2>{item.desc}</h2>
                 </div>
             </>
         )
@@ -59,7 +59,7 @@ function Course() {
 
     const subjects = data[0].subjects.map((item, index) => {
         return (
-            <div className="billet" id={index}>
+            <div className="billet" key={index}>
                 <img src={hash} alt='' />
                 <p>{item}</p>
             </div>

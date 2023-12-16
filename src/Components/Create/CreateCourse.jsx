@@ -185,7 +185,7 @@ function CreateCourse() {
                         value={topic.topic}
                         onChange={(e) => handleTopicChange(index, e)}
                     />
-                    <input
+                    <textarea
                     className='billet_desc'
                     type='text'
                     placeholder={`Topic ${index + 1} info`}

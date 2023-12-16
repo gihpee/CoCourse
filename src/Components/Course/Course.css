@@ -35,8 +35,12 @@ span {
     font-size: 14px;
     border-radius: 16px;
 }
-.acor-container .acor-body p {
+.acor-container .acor-body h2 {
     margin: 0 0 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.2px;
 }
 .acor-container label {
     position: relative;
