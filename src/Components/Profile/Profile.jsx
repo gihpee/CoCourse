@@ -131,7 +131,7 @@ function Home() {
               </div>
             </Link>
           <span>Отзывы</span>
-          <Link to={`user-feedback/${id}`}>
+          <Link to={`/user-feedback/${userData.id}`}>
               <div className="feedback">
                 <div className="rate">
                   <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{averageRate}
