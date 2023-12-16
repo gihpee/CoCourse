@@ -17,6 +17,7 @@ function Home() {
 
   const [userData, setUserData] = useState({});
   const [coursesData, setCoursesData] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +37,7 @@ function Home() {
 
         if (data.length > 0) {
           setUserData(data[0]);
+          setFeedbacks(data[0].feedback)
         }
         else {
           setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
@@ -109,12 +111,12 @@ function Home() {
   var totalRate = 0;
   var averageRate = 0;
 
-  if (userData.feedback.length > 0) {
-      for (var i = 0; i < userData.feedback.length; i++) {
-           totalRate += parseFloat(userData.feedback[i].rate);
+  if (feedbacks.length > 0) {
+      for (var i = 0; i < feedbacks.length; i++) {
+           totalRate += parseFloat(feedbacks[i].rate);
       }
 
-      averageRate = totalRate / userData.feedback.length;
+      averageRate = totalRate / feedbacks.length;
   }
 
   return <>
