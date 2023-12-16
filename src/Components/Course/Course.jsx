@@ -15,27 +15,24 @@ import { useParams } from 'react-router-dom';
 import "./Course.css";
 
 
-const user = {
-    name: 'name name',
-    univ: 'HSE',
-    subjects: 'Economics, Math',
-    course: '1 курс, 1 семестр',
-    rate: '4.4'
-}
-
-
 function Course() {
     const { id } = useParams();
 
     const [data, setData] = useState([]);
+    const [userData, setUserData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`);
+            const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`)
             const result = await response.json();
 
+            const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`)
+            const result_user = await response_user.json();
+            
             setData(result);
+            setUserData(result_user);
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -60,6 +57,15 @@ function Course() {
         )
     })
 
+    const subjects = data[0].subjects.map((item, index) => {
+        return (
+            <div className="billet" id={index}>
+                <img src={hash} alt='' />
+                <p>{item}</p>
+            </div>
+        )
+    })
+
     var totalRate = 0;
     var averageRate = 0;
 
@@ -70,6 +76,21 @@ function Course() {
 
         averageRate = totalRate / data[0].feedback.length;
         averageRate = Math.round(averageRate * 100) / 100;
+    }
+
+    var total_user_Rate = 0;
+    var average_user_Rate = 0;
+
+    if (userData[0].feedback)
+    {
+        if (userData[0].feedback.length > 0) {
+            for (var j = 0; j < userData[0].feedback.length; j++) {
+                total_user_Rate += parseFloat(userData[0].feedback[j].rate);
+            }
+
+            average_user_Rate = total_user_Rate / userData[0].feedback.length;
+            average_user_Rate = Math.round(average_user_Rate * 100) / 100;
+        }
     }
 
     return <>
@@ -114,11 +135,8 @@ function Course() {
                 <div className="description">
                     <p>{data[0].description}</p>
                 </div>
-                <span>Предмет</span>
-                <div className="billet">
-                    <img src={hash} alt='' />
-                    <p>{data[0].subjects}</p>
-                </div>
+                <span>Предметы</span>
+                {subjects}
             </div>
             <span style={{marginBottom: '0px'}}>Содержание</span>
             <div className="acor-container">
@@ -126,13 +144,18 @@ function Course() {
             </div>
             <span style={{marginTop: '8px'}}>Ментор</span>
             <div className="card_mentor">
-                <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{user.rate}</div>
-                <div className="points">
-                    <div className="point"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{user.name}</b></div>
-                    <div className="point"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{user.univ}</div>
-                    <div className="point"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{user.subjects}</div>
-                    <div className="point"><img src={chartS} alt='' style={{ marginRight: '10px' }}/>{user.course}</div>
-                </div>
+                <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{average_user_Rate}</div>
+                <Link to={`/user/${userData[0].id}`}>
+                    <div className="card_wp">
+                        <img src={userData[0].photo_url} alt='' style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black'}} />
+                        <div className="points_user">
+                            <div className="point_user"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{userData[0].username}</b></div>
+                            <div className="point_user"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{userData[0].university}</div>
+                            <div className="point_user"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{(userData[0].subjects).join(', ')}</div>
+                            <div className="point_user"><img src={chartS} alt='' style={{ marginRight: '10px' }}/>{userData[0].course}</div>
+                        </div>
+                    </div>
+                </Link>
             </div>
         </>
 }

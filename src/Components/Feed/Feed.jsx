@@ -29,11 +29,23 @@ function Feed() {
 
   const appCourses = data.map((item, index) => {
 
+    var totalRate = 0;
+    var averageRate = 0;
+
+    if (item.feedback.length > 0) {
+        for (var i = 0; i < item.feedback.length; i++) {
+            totalRate += parseFloat(item.feedback[i].rate);
+        }
+
+        averageRate = totalRate / item.feedback.length;
+        averageRate = Math.round(averageRate * 100) / 100;
+    }
+
     return (
       <Link to={`/course/${item.id}`} key={index} className="course_card">
         <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
         <div className="card_info">
-          <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{item.rate}</div>
+          <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{averageRate}</div>
           <div className="points">
             <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
             <div className="point"><img src={chart} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>

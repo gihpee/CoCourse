@@ -235,3 +235,43 @@ span {
     flex-direction: column;
     align-items: center;
 }
+
+.points_user {
+    width: calc(95% - 94px);
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 78px;
+    margin-left: 8px;
+}
+
+.point_user {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    white-space: nowrap;
+    align-items: center;
+    overflow-x: hidden;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    
+    img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+
+.card_wp {
+    width: 95%;
+    border-radius: 16px;
+    display: flex;
+    height: 78px;
+    flex-direction: row;
+    background-color: #161616;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
