@@ -60,6 +60,17 @@ function Course() {
         )
     })
 
+    var totalRate = 0;
+    var averageRate = 0;
+
+    if (data[0].feedback.length > 0) {
+        for (var i = 0; i < data[0].feedback.length; i++) {
+            totalRate += parseFloat(data[0].feedback[i].rate);
+        }
+
+        averageRate = totalRate / data[0].feedback.length;
+    }
+
     return <>
             <div className="prev" style={{backgroundImage: `url(${data[0].image})`}}>
                 <p>{ data[0].name }</p>
@@ -74,10 +85,12 @@ function Course() {
             </div>
             <span>Отзывы</span>
             <div className="feedback">
+                <Link to={`/course-feedback/${id}`}>
                 <div className="rate">
                     <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>
-                    {data[0].rate}
+                    {averageRate}
                 </div>
+                </Link>
                 <Link to={`/send-feedback/${id}`}>
                     <div className="billet">
                         <img src={star} alt='' />

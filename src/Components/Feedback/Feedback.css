@@ -1,0 +1,28 @@
+.card_feedback {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rate_line {
+    width: calc(95% - 18px);
+    height: 48px;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 32px;
+    background: linear-gradient(to right, #EA4A4F, #D8BB55, #7EBB69);
+    font-weight: 600;
+    color: #161616;
+    line-height: 32px;
+    border: 9px solid #161616;
+    margin-bottom: 8px;
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+
+}

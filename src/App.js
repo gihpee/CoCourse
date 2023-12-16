@@ -14,6 +14,8 @@ import ECourse from './Components/Profile/ECourse'
 import {Route, Routes} from "react-router-dom"
 import "./App.css";
 import EditCourse from './Components/Create/EditCourse';
+import FeedbackCourse from './Components/Feedback/FeedbackCourse'
+import FeedbackUser from './Components/Feedback/FeedbackUser';
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
           <Route path={'edit-subj/:id'} element={<Subj />}/>
           <Route path={'edit-univ/:id'} element={<Univ />}/>
           <Route path={'edit-course/:id'} element={<EditCourse />}/>
+          <Route path={'course-feedback/:id'} element={<FeedbackCourse />}/>
+          <Route path={'user-feedback/:id'} element={<FeedbackUser />}/>
         </Routes>
     </div>
   );

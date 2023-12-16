@@ -106,6 +106,17 @@ function Home() {
     })
   }
 
+  var totalRate = 0;
+  var averageRate = 0;
+
+  if (userData.feedback.length > 0) {
+      for (var i = 0; i < userData.feedback.length; i++) {
+           totalRate += parseFloat(userData.feedback[i].rate);
+      }
+
+      averageRate = totalRate / userData.feedback.length;
+  }
+
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
             <p>{ userData.first_name + ' ' + userData.last_name }</p>
@@ -118,9 +129,11 @@ function Home() {
             </Link>
           <span>Отзывы</span>
             <div className="feedback">
-              <div className="rate">
-                <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>
-              </div>
+              <Link to={`user-feedback/${id}`}>
+                <div className="rate">
+                  <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{averageRate}
+                </div>
+              </Link>
             </div> 
             <div className="about">
                 <span>Университет</span>
