@@ -5,7 +5,6 @@ import boyS from '../assets/feedback/boyS.svg'
 import thumbS from '../assets/feedback/thumbS.svg'
 import calendarS from '../assets/feedback/calendarS.svg'
 import hashS from '../assets/feedback/hashS.svg'
-import star from '../assets/course/star.svg'
 import "./Feedback.css";
 
 function FeedbackUser() {
@@ -60,9 +59,11 @@ function FeedbackUser() {
                     <div className="fb_billet">Отзывы</div>
                 </div>
                 <span>Отзывы</span>
-                <div className="rate_line">
-                    <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>
-                    {averageRate}
+                <div className="feedback" style={{width: '100%'}}>
+                    <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
+                    <div className="row_grad_l">
+                        <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+                    </div>
                 </div>
                 {cards.length > 0 ? cards : <p>Пока нет ни одного отзыва</p>}
             </div>;

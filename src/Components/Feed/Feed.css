@@ -68,13 +68,30 @@
     flex-direction: row;
     border-radius: 16px;
     background: linear-gradient(to right, #EA4A4F, #D8BB55, #7EBB69);
+    background-image: url('../assets/feed/star.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: 8px;
     font-weight: 600;
     color: #161616;
     line-height: 32px;
+    z-index: 10;
+}
 
-    img {
-        width: 16px;
-        height: 16px;
-    }
+.rate p {
+    width: 100%;
+    text-align: center;
+}
 
+.row_grad_l {
+    width: 95%;
+    margin-top: -32px;
+}
+
+.grad_l {
+    width: 100%;
+    background: linear-gradient(to right, #EA4A4F, #D8BB55, #7EBB69);
+    border-radius: 16px;
+    height: 32px;
+    z-index: 0;
 }

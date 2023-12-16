@@ -1,12 +1,10 @@
 import React from "react";
 import pencil from '../assets/profile/pencil.svg'
-import star from '../assets/profile/star.svg'
 import nb from '../assets/profile/nb.svg'
 import chart from '../assets/profile/chart.svg'
 import hash from '../assets/profile/hash.svg'
 import cam from "../assets/feed/camera.svg"
 import photo_url from '../assets/profile/avatar.png'
-import starF from '../assets/feed/star.svg'
 import calendarS from '../assets/feedback/calendarS.svg'
 import hashS from "../assets/feed/hash.svg"
 import nbS from "../assets/feed/notebook.svg"
@@ -95,11 +93,27 @@ function Home() {
 
   if (coursesData) {
     userCourses = coursesData.map((item, index) => {
+
+      var totalRate = 0;
+      var averageRate = 0;
+
+      if (item.feedback.length > 0) {
+        for (var i = 0; i < item.feedback.length; i++) {
+          totalRate += parseFloat(item.feedback[i].rate);
+        }
+
+      averageRate = totalRate / item.feedback.length;
+      averageRate = Math.round(averageRate * 100) / 100;
+      }
+
       return (
         <Link to={`/course/${item.id}`} key={index} className="course_card">
           <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
             <div className="card_info">
-                <div className="rate"><img src={starF} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{averageRate}</div>
+            <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
+            <div className="row_grad_l">
+              <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+            </div>
                 <div className="points">
                     <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
                     <div className="point"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
@@ -138,11 +152,12 @@ function Home() {
             </Link>
           <span>Отзывы</span>
           <Link to={`/user-feedback/${userData.id}`}>
-              <div className="feedback">
-                <div className="rate">
-                  <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{averageRate}
+                <div className="feedback">
+                    <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
+                    <div className="row_grad_l">
+                        <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+                    </div>
                 </div>
-              </div> 
             </Link>
             <div className="about">
                 <span>Университет</span>

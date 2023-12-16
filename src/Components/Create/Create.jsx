@@ -3,7 +3,6 @@ import cam from "../assets/feed/camera.svg"
 import hash from "../assets/feed/hash.svg"
 import calendarS from '../assets/feedback/calendarS.svg'
 import nb from "../assets/feed/notebook.svg"
-import star from '../assets/feed/star.svg'
 import plus from '../assets/create/plus.svg'
 import "./Create.css";
 import { useState } from 'react';
@@ -50,7 +49,10 @@ function Create() {
         <Link to={`/edit-course/${item.id}`} key={index} className="course_card">
           <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
             <div className="card_info">
-              <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '42.5%'}}/>{averageRate}</div>
+            <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
+            <div className="row_grad_l">
+              <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+            </div>
               <div className="points">
                 <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
                 <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
@@ -71,7 +73,7 @@ function Create() {
         </div>
       </a></div>
       <div>
-      {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
+      {userCourses}
       </div>
       </>;
 }

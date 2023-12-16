@@ -108,9 +108,9 @@ function Course() {
             <span>Отзывы</span>
             <div className="feedback">
                 <Link to={`/course-feedback/${id}`}>
-                <div className="rate">
-                    <img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>
-                    {averageRate}
+                <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
+                <div className="row_grad_l">
+                    <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
                 </div>
                 </Link>
                 <Link to={`/send-feedback/${id}`}>
@@ -144,7 +144,10 @@ function Course() {
             </div>
             <span style={{marginTop: '8px'}}>Ментор</span>
             <div className="card_mentor">
-                <div className="rate"><img src={star} alt='' style={{ marginLeft: '2.5%', marginRight: '38%'}}/>{average_user_Rate}</div>
+            <div className="rate">{20 * average_user_Rate > 50 ? <p>{average_user_Rate}</p> : <p style={{color: 'white'}}>{average_user_Rate}</p>}</div>
+            <div className="row_grad_l">
+                <div className="grad_l" style={{width: `calc((100% / 5) * ${average_user_Rate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${average_user_Rate}))`}}></div>
+            </div>
                 <Link to={`/user/${userData[0].id}`} className="card_wp">
                     <div style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black', backgroundImage: `url(${userData[0].photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
                     <div className="points_user">
