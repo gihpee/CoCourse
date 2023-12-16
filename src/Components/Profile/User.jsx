@@ -109,7 +109,7 @@ function User() {
 
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
-            <p>{ userData.first_name + ' ' + userData.last_name }</p>
+            <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
           <div className="back_btn" onClick={() => {window.history.back()}}></div>
           <div className="getContact_container">

@@ -128,7 +128,7 @@ function Home() {
 
   return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
-            <p>{ userData.first_name + ' ' + userData.last_name }</p>
+            <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
             <Link to={`/edit-profile/${userData.id}`} className="edit_container">
               <div className="billet">
