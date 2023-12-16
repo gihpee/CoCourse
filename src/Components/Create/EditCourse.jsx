@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import hash from '../assets/profile/hash.svg'
-import "./CreateCourse.css";
+import krest from '../assets/create/krest.svg'
+import "./EditCourse.css";
 
 function EditCourse() {
 
@@ -23,6 +24,29 @@ function EditCourse() {
     });
 
     const [imageSrc, setImageSrc] = useState(prev);
+
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const handleDeleteClick = () => {
+        setModalOpen(true);
+    };
+
+    const handleConfirmDelete = async () => {
+        setModalOpen(false);
+
+        await fetch('https://commoncourse.io/delete-course', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({id}),
+        }).then(navigate('/create'))
+    };
+
+    const handleCancelDelete = () => {
+        setModalOpen(false);
+    };
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -148,11 +172,30 @@ function EditCourse() {
     return <>
         <div className="upload-container">
             <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
-            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})` }}></div>
+            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
+            <div className="prev_filter"></div>
         </div>
         <div className="back_btn" onClick={() => {window.history.back()}}></div>
+        {isModalOpen && (
+            <div className="modal">
+                <div className="modal-content">
+                    <p>Уверены что хотите удалить публикацию?</p>
+                    <p style={{color: '#aaaaaa', 
+                            fontSize: '14px', 
+                            fontWeight: '400', 
+                            lineHeight: '18.2px', 
+                            marginTop: '16px'}}>Восстановить публикацию будет невозможно</p>
+                    <button className='modal_btn_n' onClick={handleCancelDelete}>Нет</button>
+                    <button className='modal_btn_y' onClick={handleConfirmDelete}>Да</button>
+                </div>
+            </div>
+        )}
         <div className="column" id='main' style={{marginTop: '-64px', borderRadius: '24px',
         borderBottomLeftRadius: '0px', borderBottomRightRadius: '0px', backgroundColor: 'black', paddingTop: '8px'}}>
+            <div className="billet" onClick={handleDeleteClick}>
+                <img src={krest} alt='' style={{width: '32px', height: '32px'}} />
+                <p>Удалить</p>
+            </div>
             <span>ТЕМА</span>
             <input 
                 className='billet_name'
