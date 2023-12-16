@@ -27,6 +27,9 @@
 .billet_desc {
     width: 92%;
     min-height: 48px;
+    height: auto;
+    overflow: hidden;
+    resize: none;
     background-color: #181818;
     border-radius: 16px;
     border: none;
@@ -37,6 +40,7 @@
     outline: none;
     padding-left: 8px;
     padding-right: 8px;
+    padding-top: 8px;
     margin-bottom: 8px;
 }
 

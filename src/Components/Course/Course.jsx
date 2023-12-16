@@ -51,7 +51,7 @@ function Course() {
                 <input type="radio" name="acor" id={index} />
                 <label for={index}><img src={hash} alt="" />{item.topic}</label>
                 <div className="acor-body">
-                    <h2>{item.desc}</h2>
+                    <span>{item.desc}</span>
                 </div>
             </>
         )
