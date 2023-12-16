@@ -111,13 +111,15 @@ function Home() {
   var totalRate = 0;
   var averageRate = 0;
 
-  if (feedbacks.length > 0) {
+  if (feedbacks) {
+    if (feedbacks.length > 0) {
       for (var i = 0; i < feedbacks.length; i++) {
            totalRate += parseFloat(feedbacks[i].rate);
       }
 
       averageRate = totalRate / feedbacks.length;
       averageRate = Math.round(averageRate * 100) / 100;
+    }
   }
 
   return <>
