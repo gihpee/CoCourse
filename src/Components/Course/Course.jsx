@@ -100,10 +100,10 @@ function Course() {
             </div>
             <div className="back_btn" onClick={() => {window.history.back()}}></div>
             <div className="getContact_container">
-                <a href={`t.me/${userData[0].username}`}><div className="billet">
+                <a href={`https://t.me/${userData[0].username}`} className="billet">
                     <img src={chat} alt='' />
                     <p>Get contact</p>
-                </div></a>
+                </a>
             </div>
             <span>Отзывы</span>
             <div className="feedback">
