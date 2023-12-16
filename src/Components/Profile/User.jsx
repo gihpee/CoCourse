@@ -127,7 +127,7 @@ function User() {
           </div>
           <div className="back_btn" onClick={() => {window.history.back()}}></div>
           <div className="getContact_container">
-            <a href={`https://t.me/${userData[0].username}`} className="billet">
+            <a href={`https://t.me/${userData.username}`} className="billet">
                     <img src={chat} alt='' />
                     <p>Get contact</p>
                 </a>
