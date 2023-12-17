@@ -50,7 +50,7 @@ function Home() {
               'Content-Type': 'application/json',
             },
 
-            body: JSON.stringify({id, first_name, last_name, username, photo_url}),
+            body: JSON.stringify({id, first_name, last_name, username, photo_url, course: '', description: '', university: '', subjects: [], feedback: []}),
             })
             .then(response => {
               return response.text();
