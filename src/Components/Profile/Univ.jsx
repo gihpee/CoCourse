@@ -28,7 +28,9 @@ function Univ() {
             }
     
             const data = await response.json();
-            setUniValue(data[0].university);
+            if (data[0].university) {
+              setUniValue(data[0].university);
+            }
 
           } catch (error) {
             console.error('Ошибка при запросе к серверу:', error);
