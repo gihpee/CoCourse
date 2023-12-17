@@ -47,7 +47,7 @@ function Home() {
           setFeedbacks(data[0].feedback)
         }
         else {
-          setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: ''})
+          setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: '', subjects: []})
 
           await fetch('https://commoncourse.io/createuser', {
             method: 'POST',
@@ -180,7 +180,7 @@ function Home() {
                     <p>{userData.description ? userData.description : "Не указано"}</p>
                 </div>
                 <span>Предметы</span>
-                {userData.subjects.length > 0 ? userSubjects : <p>Не указано</p>}
+                {userSubjects.length > 0 ? userSubjects : <p>Не указано</p>}
                 <span>Курсы</span>
                 {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
