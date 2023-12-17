@@ -180,7 +180,7 @@ function Home() {
                     <p>{userData.description ? userData.description : "Не указано"}</p>
                 </div>
                 <span>Предметы</span>
-                {userSubjects.length > 0 ? userSubjects : <p>Не указано</p>}
+                {userData.subjects.length > 0 ? userSubjects : <p>Не указано</p>}
                 <span>Курсы</span>
                 {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
