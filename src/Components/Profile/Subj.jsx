@@ -65,7 +65,7 @@ function Subj() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ id, selectedOptions }),
-    }).then(() => navigate(`/edit-profile/${id}`));
+    }).then(navigate(`/edit-profile/${id}`));
   };
 
   const filteredOptions = options.filter((option) =>
