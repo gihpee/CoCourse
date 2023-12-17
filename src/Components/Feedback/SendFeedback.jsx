@@ -68,7 +68,7 @@ function SendFeedback() {
 
   return <div className="column">
           <div className="feedback_top">
-            <div className="fback_btn" onClick={() => {window.history.back()}}></div>
+            <div className="fback_btn" onClick={() => navigate(`/course/${id}`)}></div>
             <div className="fb_billet">Отзывы</div>
           </div>
           <span>Понравилась ли работать с заказчиком?</span>

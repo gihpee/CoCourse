@@ -11,6 +11,7 @@ import hashS from '../assets/course/hash-small.svg'
 import chartS from '../assets/course/chart-small.svg'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import "./Course.css";
 
@@ -20,6 +21,7 @@ function Course() {
 
     const [data, setData] = useState([]);
     const [userData, setUserData] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -98,7 +100,7 @@ function Course() {
                 <p>{ data[0].name }</p>
                 <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
             </div>
-            <div className="back_btn" onClick={() => {window.history.back()}}></div>
+            <div className="back_btn" onClick={() => navigate(`/`)}></div>
             <div className="getContact_container">
                 <a href={`https://t.me/${userData[0].username}`} className="billet">
                     <img src={chat} alt='' />
