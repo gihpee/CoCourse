@@ -141,7 +141,7 @@
 .publish {
     flex: 0 0 auto;
     width: 100%;
-    bottom: 30px;
+    bottom: 10px;
     position: sticky;
     display: flex;
     background: rgba(16,16,16, 0.9);

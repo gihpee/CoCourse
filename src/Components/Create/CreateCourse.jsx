@@ -278,7 +278,7 @@ function CreateCourse() {
             ))}
 
         </div>
-        <div className="column">
+        <div className="column" style={{marginBottom: '50px'}}>
             <button className='billet_add' onClick={addEl}>Add topic</button>
         </div>
         <div className="publish">

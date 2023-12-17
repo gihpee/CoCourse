@@ -157,7 +157,7 @@ function User() {
                     <p>{userData.description ? userData.description : "Не указано"}</p>
                 </div>
                 <span>Предметы</span>
-                {userSubjects ? userSubjects : <p>Не указано</p>}
+                {userSubjects.length > 0 ? userSubjects : <p>Не указано</p>}
                 <span>Курсы</span>
                 {userCourses}
             </div>
