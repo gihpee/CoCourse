@@ -284,7 +284,7 @@ function EditCourse() {
             <span>УНИВЕРСИТЕТ</span>
 
                 {formData.Univ.length > 0 ? (<div className="billet_del" onClick={() => handleRemoveOptionUniv(formData.Univ)}> <img src={nb} alt="" /> <p>{formData.Univ}</p> </div>) : (<></>)}
-                <input className="billet_univ" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => setBoxIsVisibleUniv(true)} value={inputValueUniv} style={{ width: '83%' }} />
+                <input className="billet_univ" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => setBoxIsVisibleUniv(true)} value={inputValueUniv} style={{ width: '81%' }} />
                 {boxIsVisibleUniv ? (<div className="vars_box">{varsUniv}</div>) : (<></>)}
 
             <span>КУРС</span>
@@ -308,7 +308,7 @@ function EditCourse() {
             {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
             <div className="billet_del" key={option} onClick={() => handleRemoveOptionSubject(option)}><img src={hash} alt='' /><p>{option}</p></div>
             ))) : (<></>)}
-            <input className="billet_subject" placeholder="Начните вводить название предмета" onChange={handleSelectChangeSubject} onFocus={() => setBoxIsVisibleSubject(true)} value={inputValueSubject} style={{ width: '83%' }}/>
+            <input className="billet_subject" placeholder="Начните вводить название предмета" onChange={handleSelectChangeSubject} onFocus={() => setBoxIsVisibleSubject(true)} value={inputValueSubject} style={{ width: '81%' }}/>
             {boxIsVisibleSubject ? (<div className="vars_box">{varsSubject}</div>) : (<></>)}
 
             <span>СОДЕРЖАНИЕ</span>
