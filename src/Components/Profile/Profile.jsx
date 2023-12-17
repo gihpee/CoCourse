@@ -16,6 +16,11 @@ function Home() {
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(window.Telegram.WebApp.initDataUnsafe.user)
 
+  var usrname = id;
+  if (username) {
+    usrname = username;
+  }
+
 
   const [userData, setUserData] = useState({});
   const [coursesData, setCoursesData] = useState([]);
@@ -50,7 +55,7 @@ function Home() {
               'Content-Type': 'application/json',
             },
 
-            body: JSON.stringify({id, first_name, last_name, username, photo_url, course: '', description: '', university: '', subjects: [], feedback: []}),
+            body: JSON.stringify({id, first_name, last_name, username: usrname, photo_url, course: '', description: '', university: '', subjects: [], feedback: []}),
             })
             .then(response => {
               return response.text();
