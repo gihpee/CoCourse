@@ -5,14 +5,12 @@ import boyS from '../assets/feedback/boyS.svg'
 import thumbS from '../assets/feedback/thumbS.svg'
 import calendarS from '../assets/feedback/calendarS.svg'
 import hashS from '../assets/feedback/hashS.svg'
-import { useNavigate } from 'react-router-dom';
 import "./Feedback.css";
 
 function FeedbackUser() {
 
     const { id } = useParams();
     const [feedbacks, setFeedbacks] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -57,7 +55,7 @@ function FeedbackUser() {
 
     return <div className="column">
                 <div className="feedback_top">
-                    <div className="fback_btn" onClick={() => navigate(`/user/${id}`)}></div>
+                    <div className="fback_btn" onClick={() => {window.history.back()}}></div>
                     <div className="fb_billet">Отзывы</div>
                 </div>
                 <span>Отзывы</span>
