@@ -345,7 +345,7 @@ function EditCourse() {
             ))}
 
         </div>
-        <div className="column" style={{marginBottom: '50px'}}>
+        <div className="column" style={{marginBottom: '100px'}}>
             <button className='billet_add' onClick={addEl}>Add topic</button>
         </div>
         <div className="publish">
