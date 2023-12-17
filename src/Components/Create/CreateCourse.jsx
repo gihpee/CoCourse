@@ -227,8 +227,17 @@ function CreateCourse() {
                     name="Course"
                     value={formData.Course}
                     onChange={handleChange}>
-                <option>Пункт 1</option>
-                <option>Пункт 2</option>
+                    <option>1 курс, 1 семестр</option>
+                    <option>1 курс, 2 семестр</option>
+                    <option>2 курс, 1 семестр</option>
+                    <option>2 курс, 2 семестр</option>
+                    <option>3 курс, 1 семестр</option>
+                    <option>3 курс, 2 семестр</option>
+                    <option>4 курс, 1 семестр</option>
+                    <option>4 курс, 2 семестр</option>
+                    <option>5 курс, 1 семестр</option>
+                    <option>5 курс, 2 семестр</option>
+                    <option>6 курс, 1 семестр</option>
             </select>
             <span>ОПИСАНИЕ</span>
             <textarea className='billet_desc'

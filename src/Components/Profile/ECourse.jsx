@@ -61,8 +61,17 @@ function ECourse() {
                     name="Course"
                     value={cValue}
                     onChange={handleCChange}>
-                    <option>Пункт 1</option>
-                    <option>Пункт 2</option>
+                    <option>1 курс, 1 семестр</option>
+                    <option>1 курс, 2 семестр</option>
+                    <option>2 курс, 1 семестр</option>
+                    <option>2 курс, 2 семестр</option>
+                    <option>3 курс, 1 семестр</option>
+                    <option>3 курс, 2 семестр</option>
+                    <option>4 курс, 1 семестр</option>
+                    <option>4 курс, 2 семестр</option>
+                    <option>5 курс, 1 семестр</option>
+                    <option>5 курс, 2 семестр</option>
+                    <option>6 курс, 1 семестр</option>
                 </select>
                 <div className="publish" style={{marginTop: '25px'}}>
                     <button className='sf_btn' onClick={handlePublish}>СОХРАНИТЬ</button>
