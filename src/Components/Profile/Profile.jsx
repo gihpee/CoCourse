@@ -80,7 +80,7 @@ function Home() {
 
     fetchData();
     fetchCourses();
-  }, [id, first_name, last_name, username]);
+  }, [id, first_name, last_name, username, usrname]);
 
   var userSubjects;
   var userCourses;
