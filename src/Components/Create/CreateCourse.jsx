@@ -15,7 +15,7 @@ function CreateCourse() {
     const [formData, setFormData] = useState({
         Name: '',
         Univ: '',
-        Course: '',
+        Course: '1 курс, 1 семестр',
         Desc: '',
         Subjects: [],
         topics: [],
