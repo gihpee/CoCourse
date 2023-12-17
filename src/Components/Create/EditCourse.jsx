@@ -187,7 +187,7 @@ function EditCourse() {
         setFormData((prevData) => {
             return {
                 ...prevData,
-                Subjects: [updatedOptionsSubject],
+                Subjects: updatedOptionsSubject,
             }
         });
     };
