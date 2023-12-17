@@ -6,7 +6,7 @@
 }
 
 .billet_name {
-    width: 80%;
+    width: 82%;
     height: 48px;
     background-color: #181818;
     border-radius: 16px;
@@ -25,7 +25,7 @@
 }
 
 .billet_desc {
-    width: 92%;
+    width: 91%;
     height: auto;
     overflow: hidden;
     resize: none;
@@ -44,7 +44,7 @@
 }
 
 .billet_univ {
-    width: 96%;
+    width: 93%;
     height: 48px;
     background-color: #181818;
     border-radius: 16px;
@@ -82,7 +82,7 @@
 }
 
 .billet_subject {
-    width: 96%;
+    width: 93%;
     height: 48px;
     background-color: #181818;
     border-radius: 16px;
@@ -101,7 +101,7 @@
 }
 
 .billet_topic {
-    width: 80%;
+    width: 82%;
     height: 48px;
     background-color: #181818;
     border-radius: 16px;
@@ -120,7 +120,7 @@
 }
 
 .billet_add {
-    width: 96%;
+    width: 93%;
     height: 48px;
     background-color: #181818;
     border-radius: 16px;

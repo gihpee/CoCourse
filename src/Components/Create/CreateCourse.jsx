@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import prev from '../assets/course/preview.png'
 import { useNavigate } from 'react-router-dom';
 import hash from '../assets/profile/hash.svg'
+import nb from '../assets/profile/nb.svg'
 import "./CreateCourse.css";
 
 function CreateCourse() {
@@ -80,29 +81,6 @@ function CreateCourse() {
         }
     };
 
-    const handleSubjectsChange = (event) => {
-        const selectedOption = event.target.value;
-
-        if (!formData.Subjects.includes(selectedOption)) {
-        setFormData((prevData) => {
-            return {
-                ...prevData,
-                Subjects: [...prevData.Subjects, selectedOption],
-            }
-        });
-    }
-    };
-
-    const handleRemoveSubject = (optionToRemove) => {
-        const updatedOptions = formData.Subjects.filter((option) => option !== optionToRemove);
-        setFormData((prevData) => {
-            return {
-                ...prevData,
-                Subjects: updatedOptions,
-            }
-        });
-    };
-
     const handlePublish = async () => {
         console.log(formData)
         var day = currentDate.getDate();
@@ -131,6 +109,93 @@ function CreateCourse() {
         
     };
 
+    const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false);
+    const [inputValueSubject, setInputValueSubject] = useState('');
+    const optionsSubject = ['биба', 'боба', 'пизда', 'ахуй', 'чатгпт наше все', 'чек', 'чек', 'xsd', 'dsds'];
+
+    const handleSelectChangeSubject = (event) => {
+        const value = event.target.value;
+        setInputValueSubject(value);
+        setBoxIsVisibleSubject(true);
+    };
+    
+    const handleOptionClickSubject = (option) => {
+        if (!formData.Subjects.includes(option)) {
+          setFormData((prevData) => {
+            return {
+                ...prevData,
+                Subjects: [...prevData.Subjects, option],
+            }
+        });
+        }
+        setInputValueSubject('');
+        setBoxIsVisibleSubject(false);
+    };
+    
+    const handleRemoveOptionSubject = (optionToRemove) => {
+        const updatedOptionsSubject = formData.Subjects.filter((option) => option !== optionToRemove);
+        setFormData((prevData) => {
+            return {
+                ...prevData,
+                Subjects: [updatedOptionsSubject],
+            }
+        });
+    };
+
+    const filteredOptionsSubject = optionsSubject.filter((option) =>
+        option.toLowerCase().startsWith(inputValueSubject.toLowerCase())
+    );
+
+    const varsSubject = filteredOptionsSubject.map((item, index) => (
+        <div className="billet_add" key={index} onClick={() => handleOptionClickSubject(item)}>
+            <img src={hash} alt="" />
+            <p>{item}</p>
+        </div>
+    ));
+
+    const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false);
+    const [inputValueUniv, setInputValueUniv] = useState('');
+    const optionsUniv = ['биба', 'боба', 'пизда', 'ахуй', 'чатгпт наше все', 'чек', 'чек', 'xsd', 'dsds'];
+
+    const handleUniChange = (event) => {
+        const value = event.target.value;
+        setInputValueUniv(value);
+        setBoxIsVisibleUniv(true);
+    };
+
+    const handleOptionClickUniv = (option) => {
+      if (formData.Univ !== option) {
+        setFormData((prevData) => {
+            return {
+                ...prevData,
+                Univ: option,
+            }
+        })
+      }
+      setInputValueUniv('');
+      setBoxIsVisibleUniv(false);
+    };
+  
+    const handleRemoveOptionUniv = (optionToRemove) => {
+        setFormData((prevData) => {
+            return {
+                ...prevData,
+                Univ: "",
+            }
+        })
+    };
+
+    const filteredOptionsUniv = optionsUniv.filter((option) =>
+      option.toLowerCase().startsWith(inputValueUniv.toLowerCase())
+    );
+  
+    const varsUniv = filteredOptionsUniv.map((item, index) => (
+      <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)}>
+        <img src={nb} alt="" />
+        <p>{item}</p>
+      </div>
+    ));
+
     return <>
         <div className="upload-container">
             <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
@@ -149,13 +214,11 @@ function CreateCourse() {
                 value={formData.Name || ''}
                 onChange={handleChange} />
             <span>УНИВЕРСИТЕТ</span>
-            <select className="billet_univ"
-                    name="Univ"
-                    value={formData.Univ}
-                    onChange={handleChange}>
-                <option>Пункт 1</option>
-                <option>Пункт 2</option>
-            </select>
+
+            {formData.Univ.length > 0 ? (<div className="billet_del" onClick={() => handleRemoveOptionUniv(formData.Univ)}> <img src={nb} alt="" /> <p>{formData.Univ}</p> </div>) : (<></>)}
+            <input className="billet_univ" onChange={handleUniChange} onFocus={() => setBoxIsVisibleUniv(true)} value={inputValueUniv} style={{ width: '83%' }} />
+            {boxIsVisibleUniv ? (<div className="vars_box">{varsUniv}</div>) : (<></>)}
+
             <span>КУРС</span>
             <select className="billet_course"
                     name="Course"
@@ -172,20 +235,14 @@ function CreateCourse() {
                     value={formData.Desc}
                     onChange={handleChange} />
 
-            <span>ПРЕДМЕТ</span>
+            <span>ПРЕДМЕТЫ</span>
+
             {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
-            <div className="billet_del" key={option} onClick={() => handleRemoveSubject(option)}><img src={hash} alt='' /><p>{option}</p></div>
+            <div className="billet_del" key={option} onClick={() => handleRemoveOptionSubject(option)}><img src={hash} alt='' /><p>{option}</p></div>
             ))) : (<></>)}
-            <select className="billet_subject"
-                name="Subject"
-                value='Предмет'
-                onChange={handleSubjectsChange}>
-                <option>Пункт 1</option>
-                <option>Пункт 2</option>
-                <option>Пункт 3</option>
-                <option>Пункт 4</option>
-                <option>Пункт 5</option>
-            </select>
+            <input className="billet_subject" onChange={handleSelectChangeSubject} onFocus={() => setBoxIsVisibleSubject(true)} value={inputValueSubject} style={{ width: '83%' }}/>
+            {boxIsVisibleSubject ? (<div className="vars_box">{varsSubject}</div>) : (<></>)}
+
             <span>СОДЕРЖАНИЕ</span>
             {formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>

@@ -2,12 +2,16 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import nb from '../assets/profile/nb.svg'
 import "./Edit.css";
 
 function Univ() {
     const { id } = useParams();
     const [uniValue, setUniValue] = useState("")
     const navigate = useNavigate();
+    const [boxIsVisible, setBoxIsVisible] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const options = ['биба', 'боба', 'пизда', 'ахуй', 'чатгпт наше все', 'чек', 'чек', 'xsd', 'dsds'];
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,9 +38,22 @@ function Univ() {
         fetchData();
     }, [id]);
 
-    const handleUniChange = (e) => {
-        const {value} = e.target;
-        setUniValue(value); 
+    const handleUniChange = (event) => {
+        const value = event.target.value;
+        setInputValue(value);
+        setBoxIsVisible(true);
+    };
+
+    const handleOptionClick = (option) => {
+      if (uniValue !== option) {
+        setUniValue(option);
+      }
+      setInputValue('');
+      setBoxIsVisible(false);
+    };
+  
+    const handleRemoveOption = (optionToRemove) => {
+      setUniValue("");
     };
 
     const handlePublish = () => {
@@ -48,7 +65,18 @@ function Univ() {
     
           body: JSON.stringify({id, uniValue}),
           }).then(navigate(`/edit-profile/${id}`))
-      }
+    }
+
+    const filteredOptions = options.filter((option) =>
+      option.toLowerCase().startsWith(inputValue.toLowerCase())
+    );
+  
+    const vars = filteredOptions.map((item, index) => (
+      <div className="billet_add" key={index} onClick={() => handleOptionClick(item)}>
+        <img src={nb} alt="" />
+        <p>{item}</p>
+      </div>
+    ));
       
 
     return <div className="column">
@@ -56,17 +84,27 @@ function Univ() {
                     <div className="fback_btn" onClick={() => {window.history.back()}}></div>
                     <div className="univ_billet">Университет</div>
                 </div>
-                <span>Выберите Университет:</span>
-                <select className="billet_univ"
-                    name="Univ"
-                    value={uniValue}
-                    onChange={handleUniChange}>
-                    <option>Пункт 1</option>
-                    <option>Пункт 2</option>
-                </select>
+                {uniValue.length > 0 ? (
+                <div className="billet_del" onClick={() => handleRemoveOption(uniValue)}>
+                  <img src={nb} alt="" />
+                  <p>{uniValue}</p>
+                </div>
+                ) : (<></>)}
+
+                <span>выберите университет:</span>
+                <input
+                  className="billet_univ"
+                  onChange={handleUniChange}
+                  onFocus={() => setBoxIsVisible(true)}
+                  value={inputValue}
+                  style={{ width: '80%' }}
+                />
+                {boxIsVisible ? (<div className="vars_box">{vars}</div>) : (<></>)}
+
                 <div className="publish" style={{marginTop: '25px'}}>
                     <button className='sf_btn' onClick={handlePublish}>СОХРАНИТЬ</button>
                 </div>
+                
             </div>
 }
 
