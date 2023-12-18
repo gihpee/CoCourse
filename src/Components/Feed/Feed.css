@@ -95,3 +95,22 @@
     height: 32px;
     z-index: 0;
 }
+
+.billet_search {
+    width: 85%;
+    height: 48px;
+    background-color: #181818;
+    border-radius: 24px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.2px;
+    outline: none;
+    background-image: url('../assets/feed/zoom.svg');
+    background-repeat: no-repeat;
+    background-position: 12px;
+    padding-left: 48px;
+    padding-right: 8px;
+    margin-bottom: 8px;
+}

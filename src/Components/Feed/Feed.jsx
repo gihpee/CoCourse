@@ -10,6 +10,16 @@ import "./Feed.css";
 
 function Feed() {
   const [data, setData] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  const filteredData = data.filter((course) =>
+      course.name.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
+  const handleUniChange = (event) => {
+      const value = event.target.value;
+      setInputValue(value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +36,7 @@ function Feed() {
     fetchData();
   }, []);
 
-  const appCourses = data.map((item, index) => {
+  const appCourses = filteredData.map((item, index) => {
 
     var totalRate = 0;
     var averageRate = 0;
@@ -59,9 +69,15 @@ function Feed() {
     )
   })
 
-  return <>
-    {appCourses}
-    </>;
+  return <div className="column">
+      <input
+        className="billet_search"
+        onChange={handleUniChange}
+        placeholder="Введите название курса"
+        value={inputValue}
+      />
+      {appCourses}
+      </div>;
 }
 
 export default Feed;
