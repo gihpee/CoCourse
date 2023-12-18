@@ -44,7 +44,7 @@ function Course() {
     }, [id]);
 
     if (data.length === 0) {
-        return <p>Loading...</p>; // или что-то другое, пока данные загружаются
+        return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
 
     const topics = data[0].topics.map((item, index) => {
