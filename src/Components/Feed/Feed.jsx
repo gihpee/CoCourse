@@ -69,7 +69,7 @@ function Feed() {
     )
   })
 
-  return <div className="column">
+  return <div className="column" style={{minHeight: '100vh'}}>
       <input
         className="billet_search"
         onChange={handleUniChange}

@@ -65,7 +65,7 @@ function Create() {
     })
   }
 
-  return <>
+  return <div style={{minHeight: '100vh'}}>
       <div className="create_button"><a href='create-course'>
         <div className="billet">
           <img src={plus} alt='' />
@@ -75,7 +75,7 @@ function Create() {
       <div>
       {userCourses}
       </div>
-      </>;
+      </div>;
 }
 
 export default Create;

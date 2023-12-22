@@ -76,6 +76,7 @@
     color: #161616;
     line-height: 32px;
     z-index: 10;
+    border: solid #161616 1px;
 }
 
 .rate p {
