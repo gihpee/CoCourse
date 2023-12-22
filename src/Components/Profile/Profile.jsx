@@ -145,7 +145,7 @@ function Home() {
     }
   }
 
-  return <div style={{minHeight: '100vh'}}>
+  return <>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
@@ -184,7 +184,7 @@ function Home() {
                 <span>Курсы</span>
                 {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
-        </div>;
+        </>;
 }
 
 export default Home;
