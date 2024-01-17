@@ -204,3 +204,110 @@
     background-position: center;
     z-index: -1;
 }
+
+.select_col {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 95%;
+}
+
+.select_subject {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+    width: calc(100% - 48px);
+    min-height: 32px;
+    background-color: #181818;
+    border-radius: 16px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.2px;
+    outline: none;
+    background-image: url('../assets/create-course/hash.svg');
+    background-repeat: no-repeat;
+    background-position: left 4px top 8px;
+    padding-left: 48px;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.select_univ {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+    width: calc(100% - 48px);
+    min-height: 32px;
+    background-color: #181818;
+    border-radius: 16px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.2px;
+    outline: none;
+    background-image: url('../assets/create-course/notebook.svg');
+    background-repeat: no-repeat;
+    background-position: left 4px top 8px;
+    padding-left: 48px;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.select_course {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+    width: calc(100% - 48px);
+    min-height: 32px;
+    background-color: #181818;
+    border-radius: 16px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.2px;
+    outline: none;
+    background-image: url('../assets/create-course/chart.svg');
+    background-repeat: no-repeat;
+    background-position: left 4px top 8px;
+    padding-left: 48px;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.selected_row {
+    display: flex;
+    flex-direction: row;
+    height: 32px;
+    border-radius: 8px;
+    background-color: black;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 18.2px;
+    align-items: center;
+    vertical-align: middle;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.select_input {
+    background-color: #181818;
+    color: #AAAAAA;
+    height: 18px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+}

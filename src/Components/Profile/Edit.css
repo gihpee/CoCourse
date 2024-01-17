@@ -132,13 +132,13 @@
 .vars_box {
     width: calc(100% - 16px);
     padding-top: 8px;
-    max-height: 128px;
+    max-height: 304px;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-    background-color: #555555;
+    background-color: black;
     border-radius: 16px;
     margin-top: 8px;
     margin-bottom: 8px;

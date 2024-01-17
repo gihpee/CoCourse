@@ -17,6 +17,7 @@ import EditCourse from './Components/Create/EditCourse';
 import FeedbackCourse from './Components/Feedback/FeedbackCourse'
 import FeedbackUser from './Components/Feedback/FeedbackUser';
 import User from './Components/Profile/User';
+import Draft from './Components/Create/Draft'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <Route path={'course-feedback/:id'} element={<FeedbackCourse />}/>
           <Route path={'user-feedback/:id'} element={<FeedbackUser />}/>
           <Route path={'user/:id'} element={<User />}/>
+          <Route path={'drafts'} element={<Draft />}/>
         </Routes>
     </div>
   );
