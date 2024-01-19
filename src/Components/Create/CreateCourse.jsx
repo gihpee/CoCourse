@@ -3,6 +3,7 @@ import prev from '../assets/course/preview.png'
 import { useNavigate } from 'react-router-dom';
 import hash from '../assets/profile/hash.svg'
 import nb from '../assets/profile/nb.svg'
+import chart from '../assets/profile/chart.svg'
 import "./CreateCourse.css";
 
 function CreateCourse() {
@@ -58,9 +59,13 @@ function CreateCourse() {
         const { name, value, type } = e.target;
 
         if (type === 'textarea') {
-            e.target.style.height = 'auto';
-            e.target.style.height = e.target.scrollHeight + 'px';
-        }
+            if (e.target.scrollHeight === 32) {
+              e.target.style.height = '24px';
+            } else {
+              e.target.style.height = '24px';
+              e.target.style.height = e.target.scrollHeight + 'px';
+            }
+          }
 
         setFormData((prevData) => {
             const newTopics = [...prevData.topics];
@@ -241,7 +246,7 @@ function CreateCourse() {
 
     const varsCourse = filteredOptionsCourse.map((item, index) => (
         <div className="billet_add" key={index} onClick={() => handleOptionClickCourse(item)}>
-          <img src={nb} alt="" />
+          <img src={chart} alt="" />
           <p>{item}</p>
         </div>
       ));
@@ -332,7 +337,7 @@ function CreateCourse() {
 
         </div>
         <div className="column" style={{marginBottom: '100px'}}>
-            <button className='billet_add' onClick={addEl}>Add topic</button>
+            <button className='billet_addd' onClick={addEl}>Add topic</button>
         </div>
         <div className="publish">
             <button className='publish_btn' onClick={handlePublish}>ОПУБЛИКОВАТЬ</button>

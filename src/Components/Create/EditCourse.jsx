@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import hash from '../assets/profile/hash.svg'
 import nb from '../assets/profile/nb.svg'
 import krest from '../assets/create/krest.svg'
+import chart from '../assets/profile/chart.svg'
 import "./EditCourse.css";
 
 function EditCourse() {
@@ -117,9 +118,13 @@ function EditCourse() {
         const { name, value, type } = e.target;
         
         if (type === 'textarea') {
-            e.target.style.height = 'auto';
-            e.target.style.height = e.target.scrollHeight + 'px';
-        }
+            if (e.target.scrollHeight === 32) {
+              e.target.style.height = '24px';
+            } else {
+              e.target.style.height = '24px';
+              e.target.style.height = e.target.scrollHeight + 'px';
+            }
+          }
 
         setFormData((prevData) => {
             const newTopics = [...prevData.topics];
@@ -255,7 +260,7 @@ function EditCourse() {
     );
   
     const varsUniv = filteredOptionsUniv.map((item, index) => (
-      <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)}>
+      <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)} style={{height: 'auto', whiteSpace: 'pre-line'}}>
         <img src={nb} alt="" />
         <p>{item}</p>
       </div>
@@ -298,7 +303,7 @@ function EditCourse() {
 
     const varsCourse = filteredOptionsCourse.map((item, index) => (
         <div className="billet_add" key={index} onClick={() => handleOptionClickCourse(item)}>
-          <img src={nb} alt="" />
+          <img src={chart} alt="" />
           <p>{item}</p>
         </div>
       ));
@@ -408,7 +413,7 @@ function EditCourse() {
 
         </div>
         <div className="column" style={{marginBottom: '100px'}}>
-            <button className='billet_add' onClick={addEl}>Add topic</button>
+            <button className='billet_addd' onClick={addEl}>Add topic</button>
         </div>
         <div className="publish">
             <button className='publish_btn' onClick={handlePublish}>Сохранить</button>

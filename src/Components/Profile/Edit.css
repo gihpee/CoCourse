@@ -89,26 +89,6 @@
     margin-bottom: 8px;
 }
 
-.billet_add {
-    width: 93%;
-    min-height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #161616;
-    color: #FFF;
-    background-image: url('../assets/profile/plus.svg');
-    background-position: calc(100% - 16px);
-    background-repeat: no-repeat;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18.2px;
-    padding-left: 8px;
-    border-radius: 16px;
-    margin-bottom: 8px;
-}
-
 .billet_del img {
     width: 32px;
     height: 32px;
@@ -119,18 +99,8 @@
     left: 8px;
 }
 
-.billet_add img {
-    width: 32px;
-    height: 32px;
-}
-
-.billet_add p {
-    width: 80%;
-    left: 8px;
-}
-
 .vars_box {
-    width: calc(100% - 16px);
+    width: 100%;
     padding-top: 8px;
     max-height: 304px;
     height: auto;

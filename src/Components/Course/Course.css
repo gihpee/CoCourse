@@ -14,13 +14,14 @@ span {
 }
 
 .acor-container {
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: center;
 }
 .acor-container .acor-body {
-    width: 90%;
+    width: 92.5%;
     margin: 0 auto;
     margin-left: 7.5%;
     height: 0;
@@ -51,9 +52,8 @@ span {
     flex-direction: row;
     align-items: center;
     padding-top: 10px;
-    padding-left: 8px;
     padding-bottom: 10px;
-    width: 93%;
+    width: 100%;
     color: white;
     font-weight: 500;
     z-index: 100; 
@@ -61,6 +61,11 @@ span {
     margin-top: 8px;
     transition: color .35s;
     border-radius: 16px;
+}
+
+.acor-container label img {
+    margin-left: 4px;
+    margin-right: 12px;
 }
 
 .acor-container label:hover {
@@ -92,6 +97,13 @@ span {
     margin-top: 8px;
     color: white;
     padding: 10px 15px 10px 15px;
+}
+
+.acor-container input:not(:checked) + label + .acor-body {
+    height: 0px;
+    margin-top: 8px;
+    color: white;
+    padding: -10px -15px -10px -15px;
 }
 
 .prev {

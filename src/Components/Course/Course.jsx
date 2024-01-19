@@ -19,6 +19,7 @@ function Course() {
 
     const [data, setData] = useState([]);
     const [userData, setUserData] = useState([]);
+    
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -48,7 +49,7 @@ function Course() {
     const topics = data[0].topics.map((item, index) => {
         return (
             <>
-                <input type="radio" name="acor" id={index} />
+                <input type="checkbox" name="acor" id={index} />
                 <label for={index}><img src={hash} alt="" />{item.topic}</label>
                 <div className="acor-body">
                     <span>{item.desc}</span>
