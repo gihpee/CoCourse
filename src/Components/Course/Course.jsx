@@ -122,24 +122,36 @@ function Course() {
                     </div>
                 </Link>
             </div>
-            <div className="about">
-                <span>Университет</span>
-                <div className="billet">
-                    <img src={nb} alt='' />
-                    <p>{data[0].university}</p>
-                </div>
-                <span>Курс</span>
-                <div className="billet">
-                    <img src={circle} alt='' />
-                    <p>{data[0].course}</p>
-                </div>
-                <span>Описание</span>
-                <div className="description">
-                    <p>{data[0].description}</p>
-                </div>
-                <span>Предметы</span>
-                {subjects}
+
+            <span>Описание</span>
+            <div className="select_col">
+            <div className="select_bio" style={{height: 'auto', whiteSpace: 'pre-line'}}>
+                <p>{data[0].description}</p>
             </div>
+            </div>
+
+            <span>Университет</span>
+            <div className="select_col">
+                <div className="select_univ">
+                {data[0].university.length > 0 ? (<div className="selected_row"> {data[0].university} </div>) : (<p>Не указано</p>)}
+                </div>
+            </div>
+            
+            <span>Курс</span>
+            <div className="select_col">
+                <div className="select_course">
+                {data[0].course.length > 0 ? (<div className="selected_row"> {data[0].course} </div>) : (<p>Не указано</p>)}
+                </div>
+            </div>
+
+            <span>Предмет</span>
+            <div className="select_col">
+                <div className="select_subject">
+                {data[0].subjects.length > 0 ? (data[0].subjects.map((option) => (
+                <div className="selected_row" key={option}>{option}</div> ))) : (<p>Не указано</p>)}
+                </div>
+            </div>
+
             <span style={{marginBottom: '0px'}}>Содержание</span>
             <div className="acor-container">
                 { topics }

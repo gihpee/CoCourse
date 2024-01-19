@@ -1,8 +1,5 @@
 import React from "react";
 import pencil from '../assets/profile/pencil.svg'
-import nb from '../assets/profile/nb.svg'
-import chart from '../assets/profile/chart.svg'
-import hash from '../assets/profile/hash.svg'
 import cam from "../assets/feed/camera.svg"
 import photo_url from '../assets/profile/avatar.png'
 import calendarS from '../assets/feedback/calendarS.svg'
@@ -82,19 +79,7 @@ function Home() {
     fetchCourses();
   }, [id, first_name, last_name, username, usrname]);
 
-  var userSubjects;
   var userCourses;
-
-  if (userData.subjects){
-    userSubjects = userData.subjects.map((item, index) => {
-      return (
-        <div className="billet">
-          <img src={hash} alt='' />
-          <p>{item}</p>
-        </div>
-      )
-    })
-  }
 
   if (coursesData) {
     userCourses = coursesData.map((item, index) => {
@@ -164,23 +149,37 @@ function Home() {
                     </div>
                 </div>
             </Link>
+
+            <span>Биография</span>
+            <div className="select_col">
+            <div className="select_bio" style={{height: 'auto', whiteSpace: 'pre-line'}}>
+                <p>{userData.description ? userData.description : "Не указано"}</p>
+            </div>
+            </div>
+
+            <span>Университет</span>
+            <div className="select_col">
+                <div className="select_univ">
+                {userData.university ? (<div className="selected_row"> {userData.university} </div>) : (<p>Не указано</p>)}
+                </div>
+            </div>
+            
+            <span>Курс</span>
+            <div className="select_col">
+                <div className="select_course">
+                {userData.course ? (<div className="selected_row"> {userData.course} </div>) : (<p>Не указано</p>)}
+                </div>
+            </div>
+
+            <span>Предметы</span>
+            <div className="select_col">
+                <div className="select_subject">
+                {userData.subjects ? (userData.subjects.map((option) => (
+                <div className="selected_row" key={option}>{option}</div> ))) : (<p>Не указано</p>)}
+                </div>
+            </div>
+
             <div className="about">
-                <span>Университет</span>
-                <div className="billet">
-                    <img src={nb} alt='' />
-                    <p>{userData.university ? userData.university : "Не указано"}</p>
-                </div>
-                <span>Курс</span>
-                <div className="billet">
-                    <img src={chart} alt='' />
-                    <p>{userData.course ? userData.course : "Не указано"}</p>
-                </div>
-                <span>Биография</span>
-                <div className="description">
-                    <p>{userData.description ? userData.description : "Не указано"}</p>
-                </div>
-                <span>Предметы</span>
-                {userSubjects ? userSubjects : <p>Не указано</p>}
                 <span>Курсы</span>
                 {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>

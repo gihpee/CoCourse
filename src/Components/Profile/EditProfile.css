@@ -101,3 +101,4 @@
 .toggle-switch input:checked + label::before {
     transform: translateX(32px);
 }
+

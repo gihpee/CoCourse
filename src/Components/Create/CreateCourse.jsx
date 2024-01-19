@@ -33,9 +33,13 @@ function CreateCourse() {
         const { name, value, type } = e.target;
 
         if (type === 'textarea') {
-            e.target.style.height = 'auto';
-            e.target.style.height = e.target.scrollHeight + 'px';
-        }
+            if (e.target.scrollHeight === 32) {
+              e.target.style.height = '24px';
+            } else {
+              e.target.style.height = '24px';
+              e.target.style.height = e.target.scrollHeight + 'px';
+            }
+          }
         
         setFormData((prevData) => ({
           ...prevData,
@@ -259,6 +263,13 @@ function CreateCourse() {
                 name="Name"
                 value={formData.Name || ''}
                 onChange={handleChange} />
+
+            <span>ОПИСАНИЕ</span>
+            <div className="select_col">
+                <div className="select_bio">
+                  <textarea className='bio_textarea' type='text' placeholder="Описание" name="Desc" value={formData.Desc} onChange={handleChange}/>
+                </div>
+              </div>
             <span>УНИВЕРСИТЕТ</span>
 
             <div className="select_col">
@@ -283,13 +294,6 @@ function CreateCourse() {
                 </div>
 
                 {boxIsVisibleCourse ? (<div className="vars_box">{varsCourse}</div>) : (<></>)}
-            <span>ОПИСАНИЕ</span>
-            <textarea className='billet_desc'
-                    type='text'
-                    placeholder="Economics"
-                    name="Desc"
-                    value={formData.Desc}
-                    onChange={handleChange} />
 
             <span>ПРЕДМЕТ</span>
 
