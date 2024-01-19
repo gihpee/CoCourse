@@ -73,6 +73,13 @@ function EditCourse() {
             });
             setImageSrc(data[0].image)
 
+            const textarea = document.querySelector('.bio_textarea');
+            if (textarea.scrollHeight > 40)
+            {
+                textarea.style.height = 'auto';
+                textarea.style.height = textarea.scrollHeight + 'px';
+            }
+
           } catch (error) {
             console.error('Error fetching data:', error);
           }
@@ -335,7 +342,7 @@ function EditCourse() {
             <span>ОПИСАНИЕ</span>
             <div className="select_col">
                 <div className="select_bio">
-                  <textarea className='bio_textarea' type='text' placeholder="Описание" name="Desc" value={formData.Desc} onChange={handleChange}/>
+                  <textarea className='bio_textarea' type='text' placeholder="Описание" name="Desc" value={formData.Desc} onChange={handleChange} />
                 </div>
               </div>
                     

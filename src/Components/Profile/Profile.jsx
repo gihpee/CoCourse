@@ -104,6 +104,7 @@ function Home() {
             <div className="row_grad_l">
               <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
             </div>
+            <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '32px', borderRadius: '16px', zIndex: '-10', marginTop: '-32px'}}></div>
                 <div className="points">
                     <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
                     <div className="point"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>

@@ -348,8 +348,8 @@
 
 .bio_textarea {
     width: calc(100% - 48px);
-    height: 24px;
     overflow: hidden;
+    height: 24px;
     resize: none;
     background-color: #181818;
     border-radius: 16px;
@@ -360,5 +360,6 @@
     line-height: 18.2px;
     padding-left: 8px;
     padding-top: 8px;
+    margin-left: -8px;
     outline: none;
 }

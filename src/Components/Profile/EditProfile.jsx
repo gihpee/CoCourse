@@ -57,6 +57,12 @@ function EditProfile() {
           } catch (error) {
             console.error('Ошибка при запросе к серверу:', error);
           }
+          const textarea = document.querySelector('.bio_textarea');
+            if (textarea.scrollHeight > 40)
+            {
+                textarea.style.height = 'auto';
+                textarea.style.height = textarea.scrollHeight + 'px';
+            }
         };
     
         fetchData();
