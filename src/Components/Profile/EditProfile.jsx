@@ -1,8 +1,6 @@
 import React from "react";
 import nb from '../assets/profile/nb.svg'
-import chart from '../assets/profile/chart.svg'
 import hash from '../assets/profile/hash.svg'
-import bio from '../assets/profile/bio.svg'
 import copy from '../assets/profile/copy.svg'
 import sun from '../assets/profile/sun.svg'
 import bulb from '../assets/profile/bulb.svg'
@@ -13,7 +11,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import lminus from '../assets/create-course/lminus.png'
-import { Link } from 'react-router-dom';
 import "./EditProfile.css";
 
 function EditProfile() {

@@ -3,8 +3,6 @@ import hash from '../assets/course/hash.svg'
 import calend from '../assets/course/calender.svg'
 import chat from '../assets/course/chat.svg'
 import star from '../assets/course/star.svg'
-import circle from '../assets/course/circle.svg'
-import nb from '../assets/course/notebook.svg'
 import boyS from '../assets/course/boy-small.svg'
 import nbS from '../assets/course/nb-small.svg'
 import hashS from '../assets/course/hash-small.svg'
@@ -56,15 +54,6 @@ function Course() {
                     <span>{item.desc}</span>
                 </div>
             </>
-        )
-    })
-
-    const subjects = data[0].subjects.map((item, index) => {
-        return (
-            <div className="billet" key={index}>
-                <img src={hash} alt='' />
-                <p>{item}</p>
-            </div>
         )
     })
 
