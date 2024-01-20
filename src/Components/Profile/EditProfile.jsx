@@ -72,6 +72,16 @@ function EditProfile() {
         const file = e.target.files[0];
     
         if (file) {
+          const fileSize = file.size;
+          const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
+
+          if (fileSize > maxSizeInBytes) {
+            alert('Файл слишком большой. Выберите файл размером не более 5 MB.');
+            // Очистка input файла
+            e.target.value = null;
+            return;
+          }
+          
           const reader = new FileReader();
     
           reader.onload = () => {

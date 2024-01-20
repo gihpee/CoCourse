@@ -8,7 +8,7 @@ import "./CreateCourse.css";
 
 function CreateCourse() {
 
-    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+    const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
 
     var currentDate = new Date();
     const navigate = useNavigate();
@@ -88,6 +88,16 @@ function CreateCourse() {
         const file = e.target.files[0];
     
         if (file) {
+          const fileSize = file.size;
+          const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
+
+          if (fileSize > maxSizeInBytes) {
+            alert('Файл слишком большой. Выберите файл размером не более 5 MB.');
+            // Очистка input файла
+            e.target.value = null;
+            return;
+          }
+
           const reader = new FileReader();
     
           reader.onload = () => {
@@ -128,7 +138,7 @@ function CreateCourse() {
                   'Content-Type': 'application/json',
               },
 
-              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
+              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username}),
           }).then(navigate('/create'))
       }
         

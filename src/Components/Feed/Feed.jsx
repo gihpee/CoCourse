@@ -13,7 +13,7 @@ function Feed() {
   const [inputValue, setInputValue] = useState('');
 
   const filteredData = data.filter((course) =>
-      course.name.toLowerCase().includes(inputValue.toLowerCase())
+      (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
   );
 
   const handleUniChange = (event) => {
@@ -74,7 +74,7 @@ function Feed() {
       <input
         className="billet_search"
         onChange={handleUniChange}
-        placeholder="Введите название курса"
+        placeholder="Введите название курса или ник автора"
         value={inputValue}
       />
       {appCourses}
