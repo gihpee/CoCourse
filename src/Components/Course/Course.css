@@ -116,7 +116,7 @@ span {
 }
 
 .back_btn {
-    position: absolute;
+    position: sticky;
     top: 8px;
     left: 8px;
     width: 48px;

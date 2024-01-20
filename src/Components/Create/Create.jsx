@@ -73,7 +73,7 @@ function Create() {
           <p>Создать курс</p>
         </div>
       </a></div>
-      <div>
+      <div className="column">
       {userCourses}
       </div>
       </div>;
