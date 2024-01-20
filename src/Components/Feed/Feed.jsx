@@ -61,7 +61,7 @@ function Feed() {
           <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '32px', borderRadius: '16px', zIndex: '-10', marginTop: '-32px'}}></div>
           <div className="points">
             <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-            <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
+            <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/><p>{item.university}</p></div>
             <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{(item.subjects).join(', ')}</div>
             <div className="point"><img src={calendarS} alt='' style={{ marginRight: '10px' }}/>{item.date}</div>
           </div>
