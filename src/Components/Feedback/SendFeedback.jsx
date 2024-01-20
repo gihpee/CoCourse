@@ -10,6 +10,7 @@ function SendFeedback() {
   const [userId, setUserId] = useState(0)
   const [courseName, setCourseName] = useState("")
   const [feedbacks, setFeedbacks] = useState([])
+  const [userFeedbacks, setUserFeedbacks] = useState([])
 
   var currentDate = new Date();
   const navigate = useNavigate();
@@ -32,8 +33,26 @@ function SendFeedback() {
     fetchCourses();
 }, [id])
 
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(`https://commoncourse.io/user?id=${userId}`);
+        const data = await response.json();
+        
+        if (data[0].feedback) {
+            setUserFeedbacks(data[0].feedback);
+        }
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchCourses();
+  }, [id])
+
   const userFeedback = feedbacks.find(item => item.user === username)
-  console.log(userFeedback)
+  const userToUserFeedback = userFeedbacks.find(item => (item.user === username && item.course === courseName))
 
   const [sliderValue, setSliderValue] = useState(3);
   const [revValue, setRevValue] = useState("")
@@ -79,12 +98,19 @@ function SendFeedback() {
                     course: courseName, 
                     date: date};
 
-    let updatedFeedbacks = []
+    let updatedCourseFeedbacks = []
+    let updatedUserFeedbacks = []
 
     if (userFeedback) {
-      updatedFeedbacks = feedbacks.map(item => item.user === username ? feedback : item);
+      updatedCourseFeedbacks = feedbacks.map(item => item.user === username ? feedback : item);
     } else {
-      updatedFeedbacks = feedbacks.concat(feedback);
+      updatedCourseFeedbacks = feedbacks.concat(feedback);
+    }
+
+    if (userToUserFeedback) {
+      updatedUserFeedbacks = userFeedbacks.map(item => (item.user === username && item.course === courseName) ? feedback : item);
+    } else {
+      updatedUserFeedbacks = userFeedbacks.concat(feedback);
     }
 
     fetch('https://commoncourse.io/sf', {
@@ -93,7 +119,7 @@ function SendFeedback() {
         'Content-Type': 'application/json',
       },
 
-      body: JSON.stringify({id, userId, updatedFeedbacks, feedback}),
+      body: JSON.stringify({id, userId, updatedCourseFeedbacks, updatedUserFeedbacks}),
       }).then(navigate(`/course/${id}`))
   }
 
