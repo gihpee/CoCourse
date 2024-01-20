@@ -94,19 +94,20 @@ function CreateCourse() {
           if (fileSize > maxSizeInBytes) {
             alert('Файл слишком большой. Выберите файл размером не более 5 MB.');
             // Очистка input файла
-            e.target.value = null;
-            return;
+            e.target.value = null
+            setImageSrc(null)
+            return
+          } else { 
+            const reader = new FileReader();
+      
+            reader.onload = () => {
+              if (reader.result) {
+                setImageSrc(reader.result);
+              }
+            };
+      
+            reader.readAsDataURL(file);
           }
-
-          const reader = new FileReader();
-    
-          reader.onload = () => {
-            if (reader.result) {
-              setImageSrc(reader.result);
-            }
-          };
-    
-          reader.readAsDataURL(file);
         } else {
           setImageSrc(null);
         }
