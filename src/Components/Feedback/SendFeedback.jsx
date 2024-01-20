@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import "./SendFeedback.css";
 
@@ -9,6 +9,7 @@ function SendFeedback() {
   const { username } = window.Telegram.WebApp.initDataUnsafe.user;
   const [userId, setUserId] = useState(0)
   const [courseName, setCourseName] = useState("")
+  const [feedbacks, setFeedbacks] = useState([])
 
   var currentDate = new Date();
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function SendFeedback() {
 
         setUserId(data[0].user);
         setCourseName(data[0].name);
+        setFeedbacks(data[0].feedback);
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -30,8 +32,15 @@ function SendFeedback() {
     fetchCourses();
 }, [id])
 
+  const userFeedback = feedbacks.find(item => item.user === username)
+
   const [sliderValue, setSliderValue] = useState(3);
   const [revValue, setRevValue] = useState("")
+
+  if (userFeedback) {
+    setSliderValue(userFeedback.rate)
+    setRevValue(userFeedback.review)
+  }
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
@@ -39,7 +48,17 @@ function SendFeedback() {
   };
 
   const handleRevChange = (e) => {
-    const {value} = e.target;
+    const {value, type} = e.target;
+
+    if (type === 'textarea') {
+        if (e.target.scrollHeight === 32) {
+          e.target.style.height = '24px';
+        } else {
+          e.target.style.height = '24px';
+          e.target.style.height = e.target.scrollHeight + 'px';
+        }
+      }
+
     setRevValue(value); 
   };
 
@@ -56,13 +75,22 @@ function SendFeedback() {
                     user: username, 
                     course: courseName, 
                     date: date}];
+
+    let updatedFeedbacks = []
+
+    if (userFeedback) {
+      updatedFeedbacks = feedbacks.map(item => item.user === username ? feedback : item);
+    } else {
+      updatedFeedbacks = feedbacks.concat(feedback);
+    }
+
     fetch('https://commoncourse.io/sf', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
 
-      body: JSON.stringify({id, userId, feedback}),
+      body: JSON.stringify({id, userId, updatedFeedbacks}),
       }).then(navigate(`/course/${id}`))
   }
 
@@ -71,7 +99,7 @@ function SendFeedback() {
             <div className="fback_btn" onClick={() => navigate(`/course/${id}`)}></div>
             <div className="fb_billet">Отзывы</div>
           </div>
-          <span>Понравилась ли работать с заказчиком?</span>
+          <span>ОЦЕНКА*</span>
           <div className="slider-container">
             <input type="range" min="1" max="5" value={sliderValue} step="1" id="myRange" onChange={handleSliderChange} />
           </div>
@@ -86,11 +114,14 @@ function SendFeedback() {
             <div className="circle"></div>
             <div className="circle"></div>
           </div>
-          <textarea 
-                className="fb_text" 
-                placeholder="Оставить комментарий. Это очень поможет развитию нашего сервиса."
-                name="fb_text"
-                onChange={handleRevChange}></textarea>
+
+          <span>КОММЕНТАРИЙ*</span>
+          <div className="select_col">
+              <div className="select_fb">
+                <textarea className='bio_textarea' type='text' placeholder="Поделись своим мнением..." name="fb_text" value={revValue} onChange={handleRevChange} />
+              </div>
+          </div>
+
           <div className="publish" style={{marginTop: '25px'}}>
             <button className='sf_btn' onClick={handlePublish}>СОХРАНИТЬ</button>
           </div>
