@@ -49,7 +49,7 @@ function SendFeedback() {
     };
 
     fetchCourses();
-  }, [id])
+  }, [userId])
 
   const userFeedback = feedbacks.find(item => item.user === username)
   const userToUserFeedback = userFeedbacks.find(item => (item.user === username && item.course === courseName))
