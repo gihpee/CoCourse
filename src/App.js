@@ -23,6 +23,7 @@ function App() {
 
   let tg = window.Telegram;
   tg.WebApp.expand();
+  tg.enableClosingConfirmation()
 
   return (
     <div className='App'>
