@@ -35,6 +35,8 @@ function EditCourse() {
 
     const [isModalOpen, setModalOpen] = useState(false);
 
+    const [modalFillOpen, setModalFillOpen] = useState(false);
+
     const handleDeleteClick = () => {
         setModalOpen(true);
     };
@@ -55,6 +57,10 @@ function EditCourse() {
     const handleCancelDelete = () => {
         setModalOpen(false);
     };
+
+    const handleOkBtnClick = () => {
+        setModalFillOpen(false);
+    }
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -156,28 +162,33 @@ function EditCourse() {
     };
 
     const handlePublish = async () => {
-        console.log(formData)
-        var day = currentDate.getDate();
-        var month = currentDate.getMonth() + 1;
-        var year = currentDate.getFullYear();
+        if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
+        {
+            setModalFillOpen(true);
+            console.log('here')
+        } else {
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1;
+            var year = currentDate.getFullYear();
 
-        let name = formData.Name;
-        let university = formData.Univ;
-        let course = formData.Course;
-        let description = formData.Desc;
-        let subjects = formData.Subjects;
-        let topics = formData.topics; 
-        let date = day + '-' + month + '-' + year
-        let image = imageSrc;
+            let name = formData.Name;
+            let university = formData.Univ;
+            let course = formData.Course;
+            let description = formData.Desc;
+            let subjects = formData.Subjects;
+            let topics = formData.topics; 
+            let date = day + '-' + month + '-' + year
+            let image = imageSrc;
 
-        await fetch('https://commoncourse.io/edit-course', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            await fetch('https://commoncourse.io/edit-course', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
 
-            body: JSON.stringify({id, name, university, course, description, subjects, topics, date, image}),
-        }).then(navigate('/create'))
+                body: JSON.stringify({id, name, university, course, description, subjects, topics, date, image}),
+            }).then(navigate('/create'))
+        }
         
     };
 
@@ -310,11 +321,16 @@ function EditCourse() {
 
     return <>
         <div className="back_btn" onClick={() => {window.history.back()}}></div>
-        <div className="upload-container" style={{marginTop: '-56px'}}>
-            <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
-            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
-            <div className="prev_filter"></div>
-        </div>
+
+        {modalFillOpen && (
+            <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
+                <div className="modal-content">
+                    <p>Заполните все обязательные поля</p>
+                    <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                </div>
+            </div>
+        )}
+
         {isModalOpen && (
             <div className="modal">
                 <div className="modal-content">
@@ -329,6 +345,13 @@ function EditCourse() {
                 </div>
             </div>
         )}
+
+        <div className="upload-container" style={{marginTop: '-56px'}}>
+            <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
+            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
+            <div className="prev_filter"></div>
+        </div>
+
         <div className="column" id='main' style={{marginTop: '-64px', borderRadius: '24px',
         borderBottomLeftRadius: '0px', borderBottomRightRadius: '0px', backgroundColor: 'black', paddingTop: '8px'}}>
             <div className="billet" onClick={handleDeleteClick}>

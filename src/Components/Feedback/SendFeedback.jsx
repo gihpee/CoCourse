@@ -64,6 +64,12 @@ function SendFeedback() {
     }
   }, [userFeedback])
 
+  const [modalFillOpen, setModalFillOpen] = useState(false);
+
+  const handleOkBtnClick = () => {
+    setModalFillOpen(false);
+  }
+
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
     console.log(event.target.value)
@@ -85,45 +91,60 @@ function SendFeedback() {
   };
 
   const handlePublish = () => {
-    console.log(sliderValue, revValue);
-    var day = currentDate.getDate();
-    var month = currentDate.getMonth() + 1;
-    var year = currentDate.getFullYear();
-
-    let date = day + '-' + month + '-' + year
-
-    let feedback = {rate: sliderValue, 
-                    review: revValue, 
-                    user: username, 
-                    course: courseName, 
-                    date: date};
-
-    let updatedCourseFeedbacks = []
-    let updatedUserFeedbacks = []
-
-    if (userFeedback) {
-      updatedCourseFeedbacks = feedbacks.map(item => item.user === username ? feedback : item);
+    if (revValue === "")
+    {
+      setModalFillOpen(true);
     } else {
-      updatedCourseFeedbacks = feedbacks.concat(feedback);
+      console.log(sliderValue, revValue);
+      var day = currentDate.getDate();
+      var month = currentDate.getMonth() + 1;
+      var year = currentDate.getFullYear();
+
+      let date = day + '-' + month + '-' + year
+
+      let feedback = {rate: sliderValue, 
+                      review: revValue, 
+                      user: username, 
+                      course: courseName, 
+                      date: date};
+
+      let updatedCourseFeedbacks = []
+      let updatedUserFeedbacks = []
+
+      if (userFeedback) {
+        updatedCourseFeedbacks = feedbacks.map(item => item.user === username ? feedback : item);
+      } else {
+        updatedCourseFeedbacks = feedbacks.concat(feedback);
+      }
+
+      if (userToUserFeedback) {
+        updatedUserFeedbacks = userFeedbacks.map(item => (item.user === username && item.course === courseName) ? feedback : item);
+      } else {
+        updatedUserFeedbacks = userFeedbacks.concat(feedback);
+      }
+
+      fetch('https://commoncourse.io/sf', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({id, userId, updatedCourseFeedbacks, updatedUserFeedbacks}),
+        }).then(navigate(`/course/${id}`))
     }
-
-    if (userToUserFeedback) {
-      updatedUserFeedbacks = userFeedbacks.map(item => (item.user === username && item.course === courseName) ? feedback : item);
-    } else {
-      updatedUserFeedbacks = userFeedbacks.concat(feedback);
-    }
-
-    fetch('https://commoncourse.io/sf', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-
-      body: JSON.stringify({id, userId, updatedCourseFeedbacks, updatedUserFeedbacks}),
-      }).then(navigate(`/course/${id}`))
   }
 
   return <div className="column">
+
+        {modalFillOpen && (
+            <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
+                <div className="modal-content">
+                    <p>Заполните все обязательные поля</p>
+                    <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                </div>
+            </div>
+        )}
+
           <div className="feedback_top">
             <div className="fback_btn" onClick={() => navigate(`/course/${id}`)}></div>
             <div className="fb_billet">Отзывы</div>

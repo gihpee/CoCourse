@@ -30,6 +30,8 @@ function CreateCourse() {
 
     const optionsCourse = ['1 курс, 1 семестр', '1 курс, 2 семестр', '2 курс, 1 семестр', '2 курс, 2 семестр', '3 курс, 1 семестр', '3 курс, 2 семестр', '4 курс, 1 семестр', '4 курс, 2 семестр', '5 курс, 1 семестр', '5 курс, 2 семестр', '6 курс, 1 семестр', '6 курс, 2 семестр']
 
+    const [modalFillOpen, setModalFillOpen] = useState(false);
+
     const handleChange = (e) => {
         const { name, value, type } = e.target;
 
@@ -54,6 +56,10 @@ function CreateCourse() {
           topics: [...prevData.topics, { topic: '', desc: '' }],
         }));
     };
+
+    const handleOkBtnClick = () => {
+      setModalFillOpen(false);
+    }
     
     const handleTopicChange = (index, e) => {
         const { name, value, type } = e.target;
@@ -97,30 +103,34 @@ function CreateCourse() {
     };
 
     const handlePublish = async () => {
-        console.log(formData)
-        var day = currentDate.getDate();
-        var month = currentDate.getMonth() + 1;
-        var year = currentDate.getFullYear();
+      if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
+      {
+        setModalFillOpen(true);
+      } else {
+          var day = currentDate.getDate();
+          var month = currentDate.getMonth() + 1;
+          var year = currentDate.getFullYear();
 
-        let name = formData.Name;
-        let university = formData.Univ;
-        let course = formData.Course;
-        let description = formData.Desc;
-        let subjects = formData.Subjects;
-        let topics = formData.topics; 
-        let user = id;
-        let date = day + '-' + month + '-' + year
-        let image = imageSrc;
-        let feedback = [];
+          let name = formData.Name;
+          let university = formData.Univ;
+          let course = formData.Course;
+          let description = formData.Desc;
+          let subjects = formData.Subjects;
+          let topics = formData.topics; 
+          let user = id;
+          let date = day + '-' + month + '-' + year
+          let image = imageSrc;
+          let feedback = [];
 
-        await fetch('https://commoncourse.io/course', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+          await fetch('https://commoncourse.io/course', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
 
-            body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
-        }).then(navigate('/create'))
+              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image}),
+          }).then(navigate('/create'))
+      }
         
     };
 
@@ -253,6 +263,16 @@ function CreateCourse() {
 
     return <>
         <div className="back_btn" onClick={() => {window.history.back()}}></div>
+
+        {modalFillOpen && (
+            <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
+                <div className="modal-content">
+                    <p>Заполните все обязательные поля</p>
+                    <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                </div>
+            </div>
+        )}
+        
         <div className="upload-container" style={{marginTop: '-56px'}}>
             <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
             <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
