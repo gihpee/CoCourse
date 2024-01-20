@@ -9,7 +9,7 @@ function SendFeedback() {
   const { username } = window.Telegram.WebApp.initDataUnsafe.user;
   const [userId, setUserId] = useState(0)
   const [courseName, setCourseName] = useState("")
-  const [feedbacks, setFeedbacks] = useState({})
+  const [feedbacks, setFeedbacks] = useState([])
 
   var currentDate = new Date();
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ function SendFeedback() {
 }, [id])
 
   const userFeedback = feedbacks.find(item => item.user === username)
+  console.log(userFeedback)
 
   const [sliderValue, setSliderValue] = useState(3);
   const [revValue, setRevValue] = useState("")
