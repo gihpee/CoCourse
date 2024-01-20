@@ -86,11 +86,11 @@ function Course() {
     }
 
     return <>
-            <div className="prev" style={{backgroundImage: `url(${data[0].image})`}}>
+            <div className="back_btn" onClick={() => navigate(`/`)}></div>
+            <div className="prev" style={{backgroundImage: `url(${data[0].image})`, marginTop: '-56px'}}>
                 <p>{ data[0].name }</p>
                 <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
             </div>
-            <div className="back_btn" onClick={() => navigate(`/`)}></div>
             <div className="getContact_container">
                 <a href={`https://t.me/${userData[0].username}`} className="billet">
                     <img src={chat} alt='' />
