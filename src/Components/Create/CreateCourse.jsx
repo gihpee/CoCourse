@@ -272,7 +272,7 @@ function CreateCourse() {
                 </div>
             </div>
         )}
-        
+
         <div className="upload-container" style={{marginTop: '-56px'}}>
             <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
             <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
@@ -280,7 +280,7 @@ function CreateCourse() {
         </div>
         <div className="column" id='main' style={{marginTop: '-64px', borderRadius: '24px',
         borderBottomLeftRadius: '0px', borderBottomRightRadius: '0px', backgroundColor: 'black', paddingTop: '8px'}}>
-            <span>ТЕМА</span>
+            <span>ТЕМА*</span>
             <input 
                 className='billet_name'
                 type='text' 
@@ -289,13 +289,13 @@ function CreateCourse() {
                 value={formData.Name || ''}
                 onChange={handleChange} />
 
-            <span>ОПИСАНИЕ</span>
+            <span>ОПИСАНИЕ*</span>
             <div className="select_col">
                 <div className="select_bio">
                   <textarea className='bio_textarea' type='text' placeholder="Описание" name="Desc" value={formData.Desc} onChange={handleChange}/>
                 </div>
               </div>
-            <span>УНИВЕРСИТЕТ</span>
+            <span>УНИВЕРСИТЕТ*</span>
 
             <div className="select_col">
                     <div className="select_univ">
@@ -308,7 +308,7 @@ function CreateCourse() {
 
                 {boxIsVisibleUniv ? (<div className="vars_box">{varsUniv}</div>) : (<></>)}
 
-            <span>КУРС</span>
+            <span>КУРС*</span>
             <div className="select_col">
                     <div className="select_course">
                     {formData.Course.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(formData.Course)}> {formData.Course} </div>) : (<></>)}
@@ -320,7 +320,7 @@ function CreateCourse() {
 
                 {boxIsVisibleCourse ? (<div className="vars_box">{varsCourse}</div>) : (<></>)}
 
-            <span>ПРЕДМЕТ</span>
+            <span>ПРЕДМЕТ*</span>
 
             <div className="select_col">
                 <div className="select_subject">

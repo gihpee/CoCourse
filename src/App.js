@@ -21,6 +21,9 @@ import Draft from './Components/Create/Draft'
 
 function App() {
 
+  let tg = window.Telegram;
+  tg.WebApp.expand();
+
   return (
     <div className='App'>
       <meta name="viewport" content="width=device-width, user-scalable=no"></meta>

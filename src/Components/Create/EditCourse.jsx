@@ -358,7 +358,7 @@ function EditCourse() {
                 <img src={krest} alt='' style={{width: '32px', height: '32px'}} />
                 <p>Удалить</p>
             </div>
-            <span>ТЕМА</span>
+            <span>ТЕМА*</span>
             <input 
                 className='billet_name'
                 type='text' 
@@ -367,14 +367,14 @@ function EditCourse() {
                 value={formData.Name || ''}
                 onChange={handleChange} />
 
-            <span>ОПИСАНИЕ</span>
+            <span>ОПИСАНИЕ*</span>
             <div className="select_col">
                 <div className="select_bio">
                   <textarea className='bio_textarea' type='text' placeholder="Описание" name="Desc" value={formData.Desc} onChange={handleChange} />
                 </div>
               </div>
                     
-            <span>УНИВЕРСИТЕТ</span>
+            <span>УНИВЕРСИТЕТ*</span>
 
                 <div className="select_col">
                     <div className="select_univ">
@@ -387,7 +387,7 @@ function EditCourse() {
 
                 {boxIsVisibleUniv ? (<div className="vars_box">{varsUniv}</div>) : (<></>)}
 
-            <span>КУРС</span>
+            <span>КУРС*</span>
                 <div className="select_col">
                     <div className="select_course">
                     {formData.Course.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(formData.Course)}> {formData.Course} </div>) : (<></>)}
@@ -399,7 +399,7 @@ function EditCourse() {
 
                 {boxIsVisibleCourse ? (<div className="vars_box">{varsCourse}</div>) : (<></>)}
 
-            <span>ПРЕДМЕТ</span>
+            <span>ПРЕДМЕТ*</span>
 
             <div className="select_col">
                 <div className="select_subject">
