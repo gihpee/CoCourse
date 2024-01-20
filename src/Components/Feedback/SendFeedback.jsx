@@ -90,7 +90,7 @@ function SendFeedback() {
         'Content-Type': 'application/json',
       },
 
-      body: JSON.stringify({id, userId, updatedFeedbacks}),
+      body: JSON.stringify({id, userId, updatedFeedbacks, feedback}),
       }).then(navigate(`/course/${id}`))
   }
 
@@ -115,7 +115,7 @@ function SendFeedback() {
             <div className="circle"></div>
           </div>
 
-          <span>КОММЕНТАРИЙ*</span>
+          <span style={{marginTop: '12px'}}>КОММЕНТАРИЙ*</span>
           <div className="select_col">
               <div className="select_fb">
                 <textarea className='bio_textarea' type='text' placeholder="Поделись своим мнением..." name="fb_text" value={revValue} onChange={handleRevChange} />
