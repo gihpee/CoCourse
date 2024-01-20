@@ -1,7 +1,7 @@
 import React from "react";
 import hash from '../assets/course/hash.svg'
 import calend from '../assets/course/calender.svg'
-import chat from '../assets/course/chat.svg'
+import chat from '../assets/course/tg.svg'
 import star from '../assets/course/star.svg'
 import boyS from '../assets/course/boy-small.svg'
 import nbS from '../assets/course/nb-small.svg'
@@ -94,7 +94,7 @@ function Course() {
             <div className="getContact_container">
                 <a href={`https://t.me/${userData[0].username}`} className="billet">
                     <img src={chat} alt='' />
-                    <p>Get contact</p>
+                    <p>Написать автору в Telegram</p>
                 </a>
             </div>
             <span>Отзывы</span>

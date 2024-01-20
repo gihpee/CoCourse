@@ -268,7 +268,7 @@ function EditProfile() {
               <span>Оповещения о новых курсах</span>
               <div className="billet" style={{paddingRight: '8px'}}>
                 <img src={bell} alt='' />
-                <p>Уведомления</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Уведомления</p>
                 <div class="toggle-switch">
                   <input type="checkbox" id="toggle" checked={isNotify} onChange={handleNotify}/>
                   <label for="toggle"></label>
@@ -277,40 +277,40 @@ function EditProfile() {
               <span>Обратная связь</span>
               <div className="billet">
                 <img src={magic} alt='' />
-                <p>Сообщить о баге</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Сообщить о баге</p>
               </div>
               <div className="billet">
                 <img src={chat} alt='' />
-                <p>Предложить идею</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Предложить идею</p>
               </div>
               <span>О проекте</span>
               <div className="billet">
                 <img src={bulb} alt='' />
-                <p>Unicon FAQ</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Unicon FAQ</p>
               </div>
               <div className="billet">
                 <img src={sun} alt='' />
-                <p>Что нового?</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Что нового?</p>
               </div>
               <div className="billet">
                 <img src={copy} alt='' />
-                <p>Агентское соглашение</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Агентское соглашение</p>
               </div>
               <div className="billet">
                 <img src={copy} alt='' />
-                <p>Политика конфиденциальности</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Политика конфиденциальности</p>
               </div>
               <div className="billet">
                 <img src={copy} alt='' />
-                <p>Кодекс чести</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Кодекс чести</p>
               </div>
               <div className="billet">
                 <img src={copy} alt='' />
-                <p>Правила пользования</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Правила пользования</p>
               </div>
               <div className="billet">
                 <img src={copy} alt='' />
-                <p>Лицензии</p>
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Лицензии</p>
               </div>
             </div>
            </>
