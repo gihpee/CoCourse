@@ -38,10 +38,12 @@ function SendFeedback() {
   const [sliderValue, setSliderValue] = useState(3);
   const [revValue, setRevValue] = useState("")
 
-  if (userFeedback) {
-    setSliderValue(userFeedback.rate)
-    setRevValue(userFeedback.review)
-  }
+  useEffect(() => {
+    if (userFeedback) {
+      setSliderValue(prevValue => prevValue !== userFeedback.rate ? userFeedback.rate : prevValue);
+      setRevValue(prevValue => prevValue !== userFeedback.review ? userFeedback.review : prevValue);
+    }
+  }, [userFeedback])
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
