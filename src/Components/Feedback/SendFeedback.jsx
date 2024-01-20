@@ -73,11 +73,11 @@ function SendFeedback() {
 
     let date = day + '-' + month + '-' + year
 
-    let feedback = [{rate: sliderValue, 
+    let feedback = {rate: sliderValue, 
                     review: revValue, 
                     user: username, 
                     course: courseName, 
-                    date: date}];
+                    date: date};
 
     let updatedFeedbacks = []
 
