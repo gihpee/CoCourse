@@ -155,7 +155,7 @@ function Course() {
                 <Link to={`/user/${userData[0].id}`} className="card_wp">
                     <div style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black', backgroundImage: `url(${userData[0].photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
                     <div className="points_user">
-                        <div className="point_user"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{userData[0].username}</b></div>
+                        <div className="point_user"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{userData[0].name + ' ' + userData[0].surname}</b></div>
                         <div className="point_user"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{userData[0].university}</div>
                         <div className="point_user"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{(userData[0].subjects).join(', ')}</div>
                         <div className="point_user"><img src={chartS} alt='' style={{ marginRight: '10px' }}/>{userData[0].course}</div>
