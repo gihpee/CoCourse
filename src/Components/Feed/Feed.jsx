@@ -9,6 +9,7 @@ import "./Feed.css";
 
 
 function Feed() {
+  window.scrollTo(0, 0)
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
@@ -26,6 +27,7 @@ function Feed() {
       try {
         const response = await fetch('https://commoncourse.io/');
         const result = await response.json();
+        result.reverse();
 
         setData(result);
       } catch (error) {

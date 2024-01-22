@@ -8,6 +8,7 @@ import hashS from '../assets/feedback/hashS.svg'
 import "./Feedback.css";
 
 function FeedbackUser() {
+    window.scrollTo(0, 0)
 
     const { id } = useParams();
     const [feedbacks, setFeedbacks] = useState([]);

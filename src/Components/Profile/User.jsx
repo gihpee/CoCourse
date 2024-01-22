@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import "./Profile.css";
 
 function User() {
+    window.scrollTo(0, 0)
     const { id } = useParams();
 
     const [userData, setUserData] = useState({});

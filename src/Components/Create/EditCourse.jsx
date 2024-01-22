@@ -10,6 +10,7 @@ import chart from '../assets/profile/chart.svg'
 import "./EditCourse.css";
 
 function EditCourse() {
+    window.scrollTo(0, 0)
 
     const { id } = useParams();
 

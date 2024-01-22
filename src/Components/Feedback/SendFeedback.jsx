@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import "./SendFeedback.css";
 
 function SendFeedback() {
+  window.scrollTo(0, 0)
   const { id } = useParams();
   const { username } = window.Telegram.WebApp.initDataUnsafe.user;
   const [userId, setUserId] = useState(0)

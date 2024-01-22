@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import "./Profile.css";
 
 function Home() {
+  window.scrollTo(0, 0)
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(window.Telegram.WebApp.initDataUnsafe.user)
 

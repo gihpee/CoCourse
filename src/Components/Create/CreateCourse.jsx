@@ -7,6 +7,7 @@ import chart from '../assets/profile/chart.svg'
 import "./CreateCourse.css";
 
 function CreateCourse() {
+    window.scrollTo(0, 0)
 
     const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
 

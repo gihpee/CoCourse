@@ -15,6 +15,7 @@ import "./Course.css";
 
 
 function Course() {
+    window.scrollTo(0, 0)
     const { id } = useParams();
 
     const [data, setData] = useState([]);

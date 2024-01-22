@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Feedback.css";
 
 function FeedbackCourse() {
+    window.scrollTo(0, 0)
 
     const { id } = useParams();
     const [feedbacks, setFeedbacks] = useState([]);

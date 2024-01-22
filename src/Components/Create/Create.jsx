@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 
 function Create() {
+  window.scrollTo(0, 0)
   const { id } = window.Telegram.WebApp.initDataUnsafe.user;
   const [coursesData, setCoursesData] = useState([]);
 
