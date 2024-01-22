@@ -32,3 +32,12 @@
     border-radius: 16px;
     margin-bottom: 8px;
 }
+
+.billet_cb img {
+    width: 32px;
+    height: 32px;
+}
+
+.billet_cb p {
+    width: 80%;
+}
