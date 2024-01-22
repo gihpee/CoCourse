@@ -324,7 +324,7 @@ function EditProfile() {
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Лицензии</p>
               </div>
               <div className="publish">
-                <button className='publish_btn' onClick={handleSave()}>Сохранить</button>
+                <button className='publish_btn' onClick={() => handleSave()}>Сохранить</button>
               </div>
             </div>
            </>
