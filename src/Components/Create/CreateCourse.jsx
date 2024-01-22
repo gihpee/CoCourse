@@ -312,7 +312,7 @@ function CreateCourse() {
                     <div className="select_univ">
                     {formData.Univ.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionUniv(formData.Univ)}> {formData.Univ} </div>) : (<></>)}
 
-                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => setBoxIsVisibleUniv(true)} value={inputValueUniv} />
+                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => {setBoxIsVisibleUniv(true); setBoxIsVisibleCourse(false); setBoxIsVisibleSubject(false)}} value={inputValueUniv} />
 
                     </div>
                 </div>
@@ -324,7 +324,7 @@ function CreateCourse() {
                     <div className="select_course">
                     {formData.Course.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(formData.Course)}> {formData.Course} </div>) : (<></>)}
 
-                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => setBoxIsVisibleCourse(true)} value={inputValueCourse} />
+                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => {setBoxIsVisibleCourse(true); setBoxIsVisibleSubject(false); setBoxIsVisibleUniv(false)}} value={inputValueCourse} />
 
                     </div>
                 </div>
@@ -338,7 +338,7 @@ function CreateCourse() {
                 {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
                 <div className="selected_row" key={option} onClick={() => handleRemoveOptionSubject(option)}>{option}</div> ))) : (<></>)}
 
-                    <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => setBoxIsVisibleSubject(true)} value={inputValueSubject} />
+                    <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => {setBoxIsVisibleSubject(true); setBoxIsVisibleCourse(false); setBoxIsVisibleUniv(false)}} value={inputValueSubject} />
 
                 </div>
             </div>
@@ -367,7 +367,7 @@ function CreateCourse() {
             ))}
 
         </div>
-        <div className="column" style={{marginBottom: '100px'}}>
+        <div className="column" style={{marginBottom: '200px'}}>
             <button className='billet_addd' onClick={addEl}>Add topic</button>
         </div>
         <div className="publish">

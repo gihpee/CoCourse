@@ -226,7 +226,7 @@ function EditProfile() {
 
 
     return <>
-            <div className="back_btn" onClick={() => {handleSave()}}></div>
+            <div className="back_btn" onClick={() => {window.history.back()}}></div>
             <div className="upload-container" style={{marginTop: '-56px'}}>
                 <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
                 <div className="preview-container" id="previewContainer" style={{backgroundImage: `url(${imageSrc})`, opacity: 0.6}}></div>
@@ -245,7 +245,7 @@ function EditProfile() {
                     <div className="select_univ">
                     {uniValue.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionUniv(uniValue)}> {uniValue} </div>) : (<></>)}
 
-                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => setBoxIsVisibleUniv(true)} value={inputValueUniv} />
+                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => {setBoxIsVisibleUniv(true); setBoxIsVisibleCourse(false); setBoxIsVisibleSubject(false)}} value={inputValueUniv} />
 
                     </div>
                 </div>
@@ -257,7 +257,7 @@ function EditProfile() {
                     <div className="select_course">
                     {cValue.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(cValue)}> {cValue} </div>) : (<></>)}
 
-                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => setBoxIsVisibleCourse(true)} value={inputValueCourse} />
+                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => {setBoxIsVisibleCourse(true); setBoxIsVisibleSubject(false); setBoxIsVisibleUniv(false)}} value={inputValueCourse} />
 
                     </div>
                 </div>
@@ -270,7 +270,7 @@ function EditProfile() {
                 {selectedOptions.length > 0 ? (selectedOptions.map((option) => (
                 <div className="selected_row" key={option} onClick={() => handleRemoveOptionSubject(option)}>{option}<img src={lminus} alt=''/></div> ))) : (<></>)}
 
-                    <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => setBoxIsVisibleSubject(true)} value={inputValueSubject} />
+                    <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => {setBoxIsVisibleSubject(true); setBoxIsVisibleCourse(false); setBoxIsVisibleUniv(false)}} value={inputValueSubject} />
 
                 </div>
             </div>
@@ -322,6 +322,9 @@ function EditProfile() {
               <div className="billet">
                 <img src={copy} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Лицензии</p>
+              </div>
+              <div className="publish">
+                <button className='publish_btn' onClick={handleSave()}>Сохранить</button>
               </div>
             </div>
            </>
