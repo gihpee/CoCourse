@@ -101,7 +101,6 @@
 
 .vars_box {
     width: 100%;
-    padding-top: 8px;
     max-height: 304px;
     height: auto;
     display: flex;
@@ -110,7 +109,6 @@
     overflow-y: auto;
     background-color: black;
     border-radius: 16px;
-    margin-top: 8px;
     margin-bottom: 8px;
 }
   

@@ -45,7 +45,7 @@ function FeedbackCourse() {
 
     const cards = feedbacks.map((item, index) => {
         return (<div className="card_feedback" id={index}>
-                    <div className="points" style={{paddingTop: '8px', paddingBottom: '8px'}}>
+                    <div className="points" style={{paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px'}}>
                         <div className="point"><img src={starS} alt='' style={{ marginRight: '10px' }}/><b>{item.review}</b></div>
                         <div className="point"><img src={boyS} alt='' style={{ marginRight: '10px' }}/>{item.user}</div>
                         <div className="point"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{item.course}</div>
