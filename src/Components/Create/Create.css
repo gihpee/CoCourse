@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: sticky;
+    top: 5px;
+    z-index: 150;
 }
 
 .create_button a {
