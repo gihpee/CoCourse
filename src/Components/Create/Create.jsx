@@ -69,7 +69,7 @@ function Create() {
 
   return <div style={{minHeight: '100vh'}}>
       <div className="create_button"><a href='create-course'>
-        <div className="billet" style={{background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)'}}>
+        <div className="billet" style={{background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', marginBottom: '0px'}}>
           <img src={plus} alt='' />
           <p>Создать курс</p>
         </div>
