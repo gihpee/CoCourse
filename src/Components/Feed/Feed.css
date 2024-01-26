@@ -55,8 +55,7 @@
     background: linear-gradient(90deg, rgba(255,255,255,1) 95%, rgba(255,255,255,0) 100%);
     color: transparent;
     -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-font-feature-settings: off;
+    -webkit-text-size-adjust: 100%;
     background-clip: text;
 }
 
