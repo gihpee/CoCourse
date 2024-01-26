@@ -19,7 +19,7 @@ const NavBar = () => {
       <div className="navbar">
         <div className="feed"><Link to='/'>{isActive('/') ? <img src={feed} alt="" /> : <img src={feedN} alt="" />}Лента</Link></div>
         <div className="create"><Link to='/create'>{isActive('/create') ? <img src={plus} alt="" /> : <img src={plusN} alt="" />}Создать</Link></div>
-        <div className="profile"><Link to='/profile'>{isActive('/profile') ? <img src={boy} alt="" /> : <img src={boyN} alt="" />}Про</Link></div>
+        <div className="profile"><Link to='/profile'>{isActive('/profile') ? <img src={boy} alt="" /> : <img src={boyN} alt="" />}Профиль</Link></div>
       </div>
     );
   }
