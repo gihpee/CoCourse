@@ -144,9 +144,8 @@ function Course() {
             </div>
 
             <span style={{marginBottom: '0px'}}>Содержание</span>
-            <div className="acor-container">
-                { topics }
-            </div>
+            {topics.length > 0 ? (<div className="acor-container">{ topics }</div>) : (<p style={{alignSelf: 'center'}}>Не указано</p>)}
+ 
             <span style={{marginTop: '8px'}}>Ментор</span>
             <div className="card_mentor">
             <div className="rate">{20 * average_user_Rate > 50 ? <p>{average_user_Rate}</p> : <p style={{color: 'white'}}>{average_user_Rate}</p>}</div>

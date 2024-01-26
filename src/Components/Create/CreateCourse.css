@@ -221,7 +221,8 @@
     left: 8px;
     width: 48px;
     height: 48px;
-    background-color: #161616;
+    backdrop-filter: blur(10px);
+    background: rgba(16,16,16, 0.7);
     background-image: url('../assets/feedback/back.svg');
     background-position: center;
     border-radius: 24px;
