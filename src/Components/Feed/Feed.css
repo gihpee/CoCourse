@@ -56,6 +56,7 @@
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;
+    -webkit-font-feature-settings: off;
     background-clip: text;
 }
 
