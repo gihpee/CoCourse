@@ -95,6 +95,14 @@ function EditCourse() {
         fetchCourses();
     }, [id])
 
+    useEffect(() => {
+        const textarea = document.querySelector('.bio_textarea');
+        if (textarea && formData.Desc) {
+          textarea.style.height = 'auto';
+          textarea.style.height = textarea.scrollHeight + 'px';
+        }
+      }, [formData.Desc]);
+
     const handleChange = (e) => {
         const { name, value, type } = e.target;
 

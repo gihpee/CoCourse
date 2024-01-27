@@ -68,6 +68,15 @@ function EditProfile() {
         fetchData();
       }, [id]);
 
+      useEffect(() => {
+        const textarea = document.querySelector('.bio_textarea');
+        if (textarea && bioValue) {
+          textarea.style.height = 'auto';
+          textarea.style.height = textarea.scrollHeight + 'px';
+        }
+      }, [bioValue]);
+    
+
       const handleImageChange = (e) => {
         const file = e.target.files[0];
     
@@ -235,7 +244,7 @@ function EditProfile() {
               <span>БИОГРАФИЯ</span>
               <div className="select_col">
                 <div className="select_bio">
-                  <textarea className='bio_textarea' type='text' placeholder="Расскажите о себе и своих достижениях" value={bioValue} onChange={handleBioChange}/>
+                  <textarea className='bio_textarea' type='text' placeholder="Расскажите о себе и своих достижениях" value={bioValue} onChange={handleBioChange} />
                 </div>
               </div>
               <span>УНИВЕРСИТЕТ</span>
