@@ -298,15 +298,15 @@ function EditProfile() {
                 <img src={magic} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Сообщить о баге</p>
               </Link>
-              <a href=' https://forms.gle/NtaWQe2wuiRpcY2L8' className="billet">
+              <Link to="https://forms.gle/NtaWQe2wuiRpcY2L8" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/x9KbBitA1AGDPmXY8");}}>
                 <img src={chat} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Предложить идею</p>
-              </a>
+              </Link>
               <span>О проекте</span>
-              <a href='https://commoncourse.notion.site/17b47b536f314fa8910638dd598308d9?pvs=4' className="billet">
+              <Link to="https://commoncourse.notion.site/17b47b536f314fa8910638dd598308d9?pvs=4" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/x9KbBitA1AGDPmXY8");}}>
                 <img src={bulb} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Common Course FAQ</p>
-              </a>
+              </Link>
               <a href='https://t.me/Common_Course' className="billet">
                 <img src={sun} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Что нового?</p>

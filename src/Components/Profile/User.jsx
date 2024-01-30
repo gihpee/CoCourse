@@ -114,9 +114,9 @@ function User() {
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
           <div className="getContact_container">
-            <a href={`https://t.me/${userData.username}`} className="billet">
+            <a href={`https://t.me/${userData.username}`} className="billet" style={{backgroundColor: '#ffffff'}}>
                     <img src={chat} alt='' />
-                    <p>Написать автору в Telegram</p>
+                    <p style={{color: '#161616', width: 'calc(100% - 48px)', textAlign: 'center'}}>Свяжись с автором и запишись на курс</p>
                 </a>
             </div>
           <span>Отзывы</span>

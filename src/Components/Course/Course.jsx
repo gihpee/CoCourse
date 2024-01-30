@@ -93,9 +93,9 @@ function Course() {
                 <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
             </div>
             <div className="getContact_container">
-                <a href={`https://t.me/${userData[0].username}`} className="billet">
+                <a href={`https://t.me/${userData[0].username}`} className="billet" style={{backgroundColor: '#ffffff'}}>
                     <img src={chat} alt='' />
-                    <p>Написать автору в Telegram</p>
+                    <p style={{color: '#161616', width: 'calc(100% - 48px)', textAlign: 'center'}}>Свяжись с автором и запишись на курс</p>
                 </a>
             </div>
             <span>Отзывы</span>

@@ -65,6 +65,7 @@
     position: relative;
     width: 64px;
     height: 32px;
+    margin-right: 8px;
 }
   
 .toggle-switch input {
@@ -101,5 +102,6 @@
   
 .toggle-switch input:checked + label::before {
     transform: translateX(32px);
+    -webkit-transform: translateX(32px);
 }
 
