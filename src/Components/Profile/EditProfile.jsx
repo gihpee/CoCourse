@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import nb from '../assets/profile/nb.svg'
 import hash from '../assets/profile/hash.svg'
 import sun from '../assets/profile/sun.svg'
@@ -293,10 +294,10 @@ function EditProfile() {
                 </div>
               </div>
               <span>Обратная связь</span>
-              <a href='https://forms.gle/x9KbBitA1AGDPmXY8' className="billet">
+              <Link to="https://forms.gle/x9KbBitA1AGDPmXY8" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/x9KbBitA1AGDPmXY8");}}>
                 <img src={magic} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Сообщить о баге</p>
-              </a>
+              </Link>
               <a href=' https://forms.gle/NtaWQe2wuiRpcY2L8' className="billet">
                 <img src={chat} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Предложить идею</p>

@@ -75,7 +75,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 64px;
     height: 100%;
     background-color: #ccc;
     border-radius: 16px;
@@ -100,6 +100,6 @@
 }
   
 .toggle-switch input:checked + label::before {
-    transform: translateX(28px);
+    transform: translateX(32px);
 }
 
