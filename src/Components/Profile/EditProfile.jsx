@@ -1,7 +1,6 @@
 import React from "react";
 import nb from '../assets/profile/nb.svg'
 import hash from '../assets/profile/hash.svg'
-import copy from '../assets/profile/copy.svg'
 import sun from '../assets/profile/sun.svg'
 import bulb from '../assets/profile/bulb.svg'
 import chat from '../assets/profile/chat.svg'
@@ -294,43 +293,24 @@ function EditProfile() {
                 </div>
               </div>
               <span>Обратная связь</span>
-              <div className="billet">
+              <a href='https://forms.gle/x9KbBitA1AGDPmXY8' className="billet">
                 <img src={magic} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Сообщить о баге</p>
-              </div>
-              <div className="billet">
+              </a>
+              <a href=' https://forms.gle/NtaWQe2wuiRpcY2L8' className="billet">
                 <img src={chat} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Предложить идею</p>
-              </div>
+              </a>
               <span>О проекте</span>
-              <div className="billet">
+              <a href='https://commoncourse.notion.site/17b47b536f314fa8910638dd598308d9?pvs=4' className="billet">
                 <img src={bulb} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Unicon FAQ</p>
-              </div>
-              <div className="billet">
+                <p style={{textAlign: 'left', marginLeft: '12px'}}>Common Course FAQ</p>
+              </a>
+              <a href='https://t.me/Common_Course' className="billet">
                 <img src={sun} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Что нового?</p>
-              </div>
-              <div className="billet">
-                <img src={copy} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Агентское соглашение</p>
-              </div>
-              <div className="billet">
-                <img src={copy} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Политика конфиденциальности</p>
-              </div>
-              <div className="billet">
-                <img src={copy} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Кодекс чести</p>
-              </div>
-              <div className="billet">
-                <img src={copy} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Правила пользования</p>
-              </div>
-              <div className="billet">
-                <img src={copy} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Лицензии</p>
-              </div>
+              </a>
+              
               <div className="publish">
                 <button className='publish_btn' onClick={() => handleSave()}>Сохранить</button>
               </div>
