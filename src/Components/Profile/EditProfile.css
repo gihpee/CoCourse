@@ -98,7 +98,9 @@
     background-color: #fff;
     border-radius: 50%;
     transition: transform 0.3s ease;
-    -webkit-transition: transform 0.3s ease;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transform: transform 0.3s ease;
+    -o-transform: transform 0.3s ease;
 }
   
 .toggle-switch input:checked + label::before {
