@@ -17,6 +17,15 @@ function Feed() {
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
   );
 
+  const filteredDataWithMain = filteredData.reduce((acc, obj) => {
+    if (obj.id === 79) {
+      acc.unshift(obj);
+    } else {
+      acc.push(obj);
+    }
+    return acc
+  }, [])
+
   const handleUniChange = (event) => {
       const value = event.target.value;
       setInputValue(value);
@@ -38,7 +47,7 @@ function Feed() {
     fetchData();
   }, []);
 
-  const appCourses = filteredData.map((item, index) => {
+  const appCourses = filteredDataWithMain.map((item, index) => {
 
     var totalRate = 0;
     var averageRate = 0;

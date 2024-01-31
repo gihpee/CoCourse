@@ -86,6 +86,10 @@ function Course() {
         }
     }
 
+    if (id === '79') {
+        userData[0].username = 'HowToCommonCourse';
+    }
+
     return <>
             <div className="back_btn" onClick={() => navigate(`/`)}></div>
             <div className="prev" style={{backgroundImage: `url(${data[0].image})`, marginTop: '-56px'}}>
@@ -95,7 +99,9 @@ function Course() {
             <div className="getContact_container">
                 <a href={`https://t.me/${userData[0].username}`} className="billet" style={{backgroundColor: '#ffffff'}}>
                     <img src={chat} alt='' />
-                    <p style={{color: '#161616', width: 'calc(100% - 48px)', textAlign: 'center'}}>Свяжись с автором и запишись на курс</p>
+                    {id === '79' ? 
+                    <p style={{color: '#161616', width: 'calc(100% - 76px)', textAlign: 'center'}}>Посетить курс</p> : 
+                    <p style={{color: '#161616', width: 'calc(100% - 48px)', textAlign: 'center'}}>Свяжись с автором и запишись на курс</p>}
                 </a>
             </div>
             <span>Отзывы</span>
