@@ -298,12 +298,12 @@ function EditProfile() {
                 <img src={magic} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Сообщить о баге</p>
               </Link>
-              <Link to="https://forms.gle/NtaWQe2wuiRpcY2L8" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/x9KbBitA1AGDPmXY8");}}>
+              <Link to="https://forms.gle/NtaWQe2wuiRpcY2L8" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/NtaWQe2wuiRpcY2L8");}}>
                 <img src={chat} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Предложить идею</p>
               </Link>
               <span>О проекте</span>
-              <Link to="https://commoncourse.notion.site/17b47b536f314fa8910638dd598308d9?pvs=4" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/x9KbBitA1AGDPmXY8");}}>
+              <Link to="https://t.me/HowToCommonCourse " target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://t.me/HowToCommonCourse ");}}>
                 <img src={bulb} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Common Course FAQ</p>
               </Link>
