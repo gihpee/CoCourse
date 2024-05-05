@@ -142,15 +142,17 @@ function Home() {
                 <p>Редактор</p>
               </div>
               </Link>*/}
-          <span>Отзывы</span>
-          <Link to={`/user-feedback/${userData.id}`}>
-                <div className="feedback">
-                    <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
-                    <div className="row_grad_l">
-                        <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
-                    </div>
-                </div>
-            </Link>
+          <div className="edit_container">
+            <span>Отзывы</span>
+            <Link to={`/user-feedback/${userData.id}`}>
+                  <div className="feedback">
+                      <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
+                      <div className="row_grad_l">
+                          <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+                      </div>
+                  </div>
+              </Link>
+            </div>
 
             <span>Биография</span>
             <div className="select_col">
