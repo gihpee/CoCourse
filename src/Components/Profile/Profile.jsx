@@ -1,5 +1,4 @@
 import React from "react";
-import pencil from '../assets/profile/pencil.svg'
 import cam from "../assets/feed/camera.svg"
 import photo_url from '../assets/profile/avatar.png'
 import calendarS from '../assets/feedback/calendarS.svg'
@@ -133,15 +132,16 @@ function Home() {
   }
 
   return <>
+          <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
-            <Link to={`/edit-profile/${userData.id}`} className="edit_container">
+            {/*<Link to={`/edit-profile/${userData.id}`} className="edit_container">
               <div className="billet">
                 <img src={pencil} alt='' />
                 <p>Редактор</p>
               </div>
-            </Link>
+              </Link>*/}
           <span>Отзывы</span>
           <Link to={`/user-feedback/${userData.id}`}>
                 <div className="feedback">
