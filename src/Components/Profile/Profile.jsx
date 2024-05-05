@@ -133,7 +133,7 @@ function Home() {
 
   return <>
           <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
-          <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`}}>
+          <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`, marginTop: '-56px'}}>
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
             {/*<Link to={`/edit-profile/${userData.id}`} className="edit_container">
