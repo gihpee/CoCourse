@@ -24,7 +24,7 @@
 .edit_btn {
   position: sticky;
   top: 8px;
-  left: 8px;
+  left: calc(100% - 8px);
   width: 48px;
   height: 48px;
   backdrop-filter: blur(10px);
