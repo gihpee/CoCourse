@@ -49,6 +49,8 @@
     flex-direction: row;
     font-size: 14px;
     line-height: 14px;
+    margin-top: 8px;
+    margin-left: 8px;
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
@@ -61,7 +63,7 @@
 
 .rate {
     width: calc(100% - 16px);
-    height: 32px;
+    height: 16px;
     display: flex;
     text-align: center;
     flex-direction: row;
@@ -73,7 +75,7 @@
     background-position: 8px;
     font-weight: 600;
     color: #161616;
-    line-height: 32px;
+    line-height: 16px;
     z-index: 10;
     border: solid #161616 1px;
 }
@@ -85,19 +87,19 @@
 
 .row_grad_l {
     width: calc(100% - 16px);
-    margin-top: -32px;
+    margin-top: 0px;
 }
 
 .grad_l {
     width: 100%;
     background: linear-gradient(to right, #EA4A4F, #D8BB55, #7EBB69);
     border-radius: 16px;
-    height: 32px;
+    height: 16px;
     z-index: 0;
 }
 
 .billet_search {
-    width: 85%;
+    width: calc(85% - 56px);
     height: 48px;
     position: sticky;
     display: flex;
@@ -120,3 +122,81 @@
     padding-right: 8px;
     margin-bottom: 12px;
 }
+
+.price_container {
+    width: 95%;
+    height: 32px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    column-gap: 8px;
+    vertical-align: middle;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.price {
+    position: absolute;
+    left: 8px;
+    font-family: 'NeueMachina';
+    font-size: 16px;
+    color: white;
+
+}
+
+.status_container {
+    font-family: 'NeueMachina';
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 8px;
+}
+
+.student_amount {
+    padding-left: 32px;
+    padding-right: 8px;
+    background-color: #000000B8;
+    color: white;
+    height: 32px;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 8px;
+    background-image: url('../assets/profile/boy.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: 8px;
+
+}
+
+.course_status {
+    padding-left: 32px;
+    padding-right: 8px;
+    background-color: #000000B8;
+    color: white;
+    height: 32px;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 8px;
+    background-image: url('../assets/feed/bag.svg');
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: 8px;
+}
+
+.wallet_btn {
+    position: sticky;
+    top: 8px;
+    left: calc(100% - 8px);
+    width: 48px;
+    height: 48px;
+    backdrop-filter: blur(10px);
+    background: rgba(16,16,16, 0.7);
+    background-image: url('../assets/feed/wallet.svg');
+    background-position: center;
+    background-size: 24px 24px;
+    border-radius: 24px;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+    z-index: 150;
+  }

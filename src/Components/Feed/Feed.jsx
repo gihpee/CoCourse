@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import cam from "../assets/feed/camera.svg"
-import calendarS from '../assets/feedback/calendarS.svg'
-import hash from "../assets/feed/hash.svg"
-import nb from "../assets/feed/notebook.svg"
 import "./Feed.css";
 
 
@@ -16,6 +12,14 @@ function Feed() {
   const filteredData = data.filter((course) =>
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
   );
+
+  function formatDate(dateString) {
+    const parts = dateString.split('-');
+    const day = parts[0].padStart(2, '0');
+    const month = parts[1].padStart(2, '0');
+    const year = parts[2].slice(2);
+    return `${day}.${month}.${year}`;
+  }
 
   const filteredDataWithMain = filteredData.reduce((acc, obj) => {
     if (obj.id === 79) {
@@ -65,16 +69,21 @@ function Feed() {
       <Link to={`/course/${item.id}`} key={index} className="course_card">
         <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
         <div className="card_info">
-          <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
           <div className="row_grad_l">
             <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
           </div>
-          <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '32px', borderRadius: '16px', zIndex: '-10', marginTop: '-32px'}}></div>
+          <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '16px', borderRadius: '16px', zIndex: '-10', marginTop: '-16px'}}></div>
           <div className="points">
-            <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-            <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
-            <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{(item.subjects).join(', ')}</div>
-            <div className="point"><img src={calendarS} alt='' style={{ marginRight: '10px' }}/>{item.date}</div>
+            <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px'}}><b>{item.name}</b></div>
+            <div className="point" style={{color: '#AAAAAA', fontSize: '14px'}}>{item.university}</div>
+            <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.date)}</div>
+          </div>
+          <div className="price_container">
+            <div className="price">2,888 RUB</div>
+            <div className="status_container">
+              <div className="student_amount">10</div>
+              <div className="course_status">Куплено</div>
+            </div>
           </div>
         </div>
       </Link>
@@ -82,12 +91,15 @@ function Feed() {
   })
 
   return <div className="column" style={{minHeight: '100vh'}}>
-      <input
-        className="billet_search"
-        onChange={handleUniChange}
-        placeholder="Введите название курса или ник автора"
-        value={inputValue}
-      />
+      <div className="top_panel" style={{columnGap: '8px'}}>
+        <input
+          className="billet_search"
+          onChange={handleUniChange}
+          placeholder="Введите название курса или ник автора"
+          value={inputValue}
+        />
+            <Link to={`/`} className="wallet_btn"></Link>
+        </div>
       {appCourses}
       </div>;
 }

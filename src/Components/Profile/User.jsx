@@ -1,9 +1,4 @@
 import React from "react";
-import cam from "../assets/feed/camera.svg"
-import chat from '../assets/course/tg.svg'
-import calendarS from '../assets/feedback/calendarS.svg'
-import hashS from "../assets/feed/hash.svg"
-import nbS from "../assets/feed/notebook.svg"
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -16,6 +11,14 @@ function User() {
     const [userData, setUserData] = useState({});
     const [coursesData, setCoursesData] = useState([]);
     const [feedbacks, setFeedbacks] = useState([]);
+
+    function formatDate(dateString) {
+      const parts = dateString.split('-');
+      const day = parts[0].padStart(2, '0');
+      const month = parts[1].padStart(2, '0');
+      const year = parts[2].slice(2);
+      return `${day}.${month}.${year}`;
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -75,21 +78,26 @@ function User() {
 
       return (
         <Link to={`/course/${item.id}`} key={index} className="course_card">
-          <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
-            <div className="card_info">
-            <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
-            <div className="row_grad_l">
-              <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+        <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
+        <div className="card_info">
+          <div className="row_grad_l">
+            <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+          </div>
+          <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '16px', borderRadius: '16px', zIndex: '-10', marginTop: '-16px'}}></div>
+          <div className="points">
+            <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px'}}><b>{item.name}</b></div>
+            <div className="point" style={{color: '#AAAAAA', fontSize: '14px'}}>{item.university}</div>
+            <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.date)}</div>
+          </div>
+          <div className="price_container">
+            <div className="price">2,888 RUB</div>
+            <div className="status_container">
+              <div className="student_amount">10</div>
+              <div className="course_status">Куплено</div>
             </div>
-            <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '32px', borderRadius: '16px', zIndex: '-10', marginTop: '-32px'}}></div>
-                <div className="points">
-                    <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-                    <div className="point"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
-                    <div className="point"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{(item.subjects).join(', ')}</div>
-                    <div className="point"><img src={calendarS} alt='' style={{ marginRight: '10px' }}/>{item.date}</div>
-                </div>
-            </div>
-        </Link>
+          </div>
+        </div>
+      </Link>
       )
     })
   }
@@ -114,20 +122,14 @@ function User() {
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
           <div className="getContact_container">
-            <a href={`https://t.me/${userData.username}`} className="billet" style={{backgroundColor: '#ffffff'}}>
-                    <img src={chat} alt='' />
-                    <p style={{color: '#161616', width: 'calc(100% - 48px)', textAlign: 'center'}}>Свяжись с автором и запишись на курс</p>
-                </a>
-            </div>
           <span>Отзывы</span>
-          <Link to={`/user-feedback/${userData.id}`}>
-                <div className="feedback">
+          <Link to={`/user-feedback/${userData.id}`} className="feedback" style={{width: '100%'}}>
                     <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
                     <div className="row_grad_l">
                         <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
                     </div>
-                </div>
             </Link>
+            </div>
 
             <span>Биография</span>
             <div className="select_col">
@@ -162,6 +164,10 @@ function User() {
                 <span>Курсы</span>
                 {userCourses.length > 0 ? userCourses : <p>Пользователь пока не опубликовал ни один курс</p>}
             </div>
+
+            <a href={`https://t.me/${userData.username}`} className="user_course_action">
+                <button href={`https://t.me/${userData.username}`} className='user_course_action_btn'>НАПИСАТЬ В ТЕЛЕГРАМ</button>
+              </a>
         </>;
 }
 

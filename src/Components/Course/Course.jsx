@@ -1,12 +1,7 @@
 import React from "react";
 import hash from '../assets/course/hash.svg'
 import calend from '../assets/course/calender.svg'
-import chat from '../assets/course/tg.svg'
 import star from '../assets/course/star.svg'
-import boyS from '../assets/course/boy-small.svg'
-import nbS from '../assets/course/nb-small.svg'
-import hashS from '../assets/course/hash-small.svg'
-import chartS from '../assets/course/chart-small.svg'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -71,38 +66,29 @@ function Course() {
         averageRate = Math.round(averageRate * 100) / 100;
     }
 
-    var total_user_Rate = 0;
-    var average_user_Rate = 0;
-
-    if (userData[0].feedback)
-    {
-        if (userData[0].feedback.length > 0) {
-            for (var j = 0; j < userData[0].feedback.length; j++) {
-                total_user_Rate += parseFloat(userData[0].feedback[j].rate);
-            }
-
-            average_user_Rate = total_user_Rate / userData[0].feedback.length;
-            average_user_Rate = Math.round(average_user_Rate * 100) / 100;
-        }
-    }
 
     if (id === '79') {
         userData[0].username = 'HowToCommonCourse';
     }
 
     return <>
-            <div className="back_btn" onClick={() => navigate(`/`)}></div>
+            <div className="top_panel">
+                <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
+                    <div className="status_container" style={{padding: '8px', height: '32px', alignItems: 'center', borderRadius: '24px', background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', right: '8px'}}>
+                        <div className="student_amount" style={{borderRadius: '16px'}}>10</div>
+                        <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>
+                    </div>
+            </div>
             <div className="prev" style={{backgroundImage: `url(${data[0].image})`, marginTop: '-56px'}}>
                 <p>{ data[0].name }</p>
                 <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
             </div>
             <div className="getContact_container">
-                <a href={`https://t.me/${userData[0].username}`} className="billet" style={{backgroundColor: '#ffffff'}}>
-                    <img src={chat} alt='' />
-                    {id === '79' ? 
-                    <p style={{color: '#161616', width: 'calc(100% - 76px)', textAlign: 'center'}}>Посетить курс</p> : 
-                    <p style={{color: '#161616', width: 'calc(100% - 48px)', textAlign: 'center'}}>Свяжись с автором и запишись на курс</p>}
-                </a>
+                <span>ЦЕНА</span>
+                <div className="pricecourse_container">
+                    <div className="course_price">2888 <span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}>RUB</span></div>
+                    <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
+                </div>
             </div>
             <span>Отзывы</span>
             <div className="feedback">
@@ -154,20 +140,18 @@ function Course() {
  
             <span style={{marginTop: '8px'}}>Ментор</span>
             <div className="card_mentor">
-            <div className="rate">{20 * average_user_Rate > 50 ? <p>{average_user_Rate}</p> : <p style={{color: 'white'}}>{average_user_Rate}</p>}</div>
-            <div className="row_grad_l">
-                <div className="grad_l" style={{width: `calc((100% / 5) * ${average_user_Rate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${average_user_Rate}))`}}></div>
-            </div>
                 <Link to={`/user/${userData[0].id}`} className="card_wp">
-                    <div style={{width: '78px', height: '78px', marginLeft: '8px', borderRadius: '32px', border: '1px solid black', backgroundImage: `url(${userData[0].photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
+                    <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(${userData[0].photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
                     <div className="points_user">
-                        <div className="point_user"><img src={boyS} alt='' style={{ marginRight: '10px' }}/><b>{userData[0].first_name + ' ' + userData[0].last_name}</b></div>
-                        <div className="point_user"><img src={nbS} alt='' style={{ marginRight: '10px' }}/>{userData[0].university}</div>
-                        <div className="point_user"><img src={hashS} alt='' style={{ marginRight: '10px' }}/>{(userData[0].subjects).join(', ')}</div>
-                        <div className="point_user"><img src={chartS} alt='' style={{ marginRight: '10px' }}/>{userData[0].course}</div>
+                        <div className="point_user" style={{fontFamily: 'NeueMachina', fontSize: '16px', color: 'white'}}><b>{userData[0].first_name + ' ' + userData[0].last_name}</b></div>
+                        <div className="point_user">{userData[0].university}</div>
                     </div>
                 </Link>
             </div>
+
+            <a href={`/`} className="user_course_action">
+                <button href={`/`} className='user_course_action_btn'>К УЧЕБЕ</button>
+              </a>
         </>
 }
 
