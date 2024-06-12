@@ -18,6 +18,7 @@ import FeedbackCourse from './Components/Feedback/FeedbackCourse'
 import FeedbackUser from './Components/Feedback/FeedbackUser';
 import User from './Components/Profile/User';
 import Draft from './Components/Create/Draft'
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
   tg.WebApp.enableClosingConfirmation()
 
   return (
+    <TonConnectUIProvider manifestUrl="https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json">
     <div className='App'>
       <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <Routes>
@@ -47,6 +49,7 @@ function App() {
           <Route path={'drafts'} element={<Draft />}/>
         </Routes>
     </div>
+    </TonConnectUIProvider>
   );
 }
 
