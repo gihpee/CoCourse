@@ -4,7 +4,6 @@ import { TonConnectButton, useTonAddress, useTonWallet } from '@tonconnect/ui-re
 
 function Wallet() {
     const userFriendlyAddress = useTonAddress();
-    const rawAddress = useTonAddress(false);
     const wallet = useTonWallet();
     
 
