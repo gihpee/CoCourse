@@ -98,7 +98,7 @@ function Feed() {
           placeholder="Введите название курса или ник автора"
           value={inputValue}
         />
-            <Link to={`/`} className="wallet_btn"></Link>
+            <Link to={`/wallet`} className="wallet_btn"></Link>
         </div>
       {appCourses}
       </div>;

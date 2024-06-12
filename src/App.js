@@ -10,6 +10,7 @@ import EditProfile from './Components/Profile/EditProfile'
 import Bio from './Components/Profile/Bio'
 import Subj from './Components/Profile/Subj'
 import Univ from './Components/Profile/Univ'
+import Wallet from './Components/Wallet/Wallet'
 import ECourse from './Components/Profile/ECourse'
 import {Route, Routes} from "react-router-dom"
 import "./App.css";
@@ -47,6 +48,7 @@ function App() {
           <Route path={'user-feedback/:id'} element={<FeedbackUser />}/>
           <Route path={'user/:id'} element={<User />}/>
           <Route path={'drafts'} element={<Draft />}/>
+          <Route path={'wallet'} element={<Wallet />}/>
         </Routes>
     </div>
     </TonConnectUIProvider>
