@@ -1,8 +1,4 @@
 import React, { useEffect } from "react";
-import cam from "../assets/feed/camera.svg"
-import hash from "../assets/feed/hash.svg"
-import calendarS from '../assets/feedback/calendarS.svg'
-import nb from "../assets/feed/notebook.svg"
 import plus from '../assets/create/plus.svg'
 import "./Create.css";
 import { useState } from 'react';
@@ -28,6 +24,14 @@ function Create() {
 
     fetchCourses();
   }, [id])
+
+  function formatDate(dateString) {
+    const parts = dateString.split('-');
+    const day = parts[0].padStart(2, '0');
+    const month = parts[1].padStart(2, '0');
+    const year = parts[2].slice(2);
+    return `${day}.${month}.${year}`;
+  }
 
   var userCourses;
 
