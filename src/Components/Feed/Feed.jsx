@@ -68,8 +68,6 @@ function Feed() {
     fetchUserCoursesData();
   }, [id]);
 
-  console.log(userCourses);
-
   const appCourses = filteredDataWithMain.map((item, index) => {
 
     var totalRate = 0;
@@ -101,7 +99,7 @@ function Feed() {
             <div className="price">{item.price} RUB</div>
             <div className="status_container">
               <div className="student_amount">{item.amount}</div>
-              <div className="course_status">Куплено</div>
+              {item.id in userCourses && <div className="course_status">Куплено</div>}
             </div>
           </div>
         </div>
