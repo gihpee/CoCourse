@@ -26,19 +26,23 @@ function Course() {
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
 
+    let headers = new Headers();
+    headers.append('Access-Control-Allow-Origin', 'https://master--cosmic-axolotl-6ea6bd.netlify.app');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/getcourse?id=${course_id}`)
+            const response = await fetch(`https://commoncourse.io/getcourse?id=${course_id}`, {headers: headers})
             const result = await response.json();
 
-            const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`)
+            const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`, {headers: headers})
             const result_user = await response_user.json();
 
-            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
+            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`, {headers: headers});
             const result_paid = await response_paid.json();
 
-            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`);
+            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`, {headers: headers});
             const result_own = await response_own.json();
             
             setUserCourses(result_paid);
