@@ -1,5 +1,5 @@
 import React from "react";
-import { TonConnectButton, useTonAddress, useTonWallet, useTonConnectUI, Locales } from '@tonconnect/ui-react';
+import { TonConnectButton, useTonAddress, useTonConnectUI } from '@tonconnect/ui-react';
 
 
 function Wallet() {
