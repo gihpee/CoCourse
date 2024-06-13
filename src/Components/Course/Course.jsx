@@ -26,11 +26,11 @@ function Course() {
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
 
-    let headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', 'https://master--cosmic-axolotl-6ea6bd.netlify.app');
-    headers.append('Access-Control-Allow-Credentials', 'true');
-
     useEffect(() => {
+        let headers = new Headers();
+        headers.append('Access-Control-Allow-Origin', 'https://master--cosmic-axolotl-6ea6bd.netlify.app');
+        headers.append('Access-Control-Allow-Credentials', 'true');
+
         const fetchData = async () => {
         try {
             const response = await fetch(`https://commoncourse.io/getcourse?id=${course_id}`, {headers: headers})
@@ -57,7 +57,7 @@ function Course() {
         };
 
         fetchData();
-    }, [course_id, id, headers]);
+    }, [course_id, id]);
 
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
