@@ -73,17 +73,15 @@ function Course() {
     const paid = userCourses.some(course => course.course_id === id);
     const own = coursesData.some(course => course.id === id);
 
-    if (!paid) {
-        const myTransaction = {
-            validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
-            messages: [
-                {
-                    address: "EQBBJBB3HagsujBqVfqeDUPJ0kXjgTPLWPFFffuNXNiJL0aA",
-                    amount: "20000000",
-                    // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
-                }
-            ]
-        }
+    const myTransaction = {
+        validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+        messages: [
+            {
+                address: "EQBBJBB3HagsujBqVfqeDUPJ0kXjgTPLWPFFffuNXNiJL0aA",
+                amount: "20000000",
+                // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
+            }
+        ]
     }
 
     const topics = data[0].topics.map((item, index) => {
