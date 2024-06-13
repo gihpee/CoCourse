@@ -34,6 +34,15 @@ function Course() {
 
             const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`)
             const result_user = await response_user.json();
+
+            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${user_id}`);
+            const result_paid = await response_paid.json();
+
+            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${user_id}`);
+            const result_own = await response_own.json();
+            
+            setUserCourses(result_paid);
+            setCoursesData(result_own);
             
             setData(result);
             setUserData(result_user);
@@ -44,27 +53,7 @@ function Course() {
         };
 
         fetchData();
-    }, [id]);
-
-    useEffect(() => {
-        const fetchCourseData = async () => {
-        try {
-            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${user_id}`);
-            const result_paid = await response_paid.json();
-
-            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${user_id}`);
-            const result_own = await response_own.json();
-            
-            setUserCourses(result_paid);
-            setCoursesData(result_own);
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        };
-
-        fetchCourseData();
-    }, [user_id]);
+    }, [id, user_id]);
 
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
