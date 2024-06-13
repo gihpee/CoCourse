@@ -27,6 +27,8 @@ function EditCourse() {
         Univ: '',
         Course: '',
         Desc: '',
+        Price: null,
+        ChannelUrl: '',
         Subjects: [],
         topics: [],
     });
@@ -76,6 +78,8 @@ function EditCourse() {
                     Desc: data[0].description,
                     Subjects: data[0].subjects,
                     topics: data[0].topics,
+                    Price: data[0].price,
+                    ChannelUrl: data[0].channel_url
                 }
             });
             setImageSrc(data[0].image)
@@ -376,6 +380,25 @@ function EditCourse() {
                 <img src={krest} alt='' style={{width: '32px', height: '32px'}} />
                 <p>Удалить</p>
             </div>
+
+            <span>СУММА К ПОЛУЧЕНИЮ (RUB)*</span>
+            <input 
+                className='billet_price'
+                type='number' 
+                placeholder="0"
+                name="Price"
+                value={formData.Price || null}
+                onChange={handleChange} />
+
+            <span>ССЫЛКА НА ГРУППУ ИЛИ КАНАЛ*</span>
+            <input 
+                className='billet_price'
+                type='text' 
+                placeholder="URL"
+                name="ChannelUrl"
+                value={formData.ChannelUrl || ''}
+                onChange={handleChange} />
+                
             <span>ТЕМА*</span>
             <input 
                 className='billet_name'

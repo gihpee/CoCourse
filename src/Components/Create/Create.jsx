@@ -69,9 +69,9 @@ function Create() {
             <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.date)}</div>
           </div>
           <div className="price_container">
-            <div className="price">{item.price}</div>
+            <div className="price">{item.price} RUB</div>
             <div className="status_container">
-              <div className="student_amount">10</div>
+              {!item.is_draft && <div className="student_amount">{item.amount}</div>}
               {item.is_draft ? <div className="course_status">Черновик</div> : <div className="course_status">Мой</div>}
             </div>
           </div>
