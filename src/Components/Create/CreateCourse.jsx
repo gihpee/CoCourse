@@ -175,7 +175,7 @@ function CreateCourse() {
           },
 
           body: JSON.stringify({name, university, course, description, subjects, topics, date, user, image, username, price, channel_url}),
-      }).then(navigate('/draft'))
+      }).then(navigate('/create'))
         
     };
 
