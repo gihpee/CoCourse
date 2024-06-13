@@ -307,7 +307,7 @@ function CreateCourse() {
       ));
 
     return <>
-        <div className="back_btn" onClick={setModalDraftOpen(true)}></div>
+        <div className="back_btn" onClick={() => setModalDraftOpen(true)}></div>
 
         {modalFillOpen && (
             <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
