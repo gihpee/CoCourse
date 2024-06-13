@@ -8,7 +8,9 @@ import "./CreateCourse.css";
 
 function CreateCourse() {
 
-    const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
+    //const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
+    const id = 12;
+    const username = 'adsd';
 
     var currentDate = new Date();
     const navigate = useNavigate();
@@ -18,6 +20,8 @@ function CreateCourse() {
         Univ: '',
         Course: '1 курс, 1 семестр',
         Desc: '',
+        Price: null,
+        ChannelUrl: '',
         Subjects: [],
         topics: [],
     });
@@ -31,6 +35,7 @@ function CreateCourse() {
     const optionsCourse = ['1 курс, 1 семестр', '1 курс, 2 семестр', '2 курс, 1 семестр', '2 курс, 2 семестр', '3 курс, 1 семестр', '3 курс, 2 семестр', '4 курс, 1 семестр', '4 курс, 2 семестр', '5 курс, 1 семестр', '5 курс, 2 семестр', '6 курс, 1 семестр', '6 курс, 2 семестр']
 
     const [modalFillOpen, setModalFillOpen] = useState(false);
+    const [modalDraftOpen, setModalDraftOpen] = useState(false);
 
     const handleChange = (e) => {
         const { name, value, type } = e.target;
@@ -131,6 +136,8 @@ function CreateCourse() {
           let date = day + '-' + month + '-' + year
           let image = imageSrc;
           let feedback = [];
+          let price = formData.Price || 0;
+          let channel_url = formData.ChannelUrl;
 
           await fetch('https://commoncourse.io/course', {
               method: 'POST',
@@ -138,9 +145,37 @@ function CreateCourse() {
                   'Content-Type': 'application/json',
               },
 
-              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username}),
+              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url}),
           }).then(navigate('/create'))
       }
+        
+    };
+
+    const handleSaveDraft = async () => {
+      var day = currentDate.getDate();
+      var month = currentDate.getMonth() + 1;
+      var year = currentDate.getFullYear();
+
+      let name = formData.Name;
+      let university = formData.Univ;
+      let course = formData.Course;
+      let description = formData.Desc;
+      let subjects = formData.Subjects;
+      let topics = formData.topics; 
+      let user = id;
+      let date = day + '-' + month + '-' + year
+      let image = imageSrc;
+      let price = formData.Price || 0;
+      let channel_url = formData.ChannelUrl;
+
+      await fetch('https://commoncourse.io/draft', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+
+          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, image, username, price, channel_url}),
+      }).then(navigate('/draft'))
         
     };
 
@@ -272,7 +307,7 @@ function CreateCourse() {
       ));
 
     return <>
-        <div className="back_btn" onClick={() => {window.history.back()}}></div>
+        <div className="back_btn" onClick={() => {setModalDraftOpen(true)}}></div>
 
         {modalFillOpen && (
             <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
@@ -283,13 +318,46 @@ function CreateCourse() {
             </div>
         )}
 
+        {modalDraftOpen && (
+          <div className="modal">
+          <div className="modal-content">
+              <p>Сохранить черновик?</p>
+              <p style={{color: '#aaaaaa', 
+                      fontSize: '14px', 
+                      fontWeight: '400', 
+                      lineHeight: '18.2px', 
+                      marginTop: '16px'}}>Восстановить публикацию будет невозможно</p>
+              <button className='modal_btn_n' onClick={window.history.back()}>Нет</button>
+              <button className='modal_btn_y' onClick={handleSaveDraft}>Да</button>
+          </div>
+      </div>
+        )}
+
         <div className="upload-container" style={{marginTop: '-56px'}}>
             <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
             <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
             <div className="prev_filter"></div>
         </div>
         <div className="column" id='main' style={{marginTop: '-64px', borderRadius: '24px',
-        borderBottomLeftRadius: '0px', borderBottomRightRadius: '0px', backgroundColor: 'black', paddingTop: '8px'}}>
+        borderBottomLeftRadius: '0px', borderBottomRightRadius: '0px', backgroundColor: 'black', paddingTop: '8px'}}>   
+            <span>СУММА К ПОЛУЧЕНИЮ (RUB)*</span>
+            <input 
+                className='billet_price'
+                type='number' 
+                placeholder="0"
+                name="Price"
+                value={formData.Price || null}
+                onChange={handleChange} />
+
+            <span>ССЫЛКА НА ГРУППУ ИЛИ КАНАЛ*</span>
+            <input 
+                className='billet_price'
+                type='text' 
+                placeholder="URL"
+                name="ChannelUrl"
+                value={formData.ChannelUrl || ''}
+                onChange={handleChange} />
+
             <span>ТЕМА*</span>
             <input 
                 className='billet_name'
