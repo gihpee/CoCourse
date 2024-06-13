@@ -119,7 +119,7 @@ function Course() {
     }
 
 
-    if (course_id === '79') {
+    if (cid === '79') {
         userData[0].username = 'HowToCommonCourse';
     }
 
