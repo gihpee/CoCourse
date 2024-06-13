@@ -114,9 +114,9 @@ function Home() {
             <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.date)}</div>
           </div>
           <div className="price_container">
-            <div className="price">2,888 RUB</div>
+            <div className="price">{item.price} RUB</div>
             <div className="status_container">
-              <div className="student_amount">10</div>
+              <div className="student_amount">{item.amount}</div>
               <div className="course_status">Мой</div>
             </div>
           </div>

@@ -6,8 +6,10 @@ import "./Feed.css";
 
 function Feed() {
   window.scrollTo(0, 0)
+  const { id } = window.Telegram.WebApp.initDataUnsafe.user;
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [userCourses, setUserCourses] = useState([]);
 
   const filteredData = data.filter((course) =>
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
@@ -50,6 +52,23 @@ function Feed() {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchUserCoursesData = async () => {
+      try {
+        const response = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
+        const result = await response.json();
+
+        setUserCourses(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchUserCoursesData();
+  }, []);
+
+  console.log(userCourses);
 
   const appCourses = filteredDataWithMain.map((item, index) => {
 
