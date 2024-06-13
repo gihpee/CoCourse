@@ -8,9 +8,9 @@ import "./CreateCourse.css";
 
 function CreateCourse() {
 
-    //const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
-    const id = 12;
-    const username = 'adsd';
+    const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
+    //const id = 12;
+    //const username = 'adsd';
 
     var currentDate = new Date();
     const navigate = useNavigate();
