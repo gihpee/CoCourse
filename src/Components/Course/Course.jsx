@@ -6,17 +6,25 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { useTonConnectUI } from '@tonconnect/ui-react';
 import "./Course.css";
 
 
 function Course() {
     window.scrollTo(0, 0)
     const { id } = useParams();
+    const { user_id } = window.Telegram.WebApp.initDataUnsafe.user;
 
     const [data, setData] = useState([]);
     const [userData, setUserData] = useState([]);
+
+    const [userCourses, setUserCourses] = useState([]);
+    const [coursesData, setCoursesData] = useState([]);
     
     const navigate = useNavigate();
+
+    const [tonConnectUI, setOptions] = useTonConnectUI();
+    setOptions({ language: 'ru' });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,8 +46,44 @@ function Course() {
         fetchData();
     }, [id]);
 
+    useEffect(() => {
+        const fetchCourseData = async () => {
+        try {
+            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
+            const result_paid = await response_paid.json();
+
+            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`);
+            const result_own = await response_own.json();
+            
+            setUserCourses(result_paid);
+            setCoursesData(result_own);
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
+
+        fetchCourseData();
+    }, [user_id]);
+
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
+    }
+
+    const paid = userCourses.some(course => course.course_id === id);
+    const own = coursesData.some(course => course.id === id);
+
+    if (!paid) {
+        const myTransaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+            messages: [
+                {
+                    address: "EQBBJBB3HagsujBqVfqeDUPJ0kXjgTPLWPFFffuNXNiJL0aA",
+                    amount: "20000000",
+                    // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
+                }
+            ]
+        }
     }
 
     const topics = data[0].topics.map((item, index) => {
@@ -75,8 +119,9 @@ function Course() {
             <div className="top_panel">
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                     <div className="status_container" style={{padding: '8px', height: '32px', alignItems: 'center', borderRadius: '24px', background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', right: '8px'}}>
-                        <div className="student_amount" style={{borderRadius: '16px'}}>10</div>
-                        <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>
+                        <div className="student_amount" style={{borderRadius: '16px'}}>{data[0].amount}</div>
+                        {paid && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
+                        {own && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
                     </div>
             </div>
             <div className="prev" style={{backgroundImage: `url(${data[0].image})`, marginTop: '-56px'}}>
@@ -86,7 +131,7 @@ function Course() {
             <div className="getContact_container">
                 <span>ЦЕНА</span>
                 <div className="pricecourse_container">
-                    <div className="course_price">2888 <span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}>RUB</span></div>
+                    <div className="course_price">{data[0].price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}>RUB</span></div>
                     <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
                 </div>
             </div>
@@ -148,10 +193,15 @@ function Course() {
                     </div>
                 </Link>
             </div>
-
-            <a href={`/`} className="user_course_action">
-                <button href={`/`} className='user_course_action_btn'>К УЧЕБЕ</button>
+            
+            {paid ? 
+            <a href={data[0].channel_url} className="user_course_action">
+                <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
               </a>
+            :
+            <button onClick={() => tonConnectUI.sendTransaction(myTransaction)} className='user_course_action_btn'>
+                КУПИТЬ
+            </button>}
         </>
 }
 
