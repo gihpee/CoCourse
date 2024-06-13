@@ -13,13 +13,13 @@ import "./Course.css";
 function Course() {
     window.scrollTo(0, 0)
     const { course_id } = useParams();
-    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+    //const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
     const [data, setData] = useState([]);
     const [userData, setUserData] = useState([]);
 
-    const [userCourses, setUserCourses] = useState([]);
-    const [coursesData, setCoursesData] = useState([]);
+    /*const [userCourses, setUserCourses] = useState([]);
+    const [coursesData, setCoursesData] = useState([]);*/
     
     const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ function Course() {
         fetchData();
     }, [course_id]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchUserCoursesData = async () => {
           try {
             const response = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
@@ -74,14 +74,17 @@ function Course() {
         };
     
         fetchCourses();
-    }, [id])
+    }, [id])*/
 
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
 
-    const paid = userCourses.some(course => course.course_id === course_id);
-    const own = coursesData.some(course => course.id === course_id);
+    /*const paid = userCourses.some(course => course.course_id === course_id);
+    const own = coursesData.some(course => course.id === course_id);*/
+
+    const paid = true;
+    const own = false;
 
     const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
