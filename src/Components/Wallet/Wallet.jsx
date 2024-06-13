@@ -5,6 +5,7 @@ import { TonConnectButton, useTonAddress, useTonConnectUI } from '@tonconnect/ui
 function Wallet() {
     const userFriendlyAddress = useTonAddress();
     const [tonConnectUI, setOptions] = useTonConnectUI();
+    setOptions({ language: 'ru' });
 
     const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
