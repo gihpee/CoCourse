@@ -99,7 +99,7 @@ function Feed() {
             <div className="price">{item.price} RUB</div>
             <div className="status_container">
               <div className="student_amount">{item.amount}</div>
-              {{'course_id': item.id} in userCourses && <div className="course_status">Куплено</div>}
+              {userCourses.some(course => course.course_id === item.id) && <div className="course_status">Куплено</div>}
             </div>
           </div>
         </div>
