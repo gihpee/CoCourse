@@ -27,26 +27,13 @@ function Course() {
     setOptions({ language: 'ru' });
 
     useEffect(() => {
-        let headers = new Headers();
-        headers.append('Access-Control-Allow-Origin', 'https://master--cosmic-axolotl-6ea6bd.netlify.app');
-        headers.append('Access-Control-Allow-Credentials', 'true');
-
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/getcourse?id=${course_id}`, {headers: headers})
+            const response = await fetch(`https://commoncourse.io/getcourse?id=${course_id}`)
             const result = await response.json();
 
-            const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`, {headers: headers})
+            const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`)
             const result_user = await response_user.json();
-
-            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`, {headers: headers});
-            const result_paid = await response_paid.json();
-
-            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`, {headers: headers});
-            const result_own = await response_own.json();
-            
-            setUserCourses(result_paid);
-            setCoursesData(result_own);
             
             setData(result);
             setUserData(result_user);
@@ -57,11 +44,41 @@ function Course() {
         };
 
         fetchData();
-    }, [course_id, id]);
+    }, [course_id]);
 
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
+
+    useEffect(() => {
+        const fetchUserCoursesData = async () => {
+          try {
+            const response = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
+            const result = await response.json();
+    
+            setUserCourses(result);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchUserCoursesData();
+      }, [id]);
+    
+    useEffect(() => {
+        const fetchCourses = async () => {
+          try {
+            const response = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`);
+            const result = await response.json();
+    
+            setCoursesData(result);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchCourses();
+    }, [id])
 
     const paid = userCourses.some(course => course.course_id === course_id);
     const own = coursesData.some(course => course.id === course_id);
