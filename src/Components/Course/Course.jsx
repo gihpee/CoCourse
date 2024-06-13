@@ -46,10 +46,6 @@ function Course() {
         fetchData();
     }, [course_id]);
 
-    if (data.length === 0) {
-        return <div className="loading"></div>; // или что-то другое, пока данные загружаются
-    }
-
     useEffect(() => {
         const fetchUserCoursesData = async () => {
           try {
@@ -63,7 +59,7 @@ function Course() {
         };
     
         fetchUserCoursesData();
-      }, [id]);
+    }, [id]);
     
     useEffect(() => {
         const fetchCourses = async () => {
@@ -79,6 +75,10 @@ function Course() {
     
         fetchCourses();
     }, [id])
+
+    if (data.length === 0) {
+        return <div className="loading"></div>; // или что-то другое, пока данные загружаются
+    }
 
     const paid = userCourses.some(course => course.course_id === course_id);
     const own = coursesData.some(course => course.id === course_id);
