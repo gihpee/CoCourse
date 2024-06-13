@@ -84,6 +84,8 @@ function Feed() {
     fetchCourses();
   }, [id])
 
+  console.log(coursesData);
+
   const appCourses = filteredDataWithMain.map((item, index) => {
 
     var totalRate = 0;
