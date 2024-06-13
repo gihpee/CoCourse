@@ -307,7 +307,7 @@ function CreateCourse() {
       ));
 
     return <>
-        <div className="back_btn" onClick={() => {setModalDraftOpen(true)}}></div>
+        <div className="back_btn" onClick={setModalDraftOpen(true)}></div>
 
         {modalFillOpen && (
             <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
@@ -327,7 +327,7 @@ function CreateCourse() {
                       fontWeight: '400', 
                       lineHeight: '18.2px', 
                       marginTop: '16px'}}>Восстановить публикацию будет невозможно</p>
-              <button className='modal_btn_n' onClick={window.history.back()}>Нет</button>
+              <button className='modal_btn_n' onClick={() => window.history.back()}>Нет</button>
               <button className='modal_btn_y' onClick={handleSaveDraft}>Да</button>
           </div>
       </div>
