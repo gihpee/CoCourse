@@ -49,19 +49,24 @@ function Create() {
       return (
         <Link to={`/edit-course/${item.id}`} key={index} className="course_card">
           <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
-            <div className="card_info">
-            <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
-            <div className="row_grad_l">
-              <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+        <div className="card_info">
+          <div className="row_grad_l">
+            <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+          </div>
+          <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '16px', borderRadius: '16px', zIndex: '-10', marginTop: '-16px'}}></div>
+          <div className="points">
+            <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px'}}><b>{item.name}</b></div>
+            <div className="point" style={{color: '#AAAAAA', fontSize: '14px'}}>{item.university}</div>
+            <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.date)}</div>
+          </div>
+          <div className="price_container">
+            <div className="price">{item.price}</div>
+            <div className="status_container">
+              <div className="student_amount">10</div>
+              {item.is_draft ? <div className="course_status">Черновик</div> : <div className="course_status">Мой</div>}
             </div>
-            <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '32px', borderRadius: '16px', zIndex: '-10', marginTop: '-32px'}}></div>
-              <div className="points">
-                <div className="point"><img src={cam} alt='' style={{ marginRight: '10px' }}/><b>{item.name}</b></div>
-                <div className="point"><img src={nb} alt='' style={{ marginRight: '10px' }}/>{item.university}</div>
-                <div className="point"><img src={hash} alt='' style={{ marginRight: '10px' }}/>{(item.subjects).join(', ')}</div>
-                <div className="point"><img src={calendarS} alt='' style={{ marginRight: '10px' }}/>{item.date}</div>
-              </div>
-            </div>
+          </div>
+        </div>
         </Link>
       )
     })

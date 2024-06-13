@@ -126,10 +126,10 @@ function CreateCourse() {
           var month = currentDate.getMonth() + 1;
           var year = currentDate.getFullYear();
 
-          let name = formData.Name;
-          let university = formData.Univ;
+          let name = formData.Name || 'Не указано';
+          let university = formData.Univ || 'Не указано';
           let course = formData.Course;
-          let description = formData.Desc;
+          let description = formData.Desc || 'Не указано';
           let subjects = formData.Subjects;
           let topics = formData.topics; 
           let user = id;
@@ -138,6 +138,7 @@ function CreateCourse() {
           let feedback = [];
           let price = formData.Price || 0;
           let channel_url = formData.ChannelUrl;
+          let is_draft = false;
 
           await fetch('https://commoncourse.io/course', {
               method: 'POST',
@@ -145,7 +146,7 @@ function CreateCourse() {
                   'Content-Type': 'application/json',
               },
 
-              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url}),
+              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft}),
           }).then(navigate('/create'))
       }
         
@@ -167,14 +168,15 @@ function CreateCourse() {
       let image = imageSrc;
       let price = formData.Price || 0;
       let channel_url = formData.ChannelUrl;
+      let is_draft = true;
 
-      await fetch('https://commoncourse.io/draft', {
+      await fetch('https://commoncourse.io/course', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
           },
 
-          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, image, username, price, channel_url}),
+          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, image, username, price, channel_url, is_draft}),
       }).then(navigate('/create'))
         
     };
