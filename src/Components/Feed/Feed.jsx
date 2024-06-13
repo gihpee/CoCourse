@@ -10,6 +10,7 @@ function Feed() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [userCourses, setUserCourses] = useState([]);
+  const [coursesData, setCoursesData] = useState([]);
 
   const filteredData = data.filter((course) =>
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
@@ -68,6 +69,21 @@ function Feed() {
     fetchUserCoursesData();
   }, [id]);
 
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`);
+        const result = await response.json();
+
+        setCoursesData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchCourses();
+  }, [id])
+
   const appCourses = filteredDataWithMain.map((item, index) => {
 
     var totalRate = 0;
@@ -100,6 +116,7 @@ function Feed() {
             <div className="status_container">
               <div className="student_amount">{item.amount}</div>
               {userCourses.some(course => course.course_id === item.id) && <div className="course_status">Куплено</div>}
+              {coursesData.some(course => course.id === item.id) && <div className="course_status">Мой</div>}
             </div>
           </div>
         </div>
