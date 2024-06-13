@@ -49,10 +49,10 @@ function Course() {
     useEffect(() => {
         const fetchCourseData = async () => {
         try {
-            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
+            const response_paid = await fetch(`https://commoncourse.io/user-paid-courses?id=${user_id}`);
             const result_paid = await response_paid.json();
 
-            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`);
+            const response_own = await fetch(`https://commoncourse.io/user-made-courses?id=${user_id}`);
             const result_own = await response_own.json();
             
             setUserCourses(result_paid);
