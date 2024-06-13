@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useTonConnectUI } from '@tonconnect/ui-react';
+//import { useTonConnectUI } from '@tonconnect/ui-react';
 import "./Course.css";
 
 
@@ -23,8 +23,8 @@ function Course() {
     
     const navigate = useNavigate();
 
-    const [tonConnectUI, setOptions] = useTonConnectUI();
-    setOptions({ language: 'ru' });
+    /*const [tonConnectUI, setOptions] = useTonConnectUI();
+    setOptions({ language: 'ru' });*/
 
     useEffect(() => {
         const fetchData = async () => {
@@ -86,7 +86,7 @@ function Course() {
     const paid = true;
     const own = false;
 
-    const myTransaction = {
+    /*const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
@@ -95,7 +95,7 @@ function Course() {
                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
             }
         ]
-    }
+    }*/
 
     const topics = data[0].topics.map((item, index) => {
         return (
@@ -204,15 +204,19 @@ function Course() {
                     </div>
                 </Link>
             </div>
+
+            <a href={data[0].channel_url} className="user_course_action">
+                <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
+              </a>
             
-            {paid ? 
+            {/*{paid ? 
             <a href={data[0].channel_url} className="user_course_action">
                 <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
               </a>
             :
             <button onClick={() => tonConnectUI.sendTransaction(myTransaction)} className='user_course_action_btn'>
                 КУПИТЬ
-            </button>}
+            </button>}*/}
         </>
 }
 
