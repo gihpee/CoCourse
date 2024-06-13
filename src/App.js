@@ -34,7 +34,7 @@ function App() {
           <Route index element={<><Feed /> <NavBar /> </>}/>
           <Route path={'create'} element={<><Create /> <NavBar /> </>}/>
           <Route path={'profile'} element={<><Profile /> <NavBar /> </>}/>
-          <Route path={'course/:id'} element={<Course />}/>
+          <Route path={'course/:cid'} element={<Course />}/>
           <Route path={'create-course'} element={<CreateCourse />}/>
           <Route path={'send-feedback/:id'} element={<SendFeedback />}/>
           <Route path={'edit-profile/:id'} element={<EditProfile />}/>

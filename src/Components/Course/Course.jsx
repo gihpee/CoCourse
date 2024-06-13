@@ -6,30 +6,30 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-//import { useTonConnectUI } from '@tonconnect/ui-react';
+import { useTonConnectUI } from '@tonconnect/ui-react';
 import "./Course.css";
 
 
 function Course() {
     window.scrollTo(0, 0)
-    const { course_id } = useParams();
-    //const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+    const { cid } = useParams();
+    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
     const [data, setData] = useState([]);
     const [userData, setUserData] = useState([]);
 
-    /*const [userCourses, setUserCourses] = useState([]);
-    const [coursesData, setCoursesData] = useState([]);*/
+    const [userCourses, setUserCourses] = useState([]);
+    const [coursesData, setCoursesData] = useState([]);
     
     const navigate = useNavigate();
 
-    /*const [tonConnectUI, setOptions] = useTonConnectUI();
-    setOptions({ language: 'ru' });*/
+    const [tonConnectUI, setOptions] = useTonConnectUI();
+    setOptions({ language: 'ru' });
 
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/getcourse?id=${course_id}`)
+            const response = await fetch(`https://commoncourse.io/getcourse?id=${cid}`)
             const result = await response.json();
 
             const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`)
@@ -44,9 +44,9 @@ function Course() {
         };
 
         fetchData();
-    }, [course_id]);
+    }, [cid]);
 
-    /*useEffect(() => {
+    useEffect(() => {
         const fetchUserCoursesData = async () => {
           try {
             const response = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
@@ -74,19 +74,16 @@ function Course() {
         };
     
         fetchCourses();
-    }, [id])*/
+    }, [id])
 
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
 
-    /*const paid = userCourses.some(course => course.course_id === course_id);
-    const own = coursesData.some(course => course.id === course_id);*/
+    const paid = userCourses.some(course => course.course_id === cid);
+    const own = coursesData.some(course => course.id === cid);
 
-    const paid = true;
-    const own = false;
-
-    /*const myTransaction = {
+    const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
@@ -95,7 +92,7 @@ function Course() {
                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
             }
         ]
-    }*/
+    }
 
     const topics = data[0].topics.map((item, index) => {
         return (
@@ -148,13 +145,13 @@ function Course() {
             </div>
             <span>Отзывы</span>
             <div className="feedback">
-                <Link to={`/course-feedback/${course_id}`}>
+                <Link to={`/course-feedback/${cid}`}>
                 <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
                 <div className="row_grad_l">
                     <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
                 </div>
                 </Link>
-                <Link to={`/send-feedback/${course_id}`}>
+                <Link to={`/send-feedback/${cid}`}>
                     <div className="billet">
                         <img src={star} alt='' />
                         <p>Оставить отзыв</p>
@@ -204,19 +201,15 @@ function Course() {
                     </div>
                 </Link>
             </div>
-
-            <a href={data[0].channel_url} className="user_course_action">
-                <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
-              </a>
             
-            {/*{paid ? 
+            {paid ? 
             <a href={data[0].channel_url} className="user_course_action">
                 <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
               </a>
             :
             <button onClick={() => tonConnectUI.sendTransaction(myTransaction)} className='user_course_action_btn'>
                 КУПИТЬ
-            </button>}*/}
+            </button>}
         </>
 }
 
