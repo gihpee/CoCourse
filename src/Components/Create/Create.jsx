@@ -41,14 +41,19 @@ function Create() {
       var totalRate = 0;
       var averageRate = 0;
 
-      if (item.feedback.length > 0) {
-        for (var i = 0; i < item.feedback.length; i++) {
-          totalRate += parseFloat(item.feedback[i].rate);
-        }
+      if (item.feedback) {
 
-      averageRate = totalRate / item.feedback.length;
-      averageRate = Math.round(averageRate * 100) / 100;
-      }
+        if (item.feedback.length > 0) {
+          for (var i = 0; i < item.feedback.length; i++) {
+            totalRate += parseFloat(item.feedback[i].rate);
+          }
+
+        averageRate = totalRate / item.feedback.length;
+        averageRate = Math.round(averageRate * 100) / 100;
+        }
+      } else {
+        averageRate = 0;
+      } 
 
       return (
         <Link to={`/edit-course/${item.id}`} key={index} className="course_card">
