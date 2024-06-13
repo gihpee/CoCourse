@@ -66,7 +66,7 @@ function Feed() {
     };
 
     fetchUserCoursesData();
-  }, []);
+  }, [id]);
 
   console.log(userCourses);
 
