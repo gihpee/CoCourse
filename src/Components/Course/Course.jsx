@@ -57,7 +57,7 @@ function Course() {
         };
 
         fetchData();
-    }, [course_id, id]);
+    }, [course_id, id, headers]);
 
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
