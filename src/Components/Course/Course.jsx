@@ -83,6 +83,9 @@ function Course() {
     const paid = userCourses.some(course => course.course_id === cid);
     const own = coursesData.some(course => course.id === cid);
 
+    console.log(paid)
+    console.log(own)
+
     const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
