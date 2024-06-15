@@ -109,7 +109,7 @@ function Create() {
       </div>
       <div className="column">
       {modalOpen && (
-            <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
+            <div className="modal" style={{height: '140px', marginTop: '-120px'}}>
                 <div className="modal-content">
                     <p>Для создания курса необходимо подключить кошелек</p>
                     <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
