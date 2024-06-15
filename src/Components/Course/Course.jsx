@@ -130,6 +130,7 @@ function Course() {
         var year = currentDate.getFullYear();
 
         let date = day + '-' + month + '-' + year
+        let seller_id = data[0].user
   
         await fetch('https://commoncourse.io/success-payment', {
             method: 'POST',
@@ -137,7 +138,7 @@ function Course() {
                 'Content-Type': 'application/json',
             },
   
-            body: JSON.stringify({id, cid, amount, date}),
+            body: JSON.stringify({id, cid, amount, date, seller_id}),
         })
           
       };
@@ -187,7 +188,7 @@ function Course() {
             <div className="getContact_container">
                 <span>ЦЕНА</span>
                 <div className="pricecourse_container">
-                    <div className="course_price">{data[0].price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}>RUB</span></div>
+                    <div className="course_price">{data[0].price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                     <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
                 </div>
             </div>
