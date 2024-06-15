@@ -31,6 +31,14 @@ function Create() {
     fetchCourses();
   }, [id])
 
+  function formatDate(dateString) {
+    const parts = dateString.split('-');
+    const day = parts[0].padStart(2, '0');
+    const month = parts[1].padStart(2, '0');
+    const year = parts[2].slice(2);
+    return `${day}.${month}.${year}`;
+  }
+
   const checkWallet = () => {
     if (!userFriendlyAddress) {
       setModalOpen(true);
@@ -42,14 +50,6 @@ function Create() {
 
   const handleOkBtnClick = () => {
     setModalOpen(false);
-  }
-
-  function formatDate(dateString) {
-    const parts = dateString.split('-');
-    const day = parts[0].padStart(2, '0');
-    const month = parts[1].padStart(2, '0');
-    const year = parts[2].slice(2);
-    return `${day}.${month}.${year}`;
   }
 
   var userCourses;
@@ -109,7 +109,7 @@ function Create() {
       </div>
       <div className="column">
       {modalOpen && (
-            <div className="modal" style={{height: '140px', marginTop: '-120px'}}>
+            <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
                 <div className="modal-content">
                     <p>Для создания курса необходимо подключить кошелек</p>
                     <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>

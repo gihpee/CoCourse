@@ -20,8 +20,12 @@ function Course() {
 
     const [userCourses, setUserCourses] = useState([]);
     const [coursesData, setCoursesData] = useState([]);
+
+    const [exchangeRate, setExchangeRate] = useState(null);
     
     const navigate = useNavigate();
+
+    var currentDate = new Date();
 
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
@@ -76,20 +80,67 @@ function Course() {
         fetchCourses();
     }, [id])
 
+    useEffect(() => {
+        // Функция для получения данных с API
+        const fetchExchangeRate = async () => {
+          try {
+            const response = await fetch('https://tonapi.io/v2/rates?tokens=ton&currencies=rub');
+            const data = await response.json();
+            const rate = data.rates.TON.prices.RUB;
+            setExchangeRate(rate);
+          } catch (error) {
+            console.error('Ошибка при получении данных с API:', error);
+          }
+        };
+    
+        fetchExchangeRate();
+      }, []);
+
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
+
+    var paid = userCourses.some(course => course.course_id === Number(cid));
+    var owned = coursesData.some(course => course.id === Number(cid));
 
     const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
-                address: "EQBBJBB3HagsujBqVfqeDUPJ0kXjgTPLWPFFffuNXNiJL0aA",
-                amount: "20000000",
+                address: data[0].address,
+                amount: String((data[0].price / exchangeRate) * 1000000000),
                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
             }
         ]
     }
+
+    const handlePay = async () => {
+        try {
+            await tonConnectUI.sendTransaction(myTransaction);
+        } catch(e) {
+            console.log(e);
+            return 0;
+        }
+
+        paid = true;
+        let amount = data[0].amount + 1
+
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1;
+        var year = currentDate.getFullYear();
+
+        let date = day + '-' + month + '-' + year
+  
+        await fetch('https://commoncourse.io/success-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+  
+            body: JSON.stringify({id, cid, amount, date}),
+        })
+          
+      };
 
     const topics = data[0].topics.map((item, index) => {
         return (
@@ -125,8 +176,8 @@ function Course() {
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                     <div className="status_container" style={{padding: '8px', height: '32px', alignItems: 'center', borderRadius: '24px', background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', right: '8px'}}>
                         <div className="student_amount" style={{borderRadius: '16px'}}>{data[0].amount}</div>
-                        {userCourses.some(course => course.course_id === Number(cid)) && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
-                        {coursesData.some(course => course.id === Number(cid)) && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
+                        {paid && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
+                        {owned && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
                     </div>
             </div>
             <div className="prev" style={{backgroundImage: `url(${data[0].image})`, marginTop: '-56px'}}>
@@ -199,13 +250,13 @@ function Course() {
                 </Link>
             </div>
             
-            {userCourses.some(course => course.course_id === Number(cid)) ? 
+            {paid ? 
             <a href={data[0].channel_url} className="user_course_action">
                 <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
               </a>
-            : !coursesData.some(course => course.id === Number(cid)) && 
+            : !owned && 
             <div className="user_course_action">
-                <button onClick={() => tonConnectUI.sendTransaction(myTransaction)} className='user_course_action_btn'>
+                <button onClick={handlePay} className='user_course_action_btn'>
                     КУПИТЬ
                 </button>
             </div>}

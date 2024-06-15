@@ -5,6 +5,7 @@ import hash from '../assets/profile/hash.svg'
 import nb from '../assets/profile/nb.svg'
 import chart from '../assets/profile/chart.svg'
 import "./CreateCourse.css";
+import { useTonAddress } from '@tonconnect/ui-react';
 
 function CreateCourse() {
 
@@ -36,6 +37,8 @@ function CreateCourse() {
 
     const [modalFillOpen, setModalFillOpen] = useState(false);
     const [modalDraftOpen, setModalDraftOpen] = useState(false);
+
+    const address = useTonAddress();
 
     const handleChange = (e) => {
         const { name, value, type } = e.target;
@@ -146,7 +149,7 @@ function CreateCourse() {
                   'Content-Type': 'application/json',
               },
 
-              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft}),
+              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
           }).then(navigate('/create'))
       }
         

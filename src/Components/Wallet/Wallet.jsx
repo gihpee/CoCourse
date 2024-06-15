@@ -21,12 +21,8 @@ function Wallet() {
 
     return (
         <div className="column" style={{minHeight: '100vh'}}>
-            <TonConnectButton />
-            <span>User-friendly address: {userFriendlyAddress}</span>
+            <TonConnectButton style={{width: `calc(100% - 16px)`}}/>
 
-            <button onClick={() => tonConnectUI.sendTransaction(myTransaction)}>
-                Send transaction
-            </button>
         </div>
     );
 }
