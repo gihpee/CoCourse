@@ -3,12 +3,18 @@ import plus from '../assets/create/plus.svg'
 import "./Create.css";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useTonAddress } from '@tonconnect/ui-react';
 
 
 function Create() {
   window.scrollTo(0, 0)
   const { id } = window.Telegram.WebApp.initDataUnsafe.user;
   const [coursesData, setCoursesData] = useState([]);
+  const userFriendlyAddress = useTonAddress();
+  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -24,6 +30,19 @@ function Create() {
 
     fetchCourses();
   }, [id])
+
+  const checkWallet = () => {
+    if (!userFriendlyAddress) {
+      setModalOpen(true);
+    }
+    else {
+      navigate('/create-course')
+    }
+  };
+
+  const handleOkBtnClick = () => {
+    setModalOpen(false);
+  }
 
   function formatDate(dateString) {
     const parts = dateString.split('-');
@@ -82,13 +101,21 @@ function Create() {
   }
 
   return <div style={{minHeight: '100vh'}}>
-      <div className="create_button"><a href='create-course'>
+      <div className="create_button" onClick={checkWallet}>
         <div className="billet_cb">
           <img src={plus} alt='' />
           <p>Создать курс</p>
         </div>
-      </a></div>
+      </div>
       <div className="column">
+      {modalOpen && (
+            <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
+                <div className="modal-content">
+                    <p>Для создания курса необходимо подключить кошелек</p>
+                    <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                </div>
+            </div>
+        )}
       {userCourses}
       </div>
       </div>;
