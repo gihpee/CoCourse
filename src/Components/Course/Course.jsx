@@ -199,11 +199,11 @@ function Course() {
                 </Link>
             </div>
             
-            {userCourses.some(course => course.course_id === cid) ? 
+            {userCourses.some(course => course.course_id === Number(cid)) ? 
             <a href={data[0].channel_url} className="user_course_action">
                 <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
               </a>
-            : coursesData.some(course => course.id === cid) && 
+            : coursesData.some(course => course.id === Number(cid)) && 
             <div className="user_course_action">
                 <button onClick={() => tonConnectUI.sendTransaction(myTransaction)} className='user_course_action_btn'>
                     КУПИТЬ
