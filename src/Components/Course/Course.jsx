@@ -125,8 +125,8 @@ function Course() {
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                     <div className="status_container" style={{padding: '8px', height: '32px', alignItems: 'center', borderRadius: '24px', background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', right: '8px'}}>
                         <div className="student_amount" style={{borderRadius: '16px'}}>{data[0].amount}</div>
-                        {userCourses.some(course => course.course_id === cid) && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
-                        {coursesData.some(course => course.id === cid) && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
+                        {userCourses.some(course => course.course_id === Number(cid)) && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
+                        {coursesData.some(course => course.id === Number(cid)) && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
                     </div>
             </div>
             <div className="prev" style={{backgroundImage: `url(${data[0].image})`, marginTop: '-56px'}}>
@@ -203,7 +203,7 @@ function Course() {
             <a href={data[0].channel_url} className="user_course_action">
                 <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
               </a>
-            : coursesData.some(course => course.id === Number(cid)) && 
+            : !coursesData.some(course => course.id === Number(cid)) && 
             <div className="user_course_action">
                 <button onClick={() => tonConnectUI.sendTransaction(myTransaction)} className='user_course_action_btn'>
                     КУПИТЬ
