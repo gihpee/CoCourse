@@ -19,7 +19,7 @@ function Create() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`https://commoncourse.io/usercourse?id=${id}`);
+        const response = await fetch(`https://commoncourse.io/usercoursewd?id=${id}`);
         const result = await response.json();
 
         setCoursesData(result);
