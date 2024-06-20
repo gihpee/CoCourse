@@ -104,11 +104,11 @@ function Course() {
     var owned = coursesData.some(course => course.id === Number(cid));
 
     const myTransaction = {
-        validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+        validUntil: Math.floor(Date.now() / 1000) + 600, // 60 sec
         messages: [
             {
                 address: data[0].address,
-                amount: String((data[0].price / exchangeRate) * 1000000000),
+                amount: String(Math.floor((data[0].price / exchangeRate) * 1000000000)),
                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
             }
         ]
