@@ -170,6 +170,8 @@ function Course() {
 
     if (cid === '79') {
         userData[0].username = 'HowToCommonCourse';
+        data[0].price = 0;
+        paid = true;
     }
 
     return <>
