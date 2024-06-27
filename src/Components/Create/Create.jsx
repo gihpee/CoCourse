@@ -11,7 +11,7 @@ function Create() {
   window.scrollTo(0, 0)
   const { id } = window.Telegram.WebApp.initDataUnsafe.user;
   const [coursesData, setCoursesData] = useState([]);
-  const userFriendlyAddress = useTonAddress();
+  const userFriendlyAddress = useTonAddress(false);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
