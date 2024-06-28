@@ -7,7 +7,6 @@ import hash from '../assets/profile/hash.svg'
 import nb from '../assets/profile/nb.svg'
 import krest from '../assets/create/krest.svg'
 import chart from '../assets/profile/chart.svg'
-import { useTonAddress } from '@tonconnect/ui-react';
 import "./EditCourse.css";
 
 function EditCourse() {
