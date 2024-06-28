@@ -195,6 +195,8 @@ function EditCourse() {
             var year = currentDate.getFullYear();
 
             let name = formData.Name;
+            let price = formData.Price;
+            let channel_url = formData.ChannelUrl;
             let university = formData.Univ;
             let course = formData.Course;
             let description = formData.Desc;
@@ -210,7 +212,7 @@ function EditCourse() {
                     'Content-Type': 'application/json',
                 },
 
-                body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft}),
+                body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft, price, channel_url}),
             }).then(navigate('/create'))
         }
           
@@ -228,6 +230,8 @@ function EditCourse() {
                 let year = currentDate.getFullYear();
 
                 let name = formData.Name;
+                let price = formData.Price;
+                let channel_url = formData.ChannelUrl;
                 let university = formData.Univ;
                 let course = formData.Course;
                 let description = formData.Desc;
@@ -243,7 +247,7 @@ function EditCourse() {
                         'Content-Type': 'application/json',
                     },
 
-                    body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft}),
+                    body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft, price, channel_url}),
                 }).then(navigate('/create'))
             }
         } else {
@@ -252,6 +256,8 @@ function EditCourse() {
             let year = currentDate.getFullYear();
 
             let name = formData.Name;
+            let price = formData.Price;
+            let channel_url = formData.ChannelUrl;
             let university = formData.Univ;
             let course = formData.Course;
             let description = formData.Desc;
@@ -267,7 +273,7 @@ function EditCourse() {
                     'Content-Type': 'application/json',
                 },
 
-                body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft}),
+                body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft, price, channel_url}),
             }).then(navigate('/create'))
         }
     };

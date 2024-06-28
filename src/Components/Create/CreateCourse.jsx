@@ -169,6 +169,7 @@ function CreateCourse() {
       let user = id;
       let date = day + '-' + month + '-' + year
       let image = imageSrc;
+      let feedback = [];
       let price = formData.Price || 0;
       let channel_url = formData.ChannelUrl;
       let is_draft = true;
@@ -179,7 +180,7 @@ function CreateCourse() {
               'Content-Type': 'application/json',
           },
 
-          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, image, username, price, channel_url, is_draft, address}),
+          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
       }).then(navigate('/create'))
         
     };
