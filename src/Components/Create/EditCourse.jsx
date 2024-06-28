@@ -197,28 +197,24 @@ function EditCourse() {
             var day = currentDate.getDate();
             var month = currentDate.getMonth() + 1;
             var year = currentDate.getFullYear();
-  
-            let name = formData.Name || 'Не указано';
-            let university = formData.Univ || 'Не указано';
+
+            let name = formData.Name;
+            let university = formData.Univ;
             let course = formData.Course;
-            let description = formData.Desc || 'Не указано';
+            let description = formData.Desc;
             let subjects = formData.Subjects;
             let topics = formData.topics; 
-            let user = id;
             let date = day + '-' + month + '-' + year
             let image = imageSrc;
-            let feedback = [];
-            let price = formData.Price || 0;
-            let channel_url = formData.ChannelUrl;
             let is_draft = false;
-  
-            await fetch('https://commoncourse.io/course', {
+
+            await fetch('https://commoncourse.io/edit-course', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-  
-                body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
+
+                body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft}),
             }).then(navigate('/create'))
         }
           

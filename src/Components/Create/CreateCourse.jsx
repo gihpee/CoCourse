@@ -179,7 +179,7 @@ function CreateCourse() {
               'Content-Type': 'application/json',
           },
 
-          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, image, username, price, channel_url, is_draft}),
+          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, image, username, price, channel_url, is_draft, address}),
       }).then(navigate('/create'))
         
     };
