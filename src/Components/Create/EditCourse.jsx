@@ -12,9 +12,6 @@ import "./EditCourse.css";
 
 function EditCourse() {
     const { cid } = useParams();
-    const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
-
-    const address = useTonAddress();
 
     var currentDate = new Date();
     const navigate = useNavigate();
