@@ -10,8 +10,10 @@ import chart from '../assets/profile/chart.svg'
 import "./EditCourse.css";
 
 function EditCourse() {
+    const { cid } = useParams();
+    const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
 
-    const { id } = useParams();
+    const address = useTonAddress();
 
     var currentDate = new Date();
     const navigate = useNavigate();
@@ -54,7 +56,7 @@ function EditCourse() {
                 'Content-Type': 'application/json',
             },
 
-            body: JSON.stringify({id}),
+            body: JSON.stringify({cid}),
         }).then(navigate('/create'))
     };
 
@@ -69,7 +71,7 @@ function EditCourse() {
     useEffect(() => {
         const fetchCourses = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`);
+            const response = await fetch(`https://commoncourse.io/getcourse?id=${cid}`);
             const data = await response.json();
     
             setFormData(() => {
@@ -100,7 +102,7 @@ function EditCourse() {
         };
     
         fetchCourses();
-    }, [id])
+    }, [cid])
 
     useEffect(() => {
         const textarea = document.querySelector('.bio_textarea');
@@ -247,7 +249,7 @@ function EditCourse() {
                     'Content-Type': 'application/json',
                 },
 
-                body: JSON.stringify({id, name, university, course, description, subjects, topics, date, image, is_draft}),
+                body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft}),
             }).then(navigate('/create'))
         }
         

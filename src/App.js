@@ -42,7 +42,7 @@ function App() {
           <Route path={'edit-ecourse/:id'} element={<ECourse />}/>
           <Route path={'edit-subj/:id'} element={<Subj />}/>
           <Route path={'edit-univ/:id'} element={<Univ />}/>
-          <Route path={'edit-course/:id'} element={<EditCourse />}/>
+          <Route path={'edit-course/:cid'} element={<EditCourse />}/>
           <Route path={'course-feedback/:id'} element={<FeedbackCourse />}/>
           <Route path={'user-feedback/:id'} element={<FeedbackUser />}/>
           <Route path={'user/:id'} element={<User />}/>
