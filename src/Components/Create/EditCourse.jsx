@@ -29,6 +29,7 @@ function EditCourse() {
         Desc: '',
         Price: null,
         ChannelUrl: '',
+        is_draft: false,
         Subjects: [],
         topics: [],
     });
@@ -38,6 +39,7 @@ function EditCourse() {
     const [isModalOpen, setModalOpen] = useState(false);
 
     const [modalFillOpen, setModalFillOpen] = useState(false);
+    const [modalDraftOpen, setModalDraftOpen] = useState(false);
 
     const handleDeleteClick = () => {
         setModalOpen(true);
@@ -79,7 +81,8 @@ function EditCourse() {
                     Subjects: data[0].subjects,
                     topics: data[0].topics,
                     Price: data[0].price,
-                    ChannelUrl: data[0].channel_url
+                    ChannelUrl: data[0].channel_url,
+                    is_draft: data[0].is_draft
                 }
             });
             setImageSrc(data[0].image)
@@ -183,6 +186,41 @@ function EditCourse() {
         }
     };
 
+    const handlePublishDraft = async () => {
+        if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
+        {
+          setModalFillOpen(true);
+        } else {
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1;
+            var year = currentDate.getFullYear();
+  
+            let name = formData.Name || 'Не указано';
+            let university = formData.Univ || 'Не указано';
+            let course = formData.Course;
+            let description = formData.Desc || 'Не указано';
+            let subjects = formData.Subjects;
+            let topics = formData.topics; 
+            let user = id;
+            let date = day + '-' + month + '-' + year
+            let image = imageSrc;
+            let feedback = [];
+            let price = formData.Price || 0;
+            let channel_url = formData.ChannelUrl;
+            let is_draft = false;
+  
+            await fetch('https://commoncourse.io/course', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+  
+                body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
+            }).then(navigate('/create'))
+        }
+          
+      };
+
     const handlePublish = async () => {
         if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
         {
@@ -201,6 +239,7 @@ function EditCourse() {
             let topics = formData.topics; 
             let date = day + '-' + month + '-' + year
             let image = imageSrc;
+            let is_draft = formData.is_draft;
 
             await fetch('https://commoncourse.io/edit-course', {
                 method: 'POST',
@@ -208,7 +247,7 @@ function EditCourse() {
                     'Content-Type': 'application/json',
                 },
 
-                body: JSON.stringify({id, name, university, course, description, subjects, topics, date, image}),
+                body: JSON.stringify({id, name, university, course, description, subjects, topics, date, image, is_draft}),
             }).then(navigate('/create'))
         }
         
@@ -342,7 +381,7 @@ function EditCourse() {
       ));
 
     return <>
-        <div className="back_btn" onClick={() => {window.history.back()}}></div>
+        <div className="back_btn" onClick={() => setModalDraftOpen(true)}></div>
 
         {modalFillOpen && (
             <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
@@ -351,6 +390,16 @@ function EditCourse() {
                     <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
                 </div>
             </div>
+        )}
+
+        {modalDraftOpen && (
+          <div className="modal">
+          <div className="modal-content">
+              <p>Сохранить изменения?</p>
+              <button className='modal_btn_n' onClick={() => window.history.back()}>Нет</button>
+              <button className='modal_btn_y' onClick={handlePublish}>Да</button>
+          </div>
+        </div>
         )}
 
         {isModalOpen && (
@@ -479,9 +528,11 @@ function EditCourse() {
         <div className="column" style={{marginBottom: '200px'}}>
             <button className='billet_addd' onClick={addEl}>Add topic</button>
         </div>
-        <div className="publish">
+        {formData.is_draft ? <div className="publish">
+            <button className='publish_btn' onClick={handlePublishDraft}>Опубликовать</button>
+        </div> : <div className="publish">
             <button className='publish_btn' onClick={handlePublish}>Сохранить</button>
-        </div>
+        </div>}
         </>
 }
 
