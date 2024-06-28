@@ -217,10 +217,35 @@ function EditCourse() {
       };
 
     const handlePublish = async () => {
-        if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
-        {
-            setModalFillOpen(true);
-            console.log('here')
+        if (!formData.is_draft) {
+            if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
+            {
+                setModalFillOpen(true);
+                console.log('here')
+            } else {
+                var day = currentDate.getDate();
+                var month = currentDate.getMonth() + 1;
+                var year = currentDate.getFullYear();
+
+                let name = formData.Name;
+                let university = formData.Univ;
+                let course = formData.Course;
+                let description = formData.Desc;
+                let subjects = formData.Subjects;
+                let topics = formData.topics; 
+                let date = day + '-' + month + '-' + year
+                let image = imageSrc;
+                let is_draft = formData.is_draft;
+
+                await fetch('https://commoncourse.io/edit-course', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+
+                    body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft}),
+                }).then(navigate('/create'))
+            }
         } else {
             var day = currentDate.getDate();
             var month = currentDate.getMonth() + 1;
@@ -245,7 +270,6 @@ function EditCourse() {
                 body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft}),
             }).then(navigate('/create'))
         }
-        
     };
 
     const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false);
@@ -388,7 +412,7 @@ function EditCourse() {
         )}
 
         {modalDraftOpen && (
-          <div className="modal">
+          <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
           <div className="modal-content">
               <p>Сохранить изменения?</p>
               <button className='modal_btn_n' onClick={() => window.history.back()}>Нет</button>
