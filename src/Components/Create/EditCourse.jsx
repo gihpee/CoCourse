@@ -223,9 +223,9 @@ function EditCourse() {
                 setModalFillOpen(true);
                 console.log('here')
             } else {
-                var day = currentDate.getDate();
-                var month = currentDate.getMonth() + 1;
-                var year = currentDate.getFullYear();
+                let day = currentDate.getDate();
+                let month = currentDate.getMonth() + 1;
+                let year = currentDate.getFullYear();
 
                 let name = formData.Name;
                 let university = formData.Univ;
@@ -247,9 +247,9 @@ function EditCourse() {
                 }).then(navigate('/create'))
             }
         } else {
-            var day = currentDate.getDate();
-            var month = currentDate.getMonth() + 1;
-            var year = currentDate.getFullYear();
+            let day = currentDate.getDate();
+            let month = currentDate.getMonth() + 1;
+            let year = currentDate.getFullYear();
 
             let name = formData.Name;
             let university = formData.Univ;
