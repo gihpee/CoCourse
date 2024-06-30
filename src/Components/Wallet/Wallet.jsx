@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { TonConnectButton } from '@tonconnect/ui-react';
+import { useTonConnectUI } from '@tonconnect/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { beginCell, toNano, Address } from '@ton/ton'
@@ -14,12 +15,17 @@ function Wallet() {
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [coursesData, setCoursesData] = useState([]);
 
+    const userFriendlyAddress = useTonAddress();
+
+    const [tonConnectUI, setOptions] = useTonConnectUI();
+    setOptions({ language: 'ru' });
+
     const body = beginCell()
         .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
         .storeUint(0, 64)                         // query_id:uint64
         .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
         .storeAddress(Address.parse('EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0'))  // destination:MsgAddress
-        .storeAddress(Address.parse(data[0].address))  // response_destination:MsgAddress
+        .storeAddress(Address.parse(userFriendlyAddress))  // response_destination:MsgAddress
         .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
         .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
         .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
