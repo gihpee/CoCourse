@@ -19,7 +19,6 @@ import FeedbackCourse from './Components/Feedback/FeedbackCourse'
 import FeedbackUser from './Components/Feedback/FeedbackUser';
 import User from './Components/Profile/User';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
-import { Buffer } from 'buffer';
 
 
 function App() {
@@ -27,7 +26,6 @@ function App() {
   let tg = window.Telegram;
   tg.WebApp.expand();
   tg.WebApp.enableClosingConfirmation()
-  window.Buffer = Buffer;
 
   return (
     <TonConnectUIProvider manifestUrl="https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json">

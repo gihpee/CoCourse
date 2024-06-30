@@ -4,6 +4,9 @@ import {BrowserRouter} from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import './fonts/NeueMachina/NeueMachina-Regular.ttf';
+import { Buffer } from 'buffer';
+
+window.Buffer = Buffer;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
