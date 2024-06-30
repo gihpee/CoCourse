@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { beginCell, toNano, Address } from '@ton/ton'
 import "./Wallet.css";
+import { Buffer } from 'buffer';
 
 
 function Wallet() {
+    window.Buffer = Buffer;
     const navigate = useNavigate();
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
     //const id = 478969308;
