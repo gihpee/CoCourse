@@ -15,6 +15,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
     "ton": "^13.9.0",
+    "vite-plugin-node-polyfills": "^0.22.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
