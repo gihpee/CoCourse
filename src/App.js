@@ -19,12 +19,9 @@ import FeedbackCourse from './Components/Feedback/FeedbackCourse'
 import FeedbackUser from './Components/Feedback/FeedbackUser';
 import User from './Components/Profile/User';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
-import { Buffer } from 'buffer';
 
 
 function App() {
-
-  window.Buffer = Buffer;
   let tg = window.Telegram;
   tg.WebApp.expand();
   tg.WebApp.enableClosingConfirmation()
