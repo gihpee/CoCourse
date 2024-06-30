@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { TonConnectButton } from '@tonconnect/ui-react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
+import { useTonAddress } from '@tonconnect/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { beginCell, toNano, Address } from '@ton/ton'
