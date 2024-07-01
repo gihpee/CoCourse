@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
+import tonMnemonic from "tonweb-mnemonic"
 import "./Wallet.css";
 
 
@@ -22,8 +23,6 @@ function Wallet() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
-
-    const tonMnemonic = require("tonweb-mnemonic");
 
     const sendJetton = async () => {
         setLoading(true);
