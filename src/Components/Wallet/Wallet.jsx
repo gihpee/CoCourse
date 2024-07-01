@@ -168,7 +168,7 @@ function Wallet() {
     const allTransactions = [...coursesPaid, ...coursesSelled]
 
     useEffect(() => {
-        if (coursesPaid != []) {
+        if (!coursesPaid) {
             const fetchCourses = async () => {
             try {
                 const response = await fetch('https://commoncourse.io/get-courses-by-ids', {
