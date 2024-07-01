@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
-import { mnemonicToKeyPair } from 'tonweb-mnemonic';
+import { mnemonicToSeed } from 'tonweb-mnemonic';
 import "./Wallet.css";
 
 
@@ -49,10 +49,10 @@ function Wallet() {
 
           const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
 
-          const keyPair = await mnemonicToKeyPair(words);
-          console.log(9)
-          const secretKey = TonWeb.utils.bytesToHex(keyPair.secretKey);
-          const publicKey = TonWeb.utils.bytesToHex(keyPair.publicKey);
+          const seed = await mnemonicToSeed(words);
+          const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
+          const publicKey = keyPair.publicKey;
+          const secretKey = keyPair.secretKey;
 
           console.log(1)
 
