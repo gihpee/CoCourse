@@ -31,7 +31,7 @@ function Wallet() {
         setError(null);
         setSuccess(null);
     
-          const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v3/jsonRPC'));
+          const tonweb = new TonWeb();
           const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0"});
           const address = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address("EQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHdxZ"));
             
