@@ -87,7 +87,7 @@ function Wallet() {
               toAddress: new TonWeb.utils.Address("UQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT"), // recipient user's wallet address (not Jetton wallet)
               forwardAmount: TonWeb.utils.toNano('0.01'), // some amount of TONs to invoke Transfer notification message
               forwardPayload: comment, // text comment for Transfer notification message
-              responseAddress: "UQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHYGc" // return the TONs after deducting commissions back to the sender's wallet address
+              responseAddress: new TonWeb.utils.Address("UQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHYGc") // return the TONs after deducting commissions back to the sender's wallet address
             }),
             sendMode: 3,
           }).send();
