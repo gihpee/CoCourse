@@ -79,13 +79,12 @@ function Wallet() {
 
           console.log(seqno)*/
           await sleep(1000);
-          const seqno = await wallet.methods.seqno().call();
     
           await wallet.methods.transfer({
             secretKey: secretKey,
             toAddress: address, // address of Jetton wallet of Jetton sender
             amount: TonWeb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
-            seqno: seqno,
+            seqno: 0,
             payload: await jettonWallet.createTransferBody({
               jettonAmount: TonWeb.utils.toNano('50000'), // Jetton amount (in basic indivisible units)
               toAddress: new TonWeb.utils.Address("UQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT"), // recipient user's wallet address (not Jetton wallet)
