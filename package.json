@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "@ton/crypto": "^3.2.0",
     "@ton/ton": "^13.11.2",
+    "@tonclient/core": "^1.30.0",
+    "@tonclient/lib-web": "^1.30.0",
     "@tonconnect/ui-react": "^2.0.5",
     "buffer": "^6.0.3",
     "node-stdlib-browser": "^1.2.0",

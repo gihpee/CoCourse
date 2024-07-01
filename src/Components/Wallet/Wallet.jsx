@@ -5,6 +5,8 @@ import { useTonAddress } from '@tonconnect/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { beginCell, toNano, Address } from '@ton/ton'
+import { TonClient } from "@tonclient/core";
+import { libWeb } from "@tonclient/lib-web";
 import "./Wallet.css";
 
 
@@ -18,10 +20,78 @@ function Wallet() {
 
     const userFriendlyAddress = useTonAddress();
 
+    TonClient.useBinaryLibrary(libWeb);
+
+    const client = new TonClient({
+    network: {
+        endpoints: ["main.ton.dev"], // можно заменить на другие ноды
+    },
+    });
+
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
 
-    const body = beginCell()
+    const keys = client.crypto.mnemonic_derive_sign_keys({
+        phrase: 'arrange deal lava man detail lend describe shoulder mule chuckle route dress lift leg pull ski syrup asset jazz actual state issue shuffle power',
+    });
+
+    const sendJetton = async (walletAddress, recipientAddress, amount) => {
+        try {
+            const abi = {
+                "ABI version": 2,
+                "header": ["pubkey", "time", "expire"],
+                "functions": [
+                  {
+                    "name": "transfer",
+                    "inputs": [
+                      {"name": "_recipient", "type": "address"},
+                      {"name": "_amount", "type": "uint128"},
+                      {"name": "_payload", "type": "cell"}
+                    ],
+                    "outputs": []
+                  }
+                ],
+                "data": [],
+                "events": [],
+                "fields": [
+                  {"name": "_pubkey", "type": "uint256"},
+                  {"name": "_timestamp", "type": "uint64"},
+                  {"name": "_expire", "type": "uint32"}
+                ]
+              };
+
+          const params = {
+            send_events: false,
+            message_encode_params: {
+              address: walletAddress, // адрес кошелька отправителя
+              abi: abi,
+              call_set: {
+                function_name: "transfer", // имя функции в контракте
+                input: {
+                  _recipient: recipientAddress, // адрес получателя
+                  _amount: amount, // количество jetton'ов
+                  _payload: "", // опционально, если есть дополнительные данные
+                },
+              },
+              signer: {
+                type: "Keys",
+                keys: {
+                  public: keys.public,
+                  secret: keys.secret,
+                },
+              },
+            },
+          };
+      
+          const { transaction } = await client.processing.process_message(params);
+          console.log("Transaction:", transaction);
+        } catch (error) {
+          console.error("Error sending jetton:", error);
+        }
+      };
+      
+
+    /*const body = beginCell()
         .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
         .storeUint(0, 64)                         // query_id:uint64
         .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
@@ -40,7 +110,7 @@ function Wallet() {
                 payload: body.toBoc().toString("base64") // payload with jetton transfer body
             }
         ]
-    }
+    }*/
 
     useEffect(() => {
         const fetchData = async () => {
@@ -149,8 +219,8 @@ function Wallet() {
             <span>История транзакций</span>
             {transactions}
 
-            <button onClick={() => tonConnectUI.sendTransaction(jettonTransaction)}>
-                Send transaction
+            <button onClick={() => sendJetton('EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0', userFriendlyAddress, 10000)}>
+                Send Jetton
             </button>
 
         </div>
