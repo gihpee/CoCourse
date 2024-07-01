@@ -65,7 +65,16 @@ function Wallet() {
 
           console.log(2)
     
-          const seqno = await wallet.methods.seqno().call();
+          let seqno;
+          try {
+            seqno = await wallet.methods.seqno().call();
+            if (isNaN(seqno)) {
+            throw new Error('seqno is NaN');
+            }
+            console.log('seqno:', seqno);
+          } catch (err) {
+            throw new Error(`Failed to fetch seqno: ${err.message}`);
+          }
 
           console.log(seqno)
     
