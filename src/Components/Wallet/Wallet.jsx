@@ -59,6 +59,8 @@ function Wallet() {
           /*const wallet = tonweb.wallet.create({publicKey});*/
     
           const seqno = await wallet.methods.seqno().call();
+
+          console.log(seqno)
     
           await wallet.methods.transfer({
             secretKey: secretKey,
