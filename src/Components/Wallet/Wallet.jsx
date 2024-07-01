@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { TonConnectButton } from '@tonconnect/ui-react';
-import { useTonConnectUI } from '@tonconnect/ui-react';
+//import { useTonConnectUI } from '@tonconnect/ui-react';
 import { useTonAddress } from '@tonconnect/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { beginCell, toNano, Address } from '@ton/ton'
+//import { beginCell, toNano, Address } from '@ton/ton'
 import { TonClient } from "@tonclient/core";
 import { libWeb } from "@tonclient/lib-web";
 import "./Wallet.css";
@@ -28,8 +28,8 @@ function Wallet() {
     },
     });
 
-    const [tonConnectUI, setOptions] = useTonConnectUI();
-    setOptions({ language: 'ru' });
+    //const [tonConnectUI, setOptions] = useTonConnectUI();
+    //setOptions({ language: 'ru' });
 
     const keys = client.crypto.mnemonic_derive_sign_keys({
         phrase: 'arrange deal lava man detail lend describe shoulder mule chuckle route dress lift leg pull ski syrup asset jazz actual state issue shuffle power',
