@@ -43,20 +43,27 @@ function Wallet() {
           }
     
           console.log('Jetton wallet address:', address.toString(true, true, true));
+
+          console.log(0)
     
           const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('text comment')]);
 
           const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
 
           const keyPair = await mnemonicToKeyPair(words);
+          console.log(9)
           const secretKey = TonWeb.utils.bytesToHex(keyPair.secretKey);
           const publicKey = TonWeb.utils.bytesToHex(keyPair.publicKey);
+
+          console.log(1)
 
           const wallet = new TonWeb.Wallets.all.v3R2(tonweb.provider, {
             publicKey: publicKey,
             secretKey: secretKey
           });
           /*const wallet = tonweb.wallet.create({publicKey});*/
+
+          console.log(2)
     
           const seqno = await wallet.methods.seqno().call();
 
