@@ -26,7 +26,6 @@ function Wallet() {
         .storeUint(0, 64)                         // query_id:uint64
         .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
         .storeAddress(Address.parse(userFriendlyAddress))  // destination:MsgAddress
-        .storeAddress(Address.parse('EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0'))  // response_destination:MsgAddress
         .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
         .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
         .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
