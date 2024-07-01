@@ -189,7 +189,7 @@ function Wallet() {
         
             fetchCourses();
         }
-    }, [ids]);
+    }, [ids, coursesPaid]);
 
     const transactions = coursesData.map((item, index) => {
         var t_type = '';
