@@ -29,7 +29,6 @@ function Wallet() {
         setError(null);
         setSuccess(null);
     
-        try {
           const tonweb = new TonWeb();
           const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0"});
           const address = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address("EQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHdxZ"));
@@ -94,11 +93,8 @@ function Wallet() {
           }).send();
     
           setSuccess("Jetton transfer successful!");
-        } catch (err) {
-          setError(`Error: ${err.message}`);
-        } finally {
-          setLoading(false);
-        }
+          setError('we');
+          setLoading('qa');
       };
 
       console.log(loading);
