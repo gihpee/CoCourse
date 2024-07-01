@@ -17,6 +17,8 @@ function Wallet() {
     const [coursesPaid, setCoursesPaid] = useState([]);
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [coursesData, setCoursesData] = useState([]);
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 
     //const userFriendlyAddress = useTonAddress();
 
@@ -76,6 +78,7 @@ function Wallet() {
           }
 
           console.log(seqno)*/
+          await sleep(1000);
     
           await wallet.methods.transfer({
             secretKey: secretKey,
