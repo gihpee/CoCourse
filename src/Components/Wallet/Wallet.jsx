@@ -79,7 +79,7 @@ function Wallet() {
 
           console.log(seqno)*/
           await sleep(1000);
-          seqno = await wallet.methods.seqno().call();
+          const seqno = await wallet.methods.seqno().call();
     
           await wallet.methods.transfer({
             secretKey: secretKey,
