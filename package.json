@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
     "ton": "^13.9.0",
+    "tonweb": "^0.0.66",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
