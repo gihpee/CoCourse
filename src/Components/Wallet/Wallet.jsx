@@ -168,25 +168,27 @@ function Wallet() {
     const allTransactions = [...coursesPaid, ...coursesSelled]
 
     useEffect(() => {
-        const fetchCourses = async () => {
-          try {
-            const response = await fetch('https://commoncourse.io/get-courses-by-ids', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ ids }),
-            });
-      
-            const result = await response.json();
-            setCoursesData(result);
+        if (coursesPaid != []) {
+            const fetchCourses = async () => {
+            try {
+                const response = await fetch('https://commoncourse.io/get-courses-by-ids', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ids }),
+                });
+        
+                const result = await response.json();
+                setCoursesData(result);
 
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        };
-      
-        fetchCourses();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+            };
+        
+            fetchCourses();
+        }
     }, [ids]);
 
     const transactions = coursesData.map((item, index) => {
