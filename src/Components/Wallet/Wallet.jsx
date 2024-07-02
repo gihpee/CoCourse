@@ -113,7 +113,7 @@ function Wallet() {
           await wallet.methods.transfer({
             secretKey: secretKey,
             toAddress: address, // address of Jetton wallet of Jetton sender
-            amount: TonWeb.utils.toNano('0.1'), // total amount of TONs attached to the transfer message
+            amount: TonWeb.utils.toNano('0'), // total amount of TONs attached to the transfer message
             seqno: seqno+1,
             payload: await jettonWallet.createTransferBody({
               jettonAmount: TonWeb.utils.toNano('5'), // Jetton amount (in basic indivisible units)
