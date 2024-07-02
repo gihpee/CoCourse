@@ -49,7 +49,7 @@ function Wallet() {
     
           const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('text comment')]);
 
-          /*const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];*/
+          const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
 
           /*const seed = await mnemonicToSeed(words);
           const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
@@ -64,8 +64,8 @@ function Wallet() {
           });*/
           /*const wallet = tonweb.wallet.create({publicKey});*/
 
-          const seedPhrase = await generateMnemonic(); 
-            const seed = await mnemonicToSeed([seedPhrase])
+          //const seedPhrase = await generateMnemonic(); 
+            const seed = await mnemonicToSeed(words)
             
             const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
             const publicKey = keyPair.publicKey
