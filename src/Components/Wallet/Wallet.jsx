@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
-import { mnemonicToSeed, generateMnemonic } from 'tonweb-mnemonic';
+import { mnemonicToSeed } from 'tonweb-mnemonic';
 import "./Wallet.css";
 
 
