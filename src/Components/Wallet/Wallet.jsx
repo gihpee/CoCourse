@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
-import { mnemonicToSeed } from 'tonweb-mnemonic';
+import { mnemonicToSeed, generateMnemonic } from 'tonweb-mnemonic';
 import "./Wallet.css";
 
 
@@ -51,7 +51,7 @@ function Wallet() {
 
           const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
 
-          const seed = await mnemonicToSeed(words);
+          /*const seed = await mnemonicToSeed(words);
           const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
           const publicKey = keyPair.publicKey;
           const secretKey = keyPair.secretKey;
@@ -61,8 +61,23 @@ function Wallet() {
           const wallet = new TonWeb.Wallets.all.v3R2(tonweb.provider, {
             publicKey: publicKey,
             secretKey: secretKey
-          });
+          });*/
           /*const wallet = tonweb.wallet.create({publicKey});*/
+
+          const seedPhrase = await generateMnemonic(); 
+            const seed = await mnemonicToSeed([seedPhrase])
+            
+            const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
+            const publicKey = keyPair.publicKey
+            const secretKey = keyPair.secretKey
+
+            const WalletClass = tonweb.wallet.all['v4R2'];
+            const wallet = new WalletClass(tonweb.provider, {
+                publicKey: publicKey,
+                wc: 0
+            });
+
+            await wallet.deploy(secretKey).send();
 
           console.log(2)
     
