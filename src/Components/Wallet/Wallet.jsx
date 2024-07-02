@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
-//import { mnemonicToSeed } from 'tonweb-mnemonic';
+import { mnemonicToSeed } from 'tonweb-mnemonic';
 import "./Wallet.css";
 
 
@@ -49,14 +49,14 @@ function Wallet() {
     
           const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('text comment')]);
 
-          /*const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
+          const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
 
           const seed = await mnemonicToSeed(words);
           const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
           const publicKey = keyPair.publicKey;
-          const secretKey = keyPair.secretKey;*/
+          const secretKey = keyPair.secretKey;
 
-          const nacl = TonWeb.utils.nacl; // use nacl library for key pairs
+          /*const nacl = TonWeb.utils.nacl; // use nacl library for key pairs
 
           const keyPair = nacl.sign.keyPair(); // create new random key pair
           let secretKey = keyPair.secretKey;
@@ -68,15 +68,15 @@ function Wallet() {
           const deploy = wallet.deploy(secretKey);
 
           const deploySended = await deploy.send() // deploy wallet contract to blockchain
-          console.log(deploySended);
-
-          const seqno = await wallet.methods.seqno().call();
+          console.log(deploySended);*/
 
 
-          /*const wallet = new TonWeb.Wallets.all.v3R2(tonweb.provider, {
+          const wallet = new TonWeb.Wallets.all.v3R2(tonweb.provider, {
             publicKey: publicKey,
             wc: 0
-          });*/
+          });
+
+          const seqno = await wallet.methods.seqno().call();
           /*const wallet = tonweb.wallet.create({publicKey});*/
 
           //const seedPhrase = await generateMnemonic(); 
