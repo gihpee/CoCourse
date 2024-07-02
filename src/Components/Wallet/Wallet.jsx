@@ -27,8 +27,12 @@ function Wallet() {
             address: jettonWalletAddress
         });
         const jettonData = await jettonWallet.getData();
-        console.log(jettonWallet)
-        console.log(jettonData.balance.toString())
+        let balance = jettonData.balance.toString();
+        if (balance) {
+            return balance;
+        } else {
+            return 0;
+        }
     }
 
     /*const init = async () => {
@@ -192,16 +196,12 @@ function Wallet() {
             <TonConnectButton style={{marginBottom: '8px'}}/>
 
             <div className="pricecourse_container" style={{height: 'auto', paddingTop: '8px', paddingBottom: '8px', marginBottom: '8px'}}>
-                <div className="course_price">0<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> COMN</span></div>
+                <div className="course_price">{getUserCOMN()}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> COMN</span></div>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
             </div>
 
             <span>История транзакций</span>
             {transactions}
-
-            <button onClick={() => getUserCOMN()}>
-                get data
-            </button>
 
         </div>
         </>
