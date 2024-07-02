@@ -11,6 +11,7 @@ import { useTonAddress } from '@tonconnect/ui-react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
 import { mnemonicToSeed } from 'tonweb-mnemonic';
+import { useTelegram } from '@twa-dev/sdk/react';
 import "./Course.css";
 
 
@@ -35,6 +36,30 @@ function Course() {
 
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
+    const { Telegram } = useTelegram();
+
+    useEffect(() => {
+        if (paid) {
+          Telegram.MainButton.setParams({
+            text: 'К УЧЕБЕ',
+            is_visible: true,
+            is_active: true,
+            onClick: () => window.location.href = data[0].channel_url
+          });
+        } else if (!owned) {
+          Telegram.MainButton.setParams({
+            text: 'КУПИТЬ',
+            is_visible: true,
+            is_active: true,
+            onClick: handlePay
+          });
+        }
+        
+        return () => {
+          Telegram.MainButton.hide();
+          Telegram.MainButton.offClick();
+        };
+      }, [paid, owned, data, handlePay, Telegram.MainButton]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -321,7 +346,7 @@ function Course() {
                 </Link>
             </div>
             
-            {paid ? 
+            {/*{paid ? 
             <a href={data[0].channel_url} className="user_course_action">
                 <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
               </a>
@@ -330,7 +355,7 @@ function Course() {
                 <button onClick={handlePay} className='user_course_action_btn'>
                     КУПИТЬ
                 </button>
-            </div>}
+            </div>}*/}
         </>
 }
 
