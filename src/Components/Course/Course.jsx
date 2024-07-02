@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useTonConnectUI } from '@tonconnect/ui-react';
+import { useTonAddress } from '@tonconnect/ui-react';
 //import { beginCell, toNano, Address } from '@ton/ton'
+import TonWeb from "tonweb";
+import { mnemonicToSeed } from 'tonweb-mnemonic';
 import "./Course.css";
 
 
@@ -23,6 +26,8 @@ function Course() {
     const [coursesData, setCoursesData] = useState([]);
 
     const [exchangeRate, setExchangeRate] = useState(null);
+
+    const userFriendlyAddress = useTonAddress();
     
     const navigate = useNavigate();
 
@@ -104,28 +109,6 @@ function Course() {
     var paid = userCourses.some(course => course.course_id === Number(cid));
     var owned = coursesData.some(course => course.id === Number(cid));
 
-    /*const body = beginCell()
-        .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
-        .storeUint(0, 64)                         // query_id:uint64
-        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
-        .storeAddress(Address.parse('EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0'))  // destination:MsgAddress
-        .storeAddress(Address.parse(data[0].address))  // response_destination:MsgAddress
-        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
-        .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
-        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
-        .endCell();
-
-    const jettonTransaction = {
-        validUntil: Math.floor(Date.now() / 1000) + 360,
-        messages: [
-            {
-                address: 'EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0', // sender jetton wallet
-                amount: toNano(0.05).toString(), // for commission fees, excess will be returned
-                payload: body.toBoc().toString("base64") // payload with jetton transfer body
-            }
-        ]
-    }*/
-
     const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 600, // 60 sec
         messages: [
@@ -137,6 +120,65 @@ function Course() {
         ]
     }
 
+    const sendJettons = async (WALLET2_ADDRESS) => {
+        const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
+
+        const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
+
+        const seed = await mnemonicToSeed(words);
+        const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
+    
+        //const WALLET2_ADDRESS = 'UQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT';
+
+        const WalletClass = tonweb.wallet.all['v4R2'];
+        const wallet = new WalletClass(tonweb.provider, {
+            publicKey: keyPair.publicKey,
+            wc: 0
+        });
+
+        const walletAddress = await wallet.getAddress();
+        console.log('wallet address=', walletAddress.toString(true, true, true));
+    
+
+        const JETTON_WALLET_ADDRESS = 'EQBQQLR2Are9JDYK-3OtbxgmCN6k9gxR7fhBwUdmF4bw-ShM';
+        // const JETTON_WALLET_ADDRESS = 'EQAG6NvUCTxgQfcuUJVypQxN4rCm6krVH6T-mngXhSQwY0Ae';
+        console.log('jettonWalletAddress=', JETTON_WALLET_ADDRESS);
+
+        const {JettonMinter, JettonWallet} = TonWeb.token.jetton;
+
+        console.log(JettonMinter);
+
+        const jettonWallet = new JettonWallet(tonweb.provider, {
+            address: JETTON_WALLET_ADDRESS
+        });
+
+        const seqno = (await wallet.methods.seqno().call()) || 0;
+        console.log({seqno})
+
+        const transfer = async () => {
+            // first four zero bytes are tag of text comment
+            //const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('gift')]);
+            console.log(
+                await wallet.methods.transfer({
+                    secretKey: keyPair.secretKey,
+                    toAddress: JETTON_WALLET_ADDRESS,
+                    amount: TonWeb.utils.toNano('0.05'),
+                    seqno: seqno,
+                    payload: await jettonWallet.createTransferBody({
+                        jettonAmount: TonWeb.utils.toNano('1'),
+                        toAddress: new TonWeb.utils.Address(WALLET2_ADDRESS),
+                        forwardAmount: TonWeb.utils.toNano('0.01'),
+                        forwardPayload: new TextEncoder().encode('gift'),
+                        responseAddress: walletAddress
+                    }),
+                    sendMode: 3,
+                }).send()
+            );
+        }
+
+        await transfer();
+    }
+
     const handlePay = async () => {
         try {
             await tonConnectUI.sendTransaction(myTransaction);
@@ -144,6 +186,9 @@ function Course() {
             console.log(e);
             return 0;
         }
+
+        sendJettons(userFriendlyAddress);
+        sendJettons(data[0].address);
 
         paid = true;
         let amount = data[0].amount + 1

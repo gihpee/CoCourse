@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { TonConnectButton } from '@tonconnect/ui-react';
 //import { useTonConnectUI } from '@tonconnect/ui-react';
-//import { useTonAddress } from '@tonconnect/ui-react';
+import { useTonAddress } from '@tonconnect/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
-import { mnemonicToSeed } from 'tonweb-mnemonic';
 import "./Wallet.css";
 
 
@@ -18,7 +17,20 @@ function Wallet() {
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [coursesData, setCoursesData] = useState([]);
 
-    const init = async () => {
+    const getUserCOMN = async () => {
+        const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
+        const userFriendlyAddress = useTonAddress();
+
+        const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, { address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0" });
+        const jettonWalletAddress = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address(userFriendlyAddress));
+        const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
+            address: jettonWalletAddress
+        });
+        const jettonData = await jettonWallet.getData();
+        console.log(jettonData)
+    }
+
+    /*const init = async () => {
         const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
 
         const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
@@ -75,36 +87,9 @@ function Wallet() {
         }
 
         await transfer();
-    }
-    
-
-
-    //const userFriendlyAddress = useTonAddress();
-
-
-    //const [tonConnectUI, setOptions] = useTonConnectUI();
-    //setOptions({ language: 'ru' });
-
-    /*const body = beginCell()
-        .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
-        .storeUint(0, 64)                         // query_id:uint64
-        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
-        .storeAddress(Address.parse(userFriendlyAddress))  // destination:MsgAddress
-        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
-        .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
-        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
-        .endCell();
-
-    const jettonTransaction = {
-        validUntil: Math.floor(Date.now() / 1000) + 360,
-        messages: [
-            {
-                address: 'EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0', // sender jetton wallet
-                amount: toNano(0.05).toString(), // for commission fees, excess will be returned
-                payload: body.toBoc().toString("base64") // payload with jetton transfer body
-            }
-        ]
     }*/
+    
+    //const userFriendlyAddress = useTonAddress();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -146,28 +131,26 @@ function Wallet() {
     const allTransactions = [...coursesPaid, ...coursesSelled]
 
     useEffect(() => {
-        if (!coursesPaid) {
-            const fetchCourses = async () => {
-            try {
-                const response = await fetch('https://commoncourse.io/get-courses-by-ids', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ ids }),
-                });
+        const fetchCourses = async () => {
+        try {
+            const response = await fetch('https://commoncourse.io/get-courses-by-ids', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ids }),
+            });
         
-                const result = await response.json();
-                setCoursesData(result);
+            const result = await response.json();
+            setCoursesData(result);
 
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-            };
-        
-            fetchCourses();
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-    }, [ids, coursesPaid]);
+        };
+        
+        fetchCourses();
+    }, [ids]);
 
     const transactions = coursesData.map((item, index) => {
         var t_type = '';
@@ -215,8 +198,8 @@ function Wallet() {
             <span>История транзакций</span>
             {transactions}
 
-            <button onClick={() => init()}>
-                Send Jetton
+            <button onClick={() => getUserCOMN()}>
+                get data
             </button>
 
         </div>
