@@ -38,7 +38,7 @@ function Wallet() {
         };
 
         getUserCOMN();
-    }, []);
+    }, [userFriendlyAddress]);
 
     /*const init = async () => {
         const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
