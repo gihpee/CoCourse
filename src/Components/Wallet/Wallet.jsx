@@ -27,6 +27,7 @@ function Wallet() {
             address: jettonWalletAddress
         });
         const jettonData = await jettonWallet.getData();
+        console.log(jettonWallet)
         console.log(jettonData)
     }
 
