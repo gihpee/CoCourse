@@ -11,7 +11,7 @@ import { useTonAddress } from '@tonconnect/ui-react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
 import { mnemonicToSeed } from 'tonweb-mnemonic';
-import { useTelegram } from '@twa-dev/types';
+import MainButton from '@twa-dev/mainbutton';
 import "./Course.css";
 
 
@@ -36,7 +36,7 @@ function Course() {
 
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
-    const { Telegram } = useTelegram();
+    /*const { Telegram } = useTelegram();
 
     useEffect(() => {
         if (paid) {
@@ -59,7 +59,7 @@ function Course() {
           Telegram.MainButton.hide();
           Telegram.MainButton.offClick();
         };
-      }, [paid, owned, data, handlePay, Telegram.MainButton]);
+      }, [paid, owned, data, handlePay, Telegram.MainButton]);*/
 
     useEffect(() => {
         const fetchData = async () => {
@@ -356,6 +356,11 @@ function Course() {
                     КУПИТЬ
                 </button>
             </div>}*/}
+
+            {paid ? 
+            <MainButton text="К УЧЕБЕ" onClick={() => window.location.href = data[0].channel_url} />
+            : !owned && 
+            <MainButton text="КУПИТЬ" onClick={handlePay} />}
         </>
 }
 
