@@ -38,7 +38,7 @@ function Wallet() {
         console.log('wallet address=', walletAddress.toString(true, true, true));
     
 
-        const JETTON_WALLET_ADDRESS = 'EQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHdxZ';
+        const JETTON_WALLET_ADDRESS = 'EQBQQLR2Are9JDYK-3OtbxgmCN6k9gxR7fhBwUdmF4bw-ShM';
         // const JETTON_WALLET_ADDRESS = 'EQAG6NvUCTxgQfcuUJVypQxN4rCm6krVH6T-mngXhSQwY0Ae';
         console.log('jettonWalletAddress=', JETTON_WALLET_ADDRESS);
 
