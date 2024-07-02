@@ -18,24 +18,27 @@ function Wallet() {
     const [coursesData, setCoursesData] = useState([]);
     const userFriendlyAddress = useTonAddress();
 
-    const getUserCOMN = async () => {
-        const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
+    const [comn, setComn] = useState(0);
 
-        const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, { address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0" });
-        const jettonWalletAddress = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address(userFriendlyAddress));
-        const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
-            address: jettonWalletAddress
-        });
-        const jettonData = await jettonWallet.getData();
-        let balance = jettonData.balance.toString();
-        if (balance) {
-            return balance;
-        } else {
-            return 0;
-        }
-    }
+    useEffect(() => {
+        const getUserCOMN = async () => {
+            const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
+            const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, { address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0" });
+            const jettonWalletAddress = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address(userFriendlyAddress));
+            const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
+                address: jettonWalletAddress
+            });
+            const jettonData = await jettonWallet.getData();
+            let balance = jettonData.balance.toString();
+            if (balance) {
+                setComn(balance);
+            } else {
+                setComn(0);
+            }
+        };
 
-    const comn = getUserCOMN();
+        getUserCOMN();
+    }, []);
 
     /*const init = async () => {
         const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
