@@ -28,7 +28,7 @@ function Wallet() {
         });
         const jettonData = await jettonWallet.getData();
         console.log(jettonWallet)
-        console.log(jettonData)
+        console.log(jettonData.balance.toString())
     }
 
     /*const init = async () => {
