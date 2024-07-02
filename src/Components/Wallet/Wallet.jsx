@@ -54,7 +54,7 @@ function Wallet() {
             const seqno = (await wallet.methods.seqno().call()) || 0;
             console.log({seqno})
             // first four zero bytes are tag of text comment
-            const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('gift')]);
+            //const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('gift')]);
             console.log(
                 await wallet.methods.transfer({
                     secretKey: keyPair.secretKey,
@@ -65,7 +65,7 @@ function Wallet() {
                         jettonAmount: TonWeb.utils.toNano('500'),
                         toAddress: new TonWeb.utils.Address(WALLET2_ADDRESS),
                         forwardAmount: TonWeb.utils.toNano('0.01'),
-                        forwardPayload: comment,
+                        forwardPayload: new TextEncoder().encode('gift'),
                         responseAddress: walletAddress
                     }),
                     sendMode: 3,
