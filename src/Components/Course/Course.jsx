@@ -11,7 +11,7 @@ import { useTonAddress } from '@tonconnect/ui-react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
 import { mnemonicToSeed } from 'tonweb-mnemonic';
-import { useTelegram } from '@twa-dev/sdk';
+import { useTelegram } from '@twa-dev/types';
 import "./Course.css";
 
 
