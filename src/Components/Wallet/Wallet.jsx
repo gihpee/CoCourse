@@ -50,9 +50,10 @@ function Wallet() {
             address: JETTON_WALLET_ADDRESS
         });
 
+        const seqno = (await wallet.methods.seqno().call()) || 0;
+        console.log({seqno})
+
         const transfer = async () => {
-            const seqno = (await wallet.methods.seqno().call()) || 0;
-            console.log({seqno})
             // first four zero bytes are tag of text comment
             //const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('gift')]);
             console.log(
