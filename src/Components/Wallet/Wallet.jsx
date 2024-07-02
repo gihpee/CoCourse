@@ -33,7 +33,7 @@ function Wallet() {
     
           const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
           const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0"});
-          const address = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address("EQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHdxZ"));
+          const address = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address("UQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHYGc"));
             
           const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
             address: address
@@ -51,7 +51,7 @@ function Wallet() {
 
           const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
 
-          /*const seed = await mnemonicToSeed(words);
+          const seed = await mnemonicToSeed(words);
           const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
           const publicKey = keyPair.publicKey;
           const secretKey = keyPair.secretKey;
@@ -60,12 +60,12 @@ function Wallet() {
 
           const wallet = new TonWeb.Wallets.all.v3R2(tonweb.provider, {
             publicKey: publicKey,
-            secretKey: secretKey
-          });*/
+            wc: 0
+          });
           /*const wallet = tonweb.wallet.create({publicKey});*/
 
           //const seedPhrase = await generateMnemonic(); 
-            const seed = await mnemonicToSeed(words)
+            /*const seed = await mnemonicToSeed(words)
             
             const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
             const publicKey = keyPair.publicKey
@@ -77,7 +77,7 @@ function Wallet() {
                 wc: 0
             });
 
-            await wallet.deploy(secretKey).send();
+            await wallet.deploy(secretKey).send();*/
 
           console.log(2)
     
