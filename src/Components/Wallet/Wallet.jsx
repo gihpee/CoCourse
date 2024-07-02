@@ -77,6 +77,8 @@ function Wallet() {
           });
 
           const seqno = await wallet.methods.seqno().call();
+
+          await wallet.deploy(secretKey).send();
           /*const wallet = tonweb.wallet.create({publicKey});*/
 
           //const seedPhrase = await generateMnemonic(); 
