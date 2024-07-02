@@ -28,7 +28,7 @@ function Course() {
 
     const [exchangeRate, setExchangeRate] = useState(null);
 
-    const userFriendlyAddress = useTonAddress();
+    const userFriendlyAddress = useTonAddress(false);
     
     const navigate = useNavigate();
 
