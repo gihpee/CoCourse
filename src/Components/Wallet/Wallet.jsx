@@ -7,7 +7,6 @@ import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
 import { mnemonicToSeed } from 'tonweb-mnemonic';
-const {JettonWallet} = TonWeb.token.jetton;
 import "./Wallet.css";
 
 
@@ -42,6 +41,10 @@ function Wallet() {
         const JETTON_WALLET_ADDRESS = 'EQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHdxZ';
         // const JETTON_WALLET_ADDRESS = 'EQAG6NvUCTxgQfcuUJVypQxN4rCm6krVH6T-mngXhSQwY0Ae';
         console.log('jettonWalletAddress=', JETTON_WALLET_ADDRESS);
+
+        const {JettonMinter, JettonWallet} = TonWeb.token.jetton;
+
+        console.log(JettonMinter);
 
         const jettonWallet = new JettonWallet(tonweb.provider, {
             address: JETTON_WALLET_ADDRESS
