@@ -16,10 +16,10 @@ function Wallet() {
     const [coursesPaid, setCoursesPaid] = useState([]);
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [coursesData, setCoursesData] = useState([]);
+    const userFriendlyAddress = useTonAddress();
 
     const getUserCOMN = async () => {
         const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
-        const userFriendlyAddress = useTonAddress();
 
         const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, { address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0" });
         const jettonWalletAddress = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address(userFriendlyAddress));
