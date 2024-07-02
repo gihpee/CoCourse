@@ -32,14 +32,14 @@ function Wallet() {
         setSuccess(null);
     
           const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
-          const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {address: "EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0"});
+          const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {address: "0:03d57863c6164d59c363f218b1a202320a367977eb66ce3c35a463ae945a7928"});
           const address = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address("UQB203byGIbZ2VHJEpgfS4uiCe5omB4OsDz9_qnntIUOHYGc"));
             
           const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider, {
             address: address
           });
           const jettonData = await jettonWallet.getData();
-          if (jettonData.jettonMinterAddress.toString(false) !== new TonWeb.utils.Address("EQAD1XhjxhZNWcNj8hixogIyCjZ5d-tmzjw1pGOulFp5KEM0").toString(false)) {
+          if (jettonData.jettonMinterAddress.toString(false) !== new TonWeb.utils.Address("0:03d57863c6164d59c363f218b1a202320a367977eb66ce3c35a463ae945a7928").toString(false)) {
             throw new Error('Jetton minter address from jetton wallet doesnt match config');
           }
     
