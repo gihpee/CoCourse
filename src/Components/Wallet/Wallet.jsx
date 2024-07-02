@@ -28,7 +28,7 @@ function Wallet() {
     
         const WALLET2_ADDRESS = 'UQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT';
 
-        const WalletClass = tonweb.wallet.all['v3R1'];
+        const WalletClass = tonweb.wallet.all['v4R1'];
         const wallet = new WalletClass(tonweb.provider, {
             publicKey: keyPair.publicKey,
             wc: 0
