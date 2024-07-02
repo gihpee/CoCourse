@@ -31,7 +31,7 @@ function Wallet() {
             const jettonData = await jettonWallet.getData();
             let balance = jettonData.balance.toString();
             if (balance) {
-                setComn(balance);
+                setComn(balance / 1000000000);
             } else {
                 setComn(0);
             }
