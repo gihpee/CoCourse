@@ -65,7 +65,7 @@ function Wallet() {
           /*const wallet = tonweb.wallet.create({publicKey});*/
 
           const seedPhrase = await generateMnemonic(); 
-            const seed = await mnemonicToSeed([seedPhrase])
+            const seed = await mnemonicToSeed(words)
             
             const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
             const publicKey = keyPair.publicKey
