@@ -26,7 +26,7 @@ function Wallet() {
         const seed = await mnemonicToSeed(words);
         const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
     
-        const WALLET2_ADDRESS = 'EQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT';
+        const WALLET2_ADDRESS = 'UQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT';
 
         const WalletClass = tonweb.wallet.all['v3R1'];
         const wallet = new WalletClass(tonweb.provider, {
