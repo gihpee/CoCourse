@@ -33,7 +33,7 @@ function App() {
         <Routes>
           <Route index element={<Feed />}/>
           <Route path={'create'} element={<><Create /> <NavBar /> </>}/>
-          <Route path={'profile'} element={<><Profile /> <NavBar /> </>}/>
+          <Route path={'profile'} element={<Profile />}/>
           <Route path={'course/:cid'} element={<Course />}/>
           <Route path={'create-course'} element={<CreateCourse />}/>
           <Route path={'send-feedback/:id'} element={<SendFeedback />}/>

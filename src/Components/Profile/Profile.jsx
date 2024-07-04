@@ -149,7 +149,6 @@ function Home() {
   }
 
   return <>
-          <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
           <div className="top_panel">
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                 <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
