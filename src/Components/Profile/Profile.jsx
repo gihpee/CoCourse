@@ -2,12 +2,15 @@ import React from "react";
 import photo_url from '../assets/profile/avatar.png'
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
 
 function Home() {
   window.scrollTo(0, 0)
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(window.Telegram.WebApp.initDataUnsafe.user)
+
+  const navigate = useNavigate();
 
   var usrname = id;
   if (username) {
@@ -147,6 +150,10 @@ function Home() {
 
   return <>
           <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
+          <div className="top_panel">
+                <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
+                <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
+            </div>
           <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`, marginTop: '-56px'}}>
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
