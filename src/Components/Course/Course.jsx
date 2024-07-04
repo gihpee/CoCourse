@@ -185,7 +185,7 @@ function Course() {
                     amount: TonWeb.utils.toNano('0.05'),
                     seqno: seqno,
                     payload: await jettonWallet.createTransferBody({
-                        jettonAmount: TonWeb.utils.toNano('1'),
+                        jettonAmount: TonWeb.utils.toNano('100'),
                         toAddress: new TonWeb.utils.Address(WALLET2_ADDRESS),
                         forwardAmount: TonWeb.utils.toNano('0.01'),
                         forwardPayload: new TextEncoder().encode('gift'),
