@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
+import MainButton from '@twa-dev/mainbutton';
+import { useTonAddress } from '@tonconnect/ui-react';
 
 function Home() {
   window.scrollTo(0, 0)
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   console.log(window.Telegram.WebApp.initDataUnsafe.user)
+  const userFriendlyAddress = useTonAddress(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -17,6 +21,18 @@ function Home() {
     usrname = username;
   }
 
+  const checkWallet = () => {
+    if (!userFriendlyAddress) {
+      setModalOpen(true);
+    }
+    else {
+      navigate('/create-course')
+    }
+  };
+
+  const handleOkBtnClick = () => {
+    setModalOpen(false);
+  }
 
   const [userData, setUserData] = useState({});
   const [coursesData, setCoursesData] = useState([]);
@@ -172,6 +188,15 @@ function Home() {
                   </Link>
             </div>
 
+            {modalOpen && (
+            <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
+                <div className="modal-content">
+                    <p>Для создания курса необходимо подключить кошелек</p>
+                    <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                </div>
+            </div>
+            )}
+
             <span>Биография</span>
             <div className="select_col">
             <div className="select_bio" style={{height: 'auto', whiteSpace: 'pre-line'}}>
@@ -205,6 +230,8 @@ function Home() {
                 <span>Курсы</span>
                 {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
+
+            <MainButton text="CОЗДАТЬ КУРС" onClick={checkWallet} />
         </>;
 }
 

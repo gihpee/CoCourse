@@ -150,7 +150,7 @@ function CreateCourse() {
               },
 
               body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
-          }).then(navigate('/create'))
+          }).then(navigate('/profile'))
       }
         
     };
@@ -181,7 +181,7 @@ function CreateCourse() {
           },
 
           body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
-      }).then(navigate('/create'))
+      }).then(navigate('/profile'))
         
     };
 
