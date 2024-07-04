@@ -31,7 +31,7 @@ function App() {
     <div className='App'>
       <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <Routes>
-          <Route index element={<><Feed /> <NavBar /> </>}/>
+          <Route index element={<Feed />}/>
           <Route path={'create'} element={<><Create /> <NavBar /> </>}/>
           <Route path={'profile'} element={<><Profile /> <NavBar /> </>}/>
           <Route path={'course/:cid'} element={<Course />}/>
