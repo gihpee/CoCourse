@@ -207,8 +207,8 @@ function Course() {
             return 0;
         }
 
-        sendJettons(userFriendlyAddress);
-        sendJettons(data[0].address);
+        await sendJettons(userFriendlyAddress);
+        await sendJettons(data[0].address);
 
         paid = true;
         let amount = data[0].amount + 1

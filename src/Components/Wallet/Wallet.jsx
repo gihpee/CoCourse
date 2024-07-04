@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
-import { mnemonicToSeed } from 'tonweb-mnemonic';
+//import { mnemonicToSeed } from 'tonweb-mnemonic';
 import "./Wallet.css";
 
 
@@ -41,7 +41,7 @@ function Wallet() {
         getUserCOMN();
     }, [userFriendlyAddress]);
 
-    const init = async () => {
+    /*const init = async () => {
         const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
 
         const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
@@ -98,7 +98,7 @@ function Wallet() {
         }
 
         await transfer();
-    }
+    }*/
     
     //const userFriendlyAddress = useTonAddress();
 
@@ -206,7 +206,7 @@ function Wallet() {
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
             </div>
 
-            <button onClick={() => init()}>test</button>
+            {/*<button onClick={() => init()}>test</button>*/}
 
             <span>История транзакций</span>
             {transactions}
