@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 //import { beginCell, toNano, Address } from '@ton/ton'
 import TonWeb from "tonweb";
+import { mnemonicToSeed } from 'tonweb-mnemonic';
 import "./Wallet.css";
 
 
@@ -40,7 +41,7 @@ function Wallet() {
         getUserCOMN();
     }, [userFriendlyAddress]);
 
-    /*const init = async () => {
+    const init = async () => {
         const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
 
         const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
@@ -48,7 +49,7 @@ function Wallet() {
         const seed = await mnemonicToSeed(words);
         const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
     
-        const WALLET2_ADDRESS = 'UQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT';
+        const WALLET2_ADDRESS = 'UQDPiSyH9JCBP0xUp4dCE3XdFgMq2Re4OMy4d0dbVVb_GaMg';
 
         const WalletClass = tonweb.wallet.all['v4R2'];
         const wallet = new WalletClass(tonweb.provider, {
@@ -97,7 +98,7 @@ function Wallet() {
         }
 
         await transfer();
-    }*/
+    }
     
     //const userFriendlyAddress = useTonAddress();
 
@@ -204,6 +205,8 @@ function Wallet() {
                 <div className="course_price">{comn}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> COMN</span></div>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
             </div>
+
+            <button onClick={() => init()}>test</button>
 
             <span>История транзакций</span>
             {transactions}

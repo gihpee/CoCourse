@@ -152,8 +152,6 @@ function Course() {
 
         const seed = await mnemonicToSeed(words);
         const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
-    
-        //const WALLET2_ADDRESS = 'UQAAmEyJL-l9AzBJbXXT7-JvuOpoKld9sG7WB7cCwNFX2mZT';
 
         const WalletClass = tonweb.wallet.all['v4R2'];
         const wallet = new WalletClass(tonweb.provider, {
@@ -166,7 +164,6 @@ function Course() {
     
 
         const JETTON_WALLET_ADDRESS = 'EQBQQLR2Are9JDYK-3OtbxgmCN6k9gxR7fhBwUdmF4bw-ShM';
-        // const JETTON_WALLET_ADDRESS = 'EQAG6NvUCTxgQfcuUJVypQxN4rCm6krVH6T-mngXhSQwY0Ae';
         console.log('jettonWalletAddress=', JETTON_WALLET_ADDRESS);
 
         const {JettonMinter, JettonWallet} = TonWeb.token.jetton;
@@ -181,8 +178,6 @@ function Course() {
         console.log({seqno})
 
         const transfer = async () => {
-            // first four zero bytes are tag of text comment
-            //const comment = new Uint8Array([...new Uint8Array(4), ...new TextEncoder().encode('gift')]);
             console.log(
                 await wallet.methods.transfer({
                     secretKey: keyPair.secretKey,
