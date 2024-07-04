@@ -6,7 +6,8 @@ import "./Feed.css";
 
 function Feed() {
   window.scrollTo(0, 0)
-  const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+  //const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+  const {id} = 10;
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [userCourses, setUserCourses] = useState([]);
@@ -128,6 +129,7 @@ function Feed() {
 
   return <div className="column" style={{minHeight: '100vh'}}>
       <div className="top_panel" style={{columnGap: '8px'}}>
+          <Link to={`/profile`} className="profille_btn"></Link>
         <input
           className="billet_search"
           onChange={handleUniChange}

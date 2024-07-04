@@ -200,3 +200,21 @@
     margin-right: 8px;
     z-index: 150;
   }
+
+.profille_btn {
+    position: sticky;
+    top: 8px;
+    left: calc(100% - 8px);
+    width: 48px;
+    height: 48px;
+    backdrop-filter: blur(10px);
+    background: rgba(16,16,16, 0.7);
+    background-image: url('../assets/feed/boy.svg');
+    background-position: center;
+    background-size: 24px 24px;
+    border-radius: 24px;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+    z-index: 150;
+}
+
