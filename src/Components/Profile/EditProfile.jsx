@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import lminus from '../assets/create-course/lminus.png'
 import "./EditProfile.css";
+import MainButton from '@twa-dev/mainbutton';
 
 function EditProfile() {
     const { id } = useParams();
@@ -312,9 +313,7 @@ function EditProfile() {
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Что нового?</p>
               </a>
               
-              <div className="publish">
-                <button className='publish_btn' onClick={() => handleSave()}>Сохранить</button>
-              </div>
+              <MainButton text="Сохранить" onClick={() => handleSave()} />
             </div>
            </>
 }

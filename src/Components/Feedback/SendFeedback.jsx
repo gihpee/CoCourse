@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import "./SendFeedback.css";
+import MainButton from '@twa-dev/mainbutton';
 
 function SendFeedback() {
   window.scrollTo(0, 0)
@@ -173,9 +174,7 @@ function SendFeedback() {
               </div>
           </div>
 
-          <div className="publish" style={{marginTop: '25px'}}>
-            <button className='sf_btn' onClick={handlePublish}>СОХРАНИТЬ</button>
-          </div>
+          <MainButton text="Сохранить" onClick={handlePublish} />
           </div>;
 }
 

@@ -7,6 +7,7 @@ import hash from '../assets/profile/hash.svg'
 import nb from '../assets/profile/nb.svg'
 import krest from '../assets/create/krest.svg'
 import chart from '../assets/profile/chart.svg'
+import MainButton from '@twa-dev/mainbutton';
 import "./EditCourse.css";
 
 function EditCourse() {
@@ -213,7 +214,7 @@ function EditCourse() {
                 },
 
                 body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft, price, channel_url}),
-            }).then(navigate('/create'))
+            }).then(navigate('/profile'))
         }
           
       };
@@ -248,7 +249,7 @@ function EditCourse() {
                     },
 
                     body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft, price, channel_url}),
-                }).then(navigate('/create'))
+                }).then(navigate('/profile'))
             }
         } else {
             let day = currentDate.getDate();
@@ -274,7 +275,7 @@ function EditCourse() {
                 },
 
                 body: JSON.stringify({cid, name, university, course, description, subjects, topics, date, image, is_draft, price, channel_url}),
-            }).then(navigate('/create'))
+            }).then(navigate('/profile'))
         }
     };
 
@@ -553,11 +554,7 @@ function EditCourse() {
         <div className="column" style={{marginBottom: '200px'}}>
             <button className='billet_addd' onClick={addEl}>Add topic</button>
         </div>
-        {formData.is_draft ? <div className="publish">
-            <button className='publish_btn' onClick={handlePublishDraft}>Опубликовать</button>
-        </div> : <div className="publish">
-            <button className='publish_btn' onClick={handlePublish}>Сохранить</button>
-        </div>}
+        {formData.is_draft ? <MainButton text="Опубликовать" onClick={handlePublishDraft} /> : <MainButton text="Опубликовать" onClick={handlePublish} />}
         </>
 }
 

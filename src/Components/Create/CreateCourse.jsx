@@ -6,6 +6,7 @@ import nb from '../assets/profile/nb.svg'
 import chart from '../assets/profile/chart.svg'
 import "./CreateCourse.css";
 import { useTonAddress } from '@tonconnect/ui-react';
+import MainButton from '@twa-dev/mainbutton';
 
 function CreateCourse() {
 
@@ -443,9 +444,7 @@ function CreateCourse() {
         <div className="column" style={{marginBottom: '200px'}}>
             <button className='billet_addd' onClick={addEl}>Add topic</button>
         </div>
-        <div className="publish">
-            <button className='publish_btn' onClick={handlePublish}>ОПУБЛИКОВАТЬ</button>
-        </div>
+        <MainButton text="Опубликовать" onClick={handlePublish} />
         </>
 }
 

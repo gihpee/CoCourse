@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Profile.css";
+import MainButton from '@twa-dev/mainbutton';
 
 function User() {
     window.scrollTo(0, 0)
@@ -165,9 +166,7 @@ function User() {
                 {userCourses.length > 0 ? userCourses : <p>Пользователь пока не опубликовал ни один курс</p>}
             </div>
 
-            <a href={`https://t.me/${userData.username}`} className="user_course_action">
-                <button href={`https://t.me/${userData.username}`} className='user_course_action_btn'>НАПИСАТЬ В ТЕЛЕГРАМ</button>
-              </a>
+            <MainButton text="НАПИСАТЬ В ТЕЛЕГРАМ" onClick={() => window.location.href = `https://t.me/${userData.username}`} />
         </>;
 }
 
