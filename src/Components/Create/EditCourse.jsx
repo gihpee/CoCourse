@@ -55,7 +55,7 @@ function EditCourse() {
             },
 
             body: JSON.stringify({cid}),
-        }).then(navigate('/create'))
+        }).then(navigate('/profile'))
     };
 
     const handleCancelDelete = () => {
