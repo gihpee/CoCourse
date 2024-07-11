@@ -57,7 +57,6 @@ function FeedbackUser() {
     return <div className="column">
                 <div className="feedback_top">
                     <div className="fback_btn" onClick={() => {window.history.back()}}></div>
-                    <div className="fb_billet">Отзывы</div>
                 </div>
                 <span>Отзывы</span>
                 <div className="feedback" style={{width: '100%'}}>

@@ -58,7 +58,6 @@ function FeedbackCourse() {
     return <div className="column">
                 <div className="feedback_top">
                     <div className="fback_btn" onClick={() => navigate(`/course/${id}`)}></div>
-                    <div className="fb_billet">Отзывы</div>
                 </div>
                 <span>Отзывы</span>
                 <div className="feedback" style={{width: '100%'}}>

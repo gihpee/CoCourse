@@ -149,7 +149,6 @@ function SendFeedback() {
 
           <div className="feedback_top">
             <div className="fback_btn" onClick={() => navigate(`/course/${id}`)}></div>
-            <div className="fb_billet">Отзывы</div>
           </div>
           <span>ОЦЕНКА*</span>
           <div className="slider-container">
@@ -169,7 +168,7 @@ function SendFeedback() {
 
           <span style={{marginTop: '12px'}}>КОММЕНТАРИЙ*</span>
           <div className="select_col">
-              <div className="select_fb">
+              <div className="select">
                 <textarea className='bio_textarea' type='text' placeholder="Поделись своим мнением..." name="fb_text" value={revValue} onChange={handleRevChange} />
               </div>
           </div>

@@ -282,6 +282,7 @@ function Course() {
                 </div>
             </div>
             <span>Отзывы</span>
+            <div className="feedback">
                 <Link to={`/course-feedback/${cid}`} className="nfeedback">
                 <p>{averageRate.toFixed(1)}</p>
                     <div className="nrow_grad_l">
@@ -289,6 +290,7 @@ function Course() {
                     </div>
                     <img src={nf} alt=''/>
                 </Link>
+            </div>
 
             <span>Описание</span>
             <div className="select_col">
