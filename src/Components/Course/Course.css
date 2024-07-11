@@ -24,8 +24,7 @@ span {
     width: 97.5%;
     margin: 0 auto;
     margin-left: 2.5%;
-    height: 48px;
-    padding-left: 8px;
+    height: 56px;
     color: white;
     background-color: #161616;
     line-height: 18.2px;
@@ -39,7 +38,7 @@ span {
     white-space: pre-line;
 }
 .acor-container .acor-body span {
-    margin: 0 0 10px;
+    margin: 8 0 10px;
     color: white;
     font-size: 14px;
     font-weight: 500;
