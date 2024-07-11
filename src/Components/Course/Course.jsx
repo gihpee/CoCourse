@@ -283,21 +283,13 @@ function Course() {
                 </div>
             </div>
             <span>Отзывы</span>
-            <div className="nfeedback">
-                <Link to={`/course-feedback/${cid}`}>
+                <Link to={`/course-feedback/${cid}`} className="nfeedback">
                 <p>{averageRate.toFixed(1)}</p>
                     <div className="nrow_grad_l">
                         <div className="ngrad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
                     </div>
                     <img src={nf} alt=''/>
                 </Link>
-                <Link to={`/send-feedback/${cid}`}>
-                    <div className="billet">
-                        <img src={star} alt='' />
-                        <p>Оставить отзыв</p>
-                    </div>
-                </Link>
-            </div>
 
             <span>Описание</span>
             <div className="select_col">
