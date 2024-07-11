@@ -6,6 +6,7 @@ import calendarS from '../assets/feedback/calendarS.svg'
 import hashS from '../assets/feedback/hashS.svg'
 import starS from '../assets/feedback/sstar.svg'
 import { useNavigate } from 'react-router-dom';
+import MainButton from '@twa-dev/mainbutton';
 import "./Feedback.css";
 
 function FeedbackCourse() {
@@ -67,6 +68,7 @@ function FeedbackCourse() {
                     </div>
                 </div>
                 {cards.length > 0 ? cards : <p>Пока нет ни одного отзыва</p>}
+                <MainButton text="Оставить отзыв" onClick={() => window.location.href = `/send-feedback/${id}`} />
             </div>;
 }
 export default FeedbackCourse;

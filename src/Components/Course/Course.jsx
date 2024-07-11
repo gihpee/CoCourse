@@ -11,6 +11,7 @@ import { useTonAddress } from '@tonconnect/ui-react';
 import TonWeb from "tonweb";
 import { mnemonicToSeed } from 'tonweb-mnemonic';
 import MainButton from '@twa-dev/mainbutton';
+import nf from '../assets/course/nfeedarrow.svg';
 import "./Course.css";
 
 
@@ -282,12 +283,13 @@ function Course() {
                 </div>
             </div>
             <span>Отзывы</span>
-            <div className="feedback">
+            <div className="nfeedback">
                 <Link to={`/course-feedback/${cid}`}>
-                <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
-                <div className="row_grad_l">
-                    <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
-                </div>
+                <p>{averageRate.toFixed(1)}</p>
+                    <div className="nrow_grad_l">
+                        <div className="ngrad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+                    </div>
+                    <img src={nf} alt=''/>
                 </Link>
                 <Link to={`/send-feedback/${cid}`}>
                     <div className="billet">

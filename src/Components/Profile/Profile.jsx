@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
 import MainButton from '@twa-dev/mainbutton';
 import { useTonAddress } from '@tonconnect/ui-react';
+import nf from '../assets/course/nfeedarrow.svg';
 
 function Home() {
   window.scrollTo(0, 0)
@@ -180,12 +181,13 @@ function Home() {
               </Link>*/}
           <div className="edit_container">
             <span>Отзывы</span>
-            <Link to={`/user-feedback/${userData.id}`} className="feedback" style={{width: '100%'}}>
-                      <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
-                      <div className="row_grad_l">
-                          <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
-                      </div>
-                  </Link>
+            <Link to={`/user-feedback/${userData.id}`} className="nfeedback">
+                    <p>{averageRate.toFixed(1)}</p>
+                    <div className="nrow_grad_l">
+                        <div className="ngrad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
+                    </div>
+                    <img src={nf} alt=''/>
+            </Link>
             </div>
 
             {modalOpen && (
