@@ -1,5 +1,4 @@
 import React from "react";
-import hash from '../assets/course/hash.svg'
 import calend from '../assets/course/calender.svg'
 import star from '../assets/course/star.svg'
 import { useState, useEffect } from 'react';
@@ -235,7 +234,7 @@ function Course() {
         return (
             <>
                 <input type="checkbox" name="acor" id={index} />
-                <label for={index}><img src={hash} alt="" />{item.topic}</label>
+                <label for={index}>{item.topic}</label>
                 <div className="acor-body">
                     <span>{item.desc}</span>
                 </div>
@@ -300,28 +299,28 @@ function Course() {
 
             <span>Описание</span>
             <div className="select_col">
-            <div className="select_bio" style={{height: 'auto', whiteSpace: 'pre-line'}}>
+            <div className="select" style={{height: 'auto', whiteSpace: 'pre-line'}}>
                 <p>{data[0].description}</p>
             </div>
             </div>
 
             <span>Университет</span>
             <div className="select_col">
-                <div className="select_univ">
+                <div className="select">
                 {data[0].university.length > 0 ? (<div className="selected_row"> {data[0].university} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
             
             <span>Курс</span>
             <div className="select_col">
-                <div className="select_course">
+                <div className="select">
                 {data[0].course.length > 0 ? (<div className="selected_row"> {data[0].course} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
 
             <span>Предмет</span>
             <div className="select_col">
-                <div className="select_subject">
+                <div className="select">
                 {data[0].subjects.length > 0 ? (data[0].subjects.map((option) => (
                 <div className="selected_row" key={option}>{option}</div> ))) : (<p>Не указано</p>)}
                 </div>
