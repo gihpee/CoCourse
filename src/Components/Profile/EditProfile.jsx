@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import nb from '../assets/profile/nb.svg'
-import hash from '../assets/profile/hash.svg'
 import sun from '../assets/profile/sun.svg'
 import bulb from '../assets/profile/bulb.svg'
 import chat from '../assets/profile/chat.svg'
@@ -149,7 +147,6 @@ function EditProfile() {
 
     const varsSubject = filteredOptionsSubject.map((item, index) => (
         <div className="billet_add" key={index} onClick={() => handleOptionClickSubject(item)}>
-            <img src={hash} alt="" />
             <p>{item}</p>
         </div>
     ));
@@ -181,7 +178,6 @@ function EditProfile() {
   
     const varsUniv = filteredOptionsUniv.map((item, index) => (
       <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)}>
-        <img src={nb} alt="" />
         <p>{item}</p>
       </div>
     ));
@@ -213,7 +209,6 @@ function EditProfile() {
 
     const varsCourse = filteredOptionsCourse.map((item, index) => (
         <div className="billet_add" key={index} onClick={() => handleOptionClickCourse(item)}>
-          <img src={nb} alt="" />
           <p>{item}</p>
         </div>
       ));
