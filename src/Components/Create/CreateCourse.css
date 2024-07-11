@@ -176,6 +176,7 @@
 
 .billet_add p {
     width: calc(100% - 96px);
+    min-height: 48px;
     text-align: left;
     white-space: pre-line;
     align-self: center;

@@ -361,7 +361,7 @@ function CreateCourse() {
 
             <span>ТЕМА*</span>
             <input 
-                className='select'
+                className='billet_price'
                 type='text' 
                 placeholder="Economics"
                 name="Name"
@@ -416,7 +416,7 @@ function CreateCourse() {
             {formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>
                     <input
-                        className='select'
+                        className='billet_price'
                         type='text'
                         placeholder={`Topic ${index + 1}`}
                         name={`topic_${index}`}
