@@ -150,6 +150,8 @@
     display: flex;
     flex-flow: row;
     background-color: #161616;
+    height: 48px;
+    padding-left: 8px;
     color: #FFF;
     min-height: auto;
     background-image: url('../assets/profile/plus.svg');
