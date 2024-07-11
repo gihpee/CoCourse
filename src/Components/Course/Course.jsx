@@ -282,7 +282,7 @@ function Course() {
                 </div>
             </div>
             <span>Отзывы</span>
-                <Link to={`/course-feedback/${cid}`} className="nfeedback" style={{width: 'calc(100% - 8px)', marginBottom: '8px', marginLeft: '8px'}}>
+                <Link to={`/course-feedback/${cid}`} className="nfeedback" style={{width: 'calc(100% - 16px)', marginBottom: '8px', marginLeft: '8px'}}>
                 <p>{averageRate.toFixed(1)}</p>
                     <div className="nrow_grad_l">
                         <div className="ngrad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
