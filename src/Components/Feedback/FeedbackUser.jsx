@@ -59,12 +59,6 @@ function FeedbackUser() {
                     <div className="fback_btn" onClick={() => {window.history.back()}}></div>
                 </div>
                 <span>Отзывы</span>
-                <div className="feedback" style={{width: '100%'}}>
-                    <div className="rate">{20 * averageRate > 50 ? <p>{averageRate}</p> : <p style={{color: 'white'}}>{averageRate}</p>}</div>
-                    <div className="row_grad_l">
-                        <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
-                    </div>
-                </div>
                 {cards.length > 0 ? cards : <p>Пока нет ни одного отзыва</p>}
             </div>;
 }
