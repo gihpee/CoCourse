@@ -24,7 +24,8 @@ span {
     width: 97.5%;
     margin: 0 auto;
     margin-left: 2.5%;
-    height: 0;
+    height: 48px;
+    padding-left: 8px;
     color: white;
     background-color: #161616;
     line-height: 18.2px;
