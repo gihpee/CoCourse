@@ -199,28 +199,28 @@ function Home() {
 
             <span>Биография</span>
             <div className="select_col">
-            <div className="select_bio" style={{height: 'auto', whiteSpace: 'pre-line'}}>
+            <div className="select" style={{height: 'auto', whiteSpace: 'pre-line'}}>
                 <p>{userData.description ? userData.description : "Не указано"}</p>
             </div>
             </div>
 
             <span>Университет</span>
             <div className="select_col">
-                <div className="select_univ">
+                <div className="select">
                 {userData.university ? (<div className="selected_row"> {userData.university} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
             
             <span>Курс</span>
             <div className="select_col">
-                <div className="select_course">
+                <div className="select">
                 {userData.course ? (<div className="selected_row"> {userData.course} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
 
             <span>Предметы</span>
             <div className="select_col">
-                <div className="select_subject">
+                <div className="select">
                 {userData.subjects ? (userData.subjects.map((option) => (
                 <div className="selected_row" key={option}>{option}</div> ))) : (<p>Не указано</p>)}
                 </div>

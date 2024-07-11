@@ -244,14 +244,14 @@ function EditProfile() {
             <div className="prop_container">
               <span>БИОГРАФИЯ</span>
               <div className="select_col">
-                <div className="select_bio">
+                <div className="select">
                   <textarea className='bio_textarea' type='text' placeholder="Расскажите о себе и своих достижениях" value={bioValue} onChange={handleBioChange} />
                 </div>
               </div>
               <span>УНИВЕРСИТЕТ</span>
 
                 <div className="select_col">
-                    <div className="select_univ">
+                    <div className="select">
                     {uniValue.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionUniv(uniValue)}> {uniValue} </div>) : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => {setBoxIsVisibleUniv(true); setBoxIsVisibleCourse(false); setBoxIsVisibleSubject(false)}} value={inputValueUniv} />
@@ -263,7 +263,7 @@ function EditProfile() {
 
               <span>КУРС</span>
                 <div className="select_col">
-                    <div className="select_course">
+                    <div className="select">
                     {cValue.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(cValue)}> {cValue} </div>) : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => {setBoxIsVisibleCourse(true); setBoxIsVisibleSubject(false); setBoxIsVisibleUniv(false)}} value={inputValueCourse} />
@@ -275,7 +275,7 @@ function EditProfile() {
               <span>ПРЕДМЕТЫ, КОТОРЫЕ ВЫ ИЗУЧАЕТЕ</span>
 
             <div className="select_col">
-                <div className="select_subject">
+                <div className="select">
                 {selectedOptions.length > 0 ? (selectedOptions.map((option) => (
                 <div className="selected_row" key={option} onClick={() => handleRemoveOptionSubject(option)}>{option}<img src={lminus} alt=''/></div> ))) : (<></>)}
 
