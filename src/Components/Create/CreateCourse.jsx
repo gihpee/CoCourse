@@ -1,9 +1,6 @@
 import React, {useState} from "react";
 import prev from '../assets/course/preview.png'
 import { useNavigate } from 'react-router-dom';
-import hash from '../assets/profile/hash.svg'
-import nb from '../assets/profile/nb.svg'
-import chart from '../assets/profile/chart.svg'
 import "./CreateCourse.css";
 import { useTonAddress } from '@tonconnect/ui-react';
 import MainButton from '@twa-dev/mainbutton';
@@ -224,7 +221,6 @@ function CreateCourse() {
 
     const varsSubject = filteredOptionsSubject.map((item, index) => (
         <div className="billet_add" key={index} onClick={() => handleOptionClickSubject(item)}>
-            <img src={hash} alt="" />
             <p>{item}</p>
         </div>
     ));
@@ -266,7 +262,6 @@ function CreateCourse() {
   
     const varsUniv = filteredOptionsUniv.map((item, index) => (
       <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)}>
-        <img src={nb} alt="" />
         <p>{item}</p>
       </div>
     ));
@@ -308,7 +303,6 @@ function CreateCourse() {
 
     const varsCourse = filteredOptionsCourse.map((item, index) => (
         <div className="billet_add" key={index} onClick={() => handleOptionClickCourse(item)}>
-          <img src={chart} alt="" />
           <p>{item}</p>
         </div>
       ));
@@ -367,7 +361,7 @@ function CreateCourse() {
 
             <span>ТЕМА*</span>
             <input 
-                className='billet_name'
+                className='select'
                 type='text' 
                 placeholder="Economics"
                 name="Name"
@@ -376,14 +370,14 @@ function CreateCourse() {
 
             <span>ОПИСАНИЕ*</span>
             <div className="select_col">
-                <div className="select_bio">
+                <div className="select">
                   <textarea className='bio_textarea' type='text' placeholder="Описание" name="Desc" value={formData.Desc} onChange={handleChange}/>
                 </div>
               </div>
             <span>УНИВЕРСИТЕТ*</span>
 
             <div className="select_col">
-                    <div className="select_univ">
+                    <div className="select">
                     {formData.Univ.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionUniv(formData.Univ)}> {formData.Univ} </div>) : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => {setBoxIsVisibleUniv(true); setBoxIsVisibleCourse(false); setBoxIsVisibleSubject(false)}} value={inputValueUniv} />
@@ -395,7 +389,7 @@ function CreateCourse() {
 
             <span>КУРС*</span>
             <div className="select_col">
-                    <div className="select_course">
+                    <div className="select">
                     {formData.Course.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(formData.Course)}> {formData.Course} </div>) : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => {setBoxIsVisibleCourse(true); setBoxIsVisibleSubject(false); setBoxIsVisibleUniv(false)}} value={inputValueCourse} />
@@ -408,7 +402,7 @@ function CreateCourse() {
             <span>ПРЕДМЕТ*</span>
 
             <div className="select_col">
-                <div className="select_subject">
+                <div className="select">
                 {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
                 <div className="selected_row" key={option} onClick={() => handleRemoveOptionSubject(option)}>{option}</div> ))) : (<></>)}
 
@@ -422,7 +416,7 @@ function CreateCourse() {
             {formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>
                     <input
-                        className='billet_topic'
+                        className='select'
                         type='text'
                         placeholder={`Topic ${index + 1}`}
                         name={`topic_${index}`}
