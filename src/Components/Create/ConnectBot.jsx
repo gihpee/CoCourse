@@ -5,12 +5,12 @@ import MainButton from '@twa-dev/mainbutton';
 function ConnectBot() {
     const navigate = useNavigate();
 
-    let tg = window.Telegram;
+    /*let tg = window.Telegram;*/
 
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";
         const link = `https://t.me/${botUsername}?startchannel=1`;
-        tg.WebApp.openLink(link);
+        window.location.href = link;
     };
 
     return <> 
