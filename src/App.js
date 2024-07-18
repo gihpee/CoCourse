@@ -2,6 +2,7 @@ import React from 'react';
 import Profile from './Components/Profile/Profile';
 import Create from './Components/Create/Create';
 import CreateCourse from './Components/Create/CreateCourse';
+import ConnectBot from './Components/Create/ConnectBot';
 import Feed from './Components/Feed/Feed';
 import NavBar from './Components/Navbar/Navbar';
 import Course from './Components/Course/Course'
@@ -47,6 +48,7 @@ function App() {
           <Route path={'user-feedback/:id'} element={<FeedbackUser />}/>
           <Route path={'user/:id'} element={<User />}/>
           <Route path={'wallet'} element={<Wallet />}/>
+          <Route path={'connect-bot'} element={<ConnectBot />}/>
         </Routes>
     </div>
     </TonConnectUIProvider>

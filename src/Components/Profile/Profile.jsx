@@ -27,7 +27,7 @@ function Home() {
       setModalOpen(true);
     }
     else {
-      navigate('/create-course')
+      navigate('/connect-bot')
     }
   };
 
