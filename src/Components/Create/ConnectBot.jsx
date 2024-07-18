@@ -12,7 +12,7 @@ function ConnectBot() {
             <div className="ctext">Добавьте @CoCourseBot в качестве администратора в ваш канал и предоставьте разрешения.<br /><br />Бот не будет ничего публиковать или удалять без вашего согласия.</div>
             </div>
         </div>
-        <MainButton text="Опубликовать" onClick={() => window.location.href = `https://subscribebot.org/api/v4/dashboard?mode=creator`} />
+        <MainButton text="Подключить канал" onClick={() => window.location.href = `https://t.me/CoCourseBot?startchannel=1`} />
     </>
 }
 
