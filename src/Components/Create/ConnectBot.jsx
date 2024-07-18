@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-/*import MainButton from '@twa-dev/mainbutton';*/
+import MainButton from '@twa-dev/mainbutton';
 
 function ConnectBot() {
     const navigate = useNavigate();
@@ -9,8 +9,8 @@ function ConnectBot() {
 
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";
-        const link = `https://t.me/${botUsername}?startchannel=1`;
-        tg.WebApp.openTelegramLink(link);
+        const link = `https://t.me/${botUsername}?startchannel`;
+        tg.openTelegramLink(link);
     };
 
     return <> 
@@ -20,7 +20,7 @@ function ConnectBot() {
             <div className="ctext">Добавьте @CoCourseBot в качестве администратора в ваш канал и предоставьте разрешения.<br /><br />Бот не будет ничего публиковать или удалять без вашего согласия.</div>
             </div>
         </div>
-        <button onClick={handleButtonClick}>test</button>
+        <MainButton text="Подключить канал" onClick={handleButtonClick} />
     </>
 }
 
