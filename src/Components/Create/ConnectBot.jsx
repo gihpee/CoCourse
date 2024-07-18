@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
 
@@ -6,6 +6,15 @@ function ConnectBot() {
     const navigate = useNavigate();
 
     let tg = window.Telegram;
+    const [channelId, setChannelId] = useState(null);
+
+    useEffect(() => {
+
+        window.Telegram.WebApp.onEvent('channel_connected', (channelInfo) => {
+            setChannelId(channelInfo.id);
+            console.log(channelId);
+        });
+    }, [channelId]);
 
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";
