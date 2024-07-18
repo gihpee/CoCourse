@@ -10,7 +10,7 @@ function ConnectBot() {
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";
         const link = `https://t.me/${botUsername}?startchannel`;
-        tg.openTelegramLink(link);
+        tg.WebApp.openTelegramLink(link);
     };
 
     return <> 
