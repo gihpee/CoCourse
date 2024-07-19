@@ -20,7 +20,8 @@ function ConnectBot() {
             console.log(result)
             if (result) {
                 let date = new Date(result[0].date);
-                const currentDate = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
+                const moscowDate = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
+                const currentDate = new Date(moscowDate);
                 console.log(currentDate)
                 const differenceInMs = Math.abs(currentDate - date);
                 const differenceInMinutes = differenceInMs / (1000 * 60);
@@ -53,7 +54,7 @@ function ConnectBot() {
     };
 
     return <> 
-         <div className="back_btn" onClick={() => navigate(`/course/`)}></div>
+         <div className="back_btn" onClick={() => navigate(`/profile`)}></div>
         <div className="column">
             <div className="connectbot"><p>ПОДКЛЮЧИТЬ БОТА</p>
             <div className="ctext">Добавьте @CoCourseBot в качестве администратора в ваш канал и предоставьте разрешения.<br /><br />Бот не будет ничего публиковать или удалять без вашего согласия.</div>
