@@ -22,10 +22,8 @@ function ConnectBot() {
                 let date = new Date(result[0].date);
                 const moscowDate = new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' });
                 const currentDate = new Date(moscowDate);
-                console.log(currentDate)
                 const differenceInMs = Math.abs(currentDate - date);
                 const differenceInMinutes = differenceInMs / (1000 * 60);
-                console.log(differenceInMinutes)
 
                 if (differenceInMinutes <= 3) {
                     setChannelId(result[0].channel_id)
