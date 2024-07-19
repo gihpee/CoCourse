@@ -33,7 +33,7 @@ function CreateCourse() {
     useEffect(() => {
       const fetchChannel = async () => {
         try {
-          const response = await fetch(`https://commoncourse.io/channel-info?chat_id=${cid}`);
+          const response = await fetch(`https://commoncourse.io/channel-info?cid=${cid}`);
           const result = await response.json();
   
           console.log(result)
