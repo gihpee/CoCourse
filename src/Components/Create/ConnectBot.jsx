@@ -7,7 +7,7 @@ function ConnectBot() {
 
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
-    const [channelId, setChannelId] = useState(null);
+    const [channelId, setChannelId] = useState('');
 
     let tg = window.Telegram;
 
@@ -25,6 +25,8 @@ function ConnectBot() {
                 const differenceInMs = Math.abs(currentDate - date);
                 const differenceInMinutes = differenceInMs / (1000 * 60);
 
+                console.log(result[0])
+
                 if (differenceInMinutes <= 3) {
                     setChannelId(result[0].channel_id)
                 }
@@ -40,7 +42,7 @@ function ConnectBot() {
     }, [id])
 
     useEffect(() => {
-        if (channelId !== null) {
+        if (channelId !== '') {
             navigate(`/create-course/${channelId}`)
         }
     }, [channelId, navigate]);
