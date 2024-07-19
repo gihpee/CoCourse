@@ -32,23 +32,25 @@ function CreateCourse() {
 
     useEffect(() => {
       const fetchChannel = async () => {
-        try {
-          const response = await fetch(`https://commoncourse.io/channel-info?cid=${cid}`);
-          const result = await response.json();
-  
-          console.log(result)
-          setFormData((prevData) => {
-            return {
-                ...prevData,
-                Name: result.title,
-                ChannelUrl: result.invite_link,
-            }
-          });
+        if (cid) {
+          try {
+            const response = await fetch(`https://commoncourse.io/channel-info?cid=${cid}`);
+            const result = await response.json();
+    
+            console.log(result)
+            setFormData((prevData) => {
+              return {
+                  ...prevData,
+                  Name: result.title,
+                  ChannelUrl: result.invite_link,
+              }
+            });
 
-          setImageSrc(result.photo_url);
+            setImageSrc(result.photo_url);
 
-        } catch (error) {
-          console.error('Error fetching data:', error);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
         }
       };
   
@@ -378,14 +380,14 @@ function CreateCourse() {
                 value={formData.Price || null}
                 onChange={handleChange} />
 
-            <span>ССЫЛКА НА ГРУППУ ИЛИ КАНАЛ*</span>
+            {/*<span>ССЫЛКА НА ГРУППУ ИЛИ КАНАЛ*</span>
             <input 
                 className='billet_price'
                 type='text' 
                 placeholder="URL"
                 name="ChannelUrl"
                 value={formData.ChannelUrl || ''}
-                onChange={handleChange} />
+                onChange={handleChange} />*/}
 
             <span>ТЕМА*</span>
             <input 
