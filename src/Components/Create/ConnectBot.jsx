@@ -5,16 +5,24 @@ import MainButton from '@twa-dev/mainbutton';
 function ConnectBot() {
     const navigate = useNavigate();
 
+    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+
     let tg = window.Telegram;
-    const [channelId, setChannelId] = useState(null);
 
     useEffect(() => {
-
-        window.Telegram.WebApp.onEvent('channel_connected', (channelInfo) => {
-            setChannelId(channelInfo.id);
-            console.log(channelId);
-        });
-    }, [channelId]);
+        const fetchChannel = async () => {
+          try {
+            const response = await fetch(`https://commoncourse.io/get-last-channel?id=${id}`);
+            const result = await response.json();
+    
+            console.log(result)
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchCourses();
+    }, [id])
 
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";
