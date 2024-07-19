@@ -42,7 +42,7 @@ function ConnectBot() {
         if (channelId !== null) {
             navigate('/create-course')
         }
-    }, [channelId, history]);
+    }, [channelId, navigate]);
 
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";
