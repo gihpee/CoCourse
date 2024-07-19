@@ -25,10 +25,8 @@ function ConnectBot() {
                 const differenceInMs = Math.abs(currentDate - date);
                 const differenceInMinutes = differenceInMs / (1000 * 60);
 
-                console.log(result[0])
-
                 if (differenceInMinutes <= 3) {
-                    setChannelId(result[0].channel_id)
+                    setChannelId(result[0].chat_id)
                 }
             }
           } catch (error) {
