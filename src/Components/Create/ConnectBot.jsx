@@ -20,7 +20,7 @@ function ConnectBot() {
             console.log(result)
             if (result) {
                 let date = new Date(result[0].date);
-                const currentDate = new Date();
+                const currentDate = new Date().toLocaleTimeString('ru-RU', { timeZone: 'Europe/Moscow' });
                 const differenceInMs = Math.abs(currentDate - date);
                 const differenceInMinutes = differenceInMs / (1000 * 60);
 
