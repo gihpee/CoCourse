@@ -21,7 +21,7 @@ function ConnectBot() {
           }
         };
     
-        fetchCourses();
+        fetchChannel();
     }, [id])
 
     const handleButtonClick = () => {
