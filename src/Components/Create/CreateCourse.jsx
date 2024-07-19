@@ -1,6 +1,7 @@
-import React, {useState, useEffect, useParams} from "react";
+import React, {useState, useEffect} from "react";
 import prev from '../assets/course/preview.png'
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import "./CreateCourse.css";
 import { useTonAddress } from '@tonconnect/ui-react';
 import MainButton from '@twa-dev/mainbutton';
