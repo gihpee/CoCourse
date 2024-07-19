@@ -36,7 +36,7 @@ function App() {
           <Route path={'create'} element={<><Create /> <NavBar /> </>}/>
           <Route path={'profile'} element={<Profile />}/>
           <Route path={'course/:cid'} element={<Course />}/>
-          <Route path={'create-course'} element={<CreateCourse />}/>
+          <Route path={'create-course/:cid'} element={<CreateCourse />}/>
           <Route path={'send-feedback/:id'} element={<SendFeedback />}/>
           <Route path={'edit-profile/:id'} element={<EditProfile />}/>
           <Route path={'edit-bio/:id'} element={<Bio />}/>

@@ -41,7 +41,7 @@ function ConnectBot() {
 
     useEffect(() => {
         if (channelId !== null) {
-            navigate('/create-course')
+            navigate(`/create-course/${channelId}`)
         }
     }, [channelId, navigate]);
 
