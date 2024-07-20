@@ -130,7 +130,7 @@ function Feed() {
 
   return <div className="column" style={{minHeight: '100vh'}}>
     <LoginButton
-                botUsername={process.env.BOT_USERNAME}
+                botUsername={'CoCourseBot'}
                 onAuthCallback={(data) => {
                     console.log(data);
                     // call your backend here to validate the data and sign in the user
