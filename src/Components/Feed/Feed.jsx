@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { LoginButton } from '@telegram-auth/react';
 import "./Feed.css";
 
 
@@ -129,13 +128,6 @@ function Feed() {
   })
 
   return <div className="column" style={{minHeight: '100vh'}}>
-    <LoginButton
-                botUsername='gmorychev_test_bot'
-                onAuthCallback={(data) => {
-                    console.log(data);
-                    // call your backend here to validate the data and sign in the user
-                }}
-            />
       <div className="top_panel" style={{columnGap: '8px'}}>
           <Link to={`/profile`} className="profille_btn"></Link>
         <input
