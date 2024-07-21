@@ -7,6 +7,7 @@ import "./Feed.css";
 function Feed() {
   window.scrollTo(0, 0)
   const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+  console.log(window.Telegram.WebApp.initData)
   //const { id } = 10;
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState('');
