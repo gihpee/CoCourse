@@ -256,17 +256,6 @@ function EditProfile() {
 
                 {boxIsVisibleUniv ? (<div className="vars_box">{varsUniv}</div>) : (<></>)}
 
-              <span>КУРС</span>
-                <div className="select_col">
-                    <div className="select">
-                    {cValue.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(cValue)}> {cValue} </div>) : (<></>)}
-
-                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => {setBoxIsVisibleCourse(true); setBoxIsVisibleSubject(false); setBoxIsVisibleUniv(false)}} value={inputValueCourse} />
-
-                    </div>
-                </div>
-
-                {boxIsVisibleCourse ? (<div className="vars_box">{varsCourse}</div>) : (<></>)}
               <span>ПРЕДМЕТЫ, КОТОРЫЕ ВЫ ИЗУЧАЕТЕ</span>
 
             <div className="select_col">

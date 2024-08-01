@@ -497,18 +497,6 @@ function EditCourse() {
 
                 {boxIsVisibleUniv ? (<div className="vars_box">{varsUniv}</div>) : (<></>)}
 
-            <span>КУРС*</span>
-                <div className="select_col">
-                    <div className="select">
-                    {formData.Course.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionCourse(formData.Course)}> {formData.Course} </div>) : (<></>)}
-
-                    <input className="select_input" placeholder="Начните вводить название университета" onChange={handleCourseChange} onFocus={() => {setBoxIsVisibleCourse(true); setBoxIsVisibleSubject(false); setBoxIsVisibleUniv(false)}} value={inputValueCourse} />
-
-                    </div>
-                </div>
-
-                {boxIsVisibleCourse ? (<div className="vars_box">{varsCourse}</div>) : (<></>)}
-
             <span>ПРЕДМЕТ*</span>
 
             <div className="select_col">

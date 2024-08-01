@@ -303,13 +303,6 @@ function Course() {
                 {data[0].university.length > 0 ? (<div className="selected_row"> {data[0].university} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
-            
-            <span>Курс</span>
-            <div className="select_col">
-                <div className="select">
-                {data[0].course.length > 0 ? (<div className="selected_row"> {data[0].course} </div>) : (<p>Не указано</p>)}
-                </div>
-            </div>
 
             <span>Предмет</span>
             <div className="select_col">

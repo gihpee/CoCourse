@@ -212,13 +212,6 @@ function Home() {
                 {userData.university ? (<div className="selected_row"> {userData.university} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
-            
-            <span>Курс</span>
-            <div className="select_col">
-                <div className="select">
-                {userData.course ? (<div className="selected_row"> {userData.course} </div>) : (<p>Не указано</p>)}
-                </div>
-            </div>
 
             <span>Предметы</span>
             <div className="select_col">
