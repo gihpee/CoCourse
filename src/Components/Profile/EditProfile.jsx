@@ -182,7 +182,7 @@ function EditProfile() {
 
                 <div className="select_col">
                     <div className="select">
-                    {uniValue.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionUniv(uniValue)}> {uniValue} </div>) : (<></>)}
+                    {uniValue ? (<div className="selected_row" onClick={() => handleRemoveOptionUniv(uniValue)}> {uniValue} </div>) : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название университета" onChange={handleUniChange} onFocus={() => {setBoxIsVisibleUniv(true); setBoxIsVisibleSubject(false)}} value={inputValueUniv} />
 
@@ -195,7 +195,7 @@ function EditProfile() {
 
             <div className="select_col">
                 <div className="select">
-                {selectedOptions.length > 0 ? (selectedOptions.map((option) => (
+                {selectedOptions ? (selectedOptions.map((option) => (
                 <div className="selected_row" key={option} onClick={() => handleRemoveOptionSubject(option)}>{option}<img src={lminus} alt=''/></div> ))) : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => {setBoxIsVisibleSubject(true); setBoxIsVisibleUniv(false)}} value={inputValueSubject} />
