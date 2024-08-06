@@ -24,7 +24,6 @@ function EditProfile() {
     const [bioValue, setBioValue] = useState("");
     const [uniValue, setUniValue] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
-    const [cValue, setCValue] = useState("")
     
 
     const navigate = useNavigate();
@@ -32,10 +31,11 @@ function EditProfile() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/user?id=${id}`, {
-              method: 'GET',
+            const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+              method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `tma ${window.Telegram.WebApp.initData}`
               },
             });
     
@@ -44,12 +44,11 @@ function EditProfile() {
             }
     
             const data = await response.json();
-            setImageSrc(data[0].photo_url);
-            setIsNotify(data[0].notify);
-            setBioValue(data[0].description);
-            setUniValue(data[0].university);
-            setSelectedOptions(data[0].subjects);
-            setCValue(data[0].course);
+            setImageSrc(data.photo_url);
+            setIsNotify(data.notify);
+            setBioValue(data.description);
+            setUniValue(data.university);
+            setSelectedOptions(data.subjects);
 
           } catch (error) {
             console.error('Ошибка при запросе к серверу:', error);
@@ -72,35 +71,6 @@ function EditProfile() {
           textarea.style.height = textarea.scrollHeight + 'px';
         }
       }, [bioValue]);
-    
-
-      const handleImageChange = (e) => {
-        const file = e.target.files[0];
-    
-        if (file) {
-          const fileSize = file.size;
-          const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
-
-          if (fileSize > maxSizeInBytes) {
-            alert('Файл слишком большой. Выберите файл размером не более 5 MB.');
-            // Очистка input файла
-            e.target.value = null;
-            return;
-          }
-          
-          const reader = new FileReader();
-    
-          reader.onload = () => {
-            if (reader.result) {
-              setImageSrc(reader.result);
-            }
-          };
-    
-          reader.readAsDataURL(file);
-        } else {
-          setImageSrc(null);
-        }
-      };
 
       const handleNotify = () => {
         setIsNotify(!isNotify);
@@ -113,7 +83,7 @@ function EditProfile() {
             'Content-Type': 'application/json',
           },
     
-          body: JSON.stringify({id, imageSrc, isNotify, selectedOptions, cValue, uniValue, bioValue}),
+          body: JSON.stringify({id, imageSrc, isNotify, selectedOptions, uniValue, bioValue}),
         }).then(navigate(`/profile`))
       }
 
@@ -199,9 +169,7 @@ function EditProfile() {
     return <>
             <div className="back_btn" onClick={() => {window.history.back()}}></div>
             <div className="upload-container" style={{marginTop: '-56px'}}>
-                <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
-                <div className="preview-container" id="previewContainer" style={{backgroundImage: `url(${imageSrc})`, opacity: 0.6}}></div>
-                <div className="prev_filter"></div>
+                <div className="preview-container" id="previewContainer" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`}}></div>
             </div>
             <div className="prop_container">
               <span>БИОГРАФИЯ</span>
