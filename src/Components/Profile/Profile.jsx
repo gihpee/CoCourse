@@ -62,7 +62,7 @@ function Home() {
 
         const data = await response.json();
 
-        if (data.length > 0) {
+        if (data) {
           setUserData(data);
           setFeedbacks(data.feedback)
           setCoursesData(data.created_courses)
