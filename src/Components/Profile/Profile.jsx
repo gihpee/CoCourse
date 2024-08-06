@@ -10,7 +10,6 @@ import nf from '../assets/course/nfeedarrow.svg';
 function Home() {
   window.scrollTo(0, 0)
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
-  console.log(window.Telegram.WebApp.initDataUnsafe.user)
   const userFriendlyAddress = useTonAddress(false);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -65,9 +64,9 @@ function Home() {
         console.log(data)
 
         if (data.length > 0) {
-          setUserData(data[0]);
-          setFeedbacks(data[0].feedback)
-          setCoursesData(data[0].created_courses)
+          setUserData(data);
+          setFeedbacks(data.feedback)
+          setCoursesData(data.created_courses)
         }
 
       } catch (error) {
@@ -145,7 +144,7 @@ function Home() {
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                 <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
             </div>
-          <div className="prev" style={{backgroundImage: `url(${userData.photo_url})`, marginTop: '-56px'}}>
+          <div className="prev" style={{backgroundImage: `url(commoncourse.io/${userData.photo_url})`, marginTop: '-56px'}}>
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
             {/*<Link to={`/edit-profile/${userData.id}`} className="edit_container">
