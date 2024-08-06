@@ -77,13 +77,14 @@ function EditProfile() {
       };
 
       const handleSave = async () => {
-        fetch('https://commoncourse.io/update-user', {
+        fetch('https://commoncourse.io/api/update-user/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `tma ${window.Telegram.WebApp.initData}`
           },
     
-          body: JSON.stringify({id, imageSrc, isNotify, selectedOptions, uniValue, bioValue}),
+          body: JSON.stringify({isNotify, selectedOptions, uniValue, bioValue}),
         }).then(navigate(`/profile`))
       }
 
