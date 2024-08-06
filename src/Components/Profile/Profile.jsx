@@ -1,5 +1,4 @@
 import React from "react";
-import photo_url from '../assets/profile/avatar.png'
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -50,10 +49,11 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://commoncourse.io/user?id=${id}`, {
-          method: 'GET',
+        const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `tma ${window.Telegram.WebApp.initData}`
           },
         });
 
@@ -66,21 +66,6 @@ function Home() {
         if (data.length > 0) {
           setUserData(data[0]);
           setFeedbacks(data[0].feedback)
-        }
-        else {
-          setUserData({id: id, first_name: first_name, last_name: last_name, photo_url: photo_url, university: '', course: '', description: '', subjects: []})
-
-          await fetch('https://commoncourse.io/createuser', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-
-            body: JSON.stringify({id, first_name, last_name, username: usrname, photo_url, course: '', description: '', university: '', subjects: [], feedback: []}),
-            })
-            .then(response => {
-              return response.text();
-          })
         }
 
       } catch (error) {
