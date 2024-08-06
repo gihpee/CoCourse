@@ -62,10 +62,12 @@ function Home() {
         }
 
         const data = await response.json();
+        console.log(data)
 
         if (data.length > 0) {
           setUserData(data[0]);
           setFeedbacks(data[0].feedback)
+          setCoursesData(data[0].created_courses)
         }
 
       } catch (error) {
@@ -73,19 +75,7 @@ function Home() {
       }
     };
 
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch(`https://commoncourse.io/usercoursewd?id=${id}`);
-        const result = await response.json();
-
-        setCoursesData(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
-    fetchCourses();
   }, [id, first_name, last_name, username, usrname]);
 
   var userCourses;
