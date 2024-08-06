@@ -61,7 +61,6 @@ function Home() {
         }
 
         const data = await response.json();
-        console.log(data)
 
         if (data.length > 0) {
           setUserData(data);
@@ -139,12 +138,14 @@ function Home() {
     }
   }
 
+  console.log(userData)
+
   return <>
           <div className="top_panel">
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                 <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
             </div>
-          <div className="prev" style={{backgroundImage: `url(commoncourse.io/${userData.photo_url})`, marginTop: '-56px'}}>
+          <div className="prev" style={{backgroundImage: `url(commoncourse.io${userData.photo_url})`, marginTop: '-56px'}}>
             <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
           </div>
             {/*<Link to={`/edit-profile/${userData.id}`} className="edit_container">
