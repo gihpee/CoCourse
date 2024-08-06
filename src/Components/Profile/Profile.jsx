@@ -138,6 +138,10 @@ function Home() {
     }
   }
 
+  if (!userData) {
+    return <div className="loading"></div>; 
+  }
+
   console.log(userData)
 
   return <>
