@@ -138,8 +138,12 @@ function Home() {
     }
   }
 
-  if (userData === {}) {
-    return <div className="loading"></div>; 
+  const isEmptyObject = (obj) => {
+    return Object.keys(obj).length === 0 && obj.constructor === Object;
+  };
+
+  if (isEmptyObject(userData)) {
+    return <div className="loading"></div>;
   }
 
   console.log(userData)
