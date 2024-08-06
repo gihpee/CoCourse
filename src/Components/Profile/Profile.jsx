@@ -138,7 +138,7 @@ function Home() {
     }
   }
 
-  if (!userData) {
+  if (userData === {}) {
     return <div className="loading"></div>; 
   }
 
