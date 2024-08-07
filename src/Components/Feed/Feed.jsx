@@ -18,13 +18,14 @@ function Feed() {
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
   );
 
-  function formatDate(dateString) {
-    const parts = dateString.split('-');
-    const day = parts[0].padStart(2, '0');
-    const month = parts[1].padStart(2, '0');
-    const year = parts[2].slice(2);
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const year = date.getFullYear();
+  
     return `${day}.${month}.${year}`;
-  }
+  };
 
   const filteredDataWithMain = filteredData.reduce((acc, obj) => {
     if (obj.id === 79) {
@@ -43,7 +44,7 @@ function Feed() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://commoncourse.io/');
+        const response = await fetch('https://commoncourse.io/api/get-courses/');
         const result = await response.json();
         result.reverse();
 
@@ -59,10 +60,11 @@ function Feed() {
   useEffect(() => {
     const fetchUserCoursesData = async () => {
       try {
-        const response = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
+        const response = await fetch(`https://commoncourse.io/api/user-data/`);
         const result = await response.json();
 
-        setUserCourses(result);
+        setUserCourses(result.bought_courses);
+        setCoursesData(result.created_courses);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -70,23 +72,6 @@ function Feed() {
 
     fetchUserCoursesData();
   }, [id]);
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`);
-        const result = await response.json();
-
-        setCoursesData(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchCourses();
-  }, [id])
-
-  console.log(coursesData);
 
   const appCourses = filteredDataWithMain.map((item, index) => {
 
@@ -104,7 +89,7 @@ function Feed() {
 
     return (
       <Link to={`/course/${item.id}`} key={index} className="course_card">
-        <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
+        <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${item.image})`}}></div>
         <div className="card_info">
           <div className="row_grad_l">
             <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
@@ -118,7 +103,7 @@ function Feed() {
           <div className="price_container">
             <div className="price">{item.price} RUB</div>
             <div className="status_container">
-              <div className="student_amount">{item.amount}</div>
+              <div className="student_amount">{item.amount_of_students}</div>
               {userCourses.some(course => course.course_id === item.id) && <div className="course_status">Куплено</div>}
               {coursesData.some(course => course.id === item.id) && <div className="course_status">Мой</div>}
             </div>
