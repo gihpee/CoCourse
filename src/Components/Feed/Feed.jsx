@@ -60,7 +60,13 @@ function Feed() {
   useEffect(() => {
     const fetchUserCoursesData = async () => {
       try {
-        const response = await fetch(`https://commoncourse.io/api/user-data/`);
+        const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `tma ${window.Telegram.WebApp.initData}`
+          },
+        });
         const result = await response.json();
 
         setUserCourses(result.bought_courses);
