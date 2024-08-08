@@ -39,7 +39,7 @@ function CreateCourse() {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `tma ${window.Telegram.WebApp.initData}`
-              }
+              },
             });
             const result = await response.json();
 
