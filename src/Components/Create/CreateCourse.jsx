@@ -34,8 +34,17 @@ function CreateCourse() {
       const fetchChannel = async () => {
         if (cid) {
           try {
-            const response = await fetch(`https://commoncourse.io/channel-info?cid=${cid}`);
+            const response = await fetch(`https://commoncourse.io/api/get-channel/`, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `tma ${window.Telegram.WebApp.initData}`
+              },
+              body: JSON.stringify({cid}),
+            });
             const result = await response.json();
+
+            console.log(result)
     
             console.log(result)
             setFormData((prevData) => {
@@ -46,7 +55,7 @@ function CreateCourse() {
               }
             });
 
-            setImageSrc(result.photo_url);
+            setImageSrc(result.image);
 
           } catch (error) {
             console.error('Error fetching data:', error);

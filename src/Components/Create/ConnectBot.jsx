@@ -14,19 +14,25 @@ function ConnectBot() {
     useEffect(() => {
         const fetchChannel = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/get-last-channel?id=${id}`);
+            const response = await fetch(`https://commoncourse.io/api/get-last-channel/`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `tma ${window.Telegram.WebApp.initData}`
+                },
+              });
             const result = await response.json();
     
             console.log(result)
             if (result) {
-                let date = new Date(result[0].date);
+                let date = new Date(result.date);
                 const moscowDate = new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' });
                 const currentDate = new Date(moscowDate);
                 const differenceInMs = Math.abs(currentDate - date);
                 const differenceInMinutes = differenceInMs / (1000 * 60);
 
                 if (differenceInMinutes <= 3) {
-                    setChannelId(result[0].chat_id)
+                    setChannelId(result.chat_id)
                 }
             }
           } catch (error) {
