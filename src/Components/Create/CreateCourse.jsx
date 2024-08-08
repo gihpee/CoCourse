@@ -45,7 +45,6 @@ function CreateCourse() {
 
             console.log(result)
     
-            console.log(result)
             setFormData((prevData) => {
               return {
                   ...prevData,
