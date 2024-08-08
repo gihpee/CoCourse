@@ -34,7 +34,7 @@ function CreateCourse() {
       const fetchChannel = async () => {
         if (cid) {
           try {
-            const response = await fetch(`https://commoncourse.io/api/get-channel?id=${cid}`, {
+            const response = await fetch(`https://commoncourse.io/api/get-channel?id=${cid}/`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -48,12 +48,12 @@ function CreateCourse() {
             setFormData((prevData) => {
               return {
                   ...prevData,
-                  Name: result.title,
-                  ChannelUrl: result.invite_link,
+                  Name: result.name,
+                  ChannelUrl: result.url,
               }
             });
 
-            setImageSrc(result.image);
+            setImageSrc(result.photo);
 
           } catch (error) {
             console.error('Error fetching data:', error);
