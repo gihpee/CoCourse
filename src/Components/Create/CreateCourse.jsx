@@ -34,7 +34,7 @@ function CreateCourse() {
       const fetchChannel = async () => {
         if (cid) {
           try {
-            const response = await fetch(`https://commoncourse.io/api/get-channel?id=${cid}/`, {
+            const response = await fetch(`https://commoncourse.io/api/get-channel?id=${cid}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
