@@ -23,17 +23,8 @@ function ConnectBot() {
               });
             const result = await response.json();
     
-            console.log(result)
             if (result) {
-                let date = new Date(result.date);
-                const moscowDate = new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' });
-                const currentDate = new Date(moscowDate);
-                const differenceInMs = Math.abs(currentDate - date);
-                const differenceInMinutes = differenceInMs / (1000 * 60);
-
-                if (differenceInMinutes <= 3) {
-                    setChannelId(result.chat_id)
-                }
+                setChannelId(result.chat_id)
             }
           } catch (error) {
             console.error('Error fetching data:', error);
