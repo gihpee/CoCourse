@@ -23,7 +23,7 @@ function ConnectBot() {
               });
             const result = await response.json();
     
-            if (result) {
+            if (result.chat_id) {
                 setChannelId(result.chat_id)
             }
           } catch (error) {
