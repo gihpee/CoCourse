@@ -34,7 +34,7 @@ function CreateCourse() {
       const fetchChannel = async () => {
         if (cid) {
           try {
-            const response = await fetch(`https://commoncourse.io/api/get-channel?id=${cid}`, {
+            const response = await fetch(`https://commoncourse.io/api/get-channel/?id=${cid}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -123,34 +123,6 @@ function CreateCourse() {
                 topics: newTopics,
             };
         });
-    };
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-    
-        if (file) {
-          const fileSize = file.size;
-          const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
-
-          if (fileSize > maxSizeInBytes) {
-            alert('Файл слишком большой. Выберите файл размером не более 5 MB.');
-            // Очистка input файла
-            e.target.value = null;
-            return;
-          } 
-
-          const reader = new FileReader();
-    
-          reader.onload = () => {
-            if (reader.result) {
-              setImageSrc(reader.result);
-            }
-          };
-    
-          reader.readAsDataURL(file);
-        } else {
-          setImageSrc(null);
-        }
     };
 
     const handlePublish = async () => {
@@ -329,9 +301,7 @@ function CreateCourse() {
         )}
 
         <div className="upload-container" style={{marginTop: '-56px'}}>
-            <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
-            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
-            <div className="prev_filter"></div>
+            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(https://commoncourse.io${imageSrc})`, opacity: 0.6 }}></div>
         </div>
         <div className="column" id='main' style={{marginTop: '-64px', borderRadius: '24px',
         borderBottomLeftRadius: '0px', borderBottomRightRadius: '0px', backgroundColor: 'black', paddingTop: '8px'}}>   
