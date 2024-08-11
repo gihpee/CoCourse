@@ -43,7 +43,7 @@ function Course() {
                 const result = await response.json();
                 
                 setData(result);
-                console.log(data)
+                console.log(result)
             }
 
         } catch (error) {
