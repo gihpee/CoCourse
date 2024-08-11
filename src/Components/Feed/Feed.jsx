@@ -68,6 +68,7 @@ function Feed() {
           },
         });
         const result = await response.json();
+        console.log(result)
 
         setUserCourses(result.bought_courses);
         setCoursesData(result.created_courses);
