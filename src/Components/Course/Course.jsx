@@ -107,8 +107,8 @@ function Course() {
         validUntil: Math.floor(Date.now() / 1000) + 600, // 60 sec
         messages: [
             {
-                address: data[0].address,
-                amount: String(Math.floor((data[0].price / exchangeRate) * 1000000000)),
+                address: data.address,
+                amount: String(Math.floor((data.price / exchangeRate) * 1000000000)),
                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
             }
         ]
@@ -217,10 +217,10 @@ function Course() {
 
     if (data.feedback.length > 0) {
         for (var i = 0; i < data[0].feedback.length; i++) {
-            totalRate += parseFloat(data[0].feedback[i].rate);
+            totalRate += parseFloat(data.feedback[i].rate);
         }
 
-        averageRate = totalRate / data[0].feedback.length;
+        averageRate = totalRate / data.feedback.length;
         averageRate = Math.round(averageRate * 100) / 100;
     }
 
