@@ -242,7 +242,7 @@ function Course() {
             </div>
             <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`, marginTop: '-56px'}}>
                 <p>{ data.channel.name }</p>
-                <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
+                <div className="prev_date"><img src={calend} alt='' />{ data.date }</div>
             </div>
             <div className="getContact_container">
                 <span>ЦЕНА</span>
