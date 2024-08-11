@@ -25,7 +25,7 @@ function User() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/user?id=${id}`, {
+            const response = await fetch(`https://commoncourse.io/api/get-user?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,27 +38,16 @@ function User() {
 
             const data = await response.json();
 
-            setUserData(data[0]);
-            setFeedbacks(data[0].feedback)
+            setUserData(data);
+            setCoursesData(data.created_courses);
+            setFeedbacks(data.feedback)
 
         } catch (error) {
             console.error('Ошибка при запросе к серверу:', error);
         }
         };
 
-        const fetchCourses = async () => {
-        try {
-            const response = await fetch(`https://commoncourse.io/usercourse?id=${id}`);
-            const result = await response.json();
-
-            setCoursesData(result);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        };
-
         fetchData();
-        fetchCourses();
     }, [id]);
 
   var userCourses;
