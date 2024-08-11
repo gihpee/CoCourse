@@ -224,6 +224,15 @@ function Course() {
         averageRate = Math.round(averageRate * 100) / 100;
     }
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
+        const year = date.getFullYear();
+      
+        return `${day}.${month}.${year}`;
+      };
+
 
     if (cid === '79') {
         data.user.username = 'HowToCommonCourse';
@@ -235,14 +244,14 @@ function Course() {
             <div className="top_panel">
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                     <div className="status_container" style={{padding: '8px', height: '32px', alignItems: 'center', borderRadius: '24px', background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', right: '8px'}}>
-                        <div className="student_amount" style={{borderRadius: '16px'}}>{data.amount}</div>
+                        <div className="student_amount" style={{borderRadius: '16px'}}>{data.amount_of_students}</div>
                         {paid && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
                         {owned && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
                     </div>
             </div>
             <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`, marginTop: '-56px'}}>
                 <p>{ data.channel.name }</p>
-                <div className="prev_date"><img src={calend} alt='' />{ data.date }</div>
+                <div className="prev_date"><img src={calend} alt='' />{ formatDate(data.date) }</div>
             </div>
             <div className="getContact_container">
                 <span>ЦЕНА</span>
