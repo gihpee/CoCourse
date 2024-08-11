@@ -235,7 +235,7 @@ function Course() {
             <div className="top_panel">
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                     <div className="status_container" style={{padding: '8px', height: '32px', alignItems: 'center', borderRadius: '24px', background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', right: '8px'}}>
-                        <div className="student_amount" style={{borderRadius: '16px'}}>{data[0].amount}</div>
+                        <div className="student_amount" style={{borderRadius: '16px'}}>{data.amount}</div>
                         {paid && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
                         {owned && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
                     </div>
@@ -297,7 +297,7 @@ function Course() {
             </div>
 
             {paid ? 
-            <MainButton text="К УЧЕБЕ" onClick={() => window.location.href = data[0].channel_url} />
+            <MainButton text="К УЧЕБЕ" onClick={() => window.location.href = data.channel.url} />
             : !owned && 
             <MainButton text="КУПИТЬ" onClick={handlePay} />}
         </>
