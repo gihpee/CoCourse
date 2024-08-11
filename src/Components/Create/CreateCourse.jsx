@@ -8,13 +8,8 @@ import MainButton from '@twa-dev/mainbutton';
 
 function CreateCourse() {
 
-    const { id, username } = window.Telegram.WebApp.initDataUnsafe.user;
-    //const id = 12;
-    //const username = 'adsd';
-
     const { cid } = useParams();
 
-    var currentDate = new Date();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -128,62 +123,44 @@ function CreateCourse() {
       {
         setModalFillOpen(true);
       } else {
-          var day = currentDate.getDate();
-          var month = currentDate.getMonth() + 1;
-          var year = currentDate.getFullYear();
-
-          let name = formData.Name || 'Не указано';
           let university = formData.Univ || 'Не указано';
-          let course = formData.Course;
           let description = formData.Desc || 'Не указано';
           let subjects = formData.Subjects;
           let topics = formData.topics; 
-          let user = id;
-          let date = day + '-' + month + '-' + year
-          let image = imageSrc;
-          let feedback = [];
           let price = formData.Price || 0;
-          let channel_url = formData.ChannelUrl;
+          let channel_id = cid;
           let is_draft = false;
 
-          await fetch('https://commoncourse.io/course', {
+          await fetch('https://commoncourse.io/api/create-course/', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
+                  'Authorization': `tma ${window.Telegram.WebApp.initData}`
               },
 
-              body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
+              body: JSON.stringify({university, description, subjects, topics, price, channel_id, is_draft, address}),
           }).then(navigate('/profile'))
       }
         
     };
 
     const handleSaveDraft = async () => {
-      var day = currentDate.getDate();
-      var month = currentDate.getMonth() + 1;
-      var year = currentDate.getFullYear();
-
-      let name = formData.Name;
       let university = formData.Univ;
-      let course = formData.Course;
       let description = formData.Desc;
       let subjects = formData.Subjects;
       let topics = formData.topics; 
-      let user = id;
-      let date = day + '-' + month + '-' + year
-      let image = imageSrc;
-      let feedback = [];
       let price = formData.Price || 0;
-      let channel_url = formData.ChannelUrl;
+      let channel_id = cid;
       let is_draft = true;
 
-      await fetch('https://commoncourse.io/course', {
+      await fetch('https://commoncourse.io/api/create-course/', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
+              'Authorization': `tma ${window.Telegram.WebApp.initData}`
           },
 
-          body: JSON.stringify({name, university, course, description, subjects, topics, date, user, feedback, image, username, price, channel_url, is_draft, address}),
+          body: JSON.stringify({university, description, subjects, topics, price, channel_id, is_draft, address}),
       }).then(navigate('/profile'))
         
     };
