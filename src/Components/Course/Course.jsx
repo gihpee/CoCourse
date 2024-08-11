@@ -20,7 +20,6 @@ function Course() {
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
     const [data, setData] = useState([]);
-    const [userData, setUserData] = useState([]);
 
     const [userCourses, setUserCourses] = useState([]);
     const [coursesData, setCoursesData] = useState([]);
@@ -35,42 +34,14 @@ function Course() {
 
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
-    /*const { Telegram } = useTelegram();
-
-    useEffect(() => {
-        if (paid) {
-          Telegram.MainButton.setParams({
-            text: 'К УЧЕБЕ',
-            is_visible: true,
-            is_active: true,
-            onClick: () => window.location.href = data[0].channel_url
-          });
-        } else if (!owned) {
-          Telegram.MainButton.setParams({
-            text: 'КУПИТЬ',
-            is_visible: true,
-            is_active: true,
-            onClick: handlePay
-          });
-        }
-        
-        return () => {
-          Telegram.MainButton.hide();
-          Telegram.MainButton.offClick();
-        };
-      }, [paid, owned, data, handlePay, Telegram.MainButton]);*/
 
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/getcourse?id=${cid}`)
+            const response = await fetch(`https://commoncourse.io/api/get-courses/?id=${cid}`)
             const result = await response.json();
-
-            const response_user = await fetch(`https://commoncourse.io/user?id=${result[0].user}`)
-            const result_user = await response_user.json();
             
             setData(result);
-            setUserData(result_user);
 
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -81,34 +52,30 @@ function Course() {
     }, [cid]);
 
     useEffect(() => {
-        const fetchUserCoursesData = async () => {
-          try {
-            const response = await fetch(`https://commoncourse.io/user-paid-courses?id=${id}`);
-            const result = await response.json();
-    
-            setUserCourses(result);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `tma ${window.Telegram.WebApp.initData}`
+                  },
+                });
+        
+                const data = await response.json();
+        
+                if (data) {
+                    setCoursesData(data.created_courses);
+                    setUserCourses(data.bought_courses);
+                }
+        
+              } catch (error) {
+                console.error('Ошибка при запросе к серверу:', error);
+              }
         };
     
-        fetchUserCoursesData();
+        fetchUserData();
     }, [id]);
-    
-    useEffect(() => {
-        const fetchCourses = async () => {
-          try {
-            const response = await fetch(`https://commoncourse.io/user-made-courses?id=${id}`);
-            const result = await response.json();
-    
-            setCoursesData(result);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        };
-    
-        fetchCourses();
-    }, [id])
 
     useEffect(() => {
         // Функция для получения данных с API
@@ -130,7 +97,7 @@ function Course() {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
 
-    var paid = userCourses.some(course => course.course_id === Number(cid));
+    var paid = userCourses.some(course => course.id === Number(cid));
     var owned = coursesData.some(course => course.id === Number(cid));
 
     const myTransaction = {
@@ -230,7 +197,7 @@ function Course() {
           
       };
 
-    const topics = data[0].topics.map((item, index) => {
+    const topics = data.topics.map((item, index) => {
         return (
             <>
                 <input type="checkbox" name="acor" id={index} />
@@ -245,7 +212,7 @@ function Course() {
     var totalRate = 0;
     var averageRate = 0;
 
-    if (data[0].feedback.length > 0) {
+    if (data.feedback.length > 0) {
         for (var i = 0; i < data[0].feedback.length; i++) {
             totalRate += parseFloat(data[0].feedback[i].rate);
         }
@@ -256,8 +223,8 @@ function Course() {
 
 
     if (cid === '79') {
-        userData[0].username = 'HowToCommonCourse';
-        data[0].price = 0;
+        data.user.username = 'HowToCommonCourse';
+        data.price = 0;
         paid = true;
     }
 
@@ -270,14 +237,14 @@ function Course() {
                         {owned && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
                     </div>
             </div>
-            <div className="prev" style={{backgroundImage: `url(${data[0].image})`, marginTop: '-56px'}}>
-                <p>{ data[0].name }</p>
+            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`, marginTop: '-56px'}}>
+                <p>{ data.channel.name }</p>
                 <div className="prev_date"><img src={calend} alt='' />{ data[0].date }</div>
             </div>
             <div className="getContact_container">
                 <span>ЦЕНА</span>
                 <div className="pricecourse_container">
-                    <div className="course_price">{data[0].price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
+                    <div className="course_price">{data.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                     <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
                 </div>
             </div>
@@ -293,21 +260,21 @@ function Course() {
             <span>Описание</span>
             <div className="select_col">
             <div className="select" style={{height: 'auto', whiteSpace: 'pre-line'}}>
-                <p>{data[0].description}</p>
+                <p>{data.description}</p>
             </div>
             </div>
 
             <span>Университет</span>
             <div className="select_col">
                 <div className="select">
-                {data[0].university.length > 0 ? (<div className="selected_row"> {data[0].university} </div>) : (<p>Не указано</p>)}
+                {data.university.length > 0 ? (<div className="selected_row"> {data.university} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
 
             <span>Предмет</span>
             <div className="select_col">
                 <div className="select">
-                {data[0].subjects.length > 0 ? (data[0].subjects.map((option) => (
+                {data.subject.length > 0 ? (data.subject.map((option) => (
                 <div className="selected_row" key={option}>{option}</div> ))) : (<p>Не указано</p>)}
                 </div>
             </div>
@@ -317,25 +284,14 @@ function Course() {
  
             <span style={{marginTop: '8px'}}>Ментор</span>
             <div className="card_mentor">
-                <Link to={`/user/${userData[0].id}`} className="card_wp">
-                    <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(${userData[0].photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
+                <Link to={`/user/${data.user.user_id}`} className="card_wp">
+                    <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(https://commoncourse.io${data.user.photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
                     <div className="points_user">
-                        <div className="point_user" style={{fontFamily: 'NeueMachina', fontSize: '16px', color: 'white'}}><b>{userData[0].first_name + ' ' + userData[0].last_name}</b></div>
-                        <div className="point_user">{userData[0].university}</div>
+                        <div className="point_user" style={{fontFamily: 'NeueMachina', fontSize: '16px', color: 'white'}}><b>{data.user.first_name + ' ' + data.user.last_name}</b></div>
+                        <div className="point_user">{data.user.university}</div>
                     </div>
                 </Link>
             </div>
-            
-            {/*{paid ? 
-            <a href={data[0].channel_url} className="user_course_action">
-                <button href={data[0].channel_url} className='user_course_action_btn'>К УЧЕБЕ</button>
-              </a>
-            : !owned && 
-            <div className="user_course_action">
-                <button onClick={handlePay} className='user_course_action_btn'>
-                    КУПИТЬ
-                </button>
-            </div>}*/}
 
             {paid ? 
             <MainButton text="К УЧЕБЕ" onClick={() => window.location.href = data[0].channel_url} />
