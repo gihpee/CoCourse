@@ -432,8 +432,8 @@ function EditCourse() {
 
             <div className="select_col">
                 <div className="select">
-                {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
-                <div className="selected_row" key={option} onClick={() => handleRemoveOptionSubject(option)}>{option}</div> ))) : (<></>)}
+                {formData.Subjects ?
+                <div className="selected_row" key={formData.Subjects} onClick={() => handleRemoveOptionSubject(formData.Subjects)}>{formData.Subjects}</div> : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => {setBoxIsVisibleSubject(true); setBoxIsVisibleUniv(false)}} value={inputValueSubject} />
 
