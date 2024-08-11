@@ -38,10 +38,13 @@ function Course() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/api/get-courses/?id=${cid}`)
-            const result = await response.json();
-            
-            setData(result);
+            if (cid){
+                const response = await fetch(`https://commoncourse.io/api/get-courses/?id=${cid}`)
+                const result = await response.json();
+                
+                setData(result);
+                console.log(data)
+            }
 
         } catch (error) {
             console.error('Error fetching data:', error);
