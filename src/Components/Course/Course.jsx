@@ -277,8 +277,8 @@ function Course() {
             <span>Предмет</span>
             <div className="select_col">
                 <div className="select">
-                {data.subject.length > 0 ? (data.subject.map((option) => (
-                <div className="selected_row" key={option}>{option}</div> ))) : (<p>Не указано</p>)}
+                {data.subject ?
+                <div className="selected_row">{data.subject}</div> : (<p>Не указано</p>)}
                 </div>
             </div>
 
