@@ -233,13 +233,6 @@ function Course() {
         return `${day}.${month}.${year}`;
       };
 
-
-    if (cid === '79') {
-        data.user.username = 'HowToCommonCourse';
-        data.price = 0;
-        paid = true;
-    }
-
     return <>
             <div className="top_panel">
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>

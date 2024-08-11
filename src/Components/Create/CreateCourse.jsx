@@ -125,7 +125,7 @@ function CreateCourse() {
       } else {
           let university = formData.Univ || 'Не указано';
           let description = formData.Desc || 'Не указано';
-          let subjects = formData.Subjects;
+          let subjects = formData.Subjects[0];
           let topics = formData.topics; 
           let price = formData.Price || 0;
           let channel_id = cid;
