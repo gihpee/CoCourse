@@ -47,6 +47,7 @@ function Feed() {
         const response = await fetch('https://commoncourse.io/api/get-courses/');
         const result = await response.json();
         result.reverse();
+        console.log(result)
 
         setData(result);
       } catch (error) {
@@ -68,7 +69,6 @@ function Feed() {
           },
         });
         const result = await response.json();
-        console.log(result)
 
         setUserCourses(result.bought_courses);
         setCoursesData(result.created_courses);
