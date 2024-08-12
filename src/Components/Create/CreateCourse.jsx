@@ -19,7 +19,7 @@ function CreateCourse() {
         Desc: '',
         Price: null,
         ChannelUrl: '',
-        Subjects: [],
+        Subject: '',
         topics: [],
     });
 
@@ -119,13 +119,13 @@ function CreateCourse() {
     };
 
     const handlePublish = async () => {
-      if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
+      if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
       {
         setModalFillOpen(true);
       } else {
           let university = formData.Univ || 'Не указано';
           let description = formData.Desc || 'Не указано';
-          let subjects = formData.Subjects[0];
+          let subjects = formData.Subject || 'Не указано';
           let topics = formData.topics; 
           let price = formData.Price || 0;
           let channel_id = cid;
@@ -147,7 +147,7 @@ function CreateCourse() {
     const handleSaveDraft = async () => {
       let university = formData.Univ;
       let description = formData.Desc;
-      let subjects = formData.Subjects;
+      let subjects = formData.Subject;
       let topics = formData.topics; 
       let price = formData.Price || 0;
       let channel_id = cid;
@@ -175,11 +175,11 @@ function CreateCourse() {
     };
     
     const handleOptionClickSubject = (option) => {
-        if (!formData.Subjects.includes(option)) {
+        if (formData.Subject !== option) {
           setFormData((prevData) => {
             return {
                 ...prevData,
-                Subjects: [option],
+                Subject: option,
             }
         });
         }
@@ -188,11 +188,10 @@ function CreateCourse() {
     };
     
     const handleRemoveOptionSubject = (optionToRemove) => {
-        const updatedOptionsSubject = formData.Subjects.filter((option) => option !== optionToRemove);
         setFormData((prevData) => {
             return {
                 ...prevData,
-                Subjects: updatedOptionsSubject,
+                Subject: '',
             }
         });
     };
@@ -330,8 +329,7 @@ function CreateCourse() {
 
             <div className="select_col">
                 <div className="select">
-                {formData.Subjects.length > 0 ? (formData.Subjects.map((option) => (
-                <div className="selected_row" key={option} onClick={() => handleRemoveOptionSubject(option)}>{option}</div> ))) : (<></>)}
+                {formData.Subject.length > 0 ? (<div className="selected_row" onClick={() => handleRemoveOptionSubject(formData.Subject)}>{formData.Subject}</div> ) : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => {setBoxIsVisibleSubject(true); setBoxIsVisibleUniv(false)}} value={inputValueSubject} />
 

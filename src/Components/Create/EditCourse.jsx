@@ -23,7 +23,7 @@ function EditCourse() {
         Price: null,
         ChannelUrl: '',
         is_draft: false,
-        Subjects: [],
+        Subject: '',
         topics: [],
     });
 
@@ -71,7 +71,7 @@ function EditCourse() {
                     Name: data.channel.name,
                     Univ: data.university,
                     Desc: data.description,
-                    Subjects: data.subjects,
+                    Subject: data.subject,
                     topics: data.topics,
                     Price: data.price,
                     is_draft: data.is_draft
@@ -179,14 +179,14 @@ function EditCourse() {
     };
 
     const handlePublishDraft = async () => {
-        if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
+        if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
         {
           setModalFillOpen(true);
         } else {
             let price = formData.Price;
             let university = formData.Univ;
             let description = formData.Desc;
-            let subjects = formData.Subjects[0];
+            let subjects = formData.Subject;
             let topics = formData.topics; 
             let is_draft = false;
 
@@ -205,7 +205,7 @@ function EditCourse() {
 
     const handlePublish = async () => {
         if (!formData.is_draft) {
-            if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subjects.length === 0)
+            if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
             {
                 setModalFillOpen(true);
                 console.log('here')
@@ -213,7 +213,7 @@ function EditCourse() {
                 let price = formData.Price;
                 let university = formData.Univ;
                 let description = formData.Desc;
-                let subjects = formData.Subjects[0];
+                let subjects = formData.Subject;
                 let topics = formData.topics; 
                 let is_draft = false;
 
@@ -231,7 +231,7 @@ function EditCourse() {
             let price = formData.Price;
             let university = formData.Univ;
             let description = formData.Desc;
-            let subjects = formData.Subjects[0];
+            let subjects = formData.Subject;
             let topics = formData.topics; 
             let is_draft = false;
 
@@ -257,11 +257,11 @@ function EditCourse() {
     };
     
     const handleOptionClickSubject = (option) => {
-        if (!formData.Subjects.includes(option)) {
+        if (formData.Subject !== option) {
           setFormData((prevData) => {
             return {
                 ...prevData,
-                Subjects: [option],
+                Subject: option,
             }
         });
         }
@@ -270,11 +270,10 @@ function EditCourse() {
     };
     
     const handleRemoveOptionSubject = (optionToRemove) => {
-        const updatedOptionsSubject = formData.Subjects.filter((option) => option !== optionToRemove);
         setFormData((prevData) => {
             return {
                 ...prevData,
-                Subjects: updatedOptionsSubject,
+                Subject: '',
             }
         });
     };
@@ -432,8 +431,7 @@ function EditCourse() {
 
             <div className="select_col">
                 <div className="select">
-                {formData.Subjects ?
-                <div className="selected_row" key={formData.Subjects} onClick={() => handleRemoveOptionSubject(formData.Subjects)}>{formData.Subjects}</div> : (<></>)}
+                {formData.Subject ? <div className="selected_row" key={formData.Subject} onClick={() => handleRemoveOptionSubject(formData.Subject)}>{formData.Subject}</div> : (<></>)}
 
                     <input className="select_input" placeholder="Начните вводить название" onChange={handleSelectChangeSubject} onFocus={() => {setBoxIsVisibleSubject(true); setBoxIsVisibleUniv(false)}} value={inputValueSubject} />
 
