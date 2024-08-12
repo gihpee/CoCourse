@@ -150,34 +150,6 @@ function EditCourse() {
         });
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-    
-        if (file) {
-            const fileSize = file.size;
-            const maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
-  
-            if (fileSize > maxSizeInBytes) {
-              alert('Файл слишком большой. Выберите файл размером не более 5 MB.');
-              // Очистка input файла
-              e.target.value = null;
-              return;
-            }
-            
-          const reader = new FileReader();
-    
-          reader.onload = () => {
-            if (reader.result) {
-              setImageSrc(reader.result);
-            }
-          };
-    
-          reader.readAsDataURL(file);
-        } else {
-          setImageSrc(null);
-        }
-    };
-
     const handlePublishDraft = async () => {
         if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
         {
@@ -368,9 +340,7 @@ function EditCourse() {
         )}
 
         <div className="upload-container" style={{marginTop: '-56px'}}>
-            <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange}/>
-            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(${imageSrc})`, opacity: 0.6 }}></div>
-            <div className="prev_filter"></div>
+            <div className="preview-container" id="previewContainer" style={{ backgroundImage: `url(https://commoncourse.io${imageSrc})` }}></div>
         </div>
 
         <div className="column" id='main' style={{marginTop: '-64px', borderRadius: '24px',
@@ -387,15 +357,6 @@ function EditCourse() {
                 placeholder="0"
                 name="Price"
                 value={formData.Price || null}
-                onChange={handleChange} />
-
-            <span>ССЫЛКА НА ГРУППУ ИЛИ КАНАЛ*</span>
-            <input 
-                className='billet_price'
-                type='text' 
-                placeholder="URL"
-                name="ChannelUrl"
-                value={formData.ChannelUrl || ''}
                 onChange={handleChange} />
                 
             <span>ТЕМА*</span>

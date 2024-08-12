@@ -37,13 +37,14 @@ function Home() {
   const [coursesData, setCoursesData] = useState([]);
   const [feedbacks, setFeedbacks] = useState([]);
 
-  function formatDate(dateString) {
-    const parts = dateString.split('-');
-    const day = parts[0].padStart(2, '0');
-    const month = parts[1].padStart(2, '0');
-    const year = parts[2].slice(2);
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const year = date.getFullYear();
+  
     return `${day}.${month}.${year}`;
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,7 +101,7 @@ function Home() {
 
       return (
         <Link to={`/edit-course/${item.id}`} key={index} className="course_card">
-          <div className="course_img" style={{backgroundImage: `url(${item.image})`}}></div>
+          <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${item.image})`}}></div>
         <div className="card_info">
           <div className="row_grad_l">
             <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
