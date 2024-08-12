@@ -115,7 +115,7 @@ function Home() {
           <div className="price_container">
             <div className="price">{item.price} RUB</div>
             <div className="status_container">
-              {!item.is_draft && <div className="student_amount">{item.amount}</div>}
+              {!item.is_draft && <div className="student_amount">{item.amount_of_students}</div>}
               {item.is_draft ? <div className="course_status">Черновик</div> : <div className="course_status">Мой</div>}
             </div>
           </div>
