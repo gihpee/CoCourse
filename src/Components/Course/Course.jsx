@@ -215,6 +215,8 @@ function Course() {
     var totalRate = 0;
     var averageRate = 0;
 
+    console.log(data.feedback)
+
     if (data.feedback.length > 0) {
         for (var i = 0; i < data.feedback.length; i++) {
             totalRate += parseFloat(data.feedback[i].rate);
@@ -223,6 +225,8 @@ function Course() {
         averageRate = totalRate / data.feedback.length;
         averageRate = Math.round(averageRate * 100) / 100;
     }
+
+    console.log(averageRate)
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
