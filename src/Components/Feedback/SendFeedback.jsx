@@ -9,52 +9,29 @@ function SendFeedback() {
   window.scrollTo(0, 0)
   const { id } = useParams();
   const { username } = window.Telegram.WebApp.initDataUnsafe.user;
-  const [userId, setUserId] = useState(0)
-  const [courseName, setCourseName] = useState("")
   const [feedbacks, setFeedbacks] = useState([])
-  const [userFeedbacks, setUserFeedbacks] = useState([])
 
-  var currentDate = new Date();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch(`https://commoncourse.io/getcourse?id=${id}`);
-        const data = await response.json();
-
-        setUserId(data[0].user);
-        setCourseName(data[0].name);
-        setFeedbacks(data[0].feedback);
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchCourses();
-}, [id])
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch(`https://commoncourse.io/user?id=${userId}`);
-        const data = await response.json();
-        
-        if (data[0].feedback) {
-            setUserFeedbacks(data[0].feedback);
+    const fetchData = async () => {
+    try {
+        if (id){
+            const response = await fetch(`https://commoncourse.io/api/get-courses/?id=${id}`)
+            const result = await response.json();
+            
+            setFeedbacks(result.feedback);
         }
 
-      } catch (error) {
+    } catch (error) {
         console.error('Error fetching data:', error);
-      }
+    }
     };
 
-    fetchCourses();
-  }, [userId])
+    fetchData();
+}, [id]);
 
-  const userFeedback = feedbacks.find(item => item.user === username)
-  const userToUserFeedback = userFeedbacks.find(item => (item.user === username && item.course === courseName))
+  const userFeedback = feedbacks.find(item => item.user.username === username)
 
   const [sliderValue, setSliderValue] = useState(3);
   const [revValue, setRevValue] = useState("")
@@ -97,41 +74,14 @@ function SendFeedback() {
     {
       setModalFillOpen(true);
     } else {
-      console.log(sliderValue, revValue);
-      var day = currentDate.getDate();
-      var month = currentDate.getMonth() + 1;
-      var year = currentDate.getFullYear();
 
-      let date = day + '-' + month + '-' + year
-
-      let feedback = {rate: sliderValue, 
-                      review: revValue, 
-                      user: username, 
-                      course: courseName, 
-                      date: date};
-
-      let updatedCourseFeedbacks = []
-      let updatedUserFeedbacks = []
-
-      if (userFeedback) {
-        updatedCourseFeedbacks = feedbacks.map(item => item.user === username ? feedback : item);
-      } else {
-        updatedCourseFeedbacks = feedbacks.concat(feedback);
-      }
-
-      if (userToUserFeedback) {
-        updatedUserFeedbacks = userFeedbacks.map(item => (item.user === username && item.course === courseName) ? feedback : item);
-      } else {
-        updatedUserFeedbacks = userFeedbacks.concat(feedback);
-      }
-
-      fetch('https://commoncourse.io/sf', {
+      fetch('https://commoncourse.io/api/send-feedback/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
 
-        body: JSON.stringify({id, userId, updatedCourseFeedbacks, updatedUserFeedbacks}),
+        body: JSON.stringify({id, revValue, sliderValue}),
         }).then(navigate(`/course/${id}`))
     }
   }
