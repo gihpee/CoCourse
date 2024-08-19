@@ -79,6 +79,7 @@ function SendFeedback() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `tma ${window.Telegram.WebApp.initData}`
         },
 
         body: JSON.stringify({id, revValue, sliderValue}),
