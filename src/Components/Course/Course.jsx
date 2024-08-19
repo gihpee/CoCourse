@@ -216,7 +216,7 @@ function Course() {
     var averageRate = 0;
 
     if (data.feedback.length > 0) {
-        for (var i = 0; i < data[0].feedback.length; i++) {
+        for (var i = 0; i < data.feedback.length; i++) {
             totalRate += parseFloat(data.feedback[i].rate);
         }
 
