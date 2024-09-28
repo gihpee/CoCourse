@@ -85,7 +85,7 @@ function Feed() {
     };
 
     fetchUserCoursesData();
-  }, [id]);
+  }, [id, navigate]);
 
   const appCourses = filteredDataWithMain.map((item, index) => {
 
