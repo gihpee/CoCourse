@@ -87,7 +87,7 @@ function Feed() {
     fetchData();
   }, []);
 
-  if (data.length === 0) {
+  if (userCourses.length === 0) {
     return <div className="loading"></div>;
   }
 
