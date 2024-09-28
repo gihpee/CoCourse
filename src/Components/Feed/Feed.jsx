@@ -12,7 +12,7 @@ function Feed() {
   //const { id } = 10;
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [userCourses, setUserCourses] = useState([]);
+  const [userCourses, setUserCourses] = useState(null);
   const [coursesData, setCoursesData] = useState([]);
   const navigate = useNavigate();
 
@@ -87,7 +87,7 @@ function Feed() {
     fetchData();
   }, []);
 
-  if (userCourses.length === 0) {
+  if (userCourses) {
     return <div className="loading"></div>;
   }
 
