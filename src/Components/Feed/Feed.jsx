@@ -16,10 +16,6 @@ function Feed() {
   const [coursesData, setCoursesData] = useState([]);
   const navigate = useNavigate();
 
-  if (data.length === 0) {
-    return <div className="loading"></div>;
-  }
-
   useEffect(() => {
     const fetchUserCoursesData = async () => {
       try {
@@ -90,6 +86,10 @@ function Feed() {
 
     fetchData();
   }, []);
+
+  if (data.length === 0) {
+    return <div className="loading"></div>;
+  }
 
   const appCourses = filteredDataWithMain.map((item, index) => {
 
