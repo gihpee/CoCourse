@@ -16,6 +16,33 @@ function Feed() {
   const [coursesData, setCoursesData] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchUserCoursesData = async () => {
+      try {
+        const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `tma ${window.Telegram.WebApp.initData}`
+          },
+        });
+        const result = await response.json();
+
+        if (response.status === 201) {
+          navigate('/registration', { state: { data: result } });
+        } else {
+          setUserCourses(result.bought_courses);
+          setCoursesData(result.created_courses);
+        }
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchUserCoursesData();
+  }, [id, navigate]);
+
   const filteredData = data.filter((course) =>
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
   );
@@ -59,33 +86,6 @@ function Feed() {
 
     fetchData();
   }, []);
-
-  useEffect(() => {
-    const fetchUserCoursesData = async () => {
-      try {
-        const response = await fetch(`https://commoncourse.io/api/user-data/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `tma ${window.Telegram.WebApp.initData}`
-          },
-        });
-        const result = await response.json();
-
-        if (response.status === 201) {
-          navigate('/registration', { state: { data: result } });
-        } else {
-          setUserCourses(result.bought_courses);
-          setCoursesData(result.created_courses);
-        }
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchUserCoursesData();
-  }, [id, navigate]);
 
   const appCourses = filteredDataWithMain.map((item, index) => {
 

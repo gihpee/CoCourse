@@ -188,7 +188,6 @@ function Registration() {
                 <img src={chat} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Предложить идею</p>
               </Link>
-              <span>О проекте</span>
               <Link to="https://t.me/HowToCommonCourse " target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://t.me/HowToCommonCourse ");}}>
                 <img src={bulb} alt='' />
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Common Course FAQ</p>
@@ -198,7 +197,7 @@ function Registration() {
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Что нового?</p>
               </a>
               
-              <MainButton text="Сохранить" onClick={() => handleSave()} />
+              <MainButton text="Продолжить" onClick={() => handleSave()} />
             </div>
            </>
 
