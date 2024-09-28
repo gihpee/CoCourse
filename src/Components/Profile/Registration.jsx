@@ -2,9 +2,20 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { optionsUniv } from '../optionsUniv';
 import { optionsSubject } from '../optionsSubject';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import sun from '../assets/profile/sun.svg'
+import bulb from '../assets/profile/bulb.svg'
+import chat from '../assets/profile/chat.svg'
+import magic from '../assets/profile/magic.svg'
+import bell from '../assets/profile/bell.svg'
+import lminus from '../assets/create-course/lminus.png'
+import { Link } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
 
 function Registration() { 
+    const navigate = useNavigate();
+
     const location = useLocation();
     const { data } = location.state || {};
 
