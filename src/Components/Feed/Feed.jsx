@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Feed.css";
 
 
@@ -13,6 +14,7 @@ function Feed() {
   const [inputValue, setInputValue] = useState('');
   const [userCourses, setUserCourses] = useState([]);
   const [coursesData, setCoursesData] = useState([]);
+  const navigate = useNavigate();
 
   const filteredData = data.filter((course) =>
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
@@ -70,8 +72,13 @@ function Feed() {
         });
         const result = await response.json();
 
-        setUserCourses(result.bought_courses);
-        setCoursesData(result.created_courses);
+        if (response.status === 201) {
+          navigate('/registration', { state: { data: result } });
+        } else {
+          setUserCourses(result.bought_courses);
+          setCoursesData(result.created_courses);
+        }
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }

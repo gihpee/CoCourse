@@ -20,6 +20,7 @@ import FeedbackCourse from './Components/Feedback/FeedbackCourse'
 import FeedbackUser from './Components/Feedback/FeedbackUser';
 import User from './Components/Profile/User';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
+import Registration from './Components/Profile/Registration';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path={'user/:id'} element={<User />}/>
           <Route path={'wallet'} element={<Wallet />}/>
           <Route path={'connect-bot'} element={<ConnectBot />}/>
+          <Route path={'registration'} element={<Registration />}/>
         </Routes>
     </div>
     </TonConnectUIProvider>
