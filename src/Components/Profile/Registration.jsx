@@ -19,13 +19,11 @@ function Registration() {
     const location = useLocation();
     const { data } = location.state || {};
 
-    const [imageSrc, setImageSrc] = useState("");
+    const [imageSrc, setImageSrc] = useState(data.photo_url);
     const [isNotify, setIsNotify] = useState(true);
     const [bioValue, setBioValue] = useState("");
     const [uniValue, setUniValue] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
-
-    setImageSrc(data.photo_url)
 
     useEffect(() => {
       const textarea = document.querySelector('.bio_textarea');
