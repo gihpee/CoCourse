@@ -33,6 +33,12 @@ function Registration() {
           }
       }, [bioValue]);
 
+      useEffect(() => {
+        if (data && data.photo_url) {
+          setImageSrc(data.photo_url);
+        }
+      }, [data]);
+
       const handleNotify = () => {
         setIsNotify(!isNotify);
       };
