@@ -43,6 +43,27 @@ function Feed() {
     fetchUserCoursesData();
   }, [id, navigate]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://commoncourse.io/api/get-courses/');
+        const result = await response.json();
+        result.reverse();
+        console.log(result)
+
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!userCourses) {
+    return <div className="loading"></div>;
+  }
+
   const filteredData = data.filter((course) =>
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
   );
@@ -69,27 +90,6 @@ function Feed() {
       const value = event.target.value;
       setInputValue(value);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://commoncourse.io/api/get-courses/');
-        const result = await response.json();
-        result.reverse();
-        console.log(result)
-
-        setData(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (userCourses) {
-    return <div className="loading"></div>;
-  }
 
   const appCourses = filteredDataWithMain.map((item, index) => {
 
