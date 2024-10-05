@@ -111,11 +111,13 @@ span {
 .prev {
     width: 100%;
     position: relative;
-    height: 428px;
+    height: 100vw;
     background-image: url('../assets/course/preview.png');
     background-size: cover;
     background-position: center;
-    box-shadow: 0px -200px 45px -45px rgba(34, 60, 80, 0.2) inset;
+    -webkit-box-shadow: 0px -35px 50px 28px rgba(0, 0, 0, 1) inset;
+    -moz-box-shadow: 0px -35px 50px 28px rgba(0, 0, 0, 1) inset;
+    box-shadow: 0px -35px 50px 28px rgba(0, 0, 0, 1) inset;
 }
 
 .back_btn {
@@ -138,11 +140,12 @@ span {
     position: absolute;
     color: white;
     width: 90%;
-    font-size: 20px;
+    font-family: 'NeueMachina';
+    font-size: 24px;
     line-height: 26px;
-    font-weight: 600;
+    font-weight: 500;
     margin-left: 16px;
-    bottom: 96px;
+    bottom: 16px;
     text-shadow: 0px 0px 21px rgba(0, 0, 0, 0.75);
 }
 
@@ -166,10 +169,6 @@ span {
     align-items: center;
     width: 100%;
     background-color: black;
-    border-radius: 24px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    margin-top: -64px;
     padding-top: 8px;
     padding-bottom: 8px;
     z-index: 10;
