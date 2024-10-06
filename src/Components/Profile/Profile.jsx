@@ -155,7 +155,7 @@ function Home() {
                 <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
             </div>
           <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${userData.photo_url})`, marginTop: '-56px'}}>
-            <p style={{marginTop: '312px'}}>{ userData.first_name + ' ' + userData.last_name }</p>
+            <p style={{marginTop: '312px'}}>{ first_name + ' ' + last_name }</p>
           </div>
             {/*<Link to={`/edit-profile/${userData.id}`} className="edit_container">
               <div className="billet">
@@ -163,7 +163,7 @@ function Home() {
                 <p>Редактор</p>
               </div>
               </Link>*/}
-          <div className="edit_container">
+          <div className="getContact_container">
             <span>Отзывы</span>
             <Link to={`/user-feedback/${userData.id}`} className="nfeedback">
                     <p>{averageRate.toFixed(1)}</p>
