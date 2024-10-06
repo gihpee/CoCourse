@@ -167,8 +167,7 @@ function EditProfile() {
 
     return <>
             <div className="back_btn" onClick={() => {window.history.back()}}></div>
-            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${userData.photo_url})`, marginTop: '-56px'}}>
-              <p style={{marginTop: '312px'}}>{ first_name + ' ' + last_name }</p>
+            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`, marginTop: '-56px'}}>
             </div>
             <div className="prop_container">
               <span>БИОГРАФИЯ</span>
