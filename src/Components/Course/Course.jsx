@@ -285,7 +285,7 @@ function Course() {
             <span style={{marginBottom: '0px'}}>Содержание</span>
             {topics.length > 0 ? (<div className="acor-container">{ topics }</div>) : (<p style={{alignSelf: 'center'}}>Не указано</p>)}
  
-            <span style={{marginTop: '8px'}}>Ментор</span>
+            <span style={{marginTop: '8px', marginBottom: '0px'}}>Ментор</span>
             <div className="card_mentor">
                 <Link to={`/user/${data.user.user_id}`} className="card_wp">
                     <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(https://commoncourse.io${data.user.photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
@@ -297,7 +297,7 @@ function Course() {
             </div>
             
             <span>Дата публикации</span>
-            <div className="billet">
+            <div className="field">
                 <p>{formatDate(data.date)}</p>
             </div>
 
