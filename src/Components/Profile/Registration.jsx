@@ -23,6 +23,8 @@ function Registration() {
     const [isNotify, setIsNotify] = useState(true);
     const [bioValue, setBioValue] = useState("");
     const [uniValue, setUniValue] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
 
     useEffect(() => {
@@ -36,6 +38,8 @@ function Registration() {
       useEffect(() => {
         if (data && data.photo_url) {
           setImageSrc(data.photo_url);
+          setFirstName(data.first_name);
+          setLastName(data.last_name);
         }
       }, [data]);
 
@@ -134,10 +138,10 @@ function Registration() {
       }
 
     return <>
-            <div className="upload-container" style={{marginTop: '-56px'}}>
-                <div className="preview-container" id="previewContainer" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`}}></div>
+            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc}})`, marginTop: '-56px'}}>
+              <p style={{marginTop: '312px'}}>{ firstName + ' ' + lastName }</p>
             </div>
-            <div className="prop_container">
+            <div className="getContact_container">
 
                 <span>УНИВЕРСИТЕТ</span>
                 <div className="select_col">

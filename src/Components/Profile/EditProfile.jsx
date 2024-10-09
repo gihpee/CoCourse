@@ -21,6 +21,8 @@ function EditProfile() {
     const [isNotify, setIsNotify] = useState(true);
     const [bioValue, setBioValue] = useState("");
     const [uniValue, setUniValue] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
     
 
@@ -47,6 +49,8 @@ function EditProfile() {
             setBioValue(data.description);
             setUniValue(data.university);
             setSelectedOptions(data.subjects);
+            setFirstName(data.first_name);
+            setLastName(data.last_name);
 
           } catch (error) {
             console.error('Ошибка при запросе к серверу:', error);
@@ -167,9 +171,10 @@ function EditProfile() {
 
     return <>
             <div className="back_btn" onClick={() => {window.history.back()}}></div>
-            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`, marginTop: '-56px'}}>
+            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc}})`, marginTop: '-56px'}}>
+              <p style={{marginTop: '312px'}}>{ firstName + ' ' + lastName }</p>
             </div>
-            <div className="prop_container">
+            <div className="getContact_container">
               <span>БИОГРАФИЯ</span>
               <div className="select_col">
                 <div className="select">

@@ -1,5 +1,4 @@
 import React from "react";
-import calend from '../assets/course/calender.svg'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -244,7 +243,6 @@ function Course() {
             </div>
             <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`, marginTop: '-56px'}}>
                 <p>{ data.channel.name }</p>
-                <div className="prev_date"><img src={calend} alt='' />{ formatDate(data.date) }</div>
             </div>
             <div className="getContact_container">
                 <span>ЦЕНА</span>
@@ -296,6 +294,11 @@ function Course() {
                         <div className="point_user">{data.user.university}</div>
                     </div>
                 </Link>
+            </div>
+            
+            <span>Дата публикации</span>
+            <div className="billet">
+                <p>{formatDate(data.date)}</p>
             </div>
 
             {paid ? 
