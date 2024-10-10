@@ -107,7 +107,8 @@
     top: 5px;
     z-index: 150;
     backdrop-filter: blur(10px);
-    background: rgba(16,16,16, 0.7);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #1C1C1E;
     border-radius: 24px;
     border: none;
     color: white;
@@ -191,7 +192,8 @@
     width: 48px;
     height: 48px;
     backdrop-filter: blur(10px);
-    background: rgba(16,16,16, 0.7);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #1C1C1E;
     background-image: url('../assets/feed/wallet.svg');
     background-position: center;
     background-size: 24px 24px;
@@ -207,7 +209,8 @@
     width: 48px;
     height: 48px;
     backdrop-filter: blur(10px);
-    background: rgba(16,16,16, 0.7);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #1C1C1E;
     background-image: url('../assets/feed/boy.svg');
     background-position: center;
     background-size: 24px 24px;

@@ -137,7 +137,7 @@ function Feed() {
         <input
           className="billet_search"
           onChange={handleUniChange}
-          placeholder="Введите название курса или ник автора"
+          placeholder="Поиск"
           value={inputValue}
         />
             <Link to={`/wallet`} className="wallet_btn"></Link>
