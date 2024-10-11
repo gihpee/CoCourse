@@ -63,7 +63,8 @@
 }
 
 .toggle-switch {
-    position: relative;
+    position: absolute;
+    right: 8px;
     width: 64px;
     height: 32px;
     margin-right: 8px;

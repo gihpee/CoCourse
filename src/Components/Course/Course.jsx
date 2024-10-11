@@ -21,7 +21,6 @@ function Course() {
     const [data, setData] = useState([]);
 
     const [userCourses, setUserCourses] = useState([]);
-    const [coursesData, setCoursesData] = useState([]);
 
     const [exchangeRate, setExchangeRate] = useState(null);
 
@@ -67,7 +66,6 @@ function Course() {
                 const data = await response.json();
         
                 if (data) {
-                    setCoursesData(data.created_courses);
                     setUserCourses(data.bought_courses);
                 }
         
@@ -100,7 +98,6 @@ function Course() {
     }
 
     var paid = userCourses.some(course => course.id === Number(cid));
-    var owned = coursesData.some(course => course.id === Number(cid));
 
     const myTransaction = {
         validUntil: Math.floor(Date.now() / 1000) + 600, // 60 sec
@@ -238,7 +235,6 @@ function Course() {
                     <div className="status_container" style={{padding: '8px', height: '32px', alignItems: 'center', borderRadius: '24px', background: 'rgba(16,16,16, 0.7)', backdropFilter: 'blur(10px)', right: '8px'}}>
                         <div className="student_amount" style={{borderRadius: '16px'}}>{data.amount_of_students}</div>
                         {paid && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
-                        {owned && <div className="course_status" style={{borderRadius: '16px'}}>Мой</div>}
                     </div>
             </div>
             <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`, marginTop: '-56px'}}>
@@ -303,8 +299,7 @@ function Course() {
 
             {paid ? 
             <MainButton text="К УЧЕБЕ" onClick={() => window.location.href = data.channel.url} />
-            : !owned && 
-            <MainButton text="КУПИТЬ" onClick={handlePay} />}
+            : <MainButton text="КУПИТЬ" onClick={handlePay} />}
         </>
 }
 

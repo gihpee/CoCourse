@@ -98,19 +98,27 @@
     z-index: 0;
 }
 
-.billet_search {
-    width: calc(85% - 80px);
-    height: 48px;
-    position: sticky;
+.feed_top_panel {
     display: flex;
-    align-self: center;
-    top: 5px;
+    position: sticky;
+    top: 8px;
+    height: 48px;
+    width: calc(100% - 16px);
+    flex-direction: row;
+    align-items: center;
+    z-index: 1000;
+    column-gap: 8px;
+    margin-bottom: 16px;
+}
+
+.billet_search {
+    height: 48px;
+    flex-grow: 1;
     z-index: 150;
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid #1C1C1E;
     border-radius: 24px;
-    border: none;
     color: white;
     font-size: 14px;
     font-weight: 500;
@@ -121,7 +129,6 @@
     background-position: 12px;
     padding-left: 48px;
     padding-right: 8px;
-    margin-bottom: 12px;
 }
 
 .price_container {
@@ -186,9 +193,6 @@
 }
 
 .wallet_btn {
-    position: sticky;
-    top: 8px;
-    left: calc(100% - 8px);
     width: 48px;
     height: 48px;
     backdrop-filter: blur(10px);
@@ -203,9 +207,6 @@
   }
 
 .profille_btn {
-    position: sticky;
-    top: 8px;
-    left: 8px;
     width: 48px;
     height: 48px;
     backdrop-filter: blur(10px);

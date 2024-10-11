@@ -4,11 +4,7 @@ import { optionsUniv } from '../optionsUniv';
 import { optionsSubject } from '../optionsSubject';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import sun from '../assets/profile/sun.svg'
-import bulb from '../assets/profile/bulb.svg'
-import chat from '../assets/profile/chat.svg'
-import magic from '../assets/profile/magic.svg'
-import bell from '../assets/profile/bell.svg'
+import toggle from '../assets/profile/toggle.svg'
 import lminus from '../assets/create-course/lminus.png'
 import { Link } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
@@ -19,7 +15,7 @@ function Registration() {
     const location = useLocation();
     const { data } = location.state || {};
 
-    const [imageSrc, setImageSrc] = useState(data.photo_url);
+    const [imageSrc, setImageSrc] = useState(data?.photo_url);
     const [isNotify, setIsNotify] = useState(true);
     const [bioValue, setBioValue] = useState("");
     const [uniValue, setUniValue] = useState("");
@@ -174,9 +170,8 @@ function Registration() {
               </div>
 
               <span>ОСНОВНЫЕ</span>
-              <div className="billet" style={{paddingRight: '8px'}}>
-                <img src={bell} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Уведомления</p>
+              <div className="field">
+                <p>Уведомления</p>
                 <div class="toggle-switch">
                   <input type="checkbox" id="toggle" checked={isNotify} onChange={handleNotify}/>
                   <label for="toggle"></label>
@@ -184,21 +179,21 @@ function Registration() {
               </div>
 
               <span>НАЖИМАЯ "ПРОДОЛЖИТЬ" ВЫ СОГЛАШАЕТЕСЬ:</span>
-              <Link to="https://forms.gle/x9KbBitA1AGDPmXY8" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/x9KbBitA1AGDPmXY8");}}>
-                <img src={magic} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Сообщить о баге</p>
+              <Link to="https://disk.yandex.ru/i/h6bWlwR6L5B8fg" target="_blank" className="field" onClick={(event) => {event.preventDefault(); window.open("https://disk.yandex.ru/i/h6bWlwR6L5B8fg");}}>
+                <p>Правила пользования</p>
+                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
               </Link>
-              <Link to="https://forms.gle/NtaWQe2wuiRpcY2L8" target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://forms.gle/NtaWQe2wuiRpcY2L8");}}>
-                <img src={chat} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Предложить идею</p>
+              <Link to="https://disk.yandex.ru/i/Il8aGfCCgzVbnw" target="_blank" className="field" onClick={(event) => {event.preventDefault(); window.open("https://disk.yandex.ru/i/Il8aGfCCgzVbnw");}}>
+                <p>Политика конфиденциальности</p>
+                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
               </Link>
-              <Link to="https://t.me/HowToCommonCourse " target="_blank" className="billet" onClick={(event) => {event.preventDefault(); window.open("https://t.me/HowToCommonCourse ");}}>
-                <img src={bulb} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Common Course FAQ</p>
+              <Link to="https://disk.yandex.ru/i/kupfGfO2ADm48g" target="_blank" className="field" onClick={(event) => {event.preventDefault(); window.open("https://disk.yandex.ru/i/kupfGfO2ADm48g");}}>
+                <p>Согласие на обработку персональных данных</p>
+                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
               </Link>
-              <a href='https://t.me/Common_Course' className="billet">
-                <img src={sun} alt='' />
-                <p style={{textAlign: 'left', marginLeft: '12px'}}>Что нового?</p>
+              <a href='https://disk.yandex.ru/i/0HfHDg05yeroqQ' className="field">
+                <p>Согласие на передачу персональных данных в банк</p>
+                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
               </a>
               
               <MainButton text="Продолжить" onClick={() => handleSave()} />

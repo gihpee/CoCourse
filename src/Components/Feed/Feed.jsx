@@ -13,7 +13,6 @@ function Feed() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [userCourses, setUserCourses] = useState(null);
-  const [coursesData, setCoursesData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +31,6 @@ function Feed() {
           navigate('/registration', { state: { data: result } });
         } else {
           setUserCourses(result.bought_courses);
-          setCoursesData(result.created_courses);
         }
 
       } catch (error) {
@@ -123,7 +121,6 @@ function Feed() {
             <div className="status_container">
               <div className="student_amount">{item.amount_of_students}</div>
               {userCourses.some(course => course.course_id === item.id) && <div className="course_status">Куплено</div>}
-              {coursesData.some(course => course.id === item.id) && <div className="course_status">Мой</div>}
             </div>
           </div>
         </div>
@@ -132,7 +129,7 @@ function Feed() {
   })
 
   return <div className="column" style={{minHeight: '100vh'}}>
-      <div className="top_panel" style={{columnGap: '8px'}}>
+      <div className="feed_top_panel">
           <Link to={`/profile`} className="profille_btn"></Link>
         <input
           className="billet_search"
