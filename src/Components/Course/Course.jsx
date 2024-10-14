@@ -3,11 +3,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useTonConnectUI } from '@tonconnect/ui-react';
-import { useTonAddress } from '@tonconnect/ui-react';
-//import { beginCell, toNano, Address } from '@ton/ton'
-import TonWeb from "tonweb";
-import { mnemonicToSeed } from 'tonweb-mnemonic';
 import MainButton from '@twa-dev/mainbutton';
 import nf from '../assets/course/nfeedarrow.svg';
 import "./Course.css";
@@ -21,17 +16,8 @@ function Course() {
     const [data, setData] = useState([]);
 
     const [userCourses, setUserCourses] = useState([]);
-
-    const [exchangeRate, setExchangeRate] = useState(null);
-
-    const userFriendlyAddress = useTonAddress(false);
     
     const navigate = useNavigate();
-
-    var currentDate = new Date();
-
-    const [tonConnectUI, setOptions] = useTonConnectUI();
-    setOptions({ language: 'ru' });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -77,124 +63,11 @@ function Course() {
         fetchUserData();
     }, [id]);
 
-    useEffect(() => {
-        // Функция для получения данных с API
-        const fetchExchangeRate = async () => {
-          try {
-            const response = await fetch('https://tonapi.io/v2/rates?tokens=ton&currencies=rub');
-            const data = await response.json();
-            const rate = data.rates.TON.prices.RUB;
-            setExchangeRate(rate);
-          } catch (error) {
-            console.error('Ошибка при получении данных с API:', error);
-          }
-        };
-    
-        fetchExchangeRate();
-      }, []);
-
     if (data.length === 0) {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
 
     var paid = userCourses.some(course => course.id === Number(cid));
-
-    const myTransaction = {
-        validUntil: Math.floor(Date.now() / 1000) + 600, // 60 sec
-        messages: [
-            {
-                address: data.address,
-                amount: String(Math.floor((data.price / exchangeRate) * 1000000000)),
-                // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
-            }
-        ]
-    }
-
-    const sendJettons = async (WALLET2_ADDRESS) => {
-        const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {apiKey: 'e23336de32c099c638e61fd08702fb31aa00c8e5a9bd83483bac536b26654367'}));
-
-        const words = ['arrange', 'deal', 'lava', 'man', 'detail', 'lend', 'describe', 'shoulder', 'mule', 'chuckle', 'route', 'dress', 'lift', 'leg', 'pull', 'ski', 'syrup', 'asset', 'jazz', 'actual', 'state', 'issue', 'shuffle', 'power'];
-
-        const seed = await mnemonicToSeed(words);
-        const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
-
-        const WalletClass = tonweb.wallet.all['v4R2'];
-        const wallet = new WalletClass(tonweb.provider, {
-            publicKey: keyPair.publicKey,
-            wc: 0
-        });
-
-        const walletAddress = await wallet.getAddress();
-        console.log('wallet address=', walletAddress.toString(true, true, true));
-    
-
-        const JETTON_WALLET_ADDRESS = 'EQBQQLR2Are9JDYK-3OtbxgmCN6k9gxR7fhBwUdmF4bw-ShM';
-        console.log('jettonWalletAddress=', JETTON_WALLET_ADDRESS);
-
-        const {JettonMinter, JettonWallet} = TonWeb.token.jetton;
-
-        console.log(JettonMinter);
-
-        const jettonWallet = new JettonWallet(tonweb.provider, {
-            address: JETTON_WALLET_ADDRESS
-        });
-
-        const seqno = (await wallet.methods.seqno().call()) || 0;
-        console.log({seqno})
-
-        const transfer = async () => {
-            console.log(
-                await wallet.methods.transfer({
-                    secretKey: keyPair.secretKey,
-                    toAddress: JETTON_WALLET_ADDRESS,
-                    amount: TonWeb.utils.toNano('0.05'),
-                    seqno: seqno,
-                    payload: await jettonWallet.createTransferBody({
-                        jettonAmount: TonWeb.utils.toNano('100'),
-                        toAddress: new TonWeb.utils.Address(WALLET2_ADDRESS),
-                        forwardAmount: TonWeb.utils.toNano('0.01'),
-                        forwardPayload: new TextEncoder().encode('gift'),
-                        responseAddress: walletAddress
-                    }),
-                    sendMode: 3,
-                }).send()
-            );
-        }
-
-        await transfer();
-    }
-
-    const handlePay = async () => {
-        try {
-            await tonConnectUI.sendTransaction(myTransaction);
-        } catch(e) {
-            console.log(e);
-            return 0;
-        }
-
-        await sendJettons(userFriendlyAddress);
-        await sendJettons(data[0].address);
-
-        paid = true;
-        let amount = data[0].amount + 1
-
-        var day = currentDate.getDate();
-        var month = currentDate.getMonth() + 1;
-        var year = currentDate.getFullYear();
-
-        let date = day + '-' + month + '-' + year
-        let seller_id = data[0].user
-  
-        await fetch('https://commoncourse.io/success-payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-  
-            body: JSON.stringify({id, cid, amount, date, seller_id}),
-        })
-          
-      };
 
     const topics = data.topics.map((item, index) => {
         return (
@@ -299,7 +172,7 @@ function Course() {
 
             {paid ? 
             <MainButton text="К УЧЕБЕ" onClick={() => window.location.href = data.channel.url} />
-            : <MainButton text="КУПИТЬ" onClick={handlePay} />}
+            : <MainButton text="ПРИСОЕДИНИТЬСЯ" onClick={() => navigate('/buy-course', { state: data })} />}
         </>
 }
 

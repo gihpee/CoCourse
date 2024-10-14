@@ -130,7 +130,7 @@ function Registration() {
           },
     
           body: JSON.stringify({isNotify, selectedOptions, uniValue, bioValue}),
-        }).then(navigate(`/`))
+        }).then(navigate(`/verification`))
       }
 
     return <>

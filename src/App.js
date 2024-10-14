@@ -21,6 +21,9 @@ import FeedbackUser from './Components/Feedback/FeedbackUser';
 import User from './Components/Profile/User';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import Registration from './Components/Profile/Registration';
+import BuyCourse from './Components/Course/BuyCourse';
+import Transaction from './Components/Wallet/Transaction';
+import Verification from './Components/Profile/Verification';
 
 
 function App() {
@@ -51,6 +54,9 @@ function App() {
           <Route path={'wallet'} element={<Wallet />}/>
           <Route path={'connect-bot'} element={<ConnectBot />}/>
           <Route path={'registration'} element={<Registration />}/>
+          <Route path={'buy-course'} element={<BuyCourse />}/>
+          <Route path={'transaction/:tid'} element={<Transaction />}/>
+          <Route path={'verification'} element={<Verification />}/>
         </Routes>
     </div>
     </TonConnectUIProvider>

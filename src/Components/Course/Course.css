@@ -7,8 +7,9 @@ span {
     font-weight: 400;
     line-height: 15.6px;
     color: #aaaaaa;
-    margin-left: 16px;
-    width: 95%;
+    width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 8px;
     text-transform: uppercase;
 }
@@ -439,4 +440,39 @@ span {
     border-radius: 16px;
     vertical-align: middle;
     margin-bottom: 8px;
+}
+
+.payment_method {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: calc(100% - 32px);
+    column-gap: 8px;
+    height: 48px;
+    padding-left: 16px;
+    background-color: #161616;
+    border: 1px solid #FF6117;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 16px;
+    vertical-align: middle;
+    margin-bottom: 8px;
+}
+
+.discount_amount {
+    padding-left: 32px;
+    padding-right: 8px;
+    background-color: #000000B8;
+    color: white;
+    height: 32px;
+    margin-right: 16px;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 8px;
+    background-image: url('../assets/course/flash.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: 8px;
+
 }
