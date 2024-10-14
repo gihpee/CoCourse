@@ -10,9 +10,13 @@ import "./Course.css";
 
 function BuyCourse() {
     const location = useLocation();
-    const { data } = location.state || {};
-    console.log(location.state)
     const navigate = useNavigate();
+
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+        setData(location.state)
+    }, [location.state]);
 
     const [exchangeRate, setExchangeRate] = useState(null);
 
