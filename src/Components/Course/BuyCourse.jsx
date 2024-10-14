@@ -12,12 +12,7 @@ function BuyCourse() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [data, setData] = useState({})
-
-    useEffect(() => {
-        console.log(location.state)
-        setData(location.state)
-    }, [location.state]);
+    const data = location.state
 
     const [exchangeRate, setExchangeRate] = useState(null);
 
