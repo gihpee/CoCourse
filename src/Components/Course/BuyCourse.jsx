@@ -10,7 +10,7 @@ import "./Course.css";
 
 function BuyCourse() {
     const location = useLocation();
-    const { data } = location.state || {};
+    const { data } = location.state.data || {};
     const navigate = useNavigate();
 
     const [exchangeRate, setExchangeRate] = useState(null);
