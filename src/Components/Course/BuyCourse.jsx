@@ -39,7 +39,7 @@ function BuyCourse() {
         validUntil: Math.floor(Date.now() / 1000) + 600, // 60 sec
         messages: [
             {
-                address: data.address,
+                address: data.ton_address,
                 amount: String(Math.floor((data.price * 0.9 / exchangeRate) * 1000000000)),
                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
             }
@@ -58,7 +58,7 @@ function BuyCourse() {
         let price = data.price * 0.9
         let method = 'TON Wallet'
         let baddress = address
-        let saddress = data.address
+        let saddress = data.ton_address
   
         await fetch('https://commoncourse.io/api/success-payment/', {
             method: 'POST',
