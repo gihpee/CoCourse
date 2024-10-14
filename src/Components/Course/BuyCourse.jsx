@@ -15,6 +15,8 @@ function BuyCourse() {
 
     const [exchangeRate, setExchangeRate] = useState(null);
 
+    console.log(data)
+
     const address = useTonAddress();
 
     const [tonConnectUI, setOptions] = useTonConnectUI();
