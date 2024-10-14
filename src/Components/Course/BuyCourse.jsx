@@ -16,8 +16,6 @@ function BuyCourse() {
 
     const [exchangeRate, setExchangeRate] = useState(null);
 
-    console.log(data)
-
     const address = useTonAddress();
 
     const [tonConnectUI, setOptions] = useTonConnectUI();
@@ -102,7 +100,7 @@ function BuyCourse() {
             <span style={{marginTop: '20px'}}>Объявление</span>
             
             <div className="course_card">
-                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data?.image})`}}></div>
+                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`}}></div>
                 <div className="card_info">
                 <div className="row_grad_l">
                     <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
