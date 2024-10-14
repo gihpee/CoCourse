@@ -15,6 +15,7 @@ function BuyCourse() {
     const [data, setData] = useState({})
 
     useEffect(() => {
+        console.log(location.state)
         setData(location.state)
     }, [location.state]);
 
