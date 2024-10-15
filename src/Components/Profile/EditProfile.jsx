@@ -12,6 +12,7 @@ import { optionsSubject } from '../optionsSubject';
 import { useNavigate } from 'react-router-dom';
 import lminus from '../assets/create-course/lminus.png'
 import "./EditProfile.css";
+import plus from '../assets/course/plus.svg'
 import MainButton from '@twa-dev/mainbutton';
 
 function EditProfile() {
@@ -117,9 +118,10 @@ function EditProfile() {
     );
 
     const varsSubject = filteredOptionsSubject.map((item, index) => (
-        <div className="billet_add" key={index} onClick={() => handleOptionClickSubject(item)}>
-            <p>{item}</p>
-        </div>
+      <div className="field" key={index} onClick={() => handleOptionClickSubject(item)}>
+        <p>{item}</p>
+        <img src={plus} alt='' />
+      </div>
     ));
 
     const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false);
@@ -148,8 +150,9 @@ function EditProfile() {
     );
   
     const varsUniv = filteredOptionsUniv.map((item, index) => (
-      <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)}>
-        <p>{item}</p>
+      <div className="field" key={index} onClick={() => handleOptionClickUniv(item)}>
+          <p>{item}</p>
+          <img src={plus} alt='' />
       </div>
     ));
 

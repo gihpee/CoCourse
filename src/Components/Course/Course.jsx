@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
 import nf from '../assets/course/nfeedarrow.svg';
+import toggle from '../assets/profile/toggle.svg'
 import "./Course.css";
 
 
@@ -12,7 +13,6 @@ function Course() {
     window.scrollTo(0, 0)
     const { cid } = useParams();
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
-
     const [data, setData] = useState([]);
 
     const [userCourses, setUserCourses] = useState([]);
@@ -67,19 +67,22 @@ function Course() {
         return <div className="loading"></div>; // или что-то другое, пока данные загружаются
     }
 
-    var paid = userCourses.some(course => course.id === Number(cid));
+    var paid = userCourses?.some(course => course.id === Number(cid));
 
     const topics = data.topics.map((item, index) => {
         return (
-            <>
-                <input type="checkbox" name="acor" id={index} />
-                <label for={index}>{item.topic}</label>
-                <div className="acor-body">
-                    <span>{item.desc}</span>
+            <div key={index} className="accordion-item">
+                <input type="checkbox" name="acor" id={`acor${index}`} className="accordion-checkbox" />
+                <label htmlFor={`acor${index}`} className="accordion-label">
+                    {item.topic}
+                    <img src={toggle} className="icon" alt="Toggle" />
+                </label>
+                <div className="accordion-body">
+                    <p>{item.desc}</p>
                 </div>
-            </>
-        )
-    })
+            </div>
+        );
+    });
 
     var totalRate = 0;
     var averageRate = 0;
@@ -113,14 +116,14 @@ function Course() {
             <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`, marginTop: '-56px'}}>
                 <p>{ data.channel.name }</p>
             </div>
-            <div className="getContact_container">
+            <div className="getContact_container" style={{paddingBottom: '0px'}}>
                 <span>ЦЕНА</span>
                 <div className="pricecourse_container">
                     <div className="course_price">{data.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                     <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
                 </div>
             </div>
-            <span>Отзывы</span>
+            <span style={{marginTop: '16px'}}>Отзывы</span>
                 <Link to={`/course-feedback/${cid}`} className="nfeedback" style={{width: 'calc(100% - 24px)', marginBottom: '8px', marginLeft: '8px'}}>
                 <p>{averageRate.toFixed(1)}</p>
                     <div className="nrow_grad_l" style={{width: 'calc(100% - 120px)'}}>
@@ -129,21 +132,21 @@ function Course() {
                     <img src={nf} alt=''/>
                 </Link>
 
-            <span>Описание</span>
+            <span style={{marginTop: '8px'}}>Описание</span>
             <div className="select_col">
             <div className="select" style={{height: 'auto', whiteSpace: 'pre-line'}}>
                 <p>{data.description}</p>
             </div>
             </div>
 
-            <span>Университет</span>
+            <span style={{marginTop: '8px'}}>Университет</span>
             <div className="select_col">
                 <div className="select">
                 {data.university.length > 0 ? (<div className="selected_row"> {data.university} </div>) : (<p>Не указано</p>)}
                 </div>
             </div>
 
-            <span>Предмет</span>
+            <span style={{marginTop: '8px'}}>Предмет</span>
             <div className="select_col">
                 <div className="select">
                 {data.subject ?
@@ -151,10 +154,10 @@ function Course() {
                 </div>
             </div>
 
-            <span style={{marginBottom: '0px'}}>Содержание</span>
-            {topics.length > 0 ? (<div className="acor-container">{ topics }</div>) : (<p style={{alignSelf: 'center'}}>Не указано</p>)}
+            <span style={{marginBottom: '8px', marginTop: '8px'}}>Содержание</span>
+            {topics.length > 0 ? (<div className="accordion">{ topics }</div>) : (<p style={{alignSelf: 'center'}}>Не указано</p>)}
  
-            <span style={{marginTop: '8px', marginBottom: '0px'}}>Ментор</span>
+            <span style={{marginBottom: '0px'}}>Ментор</span>
             <div className="card_mentor">
                 <Link to={`/user/${data.user.user_id}`} className="card_wp">
                     <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(https://commoncourse.io${data.user.photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
@@ -165,7 +168,7 @@ function Course() {
                 </Link>
             </div>
             
-            <span>Дата публикации</span>
+            <span style={{marginTop: '8px'}}>Дата публикации</span>
             <div className="field">
                 <p>{formatDate(data.date)}</p>
             </div>

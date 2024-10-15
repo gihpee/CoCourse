@@ -1,9 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import boyS from '../assets/feedback/boyS.svg'
-import calendarS from '../assets/feedback/calendarS.svg'
-import starS from '../assets/feedback/sstar.svg'
 import "./Feedback.css";
 
 function FeedbackUser() {
@@ -30,30 +27,32 @@ function FeedbackUser() {
         fetchCourses();
     }, [id])
 
-    const formatDate = (dateString) => {
-      const date = new Date(dateString);
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0'); 
-      const year = date.getFullYear();
-    
-      return `${day}.${month}.${year}`;
-    };
-
     const cards = feedbacks.map((item, index) => {
-        return (<div className="card_feedback" id={index}>
-                    <div className="points" style={{paddingTop: '8px', paddingBottom: '8px', paddingLeft: '8px'}}>
-                        <div className="point"><img src={starS} alt='' style={{ marginRight: '10px' }}/><b>{item.review}</b></div>
-                        <div className="point"><img src={boyS} alt='' style={{ marginRight: '10px' }}/>{item.user.username}</div>
-                        <div className="point"><img src={calendarS} alt='' style={{ marginRight: '10px' }}/>{formatDate(item.date)}</div>
+        return (<div className="course_card" id={index} style={{paddingTop: '0px'}}>
+                  <div className="card_mentor">
+                      <div className="card_wp" style={{backgroundColor: 'black', width: 'calc(100% - 16px)'}}>
+                          <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(https://commoncourse.io${item.user.photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
+                          <div className="points_user">
+                              <div className="point_user" style={{fontFamily: 'NeueMachina', fontSize: '16px', color: 'white'}}><b>{item.user.first_name + ' ' + item.user.last_name}</b></div>
+                              <div className="point_user">{item.user.university}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="card_info" style={{paddingTop: '0px'}}>
+                    <div className="row_grad_l">
+                      <div className="grad_l" style={{width: `calc((100% / 5) * ${item.rate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${item.rate}))`}}></div>
                     </div>
-                </div>)
+                    <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '16px', borderRadius: '16px', zIndex: '-10', marginTop: '-16px'}}></div>
+                  </div>
+                  <p style={{marginTop: '8px', width: 'calc(100% - 16px)', marginBottom: '8px'}}>{item.review}</p>
+              </div>)
     })
 
     return <div className="column">
                 <div className="feedback_top">
                     <div className="fback_btn" onClick={() => {window.history.back()}}></div>
                 </div>
-                <span>Отзывы</span>
+                <span style={{marginBottom: '8px'}}>Отзывы</span>
                 {cards.length > 0 ? cards : <p>Пока нет ни одного отзыва</p>}
             </div>;
 }

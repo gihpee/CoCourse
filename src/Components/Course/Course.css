@@ -440,6 +440,16 @@ span {
     border-radius: 16px;
     vertical-align: middle;
     margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.field p {
+    width: calc(100% - 48px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .payment_method {
@@ -475,4 +485,72 @@ span {
     background-size: 16px 16px;
     background-position: 8px;
 
+}
+
+.accordion {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    margin-bottom: 8px;
+}
+
+.accordion-label {
+    display: flex;
+    width: calc(100% - 32px);
+    height: 48px;
+    padding-left: 16px;
+    background-color: #161616;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    margin: auto;
+    border-radius: 16px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    width: calc(100% - 16px);
+    margin: auto;
+    transition: max-height 0.3s ease;
+    border-radius: 16px;
+    background-color: #161616;
+    margin-bottom: 8px;
+}
+
+.accordion-body p {
+    display: block;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px;
+}
+
+.accordion-checkbox {
+    display: none;
+}
+
+.accordion-checkbox:checked + .accordion-label + .accordion-body {
+    max-height: 200px;
+}
+
+.icon {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.accordion-checkbox:checked + .accordion-label .icon {
+    transform: rotate(90deg);
 }

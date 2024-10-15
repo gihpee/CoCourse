@@ -5,6 +5,7 @@ import { optionsSubject } from '../optionsSubject';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toggle from '../assets/profile/toggle.svg'
+import plus from '../assets/course/plus.svg'
 import lminus from '../assets/create-course/lminus.png'
 import { Link } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
@@ -70,8 +71,9 @@ function Registration() {
       );
   
       const varsSubject = filteredOptionsSubject.map((item, index) => (
-          <div className="billet_add" key={index} onClick={() => handleOptionClickSubject(item)}>
+          <div className="field" key={index} onClick={() => handleOptionClickSubject(item)}>
               <p>{item}</p>
+              <img src={plus} alt='' />
           </div>
       ));
   
@@ -101,8 +103,9 @@ function Registration() {
       );
     
       const varsUniv = filteredOptionsUniv.map((item, index) => (
-        <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)}>
+        <div className="field" key={index} onClick={() => handleOptionClickUniv(item)}>
           <p>{item}</p>
+          <img src={plus} alt='' />
         </div>
       ));
   

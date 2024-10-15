@@ -115,7 +115,7 @@ function User() {
           </div>
           <div className="getContact_container">
           <span>Отзывы</span>
-          <Link to={`/user-feedback/${userData.id}`} className="nfeedback">
+          <Link to={`/user-feedback/${userData.user_id}`} className="nfeedback">
                     <p>{averageRate.toFixed(1)}</p>
                     <div className="nrow_grad_l">
                         <div className="ngrad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>

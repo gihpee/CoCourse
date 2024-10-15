@@ -6,6 +6,7 @@ import "./CreateCourse.css";
 import { useTonAddress } from '@tonconnect/ui-react';
 import { optionsUniv } from '../optionsUniv';
 import { optionsSubject } from '../optionsSubject';
+import plus from '../assets/course/plus.svg'
 import MainButton from '@twa-dev/mainbutton';
 
 function CreateCourse() {
@@ -199,9 +200,10 @@ function CreateCourse() {
     );
 
     const varsSubject = filteredOptionsSubject.map((item, index) => (
-        <div className="billet_add" key={index} onClick={() => handleOptionClickSubject(item)}>
-            <p>{item}</p>
-        </div>
+      <div className="field" key={index} onClick={() => handleOptionClickSubject(item)}>
+        <p>{item}</p>
+        <img src={plus} alt='' />
+      </div>
     ));
 
     const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false);
@@ -240,8 +242,9 @@ function CreateCourse() {
     );
   
     const varsUniv = filteredOptionsUniv.map((item, index) => (
-      <div className="billet_add" key={index} onClick={() => handleOptionClickUniv(item)}>
+      <div className="field" key={index} onClick={() => handleOptionClickUniv(item)}>
         <p>{item}</p>
+        <img src={plus} alt='' />
       </div>
     ));
 
@@ -279,7 +282,8 @@ function CreateCourse() {
         <div className="getContact_container">   
             <span>СУММА К ПОЛУЧЕНИЮ (RUB)*</span>
             <input 
-                className='billet_price'
+                className='field'
+                style={{border: 'none', outline: 'none'}}
                 type='number' 
                 placeholder="0"
                 name="Price"
@@ -322,27 +326,32 @@ function CreateCourse() {
             {formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>
                     <input
-                        className='billet_price'
+                        className='field'
+                        style={{border: 'none', outline: 'none'}}
                         type='text'
-                        placeholder={`Topic ${index + 1}`}
+                        placeholder={`Тема ${index + 1}`}
                         name={`topic_${index}`}
                         value={topic.topic}
                         onChange={(e) => handleTopicChange(index, e)}
                     />
                     <textarea
-                    className='billet_desc'
-                    type='text'
-                    placeholder={`Topic ${index + 1} info`}
-                    name={`desc_${index}`}
-                    value={topic.desc}
-                    onChange={(e) => handleTopicChange(index, e)}
+                      className='field'
+                      style={{border: 'none', outline: 'none', minHeight: '48px', lineHeight: '20px'}}
+                      type='text'
+                      placeholder={`Описание темы ${index + 1}`}
+                      name={`desc_${index}`}
+                      value={topic.desc}
+                      onChange={(e) => handleTopicChange(index, e)}
                     />
                 </div>
             ))}
 
         </div>
         <div className="column" style={{marginBottom: '200px'}}>
-            <button className='billet_addd' onClick={addEl}>Add topic</button>
+            <div className='field' onClick={addEl}>
+              <p>Добавить тему</p>
+              <img src={plus} alt='' />
+            </div>
         </div>
         <MainButton text="Опубликовать" onClick={handlePublish} />
         </>
