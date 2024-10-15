@@ -3,17 +3,21 @@ import { TonConnectButton } from '@tonconnect/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import toggle from '../assets/profile/toggle.svg'
+import { useTonConnectUI } from '@tonconnect/ui-react';
 import "./Wallet.css";
 
 
 function Wallet() {
     const navigate = useNavigate();
-    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
-    //const id = 478969308;
+    //const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+    const id = 478969308;
     const [coursesPaid, setCoursesPaid] = useState([]);
     const [coursesSelled, setCoursesSelled] = useState([]);
-
+    const [tonConnectUI, setOptions] = useTonConnectUI();
     const [comn, setComn] = useState(0);
+
+    setOptions({ language: 'ru' });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -79,11 +83,20 @@ function Wallet() {
         <div className="back_btn" onClick={() => navigate(`/`)}></div>
         <div className="column" style={{minHeight: '100vh'}}>
             <span style={{marginTop: '20px'}}>Кошелек</span>
-            <TonConnectButton style={{marginBottom: '8px'}}/>
 
             <div className="pricecourse_container" style={{height: 'auto', paddingTop: '8px', paddingBottom: '8px', marginBottom: '8px'}}>
                 <div className="course_price">{comn}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> COMN</span></div>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
+            </div>
+
+            <Link to="https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A" style={{marginTop: '0px'}} target="_blank" className="field" onClick={(event) => {event.preventDefault(); window.open("https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A");}}>
+                <p>Пройдите верификацию</p>
+                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
+            </Link>
+
+            <div className="field" style={{marginTop: '0px'}} onClick={() => tonConnectUI.openModal()}>
+                <p>Подключите кошелек</p>
+                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
             </div>
 
             {/*<button onClick={() => init()}>test</button>*/}
