@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { TonConnectButton } from '@tonconnect/ui-react';
+//import { TonConnectButton } from '@tonconnect/ui-react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -83,6 +83,7 @@ function Wallet() {
         <div className="back_btn" onClick={() => navigate(`/`)}></div>
         <div className="column" style={{minHeight: '100vh'}}>
             <span style={{marginTop: '20px'}}>Кошелек</span>
+            {/*<TonConnectButton style={{marginBottom: '8px'}}/>*/}
 
             <div className="pricecourse_container" style={{height: 'auto', paddingTop: '8px', paddingBottom: '8px', marginBottom: '8px'}}>
                 <div className="course_price">{comn}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> COMN</span></div>
