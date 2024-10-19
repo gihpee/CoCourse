@@ -122,7 +122,7 @@ function Course() {
                     <div className="course_price">{data.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                     <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
                 </div>
-                <div className="payment_method">
+                <div className="payment_method" style={{marginTop: '8px', border: 'none'}}>
                     <p style={{flexGrow: '1'}}>TON Wallet</p>
                     <div className="discount_amount">-10%</div>
                 </div>
