@@ -90,7 +90,7 @@ function Wallet() {
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
             </div>
 
-            <Link to="/verificationN" style={{marginTop: '0px'}} >
+            <Link to="/verificationN" className="field" style={{marginTop: '0px'}} >
                 <p>Пройдите верификацию</p>
                 <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
             </Link>
