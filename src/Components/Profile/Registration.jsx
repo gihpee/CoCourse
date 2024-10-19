@@ -9,6 +9,8 @@ import plus from '../assets/course/plus.svg'
 import lminus from '../assets/create-course/lminus.png'
 import { Link } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
+import { useTonAddress } from '@tonconnect/ui-react';
+
 
 function Registration() { 
     const navigate = useNavigate();
@@ -23,6 +25,9 @@ function Registration() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
+
+    const userFriendlyAddress = useTonAddress();
+    console.log(userFriendlyAddress)
 
     useEffect(() => {
       const textarea = document.querySelector('.bio_textarea');
@@ -133,7 +138,7 @@ function Registration() {
           },
     
           body: JSON.stringify({isNotify, selectedOptions, uniValue, bioValue}),
-        }).then(navigate(`/connect-wallet`))
+        }).then(() => {if (userFriendlyAddress) {navigate(`/connect-wallet`)} else {navigate(`/verification`)}})
       }
 
     return <>
