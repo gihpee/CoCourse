@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import toggle from '../assets/profile/toggle.svg'
 import { useTonConnectUI } from '@tonconnect/ui-react';
+import { useTonAddress } from '@tonconnect/ui-react';
 import "./Wallet.css";
 
 
@@ -16,6 +17,9 @@ function Wallet() {
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [tonConnectUI, setOptions] = useTonConnectUI();
     const [comn, setComn] = useState(0);
+    const userFriendlyAddress = useTonAddress();
+
+    console.log(userFriendlyAddress)
 
     setOptions({ language: 'ru' });
 

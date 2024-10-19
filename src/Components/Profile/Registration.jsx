@@ -16,7 +16,7 @@ function Registration() {
     const location = useLocation();
     const { data } = location.state || {};
 
-    const [imageSrc, setImageSrc] = useState(data?.photo_url);
+    const [imageSrc, setImageSrc] = useState(data.photo_url);
     const [isNotify, setIsNotify] = useState(true);
     const [bioValue, setBioValue] = useState("");
     const [uniValue, setUniValue] = useState("");

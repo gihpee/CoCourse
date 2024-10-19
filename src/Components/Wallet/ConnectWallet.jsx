@@ -23,7 +23,7 @@ function ConnectWallet() {
 
             <span style={{textTransform: 'none', marginTop: '8px'}}>Необходимо только продавцам!</span>
 
-            <Link to={`/verification`} style={{textAlign: 'center', textDecoration: 'underline', position: 'absolute', bottom: '5%', margin: 'auto', textDecorationColor: 'initial', color: 'inherit'}}>
+            <Link to={`/verification`} style={{textAlign: 'center', textDecoration: 'underline', position: 'absolute', bottom: '1%', margin: 'auto', textDecorationColor: 'initial', color: 'inherit'}}>
                 <span style={{textTransform: 'none'}}>Пропустить этот шаг</span>
             </Link>
 
