@@ -4,17 +4,11 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
 import MainButton from '@twa-dev/mainbutton';
-import { useTonAddress } from '@tonconnect/ui-react';
 import nf from '../assets/course/nfeedarrow.svg';
 
 function Home() {
   window.scrollTo(0, 0)
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
-  const userFriendlyAddress = useTonAddress(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalText, setModalText] = useState("");
-  const [modalLink, setModalLink] = useState("");
-  const [modalButton, setModalButton] = useState("");
 
   const navigate = useNavigate();
 
@@ -66,34 +60,6 @@ function Home() {
 
     fetchData();
   }, [id, first_name, last_name, username, usrname]);
-
-  const checkWallet = () => {
-    if (!userFriendlyAddress && !userData.verifyed) {
-      setModalText("Для создания курса необходимо пройти верификацию и подключить выплаты");
-      setModalLink("/connect-wallet")
-      setModalButton("Пройти")
-      setModalOpen(true);
-    }
-    else if (!userFriendlyAddress) {
-      setModalText("Для создания курса необходимо подключить выплаты");
-      setModalLink("/connect-wallet")
-      setModalButton("Подключить")
-      setModalOpen(true);
-    }
-    else if (!userData.verifyed) {
-      setModalText("Для создания курса необходимо пройти верификацию");
-      setModalLink("/verification")
-      setModalButton("Пройти")
-      setModalOpen(true);
-    }
-    else {
-      navigate('/connect-bot')
-    }
-  };
-
-  const handleOkBtnClick = () => {
-    setModalOpen(false);
-  }
 
   var userCourses;
 
@@ -192,18 +158,6 @@ function Home() {
             </Link>
             </div>
 
-            {modalOpen && (
-            <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
-                <div className="modal-content">
-                    <p>{modalText}</p>
-                    <div className="mbtns_container">
-                      <button className='mbtn' onClick={handleOkBtnClick}>Позже</button>
-                      <button className='mbtn' onClick={() => navigate(modalLink)}>{modalButton}</button>
-                    </div>
-                </div>
-            </div>
-            )}
-
             <span>Биография</span>
             <div className="select_col">
             <div className="select" style={{height: 'auto', whiteSpace: 'pre-line'}}>
@@ -231,7 +185,7 @@ function Home() {
                 {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
 
-            <MainButton text="CОЗДАТЬ КУРС" onClick={checkWallet} />
+            <MainButton text="CОЗДАТЬ КУРС" onClick={navigate('/connect-bot')} />
         </>;
 }
 

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import toggle from '../assets/profile/toggle.svg'
-import { useTonConnectUI } from '@tonconnect/ui-react';
 import { useTonAddress } from '@tonconnect/ui-react';
 import "./Wallet.css";
 
@@ -15,13 +14,10 @@ function Wallet() {
     // const id = 478969308;
     const [coursesPaid, setCoursesPaid] = useState([]);
     const [coursesSelled, setCoursesSelled] = useState([]);
-    const [tonConnectUI, setOptions] = useTonConnectUI();
     const [comn, setComn] = useState(0);
     const userFriendlyAddress = useTonAddress();
 
     console.log(userFriendlyAddress)
-
-    setOptions({ language: 'ru' });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -94,7 +90,7 @@ function Wallet() {
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
             </div>
 
-            <Link to="https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A" style={{marginTop: '0px'}} target="_blank" className="field" onClick={(event) => {event.preventDefault(); window.open("https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A");}}>
+            <Link to="/verificationN" style={{marginTop: '0px'}} >
                 <p>Пройдите верификацию</p>
                 <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
             </Link>
@@ -103,7 +99,7 @@ function Wallet() {
             <div className="field" style={{marginTop: '0px'}}>
                 <p>Кошелек подключен</p>
             </div> :
-            <div className="field" style={{marginTop: '0px'}} onClick={() => tonConnectUI.openModal()}>
+            <div className="field" style={{marginTop: '0px'}} onClick={navigate('/connect-walletN')}>
                 <p>Подключите кошелек</p>
                 <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
             </div>}

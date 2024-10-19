@@ -28,6 +28,7 @@ function CreateCourse() {
     });
 
     const [imageSrc, setImageSrc] = useState(prev);
+    const [verifyed, setVerifyed] = useState(false);
 
     useEffect(() => {
       const fetchChannel = async () => {
@@ -50,6 +51,8 @@ function CreateCourse() {
               }
             });
 
+            setVerifyed(result.user.verifyed)
+
             setImageSrc(result.photo);
 
           } catch (error) {
@@ -63,6 +66,11 @@ function CreateCourse() {
 
     const [modalFillOpen, setModalFillOpen] = useState(false);
     const [modalDraftOpen, setModalDraftOpen] = useState(false);
+    const userFriendlyAddress = useTonAddress();
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalText, setModalText] = useState("");
+    const [modalLink, setModalLink] = useState("");
+    const [modalButton, setModalButton] = useState("");
 
     const address = useTonAddress();
 
@@ -97,6 +105,10 @@ function CreateCourse() {
     const handleOkBtnClick = () => {
       setModalFillOpen(false);
     }
+
+    const handleLaterBtnClick = () => {
+      setModalOpen(false);
+    }
     
     const handleTopicChange = (index, e) => {
         const { name, value, type } = e.target;
@@ -118,28 +130,48 @@ function CreateCourse() {
     };
 
     const handlePublish = async () => {
-      if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
-      {
-        setModalFillOpen(true);
-      } else {
-          let university = formData.Univ || 'Не указано';
-          let description = formData.Desc || 'Не указано';
-          let subjects = formData.Subject || 'Не указано';
-          let topics = formData.topics; 
-          let price = formData.Price || 0;
-          let channel_id = cid;
-          let is_draft = false;
-
-          await fetch('https://commoncourse.io/api/create-course/', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `tma ${window.Telegram.WebApp.initData}`
-              },
-
-              body: JSON.stringify({university, description, subjects, topics, price, channel_id, is_draft, address}),
-          }).then(navigate('/profile'))
+      if (!userFriendlyAddress && !verifyed) {
+        setModalText("Для создания курса необходимо пройти верификацию и подключить выплаты");
+        setModalLink("/connect-wallet")
+        setModalButton("Пройти")
+        setModalOpen(true);
       }
+      else if (!userFriendlyAddress) {
+        setModalText("Для создания курса необходимо подключить выплаты");
+        setModalLink("/connect-walletN")
+        setModalButton("Подключить")
+        setModalOpen(true);
+      }
+      else if (!verifyed) {
+        setModalText("Для создания курса необходимо пройти верификацию");
+        setModalLink("/verificationN")
+        setModalButton("Пройти")
+        setModalOpen(true);
+      }
+      else {
+        if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
+        {
+          setModalFillOpen(true);
+        } else {
+            let university = formData.Univ || 'Не указано';
+            let description = formData.Desc || 'Не указано';
+            let subjects = formData.Subject || 'Не указано';
+            let topics = formData.topics; 
+            let price = formData.Price || 0;
+            let channel_id = cid;
+            let is_draft = false;
+
+            await fetch('https://commoncourse.io/api/create-course/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `tma ${window.Telegram.WebApp.initData}`
+                },
+
+                body: JSON.stringify({university, description, subjects, topics, price, channel_id, is_draft, address}),
+            }).then(navigate('/profile'))
+        }
+    }
         
     };
 
@@ -274,6 +306,18 @@ function CreateCourse() {
           </div>
       </div>
         )}
+
+          {modalOpen && (
+            <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
+                <div className="modal-content">
+                    <p>{modalText}</p>
+                    <div className="mbtns_container">
+                      <button className='mbtn' onClick={handleLaterBtnClick}>Позже</button>
+                      <button className='mbtn' onClick={() => navigate(modalLink)}>{modalButton}</button>
+                    </div>
+                </div>
+            </div>
+            )}
 
         <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`, marginTop: '-56px'}}>
             <p>{ formData.Name }</p>

@@ -31,7 +31,7 @@ function ConnectBot() {
           }
         };
     
-        const intervalId = setInterval(fetchChannel, 5000);
+        const intervalId = setInterval(fetchChannel, 1500);
 
         return () => clearInterval(intervalId);
     }, [id])
