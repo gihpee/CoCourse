@@ -197,7 +197,7 @@ function Home() {
                 <div className="modal-content">
                     <p>{modalText}</p>
                     <button className='modal_btn' onClick={handleOkBtnClick}>Позже</button>
-                    <button className='modal_btn' onClick={navigate(modalLink)}>{modalButton}</button>
+                    <button className='modal_btn' onClick={() => navigate(modalLink)}>{modalButton}</button>
                 </div>
             </div>
             )}
