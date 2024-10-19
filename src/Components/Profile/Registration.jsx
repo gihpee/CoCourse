@@ -141,7 +141,7 @@ function Registration() {
       }
 
     return <>
-            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc}})`, marginTop: '-56px'}}>
+            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`, marginTop: '-56px'}}>
               <p style={{marginTop: '312px'}}>{ firstName + ' ' + lastName }</p>
             </div>
             <div className="getContact_container">
