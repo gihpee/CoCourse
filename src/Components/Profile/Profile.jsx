@@ -185,7 +185,7 @@ function Home() {
                 {userCourses.length > 0 ? userCourses : <p>Вы пока не опубликовали ни один курс</p>}
             </div>
 
-            <MainButton text="CОЗДАТЬ КУРС" onClick={navigate('/connect-bot')} />
+            <MainButton text="CОЗДАТЬ КУРС" onClick={() => navigate('/connect-bot')} />
         </>;
 }
 
