@@ -24,6 +24,7 @@ import Registration from './Components/Profile/Registration';
 import BuyCourse from './Components/Course/BuyCourse';
 import Transaction from './Components/Wallet/Transaction';
 import Verification from './Components/Profile/Verification';
+import ConnectWallet from './Components/Wallet/ConnectWallet';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route path={'buy-course'} element={<BuyCourse />}/>
           <Route path={'transaction/:tid'} element={<Transaction />}/>
           <Route path={'verification'} element={<Verification />}/>
+          <Route path={'connect-wallet'} element={<ConnectWallet />}/>
         </Routes>
     </div>
     </TonConnectUIProvider>

@@ -6,7 +6,7 @@ import MainButton from '@twa-dev/mainbutton';
 function Verification() { 
 
     return <>
-        <div className="prev" style={{backgroundImage: verif, marginTop: '-56px'}}>
+        <div className="prev" style={{backgroundImage: `url(${verif})`, marginTop: '-56px'}}>
               <p style={{marginTop: '312px'}}>Пройдите верификацию</p>
             </div>
         <div className="getContact_container"></div>
@@ -20,11 +20,11 @@ function Verification() {
 
             <span style={{textTransform: 'none', marginTop: '8px'}}>Необходимо только продавцам!</span>
 
-            <Link to={`/`} style={{textAlign: 'center', textDecoration: 'underline', position: 'absolute', top: '85vh', margin: 'auto'}}>
+            <Link to={`/`} style={{textAlign: 'center', textDecoration: 'underline', position: 'absolute', bottom: '5%', margin: 'auto', textDecorationColor: 'initial', color: 'inherit'}}>
                 <span style={{textTransform: 'none'}}>Пропустить этот шаг</span>
             </Link>
 
-            <MainButton text="Продолжить" href='https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A' />
+            <MainButton text="Продолжить" onClick={() => {window.location.href = 'https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A'}} />
         </div>
     </>
 }

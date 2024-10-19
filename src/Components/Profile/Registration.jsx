@@ -133,7 +133,7 @@ function Registration() {
           },
     
           body: JSON.stringify({isNotify, selectedOptions, uniValue, bioValue}),
-        }).then(navigate(`/verification`))
+        }).then(navigate(`/connect-wallet`))
       }
 
     return <>
