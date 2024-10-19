@@ -62,7 +62,7 @@
     flex-direction: row;
     width: calc(100% - 32px);
     margin-top: 16px;
-    margin-left: auto;
+    margin-left: 16px;
     column-gap: 16px;
 }
 
