@@ -1,22 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import cwallet from '../assets/profile/cwallet.png'
 import MainButton from '@twa-dev/mainbutton';
-import { useNavigate } from 'react-router-dom';
 import { useTonConnectUI } from '@tonconnect/ui-react';
-import { useTonConnectModal } from '@tonconnect/ui-react';
 
 function ConnectWalletN() { 
     const [tonConnectUI, setOptions] = useTonConnectUI();
-    const { state } = useTonConnectModal();
 
-    const navigate = useNavigate();
     setOptions({ language: 'ru' });
-
-    useEffect(() => {
-        if (state.status === 'closed' && state.closeReason === 'wallet-selected') {
-            navigate('/verification')
-        }
-    }, [state, navigate])
 
     return <>
         <div className="back_btn" onClick={() => {window.history.back()}}></div>
