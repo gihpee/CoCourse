@@ -160,12 +160,8 @@ function EditProfile() {
         const { value, type } = e.target;
 
         if (type === 'textarea') {
-          if (e.target.scrollHeight === 32) {
-            e.target.style.height = '24px';
-          } else {
-            e.target.style.height = '24px';
-            e.target.style.height = e.target.scrollHeight + 'px';
-          }
+          e.target.style.height = 'auto'; // Сброс высоты
+          e.target.style.height = e.target.scrollHeight - 16 + 'px';
         }
         
         setBioValue(value)
@@ -179,10 +175,14 @@ function EditProfile() {
             </div>
             <div className="getContact_container">
               <span>БИОГРАФИЯ</span>
-              <div className="select_col">
-                <div className="select">
-                  <textarea className='bio_textarea' type='text' placeholder="Расскажите о себе и своих достижениях" value={bioValue} onChange={handleBioChange} />
-                </div>
+              <div className="fieldt" style={{minHeight: '48px'}}>
+                    <textarea
+                        type='text'
+                        placeholder={`Описание`}
+                        name={`Desc`}
+                        value={bioValue}
+                        onChange={handleBioChange}
+                    />
               </div>
               <span>УНИВЕРСИТЕТ</span>
 

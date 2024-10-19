@@ -7,6 +7,7 @@ import { optionsUniv } from '../optionsUniv';
 import { optionsSubject } from '../optionsSubject';
 import MainButton from '@twa-dev/mainbutton';
 import plus from '../assets/course/plus.svg'
+import krest from '../assets/create/ckrest.svg'
 import "./EditCourse.css";
 
 function EditCourse() {
@@ -104,13 +105,9 @@ function EditCourse() {
         const { name, value, type } = e.target;
 
         if (type === 'textarea') {
-            if (e.target.scrollHeight === 32) {
-              e.target.style.height = '24px';
-            } else {
-              e.target.style.height = '24px';
-              e.target.style.height = e.target.scrollHeight + 'px';
-            }
-          }
+            e.target.style.height = 'auto'; // Сброс высоты
+            e.target.style.height = e.target.scrollHeight - 16 + 'px';
+        }
         
         setFormData((prevData) => ({
           ...prevData,
@@ -124,18 +121,21 @@ function EditCourse() {
           topics: [...prevData.topics, { topic: '', desc: '' }],
         }));
     };
+
+    const handleRemoveTopic = (indexToRemove) => {
+        setFormData((prevData) => ({
+          ...prevData,
+          topics: prevData.topics.filter((_, index) => index !== indexToRemove),
+        }));
+    };
     
     const handleTopicChange = (index, e) => {
         const { name, value, type } = e.target;
         
         if (type === 'textarea') {
-            if (e.target.scrollHeight === 32) {
-              e.target.style.height = '24px';
-            } else {
-              e.target.style.height = '24px';
-              e.target.style.height = e.target.scrollHeight + 'px';
-            }
-          }
+            e.target.style.height = 'auto'; // Сброс высоты
+            e.target.style.height = e.target.scrollHeight - 16 + 'px';
+        }
 
         setFormData((prevData) => {
             const newTopics = [...prevData.topics];
@@ -385,33 +385,38 @@ function EditCourse() {
                 {boxIsVisibleSubject ? (<div className="vars_box">{varsSubject}</div>) : (<></>)}
                 
             <span>ОПИСАНИЕ*</span>
-            <div className="select_col">
-                <div className="select">
-                  <textarea className='bio_textarea' type='text' placeholder="Описание" name="Desc" value={formData.Desc} onChange={handleChange} />
+                <div className="fieldt" style={{minHeight: '48px'}}>
+                    <textarea
+                        type='text'
+                        placeholder={`Описание`}
+                        name={`Desc`}
+                        value={formData.Desc}
+                        onChange={handleChange}
+                    />
                 </div>
-              </div>
 
             <span>СОДЕРЖАНИЕ</span>
             {formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>
-                    <input
-                        className='field'
-                        style={{border: 'none', outline: 'none'}}
+                    <div className="field">
+                        <input
+                            type='text'
+                            placeholder={`Тема ${index + 1}`}
+                            name={`topic_${index}`}
+                            value={topic.topic}
+                            onChange={(e) => handleTopicChange(index, e)}
+                        />
+                        <img src={krest} alt='' style={{position: 'absolute', right: '16px'}} onClick={() => handleRemoveTopic(index)}/>
+                    </div>
+                    <div className="fieldt" style={{minHeight: '48px'}}>
+                        <textarea
                         type='text'
-                        placeholder={`Тема ${index + 1}`}
-                        name={`topic_${index}`}
-                        value={topic.topic}
+                        placeholder={`Описание темы ${index + 1}`}
+                        name={`desc_${index}`}
+                        value={topic.desc}
                         onChange={(e) => handleTopicChange(index, e)}
-                    />
-                    <textarea
-                      className='field'
-                      style={{border: 'none', outline: 'none', minHeight: '48px', lineHeight: '20px'}}
-                      type='text'
-                      placeholder={`Описание темы ${index + 1}`}
-                      name={`desc_${index}`}
-                      value={topic.desc}
-                      onChange={(e) => handleTopicChange(index, e)}
-                    />
+                        />
+                    </div>
                 </div>
             ))}
 
@@ -419,7 +424,7 @@ function EditCourse() {
         <div className="column" style={{marginBottom: '200px'}}>
             <div className='field' onClick={addEl}>
               <p>Добавить тему</p>
-              <img src={plus} alt='' />
+              <img src={plus} alt='' style={{position: 'absolute', right: '16px'}} />
             </div>
         </div>
         {formData.is_draft ? <MainButton text="Опубликовать" onClick={handlePublishDraft} /> : <MainButton text="Опубликовать" onClick={handlePublish} />}

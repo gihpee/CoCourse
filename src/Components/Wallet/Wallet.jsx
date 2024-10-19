@@ -11,8 +11,8 @@ import "./Wallet.css";
 
 function Wallet() {
     const navigate = useNavigate();
-    //const { id } = window.Telegram.WebApp.initDataUnsafe.user;
-    const id = 478969308;
+    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
+    // const id = 478969308;
     const [coursesPaid, setCoursesPaid] = useState([]);
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [tonConnectUI, setOptions] = useTonConnectUI();
@@ -100,7 +100,7 @@ function Wallet() {
             </Link>
 
             {userFriendlyAddress ? 
-            <div className="field" style={{marginTop: '0px'}} onClick={() => tonConnectUI.openModal()}>
+            <div className="field" style={{marginTop: '0px'}}>
                 <p>Кошелек подключен</p>
             </div> :
             <div className="field" style={{marginTop: '0px'}} onClick={() => tonConnectUI.openModal()}>

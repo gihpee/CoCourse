@@ -445,6 +445,60 @@ span {
     text-overflow: ellipsis;
 }
 
+.field input {
+    background-color: #161616;
+    color: #FFF;
+    width: calc(100% - 48px);
+    font-size: 14px;
+    font-weight: 500;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    border: none;
+    outline: none;
+}
+
+.fieldt {
+    display: flex;
+    flex-direction: column; /* Выравнивание содержимого по вертикали */
+    justify-content: center; /* Центрирование по вертикали */
+    align-items: center;
+    width: calc(100% - 32px);
+    padding-left: 16px;
+    background-color: #161616;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    margin: auto;
+    border-radius: 16px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.fieldt textarea {
+    background-color: #161616;
+    color: #FFF;
+    width: 100%;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    min-height: 24px;
+    padding: 8px 16px; /* Отступы для текста внутри textarea */
+    resize: none; /* Отключить изменение размера вручную */
+    overflow: hidden; /* Скрыть полосы прокрутки */
+    border: none;
+    outline: none;
+    min-height: 48px;
+    height: auto; /* Динамическая высота */
+    white-space: pre-wrap; /* Перенос текста */
+    overflow-wrap: break-word; /* Перенос слов */
+}
+
+.fieldt textarea:focus {
+    overflow: hidden;
+    transition: height 0.2s ease-out;
+}
+
 .field p {
     width: calc(100% - 48px);
     white-space: nowrap;
