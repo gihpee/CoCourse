@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import cwallet from '../assets/profile/cwallet.png'
 import MainButton from '@twa-dev/mainbutton';
 import { useTonConnectUI } from '@tonconnect/ui-react';
+import { useTonConnectModal } from '@tonconnect/ui-react';
 
 function ConnectWallet() { 
     const [tonConnectUI, setOptions] = useTonConnectUI();
+    const { state } = useTonConnectModal();
+
+    console.log(state)
     setOptions({ language: 'ru' });
 
     return <>
