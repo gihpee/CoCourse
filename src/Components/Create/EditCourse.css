@@ -4,7 +4,7 @@
     height: 152px;
     top: 20%;
     left: 8px;
-    background-color: black;
+    background-color: #161616;
     text-align: center;
     border-radius: 24px;
     z-index: 500;
@@ -20,7 +20,7 @@
 }
 
 .modal_btn_n {
-    background-color: #161616;
+    background-color: black;
     padding-left: 8px;
     height: 48px;
     background-image: url('../assets/create/thumbd.svg');
@@ -40,7 +40,7 @@
 }
 
 .modal_btn_y {
-    background-color: #161616;
+    background-color: black;
     padding-left: 8px;
     height: 48px;
     background-image: url('../assets/create/thumbu.svg');
@@ -57,8 +57,29 @@
     margin-top: 16px;
 }
 
+.mbtns_container {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 32px);
+    margin-top: 16px;
+    column-gap: 16px;
+}
+
+.mbtn {
+    background-color: black;
+    padding-left: 8px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20.8px;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 16px;
+}
+
 .modal_btn {
-    background-color: #161616;
+    background-color: black;
     padding-left: 8px;
     height: 48px;
     width: calc(100% - 32px);

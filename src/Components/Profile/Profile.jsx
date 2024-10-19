@@ -196,8 +196,10 @@ function Home() {
             <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
                 <div className="modal-content">
                     <p>{modalText}</p>
-                    <button className='modal_btn_n' onClick={handleOkBtnClick}>Позже</button>
-                    <button className='modal_btn_y' onClick={() => navigate(modalLink)}>{modalButton}</button>
+                    <div className="mbtns_container">
+                      <button className='mbtn' onClick={handleOkBtnClick}>Позже</button>
+                      <button className='mbtn' onClick={() => navigate(modalLink)}>{modalButton}</button>
+                    </div>
                 </div>
             </div>
             )}
