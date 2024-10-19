@@ -27,7 +27,6 @@ function Registration() {
     const [selectedOptions, setSelectedOptions] = useState([]);
 
     const userFriendlyAddress = useTonAddress();
-    console.log(userFriendlyAddress)
 
     useEffect(() => {
       const textarea = document.querySelector('.bio_textarea');
@@ -138,7 +137,7 @@ function Registration() {
           },
     
           body: JSON.stringify({isNotify, selectedOptions, uniValue, bioValue}),
-        }).then(() => {if (userFriendlyAddress) {navigate(`/connect-wallet`)} else {navigate(`/verification`)}})
+        }).then(() => {if (userFriendlyAddress) {navigate(`/verification`)} else {navigate(`/connect-wallet`)}})
       }
 
     return <>

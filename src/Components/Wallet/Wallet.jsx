@@ -99,10 +99,14 @@ function Wallet() {
                 <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
             </Link>
 
+            {userFriendlyAddress ? 
+            <div className="field" style={{marginTop: '0px'}} onClick={() => tonConnectUI.openModal()}>
+                <p>Кошелек подключен</p>
+            </div> :
             <div className="field" style={{marginTop: '0px'}} onClick={() => tonConnectUI.openModal()}>
                 <p>Подключите кошелек</p>
                 <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
-            </div>
+            </div>}
 
             {/*<button onClick={() => init()}>test</button>*/}
 
