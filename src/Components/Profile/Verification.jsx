@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { verif } from '../assets/profile/verification.png'
 import MainButton from '@twa-dev/mainbutton';
 
 function Verification() { 
 
     return <>
-        <div className="prev" style={{backgroundImage: `url(https://avatars.dzeninfra.ru/get-zen_doc/3524431/pub_61e5616177b7ce520aaed237_61e56250be4bc3374c474880/scale_1200)`, marginTop: '-56px'}}>
+        <div className="prev" style={{backgroundImage: verif, marginTop: '-56px'}}>
               <p style={{marginTop: '312px'}}>Пройдите верификацию</p>
             </div>
         <div className="getContact_container"></div>
