@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { verif } from '../assets/profile/verification.png'
+import verif from '../assets/profile/verification.png'
 import MainButton from '@twa-dev/mainbutton';
 
 function Verification() { 
