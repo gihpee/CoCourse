@@ -122,6 +122,10 @@ function Course() {
                     <div className="course_price">{data.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                     <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
                 </div>
+                <div className="payment_method">
+                    <p style={{flexGrow: '1'}}>TON Wallet</p>
+                    <div className="discount_amount">-10%</div>
+                </div>
             </div>
             <span style={{marginTop: '16px'}}>Отзывы</span>
                 <Link to={`/course-feedback/${cid}`} className="nfeedback" style={{width: 'calc(100% - 24px)', marginBottom: '8px', marginLeft: '8px'}}>

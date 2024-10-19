@@ -12,25 +12,15 @@ function Home() {
   const { id, first_name, last_name, username } = window.Telegram.WebApp.initDataUnsafe.user;
   const userFriendlyAddress = useTonAddress(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalText, setModalText] = useState("");
+  const [modalLink, setModalLink] = useState("");
+  const [modalButton, setModalButton] = useState("");
 
   const navigate = useNavigate();
 
   var usrname = id;
   if (username) {
     usrname = username;
-  }
-
-  const checkWallet = () => {
-    if (!userFriendlyAddress) {
-      setModalOpen(true);
-    }
-    else {
-      navigate('/connect-bot')
-    }
-  };
-
-  const handleOkBtnClick = () => {
-    setModalOpen(false);
   }
 
   const [userData, setUserData] = useState({});
@@ -76,6 +66,34 @@ function Home() {
 
     fetchData();
   }, [id, first_name, last_name, username, usrname]);
+
+  const checkWallet = () => {
+    if (!userFriendlyAddress && !userData.verifyed) {
+      setModalText("Для создания курса необходимо пройти верификацию и подключить выплаты");
+      setModalLink("/connect-wallet")
+      setModalButton("Пройти")
+      setModalOpen(true);
+    }
+    else if (!userFriendlyAddress) {
+      setModalText("Для создания курса необходимо подключить выплаты");
+      setModalLink("/connect-wallet")
+      setModalButton("Подключить")
+      setModalOpen(true);
+    }
+    else if (!userData.verifyed) {
+      setModalText("Для создания курса необходимо пройти верификацию");
+      setModalLink("/verification")
+      setModalButton("Пройти")
+      setModalOpen(true);
+    }
+    else {
+      navigate('/connect-bot')
+    }
+  };
+
+  const handleOkBtnClick = () => {
+    setModalOpen(false);
+  }
 
   var userCourses;
 
@@ -177,8 +195,9 @@ function Home() {
             {modalOpen && (
             <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
                 <div className="modal-content">
-                    <p>Для создания курса необходимо подключить кошелек</p>
-                    <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                    <p>{modalText}</p>
+                    <button className='modal_btn' onClick={handleOkBtnClick}>Позже</button>
+                    <button className='modal_btn' onClick={navigate(modalLink)}>{modalButton}</button>
                 </div>
             </div>
             )}
