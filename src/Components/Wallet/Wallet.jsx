@@ -99,7 +99,7 @@ function Wallet() {
             <div className="field" style={{marginTop: '0px'}}>
                 <p>Кошелек подключен</p>
             </div> :
-            <div className="field" style={{marginTop: '0px'}} onClick={navigate('/connect-walletN')}>
+            <div className="field" style={{marginTop: '0px'}} onClick={() => navigate('/connect-walletN')}>
                 <p>Подключите кошелек</p>
                 <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
             </div>}
