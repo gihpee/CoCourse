@@ -402,7 +402,7 @@ function CreateCourse() {
               <img src={plus} alt='' style={{position: 'absolute', right: '16px'}} />
             </div>
         </div>
-        <MainButton text="Опубликовать" onClick={handlePublish} />
+        <MainButton text="ОПУБЛИКОВАТЬ" onClick={handlePublish} />
         </>
 }
 

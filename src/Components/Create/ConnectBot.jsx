@@ -55,7 +55,7 @@ function ConnectBot() {
             <div className="ctext">Добавьте @CoCourseBot в качестве администратора в ваш канал и предоставьте разрешения.<br /><br />Бот не будет ничего публиковать или удалять без вашего согласия.</div>
             </div>
         </div>
-        <MainButton text="Подключить канал" onClick={handleButtonClick} />
+        <MainButton text="ПОДКЛЮЧИТЬ КАНАЛ" onClick={handleButtonClick} />
     </>
 }
 

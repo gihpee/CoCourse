@@ -203,7 +203,7 @@ function Registration() {
                 <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
               </a>
               
-              <MainButton text="Продолжить" onClick={() => handleSave()} />
+              <MainButton text="ПРОДОЛЖИТЬ" onClick={() => handleSave()} />
             </div>
            </>
 

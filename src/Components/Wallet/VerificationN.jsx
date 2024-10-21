@@ -20,7 +20,7 @@ function VerificationN() {
 
             <span style={{textTransform: 'none', marginTop: '8px'}}>Необходимо только продавцам!</span>
 
-            <MainButton text="Продолжить" onClick={() => {window.location.href = 'https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A'}} />
+            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => {window.location.href = 'https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A'}} />
         </div>
     </>
 }

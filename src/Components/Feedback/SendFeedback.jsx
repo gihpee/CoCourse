@@ -124,7 +124,7 @@ function SendFeedback() {
               </div>
           </div>
 
-          <MainButton text="Сохранить" onClick={handlePublish} />
+          <MainButton text="СОХРАНИТЬ" onClick={handlePublish} />
           </div>;
 }
 

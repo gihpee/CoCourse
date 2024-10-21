@@ -238,7 +238,7 @@ function EditProfile() {
                 <p style={{textAlign: 'left', marginLeft: '12px'}}>Что нового?</p>
               </a>
               
-              <MainButton text="Сохранить" onClick={() => handleSave()} />
+              <MainButton text="СОХРАНИТЬ" onClick={() => handleSave()} />
             </div>
            </>
 }

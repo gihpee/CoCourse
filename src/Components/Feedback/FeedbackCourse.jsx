@@ -55,7 +55,7 @@ function FeedbackCourse() {
                 </div>
                 <span style={{marginBottom: '8px'}}>Отзывы</span>
                 {cards.length > 0 ? cards : <p>Пока нет ни одного отзыва</p>}
-                <MainButton text="Оставить отзыв" onClick={() => window.location.href = `/send-feedback/${id}`} />
+                <MainButton text="ОСТАВИТЬ ОТЗЫВ" onClick={() => window.location.href = `/send-feedback/${id}`} />
             </div>;
 }
 export default FeedbackCourse;

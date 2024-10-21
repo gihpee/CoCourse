@@ -427,7 +427,7 @@ function EditCourse() {
               <img src={plus} alt='' style={{position: 'absolute', right: '16px'}} />
             </div>
         </div>
-        {formData.is_draft ? <MainButton text="Опубликовать" onClick={handlePublishDraft} /> : <MainButton text="Опубликовать" onClick={handlePublish} />}
+        {formData.is_draft ? <MainButton text="ОПУБЛИКОВАТЬ" onClick={handlePublishDraft} /> : <MainButton text="ОПУБЛИКОВАТЬ" onClick={handlePublish} />}
         </>
 }
 

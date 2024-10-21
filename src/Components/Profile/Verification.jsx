@@ -24,7 +24,7 @@ function Verification() {
                 <span style={{textTransform: 'none'}}>Пропустить этот шаг</span>
             </Link>
 
-            <MainButton text="Продолжить" onClick={() => {window.location.href = 'https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A'}} />
+            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => {window.location.href = 'https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A'}} />
         </div>
     </>
 }

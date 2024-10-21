@@ -24,7 +24,7 @@ function ConnectWalletN() {
 
             <span style={{textTransform: 'none', marginTop: '8px'}}>Необходимо только продавцам!</span>
 
-            <MainButton text="Продолжить" onClick={() => tonConnectUI.openModal()} />
+            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => tonConnectUI.openModal()} />
         </div>
     </>
 }

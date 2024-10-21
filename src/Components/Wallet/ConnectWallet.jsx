@@ -38,7 +38,7 @@ function ConnectWallet() {
                 <span style={{textTransform: 'none'}}>Пропустить этот шаг</span>
             </Link>
 
-            <MainButton text="Продолжить" onClick={() => tonConnectUI.openModal()} />
+            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => tonConnectUI.openModal()} />
         </div>
     </>
 }
