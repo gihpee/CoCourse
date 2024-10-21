@@ -321,8 +321,10 @@ function EditCourse() {
           <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
           <div className="modal-content">
               <p>Сохранить изменения?</p>
-              <button className='modal_btn_n' onClick={() => window.history.back()}>Нет</button>
-              <button className='modal_btn_y' onClick={handlePublish}>Да</button>
+              <div className="mbtns_container">
+                  <button className='mbtn' onClick={() => window.history.back()}>Нет</button>
+                  <button className='mbtn' onClick={handlePublish}>Да</button>
+              </div>
           </div>
         </div>
         )}
@@ -336,8 +338,10 @@ function EditCourse() {
                             fontWeight: '400', 
                             lineHeight: '18.2px', 
                             marginTop: '16px'}}>Восстановить публикацию будет невозможно</p>
-                    <button className='modal_btn_n' onClick={handleCancelDelete}>Нет</button>
-                    <button className='modal_btn_y' onClick={handleConfirmDelete}>Да</button>
+                    <div className="mbtns_container">
+                        <button className='mbtn' onClick={handleCancelDelete}>Нет</button>
+                        <button className='mbtn' onClick={handleConfirmDelete}>Да</button>
+                    </div>
                 </div>
             </div>
         )}

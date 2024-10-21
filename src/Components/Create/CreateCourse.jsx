@@ -301,8 +301,10 @@ function CreateCourse() {
                       fontWeight: '400', 
                       lineHeight: '18.2px', 
                       marginTop: '16px'}}>Восстановить публикацию будет невозможно</p>
-              <button className='modal_btn_n' onClick={() => window.history.back()}>Нет</button>
-              <button className='modal_btn_y' onClick={handleSaveDraft}>Да</button>
+              <div className="mbtns_container">
+                  <button className='mbtn' onClick={() => window.history.back()}>Нет</button>
+                  <button className='mbtn' onClick={handleSaveDraft}>Да</button>
+              </div>
           </div>
       </div>
         )}
