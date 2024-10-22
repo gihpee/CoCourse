@@ -17,13 +17,10 @@
     border-radius: 24px;
     z-index: 500;
     margin-top: -304px;
+    padding-top: 16px;
     -webkit-box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content {
-    margin-top: 16px;
 }
 
 .modal p {
