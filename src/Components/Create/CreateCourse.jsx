@@ -285,7 +285,7 @@ function CreateCourse() {
 
         {modalFillOpen && (
           <div className="blackout">
-            <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
+            <div className="modal" style={{height: '120px', marginTop: '-240px'}}>
                 <div className="modal-content">
                     <p>Заполните все обязательные поля</p>
                     <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
@@ -315,7 +315,7 @@ function CreateCourse() {
 
           {modalOpen && (
             <div className="blackout">
-            <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
+            <div className="modal" style={{height: '140px', marginTop: '-280px'}}>
                 <div className="modal-content">
                     <p>{modalText}</p>
                     <div className="mbtns_container">
