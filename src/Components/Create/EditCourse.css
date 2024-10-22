@@ -2,7 +2,8 @@
     position: sticky;
     width: calc(100% - 16px);
     height: 152px;
-    margin: auto;
+    top: 50%;
+    margin-top: 152px;
     background-color: #161616;
     text-align: center;
     border-radius: 24px;
