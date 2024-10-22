@@ -309,15 +309,18 @@ function EditCourse() {
         </div>
 
         {modalFillOpen && (
+            <div className="blackout">
             <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
                 <div className="modal-content">
                     <p>Заполните все обязательные поля</p>
                     <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
                 </div>
             </div>
+            </div>
         )}
 
         {modalDraftOpen && (
+            <div className="blackout">
           <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
           <div className="modal-content">
               <p>Сохранить изменения?</p>
@@ -327,9 +330,11 @@ function EditCourse() {
               </div>
           </div>
         </div>
+        </div>
         )}
 
         {isModalOpen && (
+            <div className="blackout">
             <div className="modal">
                 <div className="modal-content">
                     <p>Уверены что хотите удалить публикацию?</p>
@@ -343,6 +348,7 @@ function EditCourse() {
                         <button className='mbtn' onClick={handleConfirmDelete}>Да</button>
                     </div>
                 </div>
+            </div>
             </div>
         )}
 

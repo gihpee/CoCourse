@@ -284,15 +284,18 @@ function CreateCourse() {
         <div className="back_btn" onClick={() => setModalDraftOpen(true)}></div>
 
         {modalFillOpen && (
+          <div className="blackout">
             <div className="modal" style={{height: '120px', marginTop: '-120px'}}>
                 <div className="modal-content">
                     <p>Заполните все обязательные поля</p>
                     <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
                 </div>
             </div>
+            </div>
         )}
 
         {modalDraftOpen && (
+          <div className="blackout">
           <div className="modal">
           <div className="modal-content">
               <p>Сохранить черновик?</p>
@@ -307,9 +310,11 @@ function CreateCourse() {
               </div>
           </div>
       </div>
+      </div>
         )}
 
           {modalOpen && (
+            <div className="blackout">
             <div className="modal" style={{height: '140px', marginTop: '-140px'}}>
                 <div className="modal-content">
                     <p>{modalText}</p>
@@ -318,6 +323,7 @@ function CreateCourse() {
                       <button className='mbtn' onClick={() => navigate(modalLink)}>{modalButton}</button>
                     </div>
                 </div>
+            </div>
             </div>
             )}
 
