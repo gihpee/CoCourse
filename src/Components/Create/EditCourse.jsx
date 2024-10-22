@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { optionsUniv } from '../optionsUniv';
 import { optionsSubject } from '../optionsSubject';
+import { useTonAddress } from '@tonconnect/ui-react';
 import MainButton from '@twa-dev/mainbutton';
 import plus from '../assets/course/plus.svg'
 import krest from '../assets/create/ckrest.svg'
@@ -33,9 +34,20 @@ function EditCourse() {
     const [modalFillOpen, setModalFillOpen] = useState(false);
     const [modalDraftOpen, setModalDraftOpen] = useState(false);
 
+    const userFriendlyAddress = useTonAddress();
+    const [verifyed, setVerifyed] = useState(false);
+    const [modalVOpen, setModalVOpen] = useState(false);
+    const [modalText, setModalText] = useState("");
+    const [modalLink, setModalLink] = useState("");
+    const [modalButton, setModalButton] = useState("");
+
     const handleDeleteClick = () => {
         setModalOpen(true);
     };
+
+    const handleLaterBtnClick = () => {
+        setModalVOpen(false);
+    }
 
     const handleConfirmDelete = async () => {
         setModalOpen(false);
@@ -77,6 +89,7 @@ function EditCourse() {
                 }
             });
             setImageSrc(data.channel.photo)
+            setVerifyed(data.user.verifyed)
 
             const textarea = document.querySelector('.bio_textarea');
             if (textarea.scrollHeight > 40)
@@ -149,27 +162,46 @@ function EditCourse() {
     };
 
     const handlePublishDraft = async () => {
-        if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
-        {
-          setModalFillOpen(true);
-        } else {
-            let price = formData.Price;
-            let university = formData.Univ;
-            let description = formData.Desc;
-            let subjects = formData.Subject;
-            let topics = formData.topics; 
-            let is_draft = false;
+        if (!userFriendlyAddress && !verifyed) {
+            setModalText("Для создания курса необходимо пройти верификацию и подключить выплаты");
+            setModalLink("/connect-wallet")
+            setModalButton("Пройти")
+            setModalVOpen(true);
+          }
+          else if (!userFriendlyAddress) {
+            setModalText("Для создания курса необходимо подключить выплаты");
+            setModalLink("/connect-walletN")
+            setModalButton("Подключить")
+            setModalVOpen(true);
+          }
+          else if (!verifyed) {
+            setModalText("Для создания курса необходимо пройти верификацию");
+            setModalLink("/verificationN")
+            setModalButton("Пройти")
+            setModalVOpen(true);
+          }
+          else {
+                if (formData.Name === '' || formData.Univ === '' || formData.Desc === '' || formData.Subject === '')
+                {
+                setModalFillOpen(true);
+                } else {
+                    let price = formData.Price;
+                    let university = formData.Univ;
+                    let description = formData.Desc;
+                    let subjects = formData.Subject;
+                    let topics = formData.topics; 
+                    let is_draft = false;
 
-            await fetch('https://commoncourse.io/api/edit-course/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `tma ${window.Telegram.WebApp.initData}`
-                },
+                    await fetch('https://commoncourse.io/api/edit-course/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `tma ${window.Telegram.WebApp.initData}`
+                        },
 
-                body: JSON.stringify({cid, university, description, subjects, topics, is_draft, price}),
-            }).then(navigate('/profile'))
-        }
+                        body: JSON.stringify({cid, university, description, subjects, topics, is_draft, price}),
+                    }).then(navigate('/profile'))
+                }}
           
       };
 
@@ -318,6 +350,20 @@ function EditCourse() {
             </div>
             </div>
         )}
+
+        {modalVOpen && (
+            <div className="blackout">
+            <div className="modal" style={{height: '140px', marginTop: '-280px'}}>
+                <div className="modal-content">
+                    <p>{modalText}</p>
+                    <div className="mbtns_container">
+                      <button className='mbtn' onClick={handleLaterBtnClick}>Позже</button>
+                      <button className='mbtn' onClick={() => navigate(modalLink)}>{modalButton}</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            )}
 
         {modalDraftOpen && (
             <div className="blackout">
