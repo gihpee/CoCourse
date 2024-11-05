@@ -27,6 +27,7 @@ import Verification from './Components/Profile/Verification';
 import ConnectWallet from './Components/Wallet/ConnectWallet';
 import VerificationN from './Components/Wallet/VerificationN';
 import ConnectWalletN from './Components/Wallet/ConnectWalletN';
+import VerificationForm from './Components/Wallet/VerificationForm';
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
           <Route path={'connect-wallet'} element={<ConnectWallet />}/>
           <Route path={'verificationN'} element={<VerificationN />}/>
           <Route path={'connect-walletN'} element={<ConnectWalletN />}/>
+          <Route path={'verification-form'} element={<VerificationForm />}/>
         </Routes>
     </div>
     </TonConnectUIProvider>

@@ -1,8 +1,10 @@
 import React from "react";
 import verif from '../assets/profile/verification.png'
+import { useNavigate } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
 
 function VerificationN() { 
+    const navigate = useNavigate();
 
     return <>
         <div className="back_btn" onClick={() => {window.history.back()}}></div>
@@ -20,7 +22,7 @@ function VerificationN() {
 
             <span style={{textTransform: 'none', marginTop: '8px'}}>Необходимо только продавцам!</span>
 
-            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => {window.location.href = 'https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A'}} />
+            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => navigate('/verification-form')} />
         </div>
     </>
 }

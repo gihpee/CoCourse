@@ -75,3 +75,12 @@
     background-repeat: no-repeat;
     background-position: 8px;
 }
+
+input[type="date"] {
+    color: #777;
+    font-family: inherit;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}

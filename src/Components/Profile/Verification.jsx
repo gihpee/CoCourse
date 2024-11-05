@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import verif from '../assets/profile/verification.png'
+import { useNavigate } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
 
 function Verification() { 
+    const navigate = useNavigate();
 
     return <>
         <div className="prev" style={{backgroundImage: `url(${verif})`, marginTop: '-56px'}}>
@@ -24,7 +26,7 @@ function Verification() {
                 <span style={{textTransform: 'none'}}>Пропустить этот шаг</span>
             </Link>
 
-            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => {window.location.href = 'https://in.sumsub.com/websdk/p/sbx_uni_4sfigzWEmKeJ6r7A'}} />
+            <MainButton text="ПРОДОЛЖИТЬ" onClick={() => navigate('/verification-form')} />
         </div>
     </>
 }
