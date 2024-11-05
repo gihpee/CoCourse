@@ -65,7 +65,7 @@ function VerificationForm() {
                 body: JSON.stringify(data),
             });
     
-            navigate('/feed');
+            navigate('/profile');
         }
     };
     
