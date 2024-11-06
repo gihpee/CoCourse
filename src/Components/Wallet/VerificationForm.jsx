@@ -70,11 +70,11 @@ function VerificationForm() {
     
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, files } = e.target;
         
         setFormData((prevData) => ({
           ...prevData,
-          [name]: value,
+          [name]: files ? files[0] : value,
         }));
     };
 
