@@ -99,7 +99,7 @@ function VerificationForm() {
                 style={{ display: 'none' }}
                 onChange={handleChange}
             />
-            {formData.passportCopy ? <span style={{'textTransform': 'none', 'margin': '0', 'fontSize': 'inherit', 'color': 'white'}}>{ formData.passportCopy }</span> :
+            {formData.passportCopy ? <span style={{'textTransform': 'none', 'margin': '0', 'fontSize': 'inherit', 'color': 'white'}}>{ formData.passportCopy.name }</span> :
             <span style={{'textTransform': 'none', 'margin': '0', 'fontSize': 'inherit', 'color': '#777'}}>{ "Прикрепить файл" }</span>}
         </label>
 
@@ -111,7 +111,7 @@ function VerificationForm() {
                 style={{ display: 'none' }}
                 onChange={handleChange}
             />
-            {formData.registrationCopy ? <span style={{'textTransform': 'none', 'margin': '0', 'fontSize': 'inherit', 'color': 'white'}}>{ formData.registrationCopy }</span> :
+            {formData.registrationCopy ? <span style={{'textTransform': 'none', 'margin': '0', 'fontSize': 'inherit', 'color': 'white'}}>{ formData.registrationCopy.name }</span> :
             <span style={{'textTransform': 'none', 'margin': '0', 'fontSize': 'inherit', 'color': '#777'}}>{ "Прикрепить файл" }</span>}
         </label>
 
