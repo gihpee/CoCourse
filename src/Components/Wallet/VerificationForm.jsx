@@ -38,31 +38,30 @@ function VerificationForm() {
         if (!passportCopy || !registrationCopy || !Name || !Surname || !secondName || !birthPlace || !idNum || !Code || !Provided || !registrationAddress || !Inn || !Phone || !Email || !birthDate || !passportDate) {
             setModalFillOpen(true);
         } else {
-            let data = {
-                passportCopy,
-                registrationCopy,
-                Name,
-                Surname,
-                secondName,
-                birthPlace,
-                birthDate,
-                passportDate,
-                idNum,
-                Code,
-                Provided,
-                registrationAddress,
-                Inn,
-                Phone,
-                Email,
-            };
-    
+            let formDataToSend = new FormData();
+        
+            formDataToSend.append('passportCopy', passportCopy); 
+            formDataToSend.append('registrationCopy', registrationCopy);
+            formDataToSend.append('Name', Name);
+            formDataToSend.append('Surname', Surname);
+            formDataToSend.append('secondName', secondName);
+            formDataToSend.append('birthPlace', birthPlace);
+            formDataToSend.append('birthDate', birthDate);
+            formDataToSend.append('passportDate', passportDate);
+            formDataToSend.append('idNum', idNum);
+            formDataToSend.append('Code', Code);
+            formDataToSend.append('Provided', Provided);
+            formDataToSend.append('registrationAddress', registrationAddress);
+            formDataToSend.append('Inn', Inn);
+            formDataToSend.append('Phone', Phone);
+            formDataToSend.append('Email', Email);
+
             await fetch('https://commoncourse.io/api/create-passport-data/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
                 },
-                body: JSON.stringify(data),
+                body: formDataToSend,
             });
     
             navigate('/profile');
