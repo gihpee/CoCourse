@@ -15,6 +15,7 @@ function Wallet() {
     const [coursesPaid, setCoursesPaid] = useState([]);
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [comn, setComn] = useState(0);
+    const [verifyed, setVerifyed] = useState(null);
     const userFriendlyAddress = useTonAddress();
 
     console.log(userFriendlyAddress)
@@ -28,6 +29,7 @@ function Wallet() {
             setCoursesPaid(result.paid_courses);
             setCoursesSelled(result.selled_courses);
             setComn(result.comn);
+            setVerifyed(result.verifyed);
 
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -90,18 +92,25 @@ function Wallet() {
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
             </div>
 
-            <Link to="/verificationN" className="field" style={{marginTop: '0px'}} >
+            {verifyed === 'Не пройдена' ? <Link to="/verificationN" className="field" style={{marginTop: '0px'}} >
                 <p>Пройдите верификацию</p>
-                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
-            </Link>
+                <div className="red_circle">{verifyed}</div>
+            </Link> :
+            <div className="field" style={{marginTop: '0px'}} >
+                <p>Пройдите верификацию</p>
+                {verifyed === 'На проверке' && <div className="purple_circle">{verifyed}</div>}
+                {verifyed === 'Завершена' && <div className="blue_box">{verifyed}</div>}
+            </div>
+            }
 
             {userFriendlyAddress ? 
             <div className="field" style={{marginTop: '0px'}}>
-                <p>Кошелек подключен</p>
+                <p>Подключите кошелек</p>
+                <div className="blue_box">Подключен</div>
             </div> :
             <div className="field" style={{marginTop: '0px'}} onClick={() => navigate('/connect-walletN')}>
                 <p>Подключите кошелек</p>
-                <img src={toggle} alt='' style={{position: 'absolute', right: '16px'}} />
+                <div className="red_circle">Не подключен</div>
             </div>}
 
             {/*<button onClick={() => init()}>test</button>*/}

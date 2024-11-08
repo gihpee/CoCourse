@@ -84,3 +84,51 @@ input[type="date"] {
 input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
+
+.red_circle {
+    padding-left: 32px;
+    padding-right: 8px;
+    background-color: #000000B8;
+    color: white;
+    height: 32px;
+    margin-right: 16px;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 8px;
+    background-image: url('../assets/course/red_circle.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: 8px;
+}
+
+.purple_circle {
+    padding-left: 32px;
+    padding-right: 8px;
+    background-color: #000000B8;
+    color: white;
+    height: 32px;
+    margin-right: 16px;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 8px;
+    background-image: url('../assets/course/purple_circle.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: 8px;
+}
+
+.blue_box {
+    padding-left: 32px;
+    padding-right: 8px;
+    background-color: #000000B8;
+    color: white;
+    height: 32px;
+    margin-right: 16px;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 8px;
+    background-image: url('../assets/course/blue_box.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: 8px;
+}
