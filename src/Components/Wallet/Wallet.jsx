@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import toggle from '../assets/profile/toggle.svg'
 import { useTonAddress } from '@tonconnect/ui-react';
 import "./Wallet.css";
 
