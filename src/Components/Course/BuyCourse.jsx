@@ -172,7 +172,7 @@ function BuyCourse() {
                 <p style={{flexGrow: '1'}}>Оплата криптой</p>
                 <div className="discount_amount">-10%</div>
             </div> : 
-            <div className="payment_method" onClick={setPaymentMethod('Wallet')}>
+            <div className="payment_method" onClick={() => {setPaymentMethod('Wallet')}}>
                 <img src={blueWallet} alt='' />
                 <p style={{flexGrow: '1'}}>Оплата криптой</p>
                 <div className="discount_amount">-10%</div>
@@ -186,7 +186,7 @@ function BuyCourse() {
                 <img src={redWallet} alt='' />
                 <p style={{flexGrow: '1'}}>Оплата картой</p>
             </div> : 
-            <div className="payment_method" onClick={setPaymentMethod('Card')}>
+            <div className="payment_method" onClick={() => {setPaymentMethod('Card')}}>
                 <img src={redWallet} alt='' />
                 <p style={{flexGrow: '1'}}>Оплата картой</p>
             </div>}
@@ -195,7 +195,7 @@ function BuyCourse() {
                 однако мы не предоставляем никаких гарантий возврата денежных средств.</span>
 
             <div className="pricecourse_container">
-                <div className="course_price">{data?.price * 0.9}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
+                <div className="course_price">{paymentMethod === 'Wallet' ? data?.price * 0.9 : data?.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Вознаграждение продавца</span>
             </div>
 
