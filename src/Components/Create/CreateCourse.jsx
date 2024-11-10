@@ -130,7 +130,7 @@ function CreateCourse() {
     };
 
     const handlePublish = async () => {
-      if (!userFriendlyAddress && !verifyed) {
+      if (!userFriendlyAddress && verifyed !== 'Завершена') {
         setModalText("Для создания курса необходимо пройти верификацию и подключить выплаты");
         setModalLink("/connect-wallet")
         setModalButton("Пройти")
@@ -142,7 +142,7 @@ function CreateCourse() {
         setModalButton("Подключить")
         setModalOpen(true);
       }
-      else if (!verifyed) {
+      else if (verifyed !== 'Завершена') {
         setModalText("Для создания курса необходимо пройти верификацию");
         setModalLink("/verificationN")
         setModalButton("Пройти")

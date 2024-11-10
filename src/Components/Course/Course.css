@@ -510,12 +510,11 @@ span {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: calc(100% - 32px);
+    width: calc(100% - 24px);
     column-gap: 8px;
     height: 48px;
-    padding-left: 16px;
+    padding-left: 8px;
     background-color: #161616;
-    border: 1px solid #FF6117;
     color: #FFF;
     font-size: 14px;
     font-weight: 500;

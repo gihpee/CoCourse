@@ -5,21 +5,60 @@ import { useTonConnectUI } from '@tonconnect/ui-react';
 import { useLocation } from "react-router-dom";
 import { useTonAddress } from '@tonconnect/ui-react';
 import MainButton from '@twa-dev/mainbutton';
+import redWallet from '../assets/course/red-wallet.svg'
+import blueWallet from '../assets/course/blue-wallet.svg'
 import "./Course.css";
 
 
 function BuyCourse() {
     const location = useLocation();
     const navigate = useNavigate();
+    const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
     const data = location.state
 
     const [exchangeRate, setExchangeRate] = useState(null);
+    const [paymentLink, setPaymentLink] = useState(null);
+    const [paymentMethod, setPaymentMethod] = useState(null);
 
     const address = useTonAddress();
 
+    useEffect(() => {
+        if (address) {setPaymentMethod('Wallet')} else {setPaymentMethod('Card')}
+    }, [address])
+
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
+
+    useEffect(() => {
+        const fetchLink = async () => {
+          try {
+            const response = await fetch(`https://commoncourse.io/api/get-payment-link/`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `tma ${window.Telegram.WebApp.initData}`
+              },
+              body: JSON.stringify({course_id: data.id, user_id: id}),
+            });
+    
+            if (!response.ok) {
+              throw new Error('Ошибка при запросе к серверу');
+            }
+    
+            const resp = await response.json();
+    
+            if (resp) {
+              setPaymentLink(resp.link)
+            }
+    
+          } catch (error) {
+            console.error('Ошибка при запросе к серверу:', error);
+          }
+        };
+    
+        fetchLink();
+      }, [id, data]);
 
     useEffect(() => {
         const fetchExchangeRate = async () => {
@@ -40,36 +79,40 @@ function BuyCourse() {
         validUntil: Math.floor(Date.now() / 1000) + 600, // 60 sec
         messages: [
             {
-                address: data.ton_address,
-                amount: String(Math.floor((data.price * 0.9 / exchangeRate) * 1000000000)),
+                address: data?.ton_address,
+                amount: String(Math.floor((data?.price * 0.9 / exchangeRate) * 1000000000)),
                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
             }
         ]
     }
 
     const handlePay = async () => {
-        try {
-            await tonConnectUI.sendTransaction(myTransaction);
-        } catch(e) {
-            console.log(e);
-            return 0;
-        }
+        if (paymentMethod === 'Wallet') {
+            try {
+                await tonConnectUI.sendTransaction(myTransaction);
+            } catch(e) {
+                console.log(e);
+                return 0;
+            }
 
-        let cid = data.id
-        let price = data.price * 0.9
-        let method = 'TON Wallet'
-        let baddress = address
-        let saddress = data.ton_address
-  
-        await fetch('https://commoncourse.io/api/success-payment/', {
-            method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `tma ${window.Telegram.WebApp.initData}`
-                },
-  
-            body: JSON.stringify({cid, price, method, baddress, saddress}),
-        }).then(navigate(`/course/${data.id}`))
+            let cid = data.id
+            let price = data.price * 0.9
+            let method = 'TON Wallet'
+            let baddress = address
+            let saddress = data.ton_address
+    
+            await fetch('https://commoncourse.io/api/success-payment/', {
+                method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `tma ${window.Telegram.WebApp.initData}`
+                    },
+    
+                body: JSON.stringify({cid, price, method, baddress, saddress}),
+            }).then(navigate(`/course/${data.id}`))
+        } else {
+            window.location.href = paymentLink;
+        }
           
     };
 
@@ -100,7 +143,7 @@ function BuyCourse() {
             <span style={{marginTop: '20px'}}>Объявление</span>
             
             <div className="course_card">
-                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`}}></div>
+                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data?.channel.photo})`}}></div>
                 <div className="card_info">
                 <div className="row_grad_l">
                     <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
@@ -121,10 +164,32 @@ function BuyCourse() {
             </div>
 
             <span>Способ оплаты</span>
-            <div className="payment_method">
-                <p style={{flexGrow: '1'}}>TON Wallet</p>
+            {address && (
+                <>
+            {paymentMethod === 'Wallet' ? 
+            <div className="payment_method" style={{border: '1px solid #FF6117'}}>
+                <img src={blueWallet} alt='' />
+                <p style={{flexGrow: '1'}}>Оплата криптой</p>
                 <div className="discount_amount">-10%</div>
-            </div>
+            </div> : 
+            <div className="payment_method" onClick={setPaymentMethod('Wallet')}>
+                <img src={blueWallet} alt='' />
+                <p style={{flexGrow: '1'}}>Оплата криптой</p>
+                <div className="discount_amount">-10%</div>
+            </div>}
+            <span style={{textTransform: 'none'}}>При оплате через Кошелек комиссия платформы не взимается, 
+                однако мы не предоставляем никаких гарантий возврата денежных средств.</span>
+                </>)}
+
+            {paymentMethod === 'Card' ?
+            <div className="payment_method" style={{border: '1px solid #FF6117'}}>
+                <img src={redWallet} alt='' />
+                <p style={{flexGrow: '1'}}>Оплата картой</p>
+            </div> : 
+            <div className="payment_method" onClick={setPaymentMethod('Card')}>
+                <img src={redWallet} alt='' />
+                <p style={{flexGrow: '1'}}>Оплата картой</p>
+            </div>}
 
             <span style={{textTransform: 'none'}}>При оплате через Кошелек комиссия платформы не взимается, 
                 однако мы не предоставляем никаких гарантий возврата денежных средств.</span>
