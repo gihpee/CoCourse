@@ -191,9 +191,6 @@ function BuyCourse() {
                 <p style={{flexGrow: '1'}}>Оплата картой</p>
             </div>}
 
-            <span style={{textTransform: 'none'}}>При оплате через Кошелек комиссия платформы не взимается, 
-                однако мы не предоставляем никаких гарантий возврата денежных средств.</span>
-
             <div className="pricecourse_container">
                 <div className="course_price">{paymentMethod === 'Wallet' ? data?.price * 0.9 : data?.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Вознаграждение продавца</span>
