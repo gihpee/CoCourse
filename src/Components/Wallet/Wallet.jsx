@@ -61,14 +61,14 @@ function Wallet() {
         return (
           <Link to={`/transaction/${item.id}`} className="transaction_card">
             <div className="points" style={{backgroundColor: 'black', borderRadius: '8px', paddingBottom: '8px'}}>
-                <div className="point_t" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px'}}><b>{item.course.name}</b></div>
+                <div className="point_t" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px'}}><b>{item.course.channel.name}</b></div>
                 <div className="point_t" style={{color: '#AAAAAA', fontSize: '14px'}}>{item.course.university}</div>
                 <div className="point_t"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.course.date)}</div>
             </div>
             <div className="points" style={{marginTop: '0px'}}>
-                <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px', marginLeft: '8px'}}><b>{t_type}</b></div>
-                <div className="point" style={{color: '#AAAAAA', fontSize: '14px', marginLeft: '8px'}}>{item.method}</div>
-                <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px', marginLeft: '8px'}}>{formatDate(item.date)}</div>
+                <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px', marginLeft: '4px'}}><b>{t_type}</b></div>
+                <div className="point" style={{color: '#AAAAAA', fontSize: '14px', marginLeft: '4px'}}>{item.method}</div>
+                <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px', marginLeft: '4px'}}>{formatDate(item.date)}</div>
             </div>
             
             <div className="t_price_status" style={{marginBottom: '8px'}}>
