@@ -13,7 +13,7 @@ function Wallet() {
     // const id = 478969308;
     const [coursesPaid, setCoursesPaid] = useState([]);
     const [coursesSelled, setCoursesSelled] = useState([]);
-    const [comn, setComn] = useState(0);
+    const [balance, setBalance] = useState(0);
     const [verifyed, setVerifyed] = useState(null);
     const userFriendlyAddress = useTonAddress();
 
@@ -27,7 +27,7 @@ function Wallet() {
             
             setCoursesPaid(result.paid_courses);
             setCoursesSelled(result.selled_courses);
-            setComn(result.comn);
+            setBalance(result.balance);
             setVerifyed(result.verifyed);
 
         } catch (error) {
@@ -38,13 +38,14 @@ function Wallet() {
         fetchData();
     }, [id]);
 
-    function formatDate(dateString) {
-        const parts = dateString.split('-');
-        const day = parts[0].padStart(2, '0');
-        const month = parts[1].padStart(2, '0');
-        const year = parts[2].slice(2);
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
+        const year = date.getFullYear();
+      
         return `${day}.${month}.${year}`;
-    }
+      };
     
     const allTransactions = [...coursesPaid, ...coursesSelled]
 
@@ -65,13 +66,13 @@ function Wallet() {
                 <div className="point_t"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.course.date)}</div>
             </div>
             <div className="points" style={{marginTop: '0px'}}>
-                <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px', marginLeft: '0px'}}><b>{t_type}</b></div>
-                <div className="point" style={{color: '#AAAAAA', fontSize: '14px', marginLeft: '0px'}}>{item.method}</div>
-                <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px', marginLeft: '0px'}}>{formatDate(item.date)}</div>
+                <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px', marginLeft: '8px'}}><b>{t_type}</b></div>
+                <div className="point" style={{color: '#AAAAAA', fontSize: '14px', marginLeft: '8px'}}>{item.method}</div>
+                <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px', marginLeft: '8px'}}>{formatDate(item.date)}</div>
             </div>
             
             <div className="t_price_status" style={{marginBottom: '8px'}}>
-                <div className="t_price">{item.price} RUB</div>
+                <div className="t_price" style={{marginLeft: '8px'}}>{item.price} RUB</div>
                 <div className="course_status">Успешно</div>
             </div>
             
@@ -87,8 +88,8 @@ function Wallet() {
             {/*<TonConnectButton style={{marginBottom: '8px'}}/>*/}
 
             <div className="pricecourse_container" style={{height: 'auto', paddingTop: '8px', paddingBottom: '8px', marginBottom: '8px'}}>
-                <div className="course_price">{comn}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> COMN</span></div>
-                <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Токены COMN начисляются за продажи и покупки курсов через нашу платформу.</span>
+                <div className="course_price">{balance}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
+                <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Автоматический вывод денежных средств каждую пятницу при достижении минимального лимита 6000₽</span>
             </div>
 
             {verifyed === 'Не пройдена' ? <Link to="/verificationN" className="field" style={{marginTop: '0px'}} >
@@ -114,7 +115,7 @@ function Wallet() {
 
             {/*<button onClick={() => init()}>test</button>*/}
 
-            <span>История транзакций</span>
+            <span style={{marginTop: '8px'}}>История транзакций</span>
             {transactions}
 
         </div>
