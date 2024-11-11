@@ -73,12 +73,12 @@ function Transaction() {
 
             <span>Тип транзакции</span>
             <div className="field">
-                {data.buyer === id ? <p>Покупка</p> : <p>Продажа</p>}
+                {data?.buyer === id ? <p>Покупка</p> : <p>Продажа</p>}
             </div>
 
             <span>Способ оплаты</span>
             <div className="payment_method">
-                <p style={{flexGrow: '1'}}>{data.method}</p>
+                <p style={{flexGrow: '1'}}>{data?.method}</p>
                 {/*<div className="discount_amount">-10%</div>*/}
             </div>
 
