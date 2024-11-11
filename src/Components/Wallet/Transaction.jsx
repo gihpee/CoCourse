@@ -51,14 +51,14 @@ function Transaction() {
             <span style={{marginTop: '20px'}}>Объявление</span>
             
             <div className="course_card">
-                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data?.course.image})`}}></div>
+                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data?.course.channel.photo})`}}></div>
                 <div className="card_info">
                 <div className="row_grad_l">
                     <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
                 </div>
                 <div style={{width: 'calc(100% - 16px)', backgroundColor: 'black', height: '16px', borderRadius: '16px', zIndex: '-10', marginTop: '-16px'}}></div>
                 <div className="points">
-                    <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px'}}><b>{data?.course.name}</b></div>
+                    <div className="point" style={{fontFamily: 'NeueMachina', fontSize: '16px', lineHeight: '20px'}}><b>{data?.course.channel.name}</b></div>
                     <div className="point" style={{color: '#AAAAAA', fontSize: '14px'}}>{data?.course.university}</div>
                     <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(data?.course.date)}</div>
                 </div>
@@ -71,25 +71,25 @@ function Transaction() {
                 </div>
             </div>
 
-            <span>Тип транзакции</span>
-            <div className="field">
+            <span style={{marginTop: '8px'}}>Тип транзакции</span>
+            <div className="field" style={{marginTop: '0'}}>
                 {data?.buyer === id ? <p>Покупка</p> : <p>Продажа</p>}
             </div>
 
-            <span>Способ оплаты</span>
+            <span style={{marginTop: '8px'}}>Способ оплаты</span>
             <div className="payment_method">
                 <p style={{flexGrow: '1'}}>{data?.method}</p>
                 {/*<div className="discount_amount">-10%</div>*/}
             </div>
 
-            <span>Итог</span>
+            <span style={{marginTop: '8px'}}>Итог</span>
             <div className="pricecourse_container">
                 <div className="course_price">{data?.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Вознаграждение продавца</span>
             </div>
 
-            <span>Дата транзакции</span>
-            <div className="field">
+            <span style={{marginTop: '8px'}}>Дата транзакции</span>
+            <div className="field" style={{marginTop: '0'}}>
                 <p>{formatDate(data?.date)}</p>
             </div>
         </div>
