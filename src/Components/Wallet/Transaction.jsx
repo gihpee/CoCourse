@@ -6,7 +6,7 @@ import "./Wallet.css";
 function Transaction() {
     const { tid } = useParams();
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -78,8 +78,8 @@ function Transaction() {
 
             <span>Способ оплаты</span>
             <div className="payment_method">
-                <p style={{flexGrow: '1'}}>TON Wallet</p>
-                <div className="discount_amount">-10%</div>
+                <p style={{flexGrow: '1'}}>{data.method}</p>
+                {/*<div className="discount_amount">-10%</div>*/}
             </div>
 
             <span>Итог</span>
