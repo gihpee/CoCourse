@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
 import MainButton from '@twa-dev/mainbutton';
@@ -54,7 +54,7 @@ function ConnectPaymentsForm() {
     }
 
     const handlePublish = async () => {
-        if (!passportCopy || !registrationCopy || !Name || !Surname || !secondName || !birthPlace || !idNum || !Code || !Provided || !registrationAddress || !Inn || !Phone || !Email || !birthDate || !passportDate) {
+        if (!formData.name || !formData.account_number || !formData.bik) {
             setModalFillOpen(true);
         } else {
             let name = formData.name;
