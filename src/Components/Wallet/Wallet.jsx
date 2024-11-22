@@ -109,7 +109,7 @@ function Wallet() {
 
             {modalOpen && (
                 <div className="blackout">
-                <div className="modal" style={{height: '120px', marginTop: '-240px'}}>
+                <div className="modal" style={{padding: '12px', marginTop: '-240px'}}>
                     <div className="modal-content">
                         <p>Для подключения выплат необходимо пройти верификацию</p>
                         <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
@@ -120,7 +120,7 @@ function Wallet() {
 
             {withdrawModalOpen && (
                 <div className="blackout">
-                <div className="modal" style={{height: '120px', marginTop: '-240px'}}>
+                <div className="modal" style={{padding: '12px', marginTop: '-240px'}}>
                     <div className="modal-content">
                         <p>Вывод средств возможен при балансе от 6000 рублей</p>
                         <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
