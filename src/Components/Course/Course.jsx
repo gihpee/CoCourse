@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
 import nf from '../assets/course/nfeedarrow.svg';
 import toggle from '../assets/profile/toggle.svg'
+import redWallet from '../assets/course/red-wallet.svg'
+import blueWallet from '../assets/course/blue-wallet.svg'
 import "./Course.css";
 
 
@@ -120,11 +122,16 @@ function Course() {
                 <span>ЦЕНА</span>
                 <div className="pricecourse_container">
                     <div className="course_price">{data.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
-                    <span style={{margin: '0px', width: '100%'}}>Оплата через TON кошелек.</span>
+                    <span style={{margin: '0px', width: '100%'}}>AD ID: {data.id}</span>
                 </div>
                 <div className="payment_method" style={{marginTop: '8px', border: 'none'}}>
-                    <p style={{flexGrow: '1'}}>TON Wallet</p>
+                    <img src={blueWallet} alt='' />
+                    <p style={{flexGrow: '1'}}>Оплата криптой</p>
                     <div className="discount_amount">-10%</div>
+                </div>
+                <div className="payment_method" style={{marginTop: '8px', border: 'none'}}>
+                    <img src={redWallet} alt='' />
+                    <p style={{flexGrow: '1'}}>Оплата картой</p>
                 </div>
             </div>
             <span style={{marginTop: '16px'}}>Отзывы</span>

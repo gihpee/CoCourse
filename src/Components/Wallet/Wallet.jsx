@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import MainButton from '@twa-dev/mainbutton';
 import { useTonAddress } from '@tonconnect/ui-react';
 import "./Wallet.css";
 
@@ -15,6 +16,9 @@ function Wallet() {
     const [coursesSelled, setCoursesSelled] = useState([]);
     const [balance, setBalance] = useState(0);
     const [verifyed, setVerifyed] = useState(null);
+    const [connectedPayments, setConnectedPayments] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [withdrawModalOpen, setWithdrawModalOpen] = useState(false);
     const userFriendlyAddress = useTonAddress();
 
     console.log(userFriendlyAddress)
@@ -29,6 +33,7 @@ function Wallet() {
             setCoursesSelled(result.selled_courses);
             setBalance(result.balance);
             setVerifyed(result.verifyed);
+            setConnectedPayments(result.connected);
 
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -37,6 +42,23 @@ function Wallet() {
 
         fetchData();
     }, [id]);
+
+    const handleConnectPayments = async () => {
+        if (verifyed === 'Пройдена') {
+            navigate('/connect-payments')
+        } else {
+            setModalOpen(true);
+        }
+    }
+
+    const handleOkBtnClick = () => {
+        setModalOpen(false);
+        setWithdrawModalOpen(false);
+    }
+
+    const handleWithdraw = () => {
+        setWithdrawModalOpen(true);
+    }
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -84,6 +106,29 @@ function Wallet() {
         <>
         <div className="back_btn" onClick={() => navigate(`/`)}></div>
         <div className="column" style={{minHeight: '100vh'}}>
+
+            {modalOpen && (
+                <div className="blackout">
+                <div className="modal" style={{height: '120px', marginTop: '-240px'}}>
+                    <div className="modal-content">
+                        <p>Для подключения выплат необходимо пройти верификацию</p>
+                        <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                    </div>
+                </div>
+                </div>
+            )}
+
+            {withdrawModalOpen && (
+                <div className="blackout">
+                <div className="modal" style={{height: '120px', marginTop: '-240px'}}>
+                    <div className="modal-content">
+                        <p>Вывод средств возможен при балансе от 6000 рублей</p>
+                        <button className='modal_btn' onClick={handleOkBtnClick}>Ок</button>
+                    </div>
+                </div>
+                </div>
+            )}
+
             <span style={{marginTop: '20px'}}>Кошелек</span>
             {/*<TonConnectButton style={{marginBottom: '8px'}}/>*/}
 
@@ -99,9 +144,14 @@ function Wallet() {
             <div className="field" style={{marginTop: '0px'}} >
                 <p>Пройдите верификацию</p>
                 {verifyed === 'На проверке' && <div className="purple_circle">{verifyed}</div>}
-                {verifyed === 'Завершена' && <div className="blue_box">{verifyed}</div>}
+                {verifyed === 'Пройдена' && <div className="blue_box">{verifyed}</div>}
             </div>
             }
+
+            <div className="field" style={{marginTop: '0px'}} onClick={handleConnectPayments}>
+                <p>Подключите выплаты</p>
+                {connectedPayments ? <div className="blue_box">Подключены</div> : <div className="red_circle">Не подключены</div>}
+            </div>
 
             {userFriendlyAddress ? 
             <div className="field" style={{marginTop: '0px'}}>
@@ -119,6 +169,7 @@ function Wallet() {
             {transactions}
 
         </div>
+        <MainButton text="ВЫВОД СРЕДСТВ" onClick={handleWithdraw} />
         </>
     );
 }
