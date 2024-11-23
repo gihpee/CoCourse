@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import MainButton from '@twa-dev/mainbutton';
 import "./Wallet.css";
 
 function Transaction() {
+    const navigate = useNavigate();
     const { tid } = useParams();
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
     const [data, setData] = useState(null);
