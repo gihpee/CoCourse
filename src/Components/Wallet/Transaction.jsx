@@ -82,7 +82,7 @@ function Transaction() {
             </div>
 
             <span style={{marginTop: '8px'}}>Способ оплаты</span>
-            <div className="payment_method">
+            <div className="field">
                 <p>{data?.method}</p>
                 {/*<div className="discount_amount">-10%</div>*/}
             </div>
