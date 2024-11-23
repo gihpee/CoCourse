@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import MainButton from '@twa-dev/mainbutton';
 import "./Wallet.css";
 
 function Transaction() {
@@ -73,7 +74,9 @@ function Transaction() {
 
             <span style={{marginTop: '8px'}}>Тип транзакции</span>
             <div className="field" style={{marginTop: '0'}}>
-                {data?.buyer === id ? <p>Покупка</p> : <p>Продажа</p>}
+                {data?.return_request === 0 && (data?.buyer === id ? <p>Покупка</p> : <p>Продажа</p>)}
+                {data?.return_request === 1 && (<p>Возврат на рассмотрении</p>)}
+                {data?.return_request === 2 && (data?.buyer === id ? <p>Возврат (в вашу пользу)</p> : <p>Возврат (не в вашу пользу)</p>)}
             </div>
 
             <span style={{marginTop: '8px'}}>Способ оплаты</span>
@@ -93,6 +96,7 @@ function Transaction() {
                 <p>{formatDate(data?.date)}</p>
             </div>
         </div>
+        {data?.buyer === id && new Date() - new Date(data?.date) <= 7 * 24 * 60 * 60 * 1000 && <MainButton text="ОФОРМИТЬ ВОЗВРАТ" onClick={() => navigate('/return-form', { state: { data: data } })} />}
     </>
 }
 

@@ -30,6 +30,7 @@ import ConnectWalletN from './Components/Wallet/ConnectWalletN';
 import VerificationForm from './Components/Wallet/VerificationForm';
 import ConnectPayments from './Components/Wallet/ConnectPayments';
 import ConnectPaymentsForm from './Components/Wallet/ConnectPaymentsForm';
+import ReturnForm from './Components/Wallet/ReturnForm';
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
           <Route path={'verification-form'} element={<VerificationForm />}/>
           <Route path={'connect-payments'} element={<ConnectPayments />}/>
           <Route path={'connect-payments-form'} element={<ConnectPaymentsForm />}/>
+          <Route path={'return-form'} element={<ReturnForm />}/>
         </Routes>
     </div>
     </TonConnectUIProvider>

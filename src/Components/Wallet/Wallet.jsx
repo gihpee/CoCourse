@@ -95,7 +95,9 @@ function Wallet() {
             
             <div className="t_price_status" style={{marginBottom: '8px'}}>
                 <div className="t_price" style={{marginLeft: '8px'}}>{item.price} RUB</div>
-                <div className="course_status">Успешно</div>
+                {item.return_status === 0 && <div className="course_status">Успешно</div>}
+                {item.return_status === 1 && <div className="course_status">Возврат на рассмотрении</div>}
+                {item.return_status === 2 && <div className="course_status">Возврат</div>}
             </div>
             
           </Link>
