@@ -76,9 +76,9 @@ function Transaction() {
 
             <span style={{marginTop: '8px'}}>Тип транзакции</span>
             <div className="field" style={{marginTop: '0'}}>
-                {data?.return_request === 0 && (data?.buyer === id ? <p>Покупка</p> : <p>Продажа</p>)}
-                {data?.return_request === 1 && (<p>Возврат на рассмотрении</p>)}
-                {data?.return_request === 2 && (data?.buyer === id ? <p>Возврат (в вашу пользу)</p> : <p>Возврат (не в вашу пользу)</p>)}
+                {data?.return_status === 0 && (data?.buyer === id ? <p>Покупка</p> : <p>Продажа</p>)}
+                {data?.return_status === 1 && (<p>Возврат на рассмотрении</p>)}
+                {data?.return_status === 2 && (data?.buyer === id ? <p>Возврат (в вашу пользу)</p> : <p>Возврат (не в вашу пользу)</p>)}
             </div>
 
             <span style={{marginTop: '8px'}}>Способ оплаты</span>
