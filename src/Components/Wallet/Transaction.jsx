@@ -82,7 +82,7 @@ function Transaction() {
             </div>
 
             <span style={{marginTop: '8px'}}>Способ оплаты</span>
-            <div className="field">
+            <div className="field" style={{marginTop: '0'}}>
                 <p>{data?.method}</p>
                 {/*<div className="discount_amount">-10%</div>*/}
             </div>
@@ -98,7 +98,7 @@ function Transaction() {
                 <p>{formatDate(data?.date)}</p>
             </div>
         </div>
-        {data?.buyer === id && new Date() - new Date(data?.date) <= 7 * 24 * 60 * 60 * 1000 && <MainButton text="ОФОРМИТЬ ВОЗВРАТ" onClick={() => navigate('/return-form', { state: { data: data } })} />}
+        {data?.buyer === id && new Date() - new Date(data?.date) <= 7 * 24 * 60 * 60 * 1000 && data?.method === 'Card' && <MainButton text="ОФОРМИТЬ ВОЗВРАТ" onClick={() => navigate('/return-form', { state: { data: data } })} />}
     </>
 }
 
