@@ -28,7 +28,8 @@ function ReturnForm() {
             await fetch('https://commoncourse.io/api/create-return-request/', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `tma ${window.Telegram.WebApp.initData}`
+                    'Authorization': `tma ${window.Telegram.WebApp.initData}`,
+                    'Content-Type': 'application/json; charset=UTF-8'
                 },
                 body: JSON.stringify({tid, reason}),
             });
