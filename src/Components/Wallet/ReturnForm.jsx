@@ -10,7 +10,11 @@ function ReturnForm() {
     const location = useLocation();
     const { data } = location.state || {};
 
-    const [message, setMessage] = useState(null);
+    const [formData, setFormData] = useState({
+        Message: null,
+        Email: null,
+        Receipt: null,
+    });
 
     const [modalFillOpen, setModalFillOpen] = useState(false);
 
@@ -19,10 +23,12 @@ function ReturnForm() {
     }
 
     const handlePublish = async () => {
-        if (!message) {
+        if (!formData.Message || !formData.Email || !formData.Receipt) {
             setModalFillOpen(true);
         } else {
-            let reason = message;
+            let reason = formData.Message;
+            let email = formData.Email;
+            let receipt = formData.Receipt;
             let tid = data.id;
 
             await fetch('https://commoncourse.io/api/create-return-request/', {
@@ -31,17 +37,20 @@ function ReturnForm() {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`,
                     'Content-Type': 'application/json; charset=UTF-8'
                 },
-                body: JSON.stringify({tid, reason}),
+                body: JSON.stringify({tid, reason, email, receipt}),
             });
     
             navigate('/profile');
         }
     };
-    
 
     const handleChange = (e) => {
-        const { value } = e.target;
-        setMessage(value)
+        const { name, value } = e.target;
+        
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
     };
 
     return <>
@@ -64,10 +73,28 @@ function ReturnForm() {
                         type='text'
                         placeholder={`Причина`}
                         name={`Reason`}
-                        value={message}
+                        value={formData.Message || null}
                         onChange={handleChange}
                     />
             </div>
+        <span style={{'marginTop': '8px'}}>Ваш email</span>
+        <input 
+            className='field'
+            style={{border: 'none', outline: 'none'}}
+            type='text' 
+            placeholder="example@mail.ru"
+            name="Email"
+            value={formData.Email || null}
+            onChange={handleChange} />
+        <span style={{'marginTop': '8px'}}>Ссылка на чек</span>
+        <input 
+            className='field'
+            style={{border: 'none', outline: 'none'}}
+            type='text' 
+            placeholder="ofd.ru"
+            name="Receipt"
+            value={formData.Receipt || null}
+            onChange={handleChange} />
 
         </div>
     <MainButton text="ОТПРАВИТЬ" onClick={handlePublish} />
