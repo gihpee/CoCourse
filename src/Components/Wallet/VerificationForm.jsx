@@ -62,9 +62,7 @@ function VerificationForm() {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
                 },
                 body: formDataToSend,
-            });
-    
-            navigate('/profile');
+            }).then(navigate('/profile'));
         }
     };
     
@@ -120,17 +118,17 @@ function VerificationForm() {
             className='field'
             style={{border: 'none', outline: 'none'}}
             type='text' 
-            placeholder="Имя"
-            name="Name"
-            value={formData.Name || null}
+            placeholder="Фамилия"
+            name="Surname"
+            value={formData.Surname || null}
             onChange={handleChange} />
         <input 
             className='field'
             style={{border: 'none', outline: 'none'}}
             type='text' 
-            placeholder="Фамилия"
-            name="Surname"
-            value={formData.Surname || null}
+            placeholder="Имя"
+            name="Name"
+            value={formData.Name || null}
             onChange={handleChange} />
         <input 
             className='field'
@@ -163,7 +161,7 @@ function VerificationForm() {
             className='field'
             style={{border: 'none', outline: 'none'}}
             type='text' 
-            placeholder="Серия и номер паспорта"
+            placeholder="Серия и номер паспорта (1234 123456)"
             name="idNum"
             value={formData.idNum || null}
             onChange={handleChange} />

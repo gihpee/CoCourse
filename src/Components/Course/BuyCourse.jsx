@@ -19,13 +19,13 @@ function BuyCourse() {
 
     const [exchangeRate, setExchangeRate] = useState(null);
     const [paymentLink, setPaymentLink] = useState(null);
-    const [paymentMethod, setPaymentMethod] = useState(null);
+    const [paymentMethod, setPaymentMethod] = useState('Card');
 
     const address = useTonAddress();
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (address) {setPaymentMethod('Wallet')} else {setPaymentMethod('Card')}
-    }, [address])
+    }, [address])*/
 
     const [tonConnectUI, setOptions] = useTonConnectUI();
     setOptions({ language: 'ru' });
@@ -164,6 +164,16 @@ function BuyCourse() {
             </div>
 
             <span>Способ оплаты</span>
+            {paymentMethod === 'Card' ?
+            <div className="payment_method" style={{border: '1px solid #FF6117'}}>
+                <img src={redWallet} alt='' />
+                <p style={{flexGrow: '1'}}>Оплата картой</p>
+            </div> : 
+            <div className="payment_method" onClick={() => {setPaymentMethod('Card')}}>
+                <img src={redWallet} alt='' />
+                <p style={{flexGrow: '1'}}>Оплата картой</p>
+            </div>}
+
             {address && (
                 <>
             {paymentMethod === 'Wallet' ? 
@@ -180,16 +190,6 @@ function BuyCourse() {
             <span style={{textTransform: 'none'}}>При оплате через Кошелек комиссия платформы не взимается, 
                 однако мы не предоставляем никаких гарантий возврата денежных средств.</span>
                 </>)}
-
-            {paymentMethod === 'Card' ?
-            <div className="payment_method" style={{border: '1px solid #FF6117'}}>
-                <img src={redWallet} alt='' />
-                <p style={{flexGrow: '1'}}>Оплата картой</p>
-            </div> : 
-            <div className="payment_method" onClick={() => {setPaymentMethod('Card')}}>
-                <img src={redWallet} alt='' />
-                <p style={{flexGrow: '1'}}>Оплата картой</p>
-            </div>}
 
             <div className="pricecourse_container">
                 <div className="course_price">{paymentMethod === 'Wallet' ? data?.price * 0.9 : data?.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>

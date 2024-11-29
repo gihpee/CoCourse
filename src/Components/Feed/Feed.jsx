@@ -117,7 +117,7 @@ function Feed() {
             <div className="point"style={{color: '#AAAAAA', marginTop: '4px', fontSize: '14px'}}>{formatDate(item.date)}</div>
           </div>
           <div className="price_container">
-            <div className="price">{item.price} RUB</div>
+            {Number(item.price) === 0 ? <div className="price">БЕСПЛАТНО</div> : <div className="price">{item.price} RUB</div>}
             <div className="status_container">
               <div className="student_amount">{item.amount_of_students}</div>
               {userCourses.some(course => course.course_id === item.id) && <div className="course_status">Куплено</div>}

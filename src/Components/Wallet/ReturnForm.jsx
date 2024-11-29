@@ -72,7 +72,7 @@ function ReturnForm() {
                     <textarea
                         type='text'
                         placeholder={`Причина`}
-                        name={`Reason`}
+                        name={`Message`}
                         value={formData.Message || null}
                         onChange={handleChange}
                     />

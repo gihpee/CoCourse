@@ -121,7 +121,8 @@ function Course() {
             <div className="getContact_container" style={{paddingBottom: '0px'}}>
                 <span>ЦЕНА</span>
                 <div className="pricecourse_container">
-                    <div className="course_price">{data.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>
+                    {Number(item.price) === 0 ? <div className="course_price">БЕСПЛАТНО</div> : 
+                    <div className="course_price">{data.price}<span style={{color: 'white', fontFamily: 'NeueMachina', fontSize: '14px', margin: 'auto'}}> RUB</span></div>}
                     <span style={{margin: '0px', width: '100%'}}>AD ID: {data.id}</span>
                 </div>
                 <div className="payment_method" style={{marginTop: '8px', border: 'none'}}>
@@ -184,7 +185,7 @@ function Course() {
                 <p>{formatDate(data.date)}</p>
             </div>
 
-            {paid ? 
+            {(paid || Number(data.price) === 0) ? 
             <MainButton text="К УЧЕБЕ" onClick={() => window.location.href = data.channel.url} />
             : <MainButton text="ПРИСОЕДИНИТЬСЯ" onClick={() => navigate('/buy-course', { state: data })} />}
         </>
