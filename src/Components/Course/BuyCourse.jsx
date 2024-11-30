@@ -33,7 +33,7 @@ function BuyCourse() {
     useEffect(() => {
         const fetchLink = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/api/get-payment-link/`, {
+            const response = await fetch(`https://comncourse.ru/api/get-payment-link/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ function BuyCourse() {
             let baddress = address
             let saddress = data.ton_address
     
-            await fetch('https://commoncourse.io/api/success-payment/', {
+            await fetch('https://comncourse.ru/api/success-payment/', {
                 method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ function BuyCourse() {
             <span style={{marginTop: '20px'}}>Объявление</span>
             
             <div className="course_card">
-                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data?.channel.photo})`}}></div>
+                <div className="course_img" style={{backgroundImage: `url(https://comncourse.ru${data?.channel.photo})`}}></div>
                 <div className="card_info">
                 <div className="row_grad_l">
                     <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>

@@ -14,7 +14,7 @@ function Transaction() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/api/get-transaction/?id=${tid}`)
+            const response = await fetch(`https://comncourse.ru/api/get-transaction/?id=${tid}`)
             const result = await response.json();
             
             setData(result)
@@ -54,7 +54,7 @@ function Transaction() {
             <span style={{marginTop: '20px'}}>Объявление</span>
             
             <div className="course_card">
-                <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${data?.course.channel.photo})`}}></div>
+                <div className="course_img" style={{backgroundImage: `url(https://comncourse.ru${data?.course.channel.photo})`}}></div>
                 <div className="card_info">
                 <div className="row_grad_l">
                     <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>

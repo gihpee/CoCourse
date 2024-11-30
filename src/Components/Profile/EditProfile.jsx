@@ -32,7 +32,7 @@ function EditProfile() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+            const response = await fetch(`https://comncourse.ru/api/user-data/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function EditProfile() {
       };
 
       const handleSave = async () => {
-        fetch('https://commoncourse.io/api/update-user/', {
+        fetch('https://comncourse.ru/api/update-user/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ function EditProfile() {
 
     return <>
             <div className="back_btn" onClick={() => {window.history.back()}}></div>
-            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc}})`, marginTop: '-56px'}}>
+            <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${imageSrc}})`, marginTop: '-56px'}}>
               <p style={{marginTop: '312px'}}>{ firstName + ' ' + lastName }</p>
             </div>
             <div className="getContact_container">

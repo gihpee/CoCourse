@@ -17,7 +17,7 @@ function SendFeedback() {
     const fetchData = async () => {
     try {
         if (id){
-            const response = await fetch(`https://commoncourse.io/api/get-courses/?id=${id}`)
+            const response = await fetch(`https://comncourse.ru/api/get-courses/?id=${id}`)
             const result = await response.json();
             
             setFeedbacks(result.feedback);
@@ -75,7 +75,7 @@ function SendFeedback() {
       setModalFillOpen(true);
     } else {
 
-      fetch('https://commoncourse.io/api/send-feedback/', {
+      fetch('https://comncourse.ru/api/send-feedback/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

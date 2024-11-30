@@ -56,7 +56,7 @@ function VerificationForm() {
             formDataToSend.append('Phone', Phone);
             formDataToSend.append('Email', Email);
 
-            await fetch('https://commoncourse.io/api/create-passport-data/', {
+            await fetch('https://comncourse.ru/api/create-passport-data/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`

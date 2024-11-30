@@ -26,7 +26,7 @@ function Wallet() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`https://commoncourse.io/api/user-transactions/?id=${id}`)
+            const response = await fetch(`https://comncourse.ru/api/user-transactions/?id=${id}`)
             const result = await response.json();
             
             setCoursesPaid(result.paid_courses);

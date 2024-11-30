@@ -33,7 +33,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+        const response = await fetch(`https://comncourse.ru/api/user-data/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ function Home() {
 
       return (
         <Link to={`/edit-course/${item.id}`} key={index} className="course_card">
-          <div className="course_img" style={{backgroundImage: `url(https://commoncourse.io${item.image})`}}></div>
+          <div className="course_img" style={{backgroundImage: `url(https://comncourse.ru${item.image})`}}></div>
         <div className="card_info">
           <div className="row_grad_l">
             <div className="grad_l" style={{width: `calc((100% / 5) * ${averageRate})`, background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${averageRate}))`}}></div>
@@ -138,7 +138,7 @@ function Home() {
                 <div className="top_panel_back_btn" onClick={() => navigate(`/`)}></div>
                 <Link to={`/edit-profile/${userData.id}`} className="edit_btn"></Link>
             </div>
-          <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${userData.photo_url})`, marginTop: '-56px'}}>
+          <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${userData.photo_url})`, marginTop: '-56px'}}>
             <p style={{marginTop: '312px'}}>{ first_name + ' ' + last_name }</p>
           </div>
             {/*<Link to={`/edit-profile/${userData.id}`} className="edit_container">

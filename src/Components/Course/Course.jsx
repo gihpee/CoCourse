@@ -25,7 +25,7 @@ function Course() {
         const fetchData = async () => {
         try {
             if (cid){
-                const response = await fetch(`https://commoncourse.io/api/get-courses/?id=${cid}`)
+                const response = await fetch(`https://comncourse.ru/api/get-courses/?id=${cid}`)
                 const result = await response.json();
                 
                 setData(result);
@@ -43,7 +43,7 @@ function Course() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+                const response = await fetch(`https://comncourse.ru/api/user-data/`, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ function Course() {
                         {paid && <div className="course_status" style={{borderRadius: '16px'}}>Куплено</div>}
                     </div>
             </div>
-            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${data.channel.photo})`, marginTop: '-56px'}}>
+            <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${data.channel.photo})`, marginTop: '-56px'}}>
                 <p>{ data.channel.name }</p>
             </div>
             <div className="getContact_container" style={{paddingBottom: '0px'}}>
@@ -172,7 +172,7 @@ function Course() {
             <span style={{marginBottom: '0px'}}>Ментор</span>
             <div className="card_mentor">
                 <Link to={`/user/${data.user.user_id}`} className="card_wp">
-                    <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(https://commoncourse.io${data.user.photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
+                    <div style={{width: '40px', height: '40px', marginLeft: '8px', borderRadius: '8px', backgroundImage: `url(https://comncourse.ru${data.user.photo_url})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
                     <div className="points_user">
                         <div className="point_user" style={{fontFamily: 'NeueMachina', fontSize: '16px', color: 'white'}}><b>{data.user.first_name + ' ' + data.user.last_name}</b></div>
                         <div className="point_user">{data.user.university}</div>

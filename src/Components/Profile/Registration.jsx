@@ -125,7 +125,7 @@ function Registration() {
       };
 
       const handleSave = async () => {
-        fetch('https://commoncourse.io/api/update-user/', {
+        fetch('https://comncourse.ru/api/update-user/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ function Registration() {
       }
 
     return <>
-            <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`, marginTop: '-56px'}}>
+            <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${imageSrc})`, marginTop: '-56px'}}>
               <p style={{marginTop: '312px'}}>{ firstName + ' ' + lastName }</p>
             </div>
             <div className="getContact_container">

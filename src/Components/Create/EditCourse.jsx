@@ -52,7 +52,7 @@ function EditCourse() {
     const handleConfirmDelete = async () => {
         setModalOpen(false);
 
-        await fetch('https://commoncourse.io/api/delete-course/', {
+        await fetch('https://comncourse.ru/api/delete-course/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ function EditCourse() {
     useEffect(() => {
         const fetchCourses = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/api/get-courses/?id=${cid}`);
+            const response = await fetch(`https://comncourse.ru/api/get-courses/?id=${cid}`);
             const data = await response.json();
     
             setFormData(() => {
@@ -192,7 +192,7 @@ function EditCourse() {
                     let topics = formData.topics; 
                     let is_draft = false;
 
-                    await fetch('https://commoncourse.io/api/edit-course/', {
+                    await fetch('https://comncourse.ru/api/edit-course/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -219,7 +219,7 @@ function EditCourse() {
                 let topics = formData.topics; 
                 let is_draft = false;
 
-                await fetch('https://commoncourse.io/api/edit-course/', {
+                await fetch('https://comncourse.ru/api/edit-course/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -237,7 +237,7 @@ function EditCourse() {
             let topics = formData.topics; 
             let is_draft = false;
 
-            await fetch('https://commoncourse.io/api/edit-course/', {
+            await fetch('https://comncourse.ru/api/edit-course/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -398,7 +398,7 @@ function EditCourse() {
             </div>
         )}
 
-        <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`, marginTop: '-56px'}}>
+        <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${imageSrc})`, marginTop: '-56px'}}>
             <p>{ formData.Name }</p>
         </div>
 

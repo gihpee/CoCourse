@@ -31,7 +31,7 @@ function ReturnForm() {
             let receipt = formData.Receipt;
             let tid = data.id;
 
-            await fetch('https://commoncourse.io/api/create-return-request/', {
+            await fetch('https://comncourse.ru/api/create-return-request/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`,

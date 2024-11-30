@@ -34,7 +34,7 @@ function CreateCourse() {
       const fetchChannel = async () => {
         if (cid) {
           try {
-            const response = await fetch(`https://commoncourse.io/api/get-channel/?id=${cid}`, {
+            const response = await fetch(`https://comncourse.ru/api/get-channel/?id=${cid}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ function CreateCourse() {
             let channel_id = cid;
             let is_draft = false;
 
-            await fetch('https://commoncourse.io/api/create-course/', {
+            await fetch('https://comncourse.ru/api/create-course/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ function CreateCourse() {
       let channel_id = cid;
       let is_draft = true;
 
-      await fetch('https://commoncourse.io/api/create-course/', {
+      await fetch('https://comncourse.ru/api/create-course/', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -327,7 +327,7 @@ function CreateCourse() {
             </div>
             )}
 
-        <div className="prev" style={{backgroundImage: `url(https://commoncourse.io${imageSrc})`, marginTop: '-56px'}}>
+        <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${imageSrc})`, marginTop: '-56px'}}>
             <p>{ formData.Name }</p>
         </div>
 

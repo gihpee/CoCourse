@@ -14,7 +14,7 @@ function ConnectBot() {
     useEffect(() => {
         const fetchChannel = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/api/get-last-channel/`, {
+            const response = await fetch(`https://comncourse.ru/api/get-last-channel/`, {
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json',

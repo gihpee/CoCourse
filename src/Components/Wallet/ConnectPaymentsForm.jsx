@@ -16,7 +16,7 @@ function ConnectPaymentsForm() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://commoncourse.io/api/user-data/`, {
+            const response = await fetch(`https://comncourse.ru/api/user-data/`, {
               method: 'GET',
               headers: {
                 'Authorization': `tma ${window.Telegram.WebApp.initData}`
@@ -61,7 +61,7 @@ function ConnectPaymentsForm() {
             let accountNumber = formData.account_number;
             let bik = formData.bik;
 
-            await fetch('https://commoncourse.io/api/update-payment-info/', {
+            await fetch('https://comncourse.ru/api/update-payment-info/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
