@@ -62,6 +62,8 @@ function Feed() {
     return <div className="loading"></div>;
   }
 
+  console.log(data)
+
   const filteredData = data.filter((course) =>
       (course.name.toLowerCase().includes(inputValue.toLowerCase()) || course.username.toLowerCase().includes(inputValue.toLowerCase()))
   );
