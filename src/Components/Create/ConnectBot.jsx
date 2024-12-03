@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import MainButton from '@twa-dev/mainbutton';
 
@@ -6,8 +6,6 @@ function ConnectBot() {
     const navigate = useNavigate();
 
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
-
-    const [channelId, setChannelId] = useState('');
 
     let tg = window.Telegram;
 
@@ -23,8 +21,8 @@ function ConnectBot() {
               });
             const result = await response.json();
     
-            if (result.chat_id) {
-                setChannelId(result.chat_id)
+            if (response.status === 200) {
+              navigate('/create-course/', { state: { data: result } });
             }
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -35,12 +33,6 @@ function ConnectBot() {
 
         return () => clearInterval(intervalId);
     }, [id])
-
-    useEffect(() => {
-        if (channelId !== '') {
-            navigate(`/create-course/${channelId}`)
-        }
-    }, [channelId, navigate]);
 
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";

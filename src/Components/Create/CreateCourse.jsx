@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
-import prev from '../assets/course/preview.png'
+import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import "./CreateCourse.css";
 import { useTonAddress } from '@tonconnect/ui-react';
 import { optionsUniv } from '../optionsUniv';
@@ -11,58 +10,21 @@ import krest from '../assets/create/ckrest.svg'
 import MainButton from '@twa-dev/mainbutton';
 
 function CreateCourse() {
-
-    const { cid } = useParams();
+    const location = useLocation();
+    const { data } = location.state || {};
 
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        Name: '',
+        Name: data.channel.name,
         Univ: '',
         Course: '1 курс, 1 семестр',
         Desc: '',
         Price: null,
-        ChannelUrl: '',
+        ChannelUrl: data.channel.url,
         Subject: '',
         topics: [],
     });
-
-    const [imageSrc, setImageSrc] = useState(prev);
-    const [verifyed, setVerifyed] = useState(false);
-
-    useEffect(() => {
-      const fetchChannel = async () => {
-        if (cid) {
-          try {
-            const response = await fetch(`https://comncourse.ru/api/get-channel/?id=${cid}`, {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `tma ${window.Telegram.WebApp.initData}`
-              },
-            });
-            const result = await response.json();
-    
-            setFormData((prevData) => {
-              return {
-                  ...prevData,
-                  Name: result.name,
-                  ChannelUrl: result.url,
-              }
-            });
-
-            setVerifyed(result.user.verifyed)
-
-            setImageSrc(result.photo);
-
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        }
-      };
-  
-      fetchChannel();
-  }, [cid])
 
     const [modalFillOpen, setModalFillOpen] = useState(false);
     const [modalDraftOpen, setModalDraftOpen] = useState(false);
@@ -130,7 +92,7 @@ function CreateCourse() {
     };
 
     const handlePublish = async () => {
-      if (!userFriendlyAddress && verifyed !== 'Завершена') {
+      if (!userFriendlyAddress && data.user.verifyed !== 'Завершена') {
         setModalText("Для создания курса необходимо пройти верификацию и подключить выплаты");
         setModalLink("/connect-wallet")
         setModalButton("Пройти")
@@ -142,7 +104,7 @@ function CreateCourse() {
         setModalButton("Подключить")
         setModalOpen(true);
       }
-      else if (verifyed !== 'Завершена') {
+      else if (data.user.verifyed !== 'Завершена') {
         setModalText("Для создания курса необходимо пройти верификацию");
         setModalLink("/verificationN")
         setModalButton("Пройти")
@@ -158,7 +120,7 @@ function CreateCourse() {
             let subjects = formData.Subject || 'Не указано';
             let topics = formData.topics; 
             let price = formData.Price || 0;
-            let channel_id = cid;
+            let course_id = data.id;
             let is_draft = false;
 
             await fetch('https://comncourse.ru/api/create-course/', {
@@ -168,7 +130,7 @@ function CreateCourse() {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
                 },
 
-                body: JSON.stringify({university, description, subjects, topics, price, channel_id, is_draft, address}),
+                body: JSON.stringify({university, description, subjects, topics, price, course_id, is_draft, address}),
             }).then(navigate('/profile'))
         }
     }
@@ -181,7 +143,7 @@ function CreateCourse() {
       let subjects = formData.Subject;
       let topics = formData.topics; 
       let price = formData.Price || 0;
-      let channel_id = cid;
+      let course_id = data.id;
       let is_draft = true;
 
       await fetch('https://comncourse.ru/api/create-course/', {
@@ -191,7 +153,22 @@ function CreateCourse() {
               'Authorization': `tma ${window.Telegram.WebApp.initData}`
           },
 
-          body: JSON.stringify({university, description, subjects, topics, price, channel_id, is_draft, address}),
+          body: JSON.stringify({university, description, subjects, topics, price, course_id, is_draft, address}),
+      }).then(navigate('/profile'))
+        
+    };
+
+    const handleDelete = async () => {
+      let cid = data.id;
+
+      await fetch('https://comncourse.ru/api/delete-course/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `tma ${window.Telegram.WebApp.initData}`
+          },
+
+          body: JSON.stringify({cid}),
       }).then(navigate('/profile'))
         
     };
@@ -305,7 +282,7 @@ function CreateCourse() {
                       lineHeight: '18.2px', 
                       marginTop: '16px'}}>Восстановить публикацию будет невозможно</p>
               <div className="mbtns_container">
-                  <button className='mbtn' onClick={() => window.history.back()}>Нет</button>
+                  <button className='mbtn' onClick={handleDelete}>Нет</button>
                   <button className='mbtn' onClick={handleSaveDraft}>Да</button>
               </div>
           </div>
@@ -327,7 +304,7 @@ function CreateCourse() {
             </div>
             )}
 
-        <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${imageSrc})`, marginTop: '-56px'}}>
+        <div className="prev" style={{backgroundImage: `url(https://comncourse.ru${data.channel.photo})`, marginTop: '-56px'}}>
             <p>{ formData.Name }</p>
         </div>
 
