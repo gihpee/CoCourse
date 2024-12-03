@@ -169,7 +169,7 @@ function CreateCourse() {
           },
 
           body: JSON.stringify({cid}),
-      }).then(navigate('/profile'))
+      }).then(navigate('/connect-bot'))
         
     };
 
