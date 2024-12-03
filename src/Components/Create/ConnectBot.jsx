@@ -32,7 +32,7 @@ function ConnectBot() {
         const intervalId = setInterval(fetchChannel, 500);
 
         return () => clearInterval(intervalId);
-    }, [id])
+    }, [id, navigate])
 
     const handleButtonClick = () => {
         const botUsername = "CoCourseBot";
