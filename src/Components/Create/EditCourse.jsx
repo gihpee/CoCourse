@@ -91,12 +91,13 @@ function EditCourse() {
             setImageSrc(data.channel.photo)
             setVerifyed(data.user.verifyed)
 
-            const textarea = document.querySelector('.bio_textarea');
+            /*const textarea = document.querySelector('.bio_textarea');
+
             if (textarea.scrollHeight > 40)
             {
                 textarea.style.height = 'auto';
                 textarea.style.height = textarea.scrollHeight + 'px';
-            }
+            }*/
 
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -106,13 +107,13 @@ function EditCourse() {
         fetchCourses();
     }, [cid])
 
-    useEffect(() => {
+    /*useEffect(() => {
         const textarea = document.querySelector('.bio_textarea');
         if (textarea && formData.Desc) {
           textarea.style.height = 'auto';
           textarea.style.height = textarea.scrollHeight + 'px';
         }
-      }, [formData.Desc]);
+      }, [formData.Desc]);*/
 
     const handleChange = (e) => {
         const { name, value, type } = e.target;
@@ -452,7 +453,7 @@ function EditCourse() {
                 </div>
 
             <span>СОДЕРЖАНИЕ</span>
-            {formData.topics.map((topic, index) => (
+            {formData.topics && formData.topics.map((topic, index) => (
                 <div key={index} className="column" style={{width: '100%'}} name='topics'>
                     <div className="field">
                         <input
