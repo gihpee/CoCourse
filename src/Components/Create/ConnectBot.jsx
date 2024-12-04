@@ -41,7 +41,7 @@ function ConnectBot() {
 
     const handleButtonGroupClick = () => {
       const botUsername = "CoCourseBot";
-      const link = `https://t.me/${botUsername}?startchannel`;
+      const link = `https://t.me/${botUsername}?startgroup`;
       tg.WebApp.openTelegramLink(link);
   };
 
