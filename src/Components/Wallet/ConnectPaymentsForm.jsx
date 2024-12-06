@@ -63,9 +63,8 @@ function ConnectPaymentsForm() {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
                 },
                 body: JSON.stringify({number}),
-            });
+            }).then(navigate('/profile'));
     
-            navigate('/profile');
         }
     };
     

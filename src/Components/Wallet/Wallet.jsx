@@ -56,7 +56,16 @@ function Wallet() {
         setWithdrawModalOpen(false);
     }
 
-    const handleWithdraw = () => {
+    const handleWithdraw = async () => {
+        if (balance > 6000) {
+            await fetch('https://comncourse.ru/api/withdraw/', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `tma ${window.Telegram.WebApp.initData}`
+                },
+                body: JSON.stringify({number}),
+            }).then(navigate('/profile'));
+        }
         setWithdrawModalOpen(true);
     }
 
