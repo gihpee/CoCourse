@@ -52,19 +52,17 @@ function ConnectPaymentsForm() {
     }
 
     const handlePublish = async () => {
-        if (!formData.name || !formData.account_number || !formData.bik) {
+        if (!formData.number) {
             setModalFillOpen(true);
         } else {
-            let name = formData.name;
-            let accountNumber = formData.account_number;
-            let bik = formData.bik;
+            let number = formData.number;
 
             await fetch('https://comncourse.ru/api/update-payment-info/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
                 },
-                body: JSON.stringify({name, accountNumber, bik}),
+                body: JSON.stringify({number}),
             });
     
             navigate('/profile');
