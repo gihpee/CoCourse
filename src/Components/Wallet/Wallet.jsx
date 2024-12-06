@@ -63,7 +63,6 @@ function Wallet() {
                 headers: {
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
                 },
-                body: JSON.stringify({number}),
             }).then(navigate('/profile'));
         }
         setWithdrawModalOpen(true);
