@@ -178,7 +178,7 @@ function VerificationForm() {
             className='field'
             style={{border: 'none', outline: 'none'}}
             type='text' 
-            placeholder="Код подразделения"
+            placeholder="Код подразделения (123-123)"
             name="Code"
             value={formData.Code || null}
             onChange={handleChange} />
@@ -214,7 +214,7 @@ function VerificationForm() {
             className='field'
             style={{border: 'none', outline: 'none'}}
             type='text' 
-            placeholder="Номер телефона"
+            placeholder="Номер телефона (79123456789)"
             name="Phone"
             value={formData.Phone || null}
             onChange={handleChange} />

@@ -8,9 +8,7 @@ function ConnectPaymentsForm() {
     const { id } = window.Telegram.WebApp.initDataUnsafe.user;
 
     const [formData, setFormData] = useState({
-        name: null,
-        account_number: null,
-        bik: null
+        number: null,
     });
 
     useEffect(() => {
@@ -97,36 +95,16 @@ function ConnectPaymentsForm() {
         <div className="back_btn" onClick={() => {window.history.back()}}></div>
         <div className="column">
 
-        <span style={{'marginTop': '8px'}}>Наименование получателя (по реквизитам из банка)</span>
+        <span style={{'marginTop': '8px'}}>Номер карты</span>
         <input 
             className='field'
             style={{border: 'none', outline: 'none'}}
             type='text' 
-            placeholder="Иванов Иван Иванович"
-            name="name"
-            value={formData.name || null}
+            placeholder="4809388886227309"
+            name="number"
+            value={formData.number || null}
             onChange={handleChange} />
 
-        <span>Счёт получателя (20 цифр)</span>
-        <input 
-            className='field'
-            style={{border: 'none', outline: 'none'}}
-            type='text' 
-            placeholder="40702810100100200858"
-            name="account_number"
-            value={formData.account_number || null}
-            onChange={handleChange} />
-
-        <span>БИК получателя (9 цифр)</span>
-        <input 
-            className='field'
-            style={{border: 'none', outline: 'none'}}
-            type='text' 
-            placeholder="044525801"
-            name="bik"
-            value={formData.bik || null}
-            onChange={handleChange} />
-        
     </div>
     <MainButton text="СОХРАНИТЬ" onClick={handlePublish} />
     </>
