@@ -14,8 +14,8 @@ function ConnectPaymentsForm() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`https://comncourse.ru/api/user-data/`, {
-              method: 'GET',
+            const response = await fetch(`https://comncourse.ru/api/get-card-number/`, {
+              method: 'POST',
               headers: {
                 'Authorization': `tma ${window.Telegram.WebApp.initData}`
               },
@@ -30,9 +30,7 @@ function ConnectPaymentsForm() {
             if (data) {
                 setFormData(() => {
                     return {
-                        name: data.name,
-                        account_number: data.account_number,
-                        bik: data.bik
+                        number: data.number,
                     }
                 });
             }
