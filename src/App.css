@@ -31,7 +31,7 @@ body {
   left: calc(50% - 45px);
   width: 80px;
   height: 80px;
-  background-image: url('./Components/assets/load.gif');
+  background-image: url('./Components/assets/load.gif.mp4');
   background-size: contain;
   background-position: center;
 }
