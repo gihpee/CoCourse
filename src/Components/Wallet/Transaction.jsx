@@ -98,7 +98,7 @@ function Transaction() {
                 <p>{formatDate(data?.date)}</p>
             </div>
         </div>
-        {data?.buyer === id && new Date() - new Date(data?.date) <= 7 * 24 * 60 * 60 * 1000 && data?.method === 'Card' && data?.return_status === 0 && <MainButton text="ОФОРМИТЬ ВОЗВРАТ" onClick={() => navigate('/return-form', { state: { data: data } })} />}
+        {data?.buyer === id && data?.state === 'HOLD' && data?.method === 'Card' && data?.return_status === 0 && <MainButton text="ОФОРМИТЬ ВОЗВРАТ" onClick={() => navigate('/return-form', { state: { data: data } })} />}
     </>
 }
 
