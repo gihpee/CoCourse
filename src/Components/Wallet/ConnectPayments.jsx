@@ -15,7 +15,7 @@ function ConnectPayments() {
 
         <div className="column">
             <span>Зачем это нужно?</span>
-            <div className="pricecourse_container" style={{marginLeft: 'auto', marginRight: 'auto', height: '60px'}}>
+            <div className="pricecourse_container" style={{marginLeft: 'auto', marginRight: 'auto', paddingTop: '12px', paddingBottom: '12px'}}>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Добавьте способ выплаты, чтобы мы могли начислять вознаграждения за продажи вам прямо на карту</span>
             </div>
 
