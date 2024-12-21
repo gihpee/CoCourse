@@ -15,7 +15,7 @@ function Verification() {
 
         <div className="column">
             <span>Зачем это нужно?</span>
-            <div className="pricecourse_container" style={{marginLeft: 'auto', marginRight: 'auto', height: '60px'}}>
+            <div className="pricecourse_container" style={{marginLeft: 'auto', marginRight: 'auto', paddingTop: '12px', paddingBottom: '12px', height: 'auto'}}>
                 <span style={{margin: '0px', width: '100%', textTransform: 'none'}}>Пройди верификацию, чтобы создавать объявления и начать зарабатывать на своих знаниях</span>
             </div>
 
