@@ -58,6 +58,7 @@ function ConnectPaymentsForm() {
             await fetch('https://comncourse.ru/api/update-payment-info/', {
                 method: 'POST',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `tma ${window.Telegram.WebApp.initData}`
                 },
                 body: JSON.stringify({number}),
