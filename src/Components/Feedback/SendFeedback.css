@@ -1,0 +1,142 @@
+a {
+    text-decoration: none;
+}
+
+.feedback_top {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 16px);
+    height: 48px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.fback_btn {
+    width: 48px;
+    height: 48px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #1C1C1E;
+    background-image: url('../assets/feedback/back.svg');
+    background-position: center;
+    border-radius: 24px;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+}
+
+.fb_billet {
+    width: calc(100% - 56px);
+    height: 48px;
+    background-color: #161616;
+    background-image: url('../assets/feedback/star.svg');
+    background-position: 12px;
+    background-repeat: no-repeat;
+    border-radius: 24px;
+    text-align: center;
+    line-height: 44px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.slider-container {
+    width: calc(100% - 16px);
+    z-index: 10;
+}
+
+.slider-container input[type="range"] {
+    -webkit-appearance: none;
+    width: calc(100% - 16px);
+    height: 48px;
+    border-radius: 32px;
+    border: 8px solid #161616;
+    background: transparent;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.slider-container input[type="range"]:hover {
+    opacity: 1;
+    z-index: 100;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.slider-container input[type="range"]::-moz-range-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.row_grad {
+    width: calc(100% - 32px);
+    display: flex;
+    margin-top: -60px;
+}
+
+.grad {
+    width: 100%;
+    background: linear-gradient(to right, #EA4A4F, #D8BB55, #7EBB69);
+    border-radius: 24px;
+    height: 48px;
+    z-index: 0;
+}
+
+.fb_bg {
+    display: flex;
+    width: calc(100% - 32px);
+    justify-content: space-between;
+    margin-top: -48.5px;
+    background: transparent;
+    pointer-events: none;
+}
+
+.circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid white;
+    z-index: 50;
+}
+
+.fb_text {
+    width: calc(100% - 32px);
+    min-height: 104px;
+    background-color: #161616;
+    border: none;
+    border-radius: 16px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+    line-break: auto;
+    padding: 8px;
+}
+
+.sf_btn {
+    width: 96%;
+    height: 48px;
+    background-color: white;
+    border-radius: 16px;
+    border: none;
+    color: #181818;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18.2px;
+    outline: none;
+    background-image: url('../assets/feedback/tick.svg');
+    background-repeat: no-repeat;
+    background-position: 4px;
+    padding-left: 16px;
+    padding-right: 8px;
+    margin-bottom: 8px;
+}

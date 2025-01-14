@@ -1,0 +1,73 @@
+.navbar {
+    flex: 0 0 auto;
+    width: 95%;
+    bottom: 10px;
+    position: sticky;
+    display: flex;
+    align-self: center;
+    backdrop-filter: blur(10px);
+    background: rgba(16,16,16, 0.7);
+    border-radius: 24px;
+    justify-content: space-around;
+    z-index: 150;
+    margin-top: 10px;
+}
+
+.feed {
+    padding: 8px;
+}
+
+.feed a {
+    display: flex;
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 14px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    img {
+        width: 40px;
+        height: auto;
+    }
+}
+
+.create {
+    padding: 8px;
+}
+
+.create a {
+    display: flex;
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 14px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    img {
+        width: 40px;
+        height: auto;
+    }
+}
+
+.profile {
+    padding: 8px;
+}
+
+.profile a {
+    display: flex;
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 14px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    img {
+        width: 40px;
+        height: auto;
+    }
+}
+
+
