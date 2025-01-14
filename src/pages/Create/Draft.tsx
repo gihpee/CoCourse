@@ -1,4 +1,4 @@
-import lminus from '../assets/create-course/lminus.png'
+import lminus from '@/shared/assets/create-course/lminus.png'
 
 function Draft() {
 	return (

@@ -2,9 +2,9 @@ import { options } from '@/entities/user/model/constants/specialization'
 import { fetchBio } from '@/entities/user/model/fetchBio'
 import fetchUpdateSubjects from '@/entities/user/model/fetchUpdateSubjects'
 import { filterOptions } from '@/features/filterOptions'
+import hash from '@/shared/assets/profile/hash.svg'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import hash from '../assets/profile/hash.svg'
 import './Edit.css'
 
 function Subj() {

@@ -1,8 +1,8 @@
+import cwallet from '@/shared/assets/profile/cwallet.png'
 import { useTonConnectModal, useTonConnectUI } from '@tonconnect/ui-react'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import cwallet from '../assets/profile/cwallet.png'
 
 function ConnectWallet() {
 	const [tonConnectUI, setOptions] = useTonConnectUI()

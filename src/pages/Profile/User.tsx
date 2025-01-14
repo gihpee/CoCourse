@@ -2,10 +2,10 @@ import { calculateRating } from '@/entities/course/lib/calculateRating'
 import { formatDate } from '@/entities/course/lib/formatDate'
 import { Course, TelegramUser } from '@/entities/course/model/types'
 import { fetchUser } from '@/entities/user/model/fetchUser'
+import nf from '@/shared/assets/course/nfeedarrow.svg'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import nf from '../assets/course/nfeedarrow.svg'
 import './Profile.css'
 
 function User() {

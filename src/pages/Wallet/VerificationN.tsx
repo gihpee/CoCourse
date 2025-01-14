@@ -1,6 +1,6 @@
+import verif from '@/shared/assets/profile/verification.png'
 import MainButton from '@twa-dev/mainbutton'
 import { useNavigate } from 'react-router-dom'
-import verif from '../assets/profile/verification.png'
 
 function VerificationN() {
 	const navigate = useNavigate()
