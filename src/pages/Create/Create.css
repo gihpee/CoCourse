@@ -1,0 +1,43 @@
+.create_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    top: 5px;
+    z-index: 150;
+}
+
+.create_button a {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.billet_cb {
+    width: 93%;
+    min-height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #161616;
+    color: #FFF;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    background: rgba(16,16,16, 0.7);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.2px;
+    padding-left: 8px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+}
+
+.billet_cb img {
+    width: 32px;
+    height: 32px;
+}
+
+.billet_cb p {
+    width: 80%;
+}

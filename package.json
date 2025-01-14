@@ -1,16 +1,35 @@
 {
-  "name": "shopping",
+  "name": "cocourse",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@reduxjs/toolkit": "^2.5.0",
+    "@telegram-auth/react": "^1.0.3",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-router-dom": "^6.19.0",
+    "@ton/crypto": "^3.2.0",
+    "@ton/ton": "^13.11.2",
+    "@tonclient/core": "^1.30.0",
+    "@tonclient/lib-web": "^1.30.0",
+    "@tonconnect/ui-react": "^2.0.5",
+    "@twa-dev/mainbutton": "^0.0.11",
+    "@twa-dev/sdk": "github:twa-dev/sdk",
+    "@twa-dev/types": "^7.0.0",
+    "buffer": "^6.0.3",
+    "eruda": "^3.0.1",
+    "node-stdlib-browser": "^1.2.0",
+    "react": "^18.2.0",
+    "react-datepicker": "^7.5.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
-    "telegraf": "^4.8.1",
+    "react-select": "^5.8.0",
+    "ton": "^13.9.0",
+    "tonweb": "^0.0.66",
+    "tonweb-mnemonic": "^1.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -36,5 +55,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "typescript": "^4.9.5",
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "vite-plugin-node-stdlib-browser": "^0.2.1",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }
