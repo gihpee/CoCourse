@@ -12,8 +12,6 @@ import './Feed.css'
 function Feed() {
 	window.scrollTo(0, 0)
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
-	console.log(window.Telegram.WebApp.initData)
-	//const { id } = 10;
 	const [data, setData] = useState<ICourse[]>([])
 	const [inputValue, setInputValue] = useState('')
 	const [userCourses, setUserCourses] = useState<ICourse[] | null>(null)
@@ -112,7 +110,7 @@ function Feed() {
 							className='point'
 							style={{ color: '#AAAAAA', marginTop: '4px', fontSize: '14px' }}
 						>
-							{formatDate(item.date)}
+							{formatDate(item.date || 'Дата не указана')}
 						</div>
 					</div>
 					<div className='price_container'>
@@ -124,7 +122,7 @@ function Feed() {
 						<div className='status_container'>
 							<div className='student_amount'>{item.amount_of_students}</div>
 							{userCourses &&
-								userCourses.some(course => course.course_id === item.id) && (
+								userCourses.some(course => course.id === item.id) && (
 									<div className='course_status'>Куплено</div>
 								)}
 						</div>

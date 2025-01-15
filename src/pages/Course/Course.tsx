@@ -5,7 +5,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { setCourseData } from '../../entities/course/model/courseSlice'
-import { ICourse } from '../../entities/course/model/types'
 import { useCourseData } from '../../entities/course/model/useCourseData'
 import { setUserCourses } from '../../entities/course/model/userSlice'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
@@ -19,9 +18,12 @@ function Course() {
 	window.scrollTo(0, 0)
 	const { cid } = useParams()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
-	const [courseDataComponent, setCourseDataComponent] = useState<
-		Partial<ICourse>
-	>({})
+	const {
+		data: courseDataComponent,
+		isLoading,
+		error,
+	} = useCourseData(cid || '')
+
 	const [userCoursesComponent, setUserCoursesComponent] = useState<
 		{ id: number }[]
 	>([])
@@ -31,15 +33,11 @@ function Course() {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		const loadData = async () => {
-			if (cid) {
-				const courseData = await useCourseData(cid)
-				if (courseData) {
-					setCourseDataComponent(courseData)
-					dispatch(setCourseData(courseData))
-				}
-			}
+		if (courseDataComponent) {
+			dispatch(setCourseData(courseDataComponent))
+		}
 
+		const fetchUserCourses = async () => {
 			const userData = await useUserCourses(window.Telegram.WebApp.initData)
 			if (userData) {
 				const currentUser = userData.find(user => user.user_id === id)
@@ -56,15 +54,17 @@ function Course() {
 				console.log('No user data found.')
 			}
 		}
+		fetchUserCourses()
+	}, [courseDataComponent, id, dispatch])
 
-		loadData()
-	}, [cid, id, dispatch]) //TODO: нужно ли id
+	if (isLoading) return <div className='loading'></div>
+	if (error) return <div>{error}</div>
 
-	if (!courseDataComponent.id) {
+	if (!courseDataComponent?.id) {
 		return <div className='loading'></div> // или что-то другое, пока данные загружаются
 	}
 
-	var paid = userCoursesComponent?.some(course => course.id === Number(cid))
+	const paid = userCoursesComponent?.some(course => course.id === Number(cid))
 
 	//TODO: вынести в отдельный компонент
 	const topics = courseDataComponent.topics?.map(

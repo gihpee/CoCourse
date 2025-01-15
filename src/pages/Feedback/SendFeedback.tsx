@@ -1,3 +1,4 @@
+import { IFeedback } from '@/entities/course/model/types'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -5,19 +6,11 @@ import fetchCourses from '../../entities/feedback/model/fetchCourses'
 import handlePublish from '../../entities/feedback/model/handlePublish'
 import './SendFeedback.css'
 
-type FeedbackItem = {
-	user: {
-		username: string
-	}
-	rate: number
-	review: string
-}
-
 function SendFeedback() {
 	window.scrollTo(0, 0)
 	const { id } = useParams()
 	const { username } = window.Telegram.WebApp.initDataUnsafe.user
-	const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([])
+	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
 	const [sliderValue, setSliderValue] = useState(3)
 	const [revValue, setRevValue] = useState('')
 	const [modalFillOpen, setModalFillOpen] = useState(false)
@@ -28,7 +21,19 @@ function SendFeedback() {
 			try {
 				if (id) {
 					const feedbacks = await fetchCourses(id)
-					setFeedbacks(feedbacks)
+
+					const transformedFeedbacks: IFeedback[] = feedbacks.flatMap(course =>
+						course.feedback.map(feedback => ({
+							user: course.user,
+							author: course.user.user_id,
+							course: course.id,
+							date: new Date().toISOString(),
+							rate: feedback.rate,
+							review: feedback.review || '',
+						}))
+					)
+
+					setFeedbacks(transformedFeedbacks)
 				}
 			} catch (error) {
 				console.error('Error fetching data:', error)
@@ -46,7 +51,9 @@ function SendFeedback() {
 				prevValue !== userFeedback.rate ? userFeedback.rate : prevValue
 			)
 			setRevValue(prevValue =>
-				prevValue !== userFeedback.review ? userFeedback.review : prevValue
+				prevValue !== userFeedback.review
+					? userFeedback.review || ''
+					: prevValue
 			)
 		}
 	}, [userFeedback])

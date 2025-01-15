@@ -34,36 +34,32 @@ function EditProfile() {
 
 	const navigate = useNavigate()
 
-	//TODO: возможно вынести
-	useEffect(() => {
-		const fetchData = async () => {
-			const userData = await useUserCourses(window.Telegram.WebApp.initData)
-			if (userData && userData[0]) {
-				try {
-					setImageSrc(userData[0].photo_url || '')
-					setIsNotify(userData[0].notify || false)
-					setBioValue(userData[0].description || '')
-					setUniValue(userData[0].university || '')
-					setSelectedOptions(userData[0].subjects || '')
-					setFirstName(userData[0].first_name || '')
-					setLastName(userData[0].last_name || '')
-				} catch (error) {
-					console.error('Ошибка при запросе к серверу:', error)
-				}
-			} else {
-				console.log('No user data found.')
-			}
-			const textarea = document.querySelector(
-				'.bio_textarea'
-			) as HTMLTextAreaElement
-			if (textarea && textarea.scrollHeight > 40) {
-				textarea.style.height = 'auto'
-				textarea.style.height = textarea.scrollHeight + 'px'
-			}
-		}
+	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
-		fetchData()
-	}, [id])
+	useEffect(() => {
+		if (userCourses && userCourses[0]) {
+			try {
+				setImageSrc(userCourses[0].photo_url || '')
+				setIsNotify(userCourses[0].notify || false)
+				setBioValue(userCourses[0].description || '')
+				setUniValue(userCourses[0].university || '')
+				setSelectedOptions(userCourses[0].subjects || '')
+				setFirstName(userCourses[0].first_name || '')
+				setLastName(userCourses[0].last_name || '')
+			} catch (error) {
+				console.error('Ошибка при запросе к серверу:', error)
+			}
+		} else {
+			console.log('No user data found.')
+		}
+		const textarea = document.querySelector(
+			'.bio_textarea'
+		) as HTMLTextAreaElement
+		if (textarea && textarea.scrollHeight > 40) {
+			textarea.style.height = 'auto'
+			textarea.style.height = textarea.scrollHeight + 'px'
+		}
+	}, [userCourses])
 
 	useAutoResizeTextArea(bioValue)
 

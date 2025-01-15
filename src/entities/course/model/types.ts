@@ -1,5 +1,5 @@
 export interface IFeedback {
-	user: number
+	user: ITelegramUser
 	author: number
 	course: number
 	date: string

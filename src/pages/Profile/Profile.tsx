@@ -20,50 +20,45 @@ function Home() {
 	const [feedbacks, setFeedbacks] = useState<number[]>([])
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
+	const userCoursesData = useUserCourses(window.Telegram.WebApp.initData)
+
 	useEffect(() => {
-		const fetchData = async () => {
-			const userDataArray = await useUserCourses(
-				window.Telegram.WebApp.initData
-			)
-			if (userDataArray && userDataArray[0]) {
-				const telegramUser = userDataArray[0]
+		if (userCoursesData && userCoursesData[0]) {
+			const telegramUser = userCoursesData[0]
 
-				const userData: ITelegramUser = {
-					user_id: telegramUser.user_id,
-					username: telegramUser.username,
-					first_name: telegramUser.first_name,
-					last_name: telegramUser.last_name,
-					university: telegramUser.university || '',
-					description: telegramUser.description || '',
-					subjects: telegramUser.subjects || [],
-					feedback: telegramUser.feedback || [],
-					notify: telegramUser.notify,
-					photo_url: telegramUser.photo_url || '',
-					created_courses: telegramUser.created_courses || [],
-					bought_courses: telegramUser.bought_courses || [],
-					registrated: telegramUser.registrated,
-					verifyed: telegramUser.verifyed,
-					connected_payments: telegramUser.connected_payments,
-					comn: telegramUser.comn,
-					balance: telegramUser.balance,
-					is_staff: telegramUser.is_staff,
-					is_active: telegramUser.is_active,
-				}
-
-				setUserData(userData)
-				setFeedbacks(userData.feedback || [])
-				setCoursesData(userData.created_courses || [])
-			} else {
-				console.log('No user data found.')
+			const userData: ITelegramUser = {
+				user_id: telegramUser.user_id,
+				username: telegramUser.username,
+				first_name: telegramUser.first_name,
+				last_name: telegramUser.last_name,
+				university: telegramUser.university || '',
+				description: telegramUser.description || '',
+				subjects: telegramUser.subjects || [],
+				feedback: telegramUser.feedback || [],
+				notify: telegramUser.notify,
+				photo_url: telegramUser.photo_url || '',
+				created_courses: telegramUser.created_courses || [],
+				bought_courses: telegramUser.bought_courses || [],
+				registrated: telegramUser.registrated,
+				verifyed: telegramUser.verifyed,
+				connected_payments: telegramUser.connected_payments,
+				comn: telegramUser.comn,
+				balance: telegramUser.balance,
+				is_staff: telegramUser.is_staff,
+				is_active: telegramUser.is_active,
 			}
-		}
 
-		fetchData()
-	}, [id, first_name, last_name, username])
+			setUserData(userData)
+			setFeedbacks(userData.feedback || [])
+			setCoursesData(userData.created_courses || [])
+		} else {
+			console.log('No user data found.')
+		}
+	}, [userCoursesData])
 
 	let userCourses: JSX.Element[] = []
 
-	if (coursesData) {
+	if (Array.isArray(coursesData)) {
 		userCourses = coursesData.map((item, index) => {
 			var averageRate = item.feedback ? calculateRating(item.feedback) : 0
 

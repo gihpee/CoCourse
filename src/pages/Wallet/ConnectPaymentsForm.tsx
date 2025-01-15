@@ -13,6 +13,8 @@ function ConnectPaymentsForm() {
 		number: '',
 	})
 
+	const { updatePaymentInfo } = useUpdatePaymentInfo(formData, setModalFillOpen)
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -31,7 +33,7 @@ function ConnectPaymentsForm() {
 	}
 
 	const onPublish = () => {
-		useUpdatePaymentInfo(formData, setModalFillOpen, navigate)
+		updatePaymentInfo()
 	}
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
