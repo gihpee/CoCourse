@@ -1,4 +1,4 @@
-const publishCourse = async (cid: string, formData: any) => {
+export const publishCourse = async (cid: string, formData: any) => {
 	const { Price, Univ, Desc, Subject, topics } = formData
 	const is_draft = false
 
