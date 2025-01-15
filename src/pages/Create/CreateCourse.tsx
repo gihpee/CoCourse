@@ -472,12 +472,7 @@ function CreateCourse() {
 
 				<span>СОДЕРЖАНИЕ</span>
 				{formData.topics.map((topic, index) => (
-					<div
-						key={index}
-						className='column'
-						style={{ width: '100%' }}
-						name='topics'
-					>
+					<div key={index} className='column' style={{ width: '100%' }}>
 						<div className='field'>
 							<input
 								type='text'
