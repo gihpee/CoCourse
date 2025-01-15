@@ -240,7 +240,6 @@ function VerificationForm() {
 				<span style={{ marginTop: '8px' }}>ПАСПОРТНЫЕ ДАННЫЕ</span>
 				<div className='field'>
 					<DatePicker
-						style={{ border: 'none', outline: 'none' }}
 						selected={birthDate}
 						onChange={date => setBirthDate(date)}
 						placeholderText='Дата рождения'
@@ -267,7 +266,6 @@ function VerificationForm() {
 				/>
 				<div className='field'>
 					<DatePicker
-						style={{ border: 'none', outline: 'none' }}
 						selected={passportDate}
 						onChange={date => setPassportDate(date)}
 						placeholderText='Дата выдачи паспорта'
