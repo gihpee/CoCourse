@@ -378,11 +378,13 @@ function CreateCourse() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncourse.ru${data.channel.photo})`,
+					backgroundImage: data?.channel?.photo
+						? `url(https://comncourse.ru${data.channel.photo})`
+						: 'none',
 					marginTop: '-56px',
 				}}
 			>
-				<p>{formData.Name}</p>
+				<p>{formData?.Name || 'Default Name'}</p>
 			</div>
 
 			<div className='getContact_container'>
