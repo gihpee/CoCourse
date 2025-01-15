@@ -1,6 +1,6 @@
-import { Course } from '../../../pages/Feed/Feed'
+import { ICourse } from '../model/types'
 
-export const filterCoursesByName = (courses: Course[], query: string) => {
+export const filterCoursesByName = (courses: ICourse[], query: string) => {
 	return courses.filter(course =>
 		course.name.toLowerCase().includes(query.toLowerCase())
 	)
