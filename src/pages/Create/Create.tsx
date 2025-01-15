@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { Course } from '../../entities/course/model/types'
+import { ICourse } from '../../entities/course/model/types'
 import plus from '../../shared/assets/create/plus.svg'
 import './Create.css'
 
 function Create() {
 	window.scrollTo(0, 0)
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
-	const [coursesData, setCoursesData] = useState<Course[]>([])
+	const [coursesData, setCoursesData] = useState<ICourse[]>([])
 	const userFriendlyAddress = useTonAddress(false)
 	const [modalOpen, setModalOpen] = useState(false)
 	const navigate = useNavigate()

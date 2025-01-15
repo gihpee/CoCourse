@@ -34,7 +34,7 @@ export interface TelegramUser {
 	is_active: boolean
 }
 
-export interface Course {
+export interface ICourse {
 	id: number
 	university: string | null
 	subject: string | null
@@ -66,7 +66,7 @@ export interface Channel {
 
 export interface Transaction {
 	id: number
-	course: Course
+	course: ICourse
 	buyer: number
 	seller: number
 	date: string

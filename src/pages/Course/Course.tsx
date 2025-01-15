@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { setCourseData } from '../../entities/course/model/courseSlice'
-import { Course } from '../../entities/course/model/types'
+import { ICourse } from '../../entities/course/model/types'
 import { useCourseData } from '../../entities/course/model/useCourseData'
 import { setUserCourses } from '../../entities/course/model/userSlice'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
@@ -20,7 +20,7 @@ function Course() {
 	const { cid } = useParams()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	const [courseDataComponent, setCourseDataComponent] = useState<
-		Partial<Course>
+		Partial<ICourse>
 	>({})
 	const [userCoursesComponent, setUserCoursesComponent] = useState<
 		{ id: number }[]

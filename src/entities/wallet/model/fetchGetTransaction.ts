@@ -1,4 +1,3 @@
-// services/api.ts
 export const fetchTransactionData = async (tid: string) => {
 	try {
 		const response = await fetch(
