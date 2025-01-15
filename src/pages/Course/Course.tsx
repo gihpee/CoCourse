@@ -24,6 +24,8 @@ function Course() {
 		error,
 	} = useCourseData(cid || '')
 
+	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
+
 	const [userCoursesComponent, setUserCoursesComponent] = useState<
 		{ id: number }[]
 	>([])
@@ -37,25 +39,19 @@ function Course() {
 			dispatch(setCourseData(courseDataComponent))
 		}
 
-		const fetchUserCourses = async () => {
-			const userData = await useUserCourses(window.Telegram.WebApp.initData)
-			if (userData) {
-				const currentUser = userData.find(user => user.user_id === id)
-				if (currentUser) {
-					const coursesWithIds = currentUser.bought_courses.map(courseId => ({
-						id: courseId,
-					}))
-					setUserCoursesComponent(coursesWithIds)
-					dispatch(setUserCourses(coursesWithIds))
-				} else {
-					console.log('User not found.')
-				}
+		if (userCourses) {
+			const currentUser = userCourses.find(user => user.user_id === id)
+			if (currentUser) {
+				const coursesWithIds = currentUser.bought_courses.map(courseId => ({
+					id: courseId,
+				}))
+				setUserCoursesComponent(coursesWithIds)
+				dispatch(setUserCourses(coursesWithIds))
 			} else {
-				console.log('No user data found.')
+				console.log('User not found.')
 			}
 		}
-		fetchUserCourses()
-	}, [courseDataComponent, id, dispatch])
+	}, [courseDataComponent, id, dispatch, userCourses])
 
 	if (isLoading) return <div className='loading'></div>
 	if (error) return <div>{error}</div>

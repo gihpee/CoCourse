@@ -14,19 +14,9 @@ function Feed() {
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	const [data, setData] = useState<ICourse[]>([])
 	const [inputValue, setInputValue] = useState('')
-	const [userCourses, setUserCourses] = useState<ICourse[] | null>(null)
 	const navigate = useNavigate()
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const courses = await useUserCoursesData(id, navigate)
-			if (courses) {
-				setUserCourses(courses)
-			}
-		}
-
-		fetchData()
-	}, [id, navigate])
+	const userCourses = useUserCoursesData(id, navigate)
 
 	useEffect(() => {
 		const fetchData = async () => {
