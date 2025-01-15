@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { Course, TelegramUser } from '../../entities/course/model/types'
+import { ICourse, ITelegramUser } from '../../entities/course/model/types'
 import { fetchUser } from '../../entities/user/model/fetchUser'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import './Profile.css'
@@ -12,8 +12,8 @@ function User() {
 	window.scrollTo(0, 0)
 	const { id } = useParams()
 
-	const [userData, setUserData] = useState<TelegramUser | null>(null)
-	const [coursesData, setCoursesData] = useState<Course[]>([])
+	const [userData, setUserData] = useState<ITelegramUser | null>(null)
+	const [coursesData, setCoursesData] = useState<ICourse[]>([])
 	const [feedbacks, setFeedbacks] = useState([])
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ function User() {
 					const data = await fetchUser(id)
 
 					const transformedCourses = data.created_courses.map(
-						(course: Course) => ({
+						(course: ICourse) => ({
 							...course,
 							feedback: course.feedback.map(rate => ({
 								rate: rate.toString(),

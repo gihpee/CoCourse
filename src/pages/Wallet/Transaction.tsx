@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { Transaction } from '../../entities/course/model/types'
+import { ITransaction } from '../../entities/course/model/types'
 import { fetchTransactionData } from '../../entities/wallet/model/fetchGetTransaction'
 import './Wallet.css'
 
@@ -11,7 +11,7 @@ function Transaction() {
 	const navigate = useNavigate()
 	const { tid } = useParams()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
-	const [data, setData] = useState<Transaction | null>(null)
+	const [data, setData] = useState<ITransaction | null>(null)
 
 	useEffect(() => {
 		if (!tid) {

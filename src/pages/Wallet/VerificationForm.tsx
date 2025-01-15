@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
 import { fetchCreatePassportData } from '../../entities/wallet/model/fetchCreatePassportData'
-import { FormData } from '../../entities/wallet/model/types'
+import { IFormData } from '../../entities/wallet/model/types'
 
 function VerificationForm() {
 	const navigate = useNavigate()
@@ -19,7 +19,7 @@ function VerificationForm() {
 		setModalFillOpen(false)
 	}
 
-	const [formData, setFormData] = useState<FormData>({
+	const [formData, setFormData] = useState<IFormData>({
 		passportCopy: null,
 		registrationCopy: null,
 		Name: '',

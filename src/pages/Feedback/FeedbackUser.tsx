@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchFeedbacks } from '../../entities/feedback/model/fetchFeedback'
-import { FeedbackItem } from '../../entities/feedback/model/types'
+import { IFeedbackItem } from '../../entities/feedback/model/types'
 import './Feedback.css'
 
 function FeedbackUser() {
 	window.scrollTo(0, 0)
 
 	const { id } = useParams()
-	const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([])
+	const [feedbacks, setFeedbacks] = useState<IFeedbackItem[]>([])
 
 	useEffect(() => {
 		const getFeedbacks = async () => {

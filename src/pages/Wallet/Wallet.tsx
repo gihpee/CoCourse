@@ -5,7 +5,7 @@ import MainButton from '@twa-dev/mainbutton'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { Transaction } from '../../entities/course/model/types'
+import { ITransaction } from '../../entities/course/model/types'
 import { fetchWithdraw } from '../../entities/wallet/model/fetchWithdraw'
 import './Wallet.css'
 
@@ -13,7 +13,7 @@ function Wallet() {
 	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	// const id = 478969308;
-	const [coursesPaid, setCoursesPaid] = useState<Transaction[]>([])
+	const [coursesPaid, setCoursesPaid] = useState<ITransaction[]>([])
 
 	const [coursesSelled, setCoursesSelled] = useState([])
 	const [balance, setBalance] = useState(0)

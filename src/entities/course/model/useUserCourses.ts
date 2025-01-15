@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { TelegramUser } from './types'
+import { ITelegramUser } from './types'
 
-export const useUserCourses = (authToken: string): TelegramUser[] => {
-	const [userCourses, setUserCourses] = useState<TelegramUser[]>([])
+export const useUserCourses = (authToken: string): ITelegramUser[] => {
+	const [userCourses, setUserCourses] = useState<ITelegramUser[]>([])
 
 	useEffect(() => {
 		const fetchUserData = async () => {

@@ -1,4 +1,4 @@
-export interface Feedback {
+export interface IFeedback {
 	user: number
 	author: number
 	course: number
@@ -7,12 +7,12 @@ export interface Feedback {
 	review: string | null
 }
 
-export interface Topic {
+export interface ITopic {
 	topic: string
 	desc: string
 }
 
-export interface TelegramUser {
+export interface ITelegramUser {
 	user_id: number
 	username: string | null
 	first_name: string | null
@@ -39,12 +39,12 @@ export interface ICourse {
 	university: string | null
 	subject: string | null
 	description: string | null
-	topics: Topic[]
-	feedback: Feedback[]
+	topics: ITopic[]
+	feedback: IFeedback[]
 	date: string | null
-	user: TelegramUser
+	user: ITelegramUser
 	price: number | null
-	channel: Channel
+	channel: IChannel
 	amount_of_students: number
 	is_draft: boolean
 	on_moderation: boolean
@@ -53,7 +53,7 @@ export interface ICourse {
 	image: string
 }
 
-export interface Channel {
+export interface IChannel {
 	user: number
 	chat_id: string | null
 	date: string | null
@@ -64,7 +64,7 @@ export interface Channel {
 	connected_course: number | null
 }
 
-export interface Transaction {
+export interface ITransaction {
 	id: number
 	course: ICourse
 	buyer: number
@@ -79,7 +79,7 @@ export interface Transaction {
 	seller_address: string | null
 }
 
-export interface PassportData {
+export interface IPassportData {
 	user: number
 	passport_scan: string
 	registration_scan: string
@@ -99,7 +99,7 @@ export interface PassportData {
 	approved: boolean
 }
 
-export interface ReturnRequest {
+export interface IReturnRequest {
 	transaction: number
 	reason: string
 	email: string

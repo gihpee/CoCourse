@@ -2,14 +2,14 @@ import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import fetchCourses from '../../entities/feedback/model/fetchCourses'
-import { FeedbackItem } from '../../entities/feedback/model/types'
+import { IFeedbackItem } from '../../entities/feedback/model/types'
 import './Feedback.css'
 
 function FeedbackCourse() {
 	window.scrollTo(0, 0)
 
 	const { id } = useParams()
-	const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([]) // проверить типы
+	const [feedbacks, setFeedbacks] = useState<IFeedbackItem[]>([]) // проверить типы
 	const navigate = useNavigate()
 
 	useEffect(() => {

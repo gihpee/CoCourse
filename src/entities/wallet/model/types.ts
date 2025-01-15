@@ -1,4 +1,4 @@
-export interface FormData {
+export interface IFormData {
 	passportCopy: File | null
 	registrationCopy: File | null
 	Name: string

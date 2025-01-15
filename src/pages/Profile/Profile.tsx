@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { TelegramUser } from '../../entities/course/model/types'
+import { ITelegramUser } from '../../entities/course/model/types'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import './Profile.css'
@@ -15,8 +15,8 @@ function Home() {
 
 	const navigate = useNavigate()
 
-	const [userData, setUserData] = useState<TelegramUser | null>(null)
-	const [coursesData, setCoursesData] = useState<TelegramUser | number[]>()
+	const [userData, setUserData] = useState<ITelegramUser | null>(null)
+	const [coursesData, setCoursesData] = useState<ITelegramUser | number[]>()
 	const [feedbacks, setFeedbacks] = useState<number[]>([])
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -28,7 +28,7 @@ function Home() {
 			if (userDataArray && userDataArray[0]) {
 				const telegramUser = userDataArray[0]
 
-				const userData: TelegramUser = {
+				const userData: ITelegramUser = {
 					user_id: telegramUser.user_id,
 					username: telegramUser.username,
 					first_name: telegramUser.first_name,

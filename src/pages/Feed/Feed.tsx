@@ -1,3 +1,4 @@
+import { ICourse } from '@/entities/course/model/types'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
@@ -8,26 +9,14 @@ import fetchCourses from '../../entities/feedback/model/fetchCourses'
 import fetchUserCoursesData from '../../entities/user/model/fetchUserCourses'
 import './Feed.css'
 
-export interface Course {
-	id: number
-	name: string
-	university: string
-	date: string
-	price: number
-	amount_of_students: number
-	feedback: { rating: number }[]
-	image: string
-	course_id?: number
-}
-
 function Feed() {
 	window.scrollTo(0, 0)
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	console.log(window.Telegram.WebApp.initData)
 	//const { id } = 10;
-	const [data, setData] = useState<Course[]>([])
+	const [data, setData] = useState<ICourse[]>([])
 	const [inputValue, setInputValue] = useState('')
-	const [userCourses, setUserCourses] = useState<Course[] | null>(null)
+	const [userCourses, setUserCourses] = useState<ICourse[] | null>(null)
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -70,12 +59,10 @@ function Feed() {
 		setInputValue(value)
 	}
 
-	const appCourses = filteredDataWithMain.map((item: Course, index) => {
+	const appCourses = filteredDataWithMain.map((item: ICourse, index) => {
 		const averageRate =
 			item.feedback.length > 0
-				? calculateRating(
-						item.feedback.map(f => ({ rate: f.rating.toString() }))
-				  )
+				? calculateRating(item.feedback.map(f => ({ rate: f.rate.toString() })))
 				: 0
 
 		return (
