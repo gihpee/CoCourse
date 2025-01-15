@@ -153,6 +153,8 @@ function EditCourse() {
 	) => {
 		const { name, value, type } = e.target
 
+		const field = name.split('_')[0]
+
 		if (type === 'textarea') {
 			e.target.style.height = 'auto'
 			e.target.style.height = e.target.scrollHeight - 16 + 'px'
@@ -160,7 +162,6 @@ function EditCourse() {
 
 		setFormData(prevData => {
 			const newTopics = [...prevData.topics]
-			const [field] = name.split('_')
 			newTopics[index][field] = value
 			return {
 				...prevData,
@@ -530,7 +531,7 @@ function EditCourse() {
 				</div>
 
 				<span>СОДЕРЖАНИЕ</span>
-				{formData.topics &&
+				{formData.topics && formData.topics.length > 0 ? (
 					formData.topics.map((topic, index) => (
 						<div key={index} className='column' style={{ width: '100%' }}>
 							<div className='field'>
@@ -557,7 +558,10 @@ function EditCourse() {
 								/>
 							</div>
 						</div>
-					))}
+					))
+				) : (
+					<div>No topics available</div>
+				)}
 			</div>
 			<div className='column' style={{ marginBottom: '200px' }}>
 				<div className='field' onClick={addEl}>
