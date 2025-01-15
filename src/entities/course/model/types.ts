@@ -20,11 +20,11 @@ export interface ITelegramUser {
 	university: string | null
 	description: string | null
 	subjects: string[]
-	feedback: number[]
+	feedback: IFeedback[]
 	notify: boolean
 	photo_url: string | null
-	created_courses: number[]
-	bought_courses: number[]
+	created_courses: ICourse[]
+	bought_courses: ICourse[]
 	registrated: boolean
 	verifyed: string
 	connected_payments: boolean

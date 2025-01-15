@@ -33,11 +33,7 @@ function Transaction() {
 
 	const averageRate =
 		Array.isArray(data?.course?.feedback) && data.course.feedback.length > 0
-			? calculateRating(
-					data.course.feedback.map(feedback => ({
-						rate: feedback.rate.toString(),
-					}))
-			  )
+			? calculateRating(data.course.feedback)
 			: 0
 
 	return (

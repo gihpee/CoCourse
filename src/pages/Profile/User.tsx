@@ -48,11 +48,7 @@ function User() {
 	if (coursesData) {
 		userCourses = coursesData.map((item, index) => {
 			const averageRate =
-				item.feedback.length > 0
-					? calculateRating(
-							item.feedback.map(rate => ({ rate: rate.toString() }))
-					  )
-					: 0
+				item.feedback.length > 0 ? calculateRating(item.feedback) : 0
 
 			return (
 				<Link to={`/course/${item.id}`} key={index} className='course_card'>

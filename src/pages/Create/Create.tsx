@@ -44,13 +44,7 @@ function Create() {
 
 	if (coursesData) {
 		userCourses = coursesData.map((item, index) => {
-			const averageRate = item.feedback
-				? calculateRating(
-						item.feedback.map(feedback => ({
-							rate: feedback.rate.toString(),
-						}))
-				  )
-				: 0
+			const averageRate = item.feedback ? calculateRating(item.feedback) : 0
 
 			return (
 				<Link

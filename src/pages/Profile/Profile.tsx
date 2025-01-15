@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { ITelegramUser } from '../../entities/course/model/types'
+import {
+	ICourse,
+	IFeedback,
+	ITelegramUser,
+} from '../../entities/course/model/types'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import './Profile.css'
@@ -16,41 +20,17 @@ function Home() {
 	const navigate = useNavigate()
 
 	const [userData, setUserData] = useState<ITelegramUser | null>(null)
-	const [coursesData, setCoursesData] = useState<ITelegramUser | number[]>()
-	const [feedbacks, setFeedbacks] = useState<number[]>([])
+	const [coursesData, setCoursesData] = useState<ICourse[]>()
+	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
 	const userCoursesData = useUserCourses(window.Telegram.WebApp.initData)
 
 	useEffect(() => {
-		if (userCoursesData && userCoursesData[0]) {
-			const telegramUser = userCoursesData[0]
-
-			const userData: ITelegramUser = {
-				user_id: telegramUser.user_id,
-				username: telegramUser.username,
-				first_name: telegramUser.first_name,
-				last_name: telegramUser.last_name,
-				university: telegramUser.university || '',
-				description: telegramUser.description || '',
-				subjects: telegramUser.subjects || [],
-				feedback: telegramUser.feedback || [],
-				notify: telegramUser.notify,
-				photo_url: telegramUser.photo_url || '',
-				created_courses: telegramUser.created_courses || [],
-				bought_courses: telegramUser.bought_courses || [],
-				registrated: telegramUser.registrated,
-				verifyed: telegramUser.verifyed,
-				connected_payments: telegramUser.connected_payments,
-				comn: telegramUser.comn,
-				balance: telegramUser.balance,
-				is_staff: telegramUser.is_staff,
-				is_active: telegramUser.is_active,
-			}
-
-			setUserData(userData)
-			setFeedbacks(userData.feedback || [])
-			setCoursesData(userData.created_courses || [])
+		if (userCoursesData) {
+			setUserData(userCoursesData)
+			setFeedbacks(userCoursesData.feedback || [])
+			setCoursesData(userCoursesData.created_courses || [])
 		} else {
 			console.log('No user data found.')
 		}
@@ -60,7 +40,9 @@ function Home() {
 
 	if (Array.isArray(coursesData)) {
 		userCourses = coursesData.map((item, index) => {
-			var averageRate = item.feedback ? calculateRating(item.feedback) : 0
+			const averageRate = Array.isArray(item.feedback)
+				? calculateRating(item.feedback)
+				: 0
 
 			return (
 				<Link
@@ -115,7 +97,7 @@ function Home() {
 								className='point'
 								style={{ color: '#AAAAAA', marginTop: '4px', fontSize: '14px' }}
 							>
-								{formatDate(item.date)}
+								{formatDate(item.date || 'Дата не указана')}
 							</div>
 						</div>
 						<div className='price_container'>
@@ -151,7 +133,10 @@ function Home() {
 		<>
 			<div className='top_panel'>
 				<div className='top_panel_back_btn' onClick={() => navigate(`/`)}></div>
-				<Link to={`/edit-profile/${userData?.id}`} className='edit_btn'></Link>
+				<Link
+					to={`/edit-profile/${userData?.user_id}`}
+					className='edit_btn'
+				></Link>
 			</div>
 			<div
 				className='prev'

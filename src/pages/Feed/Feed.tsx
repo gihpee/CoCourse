@@ -49,9 +49,7 @@ function Feed() {
 
 	const appCourses = filteredDataWithMain.map((item: ICourse, index) => {
 		const averageRate =
-			item.feedback.length > 0
-				? calculateRating(item.feedback.map(f => ({ rate: f.rate.toString() })))
-				: 0
+			item.feedback.length > 0 ? calculateRating(item.feedback) : 0
 
 		return (
 			<Link to={`/course/${item.id}`} key={index} className='course_card'>

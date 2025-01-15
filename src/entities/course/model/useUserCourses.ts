@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
 import { ITelegramUser } from './types'
 
-export const useUserCourses = (authToken: string): ITelegramUser[] => {
-	const [userCourses, setUserCourses] = useState<ITelegramUser[]>([])
+export const useUserCourses = (
+	authToken: string
+): ITelegramUser | undefined => {
+	const [userCourses, setUserCourses] = useState<ITelegramUser | undefined>(
+		undefined
+	)
 
 	useEffect(() => {
 		const fetchUserData = async () => {
@@ -15,7 +19,7 @@ export const useUserCourses = (authToken: string): ITelegramUser[] => {
 					},
 				})
 				const data = await response.json()
-				setUserCourses(data || [])
+				setUserCourses(data)
 			} catch (error) {
 				console.error('Ошибка при запросе к серверу:', error)
 			}
