@@ -5,10 +5,10 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { setCourseData } from '../../entities/course/model/courseSlice'
+import { fetchCourseData } from '../../entities/course/model/fetchCourseData'
+import { fetchUserCourses } from '../../entities/course/model/fetchUserCourses'
 import { ICourse } from '../../entities/course/model/types'
-import { useCourseData } from '../../entities/course/model/useCourseData'
 import { setUserCourses } from '../../entities/course/model/userSlice'
-import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import blueWallet from '../../shared/assets/course/blue-wallet.svg'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import redWallet from '../../shared/assets/course/red-wallet.svg'
@@ -33,14 +33,14 @@ function Course() {
 	useEffect(() => {
 		const loadData = async () => {
 			if (cid) {
-				const courseData = await useCourseData(cid)
+				const courseData = await fetchCourseData(cid)
 				if (courseData) {
 					setCourseDataComponent(courseData)
 					dispatch(setCourseData(courseData))
 				}
 			}
 
-			const userData = await useUserCourses(window.Telegram.WebApp.initData)
+			const userData = await fetchUserCourses(window.Telegram.WebApp.initData)
 			if (userData) {
 				const currentUser = userData.find(user => user.user_id === id)
 				if (currentUser) {

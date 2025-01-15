@@ -1,7 +1,7 @@
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useUserCourses } from '../../entities/course/model/useUserCourses'
+import { fetchUserCourses } from '../../entities/course/model/fetchUserCourses'
 import { fetchUpdateUser } from '../../entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from '../../features/bio-change/handleBioChangeMinus'
 import { filterOptions } from '../../features/filterOptions'
@@ -37,7 +37,7 @@ function EditProfile() {
 	//TODO: возможно вынести
 	useEffect(() => {
 		const fetchData = async () => {
-			const userData = await useUserCourses(window.Telegram.WebApp.initData)
+			const userData = await fetchUserCourses(window.Telegram.WebApp.initData)
 			if (userData && userData[0]) {
 				try {
 					setImageSrc(userData[0].photo_url || '')

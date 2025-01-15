@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const useCourseData = (cid: string) => {
+export const fetchCourseData = (cid: string) => {
 	const [courseData, setCourseData] = useState(null)
 
 	useEffect(() => {
