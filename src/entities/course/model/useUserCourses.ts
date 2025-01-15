@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ITelegramUser } from './types'
 
-export const fetchUserCourses = (authToken: string): ITelegramUser[] => {
+export const useUserCourses = (authToken: string): ITelegramUser[] => {
 	const [userCourses, setUserCourses] = useState<ITelegramUser[]>([])
 
 	useEffect(() => {

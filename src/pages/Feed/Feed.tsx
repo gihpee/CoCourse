@@ -6,7 +6,7 @@ import { filterCourses } from '../../entities/course/lib/filterCourses'
 import { filterCoursesByName } from '../../entities/course/lib/filterCoursesByName'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import fetchCourses from '../../entities/feedback/model/fetchCourses'
-import fetchUserCoursesData from '../../entities/user/model/fetchUserCourses'
+import useUserCoursesData from '../../entities/user/model/useUserCourses'
 import './Feed.css'
 
 function Feed() {
@@ -21,7 +21,7 @@ function Feed() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const courses = await fetchUserCoursesData(id, navigate)
+			const courses = await useUserCoursesData(id, navigate)
 			if (courses) {
 				setUserCourses(courses)
 			}

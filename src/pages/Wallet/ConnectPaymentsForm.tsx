@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
 import { fetchCardNumber } from '../../entities/wallet/model/fetchCardNumber'
-import { fetchUpdatePaymentInfo } from '../../entities/wallet/model/fetchUpdatePaymentInfo'
+import { useUpdatePaymentInfo } from '../../entities/wallet/model/useUpdatePaymentInfo'
 
 function ConnectPaymentsForm() {
 	const navigate = useNavigate()
@@ -31,7 +31,7 @@ function ConnectPaymentsForm() {
 	}
 
 	const onPublish = () => {
-		fetchUpdatePaymentInfo(formData, setModalFillOpen, navigate)
+		useUpdatePaymentInfo(formData, setModalFillOpen, navigate)
 	}
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

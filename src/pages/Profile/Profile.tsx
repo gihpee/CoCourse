@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { fetchUserCourses } from '../../entities/course/model/fetchUserCourses'
 import { ITelegramUser } from '../../entities/course/model/types'
+import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import './Profile.css'
 
@@ -22,7 +22,7 @@ function Home() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const userDataArray = await fetchUserCourses(
+			const userDataArray = await useUserCourses(
 				window.Telegram.WebApp.initData
 			)
 			if (userDataArray && userDataArray[0]) {

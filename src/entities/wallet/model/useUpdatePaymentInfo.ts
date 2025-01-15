@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-export const fetchUpdatePaymentInfo = async (
+export const useUpdatePaymentInfo = async (
 	formData: { number: string },
 	setModalFillOpen: (isOpen: boolean) => void,
 	navigate: ReturnType<typeof useNavigate>
