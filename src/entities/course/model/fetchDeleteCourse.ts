@@ -10,10 +10,15 @@ export const deleteCourse = async (cid: string) => {
 		})
 
 		if (!response.ok) {
-			console.log('Failed to delete course')
+			console.log(`Failed to delete course. Status: ${response.status}`)
+			const errorText = await response.text()
+			console.log('Server response:', errorText)
 		}
 
-		return response.json()
+		// Попытка прочитать JSON только если ответ в формате JSON
+		return response.headers.get('Content-Type')?.includes('application/json')
+			? await response.json()
+			: null
 	} catch (error) {
 		console.log('Error deleting course:', error)
 	}
