@@ -1,6 +1,6 @@
-import payments from '@/shared/assets/profile/payments.png'
 import MainButton from '@twa-dev/mainbutton'
 import { useNavigate } from 'react-router-dom'
+import payments from '../../shared/assets/profile/payments.png'
 
 function ConnectPayments() {
 	const navigate = useNavigate()

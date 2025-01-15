@@ -1,10 +1,10 @@
-import { calculateRating } from '@/entities/course/lib/calculateRating'
-import { formatDate } from '@/entities/course/lib/formatDate'
-import { Course } from '@/entities/course/model/types'
-import plus from '@/shared/assets/create/plus.svg'
 import { useTonAddress } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { calculateRating } from '../../entities/course/lib/calculateRating'
+import { formatDate } from '../../entities/course/lib/formatDate'
+import { Course } from '../../entities/course/model/types'
+import plus from '../../shared/assets/create/plus.svg'
 import './Create.css'
 
 function Create() {

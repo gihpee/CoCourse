@@ -1,10 +1,10 @@
-import { calculateRating } from '@/entities/course/lib/calculateRating'
-import { formatDate } from '@/entities/course/lib/formatDate'
-import { Transaction } from '@/entities/course/model/types'
-import { fetchTransactionData } from '@/entities/wallet/model/fetchGetTransaction'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { calculateRating } from '../../entities/course/lib/calculateRating'
+import { formatDate } from '../../entities/course/lib/formatDate'
+import { Transaction } from '../../entities/course/model/types'
+import { fetchTransactionData } from '../../entities/wallet/model/fetchGetTransaction'
 import './Wallet.css'
 
 function Transaction() {

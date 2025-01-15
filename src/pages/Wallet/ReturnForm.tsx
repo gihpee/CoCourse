@@ -1,8 +1,8 @@
-import { fetchCreateReturnRequest } from '@/entities/wallet/model/fetchCreateReturnRequest'
 import MainButton from '@twa-dev/mainbutton'
 import { useState } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { fetchCreateReturnRequest } from '../../entities/wallet/model/fetchCreateReturnRequest'
 
 function ReturnForm() {
 	const navigate = useNavigate()

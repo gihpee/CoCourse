@@ -1,10 +1,10 @@
-import { options } from '@/entities/user/model/constants/places'
-import { fetchBio } from '@/entities/user/model/fetchBio'
-import fetchUpdateUniversity from '@/entities/user/model/fetchUpdateUniversity'
-import { filterOptions } from '@/features/filterOptions'
-import nb from '@/shared/assets/profile/nb.svg'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { options } from '../../entities/user/model/constants/places'
+import { fetchBio } from '../../entities/user/model/fetchBio'
+import fetchUpdateUniversity from '../../entities/user/model/fetchUpdateUniversity'
+import { filterOptions } from '../../features/filterOptions'
+import nb from '../../shared/assets/profile/nb.svg'
 import './Edit.css'
 
 function Univ() {

@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 //import { TonConnectButton } from '@tonconnect/ui-react';
-import { formatDate } from '@/entities/course/lib/formatDate'
-import { Transaction } from '@/entities/course/model/types'
-import { fetchWithdraw } from '@/entities/wallet/model/fetchWithdraw'
 import { useTonAddress } from '@tonconnect/ui-react'
 import MainButton from '@twa-dev/mainbutton'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { formatDate } from '../../entities/course/lib/formatDate'
+import { Transaction } from '../../entities/course/model/types'
+import { fetchWithdraw } from '../../entities/wallet/model/fetchWithdraw'
 import './Wallet.css'
 
 function Wallet() {

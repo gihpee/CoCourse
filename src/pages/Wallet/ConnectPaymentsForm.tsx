@@ -1,9 +1,9 @@
-import { fetchCardNumber } from '@/entities/wallet/model/fetchCardNumber'
-import { fetchUpdatePaymentInfo } from '@/entities/wallet/model/fetchUpdatePaymentInfo'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
+import { fetchCardNumber } from '../../entities/wallet/model/fetchCardNumber'
+import { fetchUpdatePaymentInfo } from '../../entities/wallet/model/fetchUpdatePaymentInfo'
 
 function ConnectPaymentsForm() {
 	const navigate = useNavigate()

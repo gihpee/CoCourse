@@ -1,6 +1,6 @@
-import { fetchGetLastChannel } from '@/entities/channel/model/fetchGetLastChannel'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { fetchGetLastChannel } from '../../entities/channel/model/fetchGetLastChannel'
 
 function ConnectBot() {
 	const navigate = useNavigate()

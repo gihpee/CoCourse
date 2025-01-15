@@ -1,10 +1,10 @@
-import { fetchCreatePassportData } from '@/entities/wallet/model/fetchCreatePassportData'
-import { FormData } from '@/entities/wallet/model/types'
 import MainButton from '@twa-dev/mainbutton'
 import { ChangeEvent, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
+import { fetchCreatePassportData } from '../../entities/wallet/model/fetchCreatePassportData'
+import { FormData } from '../../entities/wallet/model/types'
 
 function VerificationForm() {
 	const navigate = useNavigate()
