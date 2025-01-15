@@ -14,6 +14,7 @@ import './CreateCourse.css'
 function CreateCourse() {
 	const location = useLocation()
 	const { data } = location.state || {}
+	console.log('data:', data)
 
 	const navigate = useNavigate()
 
@@ -27,12 +28,12 @@ function CreateCourse() {
 		Subject: string
 		topics: { topic: string; desc: string }[]
 	}>({
-		Name: data.channel.name,
+		Name: data?.channel?.name || '',
 		Univ: '',
 		Course: '1 курс, 1 семестр',
 		Desc: '',
 		Price: null,
-		ChannelUrl: data.channel.url,
+		ChannelUrl: data?.channel?.url || '',
 		Subject: '',
 		topics: [],
 	})
