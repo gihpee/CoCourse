@@ -32,7 +32,7 @@ function Transaction() {
 	}, [tid])
 
 	const averageRate =
-		Array.isArray(data?.course?.feedback) && data.course.feedback.length > 0
+		Array.isArray(data?.course?.feedback) && data?.course?.feedback.length > 0
 			? calculateRating(data.course.feedback)
 			: 0
 
