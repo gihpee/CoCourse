@@ -1,6 +1,6 @@
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import { fetchUpdateUser } from '../../entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from '../../features/bio-change/handleBioChangeMinus'
@@ -18,8 +18,6 @@ import { optionsUniv } from '../optionsUniv'
 import './EditProfile.css'
 
 function EditProfile() {
-	const { id } = useParams()
-
 	const [imageSrc, setImageSrc] = useState('')
 	const [isNotify, setIsNotify] = useState(true)
 	const [bioValue, setBioValue] = useState('')

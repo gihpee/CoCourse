@@ -1,12 +1,10 @@
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
-import { useNavigate } from 'react-router-dom'
 import { fetchCardNumber } from '../../entities/wallet/model/fetchCardNumber'
 import { useUpdatePaymentInfo } from '../../entities/wallet/model/useUpdatePaymentInfo'
 
 function ConnectPaymentsForm() {
-	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	const [formData, setFormData] = useState({

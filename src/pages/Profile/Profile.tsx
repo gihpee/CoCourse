@@ -14,15 +14,12 @@ import './Profile.css'
 
 function Home() {
 	window.scrollTo(0, 0)
-	const { id, first_name, last_name, username } =
-		window.Telegram.WebApp.initDataUnsafe.user
 
 	const navigate = useNavigate()
 
 	const [userData, setUserData] = useState<ITelegramUser | null>(null)
 	const [coursesData, setCoursesData] = useState<ICourse[]>()
 	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
-	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
 	const userCoursesData = useUserCourses(window.Telegram.WebApp.initData)
 

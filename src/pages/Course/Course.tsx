@@ -1,5 +1,4 @@
 import MainButton from '@twa-dev/mainbutton'
-import { useDispatch } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
@@ -14,7 +13,6 @@ import './Course.css'
 function Course() {
 	window.scrollTo(0, 0)
 	const { cid } = useParams()
-	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	const {
 		data: courseDataComponent,
 		isLoading,
@@ -28,8 +26,6 @@ function Course() {
 	// >([])
 
 	const navigate = useNavigate()
-
-	const dispatch = useDispatch()
 
 	// useEffect(() => {
 	// 	if (courseDataComponent) {
