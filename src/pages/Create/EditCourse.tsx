@@ -95,7 +95,7 @@ function EditCourse() {
 					Univ: data.university,
 					Desc: data.description,
 					Subject: data.subject,
-					topics: data.topics,
+					topics: Array.isArray(data.topics) ? data.topics : [],
 					Price: data.price,
 					is_draft: data.is_draft,
 				}))
@@ -136,7 +136,9 @@ function EditCourse() {
 	const addEl = () => {
 		setFormData(prevData => ({
 			...prevData,
-			topics: [...prevData.topics, { topic: '', desc: '' }],
+			topics: Array.isArray(prevData.topics)
+				? [...prevData.topics, { topic: '', desc: '' }]
+				: [{ topic: '', desc: '' }],
 		}))
 	}
 
@@ -531,7 +533,7 @@ function EditCourse() {
 				</div>
 
 				<span>СОДЕРЖАНИЕ</span>
-				{formData.topics && formData.topics.length > 0 ? (
+				{Array.isArray(formData.topics) && formData.topics.length > 0 ? (
 					formData.topics.map((topic, index) => (
 						<div key={index} className='column' style={{ width: '100%' }}>
 							<div className='field'>
