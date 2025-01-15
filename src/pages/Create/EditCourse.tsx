@@ -205,6 +205,7 @@ function EditCourse() {
 						navigate('/profile')
 					} catch (error) {
 						setModalText('Произошла ошибка при публикации курса')
+						console.log('1.', error)
 						setModalVOpen(true)
 					}
 				}
@@ -229,6 +230,7 @@ function EditCourse() {
 						navigate('/profile')
 					} catch (error) {
 						setModalText('Произошла ошибка при публикации курса')
+						console.log('2.', error)
 					}
 				}
 			}
@@ -239,6 +241,7 @@ function EditCourse() {
 					navigate('/profile')
 				} catch (error) {
 					setModalText('Произошла ошибка при публикации курса')
+					console.log('3.', error)
 				}
 			}
 		}
