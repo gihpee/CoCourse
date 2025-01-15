@@ -1,21 +1,32 @@
+import { ICourse, IFeedback } from '@/entities/course/model/types'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import fetchCourses from '../../entities/feedback/model/fetchCourses'
-import { IFeedbackItem } from '../../entities/feedback/model/types'
 import './Feedback.css'
 
 function FeedbackCourse() {
 	window.scrollTo(0, 0)
 
 	const { id } = useParams()
-	const [feedbacks, setFeedbacks] = useState<IFeedbackItem[]>([]) // проверить типы
+	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([]) // проверить типы
 	const navigate = useNavigate()
+
+	const extractFeedbacks = (courses: ICourse[]): IFeedback[] => {
+		return courses.flatMap(course => course.feedback)
+	}
 
 	useEffect(() => {
 		const loadCourses = async () => {
-			const feedbackData = await fetchCourses(id || 'defaultId')
-			setFeedbacks(feedbackData)
+			try {
+				const coursesData = await fetchCourses(id || 'defaultId')
+
+				const feedbackData = extractFeedbacks(coursesData)
+
+				setFeedbacks(feedbackData)
+			} catch (error) {
+				console.error('Error loading courses or feedbacks:', error)
+			}
 		}
 
 		loadCourses()
