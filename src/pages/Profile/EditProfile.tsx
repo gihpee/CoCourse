@@ -37,15 +37,15 @@ function EditProfile() {
 	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
 	useEffect(() => {
-		if (userCourses && userCourses[0]) {
+		if (userCourses) {
 			try {
-				setImageSrc(userCourses[0].photo_url || '')
-				setIsNotify(userCourses[0].notify || false)
-				setBioValue(userCourses[0].description || '')
-				setUniValue(userCourses[0].university || '')
-				setSelectedOptions(userCourses[0].subjects || '')
-				setFirstName(userCourses[0].first_name || '')
-				setLastName(userCourses[0].last_name || '')
+				setImageSrc(userCourses.photo_url || '')
+				setIsNotify(userCourses.notify || false)
+				setBioValue(userCourses.description || '')
+				setUniValue(userCourses.university || '')
+				setSelectedOptions(userCourses.subjects || '')
+				setFirstName(userCourses.first_name || '')
+				setLastName(userCourses.last_name || '')
 			} catch (error) {
 				console.error('Ошибка при запросе к серверу:', error)
 			}
