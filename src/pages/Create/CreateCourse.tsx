@@ -13,7 +13,7 @@ import './CreateCourse.css'
 
 function CreateCourse() {
 	const location = useLocation()
-	const { data } = location.state || {}
+	const data = location.state?.data || {}
 	console.log('data:', data)
 
 	const navigate = useNavigate()

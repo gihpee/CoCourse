@@ -13,6 +13,7 @@ export const fetchGetLastChannel = async () => {
 		const result = await response.json()
 
 		if (response.status === 200) {
+			console.log('API Response:', result)
 			return result
 		} else {
 			console.log('Failed to fetch channel data')
