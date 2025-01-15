@@ -1,12 +1,9 @@
 import MainButton from '@twa-dev/mainbutton'
-import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
-import { setCourseData } from '../../entities/course/model/courseSlice'
 import { useCourseData } from '../../entities/course/model/useCourseData'
-import { setUserCourses } from '../../entities/course/model/userSlice'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import blueWallet from '../../shared/assets/course/blue-wallet.svg'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
@@ -26,32 +23,32 @@ function Course() {
 
 	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
-	const [userCoursesComponent, setUserCoursesComponent] = useState<
-		{ id: number }[]
-	>([])
+	// const [userCoursesComponent, setUserCoursesComponent] = useState<
+	// 	{ id: number }[]
+	// >([])
 
 	const navigate = useNavigate()
 
 	const dispatch = useDispatch()
 
-	useEffect(() => {
-		if (courseDataComponent) {
-			dispatch(setCourseData(courseDataComponent))
-		}
+	// useEffect(() => {
+	// 	if (courseDataComponent) {
+	// 		dispatch(setCourseData(courseDataComponent))
+	// 	}
 
-		if (userCourses) {
-			const currentUser = userCourses.find(user => user.user_id === id)
-			if (currentUser) {
-				const coursesWithIds = currentUser.bought_courses.map(courseId => ({
-					id: courseId,
-				}))
-				setUserCoursesComponent(coursesWithIds)
-				dispatch(setUserCourses(coursesWithIds))
-			} else {
-				console.log('User not found.')
-			}
-		}
-	}, [courseDataComponent, id, dispatch, userCourses])
+	// 	if (userCourses) {
+	// 		const currentUser = userCourses.find(user => user.user_id === id)
+	// 		if (currentUser) {
+	// 			const coursesWithIds = currentUser.bought_courses.map(courseId => ({
+	// 				id: courseId,
+	// 			}))
+	// 			setUserCoursesComponent(coursesWithIds)
+	// 			dispatch(setUserCourses(coursesWithIds))
+	// 		} else {
+	// 			console.log('User not found.')
+	// 		}
+	// 	}
+	// }, [courseDataComponent, id, dispatch, userCourses])
 
 	if (isLoading) return <div className='loading'></div>
 	if (error) return <div>{error}</div>
@@ -60,7 +57,9 @@ function Course() {
 		return <div className='loading'></div> // или что-то другое, пока данные загружаются
 	}
 
-	const paid = userCoursesComponent?.some(course => course.id === Number(cid))
+	const paid = userCourses?.bought_courses?.some(
+		course => course.id === Number(cid)
+	)
 
 	//TODO: вынести в отдельный компонент
 	const topics = courseDataComponent.topics?.map(
@@ -89,10 +88,8 @@ function Course() {
 
 	const feedback = courseDataComponent.feedback ?? []
 
-	const feedbackWithRate = feedback.map(rate => ({ rate: rate.toString() }))
-
-	if (feedbackWithRate.length > 0) {
-		averageRate = calculateRating(feedbackWithRate)
+	if (feedback.length > 0) {
+		averageRate = calculateRating(feedback)
 	}
 
 	//TODO: вынести в отдельный компонент
