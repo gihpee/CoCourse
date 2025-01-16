@@ -1,15 +1,15 @@
 import { ICourse } from '@/entities/course/model/types'
 
-const fetchCourses = async (id: string): Promise<ICourse[]> => {
+const fetchCourses = async (id: string): Promise<ICourse> => {
 	try {
 		const response = await fetch(
-			`https://comncourse.ru/api/get-courses/?id=${id}`
+			`https://comncourse.ru/api/get-course/?id=${id}`
 		)
 		const data = await response.json()
-		return data || []
+		return data || {}
 	} catch (error) {
-		console.error('Error fetching data:', error)
-		return []
+		console.error('Error fetching course data:', error)
+		return {} as ICourse
 	}
 }
 

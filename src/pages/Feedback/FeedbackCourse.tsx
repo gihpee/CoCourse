@@ -1,4 +1,4 @@
-import { ICourse, IFeedback } from '@/entities/course/model/types'
+import { IFeedback } from '@/entities/course/model/types'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -12,19 +12,13 @@ function FeedbackCourse() {
 	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([]) // проверить типы
 	const navigate = useNavigate()
 
-	const extractFeedbacks = (courses: ICourse[]): IFeedback[] => {
-		return Array.isArray(courses)
-			? courses.map(course => course.feedback || []).flat()
-			: []
-	}
-
 	useEffect(() => {
 		const loadCourses = async () => {
 			try {
-				const coursesData = await fetchCourses(id || 'defaultId')
-				console.log('Courses data:', coursesData)
+				const courseData = await fetchCourses(id || 'defaultId')
+				console.log('Course data:', courseData)
 
-				const feedbackData = extractFeedbacks(coursesData)
+				const feedbackData = courseData.feedback
 				console.log('Feedback data:', feedbackData)
 
 				setFeedbacks(feedbackData)
@@ -36,80 +30,78 @@ function FeedbackCourse() {
 		loadCourses()
 	}, [id])
 
-	const cards = feedbacks
-		.filter(item => item)
-		.map((item, index) => {
-			return (
-				<div
-					className='course_card'
-					id={index.toString()}
-					style={{ paddingTop: '0px' }}
-				>
-					<div className='card_mentor'>
-						<div
-							className='card_wp'
-							style={{ backgroundColor: 'black', width: 'calc(100% - 16px)' }}
-						>
-							<div
-								style={{
-									width: '40px',
-									height: '40px',
-									marginLeft: '8px',
-									borderRadius: '8px',
-									backgroundImage: `url(https://comncourse.ru${item.user.photo_url})`,
-									backgroundSize: 'cover',
-									backgroundRepeat: 'no-repeat',
-									backgroundPosition: 'center',
-								}}
-							></div>
-							<div className='points_user'>
-								<div
-									className='point_user'
-									style={{
-										fontFamily: 'NeueMachina',
-										fontSize: '16px',
-										color: 'white',
-									}}
-								>
-									<b>{item.user.first_name + ' ' + item.user.last_name}</b>
-								</div>
-								<div className='point_user'>{item.user.university}</div>
-							</div>
-						</div>
-					</div>
-					<div className='card_info' style={{ paddingTop: '0px' }}>
-						<div className='row_grad_l'>
-							<div
-								className='grad_l'
-								style={{
-									width: `calc((100% / 5) * ${item.rate})`,
-									background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${item.rate}))`,
-								}}
-							></div>
-						</div>
+	const cards = feedbacks.map((item, index) => {
+		return (
+			<div
+				className='course_card'
+				id={index.toString()}
+				style={{ paddingTop: '0px' }}
+			>
+				<div className='card_mentor'>
+					<div
+						className='card_wp'
+						style={{ backgroundColor: 'black', width: 'calc(100% - 16px)' }}
+					>
 						<div
 							style={{
-								width: 'calc(100% - 16px)',
-								backgroundColor: 'black',
-								height: '16px',
-								borderRadius: '16px',
-								zIndex: '-10',
-								marginTop: '-16px',
+								width: '40px',
+								height: '40px',
+								marginLeft: '8px',
+								borderRadius: '8px',
+								backgroundImage: `url(https://comncourse.ru${item.user.photo_url})`,
+								backgroundSize: 'cover',
+								backgroundRepeat: 'no-repeat',
+								backgroundPosition: 'center',
+							}}
+						></div>
+						<div className='points_user'>
+							<div
+								className='point_user'
+								style={{
+									fontFamily: 'NeueMachina',
+									fontSize: '16px',
+									color: 'white',
+								}}
+							>
+								<b>{item.user.first_name + ' ' + item.user.last_name}</b>
+							</div>
+							<div className='point_user'>{item.user.university}</div>
+						</div>
+					</div>
+				</div>
+				<div className='card_info' style={{ paddingTop: '0px' }}>
+					<div className='row_grad_l'>
+						<div
+							className='grad_l'
+							style={{
+								width: `calc((100% / 5) * ${item.rate})`,
+								background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${item.rate}))`,
 							}}
 						></div>
 					</div>
-					<p
+					<div
 						style={{
-							marginTop: '8px',
 							width: 'calc(100% - 16px)',
-							marginBottom: '8px',
+							backgroundColor: 'black',
+							height: '16px',
+							borderRadius: '16px',
+							zIndex: '-10',
+							marginTop: '-16px',
 						}}
-					>
-						{item.review}
-					</p>
+					></div>
 				</div>
-			)
-		})
+				<p
+					style={{
+						marginTop: '8px',
+						width: 'calc(100% - 16px)',
+						marginBottom: '8px',
+					}}
+				>
+					{item.review}
+				</p>
+			</div>
+		)
+	})
 
 	return (
 		<div className='column'>

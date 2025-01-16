@@ -20,20 +20,22 @@ function SendFeedback() {
 		const fetchData = async () => {
 			try {
 				if (id) {
-					const feedbacks = await fetchCourses(id)
+					const course = await fetchCourses(id)
 
-					const transformedFeedbacks: IFeedback[] = feedbacks.flatMap(course =>
-						course.feedback.map(feedback => ({
-							user: course.user,
-							author: course.user.user_id,
-							course: course.id,
-							date: new Date().toISOString(),
-							rate: feedback.rate,
-							review: feedback.review || '',
-						}))
-					)
+					if (course.feedback) {
+						const transformedFeedbacks: IFeedback[] = course.feedback.map(
+							feedback => ({
+								user: course.user,
+								author: course.user.user_id,
+								course: course.id,
+								date: new Date().toISOString(),
+								rate: feedback.rate,
+								review: feedback.review || '',
+							})
+						)
 
-					setFeedbacks(transformedFeedbacks)
+						setFeedbacks(transformedFeedbacks)
+					}
 				}
 			} catch (error) {
 				console.error('Error fetching data:', error)
