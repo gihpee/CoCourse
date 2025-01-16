@@ -15,6 +15,7 @@ function FeedbackCourse() {
 	useEffect(() => {
 		const loadCourses = async () => {
 			try {
+				console.log(id)
 				const courseData = await fetchCourses(id || 'defaultId')
 				console.log('Course data:', courseData)
 
