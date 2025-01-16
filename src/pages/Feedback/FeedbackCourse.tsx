@@ -13,7 +13,7 @@ function FeedbackCourse() {
 	const navigate = useNavigate()
 
 	const extractFeedbacks = (courses: ICourse[]): IFeedback[] => {
-		return courses.flatMap(course => course.feedback)
+		return courses.flatMap(course => course.feedback || [])
 	}
 
 	useEffect(() => {
@@ -34,78 +34,80 @@ function FeedbackCourse() {
 		loadCourses()
 	}, [id])
 
-	const cards = feedbacks.map((item, index) => {
-		return (
-			<div
-				className='course_card'
-				id={index.toString()}
-				style={{ paddingTop: '0px' }}
-			>
-				<div className='card_mentor'>
-					<div
-						className='card_wp'
-						style={{ backgroundColor: 'black', width: 'calc(100% - 16px)' }}
-					>
+	const cards = feedbacks
+		.filter(item => item)
+		.map((item, index) => {
+			return (
+				<div
+					className='course_card'
+					id={index.toString()}
+					style={{ paddingTop: '0px' }}
+				>
+					<div className='card_mentor'>
 						<div
-							style={{
-								width: '40px',
-								height: '40px',
-								marginLeft: '8px',
-								borderRadius: '8px',
-								backgroundImage: `url(https://comncourse.ru${item.user.photo_url})`,
-								backgroundSize: 'cover',
-								backgroundRepeat: 'no-repeat',
-								backgroundPosition: 'center',
-							}}
-						></div>
-						<div className='points_user'>
+							className='card_wp'
+							style={{ backgroundColor: 'black', width: 'calc(100% - 16px)' }}
+						>
 							<div
-								className='point_user'
 								style={{
-									fontFamily: 'NeueMachina',
-									fontSize: '16px',
-									color: 'white',
+									width: '40px',
+									height: '40px',
+									marginLeft: '8px',
+									borderRadius: '8px',
+									backgroundImage: `url(https://comncourse.ru${item.user.photo_url})`,
+									backgroundSize: 'cover',
+									backgroundRepeat: 'no-repeat',
+									backgroundPosition: 'center',
 								}}
-							>
-								<b>{item.user.first_name + ' ' + item.user.last_name}</b>
+							></div>
+							<div className='points_user'>
+								<div
+									className='point_user'
+									style={{
+										fontFamily: 'NeueMachina',
+										fontSize: '16px',
+										color: 'white',
+									}}
+								>
+									<b>{item.user.first_name + ' ' + item.user.last_name}</b>
+								</div>
+								<div className='point_user'>{item.user.university}</div>
 							</div>
-							<div className='point_user'>{item.user.university}</div>
 						</div>
 					</div>
-				</div>
-				<div className='card_info' style={{ paddingTop: '0px' }}>
-					<div className='row_grad_l'>
+					<div className='card_info' style={{ paddingTop: '0px' }}>
+						<div className='row_grad_l'>
+							<div
+								className='grad_l'
+								style={{
+									width: `calc((100% / 5) * ${item.rate})`,
+									background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${item.rate}))`,
+								}}
+							></div>
+						</div>
 						<div
-							className='grad_l'
 							style={{
-								width: `calc((100% / 5) * ${item.rate})`,
-								background: `linear-gradient(to right, #EA4A4F 0%, #D8BB55, #7EBB69 calc(500% / ${item.rate}))`,
+								width: 'calc(100% - 16px)',
+								backgroundColor: 'black',
+								height: '16px',
+								borderRadius: '16px',
+								zIndex: '-10',
+								marginTop: '-16px',
 							}}
 						></div>
 					</div>
-					<div
+					<p
 						style={{
+							marginTop: '8px',
 							width: 'calc(100% - 16px)',
-							backgroundColor: 'black',
-							height: '16px',
-							borderRadius: '16px',
-							zIndex: '-10',
-							marginTop: '-16px',
+							marginBottom: '8px',
 						}}
-					></div>
+					>
+						{item.review}
+					</p>
 				</div>
-				<p
-					style={{
-						marginTop: '8px',
-						width: 'calc(100% - 16px)',
-						marginBottom: '8px',
-					}}
-				>
-					{item.review}
-				</p>
-			</div>
-		)
-	})
+			)
+		})
 
 	return (
 		<div className='column'>

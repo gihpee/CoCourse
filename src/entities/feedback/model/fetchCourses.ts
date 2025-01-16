@@ -6,7 +6,7 @@ const fetchCourses = async (id: string): Promise<ICourse[]> => {
 			`https://comncourse.ru/api/get-courses/?id=${id}`
 		)
 		const data = await response.json()
-		return data.feedback || []
+		return data || []
 	} catch (error) {
 		console.error('Error fetching data:', error)
 		return []
