@@ -20,8 +20,10 @@ function FeedbackCourse() {
 		const loadCourses = async () => {
 			try {
 				const coursesData = await fetchCourses(id || 'defaultId')
+				console.log('Courses data:', coursesData)
 
 				const feedbackData = extractFeedbacks(coursesData)
+				console.log('Feedback data:', feedbackData)
 
 				setFeedbacks(feedbackData)
 			} catch (error) {
