@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { ITransaction } from '../../entities/course/model/types'
+import { fetchUserTransactions } from '../../entities/wallet/model/fetchUserTransactions'
 import { fetchWithdraw } from '../../entities/wallet/model/fetchWithdraw'
 import './Wallet.css'
 

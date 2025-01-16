@@ -1,4 +1,4 @@
-const fetchUserTransactions = async (id: string) => {
+export const fetchUserTransactions = async (id: string) => {
 	try {
 		const response = await fetch(
 			`https://comncourse.ru/api/user-transactions/?id=${id}`

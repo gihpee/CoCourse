@@ -40,8 +40,10 @@ function Feed() {
 	}
 
 	const filteredData = filterCoursesByName(data, inputValue)
+	console.log('filteredData', filteredData)
 
 	const filteredDataWithMain = filterCourses(filteredData)
+	console.log('filteredDataWithMain', filteredDataWithMain)
 
 	const handleUniChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value
