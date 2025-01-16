@@ -13,7 +13,9 @@ function FeedbackCourse() {
 	const navigate = useNavigate()
 
 	const extractFeedbacks = (courses: ICourse[]): IFeedback[] => {
-		return courses.flatMap(course => course.feedback || [])
+		return Array.isArray(courses)
+			? courses.map(course => course.feedback || []).flat()
+			: []
 	}
 
 	useEffect(() => {
