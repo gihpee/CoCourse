@@ -1,11 +1,11 @@
-import fetchGetCourses from '@/entities/course/model/fetchGetCourses'
-import { ICourse } from '@/entities/course/model/types'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { filterCourses } from '../../entities/course/lib/filterCourses'
 import { filterCoursesByName } from '../../entities/course/lib/filterCoursesByName'
 import { formatDate } from '../../entities/course/lib/formatDate'
+import fetchGetCourses from '../../entities/course/model/fetchGetCourses'
+import { ICourse } from '../../entities/course/model/types'
 import useUserCoursesData from '../../entities/user/model/useUserCourses'
 import './Feed.css'
 
