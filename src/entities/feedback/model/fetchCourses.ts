@@ -3,7 +3,7 @@ import { ICourse } from '@/entities/course/model/types'
 const fetchCourses = async (id: string): Promise<ICourse> => {
 	try {
 		const response = await fetch(
-			`https://comncourse.ru/api/get-course/?id=${id}`
+			`https://comncourse.ru/api/get-courses/?id=${id}`
 		)
 		const data = await response.json()
 		console.log('fetchCoursesComp', data)
