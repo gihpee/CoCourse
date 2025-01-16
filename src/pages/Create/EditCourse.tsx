@@ -537,7 +537,8 @@ function EditCourse() {
 				</div>
 
 				<span>СОДЕРЖАНИЕ</span>
-				{Array.isArray(formData.topics) && formData.topics.length > 0 ? (
+				{Array.isArray(formData.topics) &&
+					formData.topics.length > 0 &&
 					formData.topics.map((topic, index) => (
 						<div key={index} className='column' style={{ width: '100%' }}>
 							<div className='field'>
@@ -564,10 +565,7 @@ function EditCourse() {
 								/>
 							</div>
 						</div>
-					))
-				) : (
-					<div>No topics available</div>
-				)}
+					))}
 			</div>
 			<div className='column' style={{ marginBottom: '200px' }}>
 				<div className='field' onClick={addEl}>
