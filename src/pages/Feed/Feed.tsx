@@ -17,13 +17,14 @@ function Feed() {
 	const navigate = useNavigate()
 
 	const userCourses = useUserCoursesData(id, navigate)
+	console.log('userCourses', userCourses)
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const result = await fetchCourses('')
 				result.reverse()
-				console.log(result)
+				console.log('fetchCourses', result)
 
 				setData(result)
 			} catch (error) {
