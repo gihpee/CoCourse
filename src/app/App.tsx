@@ -1,5 +1,4 @@
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
-import { useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import BuyCourse from '../pages/Course/BuyCourse'
 import Course from '../pages/Course/Course'
@@ -38,21 +37,20 @@ function App() {
 	tg.WebApp.enableClosingConfirmation()
 	const navigate = useNavigate()
 
-	useEffect(() => {
-		const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
-		console.log('urlParams', urlParams)
-		const startParam = urlParams.get('start_param')
-		console.log('startParam', startParam)
+	const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
+	console.log('WebApp.initData', window.Telegram.WebApp.initData)
+	console.log('urlParams', urlParams)
+	const startParam = urlParams.get('start_param')
+	console.log('startParam', startParam)
 
-		if (startParam) {
-			if (startParam === 'profile') {
-				navigate('/profile')
-			} else if (startParam.startsWith('course/')) {
-				const courseId = startParam.split('/')[1]
-				navigate(`/course/${courseId}`)
-			}
+	if (startParam) {
+		if (startParam === 'profile') {
+			navigate('/profile')
+		} else if (startParam.startsWith('course/')) {
+			const courseId = startParam.split('/')[1]
+			navigate(`/course/${courseId}`)
 		}
-	}, [])
+	}
 
 	return (
 		<TonConnectUIProvider manifestUrl='https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json'>
