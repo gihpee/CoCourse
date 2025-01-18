@@ -39,7 +39,7 @@ function App() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		const urlParams = new URLSearchParams(window.location.search)
+		const urlParams = new URLSearchParams(tg.WebApp.initData)
 		console.log('urlParams', urlParams)
 		const startParam = urlParams.get('start_param')
 		console.log('startParam', startParam)
