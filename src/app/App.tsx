@@ -44,10 +44,10 @@ function App() {
 		const startParam = urlParams.get('signature')
 		console.log('startParam', startParam)
 
-		if (startParam) {
-			const userData = JSON.parse(decodeURIComponent(startParam))
-			console.log('Decoded user data:', userData)
-		}
+		// if (startParam) {
+		// 	const userData = JSON.parse(decodeURIComponent(startParam))
+		// 	console.log('Decoded user data:', userData)
+		// }
 	}, [])
 
 	return (
