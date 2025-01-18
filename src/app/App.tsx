@@ -40,10 +40,12 @@ function App() {
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
 		console.log('Decoded initData:', urlParams.toString())
-		const startParam = urlParams.get('start_param')
+		const startParam = urlParams.get('signature')
+		console.log('startParam', startParam)
 
 		if (startParam) {
-			console.log('Перешли по ссылке с параметром:', startParam)
+			const userData = JSON.parse(decodeURIComponent(startParam))
+			console.log('Decoded user data:', userData)
 		}
 	}, [])
 
