@@ -40,18 +40,25 @@ function App() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		tg.WebApp.expand()
-		tg.WebApp.enableClosingConfirmation()
+		if (tg.WebApp) {
+			tg.WebApp.expand()
+			tg.WebApp.enableClosingConfirmation()
 
-		const initData = tg.WebApp.initData
-		const urlParams = new URLSearchParams(initData)
-		const startParam = urlParams.get('start')
+			const initData = tg.WebApp.initData
+			const urlParams = new URLSearchParams(initData)
+			const startParam = urlParams.get('start')
 
-		if (startParam && startParam.startsWith('course/')) {
-			const courseId = startParam.split('/')[1]
-			navigate(`/course/${courseId}`)
-		} else if (startParam && startParam === 'profile') {
-			navigate('/profile')
+			console.log('urlParams', urlParams)
+			console.log('startParam', startParam)
+
+			if (startParam) {
+				if (startParam === 'profile') {
+					navigate('/profile')
+				} else if (startParam.startsWith('course/')) {
+					const courseId = startParam.split('/')[1]
+					navigate(`/course/${courseId}`)
+				}
+			}
 		}
 	}, [navigate, tg])
 
