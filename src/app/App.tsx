@@ -39,9 +39,7 @@ function App() {
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
-		const urlParams2 = new URLSearchParams(window.location.search)
-		console.log('Decoded initData:', urlParams2.toString())
-		const startParam = urlParams.get('signature')
+		const startParam = urlParams.get('start_param')
 		console.log('startParam', startParam)
 
 		// if (startParam) {
