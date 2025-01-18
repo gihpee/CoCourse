@@ -42,7 +42,7 @@ function App() {
 		const tg = window.Telegram.WebApp
 		const initData = tg.initData
 		const urlParams = new URLSearchParams(initData)
-		const startParam = urlParams.get('start')
+		const startParam = urlParams.get('start_param')
 
 		if (startParam) {
 			if (startParam === 'profile') {
