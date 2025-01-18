@@ -38,8 +38,8 @@ function App() {
 	tg.WebApp.enableClosingConfirmation()
 
 	useEffect(() => {
-		const urlParams = new URLSearchParams(window.Telegram.WebApp)
-		console.log('urlParams', urlParams)
+		const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
+		console.log('Decoded initData:', urlParams.toString())
 		const startParam = urlParams.get('start_param')
 
 		if (startParam) {
