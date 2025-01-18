@@ -52,7 +52,7 @@ function App() {
 				navigate(`/course/${courseId}`)
 			}
 		}
-	}, [navigate])
+	}, [])
 
 	return (
 		<TonConnectUIProvider manifestUrl='https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json'>
