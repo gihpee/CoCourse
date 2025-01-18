@@ -39,12 +39,13 @@ function App() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		const initData = window.Telegram.WebApp.initData
-		const decodedData = decodeURIComponent(initData)
-		console.log('decodedData', decodedData)
-		const params = JSON.parse(decodedData)
-		console.log('params', params)
-		const startParam = params.start_param
+		const currentUrl = window.location.href
+		console.log('currentUrl', currentUrl)
+
+		const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
+		console.log('WebApp.initData', window.Telegram.WebApp.initData)
+		console.log('urlParams', urlParams)
+		const startParam = urlParams.get('start_param')
 		console.log('startParam', startParam)
 
 		if (startParam) {
