@@ -17,6 +17,7 @@
     "@twa-dev/mainbutton": "^0.0.11",
     "@twa-dev/sdk": "github:twa-dev/sdk",
     "@twa-dev/types": "^7.0.0",
+    "@vkruglikov/react-telegram-web-app": "^2.1.9",
     "buffer": "^6.0.3",
     "eruda": "^3.0.1",
     "node-stdlib-browser": "^1.2.0",

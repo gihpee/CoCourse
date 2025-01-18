@@ -36,31 +36,23 @@ function App() {
 	const tg: any = window.Telegram
 	tg.WebApp.expand()
 	tg.WebApp.enableClosingConfirmation()
-
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (tg.WebApp) {
-			tg.WebApp.expand()
-			tg.WebApp.enableClosingConfirmation()
+		const tg = window.Telegram.WebApp
+		const initData = tg.initData
+		const urlParams = new URLSearchParams(initData)
+		const startParam = urlParams.get('start')
 
-			const initData = tg.WebApp.initData
-			const urlParams = new URLSearchParams(initData)
-			const startParam = urlParams.get('start')
-
-			console.log('urlParams', urlParams)
-			console.log('startParam', startParam)
-
-			if (startParam) {
-				if (startParam === 'profile') {
-					navigate('/profile')
-				} else if (startParam.startsWith('course/')) {
-					const courseId = startParam.split('/')[1]
-					navigate(`/course/${courseId}`)
-				}
+		if (startParam) {
+			if (startParam === 'profile') {
+				navigate('/profile')
+			} else if (startParam.startsWith('course/')) {
+				const courseId = startParam.split('/')[1]
+				navigate(`/course/${courseId}`)
 			}
 		}
-	}, [navigate, tg])
+	}, [navigate])
 
 	return (
 		<TonConnectUIProvider manifestUrl='https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json'>
