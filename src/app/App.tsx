@@ -43,8 +43,8 @@ function App() {
 		const startParam = urlParams.get('start_param')
 		console.log('startParam', startParam)
 
-		if (startParam && startParam.startsWith('course/')) {
-			const courseId = startParam.split('/')[1]
+		if (startParam && startParam.startsWith('course_')) {
+			const courseId = startParam.split('_')[1]
 			navigate(`/course/${courseId}`)
 		} else if (startParam && startParam === 'profile') {
 			navigate('/profile')
