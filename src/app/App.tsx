@@ -1,5 +1,5 @@
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import BuyCourse from '../pages/Course/BuyCourse'
 import Course from '../pages/Course/Course'
@@ -33,12 +33,16 @@ import Wallet from '../pages/Wallet/Wallet'
 import './App.css'
 
 function App() {
+	const [hasRedirected, setHasRedirected] = useState(false)
+
 	const tg: any = window.Telegram
 	tg.WebApp.expand()
 	tg.WebApp.enableClosingConfirmation()
 	const navigate = useNavigate()
 
 	useEffect(() => {
+		if (hasRedirected) return
+
 		const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
 		const startParam = urlParams.get('start_param')
 		console.log('startParam', startParam)
@@ -46,10 +50,12 @@ function App() {
 		if (startParam && startParam.startsWith('course_')) {
 			const courseId = startParam.split('_')[1]
 			navigate(`/course/${courseId}`)
+			setHasRedirected(true)
 		} else if (startParam && startParam === 'profile') {
 			navigate('/profile')
+			setHasRedirected(true)
 		}
-	}, [navigate])
+	}, [navigate, hasRedirected])
 
 	return (
 		<TonConnectUIProvider manifestUrl='https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json'>
