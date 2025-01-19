@@ -28,12 +28,12 @@ function Create() {
 		fetchCourses()
 	}, [id])
 
-	const checkWallet = () => {
-		if (!userFriendlyAddress) {
-			setModalOpen(true)
-		} else {
-			navigate('/create-course')
-		}
+	const skipCheckWallet = () => {
+		// if (!userFriendlyAddress) {
+		// 	setModalOpen(true)
+		// } else {
+		navigate('/create-course')
+		// }
 	}
 
 	const handleOkBtnClick = () => {
@@ -123,7 +123,7 @@ function Create() {
 
 	return (
 		<div style={{ minHeight: '100vh' }}>
-			<div className='create_button' onClick={checkWallet}>
+			<div className='create_button' onClick={skipCheckWallet}>
 				<div className='billet_cb'>
 					<img src={plus} alt='' />
 					<p>Создать курс</p>
