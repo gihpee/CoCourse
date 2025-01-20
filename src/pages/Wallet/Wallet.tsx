@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 //import { TonConnectButton } from '@tonconnect/ui-react';
-import { useTonAddress } from '@tonconnect/ui-react'
 import MainButton from '@twa-dev/mainbutton'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -19,12 +18,10 @@ function Wallet() {
 	const [coursesSelled, setCoursesSelled] = useState([])
 	const [balance, setBalance] = useState(0)
 	const [verifyed, setVerifyed] = useState(null)
-	const [connectedPayments, setConnectedPayments] = useState(false)
+	// const [connectedPayments, setConnectedPayments] = useState(false)
 	const [modalOpen, setModalOpen] = useState(false)
 	const [withdrawModalOpen, setWithdrawModalOpen] = useState(false)
-	const userFriendlyAddress = useTonAddress()
-
-	console.log(userFriendlyAddress)
+	// const userFriendlyAddress = useTonAddress()
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -35,20 +32,20 @@ function Wallet() {
 				setCoursesSelled(result.selled_courses)
 				setBalance(result.balance)
 				setVerifyed(result.verifyed)
-				setConnectedPayments(result.connected)
+				// setConnectedPayments(result.connected)
 			}
 		}
 
 		fetchData()
 	}, [id])
 
-	const handleConnectPayments = async () => {
-		if (verifyed === 'Пройдена') {
-			navigate('/connect-payments')
-		} else {
-			setModalOpen(true)
-		}
-	}
+	// const handleConnectPayments = async () => {
+	// 	if (verifyed === 'Пройдена') {
+	// 		navigate('/connect-payments')
+	// 	} else {
+	// 		setModalOpen(true)
+	// 	}
+	// }
 
 	const handleOkBtnClick = () => {
 		setModalOpen(false)
@@ -248,7 +245,7 @@ function Wallet() {
 					</div>
 				)}
 
-				<div
+				{/* <div
 					className='field'
 					style={{ marginTop: '0px' }}
 					onClick={handleConnectPayments}
@@ -275,7 +272,7 @@ function Wallet() {
 						<p>Подключите кошелек</p>
 						<div className='red_circle'>Не подключен</div>
 					</div>
-				)}
+				)} */}
 
 				{/*<button onClick={() => init()}>test</button>*/}
 
