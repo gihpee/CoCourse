@@ -18,7 +18,7 @@ function Wallet() {
 	const [coursesSelled, setCoursesSelled] = useState([])
 	const [balance, setBalance] = useState(0)
 	const [verifyed, setVerifyed] = useState(null)
-	// const [connectedPayments, setConnectedPayments] = useState(false)
+	const [connectedPayments, setConnectedPayments] = useState(false)
 	const [modalOpen, setModalOpen] = useState(false)
 	const [withdrawModalOpen, setWithdrawModalOpen] = useState(false)
 	// const userFriendlyAddress = useTonAddress()
@@ -32,20 +32,20 @@ function Wallet() {
 				setCoursesSelled(result.selled_courses)
 				setBalance(result.balance)
 				setVerifyed(result.verifyed)
-				// setConnectedPayments(result.connected)
+				setConnectedPayments(result.connected)
 			}
 		}
 
 		fetchData()
 	}, [id])
 
-	// const handleConnectPayments = async () => {
-	// 	if (verifyed === 'Пройдена') {
-	// 		navigate('/connect-payments')
-	// 	} else {
-	// 		setModalOpen(true)
-	// 	}
-	// }
+	const handleConnectPayments = async () => {
+		if (verifyed === 'Пройдена') {
+			navigate('/connect-payments')
+		} else {
+			setModalOpen(true)
+		}
+	}
 
 	const handleOkBtnClick = () => {
 		setModalOpen(false)
@@ -245,7 +245,7 @@ function Wallet() {
 					</div>
 				)}
 
-				{/* <div
+				<div
 					className='field'
 					style={{ marginTop: '0px' }}
 					onClick={handleConnectPayments}
@@ -258,7 +258,7 @@ function Wallet() {
 					)}
 				</div>
 
-				{userFriendlyAddress ? (
+				{/* {userFriendlyAddress ? (
 					<div className='field' style={{ marginTop: '0px' }}>
 						<p>Подключите кошелек</p>
 						<div className='blue_box'>Подключен</div>
