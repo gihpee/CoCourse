@@ -26,6 +26,7 @@ function Wallet() {
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await fetchUserTransactions(id)
+			console.log(result)
 
 			if (result) {
 				setCoursesPaid(result.paid_courses)
@@ -53,6 +54,7 @@ function Wallet() {
 	}
 
 	const handleWithdraw = async () => {
+		console.log(balance)
 		if (balance > 6000) {
 			const success = await fetchWithdraw()
 
