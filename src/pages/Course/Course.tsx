@@ -69,28 +69,6 @@ function Course() {
 		}
 	}
 
-	const prepareAndShareMessage = () => {
-		if (cid) {
-			const courseLink = `Посмотри этот курс: https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
-			if (window.Telegram && window.Telegram.WebApp) {
-				window.Telegram.WebApp.shareMessage(
-					{ message: courseLink },
-					(result: any) => {
-						if (result.status === 'success') {
-							console.log('Сообщение успешно отправлено!')
-						} else {
-							console.error('Ошибка при отправке сообщения:', result.error)
-						}
-					}
-				)
-			} else {
-				console.error('WebApp API не доступен.')
-			}
-		} else {
-			console.error('CID курса отсутствует.')
-		}
-	}
-
 	const paid = userCourses?.bought_courses?.some(
 		course => course.id === Number(cid)
 	)
@@ -226,7 +204,7 @@ function Course() {
 			<span style={{ marginTop: '8px' }}>Поделиться Курсом</span>
 			<div className='select'>
 				<div className='select_col'>
-					{courseDataComponent.university?.length ? (
+					{cid ? (
 						<div className='selected_row'>
 							t.me/CoCourseBot/CoCourseApp?startapp=course_{cid}
 						</div>
@@ -237,7 +215,18 @@ function Course() {
 						<div className='button_share' onClick={copyToClipboard}>
 							<p>Копировать</p>
 						</div>
-						<div className='button_share' onClick={prepareAndShareMessage}>
+						<div
+							className='button_share'
+							onClick={() => {
+								const courseLink = `https://t.me/share/url?url=https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}&text=Посмотри%20этот%20курс!`
+
+								if (window.Telegram?.WebApp) {
+									window.Telegram.WebApp.openLink(courseLink)
+								} else {
+									console.error('Telegram WebApp не доступен')
+								}
+							}}
+						>
 							<p>Поделиться</p>
 						</div>
 					</div>
