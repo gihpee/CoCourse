@@ -121,6 +121,30 @@ span {
 	box-shadow: 0px -35px 50px 28px rgba(0, 0, 0, 1) inset;
 }
 
+.select {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 8px;
+	width: calc(100% - 32px);
+	margin: auto;
+	min-height: 32px;
+	background-color: #181818;
+	border-radius: 16px;
+	border: none;
+	color: white;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 18.2px;
+	outline: none;
+	padding-left: 8px;
+	margin-bottom: 8px;
+	padding-top: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	vertical-align: middle;
+	align-items: center;
+}
+
 .select_col {
 	display: flex;
 	flex-direction: column;

@@ -224,20 +224,22 @@ function Course() {
 			</Link>
 
 			<span style={{ marginTop: '8px' }}>Поделиться Курсом</span>
-			<div className='select_col'>
-				{courseDataComponent.university?.length ? (
-					<div className='selected_row'>
-						t.me/CoCourseBot/CoCourseApp?startapp=course_{cid}
-					</div>
-				) : (
-					<p>Не указано</p>
-				)}
-				<div className='wrapper_buttons'>
-					<div className='button_share' onClick={copyToClipboard}>
-						<p>Копировать</p>
-					</div>
-					<div className='button_share' onClick={shareCourseLink}>
-						<p>Поделиться</p>
+			<div className='select'>
+				<div className='select_col'>
+					{courseDataComponent.university?.length ? (
+						<div className='selected_row'>
+							t.me/CoCourseBot/CoCourseApp?startapp=course_{cid}
+						</div>
+					) : (
+						<p>Не указано</p>
+					)}
+					<div className='wrapper_buttons'>
+						<div className='button_share' onClick={copyToClipboard}>
+							<p>Копировать</p>
+						</div>
+						<div className='button_share' onClick={shareCourseLink}>
+							<p>Поделиться</p>
+						</div>
 					</div>
 				</div>
 			</div>
