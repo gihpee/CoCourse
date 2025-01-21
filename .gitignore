@@ -18,6 +18,8 @@
 .env.test.local
 .env.production.local
 
+.env
+
 .eslintrc.js
 
 src/app/styles/reset.css

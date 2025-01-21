@@ -69,25 +69,25 @@ function Course() {
 		}
 	}
 
-	const shareCourseLink = () => {
+	const prepareAndShareMessage = () => {
 		if (cid) {
-			const courseLink = `t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
-			if (navigator.share) {
-				navigator
-					.share({
-						title: 'Курс',
-						text: 'Посмотрите этот курс!',
-						url: courseLink,
-					})
-					.then(() => console.log('Ссылка успешно поделена!'))
-					.catch(error =>
-						console.error('Ошибка при использовании функции поделиться:', error)
-					)
+			const courseLink = `Посмотри этот курс: https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+			if (window.Telegram && window.Telegram.WebApp) {
+				window.Telegram.WebApp.shareMessage(
+					{ message: courseLink },
+					(result: any) => {
+						if (result.status === 'success') {
+							console.log('Сообщение успешно отправлено!')
+						} else {
+							console.error('Ошибка при отправке сообщения:', result.error)
+						}
+					}
+				)
 			} else {
-				console.log('Ваш браузер не поддерживает функцию "Поделиться".')
+				console.error('WebApp API не доступен.')
 			}
 		} else {
-			console.log('ID курса отсутствует. Невозможно поделиться ссылкой.')
+			console.error('CID курса отсутствует.')
 		}
 	}
 
@@ -237,7 +237,7 @@ function Course() {
 						<div className='button_share' onClick={copyToClipboard}>
 							<p>Копировать</p>
 						</div>
-						<div className='button_share' onClick={shareCourseLink}>
+						<div className='button_share' onClick={prepareAndShareMessage}>
 							<p>Поделиться</p>
 						</div>
 					</div>
