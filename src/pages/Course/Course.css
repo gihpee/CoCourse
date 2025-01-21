@@ -121,6 +121,32 @@ span {
 	box-shadow: 0px -35px 50px 28px rgba(0, 0, 0, 1) inset;
 }
 
+.select_col {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	width: 100%;
+}
+
+.wrapper_buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.button_share {
+	width: 194px;
+	height: 37px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background-color: var(--tg-theme-button-color);
+
+	> p {
+		color: var(--tg-theme-button-text-color);
+	}
+}
+
 .back_btn {
 	position: sticky;
 	top: 8px;

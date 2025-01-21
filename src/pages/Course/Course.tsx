@@ -53,6 +53,44 @@ function Course() {
 		return <div className='loading'></div> // или что-то другое, пока данные загружаются
 	}
 
+	const copyToClipboard = () => {
+		if (cid) {
+			const courseLink = `t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+			navigator.clipboard
+				.writeText(courseLink)
+				.then(() => {
+					console.log('Ссылка успешно скопирована!')
+				})
+				.catch(err => {
+					console.error('Ошибка копирования:', err)
+				})
+		} else {
+			console.log('ID курса отсутствует. Невозможно скопировать ссылку.')
+		}
+	}
+
+	const shareCourseLink = () => {
+		if (cid) {
+			const courseLink = `t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+			if (navigator.share) {
+				navigator
+					.share({
+						title: 'Курс',
+						text: 'Посмотрите этот курс!',
+						url: courseLink,
+					})
+					.then(() => console.log('Ссылка успешно поделена!'))
+					.catch(error =>
+						console.error('Ошибка при использовании функции поделиться:', error)
+					)
+			} else {
+				console.log('Ваш браузер не поддерживает функцию "Поделиться".')
+			}
+		} else {
+			console.log('ID курса отсутствует. Невозможно поделиться ссылкой.')
+		}
+	}
+
 	const paid = userCourses?.bought_courses?.some(
 		course => course.id === Number(cid)
 	)
@@ -184,6 +222,25 @@ function Course() {
 				</div>
 				<img src={nf} alt='' />
 			</Link>
+
+			<span style={{ marginTop: '8px' }}>Поделиться Курсом</span>
+			<div className='select_col'>
+				{courseDataComponent.university?.length ? (
+					<div className='selected_row'>
+						t.me/CoCourseBot/CoCourseApp?startapp=course_{cid}
+					</div>
+				) : (
+					<p>Не указано</p>
+				)}
+				<div className='wrapper_buttons'>
+					<div className='button_share' onClick={copyToClipboard}>
+						<p>Копировать</p>
+					</div>
+					<div className='button_share' onClick={shareCourseLink}>
+						<p>Поделиться</p>
+					</div>
+				</div>
+			</div>
 
 			<span style={{ marginTop: '8px' }}>Описание</span>
 			<div className='select_col'>
