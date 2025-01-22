@@ -53,22 +53,6 @@ function Course() {
 		return <div className='loading'></div> // или что-то другое, пока данные загружаются
 	}
 
-	const copyToClipboard = () => {
-		if (cid) {
-			const courseLink = `t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
-			navigator.clipboard
-				.writeText(courseLink)
-				.then(() => {
-					console.log('Ссылка успешно скопирована!')
-				})
-				.catch(err => {
-					console.error('Ошибка копирования:', err)
-				})
-		} else {
-			console.log('ID курса отсутствует. Невозможно скопировать ссылку.')
-		}
-	}
-
 	const paid = userCourses?.bought_courses?.some(
 		course => course.id === Number(cid)
 	)
@@ -212,9 +196,6 @@ function Course() {
 						<p>Не указано</p>
 					)}
 					<div className='wrapper_buttons'>
-						<div className='button_share' onClick={copyToClipboard}>
-							<p>Копировать</p>
-						</div>
 						<div
 							className='button_share'
 							onClick={() => {
