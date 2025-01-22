@@ -198,12 +198,21 @@ function Course() {
 						<div
 							className='button_share'
 							onClick={() => {
-								const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
-									`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
-								)}&text=${encodeURIComponent('Привет, посмотри этот курс!')}`
-
 								if (window.Telegram?.WebApp) {
-									window.Telegram.WebApp.openLink(courseLink)
+									const courseLink = `https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+
+									window.Telegram.WebApp.showPopup({
+										message: 'Скопируйте ссылку и отправьте друзьям!',
+										buttons: [
+											{
+												text: 'Скопировать ссылку',
+												type: 'copy',
+												id: 'copy-link',
+												value: courseLink,
+											},
+											{ text: 'Закрыть', type: 'close' },
+										],
+									})
 								} else {
 									console.error('Telegram WebApp не доступен')
 								}
