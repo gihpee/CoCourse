@@ -1,3 +1,4 @@
+import { shareURL } from '@telegram-apps/sdk'
 import MainButton from '@twa-dev/mainbutton'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
@@ -198,35 +199,13 @@ function Course() {
 						<div
 							className='button_share'
 							onClick={() => {
-								if (window.Telegram?.WebApp) {
-									const courseLink = `https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+								const courseLink = `https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+								const messageText = 'Привет, посмотри этот курс!'
 
-									window.Telegram.WebApp.showPopup({
-										message: 'Скопируйте ссылку и отправьте друзьям!',
-										buttons: [
-											{
-												text: 'Скопировать ссылку',
-												type: 'default',
-												id: 'copy-link',
-												onClick: () => {
-													navigator.clipboard.writeText(courseLink).then(
-														() => {
-															console.log('Ссылка скопирована')
-														},
-														err => {
-															console.error(
-																'Не удалось скопировать ссылку',
-																err
-															)
-														}
-													)
-												},
-											},
-											{ text: 'Закрыть', type: 'close' },
-										],
-									})
+								if (shareURL.isAvailable()) {
+									shareURL(courseLink, messageText)
 								} else {
-									console.error('Telegram WebApp не доступен')
+									console.error('Share URL functionality is not available.')
 								}
 							}}
 						>
