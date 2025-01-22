@@ -198,7 +198,9 @@ function Course() {
 						<div
 							className='button_share'
 							onClick={() => {
-								const courseLink = `https://t.me/share/url?url=https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}&text=Посмотри%20этот%20курс!`
+								const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
+									`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+								)}&text=${encodeURIComponent('Привет, посмотри этот курс!')}`
 
 								if (window.Telegram?.WebApp) {
 									window.Telegram.WebApp.openLink(courseLink)
