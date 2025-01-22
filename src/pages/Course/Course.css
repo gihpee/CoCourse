@@ -168,7 +168,6 @@ span {
 	background-color: var(--tg-theme-button-color);
 
 	> p {
-		font-weight: 400;
 		text-transform: uppercase;
 		color: var(--tg-theme-button-text-color);
 	}
