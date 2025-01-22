@@ -206,9 +206,21 @@ function Course() {
 										buttons: [
 											{
 												text: 'Скопировать ссылку',
-												type: 'copy',
+												type: 'default',
 												id: 'copy-link',
-												value: courseLink,
+												onClick: () => {
+													navigator.clipboard.writeText(courseLink).then(
+														() => {
+															console.log('Ссылка скопирована')
+														},
+														err => {
+															console.error(
+																'Не удалось скопировать ссылку',
+																err
+															)
+														}
+													)
+												},
 											},
 											{ text: 'Закрыть', type: 'close' },
 										],
