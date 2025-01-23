@@ -200,7 +200,7 @@ function Course() {
 							onClick={() => {
 								const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
 									`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
-								)}&text=${encodeURIComponent('Привет, посмотри этот курс!')}`
+								)}`
 
 								if (window.Telegram?.WebApp) {
 									window.Telegram.WebApp.openLink(courseLink)
