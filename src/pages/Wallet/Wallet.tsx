@@ -55,15 +55,15 @@ function Wallet() {
 
 	const handleWithdraw = async () => {
 		console.log(balance)
-		// if (balance > 6000) {
-		const success = await fetchWithdraw()
+		if (balance > 6000) {
+			const success = await fetchWithdraw()
 
-		console.log('ok')
+			console.log('ok')
 
-		if (success) {
-			navigate('/profile')
+			if (success) {
+				navigate('/profile')
+			}
 		}
-		// }
 		setWithdrawModalOpen(true)
 	}
 
