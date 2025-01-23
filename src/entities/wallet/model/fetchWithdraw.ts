@@ -6,6 +6,8 @@ export const fetchWithdraw = async () => {
 		},
 	})
 
+	console.log(response)
+
 	if (response.ok) {
 		return true
 	} else {
