@@ -39,7 +39,7 @@ function EditCourse() {
 		topics: [],
 	})
 
-	const [imageSrc, setImageSrc] = useState(emptyHorizontalImage)
+	const [imageSrc, setImageSrc] = useState(null)
 
 	const [isModalOpen, setModalOpen] = useState(false)
 
