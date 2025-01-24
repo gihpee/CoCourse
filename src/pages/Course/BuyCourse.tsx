@@ -8,6 +8,7 @@ import { fetchExchangeRate } from '../../entities/course/model/fetchExchangeRate
 import { fetchPaymentLink } from '../../entities/course/model/fetchLink'
 import { handlePay } from '../../entities/course/model/paymentHandler'
 import { createTransaction } from '../../entities/course/model/transaction'
+import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
 import redWallet from '../../shared/assets/course/red-wallet.svg'
 import './Course.css'
 
@@ -70,6 +71,14 @@ function BuyCourse() {
 	const averageRate =
 		data?.feedback.length > 0 ? calculateRating(data.feedback) : 0
 
+	const setImagePath = (imgPath: string): string => {
+		if (imgPath === 'https://comncourse.runull') {
+			return emptyHorizontalImage
+		} else {
+			return `url(https://comncourse.ru${data?.channel.photo})`
+		}
+	}
+
 	return (
 		<>
 			<div
@@ -85,7 +94,7 @@ function BuyCourse() {
 					<div
 						className='course_img'
 						style={{
-							backgroundImage: `url(https://comncourse.ru${data?.channel.photo})`,
+							backgroundImage: setImagePath(data?.channel.photo),
 						}}
 					></div>
 					<div className='card_info'>
