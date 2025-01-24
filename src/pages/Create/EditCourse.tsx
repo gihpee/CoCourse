@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { deleteCourse } from '../../entities/course/model/fetchDeleteCourse'
 import { publishCourse } from '../../entities/course/model/fetchEditCourse'
-import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
 import plus from '../../shared/assets/course/plus.svg'
-import prev from '../../shared/assets/course/preview.png'
+import emptyHorizontalImage from '../../shared/assets/course/squareEmptyCourseImage.jpg'
 import krest from '../../shared/assets/create/ckrest.svg'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
@@ -40,7 +39,7 @@ function EditCourse() {
 		topics: [],
 	})
 
-	const [imageSrc, setImageSrc] = useState(prev)
+	const [imageSrc, setImageSrc] = useState(emptyHorizontalImage)
 
 	const [isModalOpen, setModalOpen] = useState(false)
 
