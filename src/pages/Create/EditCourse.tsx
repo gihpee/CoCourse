@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { deleteCourse } from '../../entities/course/model/fetchDeleteCourse'
 import { publishCourse } from '../../entities/course/model/fetchEditCourse'
+import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
 import plus from '../../shared/assets/course/plus.svg'
 import prev from '../../shared/assets/course/preview.png'
 import krest from '../../shared/assets/create/ckrest.svg'
@@ -342,6 +343,15 @@ function EditCourse() {
 		</div>
 	))
 
+	const setImagePath = (imgPath: string | null): string => {
+		console.log('imgPath', imgPath)
+		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+			return emptyHorizontalImage
+		} else {
+			return `url(https://comncourse.ru${imageSrc})`
+		}
+	}
+
 	return (
 		<>
 			<div className='top_panel'>
@@ -442,7 +452,7 @@ function EditCourse() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncourse.ru${imageSrc})`,
+					backgroundImage: setImagePath(imageSrc),
 					marginTop: '-56px',
 				}}
 			>

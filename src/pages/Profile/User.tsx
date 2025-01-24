@@ -5,6 +5,7 @@ import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { ICourse, ITelegramUser } from '../../entities/course/model/types'
 import { fetchUser } from '../../entities/user/model/fetchUser'
+import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import './Profile.css'
 
@@ -50,12 +51,21 @@ function User() {
 			const averageRate =
 				item.feedback.length > 0 ? calculateRating(item.feedback) : 0
 
+			const setImagePath = (imgPath: string | null): string => {
+				console.log('imgPath', imgPath)
+				if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+					return emptyHorizontalImage
+				} else {
+					return `url(https://comncourse.ru${item.image})`
+				}
+			}
+
 			return (
 				<Link to={`/course/${item.id}`} key={index} className='course_card'>
 					<div
 						className='course_img'
 						style={{
-							backgroundImage: `url(https://comncourse.ru${item.image})`,
+							backgroundImage: setImagePath(item.image),
 						}}
 					></div>
 					<div className='card_info'>

@@ -6,6 +6,7 @@ import { useCourseData } from '../../entities/course/model/useCourseData'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import redWallet from '../../shared/assets/course/red-wallet.svg'
+import emptyHorizontalImage from '../../shared/assets/course/squareEmptyCourseImage.jpg'
 import toggle from '../../shared/assets/profile/toggle.svg'
 import './Course.css'
 
@@ -87,6 +88,15 @@ function Course() {
 		averageRate = calculateRating(feedback)
 	}
 
+	const setImagePath = (imgPath: string | null): string => {
+		console.log('imgPath', imgPath)
+		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+			return emptyHorizontalImage
+		} else {
+			return `url(https://comncourse.ru${courseDataComponent.channel?.photo})`
+		}
+	}
+
 	//TODO: вынести в отдельный компонент
 	return (
 		<>
@@ -117,7 +127,7 @@ function Course() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncourse.ru${courseDataComponent.channel?.photo})`,
+					backgroundImage: setImagePath(courseDataComponent.channel?.photo),
 					marginTop: '-56px',
 				}}
 			>

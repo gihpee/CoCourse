@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchCreateCourse } from '../../entities/course/model/fetchCreateCourse'
 import { deleteCourse } from '../../entities/course/model/fetchDeleteCourse'
 import handleBioChangeMinus from '../../features/bio-change/handleBioChangeMinus'
+import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
 import plus from '../../shared/assets/course/plus.svg'
 import krest from '../../shared/assets/create/ckrest.svg'
 import { optionsSubject } from '../optionsSubject'
@@ -305,6 +306,15 @@ function CreateCourse() {
 		</div>
 	))
 
+	const setImagePath = (imgPath: string | null): string => {
+		console.log('imgPath', imgPath)
+		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+			return emptyHorizontalImage
+		} else {
+			return `url(https://comncourse.ru${data.channel.photo})`
+		}
+	}
+
 	return (
 		<>
 			<div className='back_btn' onClick={() => setModalDraftOpen(true)}></div>
@@ -379,7 +389,7 @@ function CreateCourse() {
 				className='prev'
 				style={{
 					backgroundImage: data?.channel?.photo
-						? `url(https://comncourse.ru${data.channel.photo})`
+						? setImagePath(data.channel.photo)
 						: 'none',
 					marginTop: '-56px',
 				}}
