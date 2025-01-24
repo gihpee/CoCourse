@@ -156,7 +156,10 @@ function Course() {
 					<p style={{ flexGrow: '1' }}>Оплата криптой</p>
 					<div className='discount_amount'>-10%</div>
 				</div> */}
-				<div className='payment_method' style={{ border: 'none' }}>
+				<div
+					className='payment_method'
+					style={{ marginTop: '8px', border: 'none' }}
+				>
 					<img src={redWallet} alt='' />
 					<p style={{ flexGrow: '1' }}>Оплата картой</p>
 				</div>
