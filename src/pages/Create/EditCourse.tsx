@@ -344,7 +344,7 @@ function EditCourse() {
 	))
 
 	const setImagePath = (imgPath: string | null): string => {
-		console.log('imgPath', imgPath)
+		console.log('imgPathEdit', imgPath)
 		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
 			return emptyHorizontalImage
 		} else {
