@@ -8,7 +8,7 @@ import { fetchExchangeRate } from '../../entities/course/model/fetchExchangeRate
 import { fetchPaymentLink } from '../../entities/course/model/fetchLink'
 import { handlePay } from '../../entities/course/model/paymentHandler'
 import { createTransaction } from '../../entities/course/model/transaction'
-import blueWallet from '../../shared/assets/course/blue-wallet.svg'
+import redWallet from '../../shared/assets/course/red-wallet.svg'
 import './Course.css'
 
 function BuyCourse() {
@@ -20,9 +20,7 @@ function BuyCourse() {
 
 	const [exchangeRate, setExchangeRate] = useState(null)
 	const [paymentLink, setPaymentLink] = useState(null)
-	const [paymentMethod, setPaymentMethod] = useState<'Card' | 'Wallet'>(
-		'Wallet'
-	)
+	const [paymentMethod, setPaymentMethod] = useState<'Card' | 'Wallet'>('Card')
 
 	const address = useTonAddress()
 
@@ -144,7 +142,7 @@ function BuyCourse() {
 				</div>
 
 				<span>Способ оплаты</span>
-				{/* {paymentMethod === 'Card' ? (
+				{paymentMethod === 'Card' ? (
 					<div
 						className='payment_method'
 						style={{ border: '1px solid #FF6117' }}
@@ -162,9 +160,9 @@ function BuyCourse() {
 						<img src={redWallet} alt='' />
 						<p style={{ flexGrow: '1' }}>Оплата картой</p>
 					</div>
-				)} */}
+				)}
 
-				{address && (
+				{/* {address && (
 					<>
 						{paymentMethod === 'Wallet' ? (
 							<div
@@ -192,7 +190,7 @@ function BuyCourse() {
 							мы не предоставляем никаких гарантий возврата денежных средств.
 						</span>
 					</>
-				)}
+				)} */}
 
 				<div className='pricecourse_container'>
 					<div className='course_price'>

@@ -4,8 +4,8 @@ import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { useCourseData } from '../../entities/course/model/useCourseData'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
-import blueWallet from '../../shared/assets/course/blue-wallet.svg'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
+import redWallet from '../../shared/assets/course/red-wallet.svg'
 import toggle from '../../shared/assets/profile/toggle.svg'
 import './Course.css'
 
@@ -148,18 +148,18 @@ function Course() {
 						AD ID: {courseDataComponent.id}
 					</span>
 				</div>
-				<div
+				{/* <div
 					className='payment_method'
 					style={{ marginTop: '8px', border: 'none' }}
 				>
 					<img src={blueWallet} alt='' />
 					<p style={{ flexGrow: '1' }}>Оплата криптой</p>
 					<div className='discount_amount'>-10%</div>
-				</div>
-				{/* <div className='payment_method' style={{ border: 'none' }}>
+				</div> */}
+				<div className='payment_method' style={{ border: 'none' }}>
 					<img src={redWallet} alt='' />
 					<p style={{ flexGrow: '1' }}>Оплата картой</p>
-				</div> */}
+				</div>
 			</div>
 			<span style={{ marginTop: '16px' }}>Отзывы</span>
 			<Link
