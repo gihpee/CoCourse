@@ -71,9 +71,9 @@ function BuyCourse() {
 	const averageRate =
 		data?.feedback.length > 0 ? calculateRating(data.feedback) : 0
 
-	const setImagePath = (imgPath: string): string => {
+	const setImagePath = (imgPath: string | null): string => {
 		console.log('imgPath', imgPath)
-		if (imgPath.includes('https://comncourse.runull')) {
+		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
 			return emptyHorizontalImage
 		} else {
 			return `url(https://comncourse.ru${data?.channel.photo})`
