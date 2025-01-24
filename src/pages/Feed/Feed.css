@@ -14,7 +14,7 @@
 	border-radius: 8px;
 	height: 96px;
 	z-index: 0;
-	background-image: url('../../shared/assets/feed/preview.png');
+	background-image: url('../../shared/assets/course/horizontalEmptyCourseImage.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
