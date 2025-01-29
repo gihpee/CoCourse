@@ -128,12 +128,14 @@ function CreateCourse() {
 			setModalLink('/connect-wallet')
 			setModalButton('Пройти')
 			setModalOpen(true)
-		} else if (!userFriendlyAddress) {
-			setModalText('Для создания курса необходимо подключить выплаты')
-			setModalLink('/connect-walletN')
-			setModalButton('Подключить')
-			setModalOpen(true)
-		} else if (data.user.verifyed !== 'Пройдена') {
+		}
+		// else if (!userFriendlyAddress) {
+		// 	setModalText('Для создания курса необходимо подключить выплаты')
+		// 	setModalLink('/connect-walletN')
+		// 	setModalButton('Подключить')
+		// 	setModalOpen(true)
+		// }
+		else if (data.user.verifyed !== 'Пройдена') {
 			setModalText('Для создания курса необходимо пройти верификацию')
 			setModalLink('/verificationN')
 			setModalButton('Пройти')

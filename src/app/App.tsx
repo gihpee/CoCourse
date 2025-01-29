@@ -24,7 +24,6 @@ import Verification from '../pages/Profile/Verification'
 import ConnectPayments from '../pages/Wallet/ConnectPayments'
 import ConnectPaymentsForm from '../pages/Wallet/ConnectPaymentsForm'
 import ConnectWallet from '../pages/Wallet/ConnectWallet'
-import ConnectWalletN from '../pages/Wallet/ConnectWalletN'
 import ReturnForm from '../pages/Wallet/ReturnForm'
 import Transaction from '../pages/Wallet/Transaction'
 import VerificationForm from '../pages/Wallet/VerificationForm'
@@ -94,7 +93,7 @@ function App() {
 					<Route path={'verification'} element={<Verification />} />
 					<Route path={'connect-wallet'} element={<ConnectWallet />} />
 					<Route path={'verificationN'} element={<VerificationN />} />
-					<Route path={'connect-walletN'} element={<ConnectWalletN />} />
+					{/* <Route path={'connect-walletN'} element={<ConnectWalletN />} /> */}
 					<Route path={'verification-form'} element={<VerificationForm />} />
 					<Route path={'connect-payments'} element={<ConnectPayments />} />
 					<Route

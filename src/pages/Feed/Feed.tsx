@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { filterCourses } from '../../entities/course/lib/filterCourses'
@@ -16,6 +16,7 @@ function Feed() {
 	const [data, setData] = useState<ICourse[]>([])
 	const [inputValue, setInputValue] = useState('')
 	const navigate = useNavigate()
+	const [isPending, startTransition] = useTransition()
 
 	const userCourses = useUserCoursesData(id, navigate)
 
@@ -45,7 +46,9 @@ function Feed() {
 
 	const handleUniChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value
-		setInputValue(value)
+		startTransition(() => {
+			setInputValue(value)
+		})
 	}
 
 	const appCourses = filteredDataWithMain.map((item: ICourse, index) => {
@@ -141,7 +144,7 @@ function Feed() {
 				/>
 				<Link to={`/wallet`} className='wallet_btn'></Link>
 			</div>
-			{appCourses}
+			{!isPending ? appCourses : <div>Loading...</div>}
 		</div>
 	)
 }
