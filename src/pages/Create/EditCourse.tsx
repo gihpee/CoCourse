@@ -1,4 +1,3 @@
-import { useTonAddress } from '@tonconnect/ui-react'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -46,7 +45,7 @@ function EditCourse() {
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	const [modalDraftOpen, setModalDraftOpen] = useState(false)
 
-	const userFriendlyAddress = useTonAddress()
+	// const userFriendlyAddress = useTonAddress()
 	const [verifyed, setVerifyed] = useState(false)
 	const [modalVOpen, setModalVOpen] = useState(false)
 	const [modalText, setModalText] = useState('')

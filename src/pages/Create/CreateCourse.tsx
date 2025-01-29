@@ -40,7 +40,7 @@ function CreateCourse() {
 
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	const [modalDraftOpen, setModalDraftOpen] = useState(false)
-	const userFriendlyAddress = useTonAddress()
+	// const userFriendlyAddress = useTonAddress()
 	const [modalOpen, setModalOpen] = useState(false)
 	const [modalText, setModalText] = useState('')
 	const [modalLink, setModalLink] = useState('')
