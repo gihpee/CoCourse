@@ -1,7 +1,7 @@
 const fetchCoursesData = async (userId: string) => {
 	try {
 		const response = await fetch(
-			`https://comncourse.ru/usercoursewd?id=${userId}`
+			`https://comncoursetest.ru/usercoursewd?id=${userId}`
 		)
 		const result = await response.json()
 

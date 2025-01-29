@@ -37,7 +37,7 @@ function FeedbackUser() {
 								height: '40px',
 								marginLeft: '8px',
 								borderRadius: '8px',
-								backgroundImage: `url(https://comncourse.ru${item.user.photo_url})`,
+								backgroundImage: `url(https://comncoursetest.ru${item.user.photo_url})`,
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 								backgroundPosition: 'center',

@@ -53,7 +53,7 @@ function Transaction() {
 					<div
 						className='course_img'
 						style={{
-							backgroundImage: `url(https://comncourse.ru${data?.course.channel.photo})`,
+							backgroundImage: `url(https://comncoursetest.ru${data?.course.channel.photo})`,
 						}}
 					></div>
 					<div className='card_info'>

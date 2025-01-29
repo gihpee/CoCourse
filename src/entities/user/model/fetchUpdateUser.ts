@@ -5,7 +5,7 @@ export const fetchUpdateUser = async (
 	bioValue: string,
 	initData: string
 ) => {
-	await fetch('https://comncourse.ru/api/update-user/', {
+	await fetch('https://comncoursetest.ru/api/update-user/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

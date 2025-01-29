@@ -27,7 +27,7 @@ export const handlePay = async (
 		let baddress = address
 		let saddress = data.ton_address
 
-		await fetch('https://comncourse.ru/api/success-payment/', {
+		await fetch('https://comncoursetest.ru/api/success-payment/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

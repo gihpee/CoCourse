@@ -11,13 +11,16 @@ export const useUserCourses = (
 	useEffect(() => {
 		const fetchUserData = async () => {
 			try {
-				const response = await fetch(`https://comncourse.ru/api/user-data/`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `tma ${authToken}`,
-					},
-				})
+				const response = await fetch(
+					`https://comncoursetest.ru/api/user-data/`,
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: `tma ${authToken}`,
+						},
+					}
+				)
 				const data = await response.json()
 				setUserCourses(data)
 			} catch (error) {

@@ -66,7 +66,6 @@ function SendFeedback() {
 
 	const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSliderValue(Number(event.target.value))
-		console.log(event.target.value)
 	}
 
 	const handleRevChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

@@ -45,7 +45,6 @@ function App() {
 
 		const urlParams = new URLSearchParams(window.Telegram.WebApp.initData)
 		const startParam = urlParams.get('start_param')
-		console.log('startParam', startParam)
 
 		if (startParam && startParam.startsWith('course_')) {
 			const courseId = startParam.split('_')[1]

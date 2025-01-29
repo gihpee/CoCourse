@@ -52,11 +52,10 @@ function User() {
 				item.feedback.length > 0 ? calculateRating(item.feedback) : 0
 
 			const setImagePath = (imgPath: string | null): string => {
-				console.log('imgPath', imgPath)
-				if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+				if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
 					return emptyHorizontalImage
 				} else {
-					return `url(https://comncourse.ru${item.image})`
+					return `url(https://comncoursetest.ru${item.image})`
 				}
 			}
 
@@ -139,7 +138,7 @@ function User() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncourse.ru${userData?.photo_url})`,
+					backgroundImage: `url(https://comncoursetest.ru${userData?.photo_url})`,
 					marginTop: '-56px',
 				}}
 			>

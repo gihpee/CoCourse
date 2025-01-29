@@ -86,7 +86,7 @@ function EditCourse() {
 		const fetchCourses = async () => {
 			try {
 				const response = await fetch(
-					`https://comncourse.ru/api/get-courses/?id=${cid}`
+					`https://comncoursetest.ru/api/get-courses/?id=${cid}`
 				)
 				const data = await response.json()
 
@@ -206,7 +206,6 @@ function EditCourse() {
 						navigate('/profile')
 					} catch (error) {
 						setModalText('Произошла ошибка при публикации курса')
-						console.log('1.', error)
 						setModalVOpen(true)
 					}
 				}
@@ -223,7 +222,6 @@ function EditCourse() {
 				formData.Subject === ''
 			) {
 				setModalFillOpen(true)
-				console.log('here')
 			} else {
 				if (cid) {
 					try {
@@ -231,7 +229,6 @@ function EditCourse() {
 						navigate('/profile')
 					} catch (error) {
 						setModalText('Произошла ошибка при публикации курса')
-						console.log('2.', error)
 					}
 				}
 			}
@@ -242,7 +239,6 @@ function EditCourse() {
 					navigate('/profile')
 				} catch (error) {
 					setModalText('Произошла ошибка при публикации курса')
-					console.log('3.', error)
 				}
 			}
 		}
@@ -343,11 +339,10 @@ function EditCourse() {
 	))
 
 	const setImagePath = (imgPath: string | null): string => {
-		console.log('imgPathEdit', imgPath)
-		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncourse.ru${imageSrc})`
+			return `url(https://comncoursetest.ru${imageSrc})`
 		}
 	}
 

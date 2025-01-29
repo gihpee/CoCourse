@@ -1,7 +1,7 @@
 export const fetchCreatePassportData = async (formDataToSend: FormData) => {
 	try {
 		const response = await fetch(
-			'https://comncourse.ru/api/create-passport-data/',
+			'https://comncoursetest.ru/api/create-passport-data/',
 			{
 				method: 'POST',
 				headers: {

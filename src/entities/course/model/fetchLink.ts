@@ -1,7 +1,7 @@
 export const fetchPaymentLink = async (courseId: string, userId: string) => {
 	try {
 		const response = await fetch(
-			`https://comncourse.ru/api/get-payment-link/`,
+			`https://comncoursetest.ru/api/get-payment-link/`,
 			{
 				method: 'POST',
 				headers: {

@@ -1,7 +1,7 @@
 export const fetchUserTransactions = async (id: string) => {
 	try {
 		const response = await fetch(
-			`https://comncourse.ru/api/user-transactions/?id=${id}`
+			`https://comncoursetest.ru/api/user-transactions/?id=${id}`
 		)
 		const result = await response.json()
 		return result

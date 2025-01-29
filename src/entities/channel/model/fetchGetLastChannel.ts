@@ -1,7 +1,7 @@
 export const fetchGetLastChannel = async () => {
 	try {
 		const response = await fetch(
-			`https://comncourse.ru/api/get-last-channel/`,
+			`https://comncoursetest.ru/api/get-last-channel/`,
 			{
 				method: 'GET',
 				headers: {
@@ -17,7 +17,6 @@ export const fetchGetLastChannel = async () => {
 		}
 
 		const result = await response.json()
-		console.log('API Response:', result)
 		return result
 	} catch (error) {
 		console.error('Error fetching data:', error)

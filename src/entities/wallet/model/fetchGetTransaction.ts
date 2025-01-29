@@ -1,7 +1,7 @@
 export const fetchTransactionData = async (tid: string) => {
 	try {
 		const response = await fetch(
-			`https://comncourse.ru/api/get-transaction/?id=${tid}`
+			`https://comncoursetest.ru/api/get-transaction/?id=${tid}`
 		)
 		if (!response.ok) {
 			throw new Error(`Failed to fetch transaction data: ${response.status}`)

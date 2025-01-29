@@ -3,7 +3,7 @@ export const publishCourse = async (cid: string, formData: any) => {
 	const is_draft = false
 
 	try {
-		const response = await fetch('https://comncourse.ru/api/edit-course/', {
+		const response = await fetch('https://comncoursetest.ru/api/edit-course/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

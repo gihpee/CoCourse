@@ -9,14 +9,17 @@ export const fetchCreateCourse = async (courseData: {
 	address: string
 }) => {
 	try {
-		const response = await fetch('https://comncourse.ru/api/create-course/', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `tma ${window.Telegram.WebApp.initData}`,
-			},
-			body: JSON.stringify(courseData),
-		})
+		const response = await fetch(
+			'https://comncoursetest.ru/api/create-course/',
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `tma ${window.Telegram.WebApp.initData}`,
+				},
+				body: JSON.stringify(courseData),
+			}
+		)
 
 		if (!response.ok) {
 			console.log('Failed to create course')

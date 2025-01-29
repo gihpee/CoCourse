@@ -15,12 +15,9 @@ function FeedbackCourse() {
 	useEffect(() => {
 		const loadCourses = async () => {
 			try {
-				console.log(id)
 				const courseData = await fetchCourses(id || 'defaultId')
-				console.log('Course data:', courseData)
 
 				const feedbackData = courseData.feedback
-				console.log('Feedback data:', feedbackData)
 
 				setFeedbacks(feedbackData)
 			} catch (error) {
@@ -49,7 +46,7 @@ function FeedbackCourse() {
 								height: '40px',
 								marginLeft: '8px',
 								borderRadius: '8px',
-								backgroundImage: `url(https://comncourse.ru${item.user.photo_url})`,
+								backgroundImage: `url(https://comncoursetest.ru${item.user.photo_url})`,
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 								backgroundPosition: 'center',

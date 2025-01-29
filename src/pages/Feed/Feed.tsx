@@ -18,14 +18,12 @@ function Feed() {
 	const navigate = useNavigate()
 
 	const userCourses = useUserCoursesData(id, navigate)
-	console.log('userCourses', userCourses)
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const result = await fetchGetCourses()
 				result.reverse()
-				console.log('fetchGetCourses', result)
 
 				setData(result)
 			} catch (error) {
@@ -41,10 +39,8 @@ function Feed() {
 	}
 
 	const filteredData = filterCoursesByName(data, inputValue)
-	console.log('filteredData', filteredData)
 
 	const filteredDataWithMain = filterCourses(filteredData)
-	console.log('filteredDataWithMain', filteredDataWithMain)
 
 	const handleUniChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value
@@ -56,11 +52,10 @@ function Feed() {
 			item.feedback.length > 0 ? calculateRating(item.feedback) : 0
 
 		const setImagePath = (imgPath: string | null): string => {
-			console.log('imgPath', imgPath)
-			if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+			if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
 				return emptyHorizontalImage
 			} else {
-				return `url(https://comncourse.ru${item.image})`
+				return `url(https://comncoursetest.ru${item.image})`
 			}
 		}
 

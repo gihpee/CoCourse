@@ -141,7 +141,7 @@ function Registration() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncourse.ru${imageSrc})`,
+					backgroundImage: `url(https://comncoursetest.ru${imageSrc})`,
 					marginTop: '-56px',
 				}}
 			>

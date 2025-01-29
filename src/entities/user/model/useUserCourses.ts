@@ -11,13 +11,16 @@ const useUserCoursesData = (
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch(`https://comncourse.ru/api/user-data/`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `tma ${window.Telegram.WebApp.initData}`,
-					},
-				})
+				const response = await fetch(
+					`https://comncoursetest.ru/api/user-data/`,
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: `tma ${window.Telegram.WebApp.initData}`,
+						},
+					}
+				)
 				const result = await response.json()
 
 				if (response.status === 201) {

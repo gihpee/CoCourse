@@ -89,11 +89,10 @@ function Course() {
 	}
 
 	const setImagePath = (imgPath: string | null): string => {
-		console.log('imgPath', imgPath)
-		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
+		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncourse.ru${courseDataComponent.channel?.photo})`
+			return `url(https://comncoursetest.ru${courseDataComponent.channel?.photo})`
 		}
 	}
 
@@ -279,7 +278,7 @@ function Course() {
 							height: '40px',
 							marginLeft: '8px',
 							borderRadius: '8px',
-							backgroundImage: `url(https://comncourse.ru${courseDataComponent.user?.photo_url})`,
+							backgroundImage: `url(https://comncoursetest.ru${courseDataComponent.user?.photo_url})`,
 							backgroundSize: 'cover',
 							backgroundRepeat: 'no-repeat',
 							backgroundPosition: 'center',

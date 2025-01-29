@@ -14,7 +14,7 @@ export const useUpdatePaymentInfo = (
 
 		const number = formData.number
 
-		await fetch('https://comncourse.ru/api/update-payment-info/', {
+		await fetch('https://comncoursetest.ru/api/update-payment-info/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

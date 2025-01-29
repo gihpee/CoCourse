@@ -10,7 +10,7 @@ export const fetchCreateReturnRequest = async ({
 	receipt: string
 }) => {
 	const response = await fetch(
-		'https://comncourse.ru/api/create-return-request/',
+		'https://comncoursetest.ru/api/create-return-request/',
 		{
 			method: 'POST',
 			headers: {

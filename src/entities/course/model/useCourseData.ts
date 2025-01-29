@@ -11,7 +11,7 @@ export const useCourseData = (cid: string) => {
 			setIsLoading(true)
 			try {
 				const response = await fetch(
-					`https://comncourse.ru/api/get-courses/?id=${cid}`
+					`https://comncoursetest.ru/api/get-courses/?id=${cid}`
 				)
 				const result = await response.json()
 				setData(result)
