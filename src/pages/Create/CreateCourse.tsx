@@ -41,7 +41,7 @@ function CreateCourse() {
 
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	const [modalDraftOpen, setModalDraftOpen] = useState(false)
-	const userFriendlyAddress = useTonAddress()
+	// const userFriendlyAddress = useTonAddress()
 	const [modalOpen, setModalOpen] = useState(false)
 	const [modalText, setModalText] = useState('')
 	const [modalLink, setModalLink] = useState('')
@@ -122,19 +122,21 @@ function CreateCourse() {
 	}
 
 	const handlePublish = async () => {
-		if (!userFriendlyAddress && data.user.verifyed !== 'Пройдена') {
-			setModalText(
-				'Для создания курса необходимо пройти верификацию и подключить выплаты'
-			)
-			setModalLink('/connect-wallet')
-			setModalButton('Пройти')
-			setModalOpen(true)
-		} else if (!userFriendlyAddress) {
-			setModalText('Для создания курса необходимо подключить выплаты')
-			setModalLink('/connect-walletN')
-			setModalButton('Подключить')
-			setModalOpen(true)
-		} else if (data.user.verifyed !== 'Пройдена') {
+		// if (!userFriendlyAddress && data.user.verifyed !== 'Пройдена') {
+		// 	setModalText(
+		// 		'Для создания курса необходимо пройти верификацию и подключить выплаты'
+		// 	)
+		// 	setModalLink('/connect-wallet')
+		// 	setModalButton('Пройти')
+		// 	setModalOpen(true)
+		// }
+		// else if (!userFriendlyAddress) {
+		// 	setModalText('Для создания курса необходимо подключить выплаты')
+		// 	setModalLink('/connect-walletN')
+		// 	setModalButton('Подключить')
+		// 	setModalOpen(true)
+		// }
+		if (data.user.verifyed !== 'Пройдена') {
 			setModalText('Для создания курса необходимо пройти верификацию')
 			setModalLink('/verificationN')
 			setModalButton('Пройти')

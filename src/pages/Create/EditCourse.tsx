@@ -1,4 +1,3 @@
-import { useTonAddress } from '@tonconnect/ui-react'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -46,7 +45,7 @@ function EditCourse() {
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	const [modalDraftOpen, setModalDraftOpen] = useState(false)
 
-	const userFriendlyAddress = useTonAddress()
+	// const userFriendlyAddress = useTonAddress()
 	const [verifyed, setVerifyed] = useState(false)
 	const [modalVOpen, setModalVOpen] = useState(false)
 	const [modalText, setModalText] = useState('')
@@ -174,19 +173,21 @@ function EditCourse() {
 	}
 
 	const handlePublishDraft = async () => {
-		if (!userFriendlyAddress && !verifyed) {
-			setModalText(
-				'Для создания курса необходимо пройти верификацию и подключить выплаты'
-			)
-			setModalLink('/connect-wallet')
-			setModalButton('Пройти')
-			setModalVOpen(true)
-		} else if (!userFriendlyAddress) {
-			setModalText('Для создания курса необходимо подключить выплаты')
-			setModalLink('/connect-walletN')
-			setModalButton('Подключить')
-			setModalVOpen(true)
-		} else if (!verifyed) {
+		// if (!userFriendlyAddress && !verifyed) {
+		// 	setModalText(
+		// 		'Для создания курса необходимо пройти верификацию и подключить выплаты'
+		// 	)
+		// 	setModalLink('/connect-wallet')
+		// 	setModalButton('Пройти')
+		// 	setModalVOpen(true)
+		// }
+		// else if (!userFriendlyAddress) {
+		// 	setModalText('Для создания курса необходимо подключить выплаты')
+		// 	setModalLink('/connect-walletN')
+		// 	setModalButton('Подключить')
+		// 	setModalVOpen(true)
+		// }
+		if (!verifyed) {
 			setModalText('Для создания курса необходимо пройти верификацию')
 			setModalLink('/verificationN')
 			setModalButton('Пройти')
