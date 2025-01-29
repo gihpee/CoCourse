@@ -174,21 +174,21 @@ function EditCourse() {
 	}
 
 	const handlePublishDraft = async () => {
-		if (!userFriendlyAddress && !verifyed) {
-			setModalText(
-				'Для создания курса необходимо пройти верификацию и подключить выплаты'
-			)
-			setModalLink('/connect-wallet')
-			setModalButton('Пройти')
-			setModalVOpen(true)
-		}
+		// if (!userFriendlyAddress && !verifyed) {
+		// 	setModalText(
+		// 		'Для создания курса необходимо пройти верификацию и подключить выплаты'
+		// 	)
+		// 	setModalLink('/connect-wallet')
+		// 	setModalButton('Пройти')
+		// 	setModalVOpen(true)
+		// }
 		// else if (!userFriendlyAddress) {
 		// 	setModalText('Для создания курса необходимо подключить выплаты')
 		// 	setModalLink('/connect-walletN')
 		// 	setModalButton('Подключить')
 		// 	setModalVOpen(true)
 		// }
-		else if (!verifyed) {
+		if (!verifyed) {
 			setModalText('Для создания курса необходимо пройти верификацию')
 			setModalLink('/verificationN')
 			setModalButton('Пройти')

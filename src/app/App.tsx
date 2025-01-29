@@ -23,7 +23,6 @@ import User from '../pages/Profile/User'
 import Verification from '../pages/Profile/Verification'
 import ConnectPayments from '../pages/Wallet/ConnectPayments'
 import ConnectPaymentsForm from '../pages/Wallet/ConnectPaymentsForm'
-import ConnectWallet from '../pages/Wallet/ConnectWallet'
 import ReturnForm from '../pages/Wallet/ReturnForm'
 import Transaction from '../pages/Wallet/Transaction'
 import VerificationForm from '../pages/Wallet/VerificationForm'
@@ -91,7 +90,7 @@ function App() {
 					<Route path={'buy-course'} element={<BuyCourse />} />
 					<Route path={'transaction/:tid'} element={<Transaction />} />
 					<Route path={'verification'} element={<Verification />} />
-					<Route path={'connect-wallet'} element={<ConnectWallet />} />
+					{/* <Route path={'connect-wallet'} element={<ConnectWallet />} /> */}
 					<Route path={'verificationN'} element={<VerificationN />} />
 					{/* <Route path={'connect-walletN'} element={<ConnectWalletN />} /> */}
 					<Route path={'verification-form'} element={<VerificationForm />} />

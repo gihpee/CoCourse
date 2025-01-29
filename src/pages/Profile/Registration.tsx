@@ -1,4 +1,3 @@
-import { useTonAddress } from '@tonconnect/ui-react'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
@@ -30,7 +29,7 @@ function Registration() {
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueUniv, setInputValueUniv] = useState('')
 
-	const userFriendlyAddress = useTonAddress()
+	// const userFriendlyAddress = useTonAddress()
 
 	useAutoResizeTextArea(bioValue)
 
@@ -129,11 +128,13 @@ function Registration() {
 			window.Telegram.WebApp.initData
 		)
 
-		if (userFriendlyAddress) {
-			navigate(`/verification`)
-		} else {
-			navigate(`/connect-wallet`)
-		}
+		navigate(`/verification`)
+
+		// if (userFriendlyAddress) {
+		// 	navigate(`/verification`)
+		// } else {
+		// 	navigate(`/connect-wallet`)
+		// }
 	}
 
 	return (
