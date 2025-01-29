@@ -24,6 +24,7 @@ function Feed() {
 			try {
 				const result = await fetchGetCourses()
 				result.reverse()
+				console.log(result)
 
 				setData(result)
 			} catch (error) {
