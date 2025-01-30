@@ -33,7 +33,7 @@ const LoadingCard: FC = () => {
 					<Skeleton
 						variant='rounded'
 						animation='wave'
-						width='95%'
+						width='calc(100% - 8px)'
 						height={14}
 						style={{ marginTop: '8px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
