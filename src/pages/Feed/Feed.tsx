@@ -73,7 +73,7 @@ function Feed() {
 				}
 			>
 				{!isPending ? (
-					<CardList courses={filteredData} userCourses={userCourses} />
+					<CardList courses={filteredDataWithMain} userCourses={userCourses} />
 				) : (
 					<div>Загрузка...</div>
 				)}
