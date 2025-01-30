@@ -72,11 +72,15 @@ function Feed() {
 					</>
 				}
 			>
-				{!isPending ? (
+				<>
+					<LoadingCard />
+					<LoadingCard />
+				</>
+				{/* {!isPending ? (
 					<CardList courses={filteredDataWithMain} userCourses={userCourses} />
 				) : (
 					<div>Загрузка...</div>
-				)}
+				)} */}
 			</Suspense>
 		</div>
 	)
