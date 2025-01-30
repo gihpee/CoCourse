@@ -1,4 +1,3 @@
-import LoadingCard from '@/shared/card/LoadingCard'
 import { lazy, Suspense, useEffect, useState, useTransition } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { filterCourses } from '../../entities/course/lib/filterCourses'
@@ -6,6 +5,7 @@ import { filterCoursesByName } from '../../entities/course/lib/filterCoursesByNa
 import fetchGetCourses from '../../entities/course/model/fetchGetCourses'
 import { ICourse } from '../../entities/course/model/types'
 import useUserCoursesData from '../../entities/user/model/useUserCourses'
+import LoadingCard from '../../shared/card/LoadingCard'
 import './Feed.css'
 
 const CardList = lazy(() => import('../../widgets/cardList/CardList'))
