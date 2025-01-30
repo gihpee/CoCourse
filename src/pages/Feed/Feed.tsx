@@ -1,14 +1,13 @@
-import { lazy, Suspense, useEffect, useState, useTransition } from 'react'
+import { Suspense, useEffect, useState, useTransition } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { filterCourses } from '../../entities/course/lib/filterCourses'
-import { filterCoursesByName } from '../../entities/course/lib/filterCoursesByName'
+// import { filterCourses } from '../../entities/course/lib/filterCourses'
 import fetchGetCourses from '../../entities/course/model/fetchGetCourses'
 import { ICourse } from '../../entities/course/model/types'
 import useUserCoursesData from '../../entities/user/model/useUserCourses'
 import LoadingCard from '../../shared/card/LoadingCard'
 import './Feed.css'
 
-const CardList = lazy(() => import('../../widgets/cardList/CardList'))
+// const CardList = lazy(() => import('../../widgets/cardList/CardList'))
 
 function Feed() {
 	window.scrollTo(0, 0)
@@ -40,9 +39,9 @@ function Feed() {
 		return <div className='loading'></div>
 	}
 
-	const filteredData = filterCoursesByName(data, inputValue)
+	// const filteredData = filterCoursesByName(data, inputValue)
 
-	const filteredDataWithMain = filterCourses(filteredData)
+	// const filteredDataWithMain = filterCourses(filteredData)
 
 	const handleUniChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value
