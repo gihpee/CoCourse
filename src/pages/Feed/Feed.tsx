@@ -53,12 +53,12 @@ function Feed() {
 		[]
 	)
 
-	if (!userCourses) return <div className='loading'></div>
-
 	const filteredData = useMemo(
 		() => filterCourses(filterCoursesByName(data, inputValue)),
 		[data, inputValue]
 	)
+
+	if (!userCourses) return <div className='loading'></div>
 
 	return (
 		<div className='column' style={{ minHeight: '100vh' }}>
