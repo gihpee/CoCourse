@@ -1,12 +1,14 @@
-import { useEffect, useState, useTransition } from 'react'
+import LoadingCard from '@/shared/card/LoadingCard'
+import { lazy, Suspense, useEffect, useState, useTransition } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { filterCourses } from '../../entities/course/lib/filterCourses'
 import { filterCoursesByName } from '../../entities/course/lib/filterCoursesByName'
 import fetchGetCourses from '../../entities/course/model/fetchGetCourses'
 import { ICourse } from '../../entities/course/model/types'
 import useUserCoursesData from '../../entities/user/model/useUserCourses'
-import Card from '../../shared/card/Card'
 import './Feed.css'
+
+const CardList = lazy(() => import('../../widgets/cardList/CardList'))
 
 function Feed() {
 	window.scrollTo(0, 0)
@@ -49,10 +51,6 @@ function Feed() {
 		})
 	}
 
-	const appCourses = filteredDataWithMain.map((item: ICourse, index) => (
-		<Card itemCard={item} indexCard={index} userCoursesCard={userCourses} />
-	))
-
 	return (
 		<div className='column' style={{ minHeight: '100vh' }}>
 			<div className='feed_top_panel'>
@@ -65,7 +63,21 @@ function Feed() {
 				/>
 				<Link to={`/wallet`} className='wallet_btn'></Link>
 			</div>
-			{!isPending ? appCourses : <div>Загрузка...</div>}
+
+			<Suspense
+				fallback={
+					<>
+						<LoadingCard />
+						<LoadingCard />
+					</>
+				}
+			>
+				{!isPending ? (
+					<CardList courses={filteredData} userCourses={userCourses} />
+				) : (
+					<div>Загрузка...</div>
+				)}
+			</Suspense>
 		</div>
 	)
 }
