@@ -4,10 +4,22 @@ import './Card.css'
 
 const LoadingCard: FC = () => {
 	return (
-		<div>
-			<Skeleton variant='rounded' animation='wave' width={352} height={96} />
+		<div className='course_card'>
+			<Skeleton
+				variant='rounded'
+				animation='wave'
+				width={352}
+				height={96}
+				sx={{ bgcolor: 'grey.800' }}
+			/>
 			<div className='card_info'>
-				<Skeleton variant='rounded' animation='wave' width={352} height={16} />
+				<Skeleton
+					variant='rounded'
+					animation='wave'
+					width={352}
+					height={16}
+					sx={{ bgcolor: 'grey.800' }}
+				/>
 
 				<div className='points'>
 					<Skeleton
@@ -16,6 +28,7 @@ const LoadingCard: FC = () => {
 						width={132}
 						height={20}
 						style={{ marginTop: '8px', marginLeft: '8px' }}
+						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
 						variant='rounded'
@@ -23,6 +36,7 @@ const LoadingCard: FC = () => {
 						width='95%'
 						height={14}
 						style={{ marginTop: '8px', marginLeft: '8px' }}
+						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
 						variant='rounded'
@@ -30,6 +44,7 @@ const LoadingCard: FC = () => {
 						width={68}
 						height={14}
 						style={{ marginTop: '4px', marginLeft: '8px' }}
+						sx={{ bgcolor: 'grey.800' }}
 					/>
 				</div>
 				<div className='price_container'>
@@ -39,6 +54,7 @@ const LoadingCard: FC = () => {
 						width={78}
 						height={20.8}
 						style={{ left: '8px' }}
+						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
 						variant='rounded'
@@ -46,6 +62,7 @@ const LoadingCard: FC = () => {
 						width={50}
 						height={32}
 						style={{ right: '0px' }}
+						sx={{ bgcolor: 'grey.800' }}
 					/>
 				</div>
 			</div>

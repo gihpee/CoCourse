@@ -1,3 +1,7 @@
+span {
+	margin: 0;
+}
+
 .course_card {
 	border-radius: 16px;
 	width: calc(100% - 16px);
