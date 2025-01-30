@@ -25,7 +25,7 @@ const LoadingCard: FC = () => {
 					<Skeleton
 						variant='rounded'
 						animation='wave'
-						width={132}
+						width='95%'
 						height={20}
 						style={{ marginTop: '8px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
@@ -41,13 +41,13 @@ const LoadingCard: FC = () => {
 					<Skeleton
 						variant='rounded'
 						animation='wave'
-						width={68}
+						width={78}
 						height={14}
 						style={{ marginTop: '4px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 				</div>
-				<div className='price_container'>
+				<div className='price_container price_container_loader'>
 					<Skeleton
 						variant='rounded'
 						animation='wave'
