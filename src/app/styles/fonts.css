@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'NeueMachina';
 	src: local('NeueMachina'),
-		url('../../../public/fonts/NeueMachina/NeueMachina-Regular.ttf')
+		url('../../../public/fonts/NeueMachina/NeueMachina-Regular.woff2')
 			format('truetype');
 	font-weight: normal;
 }
