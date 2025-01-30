@@ -19,10 +19,10 @@ const Card: FC<ICard> = ({ itemCard, indexCard, userCoursesCard }) => {
 		itemCard.feedback.length > 0 ? calculateRating(itemCard.feedback) : 0
 
 	const setImagePath = (imgPath: string | null): string => {
-		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
+		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncoursetest.ru${itemCard.image})`
+			return `url(https://comncourse.ru${itemCard.image})`
 		}
 	}
 
