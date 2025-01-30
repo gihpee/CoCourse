@@ -58,6 +58,8 @@ function Feed() {
 		[data, inputValue]
 	)
 
+	console.log('feed', filteredData)
+
 	if (!userCourses) return <div className='loading'></div>
 
 	return (

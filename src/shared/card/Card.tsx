@@ -13,6 +13,8 @@ interface ICard {
 }
 
 const Card: FC<ICard> = ({ itemCard, indexCard, userCoursesCard }) => {
+	console.log('Card', itemCard)
+
 	const averageRate =
 		itemCard.feedback.length > 0 ? calculateRating(itemCard.feedback) : 0
 

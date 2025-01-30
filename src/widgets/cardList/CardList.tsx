@@ -7,6 +7,7 @@ interface CardListProps {
 }
 
 const CardList: React.FC<CardListProps> = ({ courses, userCourses }) => {
+	console.log('CardList', courses)
 	return (
 		<>
 			{courses.map((item, index) => (
