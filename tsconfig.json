@@ -9,6 +9,7 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"baseUrl": "./",
+		"removeComments": true,
 		"paths": {
 			"@/*": ["./src/*"],
 			"@app/*": ["./src/app/*"],
