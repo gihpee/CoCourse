@@ -202,7 +202,7 @@ function Course() {
 				<div className='select_col'>
 					{cid ? (
 						<div className='selected_row'>
-							t.me/CoCourseBot/CoCourseApp?startapp=course_{cid}
+							t.me/ComnCourseBot/ComnCourseApp?startapp=course_{cid}
 						</div>
 					) : (
 						<p>Не указано</p>
