@@ -11,6 +11,7 @@ const LoadingCard: FC = () => {
 				width={352}
 				height={96}
 				sx={{ bgcolor: 'grey.800' }}
+				style={{ margin: '0' }}
 			/>
 			<div className='card_info'>
 				<Skeleton
@@ -19,6 +20,7 @@ const LoadingCard: FC = () => {
 					width={352}
 					height={16}
 					sx={{ bgcolor: 'grey.800' }}
+					style={{ margin: '0' }}
 				/>
 
 				<div className='points'>
@@ -27,7 +29,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width='calc(100% - 8px)'
 						height={20}
-						style={{ marginTop: '8px', marginLeft: '8px' }}
+						style={{ margin: '0', marginTop: '8px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
@@ -35,7 +37,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width='calc(100% - 8px)'
 						height={14}
-						style={{ marginTop: '8px', marginLeft: '8px' }}
+						style={{ margin: '0', marginTop: '8px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
@@ -43,7 +45,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width={78}
 						height={14}
-						style={{ marginTop: '4px', marginLeft: '8px' }}
+						style={{ margin: '0', marginTop: '4px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 				</div>
@@ -53,7 +55,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width={78}
 						height={20.8}
-						style={{ left: '8px' }}
+						style={{ margin: '0', left: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
@@ -61,7 +63,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width={50}
 						height={32}
-						style={{ right: '0px' }}
+						style={{ margin: '0', right: '0px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 				</div>
