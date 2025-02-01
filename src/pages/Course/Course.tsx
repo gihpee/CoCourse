@@ -212,7 +212,7 @@ function Course() {
 							className='button_share'
 							onClick={() => {
 								const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
-									`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+									`https://t.me/ComnCourseBot/ComnCourseApp?startapp=course_${cid}`
 								)}`
 
 								if (window.Telegram?.WebApp) {
