@@ -29,7 +29,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width='calc(100% - 8px)'
 						height={20}
-						style={{ marginTop: '8px', marginLeft: '8px', margin: '0' }}
+						style={{ margin: '0', marginTop: '8px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
@@ -37,7 +37,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width='calc(100% - 8px)'
 						height={14}
-						style={{ marginTop: '8px', marginLeft: '8px', margin: '0' }}
+						style={{ margin: '0', marginTop: '8px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 					<Skeleton
@@ -45,7 +45,7 @@ const LoadingCard: FC = () => {
 						animation='wave'
 						width={78}
 						height={14}
-						style={{ marginTop: '4px', marginLeft: '8px', margin: '0' }}
+						style={{ margin: '0', marginTop: '4px', marginLeft: '8px' }}
 						sx={{ bgcolor: 'grey.800' }}
 					/>
 				</div>
