@@ -169,7 +169,9 @@ function Course() {
 					className='payment_method'
 					style={{ marginTop: '8px', border: 'none' }}
 				>
-					<img src={redWallet} alt='' />
+					<div className='red_wallet'>
+						<img src={redWallet} alt='' />
+					</div>
 					<p style={{ flexGrow: '1' }}>Оплата картой</p>
 				</div>
 			</div>

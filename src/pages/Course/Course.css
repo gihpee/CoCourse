@@ -288,9 +288,19 @@ span {
 	margin-bottom: 8px;
 }
 
-.feedback .rate p {
+.red_wallet .feedback .rate p {
 	width: 100%;
 	text-align: center;
+}
+
+.red_wallet {
+	display: flex;
+	width: 32px;
+	height: 32px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background: linear-gradient(180deg, #e74566 0%, #9e0020 100%);
 }
 
 .feedback .row_grad_l {

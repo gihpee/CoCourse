@@ -5,7 +5,7 @@
 	z-index: 50;
 }
 
-.billet_name {
+/* .billet_name {
 	width: 82%;
 	height: 48px;
 	background-color: #181818;
@@ -22,7 +22,7 @@
 	padding-left: 48px;
 	padding-right: 8px;
 	margin-bottom: 8px;
-}
+} */
 
 .billet_desc {
 	width: calc(95% - 16px);

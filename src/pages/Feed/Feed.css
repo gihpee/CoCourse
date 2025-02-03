@@ -48,7 +48,7 @@
 	font-weight: 500;
 	line-height: 18.2px;
 	outline: none;
-	background-image: url('../../shared/assets/feed/zoom.svg');
+	background-image: url('../../shared/assets/feed/zoom.webp');
 	background-repeat: no-repeat;
 	background-position: 12px;
 	padding-left: 48px;
@@ -61,7 +61,7 @@
 	backdrop-filter: blur(10px);
 	background: rgba(0, 0, 0, 0.7);
 	border: 1px solid #1c1c1e;
-	background-image: url('../../shared/assets/feed/wallet.svg');
+	background-image: url('../../shared/assets/feed/wallet.webp');
 	background-position: center;
 	background-size: 24px 24px;
 	border-radius: 24px;
