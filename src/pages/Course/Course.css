@@ -303,6 +303,10 @@ span {
 	background: linear-gradient(180deg, #e74566 0%, #9e0020 100%);
 }
 
+.red_wallet_img {
+	width: 16px;
+}
+
 .feedback .row_grad_l {
 	width: calc(95% - 18px);
 	margin-top: -66px;

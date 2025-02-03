@@ -157,7 +157,7 @@ function BuyCourse() {
 						style={{ border: '1px solid #FF6117' }}
 					>
 						<div className='red_wallet'>
-							<img src={redWallet} alt='' />
+							<img src={redWallet} className='red_wallet_img' alt='' />
 						</div>
 						<p style={{ flexGrow: '1' }}>Оплата картой</p>
 					</div>
@@ -169,7 +169,7 @@ function BuyCourse() {
 						}}
 					>
 						<div className='red_wallet'>
-							<img src={redWallet} alt='' />
+							<img src={redWallet} className='red_wallet_img' alt='' />
 						</div>
 						<p style={{ flexGrow: '1' }}>Оплата картой</p>
 					</div>
