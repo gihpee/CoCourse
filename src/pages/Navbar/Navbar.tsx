@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import boy from '../../shared/assets/navbar/boy.svg'
+import boy from '../../shared/assets/navbar/boy.webp'
 import boyN from '../../shared/assets/navbar/boyN.svg'
 import feed from '../../shared/assets/navbar/feed.svg'
 import feedN from '../../shared/assets/navbar/feedN.svg'

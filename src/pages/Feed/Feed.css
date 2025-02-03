@@ -75,7 +75,7 @@
 	backdrop-filter: blur(10px);
 	background: rgba(0, 0, 0, 0.7);
 	border: 1px solid #1c1c1e;
-	background-image: url('../../shared/assets/feed/boy.svg');
+	background-image: url('../../shared/assets/feed/boy.webp');
 	background-position: center;
 	background-size: 24px 24px;
 	border-radius: 24px;
