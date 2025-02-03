@@ -99,7 +99,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	font-size: 14px;
 	line-height: 32px;
 	border-radius: 8px;
-	background-image: url('../../shared/assets/course/red_circle.svg');
+	background-image: url('../../shared/assets/course/red_circle.webp');
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-position: 8px;
@@ -115,7 +115,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	font-size: 14px;
 	line-height: 32px;
 	border-radius: 8px;
-	background-image: url('../../shared/assets/course/purple_circle.svg');
+	background-image: url('../../shared/assets/course/purple_circle.webp');
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-position: 8px;
