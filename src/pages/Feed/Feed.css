@@ -49,6 +49,7 @@
 	line-height: 18.2px;
 	outline: none;
 	background-image: url('../../shared/assets/feed/zoom.webp');
+	background-size: 24px 24px;
 	background-repeat: no-repeat;
 	background-position: 12px;
 	padding-left: 48px;
