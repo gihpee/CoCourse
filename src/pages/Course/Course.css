@@ -518,7 +518,7 @@ span {
 .field input {
 	background-color: #161616;
 	color: #fff;
-	width: calc(100% - 48px);
+	width: 100%;
 	font-size: 14px;
 	font-weight: 500;
 	vertical-align: middle;
