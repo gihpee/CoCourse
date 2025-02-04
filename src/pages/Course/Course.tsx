@@ -5,7 +5,7 @@ import { formatDate } from '../../entities/course/lib/formatDate'
 import { useCourseData } from '../../entities/course/model/useCourseData'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
-import redWallet from '../../shared/assets/course/red-wallet.svg'
+import redWallet from '../../shared/assets/course/red-wallet.webp'
 import emptyHorizontalImage from '../../shared/assets/course/squareEmptyCourseImage.jpg'
 import toggle from '../../shared/assets/profile/toggle.svg'
 import './Course.css'
@@ -170,7 +170,9 @@ function Course() {
 					className='payment_method'
 					style={{ marginTop: '8px', border: 'none' }}
 				>
-					<img src={redWallet} alt='' />
+					<div className='red_wallet'>
+						<img src={redWallet} className='red_wallet_img' alt='' />
+					</div>
 					<p style={{ flexGrow: '1' }}>Оплата картой</p>
 				</div>
 			</div>

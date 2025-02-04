@@ -641,6 +641,20 @@ span {
 	margin-bottom: 8px;
 }
 
+.red_wallet {
+	display: flex;
+	width: 32px;
+	height: 32px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background: linear-gradient(180deg, #e74566 0%, #9e0020 100%);
+}
+
+.red_wallet_img {
+	width: 16px;
+}
+
 .accordion-body p {
 	display: block;
 	color: #fff;

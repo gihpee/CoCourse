@@ -9,7 +9,7 @@ import { fetchPaymentLink } from '../../entities/course/model/fetchLink'
 import { handlePay } from '../../entities/course/model/paymentHandler'
 import { createTransaction } from '../../entities/course/model/transaction'
 import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
-import redWallet from '../../shared/assets/course/red-wallet.svg'
+import redWallet from '../../shared/assets/course/red-wallet.webp'
 import './Course.css'
 
 function BuyCourse() {
@@ -157,7 +157,9 @@ function BuyCourse() {
 						className='payment_method'
 						style={{ border: '1px solid #FF6117' }}
 					>
-						<img src={redWallet} alt='' />
+						<div className='red_wallet'>
+							<img src={redWallet} className='red_wallet_img' alt='' />
+						</div>
 						<p style={{ flexGrow: '1' }}>Оплата картой</p>
 					</div>
 				) : (
@@ -167,7 +169,9 @@ function BuyCourse() {
 							setPaymentMethod('Card')
 						}}
 					>
-						<img src={redWallet} alt='' />
+						<div className='red_wallet'>
+							<img src={redWallet} className='red_wallet_img' alt='' />
+						</div>
 						<p style={{ flexGrow: '1' }}>Оплата картой</p>
 					</div>
 				)}
