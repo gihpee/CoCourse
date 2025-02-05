@@ -1,4 +1,5 @@
 import MainButton from '@twa-dev/mainbutton'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
@@ -27,6 +28,16 @@ function Course() {
 
 	const navigate = useNavigate()
 
+	const [isPaid, setIsPaid] = useState<boolean | null>(null)
+
+	useEffect(() => {
+		if (userCourses?.bought_courses && cid) {
+			setIsPaid(
+				userCourses.bought_courses.some(course => course.id === Number(cid))
+			)
+		}
+	}, [userCourses, cid])
+
 	// useEffect(() => {
 	// 	if (courseDataComponent) {
 	// 		dispatch(setCourseData(courseDataComponent))
@@ -45,22 +56,15 @@ function Course() {
 	// 		}
 	// 	}
 	// }, [courseDataComponent, id, dispatch, userCourses])
-
-	if (isLoading) return <div className='loading'></div>
-	if (error) return <div>{error}</div>
-
-	if (!courseDataComponent?.id) {
-		return <div className='loading'></div> // или что-то другое, пока данные загружаются
-	}
-
-	const paid = userCourses?.bought_courses?.some(
-		course => course.id === Number(cid)
-	)
+	const averageRate = useMemo(() => {
+		const feedback = courseDataComponent?.feedback ?? []
+		return feedback.length > 0 ? calculateRating(feedback) : 0
+	}, [courseDataComponent?.feedback])
 
 	//TODO: вынести в отдельный компонент
-	const topics = courseDataComponent.topics?.map(
-		(item: { topic: string; desc: string }, index: number) => {
-			return (
+	const topics = useMemo(() => {
+		return courseDataComponent?.topics?.map(
+			(item: { topic: string; desc: string }, index: number) => (
 				<div key={index} className='accordion-item'>
 					<input
 						type='checkbox'
@@ -77,25 +81,27 @@ function Course() {
 					</div>
 				</div>
 			)
-		}
-	)
-
-	let averageRate = 0
-
-	const feedback = courseDataComponent.feedback ?? []
-
-	if (feedback.length > 0) {
-		averageRate = calculateRating(feedback)
-	}
+		)
+	}, [courseDataComponent?.topics])
 
 	const setImagePath = (imgPath: string | null): string => {
-		console.log('imgPath', imgPath)
 		if (!imgPath || imgPath.includes('https://comncourse.runull')) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncourse.ru${courseDataComponent.channel?.photo})`
+			return `url(https://comncourse.ru${courseDataComponent?.channel.photo})`
 		}
 	}
+
+	if (isLoading || isPaid === null) return <div className='loading'></div>
+	if (error) return <div>{error}</div>
+
+	if (!courseDataComponent?.id) {
+		return <div className='loading'></div> // или что-то другое, пока данные загружаются
+	}
+
+	const paid = userCourses?.bought_courses?.some(
+		course => course.id === Number(cid)
+	)
 
 	//TODO: вынести в отдельный компонент
 	return (
@@ -204,7 +210,7 @@ function Course() {
 				<div className='select_col'>
 					{cid ? (
 						<div className='selected_row'>
-							t.me/ComnCourseBot/ComnCourseApp?startapp=course_{cid}
+							t.me/CoCourseBot/CoCourseApp?startapp=course_{cid}
 						</div>
 					) : (
 						<p>Не указано</p>
@@ -214,7 +220,7 @@ function Course() {
 							className='button_share'
 							onClick={() => {
 								const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
-									`https://t.me/ComnCourseBot/ComnCourseApp?startapp=course_${cid}`
+									`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
 								)}`
 
 								if (window.Telegram?.WebApp) {
@@ -318,25 +324,24 @@ function Course() {
 				</p>
 			</div>
 
-			{paid || Number(courseDataComponent.price) === 0 ? (
-				<MainButton
-					text='К УЧЕБЕ'
-					onClick={() => {
+			<MainButton
+				text={
+					isPaid || Number(courseDataComponent.price) === 0
+						? 'К УЧЕБЕ'
+						: 'ПРИСОЕДИНИТЬСЯ'
+				}
+				onClick={() => {
+					if (isPaid || Number(courseDataComponent.price) === 0) {
 						if (courseDataComponent.channel?.url) {
 							window.location.href = courseDataComponent.channel.url
 						} else {
 							console.log('URL не доступен')
 						}
-					}}
-				/>
-			) : (
-				<MainButton
-					text='ПРИСОЕДИНИТЬСЯ'
-					onClick={() =>
+					} else {
 						navigate('/buy-course', { state: courseDataComponent })
 					}
-				/>
-			)}
+				}}
+			/>
 		</>
 	)
 }
