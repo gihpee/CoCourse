@@ -8,7 +8,7 @@ import { fetchExchangeRate } from '../../entities/course/model/fetchExchangeRate
 import { fetchPaymentLink } from '../../entities/course/model/fetchLink'
 import { handlePay } from '../../entities/course/model/paymentHandler'
 import { createTransaction } from '../../entities/course/model/transaction'
-import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
+import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.webp'
 import redWallet from '../../shared/assets/course/red-wallet.webp'
 import './Course.css'
 

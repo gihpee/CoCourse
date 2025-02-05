@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { ICourse } from '../../entities/course/model/types'
-import emptyHorizontalImage from '../assets/course/horizontalEmptyCourseImage.jpg'
+import emptyHorizontalImage from '../assets/course/horizontalEmptyCourseImage.webp'
 import './Card.css'
 
 interface ICard {

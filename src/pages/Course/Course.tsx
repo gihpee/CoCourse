@@ -7,7 +7,7 @@ import { useCourseData } from '../../entities/course/model/useCourseData'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import redWallet from '../../shared/assets/course/red-wallet.webp'
-import emptyHorizontalImage from '../../shared/assets/course/squareEmptyCourseImage.jpg'
+import emptyHorizontalImage from '../../shared/assets/course/squareEmptyCourseImage.webp'
 import toggle from '../../shared/assets/profile/toggle.svg'
 import './Course.css'
 

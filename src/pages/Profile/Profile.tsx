@@ -9,7 +9,7 @@ import {
 	ITelegramUser,
 } from '../../entities/course/model/types'
 import { useUserCourses } from '../../entities/course/model/useUserCourses'
-import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
+import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.webp'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import './Profile.css'
 
