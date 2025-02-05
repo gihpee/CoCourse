@@ -332,6 +332,14 @@ function Course() {
 				}
 				onClick={() => {
 					if (isPaid || Number(courseDataComponent.price) === 0) {
+						console.log(
+							'courseDataComponent.channel',
+							courseDataComponent.channel
+						)
+						console.log(
+							'courseDataComponent.channel?.url',
+							courseDataComponent.channel?.url
+						)
 						if (courseDataComponent.channel?.url) {
 							window.location.href = courseDataComponent.channel.url
 						} else {
