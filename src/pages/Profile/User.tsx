@@ -5,7 +5,7 @@ import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { ICourse, ITelegramUser } from '../../entities/course/model/types'
 import { fetchUser } from '../../entities/user/model/fetchUser'
-import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.jpg'
+import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.webp'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
 import './Profile.css'
 
