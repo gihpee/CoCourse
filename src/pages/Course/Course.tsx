@@ -28,10 +28,10 @@ function Course() {
 
 	const navigate = useNavigate()
 
-	const [isPaid, setIsPaid] = useState(false)
+	const [isPaid, setIsPaid] = useState<boolean | null>(null)
 
 	useEffect(() => {
-		if (userCourses?.bought_courses) {
+		if (userCourses?.bought_courses && cid) {
 			setIsPaid(
 				userCourses.bought_courses.some(course => course.id === Number(cid))
 			)
@@ -92,7 +92,7 @@ function Course() {
 		}
 	}
 
-	if (isLoading) return <div className='loading'></div>
+	if (isLoading || isPaid === null) return <div className='loading'></div>
 	if (error) return <div>{error}</div>
 
 	if (!courseDataComponent?.id) {
