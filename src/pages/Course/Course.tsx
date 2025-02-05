@@ -56,26 +56,14 @@ function Course() {
 	// 		}
 	// 	}
 	// }, [courseDataComponent, id, dispatch, userCourses])
-
-	if (isLoading) return <div className='loading'></div>
-	if (error) return <div>{error}</div>
-
-	if (!courseDataComponent?.id) {
-		return <div className='loading'></div> // или что-то другое, пока данные загружаются
-	}
-
-	const paid = userCourses?.bought_courses?.some(
-		course => course.id === Number(cid)
-	)
-
 	const averageRate = useMemo(() => {
-		const feedback = courseDataComponent.feedback ?? []
+		const feedback = courseDataComponent?.feedback ?? []
 		return feedback.length > 0 ? calculateRating(feedback) : 0
-	}, [courseDataComponent.feedback])
+	}, [courseDataComponent?.feedback])
 
 	//TODO: вынести в отдельный компонент
 	const topics = useMemo(() => {
-		return courseDataComponent.topics?.map(
+		return courseDataComponent?.topics?.map(
 			(item: { topic: string; desc: string }, index: number) => (
 				<div key={index} className='accordion-item'>
 					<input
@@ -94,15 +82,26 @@ function Course() {
 				</div>
 			)
 		)
-	}, [courseDataComponent.topics])
+	}, [courseDataComponent?.topics])
 
 	const setImagePath = (imgPath: string | null): string => {
 		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncoursetest.ru${courseDataComponent.channel?.photo})`
+			return `url(https://comncoursetest.ru${courseDataComponent?.channel.photo})`
 		}
 	}
+
+	if (isLoading) return <div className='loading'></div>
+	if (error) return <div>{error}</div>
+
+	if (!courseDataComponent?.id) {
+		return <div className='loading'></div> // или что-то другое, пока данные загружаются
+	}
+
+	const paid = userCourses?.bought_courses?.some(
+		course => course.id === Number(cid)
+	)
 
 	//TODO: вынести в отдельный компонент
 	return (
