@@ -1,4 +1,5 @@
 import MainButton from '@twa-dev/mainbutton'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
@@ -26,6 +27,16 @@ function Course() {
 	// >([])
 
 	const navigate = useNavigate()
+
+	const [isPaid, setIsPaid] = useState(false)
+
+	useEffect(() => {
+		if (userCourses?.bought_courses) {
+			setIsPaid(
+				userCourses.bought_courses.some(course => course.id === Number(cid))
+			)
+		}
+	}, [userCourses, cid])
 
 	// useEffect(() => {
 	// 	if (courseDataComponent) {
@@ -57,10 +68,15 @@ function Course() {
 		course => course.id === Number(cid)
 	)
 
+	const averageRate = useMemo(() => {
+		const feedback = courseDataComponent.feedback ?? []
+		return feedback.length > 0 ? calculateRating(feedback) : 0
+	}, [courseDataComponent.feedback])
+
 	//TODO: вынести в отдельный компонент
-	const topics = courseDataComponent.topics?.map(
-		(item: { topic: string; desc: string }, index: number) => {
-			return (
+	const topics = useMemo(() => {
+		return courseDataComponent.topics?.map(
+			(item: { topic: string; desc: string }, index: number) => (
 				<div key={index} className='accordion-item'>
 					<input
 						type='checkbox'
@@ -77,16 +93,8 @@ function Course() {
 					</div>
 				</div>
 			)
-		}
-	)
-
-	let averageRate = 0
-
-	const feedback = courseDataComponent.feedback ?? []
-
-	if (feedback.length > 0) {
-		averageRate = calculateRating(feedback)
-	}
+		)
+	}, [courseDataComponent.topics])
 
 	const setImagePath = (imgPath: string | null): string => {
 		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
@@ -317,25 +325,24 @@ function Course() {
 				</p>
 			</div>
 
-			{paid || Number(courseDataComponent.price) === 0 ? (
-				<MainButton
-					text='К УЧЕБЕ'
-					onClick={() => {
+			<MainButton
+				text={
+					isPaid || Number(courseDataComponent.price) === 0
+						? 'К УЧЕБЕ'
+						: 'ПРИСОЕДИНИТЬСЯ'
+				}
+				onClick={() => {
+					if (isPaid || Number(courseDataComponent.price) === 0) {
 						if (courseDataComponent.channel?.url) {
 							window.location.href = courseDataComponent.channel.url
 						} else {
 							console.log('URL не доступен')
 						}
-					}}
-				/>
-			) : (
-				<MainButton
-					text='ПРИСОЕДИНИТЬСЯ'
-					onClick={() =>
+					} else {
 						navigate('/buy-course', { state: courseDataComponent })
 					}
-				/>
-			)}
+				}}
+			/>
 		</>
 	)
 }
