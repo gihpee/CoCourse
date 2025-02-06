@@ -1,4 +1,4 @@
-import { ICourse } from '@/entities/course/model/types'
+import { ICourse } from './types'
 
 const fetchGetCourses = async (): Promise<ICourse[]> => {
 	try {
