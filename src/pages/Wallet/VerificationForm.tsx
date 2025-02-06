@@ -13,6 +13,8 @@ function VerificationForm() {
 
 	const [passportDate, setPassportDate] = useState<Date | null>(null)
 
+	const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 
 	const handleOkBtnClick = () => {
@@ -38,43 +40,50 @@ function VerificationForm() {
 	})
 
 	const handlePublish = async () => {
-		const {
-			passportCopy,
-			registrationCopy,
-			Name,
-			Surname,
-			secondName,
-			birthPlace,
-			idNum,
-			Code,
-			Provided,
-			registrationAddress,
-			Inn,
-			Phone,
-			Email,
-		} = formData
+		setIsSubmitting(prev => {
+			if (prev) return prev
+			return true
+		})
 
-		if (
-			!passportCopy ||
-			!registrationCopy ||
-			!Name ||
-			!Surname ||
-			!secondName ||
-			!birthPlace ||
-			!idNum ||
-			!Code ||
-			!Provided ||
-			!registrationAddress ||
-			!Inn ||
-			!Phone ||
-			!Email ||
-			!birthDate ||
-			!passportDate
-		) {
-			setModalFillOpen(true)
-		} else {
+		try {
+			const {
+				passportCopy,
+				registrationCopy,
+				Name,
+				Surname,
+				secondName,
+				birthPlace,
+				idNum,
+				Code,
+				Provided,
+				registrationAddress,
+				Inn,
+				Phone,
+				Email,
+			} = formData
+
+			if (
+				!passportCopy ||
+				!registrationCopy ||
+				!Name ||
+				!Surname ||
+				!secondName ||
+				!birthPlace ||
+				!idNum ||
+				!Code ||
+				!Provided ||
+				!registrationAddress ||
+				!Inn ||
+				!Phone ||
+				!Email ||
+				!birthDate ||
+				!passportDate
+			) {
+				setModalFillOpen(true)
+				return
+			}
+
 			let formDataToSend = new FormData()
-
 			formDataToSend.append('passportCopy', passportCopy)
 			formDataToSend.append('registrationCopy', registrationCopy)
 			formDataToSend.append('Name', Name)
@@ -98,12 +107,13 @@ function VerificationForm() {
 			formDataToSend.append('Email', Email)
 
 			const isSuccess = await fetchCreatePassportData(formDataToSend)
-
 			if (isSuccess) {
 				navigate('/profile')
 			} else {
 				setModalFillOpen(true)
 			}
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
@@ -331,7 +341,11 @@ function VerificationForm() {
 					onChange={handleChange}
 				/>
 			</div>
-			<MainButton text='ОТПРАВИТЬ' onClick={handlePublish} />
+			<MainButton
+				text='ОТПРАВИТЬ'
+				onClick={handlePublish}
+				disabled={isSubmitting}
+			/>
 		</>
 	)
 }
