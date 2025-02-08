@@ -176,10 +176,11 @@ function EditProfile() {
 				<span>БИОГРАФИЯ</span>
 				<div className='fieldt' style={{ minHeight: '48px' }}>
 					<textarea
-						placeholder={`Описание`}
-						name={`Desc`}
+						placeholder='Описание'
+						name='Desc'
 						value={bioValue}
 						onChange={handleBioChangeWrapper}
+						onFocus={e => handleBioChangeWrapper(e)}
 					/>
 				</div>
 				<span>УНИВЕРСИТЕТ</span>
