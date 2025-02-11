@@ -55,6 +55,10 @@
 	color: var(--light-main-text);
 	font-family: 'Geologica';
 	font-size: 3.59vw;
+	width: 87.692vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -64,6 +68,10 @@
 	color: var(--light-main-text);
 	font-family: 'Geologica';
 	font-size: 3.077vw;
+	width: 87.692vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	font-style: normal;
 	font-weight: 300;
 	line-height: normal;
