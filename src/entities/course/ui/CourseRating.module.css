@@ -1,0 +1,71 @@
+.course-rating {
+	display: flex;
+	align-items: center;
+	gap: 2.051vw;
+}
+
+.course-rating__buyers {
+	display: flex;
+	align-items: center;
+	gap: 2.051vw;
+}
+
+.course-rating__buyers-img {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.course-rating__buyers-text {
+	color: var(--light-main-text);
+	font-family: 'Geologica';
+	font-size: 2.564vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-rating__stars {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2.051vw;
+}
+
+.course-rating__stars-img {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.course-rating__stars-text {
+	color: var(--light-main-text);
+	font-family: 'Geologica';
+	font-size: 2.564vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-info {
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.course-info__title {
+	color: var(--light-main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-info__university {
+	color: var(--light-main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	letter-spacing: 0.038vw;
+}

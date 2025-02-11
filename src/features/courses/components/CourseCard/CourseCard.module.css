@@ -1,0 +1,70 @@
+.course-card {
+	display: flex;
+	width: 91.795vw;
+	padding: 2.051vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 4.103vw;
+	border-radius: 1.538vw;
+	background: var(--light-wight);
+}
+
+.course-card__image-wrapper {
+	width: 87.692vw;
+	height: 24.359vw;
+}
+
+.course-card__buttons {
+	position: absolute;
+	top: 4.103vw;
+	right: 4.103vw;
+	display: flex;
+	gap: 2.051vw;
+}
+
+.course-card__image {
+	position: relative;
+	width: 87.692vw;
+	height: 24.359vw;
+	border-radius: 1.538vw;
+	background-image: url('../../../../shared/assets/course/horizontalEmptyCourseImage.webp');
+}
+
+.course-card__footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.course-card__telegram-stars {
+	display: flex;
+	padding: 1.282vw 2.564vw;
+	justify-content: center;
+	align-items: center;
+	gap: 1.538vw;
+	border-radius: 25.641vw;
+	background: var(--stars-background);
+}
+
+.course-card__stars-img {
+	width: 3.59vw;
+	height: 3.846vw;
+}
+
+.course-card__stars-count {
+	color: var(--stars-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-card__price {
+	color: var(--light-main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}

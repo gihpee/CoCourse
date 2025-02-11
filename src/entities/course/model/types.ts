@@ -106,3 +106,8 @@ export interface IReturnRequest {
 	receipt: string
 	approved: boolean
 }
+
+export interface CourseRatingProps {
+	amountOfStudents: number
+	averageRate: number | null
+}

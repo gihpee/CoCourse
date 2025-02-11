@@ -22,8 +22,6 @@
 
 .eslintrc.js
 
-src/app/styles/reset.css
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
