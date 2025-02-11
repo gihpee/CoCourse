@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import styles from './CourseInfo.module.css'
+import styles from './CourseRating.module.css'
 
 interface CourseInfoProps {
 	title: string
