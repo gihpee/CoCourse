@@ -1,6 +1,5 @@
 .course-card {
 	display: flex;
-	width: 91.795vw;
 	padding: 2.051vw;
 	flex-direction: column;
 	align-items: flex-start;
@@ -10,20 +9,20 @@
 }
 
 .course-card__image-wrapper {
+	position: relative;
 	width: 87.692vw;
 	height: 24.359vw;
 }
 
 .course-card__buttons {
 	position: absolute;
-	top: 4.103vw;
-	right: 4.103vw;
+	top: 2.051vw;
+	right: 2.051vw;
 	display: flex;
 	gap: 2.051vw;
 }
 
 .course-card__image {
-	position: relative;
 	width: 87.692vw;
 	height: 24.359vw;
 	border-radius: 1.538vw;
@@ -34,9 +33,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 100%;
 }
 
 .course-card__telegram-stars {
+	cursor: pointer;
 	display: flex;
 	padding: 1.282vw 2.564vw;
 	justify-content: center;

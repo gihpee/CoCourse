@@ -15,8 +15,8 @@ const CardList: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
 						key={index}
 						amountOfStudents={item.amount_of_students ?? 0}
 						averageRate={averageRate}
-						chanelName={item.channel?.name ?? ''}
-						chanelPhoto={item.channel?.photo ?? ''}
+						chanelName={item.name ?? ''}
+						chanelPhoto={item.image ?? ''}
 						price={item.price ?? 0}
 						university={item.university ?? ''}
 					/>
