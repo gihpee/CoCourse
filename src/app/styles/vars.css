@@ -1,4 +1,6 @@
 :root {
+	--background: #efeef3;
+
 	--mini-background: #ffffff;
 	--main-text: #333;
 	--second-text: #8b8b8b;
@@ -12,6 +14,8 @@
 }
 
 [data-theme='dark'] {
+	--background: #0f0f0f;
+
 	--mini-background: #212121;
 	--main-text: #fbfbfb;
 	--second-text: #aaa;
