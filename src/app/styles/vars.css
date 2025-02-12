@@ -1,6 +1,11 @@
 :root {
 	--mini-background: #ffffff;
 	--main-text: #333;
+	--second-text: #8b8b8b;
+
+	--create-course-button: #ffece1;
+
+	--active-color: #f3734e;
 
 	--stars-background: #ffe7c6;
 	--stars-text: #ffaf40;
@@ -9,6 +14,11 @@
 [data-theme='dark'] {
 	--mini-background: #212121;
 	--main-text: #fbfbfb;
+	--second-text: #aaa;
+
+	--create-course-button: #ffece1;
+
+	--active-color: #f3734e;
 
 	--stars-background: #ffe7c6;
 	--stars-text: #ffaf40;

@@ -28,6 +28,8 @@
 	height: 24.359vw;
 	border-radius: 1.538vw;
 	background-image: url('../../../../shared/assets/course/horizontalEmptyCourseImage.webp');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .course-card__footer {
