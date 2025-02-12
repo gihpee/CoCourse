@@ -51,7 +51,7 @@
 	position: relative;
 	display: flex;
 	padding: 2.564vw 2.051vw 2.564vw 8.205vw;
-	color: var(--second-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 3.59vw;
 	font-style: normal;
@@ -60,6 +60,8 @@
 	border-radius: 1.538vw;
 	background: var(--mini-background);
 	width: 82.564vw;
+	border: none;
+	outline: none;
 }
 
 .feed__search-icon {
@@ -68,6 +70,10 @@
 	height: 4.103vw;
 	top: 2.821vw;
 	left: 2.051vw;
+
+	path {
+		fill: var(--main-text);
+	}
 }
 
 .feed__filter-button {
@@ -95,6 +101,7 @@
 	display: flex;
 	align-items: center;
 	gap: 1.282vw;
+	margin-left: 4.103vw;
 }
 
 .feed__filter-item {
@@ -113,12 +120,7 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-}
-
-.feed__filters::after {
-	content: '';
-	display: block;
-	width: 100vw;
+	min-width: fit-content;
 }
 
 .feed__filter-item_isActive {
