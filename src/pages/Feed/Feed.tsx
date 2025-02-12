@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import useUserCoursesData from '../../entities/user/model/useUserCourses'
+import NavBar from '../../shared/components/NavBar/NavBar'
 import styles from './Feed.module.css'
 import { useFeed } from './model/useFeed'
 import FeedFilters from './ui/FeedFilters'
@@ -31,6 +32,7 @@ const Feed = () => {
 			/>
 			<FeedFilters />
 			<FeedList filteredCourses={filteredData} isPending={isPending} />
+			<NavBar />
 		</div>
 	)
 }

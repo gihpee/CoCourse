@@ -19,10 +19,12 @@
 
 html {
 	scrollbar-width: none;
+	overflow-x: hidden;
 }
 
 body {
 	-ms-overflow-style: none;
+	overflow-x: hidden;
 }
 
 .loading {
