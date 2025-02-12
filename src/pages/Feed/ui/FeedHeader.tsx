@@ -1,5 +1,5 @@
 import CreateCourseIcon from '../../../shared/assets/course/CreateCourse.svg'
-import styles from '../Feed.module.scss'
+import styles from '../Feed.module.css'
 
 const FeedHeader = () => {
 	return (

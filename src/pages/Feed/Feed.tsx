@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import useUserCoursesData from '../../entities/user/model/useUserCourses'
-import styles from './Feed.module.scss'
+import styles from './Feed.module.css'
 import { useFeed } from './model/useFeed'
 import FeedFilters from './ui/FeedFilters'
 import FeedHeader from './ui/FeedHeader'

@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 import FilterIcon from '../../../shared/assets/course/Filter.svg'
 import ZoomIcon from '../../../shared/assets/course/ZoomIcon.svg'
-import styles from '../Feed.module.scss'
+import styles from '../Feed.module.css'
 
 interface FeedSearchProps {
 	inputValue: string
