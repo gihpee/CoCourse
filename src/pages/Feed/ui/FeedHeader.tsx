@@ -6,7 +6,7 @@ const FeedHeader = () => {
 	return (
 		<div className={styles['feed__header']}>
 			<h1 className={styles['feed__title']}>Курсы</h1>
-			<Link to='create-course'>
+			<Link to='connect-bot'>
 				<button className={styles['feed__create-button']}>
 					<img
 						src={CreateCourseIcon}

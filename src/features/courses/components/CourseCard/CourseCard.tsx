@@ -21,11 +21,7 @@ const CourseCard: FC<ICourseCard> = ({
 	averageRate,
 }) => {
 	return (
-		<Link
-			to={`/course/${itemCard.id}`}
-			key={itemCard.id}
-			className='course_card'
-		>
+		<Link to={`/course/${itemCard.id}`} key={itemCard.id}>
 			<div className={styles['course-card']}>
 				<div className={styles['course-card__image-wrapper']}>
 					<div className={styles['course-card__buttons']}>
