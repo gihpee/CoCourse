@@ -1,6 +1,6 @@
-import { ICourse } from '@/entities/course/model/types'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ICourse } from '../../../entities/course/model/types'
 
 const useUserCoursesData = (
 	id: number,

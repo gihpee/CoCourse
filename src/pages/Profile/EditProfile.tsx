@@ -32,11 +32,6 @@ function EditProfile() {
 
 	const navigate = useNavigate()
 
-	console.log('WebApp', window.Telegram.WebApp)
-	console.log('initData', window.Telegram.WebApp.initData)
-	console.log('themeParams', window.Telegram.WebApp.themeParams)
-	console.log('colorScheme', window.Telegram.WebApp.colorScheme)
-
 	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
 	useEffect(() => {

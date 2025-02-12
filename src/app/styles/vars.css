@@ -1,9 +1,14 @@
 :root {
-	--light-wight: #ffffff;
-	--light-main-text: #333;
+	--mini-background: #ffffff;
+	--main-text: #333;
 
-	--dark-semiblack: #212121;
-	--dark-primary-text: #fbfbfb;
+	--stars-background: #ffe7c6;
+	--stars-text: #ffaf40;
+}
+
+[data-theme='dark'] {
+	--mini-background: #212121;
+	--main-text: #fbfbfb;
 
 	--stars-background: #ffe7c6;
 	--stars-text: #ffaf40;

@@ -6,7 +6,7 @@
 	align-items: flex-start;
 	gap: 4.103vw;
 	border-radius: 1.538vw;
-	background: var(--light-wight);
+	background: var(--mini-background);
 }
 
 .course-card__image-wrapper {
@@ -63,7 +63,7 @@
 }
 
 .course-card__price {
-	color: var(--light-main-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 4.615vw;
 	font-style: normal;

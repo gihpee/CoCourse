@@ -1,7 +1,7 @@
-import { IFeedback } from '@/entities/course/model/types'
 import MainButton from '@twa-dev/mainbutton'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { IFeedback } from '../../entities/course/model/types'
 import fetchCourses from '../../entities/feedback/model/fetchCourses'
 import './Feedback.css'
 

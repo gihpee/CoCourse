@@ -16,7 +16,7 @@
 }
 
 .course-rating__buyers-text {
-	color: var(--light-main-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 2.564vw;
 	font-style: normal;
@@ -37,7 +37,7 @@
 }
 
 .course-rating__stars-text {
-	color: var(--light-main-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 2.564vw;
 	font-style: normal;
@@ -52,7 +52,7 @@
 }
 
 .course-info__title {
-	color: var(--light-main-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 3.59vw;
 	width: 87.692vw;
@@ -62,7 +62,7 @@
 }
 
 .course-info__university {
-	color: var(--light-main-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 3.077vw;
 	width: 87.692vw;

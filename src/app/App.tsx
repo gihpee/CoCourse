@@ -28,10 +28,14 @@ import Transaction from '../pages/Wallet/Transaction'
 import VerificationForm from '../pages/Wallet/VerificationForm'
 import VerificationN from '../pages/Wallet/VerificationN'
 import Wallet from '../pages/Wallet/Wallet'
+import useTheme from '../shared/hooks/useTheme'
 import './App.css'
 
 function App() {
 	const [hasRedirected, setHasRedirected] = useState(false)
+
+	const { theme } = useTheme()
+	console.log('theme', theme)
 
 	const tg: any = window.Telegram
 	tg.WebApp.expand()
