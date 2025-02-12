@@ -1,5 +1,5 @@
 .navbar {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
 	display: flex;
@@ -7,6 +7,13 @@
 	padding: 2.564vw 12.821vw 5.128vw 12.821vw;
 	justify-content: space-between;
 	align-items: center;
+	background-color: var(--mini-background);
+}
+
+.navbar__list {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .navbar__item {
@@ -16,13 +23,19 @@
 	gap: 1.026vw;
 }
 
+.navbar__link {
+	display: flex;
+	flex-direction: column;
+	gap: 1.923vw;
+	align-items: center;
+}
+
 .navbar__link-img {
 	width: 6.154vw;
 	height: 6.154vw;
 }
 
 .navbar__title {
-	color: var(--nav-text);
 	font-family: 'Geologica';
 	font-size: 2.564vw;
 	font-style: normal;

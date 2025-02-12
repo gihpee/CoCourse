@@ -1,4 +1,7 @@
+import { ICourse } from '../../../entities/course/model/types'
+
 export interface ICourseCard {
+	itemCard: ICourse
 	chanelPhoto: string | null
 	amountOfStudents: number
 	chanelName: string | null
