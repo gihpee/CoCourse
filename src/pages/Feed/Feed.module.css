@@ -3,7 +3,7 @@
 	flex-direction: column;
 	gap: 4.103vw;
 	padding-top: 2.051vw;
-	margin: 0 auto;
+	align-items: center;
 }
 
 .feed__header {
