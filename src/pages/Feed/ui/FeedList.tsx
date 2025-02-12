@@ -3,7 +3,7 @@ import { ICourse } from '../../../entities/course/model/types'
 import LoadingCard from '../../../shared/card/LoadingCard'
 import styles from '../Feed.module.css'
 
-const CardList = lazy(() => import('../../../widgets/CardList/CardList'))
+const CardList = lazy(() => import('../../../widgets/cardList/CardList'))
 
 interface FeedListProps {
 	filteredCourses: ICourse[]
