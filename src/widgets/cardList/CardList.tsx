@@ -1,7 +1,7 @@
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { ICourse } from '../../entities/course/model/types'
 import CourseCard from '../../features/courses/components/CourseCard/CourseCard'
-import styles from './CardList.module.scss'
+import styles from './CardList.module.css'
 
 const CardList: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
 	return (
