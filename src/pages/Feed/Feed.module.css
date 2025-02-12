@@ -3,6 +3,7 @@
 	flex-direction: column;
 	gap: 4.103vw;
 	padding-top: 2.051vw;
+	margin: 0 auto;
 }
 
 .feed__header {
@@ -10,7 +11,7 @@
 	width: 91.795vw;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 2.821vw;
+	margin-bottom: -1.282vw;
 }
 
 .feed__title {
@@ -27,7 +28,7 @@
 	width: 7.179vw;
 	height: 7.179vw;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
 	border-radius: 19.943vw;
 	background: var(--create-course-button);
@@ -40,6 +41,7 @@
 }
 
 .feed__top-panel {
+	position: relative;
 	display: flex;
 	align-items: center;
 	gap: 2.051vw;
@@ -55,6 +57,9 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	width: 82.564vw;
 }
 
 .feed__search-icon {
@@ -70,11 +75,14 @@
 	padding: 1.571vw 0.449vw;
 	justify-content: center;
 	align-items: center;
+	background: transparent;
+	border: none;
+	outline: none;
 }
 
 .feed__filter-button-img {
-	width: 4.038vw;
-	height: 6.282vw;
+	height: 4.038vw;
+	width: 6.282vw;
 }
 
 .feed__loading {
@@ -90,15 +98,30 @@
 }
 
 .feed__filter-item {
+	cursor: pointer;
 	display: flex;
 	border: none;
 	padding: 1.282vw 2.564vw;
 	justify-content: center;
 	align-items: center;
 	border-radius: 1.538vw;
+	background-color: transparent;
 	border: 1px solid var(--active-color);
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.feed__filters::after {
+	content: '';
+	display: block;
+	width: 100vw;
 }
 
 .feed__filter-item_isActive {
 	background: var(--active-color);
+	color: var(--main-text);
 }
