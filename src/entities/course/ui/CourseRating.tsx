@@ -8,6 +8,7 @@ const CourseRating: FC<CourseRatingProps> = ({
 	amountOfStudents,
 	averageRate,
 }) => {
+	console.log('CourseRating', averageRate)
 	return (
 		<div className={styles['course-rating']}>
 			<div className={styles['course-rating__buyers']}>

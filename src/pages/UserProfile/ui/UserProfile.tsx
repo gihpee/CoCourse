@@ -28,6 +28,9 @@ const UserProfile: FC = () => {
 
 	const averageRate = feedbacks.length > 0 ? calculateRating(feedbacks) : 0
 
+	console.log(feedbacks)
+	console.log('averageRate', averageRate)
+
 	return (
 		<div className={styles['user-profile']}>
 			<header className={styles['user-profile__header']}>
@@ -63,17 +66,19 @@ const UserProfile: FC = () => {
 				<div className={styles['user-profile__line']} />
 				<div className={styles['user-profile__section']}>
 					<h3 className={styles['user-profile__section-title']}>Предметы</h3>
-					{userData?.subjects?.length ? (
-						userData.subjects.map(option => (
-							<div key={option} className={styles['user-profile__subject']}>
-								{option}
-							</div>
-						))
-					) : (
-						<p className={styles['user-profile__section-description']}>
-							Предметы не указаны
-						</p>
-					)}
+					<div className={styles['user-profile__wrapper-subjects']}>
+						{userData?.subjects?.length ? (
+							userData.subjects.map(option => (
+								<div key={option} className={styles['user-profile__subject']}>
+									{option}
+								</div>
+							))
+						) : (
+							<p className={styles['user-profile__section-description']}>
+								Предметы не указаны
+							</p>
+						)}
+					</div>
 				</div>
 				<div className={styles['user-profile__line']} />
 				<div className={styles['user-profile__section']}>
@@ -83,7 +88,7 @@ const UserProfile: FC = () => {
 					</p>
 				</div>
 				<div className={styles['user-profile__line']} />
-				<div className={styles['user-profile__courses']}>
+				<div className={styles['user-profile__section']}>
 					<h3 className={styles['user-profile__section-title']}>Курсы</h3>
 					{userCourses.length > 0 ? (
 						<div className={styles['user-profile__all-cards']}>

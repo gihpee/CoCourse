@@ -1,5 +1,8 @@
 .user-profile {
 	background-color: var(--background);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .user-profile__header {
@@ -26,6 +29,7 @@
 	width: 47.84vw;
 	height: 47.84vw;
 	border-radius: 100%;
+	background-size: cover;
 }
 
 .user-profile__name {
@@ -39,6 +43,7 @@
 }
 
 .user-profile__settings {
+	cursor: pointer;
 	border: none;
 	outline: none;
 	display: flex;
@@ -48,11 +53,18 @@
 	align-items: center;
 	border-radius: 1.538vw;
 	background: var(--active-color);
+	color: var(--active-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 }
 
 .user-profile__stats {
 	display: flex;
 	gap: 2.051vw;
+	padding: 4.103vw 0 6.154vw 0;
 }
 
 .user-profile__content {
@@ -90,6 +102,11 @@
 	width: 100%;
 	height: 1px;
 	background-color: var(--profile-line);
+}
+
+.user-profile__wrapper-subjects {
+	display: flex;
+	gap: 2.051vw;
 }
 
 .user-profile__subject {
