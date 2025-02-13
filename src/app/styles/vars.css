@@ -1,6 +1,8 @@
 :root {
 	--background: #efeef3;
 
+	--head-background: #f4f4f4;
+
 	--mini-background: #ffffff;
 	--main-text: #333;
 	--second-text: #8b8b8b;
@@ -13,10 +15,14 @@
 
 	--stars-background: #ffe7c6;
 	--stars-text: #ffaf40;
+
+	--profile-line: #f1f5f9;
 }
 
 [data-theme='dark'] {
 	--background: #0f0f0f;
+
+	--head-background: #212121;
 
 	--mini-background: #212121;
 	--main-text: #fbfbfb;
@@ -30,4 +36,6 @@
 
 	--stars-background: #ffe7c6;
 	--stars-text: #ffaf40;
+
+	--profile-line: #202020;
 }

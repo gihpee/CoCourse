@@ -1,0 +1,65 @@
+.feedback {
+	display: flex;
+	height: 20.769vw;
+	padding: 2.051vw 2.564vw;
+	align-items: center;
+	gap: 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.feedback__icon {
+	display: flex;
+	width: 11.795vw;
+	height: 11.795vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 49.145vw;
+	background: var(--create-course-button);
+}
+
+.feedback__icon-img {
+	width: 7.692vw;
+	height: 7.692vw;
+}
+
+.feedback__content {
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.feedback__wrapper-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.026vw;
+}
+
+.feedback__title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.feedback__unread-feedbacks {
+	display: flex;
+	width: 3.59vw;
+	padding: 0.513vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 25.641vw;
+	background: var(--active-color);
+}
+
+.feedback__rating {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

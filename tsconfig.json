@@ -10,17 +10,7 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"baseUrl": "./",
-		"removeComments": true,
-		"paths": {
-			"@/*": ["./src/*"],
-			"@app/*": ["./src/app/*"],
-			"@shared/*": ["./src/shared/*"],
-			"@features/*": ["./src/features/*"],
-			"@entities/*": ["./src/entities/*"],
-			"@pages/*": ["./src/pages/*"],
-			"@widgets/*": ["./src/widgets/*"],
-			"@processes/*": ["./src/processes/*"]
-		}
+		"removeComments": true
 	},
 	"include": ["src/**/*", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules", "dist"]
