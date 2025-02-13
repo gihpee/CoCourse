@@ -21,6 +21,9 @@ const CourseCard: FC<ICourseCard> = ({
 	price,
 	averageRate,
 }) => {
+	console.log(itemCard)
+	console.log(itemCard.is_draft)
+
 	return (
 		<Link to={`/course/${itemCard.id}`} key={itemCard.id}>
 			<div className={styles['course-card']}>

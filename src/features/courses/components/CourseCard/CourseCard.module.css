@@ -74,6 +74,9 @@
 }
 
 .course-card__status {
+	position: absolute;
+	top: 2.051vw;
+	left: 2.051vw;
 	display: flex;
 	padding: 1.282vw 2.051vw;
 	justify-content: center;
