@@ -1,6 +1,7 @@
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
 import BuyCourse from '../pages/Course/BuyCourse'
 import Course from '../pages/Course/Course'
 import ConnectBot from '../pages/Create/ConnectBot'
@@ -15,7 +16,6 @@ import NavBar from '../pages/Navbar/Navbar'
 import Bio from '../pages/Profile/Bio'
 import ECourse from '../pages/Profile/ECourse'
 import EditProfile from '../pages/Profile/EditProfile'
-import Profile from '../pages/Profile/Profile'
 import Registration from '../pages/Profile/Registration'
 import Subj from '../pages/Profile/Subj'
 import Univ from '../pages/Profile/Univ'
@@ -75,7 +75,7 @@ function App() {
 							</>
 						}
 					/>
-					<Route path={'profile'} element={<Profile />} />
+					<Route path={'profile'} element={<UserProfile />} />
 					<Route path={'course/:cid'} element={<Course />} />
 					<Route path={'create-course'} element={<CreateCourse />} />
 					<Route path={'send-feedback/:id'} element={<SendFeedback />} />
