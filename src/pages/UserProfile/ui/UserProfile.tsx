@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
 import CourseCard from 'src/features/courses/components/CourseCard/CourseCard'
 import Feedback from 'src/shared/components/Feedback/Feedback'
+import NavBar from 'src/shared/components/NavBar/NavBar'
 import Sales from 'src/shared/components/Sales/Sales'
 import { useUserProfile } from '../model/useUserProfile'
 import styles from './UserProfile.module.css'
@@ -101,6 +102,7 @@ const UserProfile: FC = () => {
 					)}
 				</div>
 			</section>
+			<NavBar />
 		</div>
 	)
 }
