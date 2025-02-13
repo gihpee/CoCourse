@@ -54,7 +54,7 @@
 	align-items: center;
 	border-radius: 25.641vw;
 	background: var(--active-color);
-	color: var(--main-text);
+	color: var(--active-text);
 	font-family: 'Geologica';
 	font-size: 2.051vw;
 	font-style: normal;

@@ -72,3 +72,36 @@
 	font-weight: 500;
 	line-height: normal;
 }
+
+.course-card__status {
+	display: flex;
+	padding: 1.282vw 2.051vw;
+	justify-content: center;
+	align-items: center;
+	gap: 1.282vw;
+	border-radius: 1.538vw;
+	background: var(--head-background);
+}
+
+.course-card__status-icon {
+	width: 1.282vw;
+	height: 1.282vw;
+	border-radius: 100%;
+}
+
+.course-card__status-icon_status-draft {
+	background-color: white;
+}
+
+.course-card__status-icon_status-maderation {
+	background-color: #d8bb55;
+}
+
+.course-card__status-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}

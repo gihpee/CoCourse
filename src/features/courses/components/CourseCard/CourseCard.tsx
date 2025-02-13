@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { setImagePath } from '../../../../entities/course/lib/setImagePath'
@@ -24,6 +25,28 @@ const CourseCard: FC<ICourseCard> = ({
 		<Link to={`/course/${itemCard.id}`} key={itemCard.id}>
 			<div className={styles['course-card']}>
 				<div className={styles['course-card__image-wrapper']}>
+					{itemCard.is_draft ? (
+						<div className={styles['course-card__status']}>
+							<div
+								className={cn(
+									styles['course-card__status-icon'],
+									styles['course-card__status-icon_status-draft']
+								)}
+							/>
+							<p className={styles['course-card__status-text']}>Черновик</p>
+						</div>
+					) : itemCard.on_moderation ? (
+						<div className={styles['course-card__status']}>
+							<div
+								className={cn(
+									styles['course-card__status-icon'],
+									styles['course-card__status-icon_status-maderation']
+								)}
+							/>
+							<p className={styles['course-card__status-text']}>На модерации</p>
+						</div>
+					) : null}
+
 					<div className={styles['course-card__buttons']}>
 						<CourseButton alt='Добавить в избранное' imgSrc={HeartIcon} />
 						<CourseButton alt='Поделиться' imgSrc={ShareIcon} />
