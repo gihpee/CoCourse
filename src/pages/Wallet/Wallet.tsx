@@ -12,9 +12,7 @@ import './Wallet.css'
 function Wallet() {
 	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
-	// const id = 478969308;
 	const [coursesPaid, setCoursesPaid] = useState<ITransaction[]>([])
-
 	const [coursesSelled, setCoursesSelled] = useState([])
 	const [balance, setBalance] = useState(0)
 	const [verifyed, setVerifyed] = useState(null)

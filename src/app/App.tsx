@@ -37,10 +37,19 @@ function App() {
 	const { theme } = useTheme()
 	console.log('theme', theme)
 
-	const tg: any = window.Telegram
-	tg.WebApp.expand()
-	tg.WebApp.enableClosingConfirmation()
+	// const tg: any = window.Telegram
+	// tg.WebApp.expand()
+	// tg.WebApp.enableClosingConfirmation()
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (window.Telegram?.WebApp) {
+			const webApp = window.Telegram.WebApp
+
+			webApp.requestFullscreen()
+			webApp.enableClosingConfirmation()
+		}
+	}, [])
 
 	useEffect(() => {
 		if (hasRedirected) return
