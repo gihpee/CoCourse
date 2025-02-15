@@ -60,7 +60,8 @@ function App() {
 
 			if (disableVerticalSwipes.isAvailable()) {
 				disableVerticalSwipes()
-				isVerticalSwipesEnabled() // false
+				isVerticalSwipesEnabled()
+				console.log(isVerticalSwipesEnabled()) // false
 			}
 			// postEvent('web_app_exit_fullscreen')
 
