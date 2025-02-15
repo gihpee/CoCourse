@@ -3,16 +3,6 @@
 	<head>
 		<meta charset="utf-8" />
 		<script src="https://telegram.org/js/telegram-web-app.js"></script>
-		<script>
-			window.addEventListener('DOMContentLoaded', function () {
-				Telegram.WebApp.ready()
-				if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
-					Telegram.WebApp.disableVerticalSwipes()
-				} else {
-					console.error('Метод disableVerticalSwipes недоступен.')
-				}
-			})
-		</script>
 		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#000000" />
