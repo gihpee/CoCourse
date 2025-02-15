@@ -47,6 +47,7 @@ function App() {
 
 	useEffect(() => {
 		if (window.Telegram?.WebApp) {
+			window.Telegram.WebApp.disableVerticalSwipes()
 			// const webApp = window.Telegram.WebApp
 
 			// webApp.requestFullscreen()
