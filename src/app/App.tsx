@@ -84,7 +84,6 @@ function App() {
 			}
 
 			window.addEventListener('resize', handleResize)
-			return () => window.removeEventListener('resize', handleResize)
 			// postEvent('web_app_exit_fullscreen')
 
 			// webApp.safeAreaInsets()
