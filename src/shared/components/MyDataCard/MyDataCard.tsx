@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC } from 'react'
 import ApprovedData from '../../assets/wallet/ApprovedData.svg'
 import InProgress from '../../assets/wallet/DataInProgress.svg'
@@ -33,24 +34,34 @@ const MyDataCard: FC<IMyDataCard> = props => {
 
 	let imageSrc = EmptyData
 	let statusText = 'Не пройдена'
+	let statusClass = styles['my-data-card__status_status-red']
 
 	if (key === 'verifyed') {
 		if (verifyed === 'Не пройдена') {
 			imageSrc = EmptyData
 			statusText = 'Не пройдена'
+			statusClass = styles['my-data-card__status_status-red']
 		} else if (verifyed === 'На проверке') {
 			imageSrc = InProgress
 			statusText = 'На проверке'
+			statusClass = styles['my-data-card__status_status-yellow']
 		} else if (verifyed === 'Пройдена') {
 			imageSrc = ApprovedData
 			statusText = 'Пройдена'
+			statusClass = styles['my-data-card__status_status-green']
 		}
 	} else if (key === 'connectedPayments') {
 		imageSrc = connectedPayments ? ApprovedData : EmptyData
 		statusText = connectedPayments ? 'Пройдена' : 'Не пройдена'
+		statusClass = connectedPayments
+			? styles['my-data-card__status_status-green']
+			: styles['my-data-card__status_status-red']
 	} else if (key === 'userFriendlyAddress') {
 		imageSrc = userFriendlyAddress ? ApprovedData : EmptyData
 		statusText = userFriendlyAddress ? 'Пройдена' : 'Не пройдена'
+		statusClass = userFriendlyAddress
+			? styles['my-data-card__status_status-green']
+			: styles['my-data-card__status_status-red']
 	}
 
 	return (
@@ -62,16 +73,25 @@ const MyDataCard: FC<IMyDataCard> = props => {
 						alt={statusText}
 						className={styles['my-data-card__status-icon']}
 					/>
-					<p className={styles['my-data-card__status-text']}>{statusText}</p>
+					<p className={cn(styles['my-data-card__status-text'], statusClass)}>
+						{statusText}
+					</p>
 				</div>
 				<img
 					src={LinkArrow}
-					alt='Перехад по ссылке'
+					alt='Переход по ссылке'
 					className={styles['my-data-card__link-icon']}
 				/>
 			</div>
 			<h3 className={styles['my-data-card__title']}>{title}</h3>
-			<p className={styles['my-data-card__description']}>{description}</p>
+			<p
+				className={cn(
+					styles['my-data-card__description'],
+					styles['my-data-card__description_variant-mini']
+				)}
+			>
+				{description}
+			</p>
 		</div>
 	)
 }

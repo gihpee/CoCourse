@@ -6,7 +6,7 @@
 	justify-content: center;
 	gap: 1.282vw;
 	border-radius: 1.538vw;
-	background: var(--mini-backgroundf);
+	background: var(--mini-background);
 }
 
 .my-data-card__status {
@@ -21,7 +21,6 @@
 }
 
 .my-data-card__status-text {
-	color: #2fd159;
 	font-family: 'Geologica';
 	font-size: 3.077vw;
 	font-style: normal;
@@ -45,6 +44,22 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+.my-data-card__description_variant-mini {
+	width: 78.974vw;
+}
+
+.my-data-card__status_status-green {
+	color: #2fd159;
+}
+
+.my-data-card__status_status-yellow {
+	color: #d5c948;
+}
+
+.my-data-card__status_status-red {
+	color: #e53935;
 }
 
 .my-data-card__link-icon {

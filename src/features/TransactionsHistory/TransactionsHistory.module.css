@@ -4,3 +4,12 @@
 	align-items: flex-start;
 	gap: 4.103vw;
 }
+
+.transactions-history__title {
+	color: var(--active-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
