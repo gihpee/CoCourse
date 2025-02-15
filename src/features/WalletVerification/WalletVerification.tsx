@@ -29,16 +29,19 @@ export const WalletVerification: FC = () => {
 					title='Пройдите верификацию'
 					description='Пройди верификацию, чтобы создавать объявления и начать зарабатывать на своих знаниях.'
 					verifyed={verifyed}
+					path='/verificationN'
 				/>
 				<MyDataCard
 					title='Подключите выплаты'
 					description='Добавь способ выплаты, чтобы мы могли начислять вознаграждения за продажи прямо на карту.'
 					connectedPayments={connectedPayments}
+					path='/connect-payments'
 				/>
 				<MyDataCard
 					title='Подключите кошелек'
 					description='Подключи кошелек, чтобы мы могли начислять вознаграждения за продажи без комиссии.'
 					userFriendlyAddress={userFriendlyAddress}
+					path='/connect-walletN'
 				/>
 			</div>
 		</div>

@@ -14,6 +14,11 @@ const LimitSection: FC<ILimitSection> = ({
 	balance,
 	totalCount,
 }) => {
+	const progress = (balance / totalCount) * 100
+
+	const formattedBalance = balance.toLocaleString('ru-RU')
+	const formattedTotalCount = totalCount.toLocaleString('ru-RU')
+
 	return (
 		<div className={styles['limit-section']}>
 			<div className={styles['limit-section__header']}>
@@ -23,12 +28,19 @@ const LimitSection: FC<ILimitSection> = ({
 				</h3>
 			</div>
 			<div className={styles['limit-section__progress']}>
-				<div className={styles['limit-section__progress-bar']}></div>
+				<div className={styles['limit-section__progress-bar']}>
+					<div
+						className={styles['limit-section__progress-bar-balance']}
+						style={{ width: `${progress}%` }}
+					></div>
+				</div>
 				<div className={styles['limit-section__info']}>
 					<h3 className={styles['limit-section__remaining']}>
-						Осталось {balance} ₽
+						Осталось {formattedBalance} ₽
 					</h3>
-					<h3 className={styles['limit-section__total']}>из {totalCount} ₽</h3>
+					<h3 className={styles['limit-section__total']}>
+						из {formattedTotalCount} ₽
+					</h3>
 				</div>
 			</div>
 		</div>

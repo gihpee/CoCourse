@@ -8,7 +8,7 @@
 }
 
 .wallet__title {
-	color: var(--mini-background);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 4.615vw;
 	font-style: normal;

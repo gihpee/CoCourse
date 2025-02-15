@@ -2,6 +2,8 @@ import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
+import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
+import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
 import BuyCourse from '../pages/Course/BuyCourse'
 import Course from '../pages/Course/Course'
 import ConnectBot from '../pages/Create/ConnectBot'
@@ -104,9 +106,9 @@ function App() {
 					<Route path={'buy-course'} element={<BuyCourse />} />
 					<Route path={'transaction/:tid'} element={<Transaction />} />
 					<Route path={'verification'} element={<Verification />} />
-					{/* <Route path={'connect-wallet'} element={<ConnectWallet />} /> */}
+					<Route path={'connect-wallet'} element={<ConnectWallet />} />
 					<Route path={'verificationN'} element={<VerificationN />} />
-					{/* <Route path={'connect-walletN'} element={<ConnectWalletN />} /> */}
+					<Route path={'connect-walletN'} element={<ConnectWalletN />} />
 					<Route path={'verification-form'} element={<VerificationForm />} />
 					<Route path={'connect-payments'} element={<ConnectPayments />} />
 					<Route

@@ -49,3 +49,9 @@
 	font-weight: 400;
 	line-height: normal;
 }
+
+.limit-section__progress-bar-balance {
+	height: 100%;
+	border-radius: 1.538vw;
+	background: var(--active-color);
+}

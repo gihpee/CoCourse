@@ -6,7 +6,7 @@
 }
 
 .transactions-history__title {
-	color: var(--active-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 3.59vw;
 	font-style: normal;

@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 import ApprovedData from '../../assets/wallet/ApprovedData.svg'
 import InProgress from '../../assets/wallet/DataInProgress.svg'
 import EmptyData from '../../assets/wallet/EmptyData.svg'
@@ -12,6 +13,7 @@ interface IMyDataCard {
 	verifyed?: string | null
 	connectedPayments?: boolean
 	userFriendlyAddress?: string
+	path: string
 }
 
 const MyDataCard: FC<IMyDataCard> = props => {
@@ -21,6 +23,7 @@ const MyDataCard: FC<IMyDataCard> = props => {
 		verifyed,
 		connectedPayments,
 		userFriendlyAddress,
+		path,
 	} = props
 
 	const key =
@@ -64,8 +67,18 @@ const MyDataCard: FC<IMyDataCard> = props => {
 			: styles['my-data-card__status_status-red']
 	}
 
+	const isLinkActive = statusText === 'Не пройдена'
+
+	// Типизируем CardWrapper как элемент типа Link или div
+	const CardWrapper: React.ElementType = isLinkActive ? Link : 'div'
+
+	// Только добавляем `to`, если это Link
+	const cardProps = isLinkActive
+		? { to: path, className: styles['my-data-card'] }
+		: { className: styles['my-data-card'] }
+
 	return (
-		<div className={styles['my-data-card']}>
+		<CardWrapper {...cardProps}>
 			<div className={styles['my-data-card__wrapper-status']}>
 				<div className={styles['my-data-card__status']}>
 					<img
@@ -92,7 +105,7 @@ const MyDataCard: FC<IMyDataCard> = props => {
 			>
 				{description}
 			</p>
-		</div>
+		</CardWrapper>
 	)
 }
 
