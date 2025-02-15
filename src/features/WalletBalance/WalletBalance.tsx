@@ -6,6 +6,8 @@ export const WalletBalance: FC = () => {
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	const [balance, setBalance] = useState<number>(0)
 
+	const formattedBalance = balance.toLocaleString('ru-RU')
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await fetchUserTransactions(id)
@@ -20,7 +22,7 @@ export const WalletBalance: FC = () => {
 		<div className={styles['wallet__balance']}>
 			<div className={styles['wallet__balance-wrapper']}>
 				<h3 className={styles['wallet__balance-title']}>Основной счёт</h3>
-				<p className={styles['wallet__balance-amount']}>{balance} ₽</p>
+				<p className={styles['wallet__balance-amount']}>{formattedBalance} ₽</p>
 			</div>
 			<button className={styles['wallet__balance-withdraw-button']}>
 				Вывод средств

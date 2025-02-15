@@ -1,3 +1,4 @@
+import { postEvent } from '@telegram-apps/sdk'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -49,7 +50,11 @@ function App() {
 			const webApp = window.Telegram.WebApp
 
 			// webApp.requestFullscreen()
-			webApp.expand()
+
+			postEvent('web_app_request_fullscreen')
+			// postEvent('web_app_exit_fullscreen')
+
+			// webApp.expand()
 			webApp.enableClosingConfirmation()
 		}
 	}, [])
