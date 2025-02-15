@@ -58,6 +58,8 @@ function App() {
 
 			postEvent('web_app_request_fullscreen')
 
+			console.log(disableVerticalSwipes.isAvailable())
+
 			if (disableVerticalSwipes.isAvailable()) {
 				disableVerticalSwipes()
 				isVerticalSwipesEnabled()
