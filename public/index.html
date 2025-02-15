@@ -3,6 +3,18 @@
 	<head>
 		<meta charset="utf-8" />
 		<script src="https://telegram.org/js/telegram-web-app.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				if (
+					window.Telegram.WebApp &&
+					typeof window.Telegram.WebApp.disableVerticalSwipes === 'function'
+				) {
+					window.Telegram.WebApp.disableVerticalSwipes()
+				} else {
+					console.error('Метод disableVerticalSwipes недоступен.')
+				}
+			})
+		</script>
 		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#000000" />
@@ -29,11 +41,6 @@
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Manrope:wght@200..800&display=swap');
 		</style>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				Telegram.WebApp.disableVerticalSwipes()
-			})
-		</script>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
