@@ -46,7 +46,8 @@ function App() {
 		if (window.Telegram?.WebApp) {
 			const webApp = window.Telegram.WebApp
 
-			webApp.requestFullscreen()
+			// webApp.requestFullscreen()
+			webApp.expand()
 			webApp.enableClosingConfirmation()
 		}
 	}, [])

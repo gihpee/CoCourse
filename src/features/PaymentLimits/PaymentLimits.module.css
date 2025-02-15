@@ -1,0 +1,35 @@
+.payment-limits {
+	display: flex;
+	width: 91.282vw;
+	padding: 2.564vw 2.051vw;
+	flex-direction: column;
+	justify-content: center;
+	gap: 3.077vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.payment-limits__title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.payment-limits__single-operation {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.payment-limits__single-operation-title,
+.payment-limits__single-operation-value {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

@@ -1,0 +1,59 @@
+.my-data-card {
+	display: flex;
+	padding: 2.051vw;
+	width: 91.282vw;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1.282vw;
+	border-radius: 1.538vw;
+	background: var(--mini-backgroundf);
+}
+
+.my-data-card__status {
+	display: flex;
+	align-items: center;
+	gap: 1.282vw;
+}
+
+.my-data-card__status-icon {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.my-data-card__status-text {
+	color: #2fd159;
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.my-data-card__title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.my-data-card__description {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.my-data-card__link-icon {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.my-data-card__wrapper-status {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

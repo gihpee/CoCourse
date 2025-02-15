@@ -108,6 +108,7 @@
 .user-profile__wrapper-subjects {
 	display: flex;
 	gap: 2.051vw;
+	flex-wrap: wrap;
 }
 
 .user-profile__subject {

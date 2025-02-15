@@ -1,0 +1,14 @@
+.transactions-history-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.transactions-history-list__title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

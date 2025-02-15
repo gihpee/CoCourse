@@ -1,0 +1,113 @@
+.transaction-card {
+	display: flex;
+	padding: 2.051vw;
+	flex-direction: column;
+	gap: 2.051vw;
+	align-self: stretch;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.transaction-card__header {
+	display: flex;
+	gap: 2.051vw;
+}
+
+.transaction-card__info-course {
+	display: flex;
+	padding: 2.051vw;
+	width: 42.564vw;
+	flex-direction: column;
+	gap: 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--background);
+}
+
+.transaction-card__course {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.transaction-card__details {
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.transaction-card__university,
+.transaction-card__date {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.transaction-card__info {
+	display: flex;
+	width: 42.564vw;
+	padding: 2.051vw;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	border-radius: 1.538vw;
+	background: var(--background);
+}
+
+.transaction-card__wrapper-type {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.transaction-card__type {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.transaction-card__icon {
+	width: 6.154vw;
+	height: 6.154vw;
+}
+
+.transaction-card__card-info {
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.transaction-card__card,
+.transaction-card__transaction-date {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.transaction-card__footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 2.051vw;
+}
+
+.transaction-card__price {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-transform: uppercase;
+}

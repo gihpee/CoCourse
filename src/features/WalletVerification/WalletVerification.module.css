@@ -1,0 +1,20 @@
+.wallet__verification {
+	display: flex;
+	flex-direction: column;
+	gap: 4.103vw;
+}
+
+.wallet__verification-title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.wallet__verification-cards {
+	display: flex;
+	flex-direction: column;
+	gap: 2.051vw;
+}

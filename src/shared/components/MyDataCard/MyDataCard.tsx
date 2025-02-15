@@ -1,7 +1,9 @@
 import { FC } from 'react'
+import LinkArrow from '../../assets/wallet/LinkArrow.svg'
 import ApprovedData from '../../shared/assets/wallet/ApprovedData.svg'
 import InProgress from '../../shared/assets/wallet/DataInProgress.svg'
 import EmptyData from '../../shared/assets/wallet/EmptyData.svg'
+import styles from './MyDataCard.module.css'
 
 interface IMyDataCard {
 	title: string
@@ -52,13 +54,24 @@ const MyDataCard: FC<IMyDataCard> = props => {
 	}
 
 	return (
-		<div>
-			<div>
-				<img src={imageSrc} alt={statusText} />
-				<p>{statusText}</p>
+		<div className={styles['my-data-card']}>
+			<div className={styles['my-data-card__wrapper-status']}>
+				<div className={styles['my-data-card__status']}>
+					<img
+						src={imageSrc}
+						alt={statusText}
+						className={styles['my-data-card__status-icon']}
+					/>
+					<p className={styles['my-data-card__status-text']}>{statusText}</p>
+				</div>
+				<img
+					src={LinkArrow}
+					alt='Перехад по ссылке'
+					className={styles['my-data-card__link-icon']}
+				/>
 			</div>
-			<h3>{title}</h3>
-			<p>{description}</p>
+			<h3 className={styles['my-data-card__title']}>{title}</h3>
+			<p className={styles['my-data-card__description']}>{description}</p>
 		</div>
 	)
 }
