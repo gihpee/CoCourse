@@ -47,7 +47,7 @@ function App() {
 
 	useEffect(() => {
 		if (window.Telegram?.WebApp) {
-			const webApp = window.Telegram.WebApp
+			// const webApp = window.Telegram.WebApp
 
 			// webApp.requestFullscreen()
 
