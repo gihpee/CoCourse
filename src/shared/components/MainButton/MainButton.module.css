@@ -1,0 +1,16 @@
+.main-button {
+	display: flex;
+	width: 91.282vw;
+	padding: 2.564vw;
+	justify-content: center;
+	align-items: center;
+	gap: 2.564vw;
+	border-radius: 1.538vw;
+	background: var(--active-color);
+	color: var(--active-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}

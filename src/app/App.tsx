@@ -52,10 +52,12 @@ function App() {
 			// webApp.requestFullscreen()
 
 			postEvent('web_app_request_fullscreen')
-			// postEvent('web_app_exit_fullscreen')
+			postEvent('web_app_exit_fullscreen')
 
+			webApp.safeAreaInsets()
+			webApp.contentSafeAreaInsets()
 			// webApp.expand()
-			webApp.enableClosingConfirmation()
+			// webApp.enableClosingConfirmation()
 		}
 	}, [])
 

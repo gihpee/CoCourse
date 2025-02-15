@@ -1,0 +1,35 @@
+.image-field {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	width: 44.615vw;
+	justify-content: center;
+	align-items: center;
+	gap: 1.282vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.image-field__wrapper {
+	display: flex;
+	width: 9.231vw;
+	height: 9.231vw;
+	padding: 1.667vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20.067vw;
+	background: var(--create-course-button);
+}
+
+.image-field__image {
+	width: 5.897vw;
+	height: 5.897vw;
+}
+
+.image-field__text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

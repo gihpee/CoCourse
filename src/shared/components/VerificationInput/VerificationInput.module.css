@@ -1,0 +1,13 @@
+.verification-input {
+	padding: 2.564vw 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: none;
+	outline: none;
+}

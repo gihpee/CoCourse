@@ -1,0 +1,55 @@
+.verification {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+}
+
+.verification__title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	width: 91.282vw;
+}
+
+.verification__images {
+	display: flex;
+	gap: 2.051vw;
+}
+
+.verification__form {
+	display: flex;
+	flex-direction: column;
+	gap: 4.103vw;
+}
+
+.verification__section {
+	display: flex;
+	flex-direction: column;
+	gap: 2.051vw;
+}
+
+.verification__section-title,
+.verification__description {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.verification__inputs {
+	display: flex;
+	flex-direction: column;
+	gap: 2.051vw;
+}
+
+.verification__input-group {
+	display: flex;
+	flex-direction: column;
+	gap: 1.282vw;
+}
