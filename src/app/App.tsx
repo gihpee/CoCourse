@@ -52,6 +52,9 @@ function App() {
 	const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
 	const [stableHeight, setStableHeight] = useState(null)
 
+	console.log(viewportHeight)
+	console.log(stableHeight)
+
 	useEffect(() => {
 		if (window.Telegram?.WebApp) {
 			const webApp = window.Telegram.WebApp
