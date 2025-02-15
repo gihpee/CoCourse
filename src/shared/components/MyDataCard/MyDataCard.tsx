@@ -1,8 +1,8 @@
 import { FC } from 'react'
+import ApprovedData from '../../assets/wallet/ApprovedData.svg'
+import InProgress from '../../assets/wallet/DataInProgress.svg'
+import EmptyData from '../../assets/wallet/EmptyData.svg'
 import LinkArrow from '../../assets/wallet/LinkArrow.svg'
-import ApprovedData from '../../shared/assets/wallet/ApprovedData.svg'
-import InProgress from '../../shared/assets/wallet/DataInProgress.svg'
-import EmptyData from '../../shared/assets/wallet/EmptyData.svg'
 import styles from './MyDataCard.module.css'
 
 interface IMyDataCard {
