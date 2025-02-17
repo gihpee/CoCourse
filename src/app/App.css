@@ -11,6 +11,7 @@
 	background-color: var(--background);
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+	padding-top: 80px;
 }
 
 ::-webkit-scrollbar {

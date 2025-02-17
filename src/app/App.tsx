@@ -49,12 +49,6 @@ function App() {
 	// tg.WebApp.enableClosingConfirmation()
 	const navigate = useNavigate()
 
-	const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
-	const [stableHeight, setStableHeight] = useState(null)
-
-	console.log(viewportHeight)
-	console.log(stableHeight)
-
 	useEffect(() => {
 		if (window.Telegram?.WebApp) {
 			const webApp = window.Telegram.WebApp
@@ -71,19 +65,6 @@ function App() {
 				isVerticalSwipesEnabled()
 				console.log(isVerticalSwipesEnabled()) // false
 			}
-
-			if (window.Telegram?.WebApp) {
-				setStableHeight(window.Telegram.WebApp.viewportStableHeight)
-			}
-
-			const handleResize = () => {
-				setViewportHeight(window.innerHeight)
-				if (window.Telegram?.WebApp) {
-					setStableHeight(window.Telegram.WebApp.viewportStableHeight)
-				}
-			}
-
-			window.addEventListener('resize', handleResize)
 			// postEvent('web_app_exit_fullscreen')
 
 			// webApp.safeAreaInsets()
