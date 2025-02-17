@@ -56,13 +56,16 @@ function App() {
 			postEvent('web_app_request_fullscreen')
 
 			const updateSafeAreaInsets = () => {
+				const safeAreaInsets = webApp.safeAreaInset?.top
+				const contentSafeAreaInsets = webApp.ContentSafeAreaInset?.top
+
 				const app = document.getElementsByClassName('App')[0] as HTMLElement
 
 				if (app) {
 					console.log('2', app)
 					app.style.setProperty(
 						'padding-top',
-						`calc(var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top))`
+						`calc(${safeAreaInsets} + ${contentSafeAreaInsets}`
 					)
 				}
 			}
