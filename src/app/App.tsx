@@ -1,8 +1,4 @@
-import {
-	disableVerticalSwipes,
-	isVerticalSwipesEnabled,
-	postEvent,
-} from '@telegram-apps/sdk'
+import { postEvent, swipeBehavior } from '@telegram-apps/sdk'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -58,12 +54,17 @@ function App() {
 
 			postEvent('web_app_request_fullscreen')
 
-			console.log(disableVerticalSwipes.isAvailable())
+			console.log('swipeBehavior.isSupported()', swipeBehavior.isSupported())
 
-			if (disableVerticalSwipes.isAvailable()) {
-				disableVerticalSwipes()
-				isVerticalSwipesEnabled()
-				console.log(isVerticalSwipesEnabled()) // false
+			if (swipeBehavior.isSupported()) {
+				if (swipeBehavior.disableVertical.isAvailable()) {
+					swipeBehavior.disableVertical()
+					swipeBehavior.isVerticalEnabled() // false
+					console.log(
+						'swipeBehavior.isVerticalEnabled()',
+						swipeBehavior.isVerticalEnabled()
+					) // false
+				}
 			}
 			// postEvent('web_app_exit_fullscreen')
 
