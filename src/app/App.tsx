@@ -51,21 +51,23 @@ function App() {
 			// webApp.disableVerticalSwipes()
 
 			// webApp.requestFullscreen()
+			webApp.ready()
 
 			postEvent('web_app_request_fullscreen')
 
-			const app = document.getElementsByClassName('App')[0] as HTMLElement
+			const updateSafeAreaInsets = () => {
+				const app = document.getElementsByClassName('App')[0] as HTMLElement
 
-			console.log('1', app)
-
-			if (app) {
-				console.log('2', app)
-				app.style.setProperty(
-					'padding-top',
-					`calc(var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top))`
-				)
+				if (app) {
+					console.log('2', app)
+					app.style.setProperty(
+						'padding-top',
+						`calc(var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top))`
+					)
+				}
 			}
 
+			updateSafeAreaInsets()
 			console.log('swipeBehavior.isSupported()', swipeBehavior.isSupported())
 
 			if (swipeBehavior.isSupported()) {
@@ -84,6 +86,11 @@ function App() {
 			// webApp.contentSafeAreaInsets()
 			// webApp.expand()
 			webApp.enableClosingConfirmation()
+			webApp.onEvent('viewportChanged', updateSafeAreaInsets)
+
+			return () => {
+				webApp.offEvent('viewportChanged', updateSafeAreaInsets)
+			}
 		}
 	}, [])
 
