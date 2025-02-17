@@ -69,10 +69,8 @@ const MyDataCard: FC<IMyDataCard> = props => {
 
 	const isLinkActive = statusText === 'Не пройдена'
 
-	// Типизируем CardWrapper как элемент типа Link или div
 	const CardWrapper: React.ElementType = isLinkActive ? Link : 'div'
 
-	// Только добавляем `to`, если это Link
 	const cardProps = isLinkActive
 		? { to: path, className: styles['my-data-card'] }
 		: { className: styles['my-data-card'] }
