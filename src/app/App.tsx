@@ -55,10 +55,16 @@ function App() {
 			postEvent('web_app_request_fullscreen')
 			const safeAreaTop = window.Telegram.WebApp.viewportStableHeight
 
-			document.documentElement.style.setProperty(
-				'calc(var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top))',
-				`${safeAreaTop}px`
-			)
+			const app = document.getElementsByClassName('App')[0] as HTMLElement
+
+			console.log(app)
+
+			if (app) {
+				app.style.setProperty(
+					'calc(var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top))',
+					`${safeAreaTop}px`
+				)
+			}
 
 			console.log('swipeBehavior.isSupported()', swipeBehavior.isSupported())
 
