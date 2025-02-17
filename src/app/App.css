@@ -11,9 +11,9 @@
 	background-color: var(--background);
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-	padding-top: calc(
+	/* padding-top: calc(
 		var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top)
-	);
+	); */
 }
 
 ::-webkit-scrollbar {
