@@ -65,7 +65,7 @@ function App() {
 					console.log('2', app)
 					app.style.setProperty(
 						'padding-top',
-						`calc(${safeAreaInsets} + ${contentSafeAreaInsets}`
+						`calc(${safeAreaInsets}px + ${contentSafeAreaInsets}px`
 					)
 				}
 			}
