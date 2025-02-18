@@ -4,9 +4,10 @@ import styles from './ImageField.module.css'
 interface IImageField {
 	link: string
 	text: string
+	inputName: string
 }
 
-const ImageField: FC<IImageField> = ({ link, text }) => {
+const ImageField: FC<IImageField> = ({ link, text, inputName }) => {
 	const [file, setFile] = useState<File | null>(null)
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,7 @@ const ImageField: FC<IImageField> = ({ link, text }) => {
 						type='file'
 						style={{ display: 'none' }}
 						onChange={handleFileChange}
+						name={inputName}
 					/>
 					<div className={styles['image-field__button']}>
 						{file ? (
