@@ -25,7 +25,6 @@ function VerificationForm() {
 		Name: '',
 		Surname: '',
 		secondName: '',
-		birthPlace: '',
 		birthDate: '',
 		passportDate: '',
 		idNum: '',
@@ -44,7 +43,6 @@ function VerificationForm() {
 			Name,
 			Surname,
 			secondName,
-			birthPlace,
 			idNum,
 			Code,
 			Provided,
@@ -60,7 +58,6 @@ function VerificationForm() {
 			!Name ||
 			!Surname ||
 			!secondName ||
-			!birthPlace ||
 			!idNum ||
 			!Code ||
 			!Provided ||
@@ -80,7 +77,6 @@ function VerificationForm() {
 			formDataToSend.append('Name', Name)
 			formDataToSend.append('Surname', Surname)
 			formDataToSend.append('secondName', secondName)
-			formDataToSend.append('birthPlace', birthPlace)
 			formDataToSend.append(
 				'birthDate',
 				birthDate ? birthDate.toISOString() : ''
@@ -252,7 +248,6 @@ function VerificationForm() {
 					type='text'
 					placeholder='Место рождения'
 					name='birthPlace'
-					value={formData.birthPlace || ''}
 					onChange={handleChange}
 				/>
 				<input

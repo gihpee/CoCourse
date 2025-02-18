@@ -1,0 +1,60 @@
+.edit-profile {
+}
+
+.edit-profile__details {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.edit-profile__title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 120%;
+}
+
+.edit-profile__avatar {
+	margin-top: 4.103vw;
+	width: 30vw;
+	height: 30vw;
+	border-radius: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.edit-profile__name {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-profile__sections {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 4.103vw;
+}
+
+.edit-profile__section {
+	display: flex;
+	width: 91.026vw;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.edit-profile__subtitle {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

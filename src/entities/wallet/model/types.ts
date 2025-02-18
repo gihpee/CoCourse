@@ -4,7 +4,6 @@ export interface IFormData {
 	Name: string
 	Surname: string
 	secondName: string
-	birthPlace: string
 	birthDate: string
 	passportDate: string
 	idNum: string

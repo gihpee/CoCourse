@@ -13,7 +13,6 @@ export const handleFormSubmit = async (
 		'Name',
 		'Surname',
 		'secondName',
-		'birthPlace',
 		'idNum',
 		'Code',
 		'Provided',

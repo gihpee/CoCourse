@@ -24,7 +24,6 @@ export const VerificationForm: FC = () => {
 		Name: '',
 		Surname: '',
 		secondName: '',
-		birthPlace: '',
 		birthDate: '',
 		passportDate: '',
 		idNum: '',
