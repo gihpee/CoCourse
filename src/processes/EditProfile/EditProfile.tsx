@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import MainButton from 'src/shared/components/MainButton/MainButton'
-import VerificationInput from 'src/shared/components/VerificationInput/VerificationInput'
+// import VerificationInput from 'src/shared/components/VerificationInput/VerificationInput'
 import InputWithVariants from './ui/InputWithVariants/InputWithVariants'
 import LinksFAQ from './ui/LinksFAQ/LinksFAQ'
 
@@ -26,7 +26,7 @@ const EditProfile: FC = () => {
 				</div>
 				<div>
 					<h3>Описание</h3>
-					<VerificationInput placeholder='Расскажи о себе' />
+					{/* <VerificationInput placeholder='Расскажи о себе' /> */}
 				</div>
 				<div>
 					<h3>Курсы</h3>
@@ -52,7 +52,7 @@ const EditProfile: FC = () => {
 				</div>
 			</div>
 
-			<MainButton text='Сохранить' />
+			<MainButton text='Сохранить' onClickEvent={() => console.log(1)} />
 		</div>
 	)
 }
