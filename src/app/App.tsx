@@ -36,6 +36,7 @@ import './App.css'
 
 function App() {
 	const [hasRedirected, setHasRedirected] = useState(false)
+	const [hasReloaded, setHasReloaded] = useState(false)
 
 	const { theme } = useTheme()
 	console.log('theme', theme)
@@ -57,12 +58,15 @@ function App() {
 				const tg = window.Telegram.WebApp
 
 				if (!tg.safeAreaInset || tg.safeAreaInset.top === 0) {
-					console.log('Safe area insets not found, reloading...')
-					window.location.reload()
+					if (!hasReloaded) {
+						console.log('Safe area insets not found, reloading...')
+						setHasReloaded(true)
+						window.location.reload()
+					}
 				} else {
 					console.log('Safe area insets loaded:', tg.safeAreaInset)
 				}
-			}, 1500)
+			}, 1000)
 
 			postEvent('web_app_request_fullscreen')
 
