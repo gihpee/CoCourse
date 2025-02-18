@@ -53,6 +53,7 @@ export const VerificationForm: FC = () => {
 		)
 		if (!isSuccess) {
 			setModalFillOpen(true)
+			window.document.body.style.overflow = 'hidden'
 		}
 	}
 
@@ -62,7 +63,7 @@ export const VerificationForm: FC = () => {
 				<div className={styles['verification__notification']}>
 					<ModalNotification
 						title='Внимание'
-						text='Вывод средств возможен при балансе от 6 000 ₽'
+						text='Заполните все обязательные поля'
 						onClose={() => setModalFillOpen(false)}
 					/>
 				</div>

@@ -8,6 +8,11 @@ const ModalNotification: FC<{
 	text: string
 	onClose: () => void
 }> = ({ title, text, onClose }) => {
+	const handleClose = () => {
+		window.document.body.style.overflow = 'scroll'
+		onClose()
+	}
+
 	return (
 		<div className={styles['modal-notification']}>
 			<img
@@ -21,7 +26,7 @@ const ModalNotification: FC<{
 			</div>
 			<button
 				className={styles['modal-notification__close-button']}
-				onClick={onClose}
+				onClick={handleClose}
 			>
 				<img
 					src={CloseImg}

@@ -35,6 +35,8 @@ export const handleFormSubmit = async (
 		}
 	}
 
+	console.log(formData)
+
 	const formDataToSend = new FormData()
 	Object.entries(formData).forEach(([key, value]) => {
 		if (value) formDataToSend.append(key, value)
@@ -45,6 +47,7 @@ export const handleFormSubmit = async (
 		formDataToSend.append('passportDate', passportDate.toISOString())
 
 	try {
+		console.log(formDataToSend)
 		const isSuccess = await fetchCreatePassportData(formDataToSend)
 
 		if (isSuccess) {
