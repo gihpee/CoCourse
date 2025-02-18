@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, useState } from 'react'
 import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
 import { fetchCreatePassportData } from 'src/entities/wallet/model/fetchCreatePassportData'
 import { IFormData } from 'src/entities/wallet/model/types'
