@@ -27,19 +27,19 @@ export const WalletVerification: FC = () => {
 			<div className={styles['wallet__verification-cards']}>
 				<MyDataCard
 					title='Пройдите верификацию'
-					description='Пройди верификацию, чтобы создавать объявления и начать зарабатывать на своих знаниях.'
+					description='Пройди верификацию, чтобы создавать объявления и начать зарабатывать на своих знаниях. Проверка занимает 3-4 рабочих дня'
 					verifyed={verifyed}
-					path='/verificationN'
+					path='/verification-form'
 				/>
 				<MyDataCard
 					title='Подключите выплаты'
-					description='Добавь способ выплаты, чтобы мы могли начислять вознаграждения за продажи прямо на карту.'
+					description='Добавь способ выплаты, чтобы мы могли начислять вознаграждения за продажи прямо на карту'
 					connectedPayments={connectedPayments}
 					path='/connect-payments'
 				/>
 				<MyDataCard
 					title='Подключите кошелек'
-					description='Подключи кошелек, чтобы мы могли начислять вознаграждения за продажи без комиссии.'
+					description='Подключи кошелек, чтобы мы могли начислять вознаграждения за продажи без комиссии'
 					userFriendlyAddress={userFriendlyAddress}
 					path='/connect-walletN'
 				/>

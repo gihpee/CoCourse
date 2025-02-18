@@ -2,6 +2,7 @@ import { postEvent, swipeBehavior } from '@telegram-apps/sdk'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import { VerificationForm } from 'src/entities/verification/ui/VerificationForm/VerificationForm'
 import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
 import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
 import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
@@ -28,7 +29,6 @@ import ConnectPayments from '../pages/Wallet/ConnectPayments'
 import ConnectPaymentsForm from '../pages/Wallet/ConnectPaymentsForm'
 import ReturnForm from '../pages/Wallet/ReturnForm'
 import Transaction from '../pages/Wallet/Transaction'
-import VerificationForm from '../pages/Wallet/VerificationForm'
 import VerificationN from '../pages/Wallet/VerificationN'
 import Wallet from '../pages/Wallet/Wallet'
 import useTheme from '../shared/hooks/useTheme'
@@ -51,26 +51,21 @@ function App() {
 			// webApp.disableVerticalSwipes()
 
 			// webApp.requestFullscreen()
-			webApp.ready()
+			window.Telegram.WebApp.ready()
+
+			setTimeout(() => {
+				const tg = window.Telegram.WebApp
+
+				if (!tg.safeAreaInset || tg.safeAreaInset.top === 0) {
+					console.log('Safe area insets not found, reloading...')
+					location.reload()
+				} else {
+					console.log('Safe area insets loaded:', tg.safeAreaInset)
+				}
+			}, 1500)
 
 			postEvent('web_app_request_fullscreen')
 
-			const updateSafeAreaInsets = () => {
-				const safeAreaInsets = webApp.safeAreaInset?.top
-				const contentSafeAreaInsets = webApp.ContentSafeAreaInset?.top
-
-				const app = document.getElementsByClassName('App')[0] as HTMLElement
-
-				if (app) {
-					console.log('2', app)
-					app.style.setProperty(
-						'padding-top',
-						`calc(${safeAreaInsets}px + ${contentSafeAreaInsets}px`
-					)
-				}
-			}
-
-			updateSafeAreaInsets()
 			console.log('swipeBehavior.isSupported()', swipeBehavior.isSupported())
 
 			if (swipeBehavior.isSupported()) {
@@ -89,11 +84,6 @@ function App() {
 			// webApp.contentSafeAreaInsets()
 			// webApp.expand()
 			webApp.enableClosingConfirmation()
-			webApp.onEvent('viewportChanged', updateSafeAreaInsets)
-
-			return () => {
-				webApp.offEvent('viewportChanged', updateSafeAreaInsets)
-			}
 		}
 	}, [])
 

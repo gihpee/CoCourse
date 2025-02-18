@@ -51,5 +51,40 @@
 .verification__input-group {
 	display: flex;
 	flex-direction: column;
-	gap: 1.282vw;
+	gap: 2.051vw;
+	padding-bottom: 1.026vw;
+}
+
+.verification__no-middle-name {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+
+.verification__no-middle-name-text {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.verification__no-middle-name-input {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.verification-input {
+	padding: 2.564vw 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: none;
+	outline: none;
 }
