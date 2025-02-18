@@ -25,6 +25,8 @@ export const handleFormSubmit = async (
 		'passportDate',
 	]
 
+	console.log(formData)
+
 	for (const field of requiredFields) {
 		if (
 			!formData[field as keyof IFormData] &&
@@ -34,8 +36,6 @@ export const handleFormSubmit = async (
 			return false
 		}
 	}
-
-	console.log(formData)
 
 	const formDataToSend = new FormData()
 	Object.entries(formData).forEach(([key, value]) => {

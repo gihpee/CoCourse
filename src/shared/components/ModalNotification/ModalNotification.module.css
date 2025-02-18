@@ -9,7 +9,7 @@
 	padding: 39.231vw 2.051vw 4.103vw 2.051vw;
 	flex-direction: column;
 	justify-content: space-between;
-	align-items: flex-end;
+	align-items: center;
 	border-radius: 1.538vw;
 	background: var(--mini-background);
 }

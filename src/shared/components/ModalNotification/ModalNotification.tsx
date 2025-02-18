@@ -10,6 +10,7 @@ const ModalNotification: FC<{
 }> = ({ title, text, onClose }) => {
 	const handleClose = () => {
 		window.document.body.style.overflow = 'scroll'
+		document.documentElement.style.overflow = 'scroll'
 		onClose()
 	}
 

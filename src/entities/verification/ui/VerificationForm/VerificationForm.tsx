@@ -54,6 +54,7 @@ export const VerificationForm: FC = () => {
 		if (!isSuccess) {
 			setModalFillOpen(true)
 			window.document.body.style.overflow = 'hidden'
+			document.documentElement.style.overflow = 'hidden'
 		}
 	}
 
