@@ -10,6 +10,7 @@ import ModalNotification from 'src/shared/components/ModalNotification/ModalNoti
 import VerificationInput from 'src/shared/components/VerificationInput/VerificationInput'
 import PassportData from '../../../../shared/assets/profile/PassportData.svg'
 import SubscribeData from '../../../../shared/assets/profile/SubscribeData.svg'
+import Check from '../../../../shared/assets/wallet/Check.svg'
 import styles from './VerificationForm.module.css'
 
 export const VerificationForm: FC = () => {
@@ -73,11 +74,13 @@ export const VerificationForm: FC = () => {
 					text='Добавить фото документа'
 					link={PassportData}
 					inputName='passportCopy'
+					linkChecked={Check}
 				/>
 				<ImageField
 					text='Добавить страницу регистрации'
 					link={SubscribeData}
 					inputName='registrationCopy'
+					linkChecked={Check}
 				/>
 			</div>
 

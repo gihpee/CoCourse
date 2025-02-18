@@ -1,4 +1,3 @@
-import cn from 'classnames'
 import { FC, useState } from 'react'
 import styles from './ImageField.module.css'
 
@@ -6,9 +5,15 @@ interface IImageField {
 	link: string
 	text: string
 	inputName: string
+	linkChecked: string
 }
 
-const ImageField: FC<IImageField> = ({ link, text, inputName }) => {
+const ImageField: FC<IImageField> = ({
+	link,
+	text,
+	inputName,
+	linkChecked,
+}) => {
 	const [file, setFile] = useState<File | null>(null)
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,11 +24,19 @@ const ImageField: FC<IImageField> = ({ link, text, inputName }) => {
 	return (
 		<div className={styles['image-field']}>
 			<div className={styles['image-field__wrapper']}>
-				<img
-					src={link}
-					alt='Прикрепить паспортные данные'
-					className={styles['image-field__image']}
-				/>
+				{file ? (
+					<img
+						src={linkChecked}
+						alt='Прикрепить паспортные данные'
+						className={styles['image-field__image']}
+					/>
+				) : (
+					<img
+						src={link}
+						alt='Прикрепить паспортные данные'
+						className={styles['image-field__image']}
+					/>
+				)}
 			</div>
 			<label className={styles['image-field__label']}>
 				<input
@@ -33,18 +46,7 @@ const ImageField: FC<IImageField> = ({ link, text, inputName }) => {
 					name={inputName}
 				/>
 				<div className={styles['image-field__button']}>
-					{file ? (
-						<span
-							className={cn(
-								styles['image-field__text'],
-								styles['image-field__text_is-passed-data']
-							)}
-						>
-							{file.name}
-						</span>
-					) : (
-						<span className={styles['image-field__text']}>{text}</span>
-					)}
+					<span className={styles['image-field__text']}>{text}</span>
 				</div>
 			</label>
 		</div>
