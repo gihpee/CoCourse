@@ -58,11 +58,13 @@ export const VerificationForm: FC = () => {
 	return (
 		<div className={styles['verification']}>
 			{modalFillOpen ? (
-				<ModalNotification
-					title='Внимание'
-					text='Вывод средств возможен при балансе от 6 000 ₽'
-					onClose={() => setModalFillOpen(false)}
-				/>
+				<div className={styles['verification__notification']}>
+					<ModalNotification
+						title='Внимание'
+						text='Вывод средств возможен при балансе от 6 000 ₽'
+						onClose={() => setModalFillOpen(false)}
+					/>
+				</div>
 			) : null}
 			<h1 className={styles['verification__title']}>Верификация</h1>
 

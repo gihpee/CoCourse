@@ -1,13 +1,16 @@
 .modal-notification {
-	position: relative;
+	position: sticky;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	display: flex;
 	width: 75.385vw;
 	height: 66.667vw;
-	padding: 4.103vw 2.051vw;
+	padding: 39.231vw 2.051vw 4.103vw 2.051vw;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-end;
-	border-radius: 4.103vw;
+	border-radius: 1.538vw;
 	background: var(--mini-background);
 }
 

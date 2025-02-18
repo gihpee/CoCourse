@@ -18,6 +18,8 @@
 	--stars-text: #ffaf40;
 
 	--profile-line: #f1f5f9;
+
+	--overlay: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme='dark'] {
@@ -40,4 +42,6 @@
 	--stars-text: #ffaf40;
 
 	--profile-line: #202020;
+
+	--overlay: rgba(255, 255, 255, 0.15);
 }
