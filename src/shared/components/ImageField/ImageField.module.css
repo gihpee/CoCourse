@@ -33,11 +33,14 @@
 	font-weight: 400;
 	line-height: normal;
 	text-transform: math-auto;
+	width: 30vw;
+}
+
+.image-field__text_is-passed-data {
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	width: 30vw;
 }
 
 .image-field__label {

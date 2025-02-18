@@ -1,11 +1,12 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { FC, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
-import { fetchCreatePassportData } from 'src/entities/wallet/model/fetchCreatePassportData'
 import { IFormData } from 'src/entities/wallet/model/types'
+import { handleFormSubmit } from 'src/features/verification/model/handleFormSubmit'
 import ImageField from 'src/shared/components/ImageField/ImageField'
 import MainButton from 'src/shared/components/MainButton/MainButton'
+import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import VerificationInput from 'src/shared/components/VerificationInput/VerificationInput'
 import PassportData from '../../../../shared/assets/profile/PassportData.svg'
 import SubscribeData from '../../../../shared/assets/profile/SubscribeData.svg'
@@ -13,19 +14,9 @@ import styles from './VerificationForm.module.css'
 
 export const VerificationForm: FC = () => {
 	const navigate = useNavigate()
-
-	const [birthDate, setBirthDate] = useState<Date | null>(null)
-
-	const [passportDate, setPassportDate] = useState<Date | null>(null)
-
 	const [modalFillOpen, setModalFillOpen] = useState(false)
-
-	// const handleOkBtnClick = () => {
-	// 	setModalFillOpen(false)
-	// }
-
-	console.log(modalFillOpen)
-
+	const [birthDate, setBirthDate] = useState<Date | null>(null)
+	const [passportDate, setPassportDate] = useState<Date | null>(null)
 	const [formData, setFormData] = useState<IFormData>({
 		passportCopy: null,
 		registrationCopy: null,
@@ -44,87 +35,35 @@ export const VerificationForm: FC = () => {
 		Email: '',
 	})
 
-	const handlePublish = async () => {
-		const {
-			passportCopy,
-			registrationCopy,
-			Name,
-			Surname,
-			secondName,
-			birthPlace,
-			idNum,
-			Code,
-			Provided,
-			registrationAddress,
-			Inn,
-			Phone,
-			Email,
-		} = formData
-
-		if (
-			!passportCopy ||
-			!registrationCopy ||
-			!Name ||
-			!Surname ||
-			!secondName ||
-			!birthPlace ||
-			!idNum ||
-			!Code ||
-			!Provided ||
-			!registrationAddress ||
-			!Inn ||
-			!Phone ||
-			!Email ||
-			!birthDate ||
-			!passportDate
-		) {
-			setModalFillOpen(true)
-		} else {
-			let formDataToSend = new FormData()
-
-			formDataToSend.append('passportCopy', passportCopy)
-			formDataToSend.append('registrationCopy', registrationCopy)
-			formDataToSend.append('Name', Name)
-			formDataToSend.append('Surname', Surname)
-			formDataToSend.append('secondName', secondName)
-			formDataToSend.append('birthPlace', birthPlace)
-			formDataToSend.append(
-				'birthDate',
-				birthDate ? birthDate.toISOString() : ''
-			)
-			formDataToSend.append(
-				'passportDate',
-				passportDate ? passportDate.toISOString() : ''
-			)
-			formDataToSend.append('idNum', idNum)
-			formDataToSend.append('Code', Code)
-			formDataToSend.append('Provided', Provided)
-			formDataToSend.append('registrationAddress', registrationAddress)
-			formDataToSend.append('Inn', Inn)
-			formDataToSend.append('Phone', Phone)
-			formDataToSend.append('Email', Email)
-
-			const isSuccess = await fetchCreatePassportData(formDataToSend)
-
-			if (isSuccess) {
-				navigate('/profile')
-			} else {
-				setModalFillOpen(true)
-			}
-		}
-	}
-
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value, files } = e.target
-
 		setFormData(prevData => ({
 			...prevData,
 			[name]: files ? files[0] : value,
 		}))
 	}
 
+	const handlePublish = async () => {
+		const isSuccess = await handleFormSubmit(
+			formData,
+			birthDate,
+			passportDate,
+			navigate
+		)
+		if (!isSuccess) {
+			setModalFillOpen(true)
+		}
+	}
+
 	return (
 		<div className={styles['verification']}>
+			{modalFillOpen ? (
+				<ModalNotification
+					title='Внимание'
+					text='Вывод средств возможен при балансе от 6 000 ₽'
+					onClose={() => setModalFillOpen(false)}
+				/>
+			) : null}
 			<h1 className={styles['verification__title']}>Верификация</h1>
 
 			<div className={styles['verification__images']}>

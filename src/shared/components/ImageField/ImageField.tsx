@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC, useState } from 'react'
 import styles from './ImageField.module.css'
 
@@ -33,7 +34,14 @@ const ImageField: FC<IImageField> = ({ link, text, inputName }) => {
 				/>
 				<div className={styles['image-field__button']}>
 					{file ? (
-						<span className={styles['image-field__text']}>{file.name}</span>
+						<span
+							className={cn(
+								styles['image-field__text'],
+								styles['image-field__text_is-passed-data']
+							)}
+						>
+							{file.name}
+						</span>
 					) : (
 						<span className={styles['image-field__text']}>{text}</span>
 					)}

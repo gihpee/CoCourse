@@ -1,0 +1,69 @@
+.modal-notification {
+	position: relative;
+	display: flex;
+	width: 75.385vw;
+	height: 66.667vw;
+	padding: 4.103vw 2.051vw;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-radius: 4.103vw;
+	background: var(--mini-background);
+}
+
+.modal-notification__image {
+	width: 63.337vw;
+	height: 32.519vw;
+	position: absolute;
+	top: 6.154vw;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.modal-notification__content {
+	display: flex;
+	padding: 2.051vw;
+	flex-direction: column;
+	justify-content: center;
+	gap: 4.103vw;
+}
+
+.modal-notification__title {
+	color: var(--main-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.modal-notification__text {
+	color: var(--second-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.modal-notification__close-button {
+	position: absolute;
+	width: 7.179vw;
+	height: 7.179vw;
+	top: 4.103vw;
+	right: 2.051vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--head-background);
+	border-radius: 100%;
+	border: none;
+	outline: none;
+}
+
+.modal-notification__close-button-img {
+	width: 3.077vw;
+	height: 3.077vw;
+}
