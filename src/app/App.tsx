@@ -77,23 +77,22 @@ function App() {
 		}
 	}, [])
 
-	if (hasReloaded === false) {
-		useEffect(() => {
+	useEffect(() => {
+		console.log(hasReloaded)
+		if (!hasReloaded) {
 			setTimeout(() => {
 				const tg = window.Telegram.WebApp
 
 				if (!tg.safeAreaInset || tg.safeAreaInset.top === 0) {
-					if (!hasReloaded) {
-						console.log('Safe area insets not found, reloading...')
-						setHasReloaded(true)
-						window.location.reload()
-					}
+					console.log('Safe area insets not found, reloading...')
+					setHasReloaded(true)
+					window.location.reload()
 				} else {
 					console.log('Safe area insets loaded:', tg.safeAreaInset)
 				}
 			}, 100)
-		}, [hasReloaded])
-	}
+		}
+	}, [hasReloaded])
 
 	useEffect(() => {
 		if (hasRedirected) return
