@@ -58,7 +58,7 @@ function App() {
 
 				if (!tg.safeAreaInset || tg.safeAreaInset.top === 0) {
 					console.log('Safe area insets not found, reloading...')
-					location.reload()
+					window.location.reload()
 				} else {
 					console.log('Safe area insets loaded:', tg.safeAreaInset)
 				}
