@@ -23,40 +23,22 @@ const ImageField: FC<IImageField> = ({ link, text, inputName }) => {
 					alt='Прикрепить паспортные данные'
 					className={styles['image-field__image']}
 				/>
-				<label className={styles['image-field__label']}>
-					<input
-						type='file'
-						style={{ display: 'none' }}
-						onChange={handleFileChange}
-						name={inputName}
-					/>
-					<div className={styles['image-field__button']}>
-						{file ? (
-							<span
-								style={{
-									textTransform: 'none',
-									margin: '0',
-									fontSize: 'inherit',
-									color: 'white',
-								}}
-							>
-								{file.name}
-							</span>
-						) : (
-							<span
-								style={{
-									textTransform: 'none',
-									margin: '0',
-									fontSize: 'inherit',
-									color: '#777',
-								}}
-							>
-								{text}
-							</span>
-						)}
-					</div>
-				</label>
 			</div>
+			<label className={styles['image-field__label']}>
+				<input
+					type='file'
+					style={{ display: 'none' }}
+					onChange={handleFileChange}
+					name={inputName}
+				/>
+				<div className={styles['image-field__button']}>
+					{file ? (
+						<span className={styles['image-field__text']}>{file.name}</span>
+					) : (
+						<span className={styles['image-field__text']}>{text}</span>
+					)}
+				</div>
+			</label>
 		</div>
 	)
 }

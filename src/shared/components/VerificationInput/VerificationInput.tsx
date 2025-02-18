@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react'
+import styles from './VerificationInput.module.css'
 
 const VerificationInput = ({
 	placeholder,
@@ -12,6 +13,7 @@ const VerificationInput = ({
 	inputName: string
 }) => (
 	<input
+		className={styles['verification-input']}
 		type='text'
 		value={inputValue}
 		placeholder={placeholder}
