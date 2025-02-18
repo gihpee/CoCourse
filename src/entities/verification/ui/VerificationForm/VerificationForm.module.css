@@ -89,4 +89,16 @@
 	line-height: normal;
 	border: none;
 	outline: none;
+
+	& > div > div > input {
+		background: transparent;
+		border: none;
+		outline: none;
+		color: var(--main-text);
+		font-family: 'Geologica';
+		font-size: 3.59vw;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
 }
