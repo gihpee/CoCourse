@@ -54,20 +54,6 @@ function App() {
 			// webApp.requestFullscreen()
 			window.Telegram.WebApp.ready()
 
-			setTimeout(() => {
-				const tg = window.Telegram.WebApp
-
-				if (!tg.safeAreaInset || tg.safeAreaInset.top === 0) {
-					if (!hasReloaded) {
-						console.log('Safe area insets not found, reloading...')
-						setHasReloaded(true)
-						window.location.reload()
-					}
-				} else {
-					console.log('Safe area insets loaded:', tg.safeAreaInset)
-				}
-			}, 1000)
-
 			postEvent('web_app_request_fullscreen')
 
 			console.log('swipeBehavior.isSupported()', swipeBehavior.isSupported())
@@ -90,6 +76,22 @@ function App() {
 			webApp.enableClosingConfirmation()
 		}
 	}, [])
+
+	useEffect(() => {
+		setTimeout(() => {
+			const tg = window.Telegram.WebApp
+
+			if (!tg.safeAreaInset || tg.safeAreaInset.top === 0) {
+				if (!hasReloaded) {
+					console.log('Safe area insets not found, reloading...')
+					setHasReloaded(true)
+					window.location.reload()
+				}
+			} else {
+				console.log('Safe area insets loaded:', tg.safeAreaInset)
+			}
+		}, 1000)
+	}, [hasReloaded])
 
 	useEffect(() => {
 		if (hasRedirected) return
