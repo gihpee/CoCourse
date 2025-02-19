@@ -16,6 +16,8 @@ const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, isNotify }) => {
 		setIsNotifyFAQ(!isNotifyFAQ)
 	}
 
+	console.log('isNotifyFAQ', isNotifyFAQ)
+
 	return (
 		<div className={styles['linksFAQ']}>
 			<div className={styles['linksFAQ__content']}>

@@ -96,7 +96,7 @@ const EditProfile: FC = () => {
 					<InputWithVariants
 						text='Выбери предмет'
 						onChange={handleSelectChangeSubject}
-						onFocus={() => {
+						onClick={() => {
 							setBoxIsVisibleSubject(true)
 							setBoxIsVisibleUniv(false)
 						}}
