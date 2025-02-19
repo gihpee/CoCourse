@@ -56,7 +56,7 @@ const EditProfile: FC = () => {
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>Курсы</h3>
 					<LinksFAQ
-						isSubmit={true}
+						isSubmit={false}
 						path={Bell}
 						text='Получай уведомления о новых курсах наших преподавателей'
 					/>
@@ -64,14 +64,14 @@ const EditProfile: FC = () => {
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>Обратная связь</h3>
-					<LinksFAQ isSubmit={false} path={Error} text='Сообщить о баге' />
-					<LinksFAQ isSubmit={false} path={Bulb} text='Предложить идею' />
+					<LinksFAQ isSubmit={true} path={Error} text='Сообщить о баге' />
+					<LinksFAQ isSubmit={true} path={Bulb} text='Предложить идею' />
 				</div>
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>О проекте</h3>
-					<LinksFAQ isSubmit={false} path={Faq} text='Ответы на вопросы' />
-					<LinksFAQ isSubmit={false} path={Naming} text='Наш телеграм канал' />
+					<LinksFAQ isSubmit={true} path={Faq} text='Ответы на вопросы' />
+					<LinksFAQ isSubmit={true} path={Naming} text='Наш телеграм канал' />
 				</div>
 
 				<div className={styles['edit-profile__section']}>

@@ -2,7 +2,7 @@
 	display: flex;
 	width: 91.282vw;
 	padding: 2.564vw 2.051vw;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	gap: 3.077vw;
 	border-radius: 1.538vw;
@@ -37,6 +37,7 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	width: 63.91vw;
 }
 
 .linksFAQ__arrow {
