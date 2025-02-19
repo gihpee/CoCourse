@@ -65,3 +65,64 @@
 	font-weight: 400;
 	line-height: normal;
 }
+
+.edit-profile__all-subjects {
+	display: flex;
+	width: 91.795vw;
+	flex-direction: column;
+	border-radius: 3.077vw;
+	background: var(--mini-background);
+	box-shadow: 0vw 0vw 0.513vw 0.256vw rgba(0, 0, 0, 0.02),
+		0vw 8.205vw 16.41vw 0vw rgba(0, 0, 0, 0.04);
+}
+
+.edit-profile__ubject-variant {
+	display: flex;
+	height: 12.308vw;
+	width: 100%;
+	padding: 0vw 4.103vw;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.edit-profile__ubject-variant-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.359vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-profile__ubject-variant-img {
+	width: 5.128vw;
+	height: 5.128vw;
+}
+
+.edit-profile__exist-subject {
+	display: flex;
+	height: 9.231vw;
+	padding: 2.051vw;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--background3);
+}
+
+.edit-profile__exist-subject-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	max-width: 66.154vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.edit-profile__exist-subject-img {
+	width: 5.128vw;
+	height: 5.128vw;
+}

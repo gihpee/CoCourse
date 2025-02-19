@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useUserProfile } from 'src/pages/UserProfile/model/useUserProfile'
 import MainButton from 'src/shared/components/MainButton/MainButton'
@@ -7,14 +7,62 @@ import Bell from '../../shared/assets/profile/Bell.svg'
 import Bulb from '../../shared/assets/profile/Bulb.svg'
 import Error from '../../shared/assets/profile/Error.svg'
 import Faq from '../../shared/assets/profile/Faq.svg'
+import MarkedExist from '../../shared/assets/profile/MarkedExist.svg'
 import Naming from '../../shared/assets/profile/Naming.svg'
 import Warning from '../../shared/assets/profile/Warning.svg'
+import CloseImg from '../../shared/assets/wallet/CloseImg.svg'
+import { optionsSubject } from '../optionsSubject'
 import styles from './EditProfile.module.css'
 import InputWithVariants from './ui/InputWithVariants/InputWithVariants'
 import LinksFAQ from './ui/LinksFAQ/LinksFAQ'
 
 const EditProfile: FC = () => {
-	const { userData, isNotify } = useUserProfile()
+	const { userData, isNotify, selectedOptionsProfile } = useUserProfile()
+
+	const [selectedOptions, setSelectedOptions] = useState<string[]>(
+		selectedOptionsProfile
+	)
+	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
+	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
+
+	const handleRemoveOptionSubject = (optionToRemove: string) => {
+		const updatedOptions = selectedOptions.filter(
+			option => option !== optionToRemove
+		)
+		setSelectedOptions(updatedOptions)
+	}
+
+	const handleSelectChangeSubject = () => {
+		setBoxIsVisibleSubject(true)
+	}
+
+	const handleUniChange = () => {
+		// const value = event.target.value
+		// setInputValueUniv(value)
+		setBoxIsVisibleUniv(true)
+	}
+
+	const handleOptionClickSubject = (option: string) => {
+		if (!selectedOptions.includes(option)) {
+			setSelectedOptions([...selectedOptions, option])
+		}
+		setBoxIsVisibleSubject(false)
+	}
+
+	const varsSubject = optionsSubject.map((item: string, index: number) => (
+		<div
+			className={styles['edit-profile__ubject-variant']}
+			key={index}
+			onClick={() => handleOptionClickSubject(item)}
+		>
+			<p className={styles['edit-profile__ubject-variant-text']}>{item}</p>
+			<img
+				src={MarkedExist}
+				alt='Уже выбранный предмет'
+				className={styles['edit-profile__ubject-variant-img']}
+			/>
+		</div>
+	))
 
 	return (
 		<div className={styles['edit-profile']}>
@@ -41,7 +89,43 @@ const EditProfile: FC = () => {
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>Предмет</h3>
-					<InputWithVariants text='Выбери предмет' />
+					<InputWithVariants
+						text='Выбери предмет'
+						onChange={handleSelectChangeSubject}
+						onFocus={() => {
+							setBoxIsVisibleSubject(true)
+							setBoxIsVisibleUniv(false)
+						}}
+					>
+						{selectedOptions ? (
+							selectedOptions.map(option => (
+								<div
+									className={styles['edit-profile__exist-subject']}
+									key={option}
+								>
+									<p className={styles['edit-profile__exist-subject-text']}>
+										{option}
+									</p>
+									<button onClick={() => handleRemoveOptionSubject(option)}>
+										<img
+											src={CloseImg}
+											alt='Удалить предмет'
+											className={styles['edit-profile__exist-subject-img']}
+										/>
+									</button>
+								</div>
+							))
+						) : (
+							<></>
+						)}
+					</InputWithVariants>
+					{boxIsVisibleSubject ? (
+						<div className={styles['edit-profile__all-subjects']}>
+							{varsSubject}
+						</div>
+					) : (
+						<></>
+					)}
 				</div>
 
 				<div className={styles['edit-profile__section']}>

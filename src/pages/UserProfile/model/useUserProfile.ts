@@ -11,6 +11,9 @@ export const useUserProfile = () => {
 	const [coursesData, setCoursesData] = useState<ICourse[]>([])
 	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
 	const [isNotify, setIsNotify] = useState(true)
+	const [selectedOptionsProfile, setSelectedOptionsProfile] = useState<
+		string[]
+	>([])
 
 	const userCoursesData = useUserCourses(window.Telegram.WebApp.initData)
 
@@ -20,8 +23,9 @@ export const useUserProfile = () => {
 			setFeedbacks(userCoursesData.feedback || [])
 			setCoursesData(userCoursesData.created_courses || [])
 			setIsNotify(userCoursesData.notify || false)
+			setSelectedOptionsProfile(userCoursesData.subjects || '')
 		}
 	}, [userCoursesData])
 
-	return { userData, coursesData, feedbacks, isNotify }
+	return { userData, coursesData, feedbacks, isNotify, selectedOptionsProfile }
 }
