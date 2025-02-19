@@ -172,7 +172,7 @@ const EditProfile: FC = () => {
 							<></>
 						)}
 					</InputWithVariants>
-					{boxIsVisibleSubject ? (
+					{boxIsVisibleUniv ? (
 						<div className={styles['edit-profile__all-subjects']}>
 							{varsUniv}
 						</div>
