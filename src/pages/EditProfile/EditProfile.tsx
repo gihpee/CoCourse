@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { filterOptions } from 'src/features/filterOptions'
 import { useUserProfile } from 'src/pages/UserProfile/model/useUserProfile'
@@ -24,18 +24,25 @@ const EditProfile: FC = () => {
 
 	console.log('selectedOptionsProfile', selectedOptionsProfile)
 
-	const [selectedOptions, setSelectedOptions] = useState<string[]>(
-		() => selectedOptionsProfile
-	)
+	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
-	console.log('selectedOptions', selectedOptions)
-	const [uniValue, setUniValue] = useState(() => uniValueProfile)
+	const [uniValue, setUniValue] = useState('')
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
 	const [inputValueUniv, setInputValueUniv] = useState('')
 
 	console.log(boxIsVisibleUniv)
+
+	useEffect(() => {
+		setSelectedOptions(selectedOptionsProfile)
+	}, [selectedOptionsProfile])
+
+	useEffect(() => {
+		setUniValue(uniValueProfile)
+	}, [uniValueProfile])
+
+	console.log('selectedOptions', selectedOptions)
 
 	const handleRemoveOptionSubject = (optionToRemove: string) => {
 		const updatedOptions = selectedOptions.filter(
