@@ -21,9 +21,6 @@ export const useUserCourses = (
 						},
 					}
 				)
-				if (!response.ok) {
-					throw new Error(`Ошибка сервера: ${response.status}`)
-				}
 				const data = await response.json()
 				setUserCourses(data)
 			} catch (error) {

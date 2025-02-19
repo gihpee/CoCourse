@@ -1,4 +1,6 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
+import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import { useUserProfile } from 'src/pages/UserProfile/model/useUserProfile'
 import MainButton from 'src/shared/components/MainButton/MainButton'
 import VerificationInput from 'src/shared/components/VerificationInput/VerificationInput'
@@ -14,6 +16,7 @@ import LinksFAQ from './ui/LinksFAQ/LinksFAQ'
 
 const EditProfile: FC = () => {
 	const { userData, coursesData, feedbacks } = useUserProfile()
+	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
 	console.log(coursesData)
 	console.log(feedbacks)
@@ -61,20 +64,61 @@ const EditProfile: FC = () => {
 					<LinksFAQ
 						isSubmit={false}
 						path={Bell}
+						userCourses={userCourses}
 						text='Получай уведомления о новых курсах наших преподавателей'
 					/>
 				</div>
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>Обратная связь</h3>
-					<LinksFAQ isSubmit={true} path={Error} text='Сообщить о баге' />
-					<LinksFAQ isSubmit={true} path={Bulb} text='Предложить идею' />
+					<Link
+						to='https://forms.gle/x9KbBitA1AGDPmXY8'
+						target='_blank'
+						className='billet'
+						onClick={event => {
+							event.preventDefault()
+							window.open('https://forms.gle/x9KbBitA1AGDPmXY8')
+						}}
+					>
+						<LinksFAQ isSubmit={true} path={Error} text='Сообщить о баге' />
+					</Link>
+					<Link
+						to='https://forms.gle/NtaWQe2wuiRpcY2L8'
+						target='_blank'
+						className='billet'
+						onClick={event => {
+							event.preventDefault()
+							window.open('https://forms.gle/NtaWQe2wuiRpcY2L8')
+						}}
+					>
+						<LinksFAQ isSubmit={true} path={Bulb} text='Предложить идею' />
+					</Link>
 				</div>
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>О проекте</h3>
-					<LinksFAQ isSubmit={true} path={Faq} text='Ответы на вопросы' />
-					<LinksFAQ isSubmit={true} path={Naming} text='Наш телеграм канал' />
+					<Link
+						to='https://t.me/HowToCommonCourse '
+						target='_blank'
+						className='billet'
+						onClick={event => {
+							event.preventDefault()
+							window.open('https://t.me/HowToCommonCourse ')
+						}}
+					>
+						<LinksFAQ isSubmit={true} path={Faq} text='Ответы на вопросы' />
+					</Link>
+					<Link
+						to='https://t.me/HowToCommonCourse '
+						target='_blank'
+						className='billet'
+						onClick={event => {
+							event.preventDefault()
+							window.open('https://t.me/HowToCommonCourse ')
+						}}
+					>
+						<LinksFAQ isSubmit={true} path={Naming} text='Наш телеграм канал' />
+					</Link>
 				</div>
 
 				<div className={styles['edit-profile__section']}>

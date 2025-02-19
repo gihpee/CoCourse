@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { useUserCourses } from 'src/entities/course/model/useUserCourses'
+import { ITelegramUser } from 'src/entities/course/model/types'
 import LinkArrow from '../../../../shared/assets/wallet/LinkArrow.svg'
 import styles from './LinksFAQ.module.css'
 
@@ -7,10 +7,10 @@ interface ILinksFAQ {
 	path: string
 	text: string
 	isSubmit: boolean
+	userCourses?: ITelegramUser | undefined
 }
 
-const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit }) => {
-	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
+const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, userCourses }) => {
 	const [isNotify, setIsNotify] = useState(true)
 
 	useEffect(() => {
