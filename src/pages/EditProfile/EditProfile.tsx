@@ -22,9 +22,12 @@ const EditProfile: FC = () => {
 	const { userData, isNotify, selectedOptionsProfile, uniValueProfile } =
 		useUserProfile()
 
+	console.log('selectedOptionsProfile', selectedOptionsProfile)
+
 	const [selectedOptions, setSelectedOptions] = useState<string[]>(
 		selectedOptionsProfile
 	)
+	console.log('selectedOptions', selectedOptions)
 	const [uniValue, setUniValue] = useState(uniValueProfile)
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
@@ -147,7 +150,7 @@ const EditProfile: FC = () => {
 						text='Выбери университет'
 						inputValueSubjectComponent={inputValueUniv}
 						onChange={handleUniChange}
-						isValue={uniValue ? true : false}
+						isValue={boxIsVisibleUniv ? true : false}
 						onClick={() => {
 							setBoxIsVisibleUniv(true)
 							setBoxIsVisibleSubject(false)
@@ -188,7 +191,7 @@ const EditProfile: FC = () => {
 						text='Выбери предмет'
 						inputValueSubjectComponent={inputValueSubject}
 						onChange={handleSelectChangeSubject}
-						isValue={selectedOptions ? true : false}
+						isValue={boxIsVisibleSubject ? true : false}
 						onClick={() => {
 							setBoxIsVisibleSubject(true)
 							setBoxIsVisibleUniv(false)
