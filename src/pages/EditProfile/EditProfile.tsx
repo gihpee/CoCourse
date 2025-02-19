@@ -147,6 +147,7 @@ const EditProfile: FC = () => {
 						text='Выбери университет'
 						inputValueSubjectComponent={inputValueUniv}
 						onChange={handleUniChange}
+						isValue={uniValue ? true : false}
 						onClick={() => {
 							setBoxIsVisibleUniv(true)
 							setBoxIsVisibleSubject(false)
@@ -187,6 +188,7 @@ const EditProfile: FC = () => {
 						text='Выбери предмет'
 						inputValueSubjectComponent={inputValueSubject}
 						onChange={handleSelectChangeSubject}
+						isValue={selectedOptions ? true : false}
 						onClick={() => {
 							setBoxIsVisibleSubject(true)
 							setBoxIsVisibleUniv(false)

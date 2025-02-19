@@ -31,3 +31,7 @@
 	line-height: normal;
 	background-color: transparent;
 }
+
+.inputWithVariants__icon-back {
+	transform: rotate(180deg);
+}

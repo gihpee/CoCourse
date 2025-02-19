@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { ChangeEvent, FC, ReactNode } from 'react'
 import LinkArrow from '../../../../shared/assets/wallet/LinkArrow.svg'
 import styles from './InputWithVariants.module.css'
@@ -8,6 +9,7 @@ interface IInputWithVariants {
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 	onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 	inputValueSubjectComponent: string
+	isValue: boolean
 }
 
 const InputWithVariants: FC<IInputWithVariants> = ({
@@ -16,11 +18,15 @@ const InputWithVariants: FC<IInputWithVariants> = ({
 	onChange,
 	onClick,
 	inputValueSubjectComponent,
+	isValue,
 }) => {
 	return (
 		<div className={styles['inputWithVariants']} onClick={onClick}>
 			<img
-				className={styles['inputWithVariants__icon']}
+				className={cn(
+					styles['inputWithVariants__icon'],
+					isValue ? styles['inputWithVariants__icon-back'] : ''
+				)}
 				src={LinkArrow}
 				alt='Открыть список'
 			/>
