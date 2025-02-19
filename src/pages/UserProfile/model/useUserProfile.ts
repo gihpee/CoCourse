@@ -14,6 +14,7 @@ export const useUserProfile = () => {
 	const [selectedOptionsProfile, setSelectedOptionsProfile] = useState<
 		string[]
 	>([])
+	const [uniValueProfile, setUniValueProfile] = useState('')
 
 	const userCoursesData = useUserCourses(window.Telegram.WebApp.initData)
 
@@ -24,8 +25,16 @@ export const useUserProfile = () => {
 			setCoursesData(userCoursesData.created_courses || [])
 			setIsNotify(userCoursesData.notify || false)
 			setSelectedOptionsProfile(userCoursesData.subjects || '')
+			setUniValueProfile(userCoursesData.university || '')
 		}
 	}, [userCoursesData])
 
-	return { userData, coursesData, feedbacks, isNotify, selectedOptionsProfile }
+	return {
+		userData,
+		coursesData,
+		feedbacks,
+		isNotify,
+		selectedOptionsProfile,
+		uniValueProfile,
+	}
 }

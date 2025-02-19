@@ -107,6 +107,7 @@
 	align-items: center;
 	border-radius: 1.538vw;
 	background: var(--background);
+	gap: 2.308vw;
 }
 
 .edit-profile__exist-subject-text {

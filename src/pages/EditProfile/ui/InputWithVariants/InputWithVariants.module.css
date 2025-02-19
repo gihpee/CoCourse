@@ -3,7 +3,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	min-height: 12.308vw;
-	padding: 2.564vw 2.051vw;
+	padding: 2.564vw 9.23vw 2.564vw 2.051vw;
 	width: 91.026vw;
 	align-items: center;
 	gap: 2.564vw;
@@ -23,10 +23,11 @@
 .inputWithVariants__input {
 	border: none;
 	outline: none;
-	color: var(--second-text);
+	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 3.59vw;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	background-color: transparent;
 }
