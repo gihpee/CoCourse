@@ -25,10 +25,11 @@ const EditProfile: FC = () => {
 	console.log('selectedOptionsProfile', selectedOptionsProfile)
 
 	const [selectedOptions, setSelectedOptions] = useState<string[]>(
-		selectedOptionsProfile
+		() => selectedOptionsProfile
 	)
+
 	console.log('selectedOptions', selectedOptions)
-	const [uniValue, setUniValue] = useState(uniValueProfile)
+	const [uniValue, setUniValue] = useState(() => uniValueProfile)
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
