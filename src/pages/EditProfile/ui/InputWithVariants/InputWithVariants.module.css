@@ -1,6 +1,7 @@
 .inputWithVariants {
 	position: relative;
 	display: flex;
+	flex-wrap: wrap;
 	min-height: 12.308vw;
 	padding: 2.564vw 2.051vw;
 	width: 91.026vw;
@@ -10,15 +11,6 @@
 	background: var(--mini-background);
 }
 
-.inputWithVariants__text {
-	color: var(--second-text);
-	font-family: 'Geologica';
-	font-size: 3.59vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-}
-
 .inputWithVariants__icon {
 	position: absolute;
 	right: 2.821vw;
@@ -26,4 +18,15 @@
 	width: 5.128vw;
 	height: 5.128vw;
 	transform: rotate(90deg);
+}
+
+.inputWithVariants__input {
+	border: none;
+	outline: none;
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 }

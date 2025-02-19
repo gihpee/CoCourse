@@ -7,6 +7,7 @@ interface IInputWithVariants {
 	children?: ReactNode
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 	onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+	inputValueSubjectComponent: string
 }
 
 const InputWithVariants: FC<IInputWithVariants> = ({
@@ -14,20 +15,22 @@ const InputWithVariants: FC<IInputWithVariants> = ({
 	children,
 	onChange,
 	onClick,
+	inputValueSubjectComponent,
 }) => {
 	return (
-		<div
-			className={styles['inputWithVariants']}
-			onChange={onChange}
-			onClick={onClick}
-		>
-			<p className={styles['inputWithVariants__text']}>{text}</p>
+		<div className={styles['inputWithVariants']} onClick={onClick}>
 			<img
 				className={styles['inputWithVariants__icon']}
 				src={LinkArrow}
 				alt='Открыть список'
 			/>
 			{children}
+			<input
+				className={styles['inputWithVariants__input']}
+				placeholder={text}
+				onChange={onChange}
+				value={inputValueSubjectComponent}
+			/>
 		</div>
 	)
 }

@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { filterOptions } from 'src/features/filterOptions'
 import { useUserProfile } from 'src/pages/UserProfile/model/useUserProfile'
 import MainButton from 'src/shared/components/MainButton/MainButton'
 import VerificationInput from 'src/shared/components/VerificationInput/VerificationInput'
@@ -24,6 +25,7 @@ const EditProfile: FC = () => {
 	)
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
+	const [inputValueSubject, setInputValueSubject] = useState('')
 
 	console.log(boxIsVisibleUniv)
 
@@ -34,8 +36,20 @@ const EditProfile: FC = () => {
 		setSelectedOptions(updatedOptions)
 	}
 
-	const handleSelectChangeSubject = () => {
+	const handleSelectChangeSubject = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const value = event.target.value
+		setInputValueSubject(value)
 		setBoxIsVisibleSubject(true)
+	}
+
+	const handleOptionClickSubject = (option: string) => {
+		if (!selectedOptions.includes(option)) {
+			setSelectedOptions([...selectedOptions, option])
+		}
+		setInputValueSubject('')
+		setBoxIsVisibleSubject(false)
 	}
 
 	const handleUniChange = () => {
@@ -46,27 +60,33 @@ const EditProfile: FC = () => {
 
 	console.log(handleUniChange)
 
-	const handleOptionClickSubject = (option: string) => {
-		if (!selectedOptions.includes(option)) {
-			setSelectedOptions([...selectedOptions, option])
-		}
-		setBoxIsVisibleSubject(false)
-	}
+	const filteredOptionsSubject = filterOptions(
+		optionsSubject,
+		inputValueSubject
+	)
 
-	const varsSubject = optionsSubject.map((item: string, index: number) => (
-		<div
-			className={styles['edit-profile__ubject-variant']}
-			key={index}
-			onClick={() => handleOptionClickSubject(item)}
-		>
-			<p className={styles['edit-profile__ubject-variant-text']}>{item}</p>
-			<img
-				src={MarkedExist}
-				alt='Уже выбранный предмет'
-				className={styles['edit-profile__ubject-variant-img']}
-			/>
-		</div>
-	))
+	const varsSubject = filteredOptionsSubject.map(
+		(item: string, index: number) => {
+			const isSelected = selectedOptions.includes(item)
+
+			return (
+				<div
+					className={styles['edit-profile__ubject-variant']}
+					key={index}
+					onClick={() => handleOptionClickSubject(item)}
+				>
+					<p className={styles['edit-profile__ubject-variant-text']}>{item}</p>
+					{isSelected && (
+						<img
+							src={MarkedExist}
+							alt='Уже выбранный предмет'
+							className={styles['edit-profile__ubject-variant-img']}
+						/>
+					)}
+				</div>
+			)
+		}
+	)
 
 	return (
 		<div className={styles['edit-profile']}>
@@ -88,13 +108,17 @@ const EditProfile: FC = () => {
 			<div className={styles['edit-profile__sections']}>
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>Университет</h3>
-					<InputWithVariants text='Выбери университет' />
+					<InputWithVariants
+						text='Выбери университет'
+						inputValueSubjectComponent=''
+					/>
 				</div>
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>Предмет</h3>
 					<InputWithVariants
 						text='Выбери предмет'
+						inputValueSubjectComponent={inputValueSubject}
 						onChange={handleSelectChangeSubject}
 						onClick={() => {
 							setBoxIsVisibleSubject(true)
@@ -110,7 +134,10 @@ const EditProfile: FC = () => {
 									<p className={styles['edit-profile__exist-subject-text']}>
 										{option}
 									</p>
-									<button onClick={() => handleRemoveOptionSubject(option)}>
+									<button
+										className={styles['edit-profile__exist-subject-button']}
+										onClick={() => handleRemoveOptionSubject(option)}
+									>
 										<img
 											src={CloseImg}
 											alt='Удалить предмет'
@@ -162,7 +189,12 @@ const EditProfile: FC = () => {
 							window.open('https://forms.gle/x9KbBitA1AGDPmXY8')
 						}}
 					>
-						<LinksFAQ isSubmit={true} path={Error} text='Сообщить о баге' />
+						<LinksFAQ
+							isSubmit={true}
+							path={Error}
+							isNotify={isNotify}
+							text='Сообщить о баге'
+						/>
 					</Link>
 					<Link
 						to='https://forms.gle/NtaWQe2wuiRpcY2L8'
@@ -172,7 +204,12 @@ const EditProfile: FC = () => {
 							window.open('https://forms.gle/NtaWQe2wuiRpcY2L8')
 						}}
 					>
-						<LinksFAQ isSubmit={true} path={Bulb} text='Предложить идею' />
+						<LinksFAQ
+							isSubmit={true}
+							path={Bulb}
+							isNotify={isNotify}
+							text='Предложить идею'
+						/>
 					</Link>
 				</div>
 
@@ -186,7 +223,12 @@ const EditProfile: FC = () => {
 							window.open('https://t.me/HowToCommonCourse ')
 						}}
 					>
-						<LinksFAQ isSubmit={true} path={Faq} text='Ответы на вопросы' />
+						<LinksFAQ
+							isSubmit={true}
+							path={Faq}
+							isNotify={isNotify}
+							text='Ответы на вопросы'
+						/>
 					</Link>
 					<Link
 						to='https://t.me/HowToCommonCourse '
@@ -196,13 +238,23 @@ const EditProfile: FC = () => {
 							window.open('https://t.me/HowToCommonCourse ')
 						}}
 					>
-						<LinksFAQ isSubmit={true} path={Naming} text='Наш телеграм канал' />
+						<LinksFAQ
+							isSubmit={true}
+							path={Naming}
+							isNotify={isNotify}
+							text='Наш телеграм канал'
+						/>
 					</Link>
 				</div>
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>О приложении</h3>
-					<LinksFAQ isSubmit={true} path={Warning} text='Правовая информация' />
+					<LinksFAQ
+						isSubmit={true}
+						path={Warning}
+						isNotify={isNotify}
+						text='Правовая информация'
+					/>
 				</div>
 			</div>
 

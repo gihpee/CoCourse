@@ -6,7 +6,7 @@ interface ILinksFAQ {
 	path: string
 	text: string
 	isSubmit: boolean
-	isNotify?: boolean
+	isNotify: boolean
 }
 
 const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, isNotify }) => {

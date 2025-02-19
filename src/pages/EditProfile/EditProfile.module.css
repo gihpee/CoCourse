@@ -106,7 +106,7 @@
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 1.538vw;
-	background: var(--background3);
+	background: var(--background);
 }
 
 .edit-profile__exist-subject-text {
@@ -123,6 +123,14 @@
 }
 
 .edit-profile__exist-subject-img {
-	width: 5.128vw;
-	height: 5.128vw;
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.edit-profile__exist-subject-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 4.103vw;
+	height: 4.103vw;
 }
