@@ -25,6 +25,8 @@ const EditProfile: FC = () => {
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 
+	console.log(boxIsVisibleUniv)
+
 	const handleRemoveOptionSubject = (optionToRemove: string) => {
 		const updatedOptions = selectedOptions.filter(
 			option => option !== optionToRemove
@@ -41,6 +43,8 @@ const EditProfile: FC = () => {
 		// setInputValueUniv(value)
 		setBoxIsVisibleUniv(true)
 	}
+
+	console.log(handleUniChange)
 
 	const handleOptionClickSubject = (option: string) => {
 		if (!selectedOptions.includes(option)) {
