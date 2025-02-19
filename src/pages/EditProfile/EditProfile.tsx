@@ -13,7 +13,10 @@ import InputWithVariants from './ui/InputWithVariants/InputWithVariants'
 import LinksFAQ from './ui/LinksFAQ/LinksFAQ'
 
 const EditProfile: FC = () => {
-	const { userData } = useUserProfile()
+	const { userData, coursesData, feedbacks } = useUserProfile()
+
+	console.log(coursesData)
+	console.log(feedbacks)
 
 	return (
 		<div className={styles['edit-profile']}>
@@ -76,11 +79,7 @@ const EditProfile: FC = () => {
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>О приложении</h3>
-					<LinksFAQ
-						isSubmit={false}
-						path={Warning}
-						text='Правовая информация'
-					/>
+					<LinksFAQ isSubmit={true} path={Warning} text='Правовая информация' />
 				</div>
 			</div>
 
