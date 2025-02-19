@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import { useUserProfile } from 'src/pages/UserProfile/model/useUserProfile'
 import MainButton from 'src/shared/components/MainButton/MainButton'
 import VerificationInput from 'src/shared/components/VerificationInput/VerificationInput'
@@ -15,11 +14,7 @@ import InputWithVariants from './ui/InputWithVariants/InputWithVariants'
 import LinksFAQ from './ui/LinksFAQ/LinksFAQ'
 
 const EditProfile: FC = () => {
-	const { userData, coursesData, feedbacks } = useUserProfile()
-	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
-
-	console.log(coursesData)
-	console.log(feedbacks)
+	const { userData, isNotify } = useUserProfile()
 
 	return (
 		<div className={styles['edit-profile']}>
@@ -64,7 +59,7 @@ const EditProfile: FC = () => {
 					<LinksFAQ
 						isSubmit={false}
 						path={Bell}
-						userCourses={userCourses}
+						isNotify={isNotify}
 						text='Получай уведомления о новых курсах наших преподавателей'
 					/>
 				</div>
@@ -74,7 +69,6 @@ const EditProfile: FC = () => {
 					<Link
 						to='https://forms.gle/x9KbBitA1AGDPmXY8'
 						target='_blank'
-						className='billet'
 						onClick={event => {
 							event.preventDefault()
 							window.open('https://forms.gle/x9KbBitA1AGDPmXY8')
@@ -85,7 +79,6 @@ const EditProfile: FC = () => {
 					<Link
 						to='https://forms.gle/NtaWQe2wuiRpcY2L8'
 						target='_blank'
-						className='billet'
 						onClick={event => {
 							event.preventDefault()
 							window.open('https://forms.gle/NtaWQe2wuiRpcY2L8')
@@ -100,7 +93,6 @@ const EditProfile: FC = () => {
 					<Link
 						to='https://t.me/HowToCommonCourse '
 						target='_blank'
-						className='billet'
 						onClick={event => {
 							event.preventDefault()
 							window.open('https://t.me/HowToCommonCourse ')
@@ -111,7 +103,6 @@ const EditProfile: FC = () => {
 					<Link
 						to='https://t.me/HowToCommonCourse '
 						target='_blank'
-						className='billet'
 						onClick={event => {
 							event.preventDefault()
 							window.open('https://t.me/HowToCommonCourse ')

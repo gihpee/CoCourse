@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from 'react'
-import { ITelegramUser } from 'src/entities/course/model/types'
+import { FC, useState } from 'react'
 import LinkArrow from '../../../../shared/assets/wallet/LinkArrow.svg'
 import styles from './LinksFAQ.module.css'
 
@@ -7,26 +6,14 @@ interface ILinksFAQ {
 	path: string
 	text: string
 	isSubmit: boolean
-	userCourses?: ITelegramUser | undefined
+	isNotify?: boolean
 }
 
-const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, userCourses }) => {
-	const [isNotify, setIsNotify] = useState(true)
-
-	useEffect(() => {
-		if (userCourses) {
-			try {
-				setIsNotify(userCourses.notify || false)
-			} catch (error) {
-				console.error('Ошибка при запросе к серверу:', error)
-			}
-		} else {
-			console.log('No user data found.')
-		}
-	}, [userCourses])
+const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, isNotify }) => {
+	const [isNotifyFAQ, setIsNotifyFAQ] = useState(isNotify)
 
 	const handleNotify = () => {
-		setIsNotify(!isNotify)
+		setIsNotifyFAQ(!isNotifyFAQ)
 	}
 
 	return (
@@ -52,7 +39,7 @@ const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, userCourses }) => {
 					<input
 						className={styles['linksFAQ__checkbox']}
 						type='checkbox'
-						checked={isNotify}
+						checked={isNotifyFAQ}
 						onChange={handleNotify}
 					/>
 					<label className={styles['linksFAQ__label']} htmlFor='toggle'></label>
