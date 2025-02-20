@@ -68,12 +68,13 @@
 .course-page__topic-input:checked
 	+ .course-page__topic-label
 	+ .course-page__topic-description {
-	max-height: 200px;
+	max-height: fit-content;
+	padding: 2.564vw 2.051vw;
 }
 
 .course-page__topic-label {
 	display: flex;
-	padding: 2.564vw 2.051vw;
+	/* padding: 2.564vw 2.051vw; */
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;

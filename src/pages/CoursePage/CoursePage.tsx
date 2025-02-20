@@ -147,7 +147,7 @@ const CoursePage: FC = () => {
 					{topics && topics.length > 0 ? (
 						<div>{topics}</div>
 					) : (
-						<p>Не указано</p>
+						<p className={styles['course-page__section-date']}>Не указано</p>
 					)}
 				</div>
 
