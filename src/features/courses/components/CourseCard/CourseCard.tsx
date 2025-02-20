@@ -22,6 +22,8 @@ const CourseCard: FC<ICourseCard> = ({
 	averageRate,
 	isCoursePage,
 }) => {
+	if (!itemCard) return null
+
 	const content = (
 		<div className={styles['course-card']}>
 			{isCoursePage && itemCard?.user ? (
