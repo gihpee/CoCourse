@@ -45,6 +45,7 @@
 	padding: 1.282vw 2.051vw;
 	justify-content: center;
 	align-items: center;
+	width: fit-content;
 	gap: 2.564vw;
 	border-radius: 1.538vw;
 	border: 1px solid var(--border-color);

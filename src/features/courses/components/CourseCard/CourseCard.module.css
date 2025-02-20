@@ -16,9 +16,6 @@
 }
 
 .course-card__buttons {
-	position: absolute;
-	top: 2.051vw;
-	right: 2.051vw;
 	display: flex;
 	gap: 2.051vw;
 }
@@ -30,6 +27,10 @@
 	background-image: url('../../../../shared/assets/course/horizontalEmptyCourseImage.webp');
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+.course-card__image_isCoursePage {
+	height: 44.872vw;
 }
 
 .course-card__footer {
@@ -125,6 +126,8 @@
 	width: 9.231vw;
 	height: 9.231vw;
 	border-radius: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .course-card__person-name {
@@ -134,4 +137,9 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+
+.course-card__button_isCoursePage {
+	width: 9.231vw;
+	height: 9.231vw;
 }

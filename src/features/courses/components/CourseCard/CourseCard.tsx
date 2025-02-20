@@ -6,6 +6,7 @@ import CourseInfo from '../../../../entities/course/ui/CourseInfo'
 import CourseRating from '../../../../entities/course/ui/CourseRating'
 import HeartIcon from '../../../../shared/assets/course/ButtonHeart.svg'
 import ShareIcon from '../../../../shared/assets/course/ButtonSend.svg'
+import Edit_Pencil from '../../../../shared/assets/course/Edit_Pencil.svg'
 import emptyHorizontalImage from '../../../../shared/assets/course/horizontalEmptyCourseImage.webp'
 import TelegramPremiumStarIcon from '../../../../shared/assets/course/TelegramPremiumStar.svg'
 import CourseButton from '../../../../shared/CourseButton/CourseButton'
@@ -21,6 +22,7 @@ const CourseCard: FC<ICourseCard> = ({
 	price,
 	averageRate,
 	isCoursePage,
+	isAuthor,
 }) => {
 	if (!itemCard) return null
 
@@ -43,10 +45,43 @@ const CourseCard: FC<ICourseCard> = ({
 							}`}
 						</h2>
 					</div>
-					<div className={styles['course-card__buttons']}>
-						<CourseButton alt='Добавить в избранное' imgSrc={HeartIcon} />
-						<CourseButton alt='Поделиться' imgSrc={ShareIcon} />
-					</div>
+					{isAuthor ? (
+						<div className={styles['course-card__buttons']}>
+							<CourseButton
+								alt='Поделиться'
+								imgSrc={ShareIcon}
+								className={{
+									[styles['course-card__button_isCoursePage']]: isCoursePage,
+								}}
+							/>
+							<Link to={`/edit-course/${itemCard.id}`}>
+								<CourseButton
+									alt='Редактировать'
+									imgSrc={Edit_Pencil}
+									className={{
+										[styles['course-card__button_isCoursePage']]: isCoursePage,
+									}}
+								/>
+							</Link>
+						</div>
+					) : (
+						<div className={styles['course-card__buttons']}>
+							<CourseButton
+								alt='Добавить в избранное'
+								imgSrc={HeartIcon}
+								className={{
+									[styles['course-card__button_isCoursePage']]: isCoursePage,
+								}}
+							/>
+							<CourseButton
+								alt='Поделиться'
+								imgSrc={ShareIcon}
+								className={{
+									[styles['course-card__button_isCoursePage']]: isCoursePage,
+								}}
+							/>
+						</div>
+					)}
 				</div>
 			) : null}
 
@@ -81,7 +116,9 @@ const CourseCard: FC<ICourseCard> = ({
 				) : null}
 
 				<div
-					className={styles['course-card__image']}
+					className={cn(styles['course-card__image'], {
+						[styles['course-card__image_isCoursePage']]: isCoursePage,
+					})}
 					style={{
 						backgroundImage: `url(${setImagePath(
 							chanelPhoto,

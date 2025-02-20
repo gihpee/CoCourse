@@ -86,6 +86,7 @@ const CoursePage: FC = () => {
 				price={courseDataComponent?.price || 0}
 				university={userCourses?.university || ''}
 				itemCard={courseDataComponent as ICourse}
+				isAuthor={isAuthor}
 			/>
 
 			<section className={styles['user-profile__stats']}>

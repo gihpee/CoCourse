@@ -9,4 +9,5 @@ export interface ICourseCard {
 	price: number | null
 	averageRate?: number | null
 	isCoursePage: boolean
+	isAuthor?: boolean
 }
