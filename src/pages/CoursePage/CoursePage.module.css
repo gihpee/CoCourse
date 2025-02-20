@@ -67,7 +67,7 @@
 
 .course-page__topic-input:checked
 	+ .course-page__topic-label
-	+ .accordion-body {
+	+ .course-page__topic-description {
 	max-height: 200px;
 }
 

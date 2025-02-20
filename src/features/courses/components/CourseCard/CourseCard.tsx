@@ -46,7 +46,11 @@ const CourseCard: FC<ICourseCard> = ({
 						</h2>
 					</div>
 					{isAuthor ? (
-						<div className={styles['course-card__buttons']}>
+						<div
+							className={cn(styles['course-card__buttons'], {
+								[styles['course-card__buttons_isCoursePage']]: isCoursePage,
+							})}
+						>
 							<CourseButton
 								alt='Поделиться'
 								imgSrc={ShareIcon}
@@ -65,7 +69,11 @@ const CourseCard: FC<ICourseCard> = ({
 							</Link>
 						</div>
 					) : (
-						<div className={styles['course-card__buttons']}>
+						<div
+							className={cn(styles['course-card__buttons'], {
+								[styles['course-card__buttons_isCoursePage']]: isCoursePage,
+							})}
+						>
 							<CourseButton
 								alt='Добавить в избранное'
 								imgSrc={HeartIcon}
