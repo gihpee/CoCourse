@@ -20,11 +20,7 @@ import PaymentButton from './ui/PaymentButton/PaymentButton'
 const CoursePage: FC = () => {
 	window.scrollTo(0, 0)
 	const { cid } = useParams()
-	const {
-		data: courseDataComponent,
-		isLoading,
-		error,
-	} = useCourseData(cid || '')
+	const { data: courseDataComponent } = useCourseData(cid || '')
 
 	const [isPaid, setIsPaid] = useState<boolean | null>(null)
 
