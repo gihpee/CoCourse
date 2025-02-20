@@ -1,0 +1,39 @@
+.payment-button {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	justify-content: center;
+	align-items: center;
+	gap: 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.payment-button__icon {
+	width: 6.154vw;
+	height: 6.154vw;
+}
+
+.payment-button__details {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1.026vw;
+}
+
+.payment-button__discount {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.payment-button__text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

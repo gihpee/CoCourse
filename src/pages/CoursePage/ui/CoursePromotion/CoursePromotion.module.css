@@ -1,0 +1,46 @@
+.course-promotion {
+	display: flex;
+	padding: 2.051vw 2.564vw;
+	align-items: center;
+	gap: 2.051vw;
+	width: 91.282vw;
+}
+
+.course-promotion__icon {
+	display: flex;
+	width: 11.795vw;
+	height: 11.795vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 49.145vw;
+	background: var(--stars-background);
+}
+
+.course-promotion__icon-img {
+	width: 6.154vw;
+	height: 6.154vw;
+}
+
+.course-promotion__content {
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.course-promotion__title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.course-promotion__subtitle {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

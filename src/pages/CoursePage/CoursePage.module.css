@@ -1,0 +1,122 @@
+.course-page__info {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	gap: 4.103vw;
+}
+
+.course-page__section {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.course-page__section-title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-page__section-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-page__course-wrapper {
+	display: flex;
+	padding: 1.282vw 2.051vw;
+	justify-content: center;
+	align-items: center;
+	gap: 2.564vw;
+	border-radius: 1.538vw;
+	border: 1px solid var(#bab9be);
+}
+
+.course-page__course-text,
+.course-page__section-date {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-page__topic-input {
+	display: none;
+}
+
+.course-page__topic-input:checked
+	+ .course-page__topic-label
+	+ .accordion-body {
+	max-height: 200px;
+}
+
+.course-page__topic-label {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	margin-bottom: 1.282vw;
+}
+
+.course-page__topic-label-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.course-page__wrapper-icon {
+	display: flex;
+	width: 7.179vw;
+	height: 7.179vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 29.915vw;
+	background: var(--stars-background);
+}
+
+.course-page__topic-icon {
+	width: 3.846vw;
+	height: 3.846vw;
+}
+
+.course-page__topic-description {
+	max-height: 0;
+	overflow: hidden;
+	width: 100%;
+	padding: 2.564vw 2.051vw;
+	transition: max-height 0.3s ease;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	margin-bottom: 1.282vw;
+}
+
+.course-page__topic-description-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.course-page__divider {
+	width: 100%;
+	height: 1px;
+	background-color: #e0e0e0;
+}

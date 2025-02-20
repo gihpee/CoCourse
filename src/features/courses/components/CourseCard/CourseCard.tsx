@@ -20,13 +20,30 @@ const CourseCard: FC<ICourseCard> = ({
 	university,
 	price,
 	averageRate,
+	isCoursePage,
 }) => {
-	console.log(itemCard)
-	console.log(itemCard.is_draft)
-
 	return (
 		<Link to={`/course/${itemCard.id}`} key={itemCard.id}>
 			<div className={styles['course-card']}>
+				{isCoursePage ? (
+					<div className={styles['course-card__header']}>
+						<div className={styles['course-card__person']}>
+							<div
+								className={styles['course-card__person-avatar']}
+								style={{
+									backgroundImage: `url(https://comncoursetest.ru${itemCard.user.photo_url})`,
+								}}
+							></div>
+							<h2 className={styles['course-card__person-name']}>
+								{itemCard.user.first_name + ' ' + itemCard.user.last_name}
+							</h2>
+						</div>
+						<div className={styles['course-card__buttons']}>
+							<CourseButton alt='Добавить в избранное' imgSrc={HeartIcon} />
+							<CourseButton alt='Поделиться' imgSrc={ShareIcon} />
+						</div>
+					</div>
+				) : null}
 				<div className={styles['course-card__image-wrapper']}>
 					{itemCard.is_draft ? (
 						<div className={styles['course-card__status']}>
@@ -50,10 +67,13 @@ const CourseCard: FC<ICourseCard> = ({
 						</div>
 					) : null}
 
-					<div className={styles['course-card__buttons']}>
-						<CourseButton alt='Добавить в избранное' imgSrc={HeartIcon} />
-						<CourseButton alt='Поделиться' imgSrc={ShareIcon} />
-					</div>
+					{!isCoursePage ? (
+						<div className={styles['course-card__buttons']}>
+							<CourseButton alt='Добавить в избранное' imgSrc={HeartIcon} />
+							<CourseButton alt='Поделиться' imgSrc={ShareIcon} />
+						</div>
+					) : null}
+
 					<div
 						className={styles['course-card__image']}
 						style={{
@@ -65,10 +85,12 @@ const CourseCard: FC<ICourseCard> = ({
 					/>
 				</div>
 
-				<CourseRating
-					amountOfStudents={amountOfStudents || 0}
-					averageRate={averageRate}
-				/>
+				{!isCoursePage ? (
+					<CourseRating
+						amountOfStudents={amountOfStudents || 0}
+						averageRate={averageRate || 0}
+					/>
+				) : null}
 
 				<CourseInfo
 					title={chanelName || 'Название курса'}

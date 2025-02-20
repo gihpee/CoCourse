@@ -3,12 +3,12 @@ import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { VerificationForm } from 'src/entities/verification/ui/VerificationForm/VerificationForm'
+import CoursePage from 'src/pages/CoursePage/CoursePage'
 import EditProfile from 'src/pages/EditProfile/EditProfile'
 import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
 import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
 import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
 import BuyCourse from '../pages/Course/BuyCourse'
-import Course from '../pages/Course/Course'
 import ConnectBot from '../pages/Create/ConnectBot'
 import Create from '../pages/Create/Create'
 import CreateCourse from '../pages/Create/CreateCourse'
@@ -128,7 +128,7 @@ function App() {
 						}
 					/>
 					<Route path={'profile'} element={<UserProfile />} />
-					<Route path={'course/:cid'} element={<Course />} />
+					<Route path={'course/:cid'} element={<CoursePage />} />
 					<Route path={'create-course'} element={<CreateCourse />} />
 					<Route path={'send-feedback/:id'} element={<SendFeedback />} />
 					<Route path={'edit-profile/:id'} element={<EditProfile />} />

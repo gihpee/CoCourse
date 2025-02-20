@@ -24,6 +24,7 @@ const UserProfile: FC = () => {
 				price={item.price}
 				university={item.university}
 				key={item.id}
+				isCoursePage={false}
 			/>
 		)) || []
 
@@ -54,7 +55,7 @@ const UserProfile: FC = () => {
 
 			<section className={styles['user-profile__stats']}>
 				<Sales />
-				<Feedback averageRate={averageRate} />
+				<Feedback averageRate={averageRate} isCoursePage={false} />
 			</section>
 
 			<section className={styles['user-profile__content']}>

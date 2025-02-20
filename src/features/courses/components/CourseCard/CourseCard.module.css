@@ -108,3 +108,30 @@
 	font-weight: 300;
 	line-height: normal;
 }
+
+.course-card__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.course-card__person {
+	display: flex;
+	align-items: center;
+	gap: 1.282vw;
+}
+
+.course-card__person-avatar {
+	width: 9.231vw;
+	height: 9.231vw;
+	border-radius: 100%;
+}
+
+.course-card__person-name {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

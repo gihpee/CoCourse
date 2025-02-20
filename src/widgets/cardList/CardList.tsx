@@ -21,6 +21,7 @@ const CardList: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
 						chanelPhoto={item.image ?? ''}
 						price={item.price ?? 0}
 						university={item.university ?? ''}
+						isCoursePage={false}
 					/>
 				)
 			})}
