@@ -26,6 +26,7 @@
 
 .feedback__content {
 	display: flex;
+	align-items: flex-start;
 	flex-direction: column;
 	gap: 1.026vw;
 }

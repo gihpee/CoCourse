@@ -19,6 +19,8 @@
 
 	--profile-line: #f1f5f9;
 
+	--border-color: #bab9be;
+
 	--overlay: rgba(0, 0, 0, 0.15);
 }
 
@@ -42,6 +44,8 @@
 	--stars-text: #ffaf40;
 
 	--profile-line: #202020;
+
+	--border-color: #aaa;
 
 	--overlay: rgba(255, 255, 255, 0.15);
 }

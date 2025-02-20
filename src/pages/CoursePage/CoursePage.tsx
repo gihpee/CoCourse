@@ -11,7 +11,6 @@ import MainButton from 'src/shared/components/MainButton/MainButton'
 import Sales from 'src/shared/components/Sales/Sales'
 import Add_Plus from '../../shared/assets/course/Add_Plus.svg'
 import Credit_Card from '../../shared/assets/course/Credit_Card.svg'
-import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.webp'
 import Wallet_Card from '../../shared/assets/course/Wallet_Card.svg'
 import styles from './CoursePage.module.css'
 import CoursePromotion from './ui/CoursePromotion/CoursePromotion'
@@ -79,11 +78,11 @@ const CoursePage: FC = () => {
 	}, [courseDataComponent?.topics])
 
 	return (
-		<div>
+		<div className={styles['user-profile']}>
 			<CourseCard
 				isCoursePage={true}
-				chanelName={courseDataComponent?.name || 'Название курса'}
-				chanelPhoto={courseDataComponent?.image || emptyHorizontalImage}
+				chanelName={courseDataComponent?.channel.name || 'Название курса'}
+				chanelPhoto={courseDataComponent?.channel.photo || ''}
 				price={courseDataComponent?.price || 0}
 				university={userCourses?.university || ''}
 				itemCard={courseDataComponent as ICourse}
@@ -101,7 +100,7 @@ const CoursePage: FC = () => {
 					<h2 className={styles['course-page__section-title']}>
 						Способы оплаты
 					</h2>
-					<div>
+					<div className={styles['course-page__payment-variants']}>
 						<PaymentButton isCrypto={false} path={Credit_Card} />
 						<PaymentButton isCrypto={true} pathCrypto={Wallet_Card} />
 					</div>

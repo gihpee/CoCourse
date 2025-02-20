@@ -1,4 +1,14 @@
+.user-profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4.103vw;
+	padding-bottom: 4.103vw;
+}
+
 .course-page__info {
+	padding-top: 2.051vw;
+	padding-top: -2.308vw;
 	display: flex;
 	width: 91.282vw;
 	flex-direction: column;
@@ -37,7 +47,7 @@
 	align-items: center;
 	gap: 2.564vw;
 	border-radius: 1.538vw;
-	border: 1px solid var(#bab9be);
+	border: 1px solid var(--border-color);
 }
 
 .course-page__course-text,
@@ -118,5 +128,17 @@
 .course-page__divider {
 	width: 100%;
 	height: 1px;
-	background-color: #e0e0e0;
+	background-color: var(--profile-line);
+}
+
+.user-profile__stats {
+	display: flex;
+	width: 91.795vw;
+	justify-content: space-between;
+}
+
+.course-page__payment-variants {
+	display: flex;
+	width: 91.282vw;
+	justify-content: space-between;
 }

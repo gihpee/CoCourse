@@ -1,9 +1,14 @@
 .course-promotion {
+	margin-top: 2.051vw;
 	display: flex;
 	padding: 2.051vw 2.564vw;
 	align-items: center;
 	gap: 2.051vw;
 	width: 91.282vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	border: none;
+	outline: none;
 }
 
 .course-promotion__icon {
@@ -25,6 +30,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1.026vw;
+	align-items: flex-start;
 }
 
 .course-promotion__title {

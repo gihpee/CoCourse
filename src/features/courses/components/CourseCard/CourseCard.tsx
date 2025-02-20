@@ -51,7 +51,7 @@ const CourseCard: FC<ICourseCard> = ({
 			) : null}
 
 			<div className={styles['course-card__image-wrapper']}>
-				{itemCard.is_draft ? (
+				{itemCard.is_draft && !isCoursePage ? (
 					<div className={styles['course-card__status']}>
 						<div
 							className={cn(
@@ -61,7 +61,7 @@ const CourseCard: FC<ICourseCard> = ({
 						/>
 						<p className={styles['course-card__status-text']}>Черновик</p>
 					</div>
-				) : itemCard.on_moderation ? (
+				) : itemCard.on_moderation && !isCoursePage ? (
 					<div className={styles['course-card__status']}>
 						<div
 							className={cn(
