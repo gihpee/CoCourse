@@ -24,17 +24,21 @@ const CourseCard: FC<ICourseCard> = ({
 }) => {
 	const content = (
 		<div className={styles['course-card']}>
-			{isCoursePage ? (
+			{isCoursePage && itemCard?.user ? (
 				<div className={styles['course-card__header']}>
 					<div className={styles['course-card__person']}>
 						<div
 							className={styles['course-card__person-avatar']}
 							style={{
-								backgroundImage: `url(https://comncoursetest.ru${itemCard.user.photo_url})`,
+								backgroundImage: `url(https://comncoursetest.ru${
+									itemCard.user.photo_url || ''
+								})`,
 							}}
 						></div>
 						<h2 className={styles['course-card__person-name']}>
-							{itemCard.user.first_name + ' ' + itemCard.user.last_name}
+							{`${itemCard.user.first_name || ''} ${
+								itemCard.user.last_name || ''
+							}`}
 						</h2>
 					</div>
 					<div className={styles['course-card__buttons']}>
@@ -43,6 +47,7 @@ const CourseCard: FC<ICourseCard> = ({
 					</div>
 				</div>
 			) : null}
+
 			<div className={styles['course-card__image-wrapper']}>
 				{itemCard.is_draft ? (
 					<div className={styles['course-card__status']}>
