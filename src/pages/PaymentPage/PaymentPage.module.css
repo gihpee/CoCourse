@@ -3,6 +3,7 @@
 	flex-direction: column;
 	gap: 4.103vw;
 	padding-bottom: 6.282vw;
+	align-items: center;
 }
 
 .payment__stats {

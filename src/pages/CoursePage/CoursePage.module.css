@@ -87,6 +87,7 @@
 	border-radius: 1.538vw;
 	background: var(--mini-background);
 	margin-bottom: 1.282vw;
+	padding: 2.564vw 2.051vw;
 }
 
 .course-page__topic-label-text {
@@ -117,7 +118,7 @@
 	max-height: 0;
 	overflow: hidden;
 	width: 100%;
-	padding: 2.564vw 2.051vw;
+	/* padding: 2.564vw 2.051vw; */
 	transition: max-height 0.3s ease;
 	border-radius: 1.538vw;
 	background: var(--mini-background);

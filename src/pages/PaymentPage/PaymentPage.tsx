@@ -27,6 +27,7 @@ const PaymentPage: FC = () => {
 	const { cid } = useParams()
 	const { data: courseDataComponent } = useCourseData(cid || '')
 
+	console.log(cid)
 	const data = location.state
 
 	const [exchangeRate, setExchangeRate] = useState(null)

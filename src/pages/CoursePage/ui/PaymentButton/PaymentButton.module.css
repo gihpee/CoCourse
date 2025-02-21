@@ -6,7 +6,7 @@
 	gap: 2.051vw;
 	border-radius: 1.538vw;
 	background: var(--mini-background);
-	border: none;
+	border: 1px solid var(--mini-background);
 	outline: none;
 }
 
