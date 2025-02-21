@@ -1,0 +1,50 @@
+.payment {
+	display: flex;
+	flex-direction: column;
+	gap: 4.103vw;
+	padding-bottom: 6.282vw;
+}
+
+.payment__stats {
+	display: flex;
+	width: 91.795vw;
+	justify-content: space-between;
+}
+
+.payment__section {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.payment__section-title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.payment__variants {
+	display: flex;
+	width: 91.282vw;
+	justify-content: space-between;
+}
+
+.payment__wallet {
+	display: flex;
+	flex-direction: column;
+	gap: 1.282vw;
+	padding-bottom: 8.718vw;
+}
+
+.payment__wallet-title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

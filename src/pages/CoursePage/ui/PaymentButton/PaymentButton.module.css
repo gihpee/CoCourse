@@ -10,6 +10,10 @@
 	outline: none;
 }
 
+.payment-button_isActive {
+	border: 1px solid var(--active-color);
+}
+
 .payment-button__icon {
 	width: 6.154vw;
 	height: 6.154vw;

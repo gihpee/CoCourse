@@ -23,6 +23,7 @@ const CourseCard: FC<ICourseCard> = ({
 	averageRate,
 	isCoursePage,
 	isAuthor,
+	isCrypto,
 }) => {
 	if (!itemCard) return null
 
@@ -157,7 +158,9 @@ const CourseCard: FC<ICourseCard> = ({
 					/>
 					<p className={styles['course-card__stars-count']}>12</p>
 				</div>
-				<h1 className={styles['course-card__price']}>{price} ₽</h1>
+				<h1 className={styles['course-card__price']}>
+					{isCrypto ? (price ?? 0) * 0.9 : price ?? 0} ₽
+				</h1>
 			</div>
 		</div>
 	)

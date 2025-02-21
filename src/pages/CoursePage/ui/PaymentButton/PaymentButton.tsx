@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC } from 'react'
 import styles from './PaymentButton.module.css'
 
@@ -5,11 +6,24 @@ interface IPaymentButton {
 	path?: string
 	pathCrypto?: string
 	isCrypto: boolean
+	isActive?: boolean
+	onClick?: () => void
 }
 
-const PaymentButton: FC<IPaymentButton> = ({ path, pathCrypto, isCrypto }) => {
+const PaymentButton: FC<IPaymentButton> = ({
+	path,
+	pathCrypto,
+	isCrypto,
+	isActive,
+	onClick,
+}) => {
 	return (
-		<button className={styles['payment-button']}>
+		<button
+			className={cn(styles['payment-button'], {
+				[styles['payment-button_isActive']]: isActive,
+			})}
+			onClick={onClick}
+		>
 			{isCrypto ? (
 				<>
 					<img

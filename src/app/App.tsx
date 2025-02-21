@@ -5,10 +5,10 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import { VerificationForm } from 'src/entities/verification/ui/VerificationForm/VerificationForm'
 import CoursePage from 'src/pages/CoursePage/CoursePage'
 import EditProfile from 'src/pages/EditProfile/EditProfile'
+import PaymentPage from 'src/pages/PaymentPage/PaymentPage'
 import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
 import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
 import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
-import BuyCourse from '../pages/Course/BuyCourse'
 import ConnectBot from '../pages/Create/ConnectBot'
 import Create from '../pages/Create/Create'
 import CreateCourse from '../pages/Create/CreateCourse'
@@ -143,7 +143,7 @@ function App() {
 					<Route path={'wallet'} element={<Wallet />} />
 					<Route path={'connect-bot'} element={<ConnectBot />} />
 					<Route path={'registration'} element={<Registration />} />
-					<Route path={'buy-course'} element={<BuyCourse />} />
+					<Route path={'buy-course'} element={<PaymentPage />} />
 					<Route path={'transaction/:tid'} element={<Transaction />} />
 					<Route path={'verification'} element={<Verification />} />
 					<Route path={'connect-wallet'} element={<ConnectWallet />} />
