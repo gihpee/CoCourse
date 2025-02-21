@@ -1,13 +1,12 @@
 import { useTonAddress, useTonConnectUI } from '@tonconnect/ui-react'
 import { FC, useEffect, useMemo, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
 import { fetchExchangeRate } from 'src/entities/course/model/fetchExchangeRate'
 import { fetchPaymentLink } from 'src/entities/course/model/fetchLink'
 import { handlePay } from 'src/entities/course/model/paymentHandler'
 import { createTransaction } from 'src/entities/course/model/transaction'
 import { ICourse } from 'src/entities/course/model/types'
-import { useCourseData } from 'src/entities/course/model/useCourseData'
 import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import CourseCard from 'src/features/courses/components/CourseCard/CourseCard'
 import { WalletBalance } from 'src/features/WalletBalance/WalletBalance'
@@ -24,10 +23,7 @@ const PaymentPage: FC = () => {
 	const location = useLocation()
 	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
-	const { cid } = useParams()
-	const { data: courseDataComponent } = useCourseData(cid || '')
 
-	console.log(cid)
 	const data = location.state
 
 	const [exchangeRate, setExchangeRate] = useState(null)
@@ -85,11 +81,11 @@ const PaymentPage: FC = () => {
 	}
 
 	const averageRate = useMemo(() => {
-		const feedback = courseDataComponent?.feedback ?? []
+		const feedback = data?.feedback ?? []
 		return feedback.length > 0 ? calculateRating(feedback) : 0
-	}, [courseDataComponent?.feedback])
+	}, [data?.feedback])
 
-	const isAuthor = courseDataComponent?.user.user_id === userCourses?.user_id
+	const isAuthor = data?.user.user_id === userCourses?.user_id
 
 	const handlePaymentMethod = (method: 'Card' | 'Wallet') => {
 		if (paymentMethod !== method) {
@@ -101,11 +97,11 @@ const PaymentPage: FC = () => {
 		<div className={styles['payment']}>
 			<CourseCard
 				isCoursePage={true}
-				chanelName={courseDataComponent?.channel.name || 'Название курса'}
-				chanelPhoto={courseDataComponent?.channel.photo || ''}
-				price={courseDataComponent?.price || 0}
+				chanelName={data?.channel.name || 'Название курса'}
+				chanelPhoto={data?.channel.photo || ''}
+				price={data?.price || 0}
 				university={userCourses?.university || ''}
-				itemCard={courseDataComponent as ICourse}
+				itemCard={data as ICourse}
 				isAuthor={isAuthor}
 			/>
 
