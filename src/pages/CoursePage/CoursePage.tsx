@@ -28,7 +28,6 @@ const CoursePage: FC = () => {
 	var BackButton = window.Telegram.WebApp.BackButton
 	BackButton.show()
 	BackButton.onClick(function () {
-		window.Telegram.WebApp.showAlert('BackButton clicked')
 		BackButton.hide()
 	})
 	window.Telegram.WebApp.onEvent('backButtonClicked', function () {

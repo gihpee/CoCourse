@@ -20,6 +20,16 @@ import styles from './PaymentPage.module.css'
 
 const PaymentPage: FC = () => {
 	window.scrollTo(0, 0)
+
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
+
 	const location = useLocation()
 	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user

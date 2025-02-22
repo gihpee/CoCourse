@@ -14,6 +14,17 @@ import Check from '../../../../shared/assets/wallet/Check.svg'
 import styles from './VerificationForm.module.css'
 
 export const VerificationForm: FC = () => {
+	window.scrollTo(0, 0)
+
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
+
 	const navigate = useNavigate()
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	const [birthDate, setBirthDate] = useState<Date | null>(null)
