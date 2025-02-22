@@ -54,7 +54,28 @@ function App() {
 
 		script.onload = () => {
 			console.log('Telegram Web App script loaded')
-			console.log(window.Telegram.WebApp)
+
+			if (window.Telegram?.WebApp) {
+				const webApp = window.Telegram.WebApp
+
+				webApp.ready()
+
+				postEvent('web_app_request_fullscreen')
+
+				console.log(
+					'isVerticalSwipesEnabled before:',
+					webApp.isVerticalSwipesEnabled
+				)
+
+				if (webApp.isVerticalSwipesEnabled) {
+					webApp.disableVerticalSwipes()
+					console.log('Vertical swipes disabled')
+				} else {
+					console.log('Vertical swipes were already disabled')
+				}
+
+				webApp.enableClosingConfirmation()
+			}
 		}
 
 		return () => {
@@ -62,21 +83,37 @@ function App() {
 		}
 	}, [])
 
-	useEffect(() => {
-		if (window.Telegram?.WebApp) {
-			const webApp = window.Telegram.WebApp
+	// useEffect(() => {
+	// 	const script = document.createElement('script')
+	// 	script.src = 'https://telegram.org/js/telegram-web-app.js'
+	// 	script.async = true
+	// 	document.body.appendChild(script)
 
-			window.Telegram.WebApp.ready()
+	// 	script.onload = () => {
+	// 		console.log('Telegram Web App script loaded')
+	// 		console.log(window.Telegram.WebApp)
+	// 	}
 
-			postEvent('web_app_request_fullscreen')
+	// 	return () => {
+	// 		document.body.removeChild(script)
+	// 	}
+	// }, [])
 
-			if (webApp.isVerticalSwipesEnabled) {
-				webApp.disableVerticalSwipes()
-			}
+	// useEffect(() => {
+	// 	if (window.Telegram?.WebApp) {
+	// 		const webApp = window.Telegram.WebApp
 
-			webApp.enableClosingConfirmation()
-		}
-	}, [])
+	// 		window.Telegram.WebApp.ready()
+
+	// 		postEvent('web_app_request_fullscreen')
+
+	// 		if (webApp.isVerticalSwipesEnabled) {
+	// 			webApp.disableVerticalSwipes()
+	// 		}
+
+	// 		webApp.enableClosingConfirmation()
+	// 	}
+	// }, [])
 
 	useEffect(() => {
 		if (hasRedirected) return
