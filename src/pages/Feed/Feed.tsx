@@ -9,6 +9,12 @@ import FeedList from './ui/FeedList'
 import FeedSearch from './ui/FeedSearch'
 
 const Feed = () => {
+	var BackButton = window.Telegram.WebApp.BackButton
+
+	if (BackButton.isVisible) {
+		BackButton.hide()
+	}
+
 	const navigate = useNavigate()
 	const {
 		inputValue,
