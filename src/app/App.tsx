@@ -60,6 +60,8 @@ function App() {
 
 				webApp.ready()
 
+				webApp.expand()
+
 				postEvent('web_app_request_fullscreen')
 
 				console.log(
