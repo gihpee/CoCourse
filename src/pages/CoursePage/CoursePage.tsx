@@ -25,6 +25,16 @@ const CoursePage: FC = () => {
 
 	const navigate = useNavigate()
 
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		window.Telegram.WebApp.showAlert('BackButton clicked')
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
+
 	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
 	useEffect(() => {
