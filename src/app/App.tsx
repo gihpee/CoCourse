@@ -70,7 +70,9 @@ function App() {
 
 			postEvent('web_app_request_fullscreen')
 
-			webApp.disableVerticalSwipes()
+			if (webApp.isVerticalSwipesEnabled) {
+				webApp.disableVerticalSwipes()
+			}
 
 			webApp.enableClosingConfirmation()
 		}
