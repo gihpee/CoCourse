@@ -1,4 +1,4 @@
-import { postEvent, swipeBehavior } from '@telegram-apps/sdk'
+import { postEvent } from '@telegram-apps/sdk'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -65,50 +65,16 @@ function App() {
 	useEffect(() => {
 		if (window.Telegram?.WebApp) {
 			const webApp = window.Telegram.WebApp
-			// webApp.disableVerticalSwipes()
 
-			// webApp.requestFullscreen()
 			window.Telegram.WebApp.ready()
 
 			postEvent('web_app_request_fullscreen')
 
-			console.log('swipeBehavior.isSupported()', swipeBehavior.isSupported())
+			webApp.disableVerticalSwipes()
 
-			if (swipeBehavior.isSupported()) {
-				if (swipeBehavior.disableVertical.isAvailable()) {
-					swipeBehavior.disableVertical()
-					swipeBehavior.isVerticalEnabled() // false
-					console.log(
-						'swipeBehavior.isVerticalEnabled()',
-						swipeBehavior.isVerticalEnabled()
-					) // false
-				}
-			}
-			// postEvent('web_app_exit_fullscreen')
-
-			// webApp.safeAreaInsets()
-			// webApp.contentSafeAreaInsets()
-			// webApp.expand()
 			webApp.enableClosingConfirmation()
 		}
 	}, [])
-
-	// useEffect(() => {
-	// 	console.log(hasReloaded)
-	// 	if (!hasReloaded) {
-	// 		setTimeout(() => {
-	// 			const tg = window.Telegram.WebApp
-
-	// 			if (!tg.safeAreaInset || tg.safeAreaInset.top === 0) {
-	// 				console.log('Safe area insets not found, reloading...')
-	// 				setHasReloaded(true)
-	// 				window.location.reload()
-	// 			} else {
-	// 				console.log('Safe area insets loaded:', tg.safeAreaInset)
-	// 			}
-	// 		}, 100)
-	// 	}
-	// }, [hasReloaded])
 
 	useEffect(() => {
 		if (hasRedirected) return
