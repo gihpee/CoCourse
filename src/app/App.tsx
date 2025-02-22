@@ -100,7 +100,7 @@ function App() {
 		document.body.classList.add('mobile-body')
 		document.getElementById('wrap')?.classList.add('mobile-wrap')
 		document.getElementById('content')?.classList.add('mobile-content')
-	}, [navigate])
+	}, [])
 
 	// useEffect(() => {
 	// 	const script = document.createElement('script')
