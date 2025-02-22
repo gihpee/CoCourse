@@ -47,6 +47,22 @@ function App() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
+		const script = document.createElement('script')
+		script.src = 'https://telegram.org/js/telegram-web-app.js'
+		script.async = true
+		document.body.appendChild(script)
+
+		script.onload = () => {
+			console.log('Telegram Web App script loaded')
+			console.log(window.Telegram.WebApp)
+		}
+
+		return () => {
+			document.body.removeChild(script)
+		}
+	}, [])
+
+	useEffect(() => {
 		if (window.Telegram?.WebApp) {
 			const webApp = window.Telegram.WebApp
 			// webApp.disableVerticalSwipes()
