@@ -13,7 +13,6 @@ import Add_Plus from '../../shared/assets/course/Add_Plus.svg'
 import Credit_Card from '../../shared/assets/course/Credit_Card.svg'
 import Wallet_Card from '../../shared/assets/course/Wallet_Card.svg'
 import styles from './CoursePage.module.css'
-import CoursePromotion from './ui/CoursePromotion/CoursePromotion'
 import PaymentButton from './ui/PaymentButton/PaymentButton'
 
 const CoursePage: FC = () => {
@@ -102,8 +101,6 @@ const CoursePage: FC = () => {
 				<Sales />
 				<Feedback averageRate={averageRate} isCoursePage={true} />
 			</section>
-
-			{isAuthor && <CoursePromotion />}
 
 			<div className={styles['course-page__info']}>
 				<div className={styles['course-page__section']}>

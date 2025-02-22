@@ -1,4 +1,4 @@
-import { postEvent } from '@telegram-apps/sdk'
+import { postEvent, retrieveLaunchParams } from '@telegram-apps/sdk'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -86,29 +86,21 @@ function App() {
 	}, [])
 
 	useEffect(() => {
-		const handleTouchMove = (event: TouchEvent) => {
-			const { scrollTop, scrollHeight, clientHeight } = document.documentElement
-			const isAtTop = scrollTop <= 0
-			const isAtBottom = scrollTop + clientHeight >= scrollHeight
+		const lp = retrieveLaunchParams()
 
-			const touch = event.touches[0]
-
-			if (
-				(isAtBottom &&
-					touch.clientY < event.touches[event.touches.length - 1].clientY) ||
-				(isAtTop &&
-					touch.clientY > event.touches[event.touches.length - 1].clientY)
-			) {
-				event.preventDefault()
-			}
+		if (
+			!lp ||
+			['macos', 'tdesktop', 'weba', 'web', 'webk'].includes(lp.platform)
+		) {
+			return
 		}
 
-		document.addEventListener('touchmove', handleTouchMove, { passive: false })
+		postEvent('web_app_expand')
 
-		return () => {
-			document.removeEventListener('touchmove', handleTouchMove)
-		}
-	}, [])
+		document.body.classList.add('mobile-body')
+		document.getElementById('wrap')?.classList.add('mobile-wrap')
+		document.getElementById('content')?.classList.add('mobile-content')
+	}, [navigate])
 
 	// useEffect(() => {
 	// 	const script = document.createElement('script')
@@ -160,51 +152,61 @@ function App() {
 
 	return (
 		<TonConnectUIProvider manifestUrl='https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json'>
-			<div className='App'>
-				<meta
-					name='viewport'
-					content='width=device-width, user-scalable=no'
-				></meta>
-				<Routes>
-					<Route index element={<Feed />} />
-					<Route
-						path={'create'}
-						element={
-							<>
-								<Create /> <NavBar />{' '}
-							</>
-						}
-					/>
-					<Route path={'profile'} element={<UserProfile />} />
-					<Route path={'course/:cid'} element={<CoursePage />} />
-					<Route path={'create-course'} element={<CreateCourse />} />
-					<Route path={'send-feedback/:id'} element={<SendFeedback />} />
-					<Route path={'edit-profile/:id'} element={<EditProfile />} />
-					<Route path={'edit-bio/:id'} element={<Bio />} />
-					<Route path={'edit-ecourse/:id'} element={<ECourse />} />
-					<Route path={'edit-subj/:id'} element={<Subj />} />
-					<Route path={'edit-univ/:id'} element={<Univ />} />
-					<Route path={'edit-course/:cid'} element={<EditCourse />} />
-					<Route path={'course-feedback/:id'} element={<FeedbackCourse />} />
-					<Route path={'user-feedback/:id'} element={<FeedbackUser />} />
-					<Route path={'user/:id'} element={<User />} />
-					<Route path={'wallet'} element={<Wallet />} />
-					<Route path={'connect-bot'} element={<ConnectBot />} />
-					<Route path={'registration'} element={<Registration />} />
-					<Route path={'buy-course'} element={<PaymentPage />} />
-					<Route path={'transaction/:tid'} element={<Transaction />} />
-					<Route path={'verification'} element={<Verification />} />
-					<Route path={'connect-wallet'} element={<ConnectWallet />} />
-					<Route path={'verificationN'} element={<VerificationN />} />
-					<Route path={'connect-walletN'} element={<ConnectWalletN />} />
-					<Route path={'verification-form'} element={<VerificationForm />} />
-					<Route path={'connect-payments'} element={<ConnectPayments />} />
-					<Route
-						path={'connect-payments-form'}
-						element={<ConnectPaymentsForm />}
-					/>
-					<Route path={'return-form'} element={<ReturnForm />} />
-				</Routes>
+			<div id='wrap'>
+				<div id='content'>
+					<div className='App'>
+						<meta
+							name='viewport'
+							content='width=device-width, user-scalable=no'
+						></meta>
+						<Routes>
+							<Route index element={<Feed />} />
+							<Route
+								path={'create'}
+								element={
+									<>
+										<Create /> <NavBar />{' '}
+									</>
+								}
+							/>
+							<Route path={'profile'} element={<UserProfile />} />
+							<Route path={'course/:cid'} element={<CoursePage />} />
+							<Route path={'create-course'} element={<CreateCourse />} />
+							<Route path={'send-feedback/:id'} element={<SendFeedback />} />
+							<Route path={'edit-profile/:id'} element={<EditProfile />} />
+							<Route path={'edit-bio/:id'} element={<Bio />} />
+							<Route path={'edit-ecourse/:id'} element={<ECourse />} />
+							<Route path={'edit-subj/:id'} element={<Subj />} />
+							<Route path={'edit-univ/:id'} element={<Univ />} />
+							<Route path={'edit-course/:cid'} element={<EditCourse />} />
+							<Route
+								path={'course-feedback/:id'}
+								element={<FeedbackCourse />}
+							/>
+							<Route path={'user-feedback/:id'} element={<FeedbackUser />} />
+							<Route path={'user/:id'} element={<User />} />
+							<Route path={'wallet'} element={<Wallet />} />
+							<Route path={'connect-bot'} element={<ConnectBot />} />
+							<Route path={'registration'} element={<Registration />} />
+							<Route path={'buy-course'} element={<PaymentPage />} />
+							<Route path={'transaction/:tid'} element={<Transaction />} />
+							<Route path={'verification'} element={<Verification />} />
+							<Route path={'connect-wallet'} element={<ConnectWallet />} />
+							<Route path={'verificationN'} element={<VerificationN />} />
+							<Route path={'connect-walletN'} element={<ConnectWalletN />} />
+							<Route
+								path={'verification-form'}
+								element={<VerificationForm />}
+							/>
+							<Route path={'connect-payments'} element={<ConnectPayments />} />
+							<Route
+								path={'connect-payments-form'}
+								element={<ConnectPaymentsForm />}
+							/>
+							<Route path={'return-form'} element={<ReturnForm />} />
+						</Routes>
+					</div>
+				</div>
 			</div>
 		</TonConnectUIProvider>
 	)

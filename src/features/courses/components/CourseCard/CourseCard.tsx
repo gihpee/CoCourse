@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom'
 import { setImagePath } from '../../../../entities/course/lib/setImagePath'
 import CourseInfo from '../../../../entities/course/ui/CourseInfo'
 import CourseRating from '../../../../entities/course/ui/CourseRating'
-import HeartIcon from '../../../../shared/assets/course/ButtonHeart.svg'
 import ShareIcon from '../../../../shared/assets/course/ButtonSend.svg'
 import Edit_Pencil from '../../../../shared/assets/course/Edit_Pencil.svg'
 import emptyHorizontalImage from '../../../../shared/assets/course/horizontalEmptyCourseImage.webp'
-import TelegramPremiumStarIcon from '../../../../shared/assets/course/TelegramPremiumStar.svg'
 import CourseButton from '../../../../shared/CourseButton/CourseButton'
 import { ICourseCard } from '../../types/ICourseCard'
 import styles from './CourseCard.module.css'
@@ -76,13 +74,6 @@ const CourseCard: FC<ICourseCard> = ({
 							})}
 						>
 							<CourseButton
-								alt='Добавить в избранное'
-								imgSrc={HeartIcon}
-								className={{
-									[styles['course-card__button_isCoursePage']]: isCoursePage,
-								}}
-							/>
-							<CourseButton
 								alt='Поделиться'
 								imgSrc={ShareIcon}
 								className={{
@@ -119,7 +110,6 @@ const CourseCard: FC<ICourseCard> = ({
 
 				{!isCoursePage ? (
 					<div className={styles['course-card__buttons']}>
-						<CourseButton alt='Добавить в избранное' imgSrc={HeartIcon} />
 						<CourseButton alt='Поделиться' imgSrc={ShareIcon} />
 					</div>
 				) : null}
@@ -150,14 +140,6 @@ const CourseCard: FC<ICourseCard> = ({
 			/>
 
 			<div className={styles['course-card__footer']}>
-				<div className={styles['course-card__telegram-stars']}>
-					<img
-						src={TelegramPremiumStarIcon}
-						alt='Телеграм звёзды'
-						className={styles['course-card__stars-img']}
-					/>
-					<p className={styles['course-card__stars-count']}>12</p>
-				</div>
 				<h1 className={styles['course-card__price']}>
 					{isCrypto ? (price ?? 0) * 0.9 : price ?? 0} ₽
 				</h1>
