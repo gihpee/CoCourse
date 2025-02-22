@@ -27,7 +27,7 @@ const Feed = () => {
 	const userId = window.Telegram.WebApp.initDataUnsafe.user.id
 	const userCourses = useUserCoursesData(userId, navigate)
 
-	if (!userCourses) return <div className='loading'></div>
+	console.log(userCourses)
 
 	return (
 		<div className={styles['feed']}>

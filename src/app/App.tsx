@@ -85,6 +85,31 @@ function App() {
 		}
 	}, [])
 
+	useEffect(() => {
+		const handleTouchMove = (event: TouchEvent) => {
+			const { scrollTop, scrollHeight, clientHeight } = document.documentElement
+			const isAtTop = scrollTop <= 0
+			const isAtBottom = scrollTop + clientHeight >= scrollHeight
+
+			const touch = event.touches[0]
+
+			if (
+				(isAtBottom &&
+					touch.clientY < event.touches[event.touches.length - 1].clientY) ||
+				(isAtTop &&
+					touch.clientY > event.touches[event.touches.length - 1].clientY)
+			) {
+				event.preventDefault()
+			}
+		}
+
+		document.addEventListener('touchmove', handleTouchMove, { passive: false })
+
+		return () => {
+			document.removeEventListener('touchmove', handleTouchMove)
+		}
+	}, [])
+
 	// useEffect(() => {
 	// 	const script = document.createElement('script')
 	// 	script.src = 'https://telegram.org/js/telegram-web-app.js'
