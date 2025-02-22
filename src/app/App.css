@@ -6,7 +6,8 @@
 .App {
 	display: flex;
 	flex-direction: column;
-	min-height: var(--tg-viewport-height);
+	min-height: calc(var(--tg-viewport-height) - 20.513vw);
+	height: fit-content;
 	color: aliceblue;
 	background-color: var(--background);
 	-ms-overflow-style: none;
