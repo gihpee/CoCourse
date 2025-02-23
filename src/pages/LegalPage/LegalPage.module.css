@@ -1,0 +1,23 @@
+.legal-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6.41vw;
+}
+
+.legal-page__title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.legal-page__list {
+	display: flex;
+	width: 91.538vw;
+	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 2.051vw;
+}

@@ -1,0 +1,34 @@
+.legal-card {
+	display: flex;
+	width: 44.615vw;
+	height: 28.462vw;
+	padding: 2.564vw 2.051vw;
+	flex-direction: column;
+	gap: 2.564vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.legal-card__wrapper-icon {
+	display: flex;
+	width: 9.231vw;
+	height: 9.231vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 38.462vw;
+	background: var(--stars-background);
+}
+
+.legal-card__icon {
+	width: 4.816vw;
+	height: 4.816vw;
+}
+
+.legal-card__title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
