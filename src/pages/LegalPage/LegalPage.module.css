@@ -12,12 +12,12 @@
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	width: 91.538vw;
 }
 
 .legal-page__list {
 	display: flex;
 	width: 91.538vw;
-	flex-direction: column;
 	flex-wrap: wrap;
 	gap: 2.051vw;
 }

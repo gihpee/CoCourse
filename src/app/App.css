@@ -7,7 +7,7 @@
 	display: flex;
 	flex-direction: column;
 	min-height: calc(var(--tg-viewport-height) - 20.513vw);
-	height: fit-content;
+	height: 100vh;
 	color: aliceblue;
 	background-color: var(--background);
 	-ms-overflow-style: none;
