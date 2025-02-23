@@ -55,10 +55,8 @@ body {
 	bottom: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
-	background: red;
 }
 
 .mobile-content {
 	height: calc(100% + 1px);
-	background: green;
 }

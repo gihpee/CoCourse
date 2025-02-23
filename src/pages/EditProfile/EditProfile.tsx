@@ -329,7 +329,7 @@ const EditProfile: FC = () => {
 
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>О приложении</h3>
-					<Link to='legal'>
+					<Link to='/legal'>
 						<LinksFAQ
 							isSubmit={true}
 							path={Warning}
