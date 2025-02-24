@@ -9,7 +9,7 @@ function FeedbackCourse() {
 	window.scrollTo(0, 0)
 
 	const { id } = useParams()
-	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([]) // проверить типы
+	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
 	const navigate = useNavigate()
 
 	useEffect(() => {

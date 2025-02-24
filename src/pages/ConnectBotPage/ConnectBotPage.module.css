@@ -1,0 +1,117 @@
+.connect-bot {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.connect-bot__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.282vw;
+}
+
+.connect-bot__title {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.connect-bot__description {
+	display: flex;
+	width: 91.282vw;
+	padding: 2.051vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 1.282vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.connect-bot__description-text {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.connect-bot__button--info {
+	display: flex;
+	width: 91.282vw;
+	height: 12.821vw;
+	padding: 3.846vw 4.103vw;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 2.051vw;
+	background: var(--mini-background);
+}
+
+.connect-bot__button-text {
+	color: var(--main-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.connect-bot__button-icon {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.connect-bot__actions {
+	display: flex;
+	width: 91.795vw;
+	gap: 1.282vw;
+	position: absolute;
+	bottom: 4.103vw;
+}
+
+.connect-bot__button--group {
+	display: flex;
+	height: 9.744vw;
+	width: 45.256vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1.538vw;
+	border: 1px solid var(--active-color);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.connect-bot__button--channel {
+	display: flex;
+	height: 9.744vw;
+	width: 45.256vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--active-color);
+	color: var(--active-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.connect-bot__button--channel-img {
+	position: absolute;
+	top: 71.282vw;
+	left: -11.026vw;
+	width: 115.297vw;
+	height: 59.198vw;
+	transform: rotate(-9.588deg);
+	opacity: 0.2;
+}

@@ -117,7 +117,8 @@ const PaymentPage: FC = () => {
 
 			<section className={styles['payment__stats']}>
 				<Sales />
-				<Feedback averageRate={averageRate} isCoursePage={true} />
+				{/* TODO: change */}
+				<Feedback averageRate={averageRate} isCoursePage={true} path='' />
 			</section>
 
 			<div className={styles['payment__section']}>

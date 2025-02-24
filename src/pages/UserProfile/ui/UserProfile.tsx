@@ -64,7 +64,11 @@ const UserProfile: FC = () => {
 
 			<section className={styles['user-profile__stats']}>
 				<Sales />
-				<Feedback averageRate={averageRate} isCoursePage={false} />
+				<Feedback
+					averageRate={averageRate}
+					isCoursePage={false}
+					path={`/user-feedback/${userData?.user_id}`}
+				/>
 			</section>
 
 			<section className={styles['user-profile__content']}>

@@ -99,7 +99,11 @@ const CoursePage: FC = () => {
 
 			<section className={styles['user-profile__stats']}>
 				<Sales />
-				<Feedback averageRate={averageRate} isCoursePage={true} />
+				<Feedback
+					averageRate={averageRate}
+					isCoursePage={true}
+					path={`/course-feedback/${cid}`}
+				/>
 			</section>
 
 			<div className={styles['course-page__info']}>
