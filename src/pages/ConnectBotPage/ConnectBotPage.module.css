@@ -18,6 +18,7 @@
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	width: 100%;
 }
 
 .connect-bot__description {
@@ -39,6 +40,7 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	width: 78.974vw;
 }
 
 .connect-bot__button--info {
@@ -50,6 +52,8 @@
 	align-items: center;
 	border-radius: 2.051vw;
 	background: var(--mini-background);
+	border: none;
+	outline: none;
 }
 
 .connect-bot__button-text {
@@ -88,6 +92,8 @@
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	outline: none;
+	background-color: transparent;
 }
 
 .connect-bot__button--channel {
@@ -104,14 +110,15 @@
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	border: none;
+	outline: none;
 }
 
 .connect-bot__button--channel-img {
 	position: absolute;
-	top: 71.282vw;
-	left: -11.026vw;
-	width: 115.297vw;
-	height: 59.198vw;
-	transform: rotate(-9.588deg);
+	top: 40.488vh;
+	left: -12.026vw;
+	width: 129.231vw;
+	height: auto;
 	opacity: 0.2;
 }

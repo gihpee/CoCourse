@@ -12,6 +12,15 @@ const ConnectBotPage: FC = () => {
 
 	let tg = window.Telegram
 
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
+
 	useEffect(() => {
 		const fetchChannel = async () => {
 			try {
