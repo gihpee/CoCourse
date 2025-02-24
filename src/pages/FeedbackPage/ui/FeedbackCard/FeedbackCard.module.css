@@ -1,0 +1,84 @@
+.feedback-card {
+	display: flex;
+	width: 91.795vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.051vw;
+}
+
+.feedback-card__header {
+	display: flex;
+	align-items: center;
+	gap: 1.282vw;
+}
+
+.feedback-card__avatar {
+	width: 9.231vw;
+	height: 9.231vw;
+	border-radius: 100%;
+}
+
+.feedback-card__user-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.feedback-card__username {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.feedback-card__university {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.feedback-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: 2.051vw;
+}
+
+.feedback-card__rating {
+	display: flex;
+	gap: 2.051vw;
+}
+
+.feedback-card__stars {
+	display: flex;
+	align-items: center;
+	gap: 1.282vw;
+}
+
+.feedback-card__star {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.feedback-card__date {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.feedback-card__text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+	letter-spacing: 0.038vw;
+}

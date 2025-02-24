@@ -6,6 +6,7 @@ import { VerificationForm } from 'src/entities/verification/ui/VerificationForm/
 import ConnectBotPage from 'src/pages/ConnectBotPage/ConnectBotPage'
 import CoursePage from 'src/pages/CoursePage/CoursePage'
 import EditProfile from 'src/pages/EditProfile/EditProfile'
+import FeedbackPage from 'src/pages/FeedbackPage/FeedbackPage'
 import LegalPage from 'src/pages/LegalPage/LegalPage'
 import PaymentPage from 'src/pages/PaymentPage/PaymentPage'
 import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
@@ -15,7 +16,6 @@ import Create from '../pages/Create/Create'
 import CreateCourse from '../pages/Create/CreateCourse'
 import EditCourse from '../pages/Create/EditCourse'
 import Feed from '../pages/Feed/Feed'
-import FeedbackCourse from '../pages/Feedback/FeedbackCourse'
 import FeedbackUser from '../pages/Feedback/FeedbackUser'
 import SendFeedback from '../pages/Feedback/SendFeedback'
 import NavBar from '../pages/Navbar/Navbar'
@@ -180,10 +180,7 @@ function App() {
 							<Route path={'edit-subj/:id'} element={<Subj />} />
 							<Route path={'edit-univ/:id'} element={<Univ />} />
 							<Route path={'edit-course/:cid'} element={<EditCourse />} />
-							<Route
-								path={'course-feedback/:id'}
-								element={<FeedbackCourse />}
-							/>
+							<Route path={'course-feedback/:id'} element={<FeedbackPage />} />
 							<Route path={'user-feedback/:id'} element={<FeedbackUser />} />
 							<Route path={'user/:id'} element={<User />} />
 							<Route path={'wallet'} element={<Wallet />} />
