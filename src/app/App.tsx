@@ -1,8 +1,9 @@
-import { postEvent, retrieveLaunchParams } from '@telegram-apps/sdk'
+import { postEvent } from '@telegram-apps/sdk'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { VerificationForm } from 'src/entities/verification/ui/VerificationForm/VerificationForm'
+import ConnectBotPage from 'src/pages/ConnectBotPage/ConnectBotPage'
 import CoursePage from 'src/pages/CoursePage/CoursePage'
 import EditProfile from 'src/pages/EditProfile/EditProfile'
 import LegalPage from 'src/pages/LegalPage/LegalPage'
@@ -10,7 +11,6 @@ import PaymentPage from 'src/pages/PaymentPage/PaymentPage'
 import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
 import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
 import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
-import ConnectBot from '../pages/Create/ConnectBot'
 import Create from '../pages/Create/Create'
 import CreateCourse from '../pages/Create/CreateCourse'
 import EditCourse from '../pages/Create/EditCourse'
@@ -86,22 +86,22 @@ function App() {
 		}
 	}, [])
 
-	useEffect(() => {
-		const lp = retrieveLaunchParams()
+	// useEffect(() => {
+	// 	const lp = retrieveLaunchParams()
 
-		if (
-			!lp ||
-			['macos', 'tdesktop', 'weba', 'web', 'webk'].includes(lp.platform)
-		) {
-			return
-		}
+	// 	if (
+	// 		!lp ||
+	// 		['macos', 'tdesktop', 'weba', 'web', 'webk'].includes(lp.platform)
+	// 	) {
+	// 		return
+	// 	}
 
-		postEvent('web_app_expand')
+	// 	postEvent('web_app_expand')
 
-		document.body.classList.add('mobile-body')
-		document.getElementById('wrap')?.classList.add('mobile-wrap')
-		document.getElementById('content')?.classList.add('mobile-content')
-	}, [])
+	// 	document.body.classList.add('mobile-body')
+	// 	document.getElementById('wrap')?.classList.add('mobile-wrap')
+	// 	document.getElementById('content')?.classList.add('mobile-content')
+	// }, [])
 
 	// useEffect(() => {
 	// 	const script = document.createElement('script')
@@ -187,7 +187,7 @@ function App() {
 							<Route path={'user-feedback/:id'} element={<FeedbackUser />} />
 							<Route path={'user/:id'} element={<User />} />
 							<Route path={'wallet'} element={<Wallet />} />
-							<Route path={'connect-bot'} element={<ConnectBot />} />
+							<Route path={'connect-bot'} element={<ConnectBotPage />} />
 							<Route path={'registration'} element={<Registration />} />
 							<Route path={'buy-course'} element={<PaymentPage />} />
 							<Route path={'transaction/:tid'} element={<Transaction />} />
