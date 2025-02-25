@@ -22,9 +22,12 @@ const CourseCard: FC<ICourseCard> = ({
 	isCoursePage,
 	isAuthor,
 	isCrypto,
+	count,
 	cid,
 }) => {
 	if (!itemCard) return null
+
+	console.log(isAuthor)
 
 	const content = (
 		<div className={styles['course-card']}>
@@ -57,7 +60,8 @@ const CourseCard: FC<ICourseCard> = ({
 								className={{
 									[styles['course-card__button_isCoursePage']]: isCoursePage,
 								}}
-								onClick={() => {
+								onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+									e.stopPropagation()
 									const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
 										`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
 									)}`
@@ -91,7 +95,8 @@ const CourseCard: FC<ICourseCard> = ({
 								className={{
 									[styles['course-card__button_isCoursePage']]: isCoursePage,
 								}}
-								onClick={() => {
+								onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+									e.stopPropagation()
 									const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
 										`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
 									)}`
@@ -143,7 +148,22 @@ const CourseCard: FC<ICourseCard> = ({
 
 				{!isCoursePage ? (
 					<div className={styles['course-card__buttons']}>
-						<CourseButton alt='Поделиться' imgSrc={ShareIcon} />
+						<CourseButton
+							alt='Поделиться'
+							imgSrc={ShareIcon}
+							onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+								e.stopPropagation()
+								const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
+									`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+								)}`
+
+								if (window.Telegram?.WebApp) {
+									window.Telegram.WebApp.openLink(courseLink)
+								} else {
+									console.error('Telegram WebApp не доступен')
+								}
+							}}
+						/>
 					</div>
 				) : null}
 
@@ -164,7 +184,7 @@ const CourseCard: FC<ICourseCard> = ({
 				<CourseRating
 					amountOfStudents={amountOfStudents || 0}
 					averageRate={averageRate || 0}
-					count={amountOfStudents || 0}
+					count={count || 0}
 				/>
 			) : null}
 

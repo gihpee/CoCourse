@@ -40,6 +40,7 @@ const UserProfile: FC = () => {
 				key={item.id}
 				isCoursePage={false}
 				cid={String(item.id)}
+				count={item.feedback.length}
 			/>
 		)) || []
 

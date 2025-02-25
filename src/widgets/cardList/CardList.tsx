@@ -22,6 +22,8 @@ const CardList: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
 						price={item.price ?? 0}
 						university={item.university ?? ''}
 						isCoursePage={false}
+						cid={String(item.id)}
+						count={item.feedback?.length}
 					/>
 				)
 			})}

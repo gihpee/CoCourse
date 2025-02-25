@@ -12,4 +12,5 @@ export interface ICourseCard {
 	isAuthor?: boolean
 	isCrypto?: boolean
 	cid?: string
+	count?: number
 }
