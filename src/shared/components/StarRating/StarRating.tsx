@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import EmptyStar from '../../shared/assets/feedback/EmptyStar.svg'
-import FillStar from '../../shared/assets/feedback/FillStar.svg'
+import EmptyStar from '../../../shared/assets/feedback/EmptyStar.svg'
+import FillStar from '../../../shared/assets/feedback/FillStar.svg'
 import styles from './StarRating.module.css'
 
 interface StarRatingProps {
