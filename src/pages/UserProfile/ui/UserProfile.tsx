@@ -22,6 +22,11 @@ const UserProfile: FC = () => {
 
 	const { userData, coursesData, feedbacks } = useUserProfile()
 
+	const totalStudents = coursesData.reduce(
+		(sum, course) => sum + course.amount_of_students,
+		0
+	)
+
 	const userCourses =
 		coursesData?.map(item => (
 			<CourseCard
@@ -34,13 +39,11 @@ const UserProfile: FC = () => {
 				university={item.university}
 				key={item.id}
 				isCoursePage={false}
+				cid={String(item.id)}
 			/>
 		)) || []
 
 	const averageRate = feedbacks.length > 0 ? calculateRating(feedbacks) : 0
-
-	console.log(feedbacks)
-	console.log('averageRate', averageRate)
 
 	return (
 		<div className={styles['user-profile']}>
@@ -63,11 +66,12 @@ const UserProfile: FC = () => {
 			</header>
 
 			<section className={styles['user-profile__stats']}>
-				<Sales />
+				<Sales count={totalStudents} />
 				<Feedback
 					averageRate={averageRate}
 					isCoursePage={false}
 					path={`/user-feedback/${userData?.user_id}`}
+					count={feedbacks.length}
 				/>
 			</section>
 

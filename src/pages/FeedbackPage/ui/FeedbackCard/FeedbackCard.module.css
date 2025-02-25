@@ -3,7 +3,10 @@
 	width: 91.795vw;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	padding: 2.564vw 2.051vw;
+	gap: 4.103vw;
 }
 
 .feedback-card__header {

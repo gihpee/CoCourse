@@ -34,7 +34,8 @@ const FeedbackPage: FC = () => {
 		BackButton.hide()
 	})
 	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
-		navigate(`/course/${id}`)
+		window.history.back()
+		// navigate(`/course/${id}`)
 	})
 
 	useEffect(() => {
@@ -110,7 +111,7 @@ const FeedbackPage: FC = () => {
 					feedbacks.map((item, index) => (
 						<FeedbackCard
 							date={item.date}
-							path={item.user.photo_url || ''}
+							path={`https://comncoursetest.ru${item.user.photo_url}` || ''}
 							text={item.review || ''}
 							university={item.user.university || ''}
 							username={item.user.first_name + ' ' + item.user.last_name}
@@ -157,8 +158,7 @@ const FeedbackPage: FC = () => {
 								<img
 									className={styles['feedback-page__modal-avatar']}
 									src={
-										`url(https://comncoursetest.ru${course?.user.photo_url})` ||
-										''
+										`https://comncoursetest.ru${course?.user.photo_url}` || ''
 									}
 									alt='Аватар пользователя'
 								/>
@@ -179,9 +179,9 @@ const FeedbackPage: FC = () => {
 						<div className={styles['feedback-page__modal-image']}>
 							{course?.channel.photo ? (
 								<img
-									src={`url(https://comncoursetest.ru${
+									src={`https://comncoursetest.ru${
 										course?.channel.photo || ''
-									})`}
+									}`}
 									alt='Аватар курса'
 									className={styles['feedback-page__modal-image-img']}
 								/>

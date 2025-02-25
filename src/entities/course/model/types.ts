@@ -110,4 +110,5 @@ export interface IReturnRequest {
 export interface CourseRatingProps {
 	amountOfStudents: number
 	averageRate: number | null
+	count: number
 }

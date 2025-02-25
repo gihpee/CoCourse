@@ -117,7 +117,7 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 1.538vw;
-	border: 1px solid var(--active-color);
+	border: 1px solid var(--border-color);
 	color: var(--main-text);
 	font-family: 'Geologica';
 	font-size: 3.59vw;

@@ -22,6 +22,7 @@ const CourseCard: FC<ICourseCard> = ({
 	isCoursePage,
 	isAuthor,
 	isCrypto,
+	cid,
 }) => {
 	if (!itemCard) return null
 
@@ -56,6 +57,17 @@ const CourseCard: FC<ICourseCard> = ({
 								className={{
 									[styles['course-card__button_isCoursePage']]: isCoursePage,
 								}}
+								onClick={() => {
+									const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
+										`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+									)}`
+
+									if (window.Telegram?.WebApp) {
+										window.Telegram.WebApp.openLink(courseLink)
+									} else {
+										console.error('Telegram WebApp не доступен')
+									}
+								}}
 							/>
 							<Link to={`/edit-course/${itemCard.id}`}>
 								<CourseButton
@@ -79,6 +91,17 @@ const CourseCard: FC<ICourseCard> = ({
 								className={{
 									[styles['course-card__button_isCoursePage']]: isCoursePage,
 								}}
+								onClick={() => {
+									const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
+										`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+									)}`
+
+									if (window.Telegram?.WebApp) {
+										window.Telegram.WebApp.openLink(courseLink)
+									} else {
+										console.error('Telegram WebApp не доступен')
+									}
+								}}
 							/>
 						</div>
 					)}
@@ -101,10 +124,20 @@ const CourseCard: FC<ICourseCard> = ({
 						<div
 							className={cn(
 								styles['course-card__status-icon'],
-								styles['course-card__status-icon_status-moderation']
+								styles['course-card__status-icon_status-maderation']
 							)}
 						/>
 						<p className={styles['course-card__status-text']}>На модерации</p>
+					</div>
+				) : !itemCard.on_moderation && !itemCard.is_draft && !isCoursePage ? (
+					<div className={styles['course-card__status']}>
+						<div
+							className={cn(
+								styles['course-card__status-icon'],
+								styles['course-card__status-icon_status-ready']
+							)}
+						/>
+						<p className={styles['course-card__status-text']}>Опубликовано</p>
 					</div>
 				) : null}
 
@@ -131,6 +164,7 @@ const CourseCard: FC<ICourseCard> = ({
 				<CourseRating
 					amountOfStudents={amountOfStudents || 0}
 					averageRate={averageRate || 0}
+					count={amountOfStudents || 0}
 				/>
 			) : null}
 

@@ -95,14 +95,16 @@ const CoursePage: FC = () => {
 				university={userCourses?.university || ''}
 				itemCard={courseDataComponent as ICourse}
 				isAuthor={isAuthor}
+				cid={cid}
 			/>
 
 			<section className={styles['user-profile__stats']}>
-				<Sales />
+				<Sales count={courseDataComponent?.amount_of_students || 0} />
 				<Feedback
 					averageRate={averageRate}
 					isCoursePage={true}
 					path={`/course-feedback/${cid}`}
+					count={courseDataComponent?.feedback.length || 0}
 				/>
 			</section>
 
@@ -188,7 +190,7 @@ const CoursePage: FC = () => {
 							console.log('URL не доступен')
 						}
 					} else {
-						navigate('/buy-course', { state: courseDataComponent })
+						navigate('/buy-course', { state: { ...courseDataComponent, cid } })
 					}
 				}}
 			/>

@@ -7,7 +7,8 @@ const Feedback: FC<{
 	averageRate: number
 	isCoursePage: boolean
 	path: string
-}> = ({ averageRate, isCoursePage, path }) => {
+	count: number
+}> = ({ averageRate, isCoursePage, path, count }) => {
 	return (
 		<Link to={path}>
 			<div className={styles['feedback']}>
@@ -23,12 +24,9 @@ const Feedback: FC<{
 						<h3 className={styles['feedback__title']}>
 							{isCoursePage ? 'Отзывы' : 'Мои отзывы'}
 						</h3>
-						{!isCoursePage ? (
-							<div className={styles['feedback__unread-feedbacks']}>12</div>
-						) : null}
 					</div>
 					<p className={styles['feedback__rating']}>
-						{averageRate.toFixed(1)} (20)
+						{averageRate.toFixed(1)} ({count})
 					</p>
 				</div>
 			</div>

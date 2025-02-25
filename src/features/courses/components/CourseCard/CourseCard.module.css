@@ -101,11 +101,15 @@
 }
 
 .course-card__status-icon_status-draft {
-	background-color: white;
+	background-color: var(--draft);
 }
 
 .course-card__status-icon_status-maderation {
-	background-color: #d8bb55;
+	background-color: var(--moderation);
+}
+
+.course-card__status-icon_status-ready {
+	background-color: var(--ready);
 }
 
 .course-card__status-text {

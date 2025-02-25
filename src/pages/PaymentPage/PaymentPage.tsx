@@ -113,12 +113,17 @@ const PaymentPage: FC = () => {
 				university={userCourses?.university || ''}
 				itemCard={data as ICourse}
 				isAuthor={isAuthor}
+				cid={data.cid || ''}
 			/>
 
 			<section className={styles['payment__stats']}>
-				<Sales />
-				{/* TODO: change */}
-				<Feedback averageRate={averageRate} isCoursePage={true} path='' />
+				<Sales count={data?.amount_of_students || 0} />
+				<Feedback
+					averageRate={averageRate}
+					isCoursePage={true}
+					path={`/course-feedback/${data.cid || ''}`}
+					count={data?.feedback.length || 0}
+				/>
 			</section>
 
 			<div className={styles['payment__section']}>

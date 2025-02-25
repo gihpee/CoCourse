@@ -22,6 +22,10 @@
 	--border-color: #bab9be;
 
 	--overlay: rgba(0, 0, 0, 0.15);
+
+	--draft: #000000;
+	--moderation: #e2d437;
+	--ready: #2fd159;
 }
 
 [data-theme='dark'] {
@@ -48,4 +52,8 @@
 	--border-color: #aaa;
 
 	--overlay: rgba(255, 255, 255, 0.15);
+
+	--draft: #ffffff;
+	--moderation: #e2d437;
+	--ready: #2fd159;
 }

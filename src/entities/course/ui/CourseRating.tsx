@@ -7,8 +7,8 @@ import styles from './CourseRating.module.css'
 const CourseRating: FC<CourseRatingProps> = ({
 	amountOfStudents,
 	averageRate,
+	count,
 }) => {
-	console.log('CourseRating', averageRate)
 	return (
 		<div className={styles['course-rating']}>
 			<div className={styles['course-rating__buyers']}>
@@ -28,7 +28,7 @@ const CourseRating: FC<CourseRatingProps> = ({
 					className={styles['course-rating__stars-img']}
 				/>
 				<p className={styles['course-rating__stars-text']}>
-					{averageRate?.toFixed(1)} (отзывов)
+					{averageRate?.toFixed(1)} ({count} отзывов)
 				</p>
 			</div>
 		</div>

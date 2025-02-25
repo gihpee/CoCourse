@@ -11,4 +11,5 @@ export interface ICourseCard {
 	isCoursePage: boolean
 	isAuthor?: boolean
 	isCrypto?: boolean
+	cid?: string
 }

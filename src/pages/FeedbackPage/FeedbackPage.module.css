@@ -316,7 +316,7 @@
 	align-items: flex-start;
 	gap: 2.051vw;
 	border-radius: 1.538vw;
-	background: var(--mini-background);
+	background: var(--background);
 }
 
 .feedback-page__wrapper-empty {

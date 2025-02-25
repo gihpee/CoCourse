@@ -24,6 +24,15 @@ const FeedbackCard: FC<IFeedbackCard> = ({
 		i < rating ? FillStar : EmptyStar
 	)
 
+	const formatDate = (isoString: string): string => {
+		const dateNew = new Date(isoString)
+		return dateNew.toLocaleDateString('ru-RU', {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric',
+		})
+	}
+
 	return (
 		<div className={styles['feedback-card']}>
 			<div className={styles['feedback-card__header']}>
@@ -49,7 +58,7 @@ const FeedbackCard: FC<IFeedbackCard> = ({
 							/>
 						))}
 					</div>
-					<p className={styles['feedback-card__date']}>{date}</p>
+					<p className={styles['feedback-card__date']}>{formatDate(date)}</p>
 				</div>
 				<p className={styles['feedback-card__text']}>{text}</p>
 			</div>
