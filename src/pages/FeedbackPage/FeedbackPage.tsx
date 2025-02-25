@@ -1,10 +1,13 @@
 import { FC, useEffect, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
 import { ICourse, IFeedback } from 'src/entities/course/model/types'
 import fetchCourses from 'src/entities/feedback/model/fetchCourses'
+import handlePublish from 'src/entities/feedback/model/handlePublish'
+import StarFeedbackIcon from 'src/shared/assets/course/StarFeedback.svg'
 import BottomSheet from 'src/shared/components/BottomSheet/BottomSheet'
 import MainButton from 'src/shared/components/MainButton/MainButton'
+import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import StarRating from 'src/shared/components/StarRating/StarRating'
 import Camera from '../../shared/assets/feedback/Camera.svg'
 import EmptyStar from '../../shared/assets/feedback/EmptyStar.svg'
@@ -15,21 +18,23 @@ import FeedbackCard from './ui/FeedbackCard/FeedbackCard'
 const FeedbackPage: FC = () => {
 	window.scrollTo(0, 0)
 
+	const navigate = useNavigate()
 	const { id } = useParams()
 	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
 	const [course, setCourse] = useState<ICourse>()
 	const [isOpen, setIsOpen] = useState(false)
 	const [userRating, setUserRating] = useState(0)
+	const [revValue, setRevValue] = useState('')
+	const [modalFillOpen, setModalFillOpen] = useState(false)
 
 	console.log('userRating', userRating)
-
 	var BackButton = window.Telegram.WebApp.BackButton
 	BackButton.show()
 	BackButton.onClick(function () {
 		BackButton.hide()
 	})
 	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
-		window.history.back()
+		navigate(`/course/${id}`)
 	})
 
 	useEffect(() => {
@@ -57,6 +62,20 @@ const FeedbackPage: FC = () => {
 	const stars = Array.from({ length: 5 }, (_, i) =>
 		i < averageRate ? FillStar : EmptyStar
 	)
+
+	const handleOkBtnClick = () => {
+		setModalFillOpen(false)
+	}
+
+	const handleRevChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		const { value } = e.target
+
+		setRevValue(value)
+	}
+
+	const handlePublishClick = () => {
+		handlePublish(revValue, userRating, id, setModalFillOpen, navigate)
+	}
 
 	return (
 		<div className={styles['feedback-page']}>
@@ -87,17 +106,39 @@ const FeedbackPage: FC = () => {
 				</div>
 			</div>
 			<div className={styles['feedback-page__list']}>
-				{feedbacks.map((item, index) => (
-					<FeedbackCard
-						date={item.date}
-						path={item.user.photo_url || ''}
-						text={item.review || ''}
-						university={item.user.university || ''}
-						username={item.user.first_name + ' ' + item.user.last_name}
-						rating={item.rate}
-						key={index}
-					/>
-				))}
+				{feedbacks.length > 0 ? (
+					feedbacks.map((item, index) => (
+						<FeedbackCard
+							date={item.date}
+							path={item.user.photo_url || ''}
+							text={item.review || ''}
+							university={item.user.university || ''}
+							username={item.user.first_name + ' ' + item.user.last_name}
+							rating={item.rate}
+							key={index}
+						/>
+					))
+				) : (
+					<div className={styles['feedback-page__wrapper-empty']}>
+						<div className={styles['feedback-page__wrapper-empty-star']}>
+							<img
+								src={StarFeedbackIcon}
+								alt=''
+								className={styles['feedback-page__empty-img']}
+							/>
+						</div>
+						<div className={styles['feedback-page__wrapper-empty-text']}>
+							<h2 className={styles['feedback-page__empty-title']}>
+								Пока нет отзывов и оценок
+							</h2>
+							<p className={styles['feedback-page__empty-text']}>
+								Курс пока что без отзывов, и мы будем очень рады, если ты
+								станешь первым, кто его попробует! Купи сейчас и поделись своими
+								впечатлениями с нами
+							</p>
+						</div>
+					</div>
+				)}
 			</div>
 			<div className={styles['feedback-page__button']}>
 				<MainButton
@@ -115,7 +156,10 @@ const FeedbackPage: FC = () => {
 							<div className={styles['feedback-page__modal-user']}>
 								<img
 									className={styles['feedback-page__modal-avatar']}
-									src={course?.user.photo_url || ''}
+									src={
+										`url(https://comncoursetest.ru${course?.user.photo_url})` ||
+										''
+									}
 									alt='Аватар пользователя'
 								/>
 								<h3 className={styles['feedback-page__modal-name']}>
@@ -127,7 +171,7 @@ const FeedbackPage: FC = () => {
 									{course?.channel.name}
 								</p>
 								<p className={styles['feedback-page__modal-course-university']}>
-									{course?.university}
+									{course?.user.university}
 								</p>
 							</div>
 						</div>
@@ -135,7 +179,9 @@ const FeedbackPage: FC = () => {
 						<div className={styles['feedback-page__modal-image']}>
 							{course?.channel.photo ? (
 								<img
-									src={course?.image}
+									src={`url(https://comncoursetest.ru${
+										course?.channel.photo || ''
+									})`}
 									alt='Аватар курса'
 									className={styles['feedback-page__modal-image-img']}
 								/>
@@ -172,6 +218,8 @@ const FeedbackPage: FC = () => {
 							className={styles['feedback-page__modal-textarea']}
 							name=''
 							id=''
+							value={revValue}
+							onChange={handleRevChange}
 						></textarea>
 					</div>
 
@@ -182,12 +230,22 @@ const FeedbackPage: FC = () => {
 						>
 							Отменить
 						</button>
-						<button className={styles['feedback-page__modal-submit']}>
+						<button
+							className={styles['feedback-page__modal-submit']}
+							onClick={handlePublishClick}
+						>
 							Отправить
 						</button>
 					</div>
 				</div>
 			</BottomSheet>
+			{modalFillOpen && (
+				<ModalNotification
+					text='Заполните все обязательные поля'
+					title='Внимание'
+					onClose={handleOkBtnClick}
+				/>
+			)}
 		</div>
 	)
 }
