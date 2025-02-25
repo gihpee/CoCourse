@@ -36,6 +36,9 @@
 	cursor: pointer;
 	width: 7.179vw;
 	height: 7.179vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .bottom-sheet__close-svg {

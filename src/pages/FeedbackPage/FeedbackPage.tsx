@@ -110,46 +110,50 @@ const FeedbackPage: FC = () => {
 					<h2 className={styles['feedback-page__modal-title']}>
 						Оставить отзыв
 					</h2>
-					<div className={styles['feedback-page__modal-info']}>
-						<div className={styles['feedback-page__modal-user']}>
-							<img
-								className={styles['feedback-page__modal-avatar']}
-								src={course?.user.photo_url || ''}
-								alt='Аватар пользователя'
-							/>
-							<h3 className={styles['feedback-page__modal-name']}>
-								{course?.user.first_name + ' ' + course?.user.last_name}
-							</h3>
-						</div>
-						<div className={styles['feedback-page__modal-course']}>
-							<p className={styles['feedback-page__modal-course-name']}>
-								{course?.name}
-							</p>
-							<p className={styles['feedback-page__modal-course-university']}>
-								{course?.university}
-							</p>
-						</div>
-					</div>
-
-					<div className={styles['feedback-page__modal-image']}>
-						{course?.image ? (
-							<img
-								src={course?.image}
-								alt='Аватар курса'
-								className={styles['feedback-page__modal-image-img']}
-							/>
-						) : (
-							<div className={styles['feedback-page__modal-placeholder']}>
+					<div className={styles['feedback-page__modal-info-wrapper']}>
+						<div className={styles['feedback-page__modal-info']}>
+							<div className={styles['feedback-page__modal-user']}>
 								<img
-									src={Camera}
-									alt=''
-									className={styles['feedback-page__modal-placeholder-img']}
+									className={styles['feedback-page__modal-avatar']}
+									src={course?.user.photo_url || ''}
+									alt='Аватар пользователя'
 								/>
-								<p className={styles['feedback-page__modal-placeholder-text']}>
-									Обложка отсутствует
+								<h3 className={styles['feedback-page__modal-name']}>
+									{course?.user.first_name + ' ' + course?.user.last_name}
+								</h3>
+							</div>
+							<div className={styles['feedback-page__modal-course']}>
+								<p className={styles['feedback-page__modal-course-name']}>
+									{course?.channel.name}
+								</p>
+								<p className={styles['feedback-page__modal-course-university']}>
+									{course?.university}
 								</p>
 							</div>
-						)}
+						</div>
+
+						<div className={styles['feedback-page__modal-image']}>
+							{course?.channel.photo ? (
+								<img
+									src={course?.image}
+									alt='Аватар курса'
+									className={styles['feedback-page__modal-image-img']}
+								/>
+							) : (
+								<div className={styles['feedback-page__modal-placeholder']}>
+									<img
+										src={Camera}
+										alt=''
+										className={styles['feedback-page__modal-placeholder-img']}
+									/>
+									<p
+										className={styles['feedback-page__modal-placeholder-text']}
+									>
+										Обложка отсутствует
+									</p>
+								</div>
+							)}
+						</div>
 					</div>
 
 					<div className={styles['feedback-page__modal-rating']}>
