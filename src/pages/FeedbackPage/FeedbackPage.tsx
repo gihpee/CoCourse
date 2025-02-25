@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
 import { IFeedback } from 'src/entities/course/model/types'
 import fetchCourses from 'src/entities/feedback/model/fetchCourses'
+import BottomSheet from 'src/shared/components/BottomSheet/BottomSheet'
 import MainButton from 'src/shared/components/MainButton/MainButton'
 import EmptyStar from '../../shared/assets/feedback/EmptyStar.svg'
 import FillStar from '../../shared/assets/feedback/FillStar.svg'
@@ -14,6 +15,7 @@ const FeedbackPage: FC = () => {
 
 	const { id } = useParams()
 	const [feedbacks, setFeedbacks] = useState<IFeedback[]>([])
+	const [isOpen, setIsOpen] = useState(false)
 
 	var BackButton = window.Telegram.WebApp.BackButton
 	BackButton.show()
@@ -90,8 +92,14 @@ const FeedbackPage: FC = () => {
 				))}
 			</div>
 			<div className={styles['feedback-page__button']}>
-				<MainButton onClickEvent={() => console.log(1)} text='Оставить отзыв' />
+				<MainButton
+					onClickEvent={() => setIsOpen(true)}
+					text='Оставить отзыв'
+				/>
 			</div>
+			<BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
+				<h2>Оставить отзыв</h2>
+			</BottomSheet>
 		</div>
 	)
 }

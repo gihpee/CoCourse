@@ -25,6 +25,7 @@
     "buffer": "^6.0.3",
     "classnames": "^2.5.1",
     "eruda": "^3.0.1",
+    "framer-motion": "^12.4.7",
     "node-stdlib-browser": "^1.2.0",
     "react": "^18.2.0",
     "react-datepicker": "^7.5.0",
