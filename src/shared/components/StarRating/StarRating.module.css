@@ -1,0 +1,11 @@
+.star-rating {
+	display: flex;
+	gap: 1.282vw;
+	cursor: pointer;
+}
+
+.star {
+	width: 8.205vw;
+	height: 8.205vw;
+	transition: transform 0.2s ease;
+}
