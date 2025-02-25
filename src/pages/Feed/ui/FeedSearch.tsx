@@ -1,5 +1,4 @@
 import { ChangeEvent } from 'react'
-import FilterIcon from '../../../shared/assets/course/Filter.svg'
 import styles from '../Feed.module.css'
 
 interface FeedSearchProps {
@@ -29,13 +28,13 @@ const FeedSearch = ({ inputValue, onChange }: FeedSearchProps) => {
 					fill='#FBFBFB'
 				/>
 			</svg>
-			<button className={styles['feed__filter-button']}>
+			{/* <button className={styles['feed__filter-button']}>
 				<img
 					src={FilterIcon}
 					alt='Кнопка фильтра'
 					className={styles['feed__filter-button-img']}
 				/>
-			</button>
+			</button> */}
 		</div>
 	)
 }

@@ -175,8 +175,9 @@
 
 .feedback-page__modal-image {
 	width: 30vw;
-	height: 100%;
+	height: 30vw;
 	border-radius: 1.538vw;
+	overflow: hidden;
 }
 
 .feedback-page__modal-placeholder {

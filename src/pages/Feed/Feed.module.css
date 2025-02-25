@@ -59,7 +59,7 @@
 	line-height: normal;
 	border-radius: 1.538vw;
 	background: var(--mini-background);
-	width: 82.564vw;
+	width: 91.795vw;
 	border: none;
 	outline: none;
 }
@@ -112,8 +112,8 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 1.538vw;
-	background-color: transparent;
-	border: 1px solid var(--active-color);
+	background-color: var(--mini-background);
+	outline: none;
 	color: var(--second-text);
 	font-family: 'Geologica';
 	font-size: 3.59vw;

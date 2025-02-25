@@ -6,6 +6,7 @@ interface IImageField {
 	text: string
 	inputName: string
 	linkChecked: string
+	onFileSelect: (name: string, file: File | null) => void
 }
 
 const ImageField: FC<IImageField> = ({
@@ -13,12 +14,14 @@ const ImageField: FC<IImageField> = ({
 	text,
 	inputName,
 	linkChecked,
+	onFileSelect,
 }) => {
 	const [file, setFile] = useState<File | null>(null)
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = event.target.files ? event.target.files[0] : null
 		setFile(selectedFile)
+		onFileSelect(inputName, selectedFile)
 	}
 
 	return (

@@ -27,7 +27,8 @@ const CourseCard: FC<ICourseCard> = ({
 }) => {
 	if (!itemCard) return null
 
-	console.log(isAuthor)
+	console.log('isAuthor', isAuthor)
+	console.log('isCoursePage', isCoursePage)
 
 	const content = (
 		<div className={styles['course-card']}>
@@ -166,7 +167,9 @@ const CourseCard: FC<ICourseCard> = ({
 						/>
 					</div>
 				) : null}
+			</div>
 
+			{!chanelPhoto ? (
 				<div
 					className={cn(styles['course-card__image'], {
 						[styles['course-card__image_isCoursePage']]: isCoursePage,
@@ -178,7 +181,19 @@ const CourseCard: FC<ICourseCard> = ({
 						)})`,
 					}}
 				/>
-			</div>
+			) : (
+				<div
+					className={cn(styles['course-card__image'], {
+						[styles['course-card__image_isCoursePage']]: isCoursePage,
+					})}
+					style={{
+						backgroundImage: `url(${setImagePath(
+							chanelPhoto,
+							emptyHorizontalImage
+						)})`,
+					}}
+				/>
+			)}
 
 			{!isCoursePage ? (
 				<CourseRating

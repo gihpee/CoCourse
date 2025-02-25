@@ -1,6 +1,6 @@
 import styles from '../Feed.module.css'
 
-const filterOptions = ['Все курсы', 'Недавние', 'Купленные', 'Избранные']
+const filterOptions = ['Все курсы', 'Недавние', 'Купленные']
 
 const FeedFilters = () => {
 	return (

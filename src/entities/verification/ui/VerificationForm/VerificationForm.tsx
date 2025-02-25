@@ -68,6 +68,13 @@ export const VerificationForm: FC = () => {
 		}
 	}
 
+	const handleFileSelect = (name: string, file: File | null) => {
+		setFormData(prevData => ({
+			...prevData,
+			[name]: file,
+		}))
+	}
+
 	return (
 		<div className={styles['verification']}>
 			{modalFillOpen ? (
@@ -87,12 +94,14 @@ export const VerificationForm: FC = () => {
 					link={PassportData}
 					inputName='passportCopy'
 					linkChecked={Check}
+					onFileSelect={handleFileSelect}
 				/>
 				<ImageField
 					text='Добавить страницу регистрации'
 					link={SubscribeData}
 					inputName='registrationCopy'
 					linkChecked={Check}
+					onFileSelect={handleFileSelect}
 				/>
 			</div>
 
@@ -135,7 +144,13 @@ export const VerificationForm: FC = () => {
 						<div className={styles['verification-input']}>
 							<DatePicker
 								selected={birthDate}
-								onChange={date => setBirthDate(date)}
+								onChange={date => {
+									setBirthDate(date)
+									setFormData(prevData => ({
+										...prevData,
+										birthDate: date ? new Date(date).toISOString() : '',
+									}))
+								}}
 								placeholderText='Дата рождения'
 								dateFormat='dd.MM.yyyy'
 							/>
@@ -149,7 +164,13 @@ export const VerificationForm: FC = () => {
 						<div className={styles['verification-input']}>
 							<DatePicker
 								selected={passportDate}
-								onChange={date => setPassportDate(date)}
+								onChange={date => {
+									setPassportDate(date)
+									setFormData(prevData => ({
+										...prevData,
+										passportDate: date ? new Date(date).toISOString() : '',
+									}))
+								}}
 								placeholderText='Дата выдачи'
 								dateFormat='dd.MM.yyyy'
 							/>
