@@ -160,11 +160,13 @@ const PaymentPage: FC = () => {
 			</div>
 
 			{notification && (
-				<ModalNotification
-					text='Подключите криптокошелёк в профиле'
-					title='Внимание'
-					onClose={() => setNotification(false)}
-				/>
+				<div className={styles['payment__notification']}>
+					<ModalNotification
+						text='Подключите криптокошелёк в профиле'
+						title='Внимание'
+						onClose={() => setNotification(false)}
+					/>
+				</div>
 			)}
 
 			<MainButton onClickEvent={handlePayment} text='Оплатить' />

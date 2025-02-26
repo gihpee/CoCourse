@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
 import { filterOptions } from 'src/features/filterOptions'
 import { useUserProfile } from 'src/pages/UserProfile/model/useUserProfile'
 import MainButton from 'src/shared/components/MainButton/MainButton'
@@ -27,6 +28,7 @@ const EditProfile: FC = () => {
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
 	const [uniValue, setUniValue] = useState('')
+	const [bioValue, setBioValue] = useState('')
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
@@ -133,6 +135,12 @@ const EditProfile: FC = () => {
 			</div>
 		)
 	})
+
+	const handleBioChangeWrapper = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		handleBioChangeMinus(e, setBioValue)
+	}
 
 	return (
 		<div className={styles['edit-profile']}>
@@ -243,9 +251,9 @@ const EditProfile: FC = () => {
 					<h3 className={styles['edit-profile__subtitle']}>Описание</h3>
 					<VerificationInput
 						placeholder='Расскажи о себе'
-						inputFunction={() => console.log(2)}
-						inputName='about'
-						inputValue=''
+						inputFunction={handleBioChangeWrapper}
+						inputName='Desc'
+						inputValue={bioValue}
 					/>
 				</div>
 

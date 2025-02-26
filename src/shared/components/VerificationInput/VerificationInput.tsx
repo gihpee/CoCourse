@@ -9,7 +9,9 @@ const VerificationInput = ({
 }: {
 	placeholder: string
 	inputValue: string
-	inputFunction: (e: ChangeEvent<HTMLInputElement>) => void
+	inputFunction: (
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => void
 	inputName: string
 }) => (
 	<input

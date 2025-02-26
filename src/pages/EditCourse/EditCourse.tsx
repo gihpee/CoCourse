@@ -94,8 +94,13 @@ const EditCourse: FC = () => {
 	}
 
 	const handleOptionClickSubject = (option: string) => {
-		if (!selectedOptions.includes(option)) {
-			setSelectedOptions([...selectedOptions, option])
+		if (formData.Subject !== option) {
+			setFormData(prevData => {
+				return {
+					...prevData,
+					Subject: option,
+				}
+			})
 		}
 		setInputValueSubject('')
 		setBoxIsVisibleSubject(false)
@@ -108,12 +113,18 @@ const EditCourse: FC = () => {
 	}
 
 	const handleOptionClickUniv = (option: string) => {
-		if (uniValue !== option) {
-			setUniValue(option)
+		if (formData.Univ !== option) {
+			setFormData(prevData => {
+				return {
+					...prevData,
+					Univ: option,
+				}
+			})
 		}
 		setInputValueUniv('')
 		setBoxIsVisibleUniv(false)
 	}
+
 	const handleRemoveOptionUniv = () => {
 		setUniValue('')
 	}
