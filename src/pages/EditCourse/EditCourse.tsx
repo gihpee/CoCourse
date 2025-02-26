@@ -49,6 +49,7 @@ const EditCourse: FC = () => {
 	console.log(imageSrc)
 	console.log(modalFillOpen)
 	console.log(modalVOpen)
+	console.log(userData)
 
 	const [formData, setFormData] = useState<FormData>({
 		Name: '',
