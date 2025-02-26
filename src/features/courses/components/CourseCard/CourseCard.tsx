@@ -7,6 +7,7 @@ import CourseRating from '../../../../entities/course/ui/CourseRating'
 import ShareIcon from '../../../../shared/assets/course/ButtonSend.svg'
 import Edit_Pencil from '../../../../shared/assets/course/Edit_Pencil.svg'
 import emptyHorizontalImage from '../../../../shared/assets/course/horizontalEmptyCourseImage.webp'
+import Camera from '../../../../shared/assets/feedback/Camera.svg'
 import CourseButton from '../../../../shared/CourseButton/CourseButton'
 import { ICourseCard } from '../../types/ICourseCard'
 import styles from './CourseCard.module.css'
@@ -20,6 +21,7 @@ const CourseCard: FC<ICourseCard> = ({
 	price,
 	averageRate,
 	isCoursePage,
+	isFeedPage,
 	isAuthor,
 	isCrypto,
 	count,
@@ -165,22 +167,45 @@ const CourseCard: FC<ICourseCard> = ({
 								}
 							}}
 						/>
+						{isAuthor && (
+							<Link to={`/edit-course/${itemCard.id}`}>
+								<CourseButton
+									alt='Редактировать'
+									imgSrc={Edit_Pencil}
+									className={{
+										[styles['course-card__button_isCoursePage']]: isCoursePage,
+									}}
+								/>
+							</Link>
+						)}
 					</div>
 				) : null}
 			</div>
 
 			{!chanelPhoto ? (
 				<div
-					className={cn(styles['course-card__image'], {
-						[styles['course-card__image_isCoursePage']]: isCoursePage,
+					className={cn(styles['course-card__modal-placeholder'], {
+						[styles['course-card__modal-placeholder_isCoursePage']]:
+							isCoursePage,
 					})}
-					style={{
-						backgroundImage: `url(${setImagePath(
-							chanelPhoto,
-							emptyHorizontalImage
-						)})`,
-					}}
-				/>
+				>
+					<img
+						src={Camera}
+						alt=''
+						className={cn(styles['course-card__modal-placeholder-img'], {
+							[styles['course-card__modal-placeholder-img_isCoursePage']]:
+								isCoursePage,
+						})}
+					/>
+					<p
+						className={cn(styles['course-card__modal-placeholder-text'], {
+							[styles['course-card__modal-placeholder-text_isCoursePage']]:
+								isCoursePage,
+						})}
+					>
+						Обложка отсутствует
+					</p>
+				</div>
 			) : (
 				<div
 					className={cn(styles['course-card__image'], {
@@ -216,10 +241,10 @@ const CourseCard: FC<ICourseCard> = ({
 		</div>
 	)
 
-	return !isCoursePage ? (
-		content
-	) : (
+	return isCoursePage || isFeedPage ? (
 		<Link to={`/course/${itemCard.id}`}>{content}</Link>
+	) : (
+		content
 	)
 }
 

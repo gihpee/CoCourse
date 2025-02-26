@@ -160,3 +160,46 @@
 		height: 6.154vw;
 	}
 }
+
+.course-card__modal-placeholder {
+	align-items: center;
+	background: var(--mini-background);
+	border-radius: 1.538vw;
+	display: flex;
+	justify-content: center;
+	width: 87.692vw;
+	height: 24.359vw;
+	flex-direction: column;
+}
+
+.course-card__modal-placeholder-img {
+	width: 12.821vw;
+	height: 12.821vw;
+}
+
+.course-card__modal-placeholder-text {
+	width: 32.821vw;
+	color: var(--active-color);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 110%;
+}
+
+.course-card__modal-placeholder_isCoursePage {
+	width: 87.692vw;
+	height: 87.692vw;
+}
+
+.course-card__modal-placeholder-img_isCoursePage {
+	width: 20vw;
+	height: 20vw;
+}
+
+.course-card__modal-placeholder-text_isCoursePage {
+	margin-top: -1.795vw;
+	font-size: 3.59vw;
+	width: 38.205vw;
+}
