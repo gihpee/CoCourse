@@ -51,7 +51,7 @@ export const WalletBalance: FC = () => {
 			</button>
 
 			{withdrawModalOpen && (
-				<div>
+				<div className={styles['wallet__balance__notification']}>
 					<ModalNotification
 						title='Внимание'
 						text='Вывод средств возможен при балансе от 6000 рублей'

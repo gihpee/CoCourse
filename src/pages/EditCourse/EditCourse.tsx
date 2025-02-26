@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { publishCourse } from 'src/entities/course/model/fetchEditCourse'
 import { filterOptions } from 'src/features/filterOptions'
 import MainButton from 'src/shared/components/MainButton/MainButton'
+import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import Camera from '../../shared/assets/feedback/Camera.svg'
 import MarkedExist from '../../shared/assets/profile/MarkedExist.svg'
 import CloseImg from '../../shared/assets/wallet/CloseImg.svg'
@@ -57,10 +58,10 @@ const EditCourse: FC = () => {
 	const [formData, setFormData] = useState<FormData>({
 		Name: '',
 		Univ: '',
-		Course: '',
+		Course: '1 курс, 1 семестр',
 		Desc: '',
 		Price: null,
-		ChannelUrl: '',
+		ChannelUrl: data?.channel?.url || '',
 		is_draft: false,
 		Subject: '',
 		topics: [],
@@ -340,6 +341,7 @@ const EditCourse: FC = () => {
 						<img
 							src={`https://comncoursetest.ru${data.channel.photo}`}
 							alt='Обложка курса'
+							className={styles['edit-course__cover-img']}
 						/>
 					) : (
 						<div className={styles['edit-course__modal-placeholder']}>
@@ -524,10 +526,24 @@ const EditCourse: FC = () => {
 				<MainButton text='Опубликовать' onClickEvent={handlePublish} />
 			)}
 
-			{/* {modalFillOpen && (
-				<ModalNotification onClose={} text='' title='Внимание' />
+			{modalFillOpen && (
+				<div className={styles['edit-course__notification']}>
+					<ModalNotification
+						onClose={() => setModalFillOpen(false)}
+						text={modalText}
+						title='Внимание'
+					/>
+				</div>
 			)}
-			{modalVOpen && <ModalNotification onClose={} text='' title='Внимание' />} */}
+			{modalVOpen && (
+				<div className={styles['edit-course__notification']}>
+					<ModalNotification
+						onClose={() => setModalVOpen(false)}
+						text={modalText}
+						title='Внимание'
+					/>{' '}
+				</div>
+			)}
 		</div>
 	)
 }
