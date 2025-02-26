@@ -46,8 +46,10 @@ export const VerificationForm: FC = () => {
 		Email: '',
 	})
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value, files } = e.target
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		const { name, value, files } = e.target as HTMLInputElement
 		setFormData(prevData => ({
 			...prevData,
 			[name]: files ? files[0] : value,
