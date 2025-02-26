@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { publishCourse } from 'src/entities/course/model/fetchEditCourse'
 import { filterOptions } from 'src/features/filterOptions'
 import MainButton from 'src/shared/components/MainButton/MainButton'
@@ -27,6 +27,9 @@ interface FormData {
 const EditCourse: FC = () => {
 	const { cid } = useParams()
 	const navigate = useNavigate()
+	const location = useLocation()
+	const data = location.state?.data || {}
+	console.log('data', data)
 
 	const { userData, selectedOptionsProfile, uniValueProfile } = useUserProfile()
 
@@ -308,6 +311,12 @@ const EditCourse: FC = () => {
 					{imageSrc ? (
 						<img
 							src={`https://comncoursetest.ru${imageSrc}`}
+							alt='Обложка курса'
+							className={styles['edit-course__cover-img']}
+						/>
+					) : data.channel.photo ? (
+						<img
+							src={`https://comncoursetest.ru${data.channel.photo}`}
 							alt='Обложка курса'
 							className={styles['edit-course__cover-img']}
 						/>
