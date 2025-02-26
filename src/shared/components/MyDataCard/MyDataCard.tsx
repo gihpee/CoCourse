@@ -14,6 +14,7 @@ interface IMyDataCard {
 	connectedPayments?: boolean
 	userFriendlyAddress?: string
 	path: string
+	onClick?: () => void
 }
 
 const MyDataCard: FC<IMyDataCard> = props => {
@@ -24,6 +25,7 @@ const MyDataCard: FC<IMyDataCard> = props => {
 		connectedPayments,
 		userFriendlyAddress,
 		path,
+		onClick,
 	} = props
 
 	const key =
@@ -69,9 +71,15 @@ const MyDataCard: FC<IMyDataCard> = props => {
 
 	const isLinkActive = statusText === 'Не пройдена'
 
-	const CardWrapper: React.ElementType = isLinkActive ? Link : 'div'
+	const CardWrapper: React.ElementType = onClick
+		? 'div'
+		: isLinkActive
+		? Link
+		: 'div'
 
-	const cardProps = isLinkActive
+	const cardProps = onClick
+		? { className: styles['my-data-card'], onClick }
+		: isLinkActive
 		? { to: path, className: styles['my-data-card'] }
 		: { className: styles['my-data-card'] }
 

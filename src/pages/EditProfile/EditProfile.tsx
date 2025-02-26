@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
 import { filterOptions } from 'src/features/filterOptions'
 import { useUserProfile } from 'src/pages/UserProfile/model/useUserProfile'
@@ -25,6 +26,8 @@ const EditProfile: FC = () => {
 
 	console.log('selectedOptionsProfile', selectedOptionsProfile)
 
+	const navigate = useNavigate()
+
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
 	const [uniValue, setUniValue] = useState('')
@@ -33,6 +36,15 @@ const EditProfile: FC = () => {
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
 	const [inputValueUniv, setInputValueUniv] = useState('')
+
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
 
 	console.log(boxIsVisibleUniv)
 
@@ -92,6 +104,18 @@ const EditProfile: FC = () => {
 	)
 
 	const filteredOptionsUniv = filterOptions(optionsUniv, inputValueUniv)
+
+	const handleSave = async () => {
+		await fetchUpdateUser(
+			isNotify,
+			selectedOptions,
+			uniValue,
+			bioValue,
+			window.Telegram.WebApp.initData
+		)
+
+		navigate(`/profile`)
+	}
 
 	const varsSubject = filteredOptionsSubject.map(
 		(item: string, index: number) => {
@@ -348,7 +372,7 @@ const EditProfile: FC = () => {
 				</div>
 			</div>
 
-			<MainButton text='Сохранить' onClickEvent={() => console.log(1)} />
+			<MainButton text='Сохранить' onClickEvent={() => handleSave()} />
 		</div>
 	)
 }
