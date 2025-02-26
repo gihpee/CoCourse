@@ -207,10 +207,12 @@
 	outline: none;
 	width: 100%;
 }
-.edit-course__field-button {
+.edit-course__field-button-img {
 	position: absolute;
-	right: 1.282vw;
-	top: 0.513vw;
+	width: 4.103vw;
+	height: 4.103vw;
+	right: 2.051vw;
+	top: 2.564vw;
 }
 
 .edit-course__field-textarea {

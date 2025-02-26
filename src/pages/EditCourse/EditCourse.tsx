@@ -7,6 +7,7 @@ import MainButton from 'src/shared/components/MainButton/MainButton'
 import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import Camera from '../../shared/assets/feedback/Camera.svg'
 import MarkedExist from '../../shared/assets/profile/MarkedExist.svg'
+import TrashEmpty from '../../shared/assets/profile/Trash_Empty.svg'
 import CloseImg from '../../shared/assets/wallet/CloseImg.svg'
 import InputWithVariants from '../EditProfile/ui/InputWithVariants/InputWithVariants'
 import { optionsSubject } from '../optionsSubject'
@@ -553,11 +554,13 @@ const EditCourse: FC = () => {
 										onChange={e => handleTopicChange(index, e)}
 										className={styles['edit-course__field-input']}
 									/>
-									<button
-										onClick={() => handleRemoveTopic(index)}
-										className={styles['edit-course__field-button']}
-									>
-										x
+									<button className={styles['edit-course__field-button']}>
+										<img
+											src={TrashEmpty}
+											alt=''
+											onClick={() => handleRemoveTopic(index)}
+											className={styles['edit-course__field-button-img']}
+										/>
 									</button>
 								</div>
 								<textarea
