@@ -260,6 +260,17 @@ const EditCourse: FC = () => {
 		}))
 	}
 
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		const { name, value } = e.target
+
+		setFormData(prevData => ({
+			...prevData,
+			[name]: value,
+		}))
+	}
+
 	const varsSubject = filteredOptionsSubject.map(
 		(item: string, index: number) => {
 			const isSelected = selectedOptions.includes(item)
@@ -349,6 +360,8 @@ const EditCourse: FC = () => {
 					<input
 						type='number'
 						placeholder='0'
+						value={formData.Price || ''}
+						onChange={handleChange}
 						className={styles['edit-course__price']}
 					/>
 				</div>
@@ -442,6 +455,8 @@ const EditCourse: FC = () => {
 					<h3 className={styles['edit-course__field-title']}>Описание</h3>
 					<input
 						type='text'
+						value={formData.Desc}
+						onChange={handleChange}
 						className={styles['edit-course__field-description']}
 					/>
 				</div>

@@ -2,6 +2,8 @@ export const publishCourse = async (cid: string, formData: any) => {
 	const { Price, Univ, Desc, Subject, topics } = formData
 	const is_draft = false
 
+	console.log(formData)
+
 	try {
 		const response = await fetch('https://comncoursetest.ru/api/edit-course/', {
 			method: 'POST',
