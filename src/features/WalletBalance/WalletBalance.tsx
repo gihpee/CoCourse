@@ -15,8 +15,8 @@ export const WalletBalance: FC = () => {
 
 	function handleFail() {
 		setWithdrawModalOpen(false)
-		window.document.body.style.overflow = 'hidden'
-		document.documentElement.style.overflow = 'hidden'
+		window.document.body.style.overflow = 'visible'
+		document.documentElement.style.overflow = 'visible'
 	}
 
 	useEffect(() => {
@@ -41,6 +41,8 @@ export const WalletBalance: FC = () => {
 			}
 		}
 		setWithdrawModalOpen(true)
+		window.document.body.style.overflow = 'hidden'
+		document.documentElement.style.overflow = 'hidden'
 	}
 
 	return (

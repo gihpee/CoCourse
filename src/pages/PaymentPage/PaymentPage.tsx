@@ -33,8 +33,8 @@ const PaymentPage: FC = () => {
 
 	function handleFail() {
 		setNotification(false)
-		window.document.body.style.overflow = 'hidden'
-		document.documentElement.style.overflow = 'hidden'
+		window.document.body.style.overflow = 'visible'
+		document.documentElement.style.overflow = 'visible'
 	}
 
 	const location = useLocation()
@@ -99,6 +99,8 @@ const PaymentPage: FC = () => {
 			)
 		} else if (paymentMethod === 'Wallet' && !address) {
 			setNotification(true)
+			window.document.body.style.overflow = 'hidden'
+			document.documentElement.style.overflow = 'hidden'
 		}
 	}
 

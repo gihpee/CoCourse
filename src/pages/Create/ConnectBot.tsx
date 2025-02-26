@@ -13,6 +13,7 @@ function ConnectBot() {
 		const fetchChannel = async () => {
 			try {
 				const result = await fetchGetLastChannel()
+				console.log('result', result)
 				navigate('/create-course/', { state: { data: result } })
 			} catch (error) {
 				console.error('Error fetching channel data:', error)

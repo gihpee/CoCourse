@@ -71,8 +71,8 @@ const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 
 	const handleOkBtnClick = () => {
 		setModalFillOpen(false)
-		window.document.body.style.overflow = 'hidden'
-		document.documentElement.style.overflow = 'hidden'
+		window.document.body.style.overflow = 'visible'
+		document.documentElement.style.overflow = 'visible'
 	}
 
 	const handleRevChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -83,6 +83,8 @@ const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 
 	const handlePublishClick = () => {
 		handlePublish(revValue, userRating, id, setModalFillOpen, navigate)
+		window.document.body.style.overflow = 'hidden'
+		document.documentElement.style.overflow = 'hidden'
 	}
 
 	return (

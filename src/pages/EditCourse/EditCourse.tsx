@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { fetchCreateCourse } from 'src/entities/course/model/fetchCreateCourse'
 import { publishCourse } from 'src/entities/course/model/fetchEditCourse'
 import { filterOptions } from 'src/features/filterOptions'
 import MainButton from 'src/shared/components/MainButton/MainButton'
@@ -57,13 +58,14 @@ const EditCourse: FC = () => {
 
 	function handleFail() {
 		setModalFillOpen(false)
-		window.document.body.style.overflow = 'hidden'
-		document.documentElement.style.overflow = 'hidden'
+		window.document.body.style.overflow = 'visible'
+		document.documentElement.style.overflow = 'visible'
 	}
+
 	function handleFail2() {
 		setModalVOpen(false)
-		window.document.body.style.overflow = 'hidden'
-		document.documentElement.style.overflow = 'hidden'
+		window.document.body.style.overflow = 'visible'
+		document.documentElement.style.overflow = 'visible'
 	}
 
 	const [formData, setFormData] = useState<FormData>({
@@ -189,6 +191,8 @@ const EditCourse: FC = () => {
 			setModalText('Для создания курса необходимо пройти верификацию')
 			// setModalButton('Пройти')
 			setModalVOpen(true)
+			window.document.body.style.overflow = 'hidden'
+			document.documentElement.style.overflow = 'hidden'
 		} else {
 			if (
 				formData.Name === '' ||
@@ -197,6 +201,8 @@ const EditCourse: FC = () => {
 				formData.Subject === ''
 			) {
 				setModalFillOpen(true)
+				window.document.body.style.overflow = 'hidden'
+				document.documentElement.style.overflow = 'hidden'
 				console.log(formData)
 			} else {
 				if (cid) {
@@ -206,6 +212,8 @@ const EditCourse: FC = () => {
 					} catch (error) {
 						setModalText('Произошла ошибка при публикации курса')
 						setModalVOpen(true)
+						window.document.body.style.overflow = 'hidden'
+						document.documentElement.style.overflow = 'hidden'
 					}
 				}
 			}
@@ -213,6 +221,43 @@ const EditCourse: FC = () => {
 	}
 
 	const handlePublish = async () => {
+		if (data.user.verifyed !== 'Пройдена') {
+		} else {
+			if (
+				formData.Name === '' ||
+				formData.Univ === '' ||
+				formData.Desc === '' ||
+				formData.Subject === ''
+			) {
+				console.log(1)
+			} else {
+				let university = formData.Univ || 'Не указано'
+				let description = formData.Desc || 'Не указано'
+				let subjects = formData.Subject || 'Не указано'
+				let topics = formData.topics
+				let price = formData.Price || 0
+				let course_id = data.id
+				let is_draft = false
+				let address = ''
+
+				try {
+					await fetchCreateCourse({
+						university,
+						description,
+						subjects,
+						topics,
+						price,
+						course_id,
+						is_draft,
+						address,
+					})
+
+					navigate('/profile')
+				} catch (error) {
+					console.log('Failed to publish course', error)
+				}
+			}
+		}
 		if (!formData.is_draft) {
 			if (
 				formData.Name === '' ||
@@ -222,6 +267,8 @@ const EditCourse: FC = () => {
 			) {
 				console.log(formData)
 				setModalFillOpen(true)
+				window.document.body.style.overflow = 'hidden'
+				document.documentElement.style.overflow = 'hidden'
 			} else {
 				if (cid) {
 					try {
