@@ -12,6 +12,7 @@ import CourseCard from 'src/features/courses/components/CourseCard/CourseCard'
 import { WalletBalance } from 'src/features/WalletBalance/WalletBalance'
 import Feedback from 'src/shared/components/Feedback/Feedback'
 import MainButton from 'src/shared/components/MainButton/MainButton'
+import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import Sales from 'src/shared/components/Sales/Sales'
 import Credit_Card from '../../shared/assets/course/Credit_Card.svg'
 import Wallet_Card from '../../shared/assets/course/Wallet_Card.svg'
@@ -38,6 +39,7 @@ const PaymentPage: FC = () => {
 
 	const [exchangeRate, setExchangeRate] = useState(null)
 	const [paymentLink, setPaymentLink] = useState(null)
+	const [notification, setNotification] = useState(false)
 	const [paymentMethod, setPaymentMethod] = useState<'Card' | 'Wallet'>('Card')
 
 	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
@@ -79,15 +81,19 @@ const PaymentPage: FC = () => {
 	const myTransaction = createTransaction(data, exchangeRate ?? 0)
 
 	const handlePayment = () => {
-		handlePay(
-			paymentMethod,
-			tonConnectUI,
-			myTransaction,
-			data,
-			address,
-			navigate,
-			paymentLink ?? ''
-		)
+		if ((paymentMethod === 'Wallet' && address) || paymentMethod === 'Card') {
+			handlePay(
+				paymentMethod,
+				tonConnectUI,
+				myTransaction,
+				data,
+				address,
+				navigate,
+				paymentLink ?? ''
+			)
+		} else if (paymentMethod === 'Wallet' && !address) {
+			setNotification(true)
+		}
 	}
 
 	const averageRate = useMemo(() => {
@@ -109,7 +115,9 @@ const PaymentPage: FC = () => {
 				isCoursePage={true}
 				chanelName={data?.channel.name || 'Название курса'}
 				chanelPhoto={data?.channel.photo || ''}
-				price={data?.price || 0}
+				price={
+					paymentMethod === 'Wallet' ? data?.price * 0.9 : data?.price || 0
+				}
 				university={userCourses?.university || ''}
 				itemCard={data as ICourse}
 				isAuthor={isAuthor}
@@ -150,6 +158,14 @@ const PaymentPage: FC = () => {
 				<h2 className={styles['payment__wallet-title']}>Кошелёк</h2>
 				<WalletBalance />
 			</div>
+
+			{notification && (
+				<ModalNotification
+					text='Подключите криптокошелёк в профиле'
+					title='Внимание'
+					onClose={() => setNotification(false)}
+				/>
+			)}
 
 			<MainButton onClickEvent={handlePayment} text='Оплатить' />
 		</div>

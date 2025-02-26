@@ -360,6 +360,7 @@ const EditCourse: FC = () => {
 					<input
 						type='number'
 						placeholder='0'
+						name='Price'
 						value={formData.Price || ''}
 						onChange={handleChange}
 						className={styles['edit-course__price']}
@@ -455,6 +456,7 @@ const EditCourse: FC = () => {
 					<h3 className={styles['edit-course__field-title']}>Описание</h3>
 					<input
 						type='text'
+						name='Desc'
 						value={formData.Desc}
 						onChange={handleChange}
 						className={styles['edit-course__field-description']}
