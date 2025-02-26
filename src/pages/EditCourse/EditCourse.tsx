@@ -333,7 +333,13 @@ const EditCourse: FC = () => {
 						</div>
 					)}
 				</div>
-				<h2 className={styles['edit-course__title']}>{formData.Name}</h2>
+				<h2 className={styles['edit-course__title']}>
+					{formData.Name
+						? formData.Name
+						: data.channel.name
+						? data.channel.name
+						: 'Нет названия'}
+				</h2>
 			</div>
 
 			<div className={styles['edit-course__wrapper-info']}>

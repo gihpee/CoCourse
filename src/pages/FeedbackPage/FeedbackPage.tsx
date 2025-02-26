@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
 import { ICourse, IFeedback } from 'src/entities/course/model/types'
 import fetchCourses from 'src/entities/feedback/model/fetchCourses'
+import { fetchFeedbacks } from 'src/entities/feedback/model/fetchFeedback'
 import handlePublish from 'src/entities/feedback/model/handlePublish'
 import StarFeedbackIcon from 'src/shared/assets/course/StarFeedback.svg'
 import BottomSheet from 'src/shared/components/BottomSheet/BottomSheet'
@@ -15,7 +16,7 @@ import FillStar from '../../shared/assets/feedback/FillStar.svg'
 import styles from './FeedbackPage.module.css'
 import FeedbackCard from './ui/FeedbackCard/FeedbackCard'
 
-const FeedbackPage: FC = () => {
+const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 	window.scrollTo(0, 0)
 
 	const navigate = useNavigate()
@@ -39,22 +40,26 @@ const FeedbackPage: FC = () => {
 	})
 
 	useEffect(() => {
-		const loadCourses = async () => {
+		const fetchData = async () => {
 			try {
-				const courseData = await fetchCourses(id || 'defaultId')
-
-				const feedbackData = courseData.feedback
-
-				setFeedbacks(feedbackData)
-				setCourse(courseData)
-				console.log('courseData.image', courseData.image)
+				if (isFullCourses) {
+					const feedbackData = await fetchFeedbacks(id || '')
+					setFeedbacks(feedbackData)
+				} else {
+					const courseData = await fetchCourses(id || 'defaultId')
+					setFeedbacks(courseData.feedback)
+					setCourse(courseData)
+					console.log('courseData.image', courseData.image)
+				}
 			} catch (error) {
 				console.error('Error loading courses or feedbacks:', error)
 			}
 		}
 
-		loadCourses()
-	}, [id])
+		fetchData()
+	}, [id, isFullCourses])
+
+	console.log(feedbacks)
 
 	const averageRate = useMemo(() => {
 		return feedbacks.length > 0 ? calculateRating(feedbacks) : 0
@@ -147,98 +152,105 @@ const FeedbackPage: FC = () => {
 					text='Оставить отзыв'
 				/>
 			</div>
-			<BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
-				<div className={styles['feedback-page__modal-title-wrapper']}>
-					<h2 className={styles['feedback-page__modal-title']}>
-						Оставить отзыв
-					</h2>
-					<div className={styles['feedback-page__modal-info-wrapper']}>
-						<div className={styles['feedback-page__modal-info']}>
-							<div className={styles['feedback-page__modal-user']}>
-								<img
-									className={styles['feedback-page__modal-avatar']}
-									src={
-										`https://comncoursetest.ru${course?.user.photo_url}` || ''
-									}
-									alt='Аватар пользователя'
-								/>
-								<h3 className={styles['feedback-page__modal-name']}>
-									{course?.user.first_name + ' ' + course?.user.last_name}
-								</h3>
-							</div>
-							<div className={styles['feedback-page__modal-course']}>
-								<p className={styles['feedback-page__modal-course-name']}>
-									{course?.channel.name}
-								</p>
-								<p className={styles['feedback-page__modal-course-university']}>
-									{course?.user.university}
-								</p>
-							</div>
-						</div>
 
-						<div className={styles['feedback-page__modal-image']}>
-							{course?.channel.photo ? (
-								<img
-									src={`https://comncoursetest.ru${
-										course?.channel.photo || ''
-									}`}
-									alt='Аватар курса'
-									className={styles['feedback-page__modal-image-img']}
-								/>
-							) : (
-								<div className={styles['feedback-page__modal-placeholder']}>
+			{!isFullCourses && (
+				<BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
+					<div className={styles['feedback-page__modal-title-wrapper']}>
+						<h2 className={styles['feedback-page__modal-title']}>
+							Оставить отзыв
+						</h2>
+						<div className={styles['feedback-page__modal-info-wrapper']}>
+							<div className={styles['feedback-page__modal-info']}>
+								<div className={styles['feedback-page__modal-user']}>
 									<img
-										src={Camera}
-										alt=''
-										className={styles['feedback-page__modal-placeholder-img']}
+										className={styles['feedback-page__modal-avatar']}
+										src={
+											`https://comncoursetest.ru${course?.user.photo_url}` || ''
+										}
+										alt='Аватар пользователя'
 									/>
+									<h3 className={styles['feedback-page__modal-name']}>
+										{course?.user.first_name + ' ' + course?.user.last_name}
+									</h3>
+								</div>
+								<div className={styles['feedback-page__modal-course']}>
+									<p className={styles['feedback-page__modal-course-name']}>
+										{course?.channel.name}
+									</p>
 									<p
-										className={styles['feedback-page__modal-placeholder-text']}
+										className={styles['feedback-page__modal-course-university']}
 									>
-										Обложка отсутствует
+										{course?.user.university}
 									</p>
 								</div>
-							)}
+							</div>
+
+							<div className={styles['feedback-page__modal-image']}>
+								{course?.channel.photo ? (
+									<img
+										src={`https://comncoursetest.ru${
+											course?.channel.photo || ''
+										}`}
+										alt='Аватар курса'
+										className={styles['feedback-page__modal-image-img']}
+									/>
+								) : (
+									<div className={styles['feedback-page__modal-placeholder']}>
+										<img
+											src={Camera}
+											alt=''
+											className={styles['feedback-page__modal-placeholder-img']}
+										/>
+										<p
+											className={
+												styles['feedback-page__modal-placeholder-text']
+											}
+										>
+											Обложка отсутствует
+										</p>
+									</div>
+								)}
+							</div>
+						</div>
+
+						<div className={styles['feedback-page__modal-rating']}>
+							<h2 className={styles['feedback-page__modal-rating-title']}>
+								Как вам курс?
+							</h2>
+
+							<StarRating onRate={rating => setUserRating(rating)} />
+						</div>
+
+						<div className={styles['feedback-page__modal-comment']}>
+							<h2 className={styles['feedback-page__modal-rating-title']}>
+								Комментарий
+							</h2>
+							<textarea
+								className={styles['feedback-page__modal-textarea']}
+								name=''
+								id=''
+								value={revValue}
+								onChange={handleRevChange}
+							></textarea>
+						</div>
+
+						<div className={styles['feedback-page__modal-actions']}>
+							<button
+								className={styles['feedback-page__modal-cancel']}
+								onClick={() => setIsOpen(false)}
+							>
+								Отменить
+							</button>
+							<button
+								className={styles['feedback-page__modal-submit']}
+								onClick={handlePublishClick}
+							>
+								Отправить
+							</button>
 						</div>
 					</div>
-
-					<div className={styles['feedback-page__modal-rating']}>
-						<h2 className={styles['feedback-page__modal-rating-title']}>
-							Как вам курс?
-						</h2>
-
-						<StarRating onRate={rating => setUserRating(rating)} />
-					</div>
-
-					<div className={styles['feedback-page__modal-comment']}>
-						<h2 className={styles['feedback-page__modal-rating-title']}>
-							Комментарий
-						</h2>
-						<textarea
-							className={styles['feedback-page__modal-textarea']}
-							name=''
-							id=''
-							value={revValue}
-							onChange={handleRevChange}
-						></textarea>
-					</div>
-
-					<div className={styles['feedback-page__modal-actions']}>
-						<button
-							className={styles['feedback-page__modal-cancel']}
-							onClick={() => setIsOpen(false)}
-						>
-							Отменить
-						</button>
-						<button
-							className={styles['feedback-page__modal-submit']}
-							onClick={handlePublishClick}
-						>
-							Отправить
-						</button>
-					</div>
-				</div>
-			</BottomSheet>
+				</BottomSheet>
+			)}
 			{modalFillOpen && (
 				<ModalNotification
 					text='Заполните все обязательные поля'
