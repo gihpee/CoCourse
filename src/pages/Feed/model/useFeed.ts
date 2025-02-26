@@ -25,6 +25,8 @@ export const useFeed = (activeFilter: string, userCourses: any) => {
 
 		let filteredCourses = [...data]
 
+		console.log('filteredCourses', filteredCourses)
+
 		if (activeFilter === 'Купленные') {
 			const boughtCourseIds = new Set(userCourses?.bought_courses || [])
 			filteredCourses = filteredCourses.filter(course =>
