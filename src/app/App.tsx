@@ -13,11 +13,9 @@ import UserProfile from 'src/pages/UserProfile/ui/UserProfile'
 import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
 import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
 import Create from '../pages/Create/Create'
-import CreateCourse from '../pages/Create/CreateCourse'
 // import EditCourse from '../pages/Create/EditCourse'
 import EditCourse from 'src/pages/EditCourse/EditCourse'
 import Feed from '../pages/Feed/Feed'
-import FeedbackUser from '../pages/Feedback/FeedbackUser'
 import SendFeedback from '../pages/Feedback/SendFeedback'
 import NavBar from '../pages/Navbar/Navbar'
 import Bio from '../pages/Profile/Bio'
@@ -173,7 +171,7 @@ function App() {
 							/>
 							<Route path={'profile'} element={<UserProfile />} />
 							<Route path={'course/:cid'} element={<CoursePage />} />
-							<Route path={'create-course'} element={<CreateCourse />} />
+							<Route path={'create-course'} element={<EditCourse />} />
 							<Route path={'send-feedback/:id'} element={<SendFeedback />} />
 							<Route path={'edit-profile/:id'} element={<EditProfile />} />
 							<Route path={'edit-bio/:id'} element={<Bio />} />
@@ -182,7 +180,7 @@ function App() {
 							<Route path={'edit-univ/:id'} element={<Univ />} />
 							<Route path={'edit-course/:cid'} element={<EditCourse />} />
 							<Route path={'course-feedback/:id'} element={<FeedbackPage />} />
-							<Route path={'user-feedback/:id'} element={<FeedbackUser />} />
+							<Route path={'user-feedback/:id'} element={<FeedbackPage />} />
 							<Route path={'user/:id'} element={<User />} />
 							<Route path={'wallet'} element={<Wallet />} />
 							<Route path={'connect-bot'} element={<ConnectBotPage />} />
