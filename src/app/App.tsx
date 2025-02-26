@@ -179,8 +179,14 @@ function App() {
 							<Route path={'edit-subj/:id'} element={<Subj />} />
 							<Route path={'edit-univ/:id'} element={<Univ />} />
 							<Route path={'edit-course/:cid'} element={<EditCourse />} />
-							<Route path={'course-feedback/:id'} element={<FeedbackPage />} />
-							<Route path={'user-feedback/:id'} element={<FeedbackPage />} />
+							<Route
+								path={'course-feedback/:id'}
+								element={<FeedbackPage isFullCourses={false} />}
+							/>
+							<Route
+								path={'user-feedback/:id'}
+								element={<FeedbackPage isFullCourses={true} />}
+							/>
 							<Route path={'user/:id'} element={<User />} />
 							<Route path={'wallet'} element={<Wallet />} />
 							<Route path={'connect-bot'} element={<ConnectBotPage />} />

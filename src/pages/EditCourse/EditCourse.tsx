@@ -314,11 +314,10 @@ const EditCourse: FC = () => {
 							alt='Обложка курса'
 							className={styles['edit-course__cover-img']}
 						/>
-					) : data.channel.photo ? (
+					) : data.channel?.photo ? (
 						<img
 							src={`https://comncoursetest.ru${data.channel.photo}`}
 							alt='Обложка курса'
-							className={styles['edit-course__cover-img']}
 						/>
 					) : (
 						<div className={styles['edit-course__modal-placeholder']}>
