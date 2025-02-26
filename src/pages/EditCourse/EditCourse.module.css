@@ -3,6 +3,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 5.641vw;
+	padding-bottom: 4.103vw;
 }
 
 .edit-course__ubject-variant {
@@ -69,7 +70,7 @@
 
 .edit-course__modal-placeholder-text {
 	margin-top: -1.795vw;
-	width: 32.821vw;
+	width: fit-content;
 	color: var(--active-color);
 	text-align: center;
 	font-family: 'Geologica';
@@ -269,6 +270,15 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 1.026vw;
-	padding-bottom: 4.103vw;
+	padding: 4.103vw 0;
 	background: var(--mini-background);
+}
+
+.edit-course__all-subjects {
+	background: var(--mini-background);
+	border-radius: 3.077vw;
+	box-shadow: 0 0 0.513vw 0.256vw #00000005, 0 8.205vw 16.41vw 0 #0000000a;
+	display: flex;
+	flex-direction: column;
+	width: 91.795vw;
 }

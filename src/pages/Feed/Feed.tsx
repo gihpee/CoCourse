@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useUserCoursesData from '../../entities/user/model/useUserCourses'
 import NavBar from '../../shared/components/NavBar/NavBar'
@@ -27,7 +28,10 @@ const Feed = () => {
 	const userId = window.Telegram.WebApp.initDataUnsafe.user.id
 	const userCourses = useUserCoursesData(userId, navigate)
 
+	const [activeFilter, setActiveFilter] = useState('Все курсы')
+
 	console.log(userCourses)
+	console.log(activeFilter)
 
 	return (
 		<div className={styles['feed']}>
@@ -36,7 +40,7 @@ const Feed = () => {
 				inputValue={inputValue}
 				onChange={e => startTransition(() => setInputValue(e.target.value))}
 			/>
-			<FeedFilters />
+			<FeedFilters onFilterChange={setActiveFilter} />
 			<FeedList filteredCourses={filteredData} isPending={isPending} />
 			<NavBar />
 		</div>
