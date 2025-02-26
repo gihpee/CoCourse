@@ -35,7 +35,7 @@ export const WalletVerification: FC = () => {
 					title='Подключите выплаты'
 					description='Добавь способ выплаты, чтобы мы могли начислять вознаграждения за продажи прямо на карту'
 					connectedPayments={connectedPayments}
-					path='/connect-payments'
+					path='/'
 				/>
 				<MyDataCard
 					title='Подключите кошелек'

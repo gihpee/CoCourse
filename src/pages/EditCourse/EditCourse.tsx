@@ -335,7 +335,7 @@ const EditCourse: FC = () => {
 				<h2 className={styles['edit-course__title']}>
 					{formData.Name
 						? formData.Name
-						: data.channel.name
+						: data.channel?.name
 						? data.channel.name
 						: 'Нет названия'}
 				</h2>

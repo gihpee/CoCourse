@@ -148,7 +148,7 @@ export const VerificationForm: FC = () => {
 									setBirthDate(date)
 									setFormData(prevData => ({
 										...prevData,
-										birthDate: date ? new Date(date).toISOString() : '',
+										birthDate: date ? new Date(date).toString() : '',
 									}))
 								}}
 								placeholderText='Дата рождения'
@@ -168,7 +168,7 @@ export const VerificationForm: FC = () => {
 									setPassportDate(date)
 									setFormData(prevData => ({
 										...prevData,
-										passportDate: date ? new Date(date).toISOString() : '',
+										passportDate: date ? new Date(date).toString() : '',
 									}))
 								}}
 								placeholderText='Дата выдачи'
