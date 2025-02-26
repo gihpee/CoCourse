@@ -216,7 +216,7 @@ const CourseCard: FC<ICourseCard> = ({
 		</div>
 	)
 
-	return isCoursePage ? (
+	return !isCoursePage ? (
 		content
 	) : (
 		<Link to={`/course/${itemCard.id}`}>{content}</Link>

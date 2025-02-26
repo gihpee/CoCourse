@@ -1,0 +1,225 @@
+.edit-course {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5.641vw;
+}
+
+.edit-course__ubject-variant {
+	display: flex;
+	height: 12.308vw;
+	width: 100%;
+	padding: 0vw 4.103vw;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.edit-course__ubject-variant-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.359vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-course__ubject-variant-img {
+	width: 5.128vw;
+	height: 5.128vw;
+}
+
+.edit-course__header {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 120%;
+}
+
+.edit-course__cover {
+	width: 91.282vw;
+	height: 24.359vw;
+	border-radius: 1.538vw;
+	overflow: hidden;
+}
+
+.edit-course__cover-img {
+	width: 91.282vw;
+	height: 24.359vw;
+	object-fit: contain;
+}
+
+.edit-course__modal-placeholder {
+	align-items: center;
+	background: var(--mini-background);
+	border-radius: 1.538vw;
+	display: flex;
+	justify-content: center;
+	width: 356px;
+	height: 95px;
+	flex-direction: column;
+}
+
+.edit-course__modal-placeholder-img {
+	width: 12.821vw;
+	height: 12.821vw;
+}
+
+.edit-course__modal-placeholder-text {
+	width: 32.821vw;
+	color: var(--active-color);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 110%;
+}
+
+.edit-course__title {
+	color: var(--main-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	width: 91.282vw;
+}
+
+.edit-course__wrapper-info {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	gap: 4.103vw;
+}
+
+.edit-course__field {
+	display: flex;
+	width: 91.026vw;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.edit-course__field-title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-course__price {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.564vw;
+	align-self: stretch;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-profile__exist-subject {
+	display: flex;
+	height: 9.231vw;
+	padding: 2.051vw;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--background);
+	gap: 2.308vw;
+}
+
+.edit-course__exist-subject-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	max-width: 66.154vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.edit-course__exist-subject-img {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.edit-course__exist-subject-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.edit-course__field-column-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.edit-course__field-field {
+	width: 91.026vw;
+	height: 9.744vw;
+	position: relative;
+}
+
+.edit-course__field-input {
+	padding: 2.564vw 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.edit-course__field-button {
+	position: absolute;
+	right: 1.282vw;
+	top: 0.513vw;
+}
+
+.edit-course__field-textarea {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.564vw;
+	align-self: stretch;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-course__field-add-theme {
+	width: 91.026vw;
+}
+
+.edit-course__field-add-theme-text {
+	color: var(--active-color);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}

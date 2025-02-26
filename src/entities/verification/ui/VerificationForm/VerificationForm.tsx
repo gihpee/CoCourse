@@ -71,7 +71,7 @@ export const VerificationForm: FC = () => {
 	const handleFileSelect = (name: string, file: File | null) => {
 		setFormData(prevData => ({
 			...prevData,
-			[name]: file,
+			[name]: file ? file.name : '',
 		}))
 	}
 
