@@ -51,6 +51,7 @@ export interface ICourse {
 	ton_address: string | null
 	name: string
 	image: string
+	createdAt?: string
 }
 
 export interface IChannel {

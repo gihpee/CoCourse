@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useState, useTransition } from 'react'
-import { filterCourses } from '../../../entities/course/lib/filterCourses'
-import { filterCoursesByName } from '../../../entities/course/lib/filterCoursesByName'
 import fetchGetCourses from '../../../entities/course/model/fetchGetCourses'
-import { ICourse } from '../../../entities/course/model/types'
+import { ICourse, IFeedback } from '../../../entities/course/model/types'
 
-export const useFeed = () => {
+export const useFeed = (activeFilter: string, userCourses: any) => {
 	const [data, setData] = useState<ICourse[]>([])
 	const [inputValue, setInputValue] = useState('')
 	const [isPending, startTransition] = useTransition()
@@ -13,7 +11,7 @@ export const useFeed = () => {
 		const fetchData = async () => {
 			try {
 				const result = await fetchGetCourses()
-				setData(result.slice().reverse())
+				setData(result)
 			} catch (error) {
 				console.error('Error fetching data:', error)
 			}
@@ -22,10 +20,45 @@ export const useFeed = () => {
 		fetchData()
 	}, [])
 
-	const filteredData = useMemo(
-		() => filterCourses(filterCoursesByName(data, inputValue)),
-		[data, inputValue]
-	)
+	const filteredData = useMemo(() => {
+		if (!data.length) return []
+
+		let filteredCourses = [...data]
+
+		if (activeFilter === 'Купленные') {
+			const boughtCourseIds = new Set(userCourses?.bought_courses || [])
+			filteredCourses = filteredCourses.filter(course =>
+				boughtCourseIds.has(course.id)
+			)
+		} else if (activeFilter === 'Недавние') {
+			filteredCourses.sort(
+				(a, b) =>
+					new Date(b.createdAt || 0).getTime() -
+					new Date(a.createdAt || 0).getTime()
+			)
+		} else {
+			filteredCourses.sort((a, b) => {
+				const getAverageRate = (feedback: IFeedback[]) => {
+					if (!feedback.length) return 0
+					const totalRate = feedback.reduce(
+						(sum, review) => sum + (review.rate || 0),
+						0
+					)
+					return totalRate / feedback.length
+				}
+
+				return getAverageRate(b.feedback) - getAverageRate(a.feedback)
+			})
+		}
+
+		if (inputValue) {
+			filteredCourses = filteredCourses.filter(course =>
+				course.name.toLowerCase().includes(inputValue.toLowerCase())
+			)
+		}
+
+		return filteredCourses
+	}, [data, inputValue, activeFilter, userCourses])
 
 	return { inputValue, setInputValue, filteredData, isPending, startTransition }
 }

@@ -26,7 +26,7 @@ const FeedFilters: FC<FeedFiltersProps> = ({ onFilterChange }) => {
 				<button
 					key={filter}
 					className={`${styles['feed__filter-item']} ${
-						activeFilter === filter ? styles['active'] : ''
+						activeFilter === filter ? styles['feed__filter-item_isActive'] : ''
 					}`}
 					onClick={() => handleFilterClick(filter)}
 				>
