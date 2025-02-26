@@ -4,13 +4,13 @@
 	padding: 2.051vw;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 4.103vw;
+	gap: 2.103vw;
 	border-radius: 1.538vw;
 	background: var(--mini-background);
 }
 
 .course-card__image-wrapper {
-	position: relative;
+	position: absolute;
 	width: 87.692vw;
 	/* height: 24.359vw; */
 }
@@ -163,7 +163,7 @@
 
 .course-card__modal-placeholder {
 	align-items: center;
-	background: var(--mini-background);
+	background: var(--background);
 	border-radius: 1.538vw;
 	display: flex;
 	justify-content: center;

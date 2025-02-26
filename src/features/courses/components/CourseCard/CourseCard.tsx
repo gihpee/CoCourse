@@ -137,7 +137,10 @@ const CourseCard: FC<ICourseCard> = ({
 						/>
 						<p className={styles['course-card__status-text']}>На модерации</p>
 					</div>
-				) : !itemCard.on_moderation && !itemCard.is_draft && !isCoursePage ? (
+				) : !itemCard.on_moderation &&
+				  !itemCard.is_draft &&
+				  !isCoursePage &&
+				  !isFeedPage ? (
 					<div className={styles['course-card__status']}>
 						<div
 							className={cn(

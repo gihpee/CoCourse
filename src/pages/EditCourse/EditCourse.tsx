@@ -302,35 +302,41 @@ const EditCourse: FC = () => {
 
 	return (
 		<div className={styles['edit-course']}>
-			<h1 className={styles['edit-course__header']}>Детали курса</h1>
-			<div className={styles['edit-course__cover']}>
-				{imageSrc ? (
-					<img
-						src={`https://comncoursetest.ru${imageSrc}`}
-						alt='Обложка курса'
-						className={styles['edit-course__cover-img']}
-					/>
-				) : (
-					<div className={styles['edit-course__modal-placeholder']}>
+			<div className={styles['edit-course__wrapper-head']}>
+				<h1 className={styles['edit-course__header']}>Детали курса</h1>
+				<div className={styles['edit-course__cover']}>
+					{imageSrc ? (
 						<img
-							src={Camera}
-							alt=''
-							className={styles['edit-course__modal-placeholder-img']}
+							src={`https://comncoursetest.ru${imageSrc}`}
+							alt='Обложка курса'
+							className={styles['edit-course__cover-img']}
 						/>
-						<p className={styles['edit-course__modal-placeholder-text']}>
-							Обложка отсутствует
-						</p>
-					</div>
-				)}
+					) : (
+						<div className={styles['edit-course__modal-placeholder']}>
+							<img
+								src={Camera}
+								alt=''
+								className={styles['edit-course__modal-placeholder-img']}
+							/>
+							<p className={styles['edit-course__modal-placeholder-text']}>
+								Обложка отсутствует
+							</p>
+						</div>
+					)}
+				</div>
+				<h2 className={styles['edit-course__title']}>{formData.Name}</h2>
 			</div>
-			<h2 className={styles['edit-course__title']}>{formData.Name}</h2>
 
 			<div className={styles['edit-course__wrapper-info']}>
 				<div className={styles['edit-course__field']}>
 					<h3 className={styles['edit-course__field-title']}>
 						Стоимость курса
 					</h3>
-					<input type='text' className={styles['edit-course__price']} />
+					<input
+						type='number'
+						placeholder='0'
+						className={styles['edit-course__price']}
+					/>
 				</div>
 
 				<div className={styles['edit-course__field']}>
@@ -420,7 +426,10 @@ const EditCourse: FC = () => {
 				</div>
 				<div className={styles['edit-course__field']}>
 					<h3 className={styles['edit-course__field-title']}>Описание</h3>
-					<input type='text' />
+					<input
+						type='text'
+						className={styles['edit-course__field-description']}
+					/>
 				</div>
 				<div className={styles['edit-course__field']}>
 					<h3 className={styles['edit-course__field-title']}>Содержание</h3>
@@ -468,9 +477,9 @@ const EditCourse: FC = () => {
 			</div>
 
 			{formData.is_draft ? (
-				<MainButton text='ОПУБЛИКОВАТЬ' onClickEvent={handlePublishDraft} />
+				<MainButton text='Опубликовать' onClickEvent={handlePublishDraft} />
 			) : (
-				<MainButton text='ОПУБЛИКОВАТЬ' onClickEvent={handlePublish} />
+				<MainButton text='Опубликовать' onClickEvent={handlePublish} />
 			)}
 
 			{/* {modalFillOpen && (
