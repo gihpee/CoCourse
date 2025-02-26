@@ -31,6 +31,11 @@ export const useFeed = (activeFilter: string, userCourses: any) => {
 				boughtCourseIds.has(course.id)
 			)
 		} else if (activeFilter === 'Недавние') {
+			console.log(
+				'Все даты перед сортировкой:',
+				filteredCourses.map(c => c.createdAt)
+			)
+
 			filteredCourses.sort(
 				(a, b) =>
 					new Date(b.createdAt || 0).getTime() -
