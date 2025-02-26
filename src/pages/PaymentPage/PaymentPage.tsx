@@ -31,6 +31,12 @@ const PaymentPage: FC = () => {
 		window.history.back()
 	})
 
+	function handleFail() {
+		setNotification(false)
+		window.document.body.style.overflow = 'hidden'
+		document.documentElement.style.overflow = 'hidden'
+	}
+
 	const location = useLocation()
 	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
@@ -164,7 +170,7 @@ const PaymentPage: FC = () => {
 					<ModalNotification
 						text='Подключите криптокошелёк в профиле'
 						title='Внимание'
-						onClose={() => setNotification(false)}
+						onClose={handleFail}
 					/>
 				</div>
 			)}

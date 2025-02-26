@@ -13,6 +13,12 @@ export const WalletBalance: FC = () => {
 
 	const formattedBalance = balance.toLocaleString('ru-RU')
 
+	function handleFail() {
+		setWithdrawModalOpen(false)
+		window.document.body.style.overflow = 'hidden'
+		document.documentElement.style.overflow = 'hidden'
+	}
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await fetchUserTransactions(id)
@@ -55,7 +61,7 @@ export const WalletBalance: FC = () => {
 					<ModalNotification
 						title='Внимание'
 						text='Вывод средств возможен при балансе от 6000 рублей'
-						onClose={() => setWithdrawModalOpen(false)}
+						onClose={handleFail}
 					/>
 				</div>
 			)}

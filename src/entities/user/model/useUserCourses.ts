@@ -23,6 +23,8 @@ const useUserCoursesData = (
 				)
 				const result = await response.json()
 
+				console.log('result', result)
+
 				if (response.status === 201) {
 					navigate('/registration', { state: { data: result } })
 					setUserCourses(null)

@@ -55,6 +55,17 @@ const EditCourse: FC = () => {
 	console.log(modalVOpen)
 	console.log(userData)
 
+	function handleFail() {
+		setModalFillOpen(false)
+		window.document.body.style.overflow = 'hidden'
+		document.documentElement.style.overflow = 'hidden'
+	}
+	function handleFail2() {
+		setModalVOpen(false)
+		window.document.body.style.overflow = 'hidden'
+		document.documentElement.style.overflow = 'hidden'
+	}
+
 	const [formData, setFormData] = useState<FormData>({
 		Name: '',
 		Univ: '',
@@ -186,6 +197,7 @@ const EditCourse: FC = () => {
 				formData.Subject === ''
 			) {
 				setModalFillOpen(true)
+				console.log(formData)
 			} else {
 				if (cid) {
 					try {
@@ -208,6 +220,7 @@ const EditCourse: FC = () => {
 				formData.Desc === '' ||
 				formData.Subject === ''
 			) {
+				console.log(formData)
 				setModalFillOpen(true)
 			} else {
 				if (cid) {
@@ -529,7 +542,7 @@ const EditCourse: FC = () => {
 			{modalFillOpen && (
 				<div className={styles['edit-course__notification']}>
 					<ModalNotification
-						onClose={() => setModalFillOpen(false)}
+						onClose={handleFail}
 						text={modalText}
 						title='Внимание'
 					/>
@@ -538,10 +551,10 @@ const EditCourse: FC = () => {
 			{modalVOpen && (
 				<div className={styles['edit-course__notification']}>
 					<ModalNotification
-						onClose={() => setModalVOpen(false)}
+						onClose={handleFail2}
 						text={modalText}
 						title='Внимание'
-					/>{' '}
+					/>
 				</div>
 			)}
 		</div>
