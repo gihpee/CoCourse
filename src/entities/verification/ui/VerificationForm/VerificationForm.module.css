@@ -110,3 +110,38 @@
 	background-color: var(--overlay);
 	z-index: 500;
 }
+
+.verification__checkbox-label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.verification__checkbox {
+	display: none;
+}
+
+.verification__checkbox-custom {
+	width: 4.103vw;
+	height: 4.103vw;
+	background-color: var(--active-color);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 1.026vw;
+}
+
+.verification__checkbox-custom img {
+	width: 1.795vw;
+	height: 1.795vw;
+}
+
+.verification__checkbox-text {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}

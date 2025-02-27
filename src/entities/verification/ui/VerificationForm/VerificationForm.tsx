@@ -11,6 +11,7 @@ import VerificationInput from 'src/shared/components/VerificationInput/Verificat
 import PassportData from '../../../../shared/assets/profile/PassportData.svg'
 import SubscribeData from '../../../../shared/assets/profile/SubscribeData.svg'
 import Check from '../../../../shared/assets/wallet/Check.svg'
+import CheckIcon from '../../../../shared/assets/wallet/CheckIcon.svg'
 import styles from './VerificationForm.module.css'
 
 export const VerificationForm: FC = () => {
@@ -120,6 +121,16 @@ export const VerificationForm: FC = () => {
 		}
 	}
 
+	const [noMiddleName, setNoMiddleName] = useState(false)
+
+	const handleCheckboxChange = () => {
+		setNoMiddleName(prev => !prev)
+		setFormData(prev => ({
+			...prev,
+			secondName: !noMiddleName ? '-' : '',
+		}))
+	}
+
 	return (
 		<div className={styles['verification']}>
 			{modalFillOpen ? (
@@ -169,19 +180,25 @@ export const VerificationForm: FC = () => {
 							inputName='Name'
 						/>
 						<div className={styles['verification__input-group']}>
-							<VerificationInput
-								placeholder='Отчество'
-								inputValue={formData.secondName || ''}
-								inputFunction={handleChange}
-								inputName='secondName'
-							/>
-							<label className={styles['verification__no-middle-name']}>
-								<input
-									type='radio'
-									name='no-middle-name'
-									className={styles['verification__no-middle-name-input']}
+							{!noMiddleName && (
+								<VerificationInput
+									placeholder='Отчество'
+									inputValue={formData.secondName || ''}
+									inputFunction={handleChange}
+									inputName='secondName'
 								/>
-								<p className={styles['verification__no-middle-name-text']}>
+							)}
+							<label className={styles['verification__checkbox-label']}>
+								<input
+									type='checkbox'
+									checked={noMiddleName}
+									onChange={handleCheckboxChange}
+									className={styles['verification__checkbox']}
+								/>
+								<span className={styles['verification__checkbox-custom']}>
+									{noMiddleName && <img src={CheckIcon} alt='✔' />}
+								</span>
+								<p className={styles['verification__checkbox-text']}>
 									Нет отчества
 								</p>
 							</label>
