@@ -52,9 +52,12 @@ const EditProfile: FC = () => {
 	})
 
 	const handleNotify = () => {
-		setIsNotify(!isNotify)
+		console.log('handleNotify вызван!')
+		setIsNotify(prev => !prev)
 	}
-	console.log(isNotify)
+	useEffect(() => {
+		console.log('isNotify изменился:', isNotify)
+	}, [isNotify])
 
 	useEffect(() => {
 		if (userData?.description) {
