@@ -1,4 +1,4 @@
-import { postEvent } from '@telegram-apps/sdk'
+import { postEvent, retrieveLaunchParams } from '@telegram-apps/sdk'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -14,6 +14,7 @@ import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
 import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
 import Create from '../pages/Create/Create'
 // import EditCourse from '../pages/Create/EditCourse'
+import CreateCourse from 'src/pages/CreateCourse/CreateCourse'
 import EditCourse from 'src/pages/EditCourse/EditCourse'
 import Feed from '../pages/Feed/Feed'
 import SendFeedback from '../pages/Feedback/SendFeedback'
@@ -85,22 +86,20 @@ function App() {
 		}
 	}, [])
 
-	// useEffect(() => {
-	// 	const lp = retrieveLaunchParams()
+	useEffect(() => {
+		const lp = retrieveLaunchParams()
 
-	// 	if (
-	// 		!lp ||
-	// 		['macos', 'tdesktop', 'weba', 'web', 'webk'].includes(lp.platform)
-	// 	) {
-	// 		return
-	// 	}
+		if (
+			!lp ||
+			['macos', 'tdesktop', 'weba', 'web', 'webk'].includes(lp.platform)
+		) {
+			return
+		}
 
-	// 	postEvent('web_app_expand')
-
-	// 	document.body.classList.add('mobile-body')
-	// 	document.getElementById('wrap')?.classList.add('mobile-wrap')
-	// 	document.getElementById('content')?.classList.add('mobile-content')
-	// }, [])
+		document.body.classList.add('mobile-body')
+		document.getElementById('wrap')?.classList.add('mobile-wrap')
+		document.getElementById('content')?.classList.add('mobile-content')
+	}, [])
 
 	// useEffect(() => {
 	// 	const script = document.createElement('script')
@@ -171,7 +170,7 @@ function App() {
 							/>
 							<Route path={'profile'} element={<UserProfile />} />
 							<Route path={'course/:cid'} element={<CoursePage />} />
-							<Route path={'create-course'} element={<EditCourse />} />
+							<Route path={'create-course'} element={<CreateCourse />} />
 							<Route path={'send-feedback/:id'} element={<SendFeedback />} />
 							<Route path={'edit-profile/:id'} element={<EditProfile />} />
 							<Route path={'edit-bio/:id'} element={<Bio />} />

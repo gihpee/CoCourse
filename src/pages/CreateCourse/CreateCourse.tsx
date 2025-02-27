@@ -1,6 +1,7 @@
-import { FC, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { publishCourse } from 'src/entities/course/model/fetchEditCourse'
+import { FC, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { fetchCreateCourse } from 'src/entities/course/model/fetchCreateCourse'
+import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
 import MainButton from 'src/shared/components/MainButton/MainButton'
 import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import Camera from '../../shared/assets/feedback/Camera.svg'
@@ -10,114 +11,81 @@ import CloseImg from '../../shared/assets/wallet/CloseImg.svg'
 import InputWithVariants from '../EditProfile/ui/InputWithVariants/InputWithVariants'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
-import styles from './EditCourse.module.css'
+import styles from './CreateCourse.module.css'
 
-interface FormData {
-	Name: string
-	Univ: string
-	Course: string
-	Desc: string
-	Subject: string
-	topics: any[]
-	Price: any
-	ChannelUrl: string
-	is_draft: boolean
-}
+const CreateCourse: FC = () => {
+	const location = useLocation()
+	const data = location.state?.data || {}
 
-const EditCourse: FC = () => {
-	const { cid } = useParams()
 	const navigate = useNavigate()
 
-	const [formData, setFormData] = useState<FormData>({
-		Name: '',
+	const [formData, setFormData] = useState<{
+		Name: string
+		Univ: string
+		Course: string
+		Desc: string
+		Price: number | null
+		ChannelUrl: string
+		Subject: string
+		topics: { topic: string; desc: string }[]
+	}>({
+		Name: data?.channel?.name || '',
 		Univ: '',
-		Course: '',
+		Course: '1 курс, 1 семестр',
 		Desc: '',
 		Price: null,
-		ChannelUrl: '',
-		is_draft: false,
+		ChannelUrl: data?.channel?.url || '',
 		Subject: '',
 		topics: [],
 	})
 
-	const [imageSrc, setImageSrc] = useState(null)
-
 	const [modalFillOpen, setModalFillOpen] = useState(false)
-
 	// const userFriendlyAddress = useTonAddress()
-	const [verifyed, setVerifyed] = useState(false)
 	const [modalText, setModalText] = useState('')
 
-	const handleOkBtnClick = () => {
-		setModalFillOpen(false)
-	}
+	// const address = useTonAddress()
 
-	useEffect(() => {
-		const fetchCourses = async () => {
-			try {
-				const response = await fetch(
-					`https://comncoursetest.ru/api/get-courses/?id=${cid}`
-				)
-				const data = await response.json()
-
-				setFormData(prevData => ({
-					...prevData,
-					Name: data.channel.name,
-					Univ: data.university,
-					Desc: data.description,
-					Subject: data.subject,
-					topics: Array.isArray(data.topics) ? data.topics : [],
-					Price: data.price,
-					is_draft: data.is_draft,
-				}))
-
-				setImageSrc(data.channel.photo)
-				setVerifyed(data.user.verifyed)
-			} catch (error) {
-				console.error('Error fetching data:', error)
-			}
-		}
-
-		fetchCourses()
-	}, [cid])
-
-	/*useEffect(() => {
-        const textarea = document.querySelector('.bio_textarea');
-        if (textarea && formData.Desc) {
-          textarea.style.height = 'auto';
-          textarea.style.height = textarea.scrollHeight + 'px';
-        }
-      }, [formData.Desc]);*/
 	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+		e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
 	) => {
 		const { name, value, type } = e.target
 
 		if (type === 'textarea') {
-			e.target.style.height = 'auto'
-			e.target.style.height = e.target.scrollHeight - 16 + 'px'
+			handleBioChangeMinus(
+				e as React.ChangeEvent<HTMLTextAreaElement>,
+				newValue => {
+					setFormData(prevData => ({
+						...prevData,
+						[name]: newValue,
+					}))
+				}
+			)
+		} else {
+			setFormData(prevData => ({
+				...prevData,
+				[name]: value,
+			}))
 		}
-
-		setFormData(prevData => ({
-			...prevData,
-			[name]: value,
-		}))
 	}
 
 	const addEl = () => {
 		setFormData(prevData => ({
 			...prevData,
-			topics: Array.isArray(prevData.topics)
-				? [...prevData.topics, { topic: '', desc: '' }]
-				: [{ topic: '', desc: '' }],
+			topics: [...prevData.topics, { topic: '', desc: '' }],
 		}))
 	}
 
 	const handleRemoveTopic = (indexToRemove: number) => {
 		setFormData(prevData => ({
 			...prevData,
-			topics: prevData.topics.filter((_, index) => index !== indexToRemove),
+			topics: prevData.topics.filter(
+				(_, index) => index !== Number(indexToRemove)
+			),
 		}))
+	}
+
+	const handleOkBtnClick = () => {
+		setModalFillOpen(false)
 	}
 
 	const handleTopicChange = (
@@ -126,8 +94,6 @@ const EditCourse: FC = () => {
 	) => {
 		const { name, value, type } = e.target
 
-		const field = name.split('_')[0]
-
 		if (type === 'textarea') {
 			e.target.style.height = 'auto'
 			e.target.style.height = e.target.scrollHeight - 16 + 'px'
@@ -135,7 +101,11 @@ const EditCourse: FC = () => {
 
 		setFormData(prevData => {
 			const newTopics = [...prevData.topics]
+
+			const [field] = name.split('_') as ['topic' | 'desc']
+
 			newTopics[index][field] = value
+
 			return {
 				...prevData,
 				topics: newTopics,
@@ -143,22 +113,22 @@ const EditCourse: FC = () => {
 		})
 	}
 
-	const handlePublishDraft = async () => {
-		// if (!userFriendlyAddress && !verifyed) {
+	const handlePublish = async () => {
+		// if (!userFriendlyAddress && data.user.verifyed !== 'Пройдена') {
 		// 	setModalText(
 		// 		'Для создания курса необходимо пройти верификацию и подключить выплаты'
 		// 	)
 		// 	setModalLink('/connect-wallet')
 		// 	setModalButton('Пройти')
-		// 	setModalVOpen(true)
+		// 	setModalOpen(true)
 		// }
 		// else if (!userFriendlyAddress) {
 		// 	setModalText('Для создания курса необходимо подключить выплаты')
 		// 	setModalLink('/connect-walletN')
 		// 	setModalButton('Подключить')
-		// 	setModalVOpen(true)
+		// 	setModalOpen(true)
 		// }
-		if (!verifyed) {
+		if (data.user.verifyed !== 'Пройдена') {
 			setModalText('Для создания курса необходимо пройти верификацию')
 		} else {
 			if (
@@ -169,48 +139,57 @@ const EditCourse: FC = () => {
 			) {
 				setModalFillOpen(true)
 			} else {
-				if (cid) {
-					try {
-						await publishCourse(cid, formData)
-						navigate('/profile')
-					} catch (error) {
-						setModalText('Произошла ошибка при публикации курса')
-					}
+				let university = formData.Univ || 'Не указано'
+				let description = formData.Desc || 'Не указано'
+				let subjects = formData.Subject || 'Не указано'
+				let topics = formData.topics
+				let price = formData.Price || 0
+				let course_id = data.id
+				let is_draft = false
+				let address = ''
+
+				try {
+					await fetchCreateCourse({
+						university,
+						description,
+						subjects,
+						topics,
+						price,
+						course_id,
+						is_draft,
+						address,
+					})
+
+					navigate('/profile')
+				} catch (error) {
+					console.log('Failed to publish course', error)
 				}
 			}
 		}
 	}
 
-	const handlePublish = async () => {
-		if (!formData.is_draft) {
-			if (
-				formData.Name === '' ||
-				formData.Univ === '' ||
-				formData.Desc === '' ||
-				formData.Subject === ''
-			) {
-				setModalFillOpen(true)
-			} else {
-				if (cid) {
-					try {
-						await publishCourse(cid, formData)
-						navigate('/profile')
-					} catch (error) {
-						setModalText('Произошла ошибка при публикации курса')
-					}
-				}
-			}
-		} else {
-			if (cid) {
-				try {
-					await publishCourse(cid, formData)
-					navigate('/profile')
-				} catch (error) {
-					setModalText('Произошла ошибка при публикации курса')
-				}
-			}
-		}
-	}
+	// const handleSaveDraft = async () => {
+	// 	let university = formData.Univ
+	// 	let description = formData.Desc
+	// 	let subjects = formData.Subject
+	// 	let topics = formData.topics
+	// 	let price = formData.Price || 0
+	// 	let course_id = data.id
+	// 	let is_draft = true
+
+	// 	await fetchCreateCourse({
+	// 		university,
+	// 		description,
+	// 		subjects,
+	// 		topics,
+	// 		price,
+	// 		course_id,
+	// 		is_draft,
+	// 		address,
+	// 	})
+
+	// 	navigate('/profile')
+	// }
 
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
@@ -332,9 +311,9 @@ const EditCourse: FC = () => {
 			<div className={styles['edit-course__wrapper-head']}>
 				<h1 className={styles['edit-course__header']}>Детали курса</h1>
 				<div className={styles['edit-course__cover']}>
-					{imageSrc ? (
+					{data?.channel?.photo ? (
 						<img
-							src={`https://comncoursetest.ru${imageSrc}`}
+							src={`https://comncoursetest.ru${data.channel.photo}`}
 							alt='Обложка курса'
 							className={styles['edit-course__cover-img']}
 						/>
@@ -352,7 +331,7 @@ const EditCourse: FC = () => {
 					)}
 				</div>
 				<h2 className={styles['edit-course__title']}>
-					{formData.Name ? formData.Name : 'Нет названия'}
+					{formData?.Name ? formData.Name : 'Нет названия'}
 				</h2>
 			</div>
 
@@ -511,11 +490,7 @@ const EditCourse: FC = () => {
 				</div>
 			</div>
 
-			{formData.is_draft ? (
-				<MainButton text='Опубликовать' onClickEvent={handlePublishDraft} />
-			) : (
-				<MainButton text='Опубликовать' onClickEvent={handlePublish} />
-			)}
+			<MainButton text='Опубликовать' onClickEvent={handlePublish} />
 
 			{modalFillOpen && (
 				<div className={styles['edit-course__notification']}>
@@ -530,4 +505,4 @@ const EditCourse: FC = () => {
 	)
 }
 
-export default EditCourse
+export default CreateCourse

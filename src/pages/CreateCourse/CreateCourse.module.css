@@ -1,0 +1,294 @@
+.edit-course {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5.641vw;
+	padding-bottom: 4.103vw;
+}
+
+.edit-course__ubject-variant {
+	display: flex;
+	height: 12.308vw;
+	width: 100%;
+	padding: 0vw 4.103vw;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.edit-course__ubject-variant-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.359vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-course__ubject-variant-img {
+	width: 5.128vw;
+	height: 5.128vw;
+}
+
+.edit-course__header {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 120%;
+	margin-bottom: 4.103vw;
+}
+
+.edit-course__cover {
+	width: 91.282vw;
+	height: 91.282vw;
+	border-radius: 1.538vw;
+	overflow: hidden;
+}
+
+.edit-course__cover-img {
+	width: 91.282vw;
+	height: 91.282vw;
+	object-fit: cover;
+}
+
+.edit-course__modal-placeholder {
+	align-items: center;
+	background: var(--background);
+	border-radius: 1.538vw;
+	display: flex;
+	justify-content: center;
+	width: 91.282vw;
+	height: 91.282vw;
+	flex-direction: column;
+}
+
+.edit-course__modal-placeholder-img {
+	width: 20vw;
+	height: 20vw;
+}
+
+.edit-course__modal-placeholder-text {
+	margin-top: -1.795vw;
+	width: fit-content;
+	color: var(--active-color);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 110%;
+}
+
+.edit-course__title {
+	color: var(--main-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	width: 91.282vw;
+}
+
+.edit-course__wrapper-info {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	gap: 4.103vw;
+}
+
+.edit-course__field {
+	display: flex;
+	width: 91.026vw;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.edit-course__field-title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-course__price {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.564vw;
+	align-self: stretch;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: none;
+	outline: none;
+}
+
+.edit-profile__exist-subject {
+	display: flex;
+	height: 9.231vw;
+	padding: 2.051vw;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--background);
+	gap: 2.308vw;
+}
+
+.edit-course__exist-subject {
+	display: flex;
+	height: 9.231vw;
+	padding: 2.051vw;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--background);
+	gap: 2.308vw;
+}
+
+.edit-course__exist-subject-text {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	max-width: 66.154vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.edit-course__exist-subject-img {
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.edit-course__exist-subject-button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 4.103vw;
+	height: 4.103vw;
+}
+
+.edit-course__field-column-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.edit-course__field-field {
+	width: 91.026vw;
+	height: 9.744vw;
+	position: relative;
+}
+
+.edit-course__field-input {
+	padding: 2.564vw 2.051vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: none;
+	outline: none;
+	width: 100%;
+}
+.edit-course__field-button-img {
+	position: absolute;
+	width: 4.103vw;
+	height: 4.103vw;
+	right: 2.051vw;
+	top: 2.564vw;
+}
+
+.edit-course__field-textarea {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.564vw;
+	align-self: stretch;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: none;
+	outline: none;
+	resize: none;
+	height: 9.487vw;
+}
+
+.edit-course__field-add-theme {
+	width: 91.026vw;
+}
+
+.edit-course__field-add-theme-text {
+	color: var(--active-color);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.edit-course__field-description {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	width: 91.282vw;
+	flex-direction: column;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: none;
+	outline: none;
+}
+
+.edit-course__wrapper-head {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.026vw;
+	padding: 4.103vw 0;
+	background: var(--mini-background);
+}
+
+.edit-course__all-subjects {
+	background: var(--mini-background);
+	border-radius: 3.077vw;
+	box-shadow: 0 0 0.513vw 0.256vw #00000005, 0 8.205vw 16.41vw 0 #0000000a;
+	display: flex;
+	flex-direction: column;
+	width: 91.795vw;
+}
+
+.edit-course__notification {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--overlay);
+	z-index: 500;
+}
