@@ -55,6 +55,7 @@ const RegistrationPage: FC = () => {
 
 	const handleNotify = () => {
 		setIsNotify(!isNotify)
+		console.log(isNotify)
 	}
 
 	const handleSelectChangeSubject = (
