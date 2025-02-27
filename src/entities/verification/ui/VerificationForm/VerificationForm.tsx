@@ -53,6 +53,14 @@ export const VerificationForm: FC = () => {
 		console.log('Обновленные formData:', formData)
 	}, [formData])
 
+	useEffect(() => {
+		setFormData(prevData => ({
+			...prevData,
+			birthDate: birthDate ? birthDate.toISOString() : '',
+			passportDate: passportDate ? passportDate.toISOString() : '',
+		}))
+	}, [birthDate, passportDate])
+
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
@@ -186,6 +194,12 @@ export const VerificationForm: FC = () => {
 								dateFormat='dd.MM.yyyy'
 							/>
 						</div>
+						<VerificationInput
+							placeholder='Место рождения'
+							inputValue={formData.birthPlace || ''}
+							inputFunction={handleChange}
+							inputName='birthPlace'
+						/>
 						<VerificationInput
 							placeholder='Серия и номер'
 							inputValue={formData.idNum || ''}

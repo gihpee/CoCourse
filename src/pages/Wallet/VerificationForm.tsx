@@ -247,14 +247,6 @@ function VerificationForm() {
 					className='field'
 					style={{ border: 'none', outline: 'none' }}
 					type='text'
-					placeholder='Место рождения'
-					name='birthPlace'
-					onChange={handleChange}
-				/>
-				<input
-					className='field'
-					style={{ border: 'none', outline: 'none' }}
-					type='text'
 					placeholder='Серия и номер паспорта (1234 123456)'
 					name='idNum'
 					value={formData.idNum || ''}
