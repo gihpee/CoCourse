@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import useTheme from 'src/shared/hooks/useTheme'
@@ -13,7 +14,9 @@ const LandingPage: FC = () => {
 	return (
 		<div className={styles['landing']}>
 			<div className={styles['landing__wrapper']}>
-				<div className={styles['landing__logo landing__logo_top']}>
+				<div
+					className={cn(styles['landing__logo'], styles['landing__logo_top'])}
+				>
 					{theme === 'dark' ? (
 						<>
 							<img className={styles['landing__letter']} src={c} alt='C' />
@@ -46,7 +49,7 @@ const LandingPage: FC = () => {
 					>
 						пользовательское соглашение
 					</Link>{' '}
-					и
+					и{' '}
 					<Link
 						to='https://disk.yandex.ru/i/Il8aGfCCgzVbnw'
 						target='_blank'
@@ -62,7 +65,12 @@ const LandingPage: FC = () => {
 				<Link to='/registration'>
 					<button className={styles['landing__button']}>Создать профиль</button>
 				</Link>
-				<div className={styles['landing__logo landing__logo_bottom']}>
+				<div
+					className={cn(
+						styles['landing__logo'],
+						styles['landing__logo_bottom']
+					)}
+				>
 					{theme === 'dark' ? (
 						<>
 							<img className={styles['landing__letter']} src={m} alt='M' />

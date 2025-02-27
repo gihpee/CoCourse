@@ -5,11 +5,18 @@
 }
 
 .landing__wrapper {
+	position: absolute;
+	overflow: hidden;
+	bottom: 0;
+	overflow: hidden;
 	position: relative;
 	width: 105.641vw;
 	height: 189.231vw;
-	border-radius: 15.385vw;
+	border-radius: 15.385vw 15.385vw 0 0;
 	background-color: #f55b2d;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .landing__logo {
@@ -34,6 +41,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 1.282vw;
+	margin-top: 67.692vw;
 }
 
 .landing__title {
@@ -70,6 +78,7 @@
 }
 
 .landing__button {
+	margin-top: 8.205vw;
 	display: flex;
 	width: 91.282vw;
 	padding: 3.846vw 2.564vw;
@@ -77,6 +86,13 @@
 	align-items: center;
 	border-radius: 1.538vw;
 	background: var(--background);
+	border: none;
+	color: var(--active-color);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
 }
 
 .landing__logo_bottom {
@@ -92,4 +108,5 @@
 	text-decoration-thickness: auto;
 	text-underline-offset: auto;
 	text-underline-position: from-font;
+	color: var(--background);
 }
