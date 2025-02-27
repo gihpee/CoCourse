@@ -24,7 +24,7 @@ const useUserCoursesData = (
 				console.log('result', result)
 
 				if (response.status === 201) {
-					sessionStorage.setItem('userCourses', result)
+					sessionStorage.setItem('userCourses', JSON.stringify(result))
 					navigate('/landing')
 					setUserCourses(null)
 				} else {

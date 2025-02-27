@@ -3,9 +3,13 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import useTheme from 'src/shared/hooks/useTheme'
 import c from '../../shared/assets/landing/c.svg'
+import cLight from '../../shared/assets/landing/cLight.svg'
 import m from '../../shared/assets/landing/m.svg'
+import mLight from '../../shared/assets/landing/mLight.svg'
 import n from '../../shared/assets/landing/n.svg'
+import nLight from '../../shared/assets/landing/nLight.svg'
 import o from '../../shared/assets/landing/o.svg'
+import oLight from '../../shared/assets/landing/oLight.svg'
 import styles from './LandingPage.module.css'
 
 const LandingPage: FC = () => {
@@ -24,12 +28,20 @@ const LandingPage: FC = () => {
 							<img className={styles['landing__letter']} src={c} alt='C' />
 							<img className={styles['landing__letter']} src={o} alt='O' />
 						</>
-					) : (
+					) : theme === 'light' ? (
 						<>
-							<img className={styles['landing__letter']} src={c} alt='CLight' />
-							<img className={styles['landing__letter']} src={o} alt='OLight' />
+							<img
+								className={styles['landing__letter']}
+								src={cLight}
+								alt='CLight'
+							/>
+							<img
+								className={styles['landing__letter']}
+								src={oLight}
+								alt='OLight'
+							/>
 						</>
-					)}
+					) : null}
 				</div>
 				<div className={styles['landing__content']}>
 					<h1 className={styles['landing__title']}>Common Course</h1>
@@ -75,15 +87,23 @@ const LandingPage: FC = () => {
 				>
 					{theme === 'dark' ? (
 						<>
-							<img className={styles['landing__letter']} src={m} alt='M' />
-							<img className={styles['landing__letter']} src={n} alt='N' />
+							<img className={styles['landing__letter']} src={m} alt='C' />
+							<img className={styles['landing__letter']} src={n} alt='O' />
 						</>
-					) : (
+					) : theme === 'light' ? (
 						<>
-							<img className={styles['landing__letter']} src={m} alt='MLight' />
-							<img className={styles['landing__letter']} src={n} alt='NLight' />
+							<img
+								className={styles['landing__letter']}
+								src={mLight}
+								alt='CLight'
+							/>
+							<img
+								className={styles['landing__letter']}
+								src={nLight}
+								alt='OLight'
+							/>
 						</>
-					)}
+					) : null}
 				</div>
 			</div>
 		</div>
