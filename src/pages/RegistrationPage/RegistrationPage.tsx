@@ -24,7 +24,9 @@ const RegistrationPage: FC = () => {
 	const navigate = useNavigate()
 
 	const storedData = sessionStorage.getItem('userCourses')
+	console.log('storedData', storedData)
 	const data = storedData ? JSON.parse(storedData) : {}
+	console.log('storedDatadata', data)
 
 	const [imageSrc, setImageSrc] = useState(data.photo_url)
 	const [isNotify, setIsNotify] = useState(true)
