@@ -22,8 +22,12 @@ import InputWithVariants from './ui/InputWithVariants/InputWithVariants'
 import LinksFAQ from './ui/LinksFAQ/LinksFAQ'
 
 const EditProfile: FC = () => {
-	const { userData, isNotify, selectedOptionsProfile, uniValueProfile } =
-		useUserProfile()
+	const {
+		userData,
+		isNotify: isNotifyFromProfile,
+		selectedOptionsProfile,
+		uniValueProfile,
+	} = useUserProfile()
 
 	console.log('selectedOptionsProfile', selectedOptionsProfile)
 
@@ -32,6 +36,7 @@ const EditProfile: FC = () => {
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 	const [uniValue, setUniValue] = useState('')
 	const [bioValue, setBioValue] = useState('')
+	const [isNotify, setIsNotify] = useState(isNotifyFromProfile)
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
@@ -45,6 +50,11 @@ const EditProfile: FC = () => {
 	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
 		window.history.back()
 	})
+
+	const handleNotify = () => {
+		setIsNotify(!isNotify)
+	}
+	console.log(isNotify)
 
 	useEffect(() => {
 		if (userData?.description) {
@@ -293,6 +303,7 @@ const EditProfile: FC = () => {
 						isSubmit={false}
 						path={Bell}
 						isNotify={isNotify}
+						isNotifyFAQ={handleNotify}
 						text='Получай уведомления о новых курсах наших преподавателей'
 					/>
 				</div>
