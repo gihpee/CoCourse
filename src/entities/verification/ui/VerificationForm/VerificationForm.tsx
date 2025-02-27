@@ -1,9 +1,9 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
+import { fetchCreatePassportData } from 'src/entities/wallet/model/fetchCreatePassportData'
 import { IFormData } from 'src/entities/wallet/model/types'
-import { handleFormSubmit } from 'src/features/verification/model/handleFormSubmit'
 import ImageField from 'src/shared/components/ImageField/ImageField'
 import MainButton from 'src/shared/components/MainButton/MainButton'
 import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
@@ -29,12 +29,15 @@ export const VerificationForm: FC = () => {
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	const [birthDate, setBirthDate] = useState<Date | null>(null)
 	const [passportDate, setPassportDate] = useState<Date | null>(null)
+	// const [isSubmitting, setIsSubmitting] = useState(false);
+
 	const [formData, setFormData] = useState<IFormData>({
 		passportCopy: null,
 		registrationCopy: null,
 		Name: '',
 		Surname: '',
 		secondName: '',
+		birthPlace: '',
 		birthDate: '',
 		passportDate: '',
 		idNum: '',
@@ -46,6 +49,10 @@ export const VerificationForm: FC = () => {
 		Email: '',
 	})
 
+	useEffect(() => {
+		console.log('Обновленные formData:', formData)
+	}, [formData])
+
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
@@ -56,25 +63,53 @@ export const VerificationForm: FC = () => {
 		}))
 	}
 
-	const handlePublish = async () => {
-		const isSuccess = await handleFormSubmit(
-			formData,
-			birthDate,
-			passportDate,
-			navigate
-		)
-		if (!isSuccess) {
-			setModalFillOpen(true)
-			window.document.body.style.overflow = 'hidden'
-			document.documentElement.style.overflow = 'hidden'
-		}
-	}
-
 	const handleFileSelect = (name: string, file: File | null) => {
 		setFormData(prevData => ({
 			...prevData,
 			[name]: file ? file.name : '',
 		}))
+	}
+
+	const handlePublish = async () => {
+		// setIsSubmitting(true)
+
+		if (
+			!formData.passportCopy ||
+			!formData.registrationCopy ||
+			!formData.Name ||
+			!formData.Surname ||
+			!formData.secondName ||
+			!formData.birthPlace ||
+			!formData.idNum ||
+			!formData.Code ||
+			!formData.Provided ||
+			!formData.registrationAddress ||
+			!formData.Inn ||
+			!formData.Phone ||
+			!formData.Email ||
+			!birthDate ||
+			!passportDate
+		) {
+			setModalFillOpen(true)
+			// setIsSubmitting(false)
+			return
+		}
+
+		let formDataToSend = new FormData()
+		Object.entries(formData).forEach(([key, value]) => {
+			formDataToSend.append(key, value instanceof File ? value : String(value))
+		})
+		formDataToSend.append('birthDate', birthDate.toISOString())
+		formDataToSend.append('passportDate', passportDate.toISOString())
+
+		const isSuccess = await fetchCreatePassportData(formDataToSend)
+		// setIsSubmitting(false)
+
+		if (isSuccess) {
+			navigate('/profile')
+		} else {
+			setModalFillOpen(true)
+		}
 	}
 
 	return (
@@ -146,13 +181,7 @@ export const VerificationForm: FC = () => {
 						<div className={styles['verification-input']}>
 							<DatePicker
 								selected={birthDate}
-								onChange={date => {
-									setBirthDate(date)
-									setFormData(prevData => ({
-										...prevData,
-										birthDate: date ? new Date(date).toString() : '',
-									}))
-								}}
+								onChange={setBirthDate}
 								placeholderText='Дата рождения'
 								dateFormat='dd.MM.yyyy'
 							/>
@@ -166,13 +195,7 @@ export const VerificationForm: FC = () => {
 						<div className={styles['verification-input']}>
 							<DatePicker
 								selected={passportDate}
-								onChange={date => {
-									setPassportDate(date)
-									setFormData(prevData => ({
-										...prevData,
-										passportDate: date ? new Date(date).toString() : '',
-									}))
-								}}
+								onChange={setPassportDate}
 								placeholderText='Дата выдачи'
 								dateFormat='dd.MM.yyyy'
 							/>

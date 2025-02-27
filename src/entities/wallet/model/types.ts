@@ -13,4 +13,5 @@ export interface IFormData {
 	Inn: string
 	Phone: string
 	Email: string
+	birthPlace: string
 }

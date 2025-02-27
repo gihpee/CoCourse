@@ -28,6 +28,7 @@ function VerificationForm() {
 		birthDate: '',
 		passportDate: '',
 		idNum: '',
+		birthPlace: '',
 		Code: '',
 		Provided: '',
 		registrationAddress: '',
