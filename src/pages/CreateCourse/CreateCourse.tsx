@@ -17,6 +17,8 @@ const CreateCourse: FC = () => {
 	const location = useLocation()
 	const data = location.state?.data || {}
 
+	console.log(data)
+
 	const navigate = useNavigate()
 
 	const [formData, setFormData] = useState<{
