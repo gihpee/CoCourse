@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
 import { filterOptions } from 'src/features/filterOptions'
@@ -30,13 +31,14 @@ const EditProfile: FC = () => {
 	const navigate = useNavigate()
 
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
-
 	const [uniValue, setUniValue] = useState('')
 	const [bioValue, setBioValue] = useState('')
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
 	const [inputValueUniv, setInputValueUniv] = useState('')
+
+	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
 	var BackButton = window.Telegram.WebApp.BackButton
 	BackButton.show()
@@ -46,6 +48,27 @@ const EditProfile: FC = () => {
 	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
 		window.history.back()
 	})
+
+	useEffect(() => {
+		if (userCourses) {
+			try {
+				setBioValue(userCourses.description || '')
+				setUniValue(userCourses.university || '')
+				setSelectedOptions(userCourses.subjects || '')
+			} catch (error) {
+				console.error('Ошибка при запросе к серверу:', error)
+			}
+		} else {
+			console.log('No user data found.')
+		}
+		const textarea = document.querySelector(
+			'.bio_textarea'
+		) as HTMLTextAreaElement
+		if (textarea && textarea.scrollHeight > 40) {
+			textarea.style.height = 'auto'
+			textarea.style.height = textarea.scrollHeight + 'px'
+		}
+	}, [userCourses])
 
 	console.log(boxIsVisibleUniv)
 
