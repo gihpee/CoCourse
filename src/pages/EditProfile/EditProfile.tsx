@@ -50,25 +50,10 @@ const EditProfile: FC = () => {
 	})
 
 	useEffect(() => {
-		if (userCourses) {
-			try {
-				setBioValue(userCourses.description || '')
-				setUniValue(userCourses.university || '')
-				setSelectedOptions(userCourses.subjects || '')
-			} catch (error) {
-				console.error('Ошибка при запросе к серверу:', error)
-			}
-		} else {
-			console.log('No user data found.')
+		if (userData?.description) {
+			setBioValue(userData.description)
 		}
-		const textarea = document.querySelector(
-			'.bio_textarea'
-		) as HTMLTextAreaElement
-		if (textarea && textarea.scrollHeight > 40) {
-			textarea.style.height = 'auto'
-			textarea.style.height = textarea.scrollHeight + 'px'
-		}
-	}, [userCourses])
+	}, [userData])
 
 	console.log(boxIsVisibleUniv)
 
