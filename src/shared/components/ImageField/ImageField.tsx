@@ -7,6 +7,7 @@ interface IImageField {
 	inputName: string
 	linkChecked: string
 	onFileSelect: (name: string, file: File | null) => void
+	textFill: string
 }
 
 const ImageField: FC<IImageField> = ({
@@ -15,6 +16,7 @@ const ImageField: FC<IImageField> = ({
 	inputName,
 	linkChecked,
 	onFileSelect,
+	textFill,
 }) => {
 	const [file, setFile] = useState<File | null>(null)
 
@@ -49,7 +51,9 @@ const ImageField: FC<IImageField> = ({
 					name={inputName}
 				/>
 				<div className={styles['image-field__button']}>
-					<span className={styles['image-field__text']}>{text}</span>
+					<span className={styles['image-field__text']}>
+						{file ? textFill : text}
+					</span>
 				</div>
 			</label>
 		</div>

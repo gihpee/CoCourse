@@ -143,22 +143,31 @@ export const VerificationForm: FC = () => {
 				</div>
 			) : null}
 			<h1 className={styles['verification__title']}>Верификация</h1>
+			<div className={styles['verification__wrapper-images']}>
+				<div className={styles['verification__images']}>
+					<ImageField
+						text='Добавить фото документа'
+						textFill='Фото документа добавлены'
+						link={PassportData}
+						inputName='passportCopy'
+						linkChecked={Check}
+						onFileSelect={handleFileSelect}
+					/>
+					<ImageField
+						text='Добавить страницу регистрации'
+						textFill='Регистрация добавлена'
+						link={SubscribeData}
+						inputName='registrationCopy'
+						linkChecked={Check}
+						onFileSelect={handleFileSelect}
+					/>
+				</div>
 
-			<div className={styles['verification__images']}>
-				<ImageField
-					text='Добавить фото документа'
-					link={PassportData}
-					inputName='passportCopy'
-					linkChecked={Check}
-					onFileSelect={handleFileSelect}
-				/>
-				<ImageField
-					text='Добавить страницу регистрации'
-					link={SubscribeData}
-					inputName='registrationCopy'
-					linkChecked={Check}
-					onFileSelect={handleFileSelect}
-				/>
+				<p className={styles['verification__images-desc']}>
+					Нажми «Добавить фото документа» и загрузи 2-3 страницы паспорта, затем
+					нажми «Добавить страницу регистрации» и загрузи нужный документ.
+					Убедись, что изображения четкие.
+				</p>
 			</div>
 
 			<div className={styles['verification__form']}>

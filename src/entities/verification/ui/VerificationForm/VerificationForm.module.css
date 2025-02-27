@@ -152,3 +152,19 @@
 	font-weight: 300;
 	line-height: normal;
 }
+
+.verification__wrapper-images {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	gap: 2.051vw;
+}
+
+.verification__images-desc {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 2.564vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
