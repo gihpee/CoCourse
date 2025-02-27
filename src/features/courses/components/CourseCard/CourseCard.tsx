@@ -58,25 +58,27 @@ const CourseCard: FC<ICourseCard> = ({
 								[styles['course-card__buttons_isCoursePage']]: isCoursePage,
 							})}
 						>
-							<CourseButton
-								alt='Поделиться'
-								imgSrc={ShareIcon}
-								className={{
-									[styles['course-card__button_isCoursePage']]: isCoursePage,
-								}}
-								onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-									e.stopPropagation()
-									const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
-										`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
-									)}`
+							{!itemCard.on_moderation && !itemCard.is_draft && (
+								<CourseButton
+									alt='Поделиться'
+									imgSrc={ShareIcon}
+									className={{
+										[styles['course-card__button_isCoursePage']]: isCoursePage,
+									}}
+									onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+										e.stopPropagation()
+										const courseLink = `https://t.me/share/url?url=${encodeURIComponent(
+											`https://t.me/CoCourseBot/CoCourseApp?startapp=course_${cid}`
+										)}`
 
-									if (window.Telegram?.WebApp) {
-										window.Telegram.WebApp.openLink(courseLink)
-									} else {
-										console.error('Telegram WebApp не доступен')
-									}
-								}}
-							/>
+										if (window.Telegram?.WebApp) {
+											window.Telegram.WebApp.openLink(courseLink)
+										} else {
+											console.error('Telegram WebApp не доступен')
+										}
+									}}
+								/>
+							)}
 							<Link to={`/edit-course/${itemCard.id}`}>
 								<CourseButton
 									alt='Редактировать'

@@ -125,5 +125,5 @@
 
 .feed__filter-item_isActive {
 	background: var(--active-color);
-	color: var(--main-text);
+	color: var(--active-text);
 }
