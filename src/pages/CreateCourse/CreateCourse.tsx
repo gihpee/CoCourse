@@ -129,7 +129,10 @@ const CreateCourse: FC = () => {
 		// 	setModalOpen(true)
 		// }
 		if (data.user.verifyed !== 'Пройдена') {
-			setModalText('Для создания курса необходимо пройти верификацию')
+			console.log('Для создания курса необходимо пройти верификацию')
+			setModalText(
+				'Для создания курса необходимо пройти верификацию в кошельке'
+			)
 		} else {
 			if (
 				formData.Name === '' ||

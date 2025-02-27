@@ -8,6 +8,8 @@ export const fetchCreateCourse = async (courseData: {
 	is_draft: boolean
 	address: string
 }) => {
+	console.log('courseData', courseData)
+
 	try {
 		const response = await fetch(
 			'https://comncoursetest.ru/api/create-course/',
