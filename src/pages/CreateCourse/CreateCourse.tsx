@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchCreateCourse } from 'src/entities/course/model/fetchCreateCourse'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
@@ -40,6 +40,19 @@ const CreateCourse: FC = () => {
 		Subject: '',
 		topics: [],
 	})
+
+	useEffect(() => {
+		setFormData({
+			Name: data?.channel?.name || '',
+			Univ: '',
+			Course: '1 курс, 1 семестр',
+			Desc: '',
+			Price: null,
+			ChannelUrl: data?.channel?.url || '',
+			Subject: '',
+			topics: [],
+		})
+	}, [data])
 
 	const [modalFillOpen, setModalFillOpen] = useState(false)
 	// const userFriendlyAddress = useTonAddress()
