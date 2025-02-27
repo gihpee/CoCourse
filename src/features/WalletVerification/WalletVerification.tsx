@@ -12,6 +12,15 @@ export const WalletVerification: FC = () => {
 	const [connectedPayments, setConnectedPayments] = useState<boolean>(false)
 	const userFriendlyAddress = useTonAddress()
 
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await fetchUserTransactions(id)
@@ -37,10 +46,10 @@ export const WalletVerification: FC = () => {
 					title='Подключите выплаты'
 					description='Добавь способ выплаты, чтобы мы могли начислять вознаграждения за продажи прямо на карту'
 					connectedPayments={connectedPayments}
-					path='/'
+					path='/connect-payments-form'
 				/>
 				<MyDataCard
-					title='Подключите кошелек'
+					title='Подключите криптокошелек'
 					description='Подключи кошелек, чтобы мы могли начислять вознаграждения за продажи без комиссии'
 					userFriendlyAddress={userFriendlyAddress}
 					path='/'

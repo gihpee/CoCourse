@@ -14,6 +14,7 @@ import ConnectWallet from 'src/pages/Wallet/ConnectWallet'
 import ConnectWalletN from 'src/pages/Wallet/ConnectWalletN'
 import Create from '../pages/Create/Create'
 // import EditCourse from '../pages/Create/EditCourse'
+import ConnectCard from 'src/pages/ConnectCard/ConnectCard'
 import CreateCourse from 'src/pages/CreateCourse/CreateCourse'
 import EditCourse from 'src/pages/EditCourse/EditCourse'
 import RegistrationPage from 'src/pages/RegistrationPage/RegistrationPage'
@@ -27,7 +28,6 @@ import Univ from '../pages/Profile/Univ'
 import User from '../pages/Profile/User'
 import Verification from '../pages/Profile/Verification'
 import ConnectPayments from '../pages/Wallet/ConnectPayments'
-import ConnectPaymentsForm from '../pages/Wallet/ConnectPaymentsForm'
 import ReturnForm from '../pages/Wallet/ReturnForm'
 import Transaction from '../pages/Wallet/Transaction'
 import VerificationN from '../pages/Wallet/VerificationN'
@@ -202,10 +202,7 @@ function App() {
 								element={<VerificationForm />}
 							/>
 							<Route path={'connect-payments'} element={<ConnectPayments />} />
-							<Route
-								path={'connect-payments-form'}
-								element={<ConnectPaymentsForm />}
-							/>
+							<Route path={'connect-payments-form'} element={<ConnectCard />} />
 							<Route path={'return-form'} element={<ReturnForm />} />
 						</Routes>
 					</div>

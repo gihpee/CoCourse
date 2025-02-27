@@ -1,12 +1,17 @@
+import cn from 'classnames'
 import { FC } from 'react'
 import styles from './MainButton.module.css'
 
 const MainButton: FC<{
 	text: string
 	onClickEvent: (event: React.MouseEvent<HTMLButtonElement>) => void
-}> = ({ text, onClickEvent }) => {
+	className?: string
+}> = ({ text, onClickEvent, className }) => {
 	return (
-		<button className={styles['main-button']} onClick={onClickEvent}>
+		<button
+			className={cn(styles['main-button'], className)}
+			onClick={onClickEvent}
+		>
 			{text}
 		</button>
 	)
