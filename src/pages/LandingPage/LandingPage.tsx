@@ -11,6 +11,8 @@ import styles from './LandingPage.module.css'
 const LandingPage: FC = () => {
 	const { theme } = useTheme()
 
+	console.log(theme)
+
 	return (
 		<div className={styles['landing']}>
 			<div className={styles['landing__wrapper']}>

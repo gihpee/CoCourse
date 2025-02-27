@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
 import { filterOptions } from 'src/features/filterOptions'
@@ -23,8 +23,8 @@ import styles from './RegistrationPage.module.css'
 const RegistrationPage: FC = () => {
 	const navigate = useNavigate()
 
-	const location = useLocation()
-	const { data } = location.state || {}
+	const storedData = sessionStorage.getItem('userCourses')
+	const data = storedData ? JSON.parse(storedData) : {}
 
 	const [imageSrc, setImageSrc] = useState(data.photo_url)
 	const [isNotify, setIsNotify] = useState(true)

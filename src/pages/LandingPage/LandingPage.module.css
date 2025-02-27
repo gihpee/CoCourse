@@ -1,7 +1,13 @@
 .landing {
-	display: flex;
-	flex-direction: column;
 	align-items: center;
+	display: flex;
+	height: calc(
+		100vh - var(--tg-content-safe-area-inset-top) -
+			var(--tg-safe-area-inset-top)
+	);
+	overflow: hidden;
+	position: relative;
+	flex-direction: column;
 }
 
 .landing__wrapper {
@@ -9,7 +15,7 @@
 	overflow: hidden;
 	bottom: 0;
 	overflow: hidden;
-	position: relative;
+	position: absolute;
 	width: 105.641vw;
 	height: 189.231vw;
 	border-radius: 15.385vw 15.385vw 0 0;
