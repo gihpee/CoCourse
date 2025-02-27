@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { API_BASE_URL } from '../../../shared/config/api'
 
 const handlePublish = (
 	revValue: string,
@@ -10,7 +11,7 @@ const handlePublish = (
 	if (revValue === '') {
 		setModalFillOpen(true)
 	} else {
-		fetch('https://comncoursetest.ru/api/send-feedback/', {
+		fetch(`${API_BASE_URL}/send-feedback/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

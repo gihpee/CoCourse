@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { API_BASE_URL } from '../../../shared/config/api'
 import { ITelegramUser } from './types'
 
 export const useUserCourses = (
@@ -11,16 +12,13 @@ export const useUserCourses = (
 	useEffect(() => {
 		const fetchUserData = async () => {
 			try {
-				const response = await fetch(
-					`https://comncoursetest.ru/api/user-data/`,
-					{
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-							Authorization: `tma ${authToken}`,
-						},
-					}
-				)
+				const response = await fetch(`${API_BASE_URL}/user-data/`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `tma ${authToken}`,
+					},
+				})
 				const data = await response.json()
 				setUserCourses(data)
 			} catch (error) {

@@ -12,6 +12,8 @@ import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCour
 import redWallet from '../../shared/assets/course/red-wallet.webp'
 import './Course.css'
 
+import { BASE_URL } from '../../shared/config/api'
+
 function BuyCourse() {
 	const location = useLocation()
 	const navigate = useNavigate()
@@ -72,10 +74,10 @@ function BuyCourse() {
 		data?.feedback.length > 0 ? calculateRating(data.feedback) : 0
 
 	const setImagePath = (imgPath: string | null): string => {
-		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
+		if (!imgPath || imgPath.includes(`https://${BASE_URL}.runull`)) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncoursetest.ru${data?.channel.photo})`
+			return `url(https://${BASE_URL}.ru${data?.channel.photo})`
 		}
 	}
 

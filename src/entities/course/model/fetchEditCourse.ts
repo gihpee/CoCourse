@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const publishCourse = async (cid: string, formData: any) => {
 	const { Price, Univ, Desc, Subject, topics } = formData
 	const is_draft = false
@@ -5,7 +7,7 @@ export const publishCourse = async (cid: string, formData: any) => {
 	console.log(formData)
 
 	try {
-		const response = await fetch('https://comncoursetest.ru/api/edit-course/', {
+		const response = await fetch(`${API_BASE_URL}/edit-course/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

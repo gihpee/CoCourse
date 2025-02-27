@@ -1,15 +1,14 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const fetchCreatePassportData = async (formDataToSend: FormData) => {
 	try {
-		const response = await fetch(
-			'https://comncoursetest.ru/api/create-passport-data/',
-			{
-				method: 'POST',
-				headers: {
-					Authorization: `tma ${window.Telegram.WebApp.initData}`,
-				},
-				body: formDataToSend,
-			}
-		)
+		const response = await fetch(`${API_BASE_URL}/create-passport-data/`, {
+			method: 'POST',
+			headers: {
+				Authorization: `tma ${window.Telegram.WebApp.initData}`,
+			},
+			body: formDataToSend,
+		})
 
 		if (!response.ok) {
 			throw new Error('Ошибка при отправке данных')

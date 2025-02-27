@@ -9,6 +9,7 @@ import nf from '../../shared/assets/course/nfeedarrow.svg'
 import redWallet from '../../shared/assets/course/red-wallet.webp'
 import emptyHorizontalImage from '../../shared/assets/course/squareEmptyCourseImage.webp'
 import toggle from '../../shared/assets/profile/toggle.svg'
+import { BASE_URL } from '../../shared/config/api'
 import './Course.css'
 
 function Course() {
@@ -85,10 +86,10 @@ function Course() {
 	}, [courseDataComponent?.topics])
 
 	const setImagePath = (imgPath: string | null): string => {
-		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
+		if (!imgPath || imgPath.includes(`https://${BASE_URL}.runull`)) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncoursetest.ru${courseDataComponent?.channel.photo})`
+			return `url(https://${BASE_URL}.ru${courseDataComponent?.channel.photo})`
 		}
 	}
 
@@ -287,7 +288,7 @@ function Course() {
 							height: '40px',
 							marginLeft: '8px',
 							borderRadius: '8px',
-							backgroundImage: `url(https://comncoursetest.ru${courseDataComponent.user?.photo_url})`,
+							backgroundImage: `url(https://${BASE_URL}.ru${courseDataComponent.user?.photo_url})`,
 							backgroundSize: 'cover',
 							backgroundRepeat: 'no-repeat',
 							backgroundPosition: 'center',

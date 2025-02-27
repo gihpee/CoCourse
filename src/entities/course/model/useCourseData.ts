@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 import { useEffect, useState } from 'react'
 import { ICourse } from './types'
 
@@ -10,9 +12,7 @@ export const useCourseData = (cid: string) => {
 		const fetchData = async () => {
 			setIsLoading(true)
 			try {
-				const response = await fetch(
-					`https://comncoursetest.ru/api/get-courses/?id=${cid}`
-				)
+				const response = await fetch(`${API_BASE_URL}/get-courses/?id=${cid}`)
 				const result = await response.json()
 				setData(result)
 			} catch (err) {

@@ -7,6 +7,7 @@ import Camera from '../../shared/assets/feedback/Camera.svg'
 import MarkedExist from '../../shared/assets/profile/MarkedExist.svg'
 import TrashEmpty from '../../shared/assets/profile/Trash_Empty.svg'
 import CloseImg from '../../shared/assets/wallet/CloseImg.svg'
+import { API_BASE_URL, BASE_URL } from '../../shared/config/api'
 import InputWithVariants from '../EditProfile/ui/InputWithVariants/InputWithVariants'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
@@ -55,9 +56,7 @@ const EditCourse: FC = () => {
 	useEffect(() => {
 		const fetchCourses = async () => {
 			try {
-				const response = await fetch(
-					`https://comncoursetest.ru/api/get-courses/?id=${cid}`
-				)
+				const response = await fetch(`${API_BASE_URL}/get-courses/?id=${cid}`)
 				const data = await response.json()
 
 				setFormData(prevData => ({
@@ -334,7 +333,7 @@ const EditCourse: FC = () => {
 				<div className={styles['edit-course__cover']}>
 					{imageSrc ? (
 						<img
-							src={`https://comncoursetest.ru${imageSrc}`}
+							src={`https://${BASE_URL}.ru${imageSrc}`}
 							alt='Обложка курса'
 							className={styles['edit-course__cover-img']}
 						/>

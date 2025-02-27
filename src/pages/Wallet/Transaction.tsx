@@ -5,6 +5,7 @@ import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { ITransaction } from '../../entities/course/model/types'
 import { fetchTransactionData } from '../../entities/wallet/model/fetchGetTransaction'
+import { BASE_URL } from '../../shared/config/api'
 import './Wallet.css'
 
 function Transaction() {
@@ -53,7 +54,7 @@ function Transaction() {
 					<div
 						className='course_img'
 						style={{
-							backgroundImage: `url(https://comncoursetest.ru${data?.course.channel.photo})`,
+							backgroundImage: `url(https://${BASE_URL}.ru${data?.course.channel.photo})`,
 						}}
 					></div>
 					<div className='card_info'>

@@ -8,6 +8,7 @@ import ShareIcon from '../../../../shared/assets/course/ButtonSend.svg'
 import Edit_Pencil from '../../../../shared/assets/course/Edit_Pencil.svg'
 import emptyHorizontalImage from '../../../../shared/assets/course/horizontalEmptyCourseImage.webp'
 import Camera from '../../../../shared/assets/feedback/Camera.svg'
+import { BASE_URL } from '../../../../shared/config/api'
 import CourseButton from '../../../../shared/CourseButton/CourseButton'
 import { ICourseCard } from '../../types/ICourseCard'
 import styles from './CourseCard.module.css'
@@ -40,7 +41,7 @@ const CourseCard: FC<ICourseCard> = ({
 						<div
 							className={styles['course-card__person-avatar']}
 							style={{
-								backgroundImage: `url(https://comncoursetest.ru${
+								backgroundImage: `url(https://${BASE_URL}.ru${
 									itemCard.user.photo_url || ''
 								})`,
 							}}

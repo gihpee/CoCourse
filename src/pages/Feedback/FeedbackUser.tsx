@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchFeedbacks } from '../../entities/feedback/model/fetchFeedback'
 import { IFeedbackItem } from '../../entities/feedback/model/types'
+import { BASE_URL } from '../../shared/config/api'
 import './Feedback.css'
 
 function FeedbackUser() {
@@ -37,7 +38,7 @@ function FeedbackUser() {
 								height: '40px',
 								marginLeft: '8px',
 								borderRadius: '8px',
-								backgroundImage: `url(https://comncoursetest.ru${item.user.photo_url})`,
+								backgroundImage: `url(https://${BASE_URL}.ru${item.user.photo_url})`,
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 								backgroundPosition: 'center',

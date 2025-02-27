@@ -1,7 +1,9 @@
-const fetchCoursesData = async (userId: string) => {
+import { BASE_URL } from '../../../shared/config/api'
+
+export const fetchCoursesData = async (userId: string) => {
 	try {
 		const response = await fetch(
-			`https://comncoursetest.ru/usercoursewd?id=${userId}`
+			`https://${BASE_URL}.ru/usercoursewd?id=${userId}`
 		)
 		const result = await response.json()
 

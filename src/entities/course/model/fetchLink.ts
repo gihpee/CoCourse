@@ -1,16 +1,15 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const fetchPaymentLink = async (courseId: string, userId: string) => {
 	try {
-		const response = await fetch(
-			`https://comncoursetest.ru/api/get-payment-link/`,
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `tma ${window.Telegram.WebApp.initData}`,
-				},
-				body: JSON.stringify({ course_id: courseId, user_id: userId }),
-			}
-		)
+		const response = await fetch(`${API_BASE_URL}/get-payment-link/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `tma ${window.Telegram.WebApp.initData}`,
+			},
+			body: JSON.stringify({ course_id: courseId, user_id: userId }),
+		})
 
 		if (!response.ok) {
 			throw new Error('Ошибка при запросе к серверу')

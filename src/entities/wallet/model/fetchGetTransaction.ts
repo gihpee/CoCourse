@@ -1,8 +1,8 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const fetchTransactionData = async (tid: string) => {
 	try {
-		const response = await fetch(
-			`https://comncoursetest.ru/api/get-transaction/?id=${tid}`
-		)
+		const response = await fetch(`${API_BASE_URL}/get-transaction/?id=${tid}`)
 		if (!response.ok) {
 			throw new Error(`Failed to fetch transaction data: ${response.status}`)
 		}

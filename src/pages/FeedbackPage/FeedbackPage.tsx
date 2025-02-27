@@ -13,6 +13,7 @@ import StarRating from 'src/shared/components/StarRating/StarRating'
 import Camera from '../../shared/assets/feedback/Camera.svg'
 import EmptyStar from '../../shared/assets/feedback/EmptyStar.svg'
 import FillStar from '../../shared/assets/feedback/FillStar.svg'
+import { BASE_URL } from '../../shared/config/api'
 import styles from './FeedbackPage.module.css'
 import FeedbackCard from './ui/FeedbackCard/FeedbackCard'
 
@@ -120,7 +121,7 @@ const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 					feedbacks.map((item, index) => (
 						<FeedbackCard
 							date={item.date}
-							path={`https://comncoursetest.ru${item.user.photo_url}` || ''}
+							path={`https://${BASE_URL}.ru${item.user.photo_url}` || ''}
 							text={item.review || ''}
 							university={item.user.university || ''}
 							username={item.user.first_name + ' ' + item.user.last_name}
@@ -169,7 +170,7 @@ const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 									<img
 										className={styles['feedback-page__modal-avatar']}
 										src={
-											`https://comncoursetest.ru${course?.user.photo_url}` || ''
+											`https://${BASE_URL}.ru${course?.user.photo_url}` || ''
 										}
 										alt='Аватар пользователя'
 									/>
@@ -192,9 +193,7 @@ const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 							<div className={styles['feedback-page__modal-image']}>
 								{course?.channel.photo ? (
 									<img
-										src={`https://comncoursetest.ru${
-											course?.channel.photo || ''
-										}`}
+										src={`https://${BASE_URL}.ru${course?.channel.photo || ''}`}
 										alt='Аватар курса'
 										className={styles['feedback-page__modal-image-img']}
 									/>

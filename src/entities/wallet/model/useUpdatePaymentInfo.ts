@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { API_BASE_URL } from '../../../shared/config/api'
 
 export const useUpdatePaymentInfo = (
 	formData: { number: string },
@@ -14,7 +15,7 @@ export const useUpdatePaymentInfo = (
 
 		const number = formData.number
 
-		await fetch('https://comncoursetest.ru/api/update-payment-info/', {
+		await fetch(`${API_BASE_URL}/update-payment-info/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

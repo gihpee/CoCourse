@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 interface PaymentData {
 	id: string
 	price: number
@@ -27,7 +29,7 @@ export const handlePay = async (
 		let baddress = address
 		let saddress = data.ton_address
 
-		await fetch('https://comncoursetest.ru/api/success-payment/', {
+		await fetch(`${API_BASE_URL}/success-payment/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

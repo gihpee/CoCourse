@@ -8,6 +8,7 @@ import useAutoResizeTextArea from '../../features/useAutoResizeTextArea'
 import plus from '../../shared/assets/course/plus.svg'
 import lminus from '../../shared/assets/create-course/lminus.png'
 import toggle from '../../shared/assets/profile/toggle.svg'
+import { BASE_URL } from '../../shared/config/api'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
 
@@ -142,7 +143,7 @@ function Registration() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncoursetest.ru${imageSrc})`,
+					backgroundImage: `url(https://${BASE_URL}.ru${imageSrc})`,
 					marginTop: '-56px',
 				}}
 			>

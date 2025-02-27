@@ -8,6 +8,7 @@ import Camera from '../../shared/assets/feedback/Camera.svg'
 import MarkedExist from '../../shared/assets/profile/MarkedExist.svg'
 import TrashEmpty from '../../shared/assets/profile/Trash_Empty.svg'
 import CloseImg from '../../shared/assets/wallet/CloseImg.svg'
+import { BASE_URL } from '../../shared/config/api'
 import InputWithVariants from '../EditProfile/ui/InputWithVariants/InputWithVariants'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
@@ -338,7 +339,7 @@ const CreateCourse: FC = () => {
 				<div className={styles['edit-course__cover']}>
 					{data?.channel?.photo ? (
 						<img
-							src={`https://comncoursetest.ru${data.channel.photo}`}
+							src={`https://${BASE_URL}.ru${data.channel.photo}`}
 							alt='Обложка курса'
 							className={styles['edit-course__cover-img']}
 						/>

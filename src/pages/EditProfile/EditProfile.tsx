@@ -14,6 +14,7 @@ import MarkedExist from '../../shared/assets/profile/MarkedExist.svg'
 import Naming from '../../shared/assets/profile/Naming.svg'
 import Warning from '../../shared/assets/profile/Warning.svg'
 import CloseImg from '../../shared/assets/wallet/CloseImg.svg'
+import { BASE_URL } from '../../shared/config/api'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
 import styles from './EditProfile.module.css'
@@ -174,7 +175,7 @@ const EditProfile: FC = () => {
 				<div
 					className={styles['edit-profile__avatar']}
 					style={{
-						backgroundImage: `url(https://comncoursetest.ru${userData?.photo_url})`,
+						backgroundImage: `url(https://${BASE_URL}.ru${userData?.photo_url})`,
 					}}
 				/>
 

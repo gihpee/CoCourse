@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const fetchCreateCourse = async (courseData: {
 	university: string
 	description: string
@@ -11,17 +13,14 @@ export const fetchCreateCourse = async (courseData: {
 	console.log('courseData', courseData)
 
 	try {
-		const response = await fetch(
-			'https://comncoursetest.ru/api/create-course/',
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `tma ${window.Telegram.WebApp.initData}`,
-				},
-				body: JSON.stringify(courseData),
-			}
-		)
+		const response = await fetch(`${API_BASE_URL}/create-course/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `tma ${window.Telegram.WebApp.initData}`,
+			},
+			body: JSON.stringify(courseData),
+		})
 
 		if (!response.ok) {
 			console.log('Failed to create course')

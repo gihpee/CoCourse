@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const fetchUpdateUser = async (
 	isNotify: boolean,
 	selectedOptions: string[],
@@ -5,7 +7,7 @@ export const fetchUpdateUser = async (
 	bioValue: string,
 	initData: string
 ) => {
-	await fetch('https://comncoursetest.ru/api/update-user/', {
+	await fetch(`${API_BASE_URL}/update-user/`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

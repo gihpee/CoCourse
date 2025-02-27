@@ -1,5 +1,7 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const fetchWithdraw = async () => {
-	const response = await fetch('https://comncoursetest.ru/api/withdraw/', {
+	const response = await fetch(`${API_BASE_URL}/withdraw/`, {
 		method: 'POST',
 		headers: {
 			Authorization: `tma ${window.Telegram.WebApp.initData}`,

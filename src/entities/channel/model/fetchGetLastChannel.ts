@@ -1,15 +1,14 @@
+import { API_BASE_URL } from '../../../shared/config/api'
+
 export const fetchGetLastChannel = async () => {
 	try {
-		const response = await fetch(
-			`https://comncoursetest.ru/api/get-last-channel/`,
-			{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `tma ${window.Telegram.WebApp.initData}`,
-				},
-			}
-		)
+		const response = await fetch(`${API_BASE_URL}/get-last-channel/`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `tma ${window.Telegram.WebApp.initData}`,
+			},
+		})
 
 		if (!response.ok) {
 			const errorText = await response.text()

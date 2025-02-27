@@ -12,6 +12,8 @@ import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
 import './CreateCourse.css'
 
+import { BASE_URL } from '../../shared/config/api'
+
 function CreateCourse() {
 	const location = useLocation()
 	const data = location.state?.data || {}
@@ -308,10 +310,10 @@ function CreateCourse() {
 	))
 
 	const setImagePath = (imgPath: string | null): string => {
-		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
+		if (!imgPath || imgPath.includes(`https://${BASE_URL}.runull`)) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncoursetest.ru${data.channel.photo})`
+			return `url(https://${BASE_URL}.ru${data.channel.photo})`
 		}
 	}
 

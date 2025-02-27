@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { calculateRating } from '../../entities/course/lib/calculateRating'
 import { formatDate } from '../../entities/course/lib/formatDate'
 import { ICourse } from '../../entities/course/model/types'
+import { BASE_URL } from '../../shared/config/api'
 import emptyHorizontalImage from '../assets/course/horizontalEmptyCourseImage.webp'
 import './Card.css'
 
@@ -17,10 +18,10 @@ const Card: FC<ICard> = ({ itemCard, indexCard, userCoursesCard }) => {
 		itemCard.feedback.length > 0 ? calculateRating(itemCard.feedback) : 0
 
 	const setImagePath = (imgPath: string | null): string => {
-		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
+		if (!imgPath || imgPath.includes(`https://${BASE_URL}.runull`)) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncoursetest.ru${itemCard.image})`
+			return `url(https://${BASE_URL}.ru${itemCard.image})`
 		}
 	}
 

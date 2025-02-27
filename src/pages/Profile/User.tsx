@@ -7,6 +7,7 @@ import { ICourse, ITelegramUser } from '../../entities/course/model/types'
 import { fetchUser } from '../../entities/user/model/fetchUser'
 import emptyHorizontalImage from '../../shared/assets/course/horizontalEmptyCourseImage.webp'
 import nf from '../../shared/assets/course/nfeedarrow.svg'
+import { BASE_URL } from '../../shared/config/api'
 import './Profile.css'
 
 function User() {
@@ -52,10 +53,10 @@ function User() {
 				item.feedback.length > 0 ? calculateRating(item.feedback) : 0
 
 			const setImagePath = (imgPath: string | null): string => {
-				if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
+				if (!imgPath || imgPath.includes(`https://${BASE_URL}.runull`)) {
 					return emptyHorizontalImage
 				} else {
-					return `url(https://comncoursetest.ru${item.image})`
+					return `url(https://${BASE_URL}.ru${item.image})`
 				}
 			}
 
@@ -138,7 +139,7 @@ function User() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncoursetest.ru${userData?.photo_url})`,
+					backgroundImage: `url(https://${BASE_URL}.ru${userData?.photo_url})`,
 					marginTop: '-56px',
 				}}
 			>

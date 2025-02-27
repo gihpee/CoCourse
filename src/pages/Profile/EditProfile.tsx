@@ -13,6 +13,7 @@ import bulb from '../../shared/assets/profile/bulb.webp'
 import chat from '../../shared/assets/profile/chat.webp'
 import magic from '../../shared/assets/profile/magic.webp'
 import sun from '../../shared/assets/profile/sun.webp'
+import { BASE_URL } from '../../shared/config/api'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
 import './EditProfile.css'
@@ -166,7 +167,7 @@ function EditProfile() {
 			<div
 				className='prev'
 				style={{
-					backgroundImage: `url(https://comncoursetest.ru${imageSrc}})`,
+					backgroundImage: `url(https://${BASE_URL}.ru${imageSrc}})`,
 					marginTop: '-56px',
 				}}
 			>

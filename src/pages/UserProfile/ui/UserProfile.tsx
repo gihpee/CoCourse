@@ -5,6 +5,7 @@ import CourseCard from 'src/features/courses/components/CourseCard/CourseCard'
 import Feedback from 'src/shared/components/Feedback/Feedback'
 import NavBar from 'src/shared/components/NavBar/NavBar'
 import Sales from 'src/shared/components/Sales/Sales'
+import { BASE_URL } from '../../../shared/config/api'
 import { useUserProfile } from '../model/useUserProfile'
 import styles from './UserProfile.module.css'
 
@@ -54,7 +55,7 @@ const UserProfile: FC = () => {
 				<div
 					className={styles['user-profile__avatar']}
 					style={{
-						backgroundImage: `url(https://comncoursetest.ru${userData?.photo_url})`,
+						backgroundImage: `url(https://${BASE_URL}.ru${userData?.photo_url})`,
 					}}
 				/>
 				<p className={styles['user-profile__name']}>

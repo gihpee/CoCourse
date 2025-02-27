@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { IFeedback } from '../../entities/course/model/types'
 import fetchCourses from '../../entities/feedback/model/fetchCourses'
+import { BASE_URL } from '../../shared/config/api'
 import './Feedback.css'
 
 function FeedbackCourse() {
@@ -46,7 +47,7 @@ function FeedbackCourse() {
 								height: '40px',
 								marginLeft: '8px',
 								borderRadius: '8px',
-								backgroundImage: `url(https://comncoursetest.ru${item.user.photo_url})`,
+								backgroundImage: `url(https://${BASE_URL}.ru${item.user.photo_url})`,
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 								backgroundPosition: 'center',

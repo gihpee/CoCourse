@@ -6,9 +6,12 @@ import { publishCourse } from '../../entities/course/model/fetchEditCourse'
 import plus from '../../shared/assets/course/plus.svg'
 import emptyHorizontalImage from '../../shared/assets/course/squareEmptyCourseImage.webp'
 import krest from '../../shared/assets/create/ckrest.svg'
+import { API_BASE_URL } from '../../shared/config/api'
 import { optionsSubject } from '../optionsSubject'
 import { optionsUniv } from '../optionsUniv'
 import './EditCourse.css'
+
+import { BASE_URL } from '../../shared/config/api'
 
 interface FormData {
 	Name: string
@@ -84,9 +87,7 @@ function EditCourse() {
 	useEffect(() => {
 		const fetchCourses = async () => {
 			try {
-				const response = await fetch(
-					`https://comncoursetest.ru/api/get-courses/?id=${cid}`
-				)
+				const response = await fetch(`${API_BASE_URL}/get-courses/?id=${cid}`)
 				const data = await response.json()
 
 				setFormData(prevData => ({
@@ -340,10 +341,10 @@ function EditCourse() {
 	))
 
 	const setImagePath = (imgPath: string | null): string => {
-		if (!imgPath || imgPath.includes('https://comncoursetest.runull')) {
+		if (!imgPath || imgPath.includes(`https://${BASE_URL}.runull`)) {
 			return emptyHorizontalImage
 		} else {
-			return `url(https://comncoursetest.ru${imageSrc})`
+			return `url(https://${BASE_URL}.ru${imageSrc})`
 		}
 	}
 
