@@ -12,16 +12,15 @@ const ConnectBotPage: FC = () => {
 
 	let tg = window.Telegram
 
-	var BackButton = window.Telegram.WebApp.BackButton
-	BackButton.show()
-	BackButton.onClick(function () {
-		BackButton.hide()
-	})
-	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
-		window.history.back()
-	})
+	const BackButton = window.Telegram.WebApp.BackButton
 
 	useEffect(() => {
+		BackButton.show()
+		BackButton.onClick(() => {
+			BackButton.hide()
+			navigate(-1)
+		})
+
 		const fetchChannel = async () => {
 			try {
 				const result = await fetchGetLastChannel()
@@ -32,9 +31,11 @@ const ConnectBotPage: FC = () => {
 		}
 
 		const intervalId = setInterval(fetchChannel, 500)
-
-		return () => clearInterval(intervalId)
-	}, [id, navigate])
+		return () => {
+			clearInterval(intervalId)
+			BackButton.hide()
+		}
+	}, [id, navigate, BackButton])
 
 	const handleButtonChannelClick = () => {
 		const botUsername = 'CoCourseBot'
