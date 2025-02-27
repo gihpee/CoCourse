@@ -195,7 +195,11 @@ export const VerificationForm: FC = () => {
 									onChange={handleCheckboxChange}
 									className={styles['verification__checkbox']}
 								/>
-								<span className={styles['verification__checkbox-custom']}>
+								<span
+									className={`${styles['verification__checkbox-custom']} ${
+										noMiddleName ? styles['checked'] : ''
+									}`}
+								>
 									{noMiddleName && <img src={CheckIcon} alt='✔' />}
 								</span>
 								<p className={styles['verification__checkbox-text']}>
