@@ -115,7 +115,7 @@ const RegistrationPage: FC = () => {
 			window.Telegram.WebApp.initData
 		)
 
-		navigate(`/verification`)
+		navigate(`/`)
 
 		// if (userFriendlyAddress) {
 		// 	navigate(`/verification`)
