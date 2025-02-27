@@ -128,11 +128,12 @@ const CreateCourse: FC = () => {
 		// 	setModalButton('Подключить')
 		// 	setModalOpen(true)
 		// }
-		if (data.user.verifyed !== 'Пройдена') {
+		if (data.user.verifyed !== 'Пройденак') {
 			console.log('Для создания курса необходимо пройти верификацию')
 			setModalText(
 				'Для создания курса необходимо пройти верификацию в кошельке'
 			)
+			setModalFillOpen(true)
 		} else {
 			if (
 				formData.Name === '' ||
@@ -140,6 +141,7 @@ const CreateCourse: FC = () => {
 				formData.Desc === '' ||
 				formData.Subject === ''
 			) {
+				setModalText('Заполните все обязательные поля')
 				setModalFillOpen(true)
 			} else {
 				let university = formData.Univ || 'Не указано'
