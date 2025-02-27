@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
 import { filterOptions } from 'src/features/filterOptions'
@@ -37,8 +36,6 @@ const EditProfile: FC = () => {
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
 	const [inputValueUniv, setInputValueUniv] = useState('')
-
-	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 
 	var BackButton = window.Telegram.WebApp.BackButton
 	BackButton.show()
