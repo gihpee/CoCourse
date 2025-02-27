@@ -16,12 +16,12 @@ import Create from '../pages/Create/Create'
 // import EditCourse from '../pages/Create/EditCourse'
 import CreateCourse from 'src/pages/CreateCourse/CreateCourse'
 import EditCourse from 'src/pages/EditCourse/EditCourse'
+import RegistrationPage from 'src/pages/RegistrationPage/RegistrationPage'
 import Feed from '../pages/Feed/Feed'
 import SendFeedback from '../pages/Feedback/SendFeedback'
 import NavBar from '../pages/Navbar/Navbar'
 import Bio from '../pages/Profile/Bio'
 import ECourse from '../pages/Profile/ECourse'
-import Registration from '../pages/Profile/Registration'
 import Subj from '../pages/Profile/Subj'
 import Univ from '../pages/Profile/Univ'
 import User from '../pages/Profile/User'
@@ -189,7 +189,7 @@ function App() {
 							<Route path={'user/:id'} element={<User />} />
 							<Route path={'wallet'} element={<Wallet />} />
 							<Route path={'connect-bot'} element={<ConnectBotPage />} />
-							<Route path={'registration'} element={<Registration />} />
+							<Route path={'registration'} element={<RegistrationPage />} />
 							<Route path={'buy-course'} element={<PaymentPage />} />
 							<Route path={'transaction/:tid'} element={<Transaction />} />
 							<Route path={'verification'} element={<Verification />} />

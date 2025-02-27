@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import LinkArrow from '../../../../shared/assets/wallet/LinkArrow.svg'
 import styles from './LinksFAQ.module.css'
 
@@ -7,15 +7,16 @@ interface ILinksFAQ {
 	text: string
 	isSubmit: boolean
 	isNotify: boolean
+	isNotifyFAQ?: any
 }
 
-const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, isNotify }) => {
-	const [isNotifyFAQ, setIsNotifyFAQ] = useState(isNotify)
-
-	const handleNotify = () => {
-		setIsNotifyFAQ(!isNotifyFAQ)
-	}
-
+const LinksFAQ: FC<ILinksFAQ> = ({
+	path,
+	text,
+	isSubmit,
+	isNotify,
+	isNotifyFAQ,
+}) => {
 	console.log('isNotifyFAQ', isNotifyFAQ)
 
 	return (
@@ -42,7 +43,7 @@ const LinksFAQ: FC<ILinksFAQ> = ({ path, text, isSubmit, isNotify }) => {
 						className={styles['linksFAQ__checkbox']}
 						type='checkbox'
 						checked={isNotifyFAQ}
-						onChange={handleNotify}
+						onChange={isNotifyFAQ}
 					/>
 					<label className={styles['linksFAQ__label']} htmlFor='toggle'></label>
 				</div>
