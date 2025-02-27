@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
@@ -25,7 +25,10 @@ const RegistrationPage: FC = () => {
 
 	const storedData = sessionStorage.getItem('userCourses')
 	console.log('storedData', storedData)
-	const data = storedData ? JSON.parse(storedData) : {}
+	const data = useMemo(
+		() => (storedData ? JSON.parse(storedData) : {}),
+		[storedData]
+	)
 	console.log('storedDatadata', data)
 
 	const [imageSrc, setImageSrc] = useState(data.photo_url)
