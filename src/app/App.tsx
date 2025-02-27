@@ -17,6 +17,7 @@ import Create from '../pages/Create/Create'
 import ConnectCard from 'src/pages/ConnectCard/ConnectCard'
 import CreateCourse from 'src/pages/CreateCourse/CreateCourse'
 import EditCourse from 'src/pages/EditCourse/EditCourse'
+import LandingPage from 'src/pages/LandingPage/LandingPage'
 import RegistrationPage from 'src/pages/RegistrationPage/RegistrationPage'
 import Feed from '../pages/Feed/Feed'
 import SendFeedback from '../pages/Feedback/SendFeedback'
@@ -190,6 +191,7 @@ function App() {
 							<Route path={'wallet'} element={<Wallet />} />
 							<Route path={'connect-bot'} element={<ConnectBotPage />} />
 							<Route path={'registration'} element={<RegistrationPage />} />
+							<Route path={'landing'} element={<LandingPage />} />
 							<Route path={'buy-course'} element={<PaymentPage />} />
 							<Route path={'transaction/:tid'} element={<Transaction />} />
 							<Route path={'verification'} element={<Verification />} />

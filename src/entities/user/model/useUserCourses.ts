@@ -24,7 +24,7 @@ const useUserCoursesData = (
 				console.log('result', result)
 
 				if (response.status === 201) {
-					navigate('/registration', { state: { data: result } })
+					navigate('/landing', { state: { data: result } })
 					setUserCourses(null)
 				} else {
 					setUserCourses(result.bought_courses)

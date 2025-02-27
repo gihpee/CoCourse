@@ -1,0 +1,95 @@
+.landing {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.landing__wrapper {
+	position: relative;
+	width: 105.641vw;
+	height: 189.231vw;
+	border-radius: 15.385vw;
+	background-color: #f55b2d;
+}
+
+.landing__logo {
+	display: flex;
+	gap: 9.895vw;
+}
+
+.landing__logo_top {
+	position: absolute;
+	top: -11.795vw;
+	left: 8.974vw;
+}
+
+.landing__letter {
+	height: 23.59vw;
+	width: 100%;
+}
+
+.landing__content {
+	display: flex;
+	width: 91.282vw;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.282vw;
+}
+
+.landing__title {
+	color: var(--background);
+	text-align: center;
+	font-family: 'Prata', serif;
+	font-size: 11.026vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.landing__subtitle {
+	width: 66.154vw;
+	color: var(--background);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 4.103vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.landing__agreement {
+	margin-top: 179px;
+	width: 294px;
+	color: var(--background);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.landing__button {
+	display: flex;
+	width: 91.282vw;
+	padding: 3.846vw 2.564vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--background);
+}
+
+.landing__logo_bottom {
+	position: absolute;
+	bottom: -8.341vw;
+	right: 2.782vw;
+}
+
+.landing__agreement-link {
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: none;
+	text-decoration-thickness: auto;
+	text-underline-offset: auto;
+	text-underline-position: from-font;
+}
