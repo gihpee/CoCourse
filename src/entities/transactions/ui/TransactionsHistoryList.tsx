@@ -91,9 +91,23 @@ export const TransactionsHistoryList: FC = () => {
 											key={item.id}
 											path={LogoTransaction}
 											count={item.price}
-											name={item.course?.channel?.name || 'Commn Course'}
-											operationName={tType}
-											sign={tType === 'Покупка' ? `-` : `+`}
+											name={
+												item.return_status === 2 && item.buyer === id
+													? 'Возврат средств'
+													: 'Commn Course'
+											}
+											operationName={
+												item.return_status === 2 && item.buyer === id
+													? 'Возврат'
+													: tType
+											}
+											sign={
+												item.return_status === 2 && item.buyer === id
+													? '+'
+													: tType === 'Покупка'
+													? `-`
+													: `+`
+											}
 											typeCount={
 												item.method === 'Card'
 													? '**5263'
