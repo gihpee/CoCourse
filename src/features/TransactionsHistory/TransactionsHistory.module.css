@@ -3,6 +3,7 @@
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 4.103vw;
+	width: 91.282vw;
 }
 
 .transactions-history__title {

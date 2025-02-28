@@ -6,9 +6,10 @@ interface ITransactionsHistory {
 	path: string
 	name: string
 	operationName: string
-	count: string
+	count: number
 	typeCount: string
 	className: string
+	sign: string
 }
 
 const TransactionCard: FC<ITransactionsHistory> = ({
@@ -18,6 +19,7 @@ const TransactionCard: FC<ITransactionsHistory> = ({
 	count,
 	typeCount,
 	className,
+	sign,
 }) => {
 	return (
 		<div className={styles['transaction-card']}>
@@ -33,7 +35,7 @@ const TransactionCard: FC<ITransactionsHistory> = ({
 
 			<div className={styles['transaction-card__amount']}>
 				<h2 className={cn(styles['transaction-card__value'], className)}>
-					{count} ₽
+					{sign} {count} ₽
 				</h2>
 				{typeCount && (
 					<p className={styles['transaction-card__type']}>{typeCount}</p>
