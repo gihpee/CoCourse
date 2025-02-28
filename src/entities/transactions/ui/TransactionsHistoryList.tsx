@@ -28,7 +28,7 @@ export const TransactionsHistoryList: FC = () => {
 	console.log(allTransactions)
 
 	{
-		!allTransactions ? (
+		allTransactions.length === 0 ? (
 			<div className={styles['transactions-history-list__wrapper-empty']}>
 				<p className={styles['transactions-history-list__empty-text']}>
 					История транзакций пока пуста. Рассмотри возможность совершения

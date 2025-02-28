@@ -145,11 +145,13 @@ const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 							<h2 className={styles['feedback-page__empty-title']}>
 								Пока нет отзывов и оценок
 							</h2>
-							<p className={styles['feedback-page__empty-text']}>
-								Курс пока что без отзывов, и мы будем очень рады, если ты
-								станешь первым, кто его попробует! Купи сейчас и поделись своими
-								впечатлениями с нами
-							</p>
+							{!isUserFeedback && (
+								<p className={styles['feedback-page__empty-text']}>
+									Курс пока что без отзывов, и мы будем очень рады, если ты
+									станешь первым, кто его попробует! Купи сейчас и поделись
+									своими впечатлениями с нами
+								</p>
+							)}
 						</div>
 					</div>
 				)}

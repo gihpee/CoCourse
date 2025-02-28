@@ -348,6 +348,7 @@
 }
 
 .feedback-page__wrapper-empty-text {
+	width: 91.282vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
