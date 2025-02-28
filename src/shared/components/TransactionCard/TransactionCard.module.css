@@ -1,123 +1,68 @@
 .transaction-card {
 	display: flex;
-	padding: 2.051vw;
-	flex-direction: column;
-	gap: 2.949vw;
+	justify-content: space-between;
+	align-items: center;
 	align-self: stretch;
-	border-radius: 1.538vw;
-	background: var(--mini-background);
+	width: 87.179vw;
 }
 
-.transaction-card__header {
+.transaction-card__info {
 	display: flex;
+	align-items: center;
 	gap: 2.051vw;
 }
 
-.transaction-card__info-course {
-	display: flex;
-	padding: 2.051vw;
-	width: 42.564vw;
-	flex-direction: column;
-	gap: 2.051vw;
-	border-radius: 1.538vw;
-	background: var(--background);
-}
-
-.transaction-card__course {
-	color: var(--main-text);
-	font-family: 'Geologica';
-	font-size: 3.59vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: normal;
+.transaction-card__icon {
+	width: 11.795vw;
+	height: 11.795vw;
 }
 
 .transaction-card__details {
 	display: flex;
 	flex-direction: column;
-	gap: 1.026vw;
+	gap: 1.282vw;
 }
 
-.transaction-card__university,
-.transaction-card__date {
+.transaction-card__name {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.transaction-card__operation {
 	color: var(--second-text);
 	font-family: 'Geologica';
 	font-size: 3.077vw;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 
-.transaction-card__info {
+.transaction-card__amount {
 	display: flex;
-	width: 42.564vw;
-	padding: 2.051vw;
 	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
-	border-radius: 1.538vw;
-	background: var(--background);
+	align-items: flex-end;
+	gap: 1.282vw;
+	height: 9.744vw;
 }
 
-.transaction-card__wrapper-type {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
+.transaction-card__value {
+	/* color: #2FD159; */
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 }
 
 .transaction-card__type {
-	color: var(--main-text);
-	font-family: 'Geologica';
-	font-size: 3.59vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-}
-
-.transaction-card__icon {
-	width: 6.154vw;
-	height: 6.154vw;
-}
-
-.transaction-card__card-info {
-	display: flex;
-	flex-direction: column;
-	gap: 1.026vw;
-}
-
-.transaction-card__card,
-.transaction-card__transaction-date {
 	color: var(--second-text);
 	font-family: 'Geologica';
 	font-size: 3.077vw;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-}
-
-.transaction-card__footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding-left: 2.051vw;
-}
-
-.transaction-card__price {
-	color: var(--main-text);
-	font-family: 'Geologica';
-	font-size: 3.59vw;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	text-transform: uppercase;
 }

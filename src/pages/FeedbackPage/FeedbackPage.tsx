@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
 import { ICourse, IFeedback } from 'src/entities/course/model/types'
 import fetchCourses from 'src/entities/feedback/model/fetchCourses'
@@ -19,6 +19,9 @@ import FeedbackCard from './ui/FeedbackCard/FeedbackCard'
 
 const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 	window.scrollTo(0, 0)
+
+	const location = useLocation()
+	const isUserFeedback = location.pathname.startsWith('/user-feedback/')
 
 	const navigate = useNavigate()
 	const { id } = useParams()
@@ -151,12 +154,14 @@ const FeedbackPage: FC<{ isFullCourses: boolean }> = ({ isFullCourses }) => {
 					</div>
 				)}
 			</div>
-			<div className={styles['feedback-page__button']}>
-				<MainButton
-					onClickEvent={() => setIsOpen(true)}
-					text='Оставить отзыв'
-				/>
-			</div>
+			{!isUserFeedback && (
+				<div className={styles['feedback-page__button']}>
+					<MainButton
+						onClickEvent={() => setIsOpen(true)}
+						text='Оставить отзыв'
+					/>
+				</div>
+			)}
 
 			{!isFullCourses && (
 				<BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>

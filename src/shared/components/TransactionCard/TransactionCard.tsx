@@ -1,61 +1,43 @@
+import cn from 'classnames'
 import { FC } from 'react'
-import CreditCardSolid from '../../assets/wallet/CreditCardSolid.svg'
 import styles from './TransactionCard.module.css'
 
 interface ITransactionsHistory {
-	course: string
-	university: string
-	courseDate: string
-	transactionType: string
-	card: string
-	transactionDate: string
-	price: string
+	path: string
+	name: string
+	operationName: string
+	count: string
+	typeCount: string
+	className: string
 }
 
 const TransactionCard: FC<ITransactionsHistory> = ({
-	course,
-	university,
-	courseDate,
-	transactionType,
-	card,
-	transactionDate,
-	price,
+	path,
+	name,
+	operationName,
+	count,
+	typeCount,
+	className,
 }) => {
 	return (
 		<div className={styles['transaction-card']}>
-			<div className={styles['transaction-card__header']}>
-				<div className={styles['transaction-card__info-course']}>
-					<h2 className={styles['transaction-card__course']}>{course}</h2>
-					<div className={styles['transaction-card__details']}>
-						<p className={styles['transaction-card__university']}>
-							{university}
-						</p>
-						<p className={styles['transaction-card__date']}>{courseDate}</p>
-					</div>
-				</div>
-				<div className={styles['transaction-card__info']}>
-					<div className={styles['transaction-card__wrapper-type']}>
-						<h2 className={styles['transaction-card__type']}>
-							{transactionType}
-						</h2>
-						<img
-							src={CreditCardSolid}
-							alt='Транзакция'
-							className={styles['transaction-card__icon']}
-						/>
-					</div>
-					<div className={styles['transaction-card__card-info']}>
-						<p className={styles['transaction-card__card']}>{card}</p>
-						<p className={styles['transaction-card__transaction-date']}>
-							{transactionDate}
-						</p>
-					</div>
+			<div className={styles['transaction-card__info']}>
+				<img className={styles['transaction-card__icon']} src={path} alt='' />
+				<div className={styles['transaction-card__details']}>
+					<h2 className={styles['transaction-card__name']}>{name}</h2>
+					<p className={styles['transaction-card__operation']}>
+						{operationName}
+					</p>
 				</div>
 			</div>
 
-			<div className={styles['transaction-card__footer']}>
-				<h2 className={styles['transaction-card__price']}>{price}</h2>
-				<p className={styles['transaction-card__status']}>Статус</p>
+			<div className={styles['transaction-card__amount']}>
+				<h2 className={cn(styles['transaction-card__value'], className)}>
+					{count} ₽
+				</h2>
+				{typeCount && (
+					<p className={styles['transaction-card__type']}>{typeCount}</p>
+				)}
 			</div>
 		</div>
 	)
