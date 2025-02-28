@@ -12,3 +12,24 @@
 	font-weight: 400;
 	line-height: normal;
 }
+
+.transactions-history-list__wrapper-empty {
+	display: flex;
+	height: 23.077vw;
+	width: 91.282vw;
+	padding: 2.051vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.transactions-history-list__empty-text {
+	color: var(--second-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
