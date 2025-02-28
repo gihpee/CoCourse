@@ -27,17 +27,6 @@ export const TransactionsHistoryList: FC = () => {
 
 	console.log(allTransactions)
 
-	{
-		allTransactions.length === 0 ? (
-			<div className={styles['transactions-history-list__wrapper-empty']}>
-				<p className={styles['transactions-history-list__empty-text']}>
-					История транзакций пока пуста. Рассмотри возможность совершения
-					покупки или продажи своего курса.
-				</p>
-			</div>
-		) : null
-	}
-
 	// 	const transactions = allTransactions.map((item, index) => {
 	// 		var t_type = ''
 	// if (coursesPaid.some(transaction => transaction.id === item.id)) {
@@ -128,8 +117,18 @@ export const TransactionsHistoryList: FC = () => {
 	// 	})
 
 	return (
-		<div className={styles['transactions-history-list']}>
-			<h3 className={styles['transactions-history-list__title']}>Сегодня</h3>
-		</div>
+		<>
+			{allTransactions.length === 0 ? (
+				<div className={styles['transactions-history-list__wrapper-empty']}>
+					<p className={styles['transactions-history-list__empty-text']}>
+						История транзакций пока пуста. Рассмотри возможность совершения
+						покупки или продажи своего курса.
+					</p>
+				</div>
+			) : null}
+			<div className={styles['transactions-history-list']}>
+				{/* <h3 className={styles['transactions-history-list__title']}>Сегодня</h3> */}
+			</div>
+		</>
 	)
 }
