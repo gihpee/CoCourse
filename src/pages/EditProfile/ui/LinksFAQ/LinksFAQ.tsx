@@ -43,7 +43,7 @@ const LinksFAQ: FC<ILinksFAQ> = ({
 						className={styles['linksFAQ__checkbox']}
 						type='checkbox'
 						checked={isNotifyFAQ}
-						onChange={isNotifyFAQ}
+						onChange={() => isNotifyFAQ()}
 					/>
 					<label className={styles['linksFAQ__label']} htmlFor='toggle'></label>
 				</div>

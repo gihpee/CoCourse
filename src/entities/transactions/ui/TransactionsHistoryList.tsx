@@ -116,7 +116,11 @@ export const TransactionsHistoryList: FC = () => {
 													: ''
 											}
 											className={
-												tType === 'Покупка'
+												item.return_status === 2 && item.buyer === id
+													? styles[
+															'transactions-history-list__card_isActive_true'
+													  ]
+													: tType === 'Покупка'
 													? styles[
 															'transactions-history-list__card_isActive_false'
 													  ]
