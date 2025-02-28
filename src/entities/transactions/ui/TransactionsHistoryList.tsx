@@ -9,13 +9,11 @@ export const TransactionsHistoryList: FC = () => {
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 
 	const [coursesPaid, setCoursesPaid] = useState<ITransaction[]>([])
-	const [coursesSelled, setCoursesSelled] = useState([])
-	const [tType, setTType] = useState('')
+	const [coursesSelled, setCoursesSelled] = useState<ITransaction[]>([])
 
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await fetchUserTransactions(id)
-			console.log(result)
 
 			if (result) {
 				setCoursesPaid(result.paid_courses)
@@ -28,16 +26,6 @@ export const TransactionsHistoryList: FC = () => {
 
 	const allTransactions: ITransaction[] = [...coursesPaid, ...coursesSelled]
 
-	console.log(allTransactions)
-
-	const transactions = allTransactions.map((item, index) => {
-		if (coursesPaid.some(transaction => transaction.id === item.id)) {
-			setTType('Покупка')
-		} else {
-			setTType('Продажа')
-		}
-	})
-
 	return (
 		<>
 			{allTransactions.length === 0 ? (
@@ -48,31 +36,38 @@ export const TransactionsHistoryList: FC = () => {
 					</p>
 				</div>
 			) : null}
+
 			<div className={styles['transactions-history-list']}>
-				{allTransactions.map((item, index) => (
-					<TransactionCard
-						path={LogoTransaction}
-						count={item.price}
-						name='Commn Course'
-						operationName={tType}
-						sign={tType === 'Покупка' ? `-` : tType === 'Продажа' ? `+` : ''}
-						typeCount={
-							item.method === 'Card'
-								? 'Криптовалюта'
-								: item.method === 'Wallet'
-								? '**5263'
-								: ''
-						}
-						className={
-							tType === 'Покупка'
-								? styles['transactions-history-list__card_isActive_false']
-								: tType === 'Продажа'
-								? styles['transactions-history-list__card_isActive_true']
-								: ''
-						}
-						key={index}
-					/>
-				))}
+				{allTransactions.map((item, index) => {
+					const tType = coursesPaid.some(
+						transaction => transaction.id === item.id
+					)
+						? 'Покупка'
+						: 'Продажа'
+
+					return (
+						<TransactionCard
+							key={index}
+							path={LogoTransaction}
+							count={item.price}
+							name={item.course?.channel?.name || 'Название не указано'}
+							operationName={tType}
+							sign={tType === 'Покупка' ? `-` : `+`}
+							typeCount={
+								item.method === 'Card'
+									? 'Криптовалюта'
+									: item.method === 'Wallet'
+									? '**5263'
+									: ''
+							}
+							className={
+								tType === 'Покупка'
+									? styles['transactions-history-list__card_isActive_false']
+									: styles['transactions-history-list__card_isActive_true']
+							}
+						/>
+					)
+				})}
 			</div>
 		</>
 	)
