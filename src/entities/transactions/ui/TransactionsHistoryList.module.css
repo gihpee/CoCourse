@@ -44,3 +44,25 @@
 .transactions-history-list__card_isActive_false {
 	color: var(--main-text);
 }
+
+.transactions-history-list__wrapper-day {
+	display: flex;
+	flex-direction: column;
+	gap: 4.103vw;
+}
+
+.transactions-history-list__title {
+	height: 4.615vw;
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.transactions-history-list__wrapper-day-cards {
+	display: flex;
+	flex-direction: column;
+	gap: 3.077vw;
+}
