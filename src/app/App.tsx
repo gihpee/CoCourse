@@ -151,7 +151,7 @@ function App() {
 	}, [navigate, hasRedirected])
 
 	return (
-		<TonConnectUIProvider manifestUrl='https://cosmic-axolotl-6ea6bd.netlify.app/tonconnect-manifest.json'>
+		<TonConnectUIProvider manifestUrl='https://comncourse.netlify.app/tonconnect-manifest.json'>
 			<div id='wrap'>
 				<div id='content'>
 					<div className='App'>

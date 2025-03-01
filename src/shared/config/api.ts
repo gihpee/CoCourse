@@ -1,2 +1,2 @@
-export const API_BASE_URL = 'https://comncoursetest.ru/api'
-export const BASE_URL = 'comncoursetest'
+export const API_BASE_URL = 'https://comncourse.ru/api'
+export const BASE_URL = 'comncourse'
