@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
@@ -248,7 +248,16 @@ const EditProfile: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleUniv ? (
 						<div className={styles['edit-profile__all-subjects']}>
-							{varsUniv}
+							{varsUniv.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>
@@ -295,7 +304,16 @@ const EditProfile: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleSubject ? (
 						<div className={styles['edit-profile__all-subjects']}>
-							{varsSubject}
+							{varsSubject.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>

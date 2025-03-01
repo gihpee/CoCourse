@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { publishCourse } from 'src/entities/course/model/fetchEditCourse'
 import MainButton from 'src/shared/components/MainButton/MainButton'
@@ -406,7 +406,16 @@ const EditCourse: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleUniv ? (
 						<div className={styles['edit-course__all-subjects']}>
-							{varsUniv}
+							{varsUniv.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>
@@ -450,7 +459,16 @@ const EditCourse: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleSubject ? (
 						<div className={styles['edit-course__all-subjects']}>
-							{varsSubject}
+							{varsSubject.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>

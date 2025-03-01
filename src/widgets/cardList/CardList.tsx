@@ -6,7 +6,7 @@ import styles from './CardList.module.css'
 const CardList: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
 	return (
 		<div className={styles['card-list']}>
-			{courses ? (
+			{courses.length < 1 ? (
 				courses.map((item, index) => {
 					const averageRate = item.feedback?.length
 						? calculateRating(item.feedback)

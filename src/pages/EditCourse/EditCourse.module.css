@@ -306,3 +306,9 @@
 	background-color: var(--overlay);
 	z-index: 500;
 }
+
+.edit-course__all-subjects-divider {
+	width: 82.302vw;
+	height: 0.256vw;
+	background-color: var(--profile-line);
+}

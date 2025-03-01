@@ -169,8 +169,8 @@
 }
 
 .edit-course__exist-subject-img {
-	width: 4.103vw;
-	height: 4.103vw;
+	height: 2.564vw;
+	width: 2.564vw;
 }
 
 .edit-course__exist-subject-button {
@@ -305,4 +305,10 @@
 	height: 100vh;
 	background-color: var(--overlay);
 	z-index: 500;
+}
+
+.edit-course__all-subjects-divider {
+	width: 82.302vw;
+	height: 0.256vw;
+	background-color: var(--profile-line);
 }

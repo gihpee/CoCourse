@@ -143,3 +143,9 @@
 	width: 7.949vw !important;
 	height: 3.846vw !important;
 }
+
+.edit-course__all-subjects-divider {
+	width: 82.302vw;
+	height: 0.256vw;
+	background-color: var(--profile-line);
+}

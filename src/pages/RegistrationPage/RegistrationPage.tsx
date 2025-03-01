@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
@@ -226,7 +226,16 @@ const RegistrationPage: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleUniv ? (
 						<div className={styles['edit-profile__all-subjects']}>
-							{varsUniv}
+							{varsUniv.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>
@@ -273,7 +282,16 @@ const RegistrationPage: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleSubject ? (
 						<div className={styles['edit-profile__all-subjects']}>
-							{varsSubject}
+							{varsSubject.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>

@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchCreateCourse } from 'src/entities/course/model/fetchCreateCourse'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
@@ -411,7 +411,16 @@ const CreateCourse: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleUniv ? (
 						<div className={styles['edit-course__all-subjects']}>
-							{varsUniv}
+							{varsUniv.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>
@@ -455,7 +464,16 @@ const CreateCourse: FC = () => {
 					</InputWithVariants>
 					{boxIsVisibleSubject ? (
 						<div className={styles['edit-course__all-subjects']}>
-							{varsSubject}
+							{varsSubject.map((item, index) => (
+								<React.Fragment key={index}>
+									{index > 0 && (
+										<div
+											className={styles['edit-course__all-subjects-divider']}
+										/>
+									)}
+									{item}
+								</React.Fragment>
+							))}
 						</div>
 					) : (
 						<></>
@@ -466,6 +484,7 @@ const CreateCourse: FC = () => {
 					<input
 						type='text'
 						name='Desc'
+						placeholder='Расскажите о курсе'
 						value={formData.Desc}
 						onChange={handleChange}
 						className={styles['edit-course__field-description']}
