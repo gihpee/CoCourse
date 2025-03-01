@@ -7,6 +7,8 @@ export const useFeed = (activeFilter: string, userCourses: any) => {
 	const [inputValue, setInputValue] = useState('')
 	const [isPending, startTransition] = useTransition()
 
+	console.log('userCourses', userCourses)
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -26,6 +28,7 @@ export const useFeed = (activeFilter: string, userCourses: any) => {
 		let filteredCourses = [...data]
 
 		console.log('filteredCourses', filteredCourses)
+		console.log('activeFilter', activeFilter)
 
 		if (activeFilter === 'Купленные') {
 			const boughtCourseIds = new Set(userCourses?.bought_courses || [])

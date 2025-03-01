@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { fetchUpdateUser } from '../../entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from '../../features/bio-change/handleBioChangeMinus'
 import { filterOptions } from '../../features/filterOptions'
-import useAutoResizeTextArea from '../../features/useAutoResizeTextArea'
 import plus from '../../shared/assets/course/plus.svg'
 import lminus from '../../shared/assets/create-course/lminus.png'
 import toggle from '../../shared/assets/profile/toggle.svg'
@@ -32,7 +31,7 @@ function Registration() {
 
 	// const userFriendlyAddress = useTonAddress()
 
-	useAutoResizeTextArea(bioValue)
+	// useAutoResizeTextArea(bioValue)
 
 	useEffect(() => {
 		if (data && data.photo_url) {

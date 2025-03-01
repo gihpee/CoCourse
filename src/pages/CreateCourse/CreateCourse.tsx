@@ -113,12 +113,12 @@ const CreateCourse: FC = () => {
 		index: number,
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
-		const { name, value, type } = e.target
+		const { name, value } = e.target
 
-		if (type === 'textarea') {
-			e.target.style.height = 'auto'
-			e.target.style.height = e.target.scrollHeight - 16 + 'px'
-		}
+		// if (type === 'textarea') {
+		// 	e.target.style.height = 'auto'
+		// 	e.target.style.height = e.target.scrollHeight - 16 + 'px'
+		// }
 
 		setFormData(prevData => {
 			const newTopics = [...prevData.topics]
