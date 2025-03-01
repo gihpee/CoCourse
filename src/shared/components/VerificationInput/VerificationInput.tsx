@@ -17,14 +17,26 @@ const VerificationInput = ({
 	inputName: string
 	className?: string
 }) => (
-	<input
-		className={cn(styles['verification-input'], className)}
-		type='text'
-		value={inputValue}
-		placeholder={placeholder}
-		onChange={inputFunction}
-		name={inputName}
-	/>
+	<>
+		{className ? (
+			<textarea
+				className={cn(styles['verification-input'], className)}
+				value={inputValue}
+				placeholder={placeholder}
+				onChange={inputFunction}
+				name={inputName}
+			/>
+		) : (
+			<input
+				className={cn(styles['verification-input'], className)}
+				type='text'
+				value={inputValue}
+				placeholder={placeholder}
+				onChange={inputFunction}
+				name={inputName}
+			/>
+		)}
+	</>
 )
 
 export default VerificationInput

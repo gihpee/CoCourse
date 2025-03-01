@@ -109,7 +109,7 @@ const RegistrationPage: FC = () => {
 	const handleBioChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
-		handleBioChangeMinus(e as React.ChangeEvent<HTMLInputElement>, setBioValue)
+		handleBioChangeMinus(e, setBioValue)
 	}
 
 	const handleSave = async () => {
