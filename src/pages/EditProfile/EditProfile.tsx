@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import { fetchUpdateUser } from 'src/entities/user/model/fetchUpdateUser'
 import handleBioChangeMinus from 'src/features/bio-change/handleBioChangeMinus'
 import { filterOptions } from 'src/features/filterOptions'
@@ -22,15 +23,9 @@ import InputWithVariants from './ui/InputWithVariants/InputWithVariants'
 import LinksFAQ from './ui/LinksFAQ/LinksFAQ'
 
 const EditProfile: FC = () => {
-	const {
-		userData,
-		isNotify: isNotifyFromProfile,
-		selectedOptionsProfile,
-		uniValueProfile,
-	} = useUserProfile()
+	const { userData, selectedOptionsProfile, uniValueProfile } = useUserProfile()
 
-	console.log('isNotifyFromProfile:', isNotifyFromProfile)
-
+	const userCourses = useUserCourses(window.Telegram.WebApp.initData)
 	console.log('selectedOptionsProfile', selectedOptionsProfile)
 
 	const navigate = useNavigate()
@@ -38,7 +33,7 @@ const EditProfile: FC = () => {
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 	const [uniValue, setUniValue] = useState('')
 	const [bioValue, setBioValue] = useState('')
-	const [isNotify, setIsNotify] = useState(isNotifyFromProfile ?? false)
+	const [isNotify, setIsNotify] = useState(true)
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
@@ -51,6 +46,18 @@ const EditProfile: FC = () => {
 	})
 	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
 		window.history.back()
+	})
+
+	useEffect(() => {
+		if (userCourses) {
+			try {
+				setIsNotify(userCourses.notify || false)
+			} catch (error) {
+				console.error('Ошибка при запросе к серверу:', error)
+			}
+		} else {
+			console.log('No user data found.')
+		}
 	})
 
 	const handleNotify = () => {

@@ -458,6 +458,7 @@ const EditCourse: FC = () => {
 					<input
 						type='text'
 						name='Desc'
+						placeholder='Расскажите о курсе'
 						value={formData.Desc}
 						onChange={handleChange}
 						className={styles['edit-course__field-description']}

@@ -21,7 +21,7 @@ const FeedList = ({ filteredCourses, isPending }: FeedListProps) => {
 			}
 		>
 			{isPending ? (
-				<div className={styles['feed__loading']}>Загрузка...</div>
+				<div className={styles['feed__loading']}></div>
 			) : (
 				<CardList courses={filteredCourses} />
 			)}

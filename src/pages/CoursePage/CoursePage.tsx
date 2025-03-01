@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
@@ -159,7 +160,14 @@ const CoursePage: FC = () => {
 					{topics && topics.length > 0 ? (
 						<div>{topics}</div>
 					) : (
-						<p className={styles['course-page__section-date']}>Не указано</p>
+						<p
+							className={cn(
+								styles['course-page__section-date'],
+								styles['course-page__section-date_isEmpty']
+							)}
+						>
+							Содержание отсутствует
+						</p>
 					)}
 				</div>
 

@@ -42,8 +42,8 @@ const LinksFAQ: FC<ILinksFAQ> = ({
 					<input
 						className={styles['linksFAQ__checkbox']}
 						type='checkbox'
-						checked={isNotifyFAQ}
-						onChange={() => isNotifyFAQ()}
+						checked={isNotify}
+						onChange={isNotifyFAQ}
 					/>
 					<label className={styles['linksFAQ__label']} htmlFor='toggle'></label>
 				</div>
