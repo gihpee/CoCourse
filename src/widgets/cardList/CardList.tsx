@@ -6,28 +6,41 @@ import styles from './CardList.module.css'
 const CardList: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
 	return (
 		<div className={styles['card-list']}>
-			{courses.map((item, index) => {
-				const averageRate = item.feedback?.length
-					? calculateRating(item.feedback)
-					: 0
+			{courses ? (
+				courses.map((item, index) => {
+					const averageRate = item.feedback?.length
+						? calculateRating(item.feedback)
+						: 0
 
-				return (
-					<CourseCard
-						key={index}
-						itemCard={item}
-						amountOfStudents={item.amount_of_students ?? 0}
-						averageRate={averageRate}
-						chanelName={item.name ?? ''}
-						chanelPhoto={item.image ?? ''}
-						price={item.price ?? 0}
-						university={item.university ?? ''}
-						isCoursePage={false}
-						cid={String(item.id)}
-						count={item.feedback?.length}
-						isFeedPage={true}
-					/>
-				)
-			})}
+					return (
+						<CourseCard
+							key={index}
+							itemCard={item}
+							amountOfStudents={item.amount_of_students ?? 0}
+							averageRate={averageRate}
+							chanelName={item.name ?? ''}
+							chanelPhoto={item.image ?? ''}
+							price={item.price ?? 0}
+							university={item.university ?? ''}
+							isCoursePage={false}
+							cid={String(item.id)}
+							count={item.feedback?.length}
+							isFeedPage={true}
+						/>
+					)
+				})
+			) : (
+				<div className={styles['card-list__main-wrapper-empty-courses']}>
+					<div className={styles['card-list__wrapper-empty-courses-texts']}>
+						<h2 className={styles['card-list__empty-courses-title']}>
+							Такого курса нет :(
+						</h2>
+						<p className={styles['card-list__empty-courses-text']}>
+							Попробуй написать по-другому
+						</p>
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }

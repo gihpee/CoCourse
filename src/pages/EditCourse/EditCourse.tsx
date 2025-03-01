@@ -188,6 +188,7 @@ const EditCourse: FC = () => {
 				formData.Desc === '' ||
 				formData.Subject === ''
 			) {
+				setModalText('Заполните все обязательные поля')
 				setModalFillOpen(true)
 			} else {
 				if (cid) {

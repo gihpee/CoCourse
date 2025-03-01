@@ -3,3 +3,44 @@
 	flex-direction: column;
 	gap: 2.051vw;
 }
+
+.card-list__main-wrapper-empty-courses {
+	display: flex;
+	width: 91.795vw;
+	height: 137.436vw;
+	padding: 2.564vw 2.051vw;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 4.103vw;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.card-list__wrapper-empty-courses-texts {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2.051vw;
+}
+
+.card-list__empty-courses-title {
+	color: var(--main-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.card-list__empty-courses-text {
+	color: var(--main-text);
+	text-align: center;
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
