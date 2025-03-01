@@ -218,6 +218,7 @@ const EditProfile: FC = () => {
 					<InputWithVariants
 						text='Выбери университет'
 						inputValueSubjectComponent={inputValueUniv}
+						onClickImg={() => setBoxIsVisibleUniv(false)}
 						onChange={handleUniChange}
 						isValue={boxIsVisibleUniv ? true : false}
 						onClick={() => {
@@ -259,6 +260,7 @@ const EditProfile: FC = () => {
 					<InputWithVariants
 						text='Выбери предмет'
 						inputValueSubjectComponent={inputValueSubject}
+						onClickImg={() => setBoxIsVisibleSubject(false)}
 						onChange={handleSelectChangeSubject}
 						isValue={boxIsVisibleSubject ? true : false}
 						onClick={() => {

@@ -10,6 +10,7 @@ interface IInputWithVariants {
 	onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 	inputValueSubjectComponent: string
 	isValue: boolean
+	onClickImg?: (event: React.MouseEvent<HTMLImageElement>) => void
 }
 
 const InputWithVariants: FC<IInputWithVariants> = ({
@@ -19,6 +20,7 @@ const InputWithVariants: FC<IInputWithVariants> = ({
 	onClick,
 	inputValueSubjectComponent,
 	isValue,
+	onClickImg,
 }) => {
 	return (
 		<div className={styles['inputWithVariants']} onClick={onClick}>
@@ -29,6 +31,7 @@ const InputWithVariants: FC<IInputWithVariants> = ({
 				)}
 				src={LinkArrow}
 				alt='Открыть список'
+				onClick={onClickImg}
 			/>
 			{children}
 			<input

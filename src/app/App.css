@@ -42,11 +42,13 @@
 html {
 	scrollbar-width: none;
 	overflow-x: hidden;
+	overscroll-behavior: none;
 }
 
 body {
 	-ms-overflow-style: none;
 	overflow-x: hidden;
+	overscroll-behavior: none;
 }
 
 .loading {

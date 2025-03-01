@@ -377,6 +377,7 @@ const EditCourse: FC = () => {
 						inputValueSubjectComponent={inputValueUniv}
 						onChange={handleUniChange}
 						isValue={boxIsVisibleUniv ? true : false}
+						onClickImg={() => setBoxIsVisibleUniv(false)}
 						onClick={() => {
 							setBoxIsVisibleUniv(true)
 							setBoxIsVisibleSubject(false)
@@ -417,6 +418,7 @@ const EditCourse: FC = () => {
 						inputValueSubjectComponent={inputValueSubject}
 						onChange={handleSelectChangeSubject}
 						isValue={boxIsVisibleSubject ? true : false}
+						onClickImg={() => setBoxIsVisibleSubject(false)}
 						onClick={() => {
 							setBoxIsVisibleSubject(true)
 							setBoxIsVisibleUniv(false)

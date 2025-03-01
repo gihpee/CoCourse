@@ -111,8 +111,8 @@
 }
 
 .edit-profile__section-img {
-	width: 7.949vw;
-	height: 3.846vw;
+	width: 7.949vw !important;
+	height: 3.846vw !important;
 }
 
 .edit-profile__exist-subject-text {

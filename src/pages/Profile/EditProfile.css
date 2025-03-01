@@ -90,7 +90,7 @@
 	background-color: #4cd964; /* Замените этот цвет на нужный вам цвет активного состояния */
 }
 
-.toggle-switch label::before {
+/* .toggle-switch label::before {
 	content: '';
 	position: absolute;
 	top: 4px;
@@ -103,7 +103,7 @@
 	-webkit-transition: -webkit-transform 0.3s ease;
 	-moz-transform: transform 0.3s ease;
 	-o-transform: transform 0.3s ease;
-}
+} */
 
 .toggle-switch input:checked + label::before {
 	transform: translateX(32px);
