@@ -149,7 +149,7 @@ const CreateCourse: FC = () => {
 		// 	setModalButton('Подключить')
 		// 	setModalOpen(true)
 		// }
-		if (data.user.verifyed === 'Пройдена') {
+		if (data.user.verifyed !== 'Пройдена') {
 			console.log('Для создания курса необходимо пройти верификацию')
 			setModalText(
 				'Для создания курса необходимо пройти верификацию в кошельке'

@@ -2,7 +2,10 @@ import { useEffect, useMemo, useState, useTransition } from 'react'
 import fetchGetCourses from '../../../entities/course/model/fetchGetCourses'
 import { ICourse, IFeedback } from '../../../entities/course/model/types'
 
-export const useFeed = (activeFilter: string, userCourses: any) => {
+export const useFeed = (
+	activeFilter: string,
+	userCourses: ICourse[] | null
+) => {
 	const [data, setData] = useState<ICourse[]>([])
 	const [inputValue, setInputValue] = useState('')
 	const [isPending, startTransition] = useTransition()
@@ -31,7 +34,8 @@ export const useFeed = (activeFilter: string, userCourses: any) => {
 		console.log('activeFilter', activeFilter)
 
 		if (activeFilter === 'Купленные') {
-			const boughtCourseIds = new Set(userCourses?.bought_courses || [])
+			const boughtCourseIds = new Set(userCourses?.map(course => course.id))
+
 			filteredCourses = filteredCourses.filter(course =>
 				boughtCourseIds.has(course.id)
 			)
