@@ -22,6 +22,13 @@ const InputWithVariants: FC<IInputWithVariants> = ({
 	isValue,
 	onClickImg,
 }) => {
+	const handleImgClick = (event: React.MouseEvent<HTMLImageElement>) => {
+		event.stopPropagation()
+		if (onClickImg) {
+			onClickImg(event)
+		}
+	}
+
 	return (
 		<div className={styles['inputWithVariants']} onClick={onClick}>
 			<img
@@ -31,7 +38,7 @@ const InputWithVariants: FC<IInputWithVariants> = ({
 				)}
 				src={LinkArrow}
 				alt='Открыть список'
-				onClick={onClickImg}
+				onClick={handleImgClick}
 			/>
 			{children}
 			<input
