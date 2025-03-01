@@ -153,4 +153,5 @@
 
 .edit-profile__section-input {
 	height: 30vw;
+	resize: none;
 }
