@@ -309,7 +309,7 @@ const EditProfile: FC = () => {
 						isSubmit={false}
 						path={Bell}
 						isNotify={isNotify}
-						isNotifyFAQ={handleNotify}
+						isNotifyFAQ={() => setIsNotify(prev => !prev)}
 						text='Получай уведомления о новых курсах наших преподавателей'
 					/>
 				</div>
