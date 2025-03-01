@@ -29,6 +29,8 @@ const EditProfile: FC = () => {
 		uniValueProfile,
 	} = useUserProfile()
 
+	console.log('isNotifyFromProfile:', isNotifyFromProfile)
+
 	console.log('selectedOptionsProfile', selectedOptionsProfile)
 
 	const navigate = useNavigate()
@@ -36,7 +38,7 @@ const EditProfile: FC = () => {
 	const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 	const [uniValue, setUniValue] = useState('')
 	const [bioValue, setBioValue] = useState('')
-	const [isNotify, setIsNotify] = useState(isNotifyFromProfile)
+	const [isNotify, setIsNotify] = useState(isNotifyFromProfile ?? false)
 	const [boxIsVisibleSubject, setBoxIsVisibleSubject] = useState(false)
 	const [boxIsVisibleUniv, setBoxIsVisibleUniv] = useState(false)
 	const [inputValueSubject, setInputValueSubject] = useState('')
@@ -184,6 +186,7 @@ const EditProfile: FC = () => {
 	) => {
 		handleBioChangeMinus(e, setBioValue)
 	}
+	console.log('Передача в LinksFAQ:', handleNotify)
 
 	return (
 		<div className={styles['edit-profile']}>
