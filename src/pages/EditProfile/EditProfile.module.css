@@ -110,6 +110,11 @@
 	gap: 2.308vw;
 }
 
+.edit-profile__section-img {
+	width: 7.949vw;
+	height: 3.846vw;
+}
+
 .edit-profile__exist-subject-text {
 	color: var(--main-text);
 	font-family: 'Geologica';

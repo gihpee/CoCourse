@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC } from 'react'
 import LinkArrow from '../../../../shared/assets/wallet/LinkArrow.svg'
 import styles from './LinksFAQ.module.css'
@@ -8,6 +9,7 @@ interface ILinksFAQ {
 	isSubmit: boolean
 	isNotify: boolean
 	isNotifyFAQ?: any
+	className?: string
 }
 
 const LinksFAQ: FC<ILinksFAQ> = ({
@@ -16,6 +18,7 @@ const LinksFAQ: FC<ILinksFAQ> = ({
 	isSubmit,
 	isNotify,
 	isNotifyFAQ,
+	className,
 }) => {
 	console.log('isNotify', isNotify)
 
@@ -26,7 +29,7 @@ const LinksFAQ: FC<ILinksFAQ> = ({
 					<img
 						src={path}
 						alt='Ссылка на документацию'
-						className={styles['linksFAQ__image']}
+						className={cn(styles['linksFAQ__image'], className)}
 					/>
 				</div>
 				<h3 className={styles['linksFAQ__text']}>{text}</h3>

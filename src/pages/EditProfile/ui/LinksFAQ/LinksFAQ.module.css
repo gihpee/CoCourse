@@ -47,10 +47,9 @@
 
 .linksFAQ__toggle {
 	position: absolute;
-	right: 8px;
-	width: 64px;
-	height: 32px;
-	margin-right: 8px;
+	right: 2.051vw;
+	width: 8.974vw;
+	height: 5.385vw;
 }
 
 .linksFAQ__toggle .linksFAQ__checkbox {
@@ -61,10 +60,10 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 64px;
+	width: 8.974vw;
 	height: 100%;
-	background-color: #ccc;
-	border-radius: 16px;
+	background-color: #efeff4;
+	border-radius: 4.103vw;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
 }
@@ -76,11 +75,15 @@
 .linksFAQ__toggle .linksFAQ__label::before {
 	content: '';
 	position: absolute;
-	top: 4px;
-	left: 4px;
-	width: 24px;
-	height: 24px;
-	background-color: #fff;
+	top: 0.349vw;
+	left: 0.349vw;
+	width: 4.718vw;
+	height: 4.718vw;
+	background-color: #efeff4;
+	border-radius: 68.145px;
+	box-shadow: 0vw 0vw 0vw 0.175vw rgba(0, 0, 0, 0.04),
+		0vw 0.524vw 1.398vw 0vw rgba(0, 0, 0, 0.15),
+		0vw 0.524vw 0.175vw 0vw rgba(0, 0, 0, 0.06);
 	border-radius: 50%;
 	transition: transform 0.3s ease;
 	-webkit-transition: -webkit-transform 0.3s ease;
@@ -89,6 +92,6 @@
 }
 
 .linksFAQ__toggle .linksFAQ__checkbox:checked + .linksFAQ__label::before {
-	transform: translateX(32px);
-	-webkit-transform: translateX(32px);
+	transform: translateX(3.59vw);
+	-webkit-transform: translateX(3.59vw);
 }

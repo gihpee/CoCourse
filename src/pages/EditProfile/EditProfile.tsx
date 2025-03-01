@@ -373,11 +373,11 @@ const EditProfile: FC = () => {
 						/>
 					</Link>
 					<Link
-						to='https://t.me/HowToCommonCourse '
+						to='https://t.me/ComnCourse'
 						target='_blank'
 						onClick={event => {
 							event.preventDefault()
-							window.open('https://t.me/HowToCommonCourse ')
+							window.open('https://t.me/ComnCourse')
 						}}
 					>
 						<LinksFAQ
@@ -385,6 +385,7 @@ const EditProfile: FC = () => {
 							path={Naming}
 							isNotify={isNotify}
 							text='Наш телеграм канал'
+							className={styles['edit-profile__section-img']}
 						/>
 					</Link>
 				</div>
