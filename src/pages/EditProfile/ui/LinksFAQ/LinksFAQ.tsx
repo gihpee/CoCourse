@@ -17,7 +17,7 @@ const LinksFAQ: FC<ILinksFAQ> = ({
 	isNotify,
 	isNotifyFAQ,
 }) => {
-	console.log('isNotifyFAQ', isNotifyFAQ)
+	console.log('isNotify', isNotify)
 
 	return (
 		<div className={styles['linksFAQ']}>
@@ -42,6 +42,7 @@ const LinksFAQ: FC<ILinksFAQ> = ({
 					<input
 						className={styles['linksFAQ__checkbox']}
 						type='checkbox'
+						id='toggle'
 						checked={isNotify}
 						onChange={isNotifyFAQ}
 					/>

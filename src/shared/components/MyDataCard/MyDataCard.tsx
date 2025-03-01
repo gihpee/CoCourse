@@ -96,11 +96,13 @@ const MyDataCard: FC<IMyDataCard> = props => {
 						{statusText}
 					</p>
 				</div>
-				<img
-					src={LinkArrow}
-					alt='Переход по ссылке'
-					className={styles['my-data-card__link-icon']}
-				/>
+				{statusText === 'Не пройдена' && (
+					<img
+						src={LinkArrow}
+						alt='Переход по ссылке'
+						className={styles['my-data-card__link-icon']}
+					/>
+				)}
 			</div>
 			<h3 className={styles['my-data-card__title']}>{title}</h3>
 			<p

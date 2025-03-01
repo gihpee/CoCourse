@@ -481,7 +481,7 @@ const CreateCourse: FC = () => {
 								<div className={styles['edit-course__field-field']}>
 									<input
 										type='text'
-										placeholder={`Название темы`}
+										placeholder={`Содержание темы`}
 										name={`topic_${index}`}
 										value={topic.topic}
 										onChange={e => handleTopicChange(index, e)}
