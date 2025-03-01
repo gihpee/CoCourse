@@ -78,9 +78,9 @@
 
 .edit-profile__ubject-variant {
 	display: flex;
-	height: 12.308vw;
+	height: fit-content;
 	width: 100%;
-	padding: 0vw 4.103vw;
+	padding: 4.103vw;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -147,5 +147,5 @@
 .edit-course__all-subjects-divider {
 	width: 82.302vw;
 	height: 0.256vw;
-	background-color: var(--profile-line);
+	background-color: var(--background);
 }
