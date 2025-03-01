@@ -58,7 +58,7 @@ const EditProfile: FC = () => {
 		} else {
 			console.log('No user data found.')
 		}
-	})
+	}, [userCourses])
 
 	const handleNotify = () => {
 		console.log('handleNotify вызван!')

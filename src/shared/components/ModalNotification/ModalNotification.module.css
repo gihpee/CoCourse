@@ -16,7 +16,7 @@
 
 .modal-notification__image {
 	width: 63.337vw;
-	height: 32.519vw;
+	height: auto;
 	position: absolute;
 	top: 6.154vw;
 	left: 50%;

@@ -124,14 +124,17 @@
 }
 
 .edit-profile__exist-subject-img {
-	width: 4.103vw;
-	height: 4.103vw;
+	width: 2.564vw;
+	height: 2.564vw;
 }
 
 .edit-profile__exist-subject-button {
-	background-color: transparent;
+	background-color: initial;
 	border: none;
+	height: 2.564vw;
 	outline: none;
-	width: 4.103vw;
-	height: 4.103vw;
+	width: 2.564vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
