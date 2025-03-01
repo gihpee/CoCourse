@@ -20,7 +20,7 @@ const Feed = () => {
 	const [activeFilter, setActiveFilter] = useState('Все курсы')
 
 	const userId = window.Telegram.WebApp.initDataUnsafe.user.id
-	const userCourses = useUserCoursesData(userId, navigate)
+	const { userCourses } = useUserCoursesData(userId, navigate)
 
 	const {
 		inputValue,
@@ -30,7 +30,7 @@ const Feed = () => {
 		startTransition,
 	} = useFeed(activeFilter, userCourses)
 
-	console.log(userCourses)
+	console.log('userCoursesFeed', userCourses)
 	console.log(activeFilter)
 
 	return (

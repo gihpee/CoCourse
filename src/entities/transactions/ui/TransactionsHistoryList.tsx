@@ -110,7 +110,7 @@ export const TransactionsHistoryList: FC = () => {
 											}
 											typeCount={
 												item.method === 'Card'
-													? '**5263'
+													? 'Карта'
 													: item.method === 'Wallet'
 													? 'Криптовалюта'
 													: ''
