@@ -10,16 +10,25 @@
 }
 
 .feedback-page__header {
-	width: 100vw;
-	height: 33.846vw;
-	border-radius: 0 0 5.128vw 5.128vw;
-	background: var(--mini-background);
-	display: flex;
-	padding-left: 4.359vw;
-	flex-direction: column;
 	align-items: flex-start;
+	background: var(--mini-background);
+	border-radius: 0 0 5.128vw 5.128vw;
+	display: flex;
+	flex-direction: column;
 	gap: 4.359vw;
 	justify-content: center;
+	padding-left: 4.359vw;
+	width: 100vw;
+	height: calc(
+		var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top) +
+			33.333vw
+	);
+	margin-top: calc(
+		-1 * (var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top))
+	);
+	padding-top: calc(
+		var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top)
+	);
 }
 
 .feedback-page__title-wrapper {
