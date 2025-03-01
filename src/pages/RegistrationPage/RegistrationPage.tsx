@@ -305,6 +305,7 @@ const RegistrationPage: FC = () => {
 						inputFunction={handleBioChange}
 						inputName='Desc'
 						inputValue={bioValue}
+						className={styles['edit-profile__section-input']}
 					/>
 				</div>
 

@@ -327,6 +327,7 @@ const EditProfile: FC = () => {
 						inputFunction={handleBioChangeWrapper}
 						inputName='Desc'
 						inputValue={bioValue}
+						className={styles['edit-profile__section-input']}
 					/>
 				</div>
 

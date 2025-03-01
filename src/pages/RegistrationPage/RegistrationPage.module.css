@@ -150,3 +150,7 @@
 	background-color: var(--background);
 	margin: 0 auto;
 }
+
+.edit-profile__section-input {
+	height: 30vw;
+}

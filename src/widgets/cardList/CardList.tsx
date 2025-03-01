@@ -4,6 +4,9 @@ import CourseCard from '../../features/courses/components/CourseCard/CourseCard'
 import styles from './CardList.module.css'
 
 const CardList: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
+	console.log('courses', courses)
+	console.log('courses.length', courses.length)
+
 	return (
 		<div className={styles['card-list']}>
 			{courses.length > 0 ? (

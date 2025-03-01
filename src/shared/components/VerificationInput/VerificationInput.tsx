@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { ChangeEvent } from 'react'
 import styles from './VerificationInput.module.css'
 
@@ -6,6 +7,7 @@ const VerificationInput = ({
 	inputValue,
 	inputFunction,
 	inputName,
+	className,
 }: {
 	placeholder: string
 	inputValue: string
@@ -13,9 +15,10 @@ const VerificationInput = ({
 		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => void
 	inputName: string
+	className?: string
 }) => (
 	<input
-		className={styles['verification-input']}
+		className={cn(styles['verification-input'], className)}
 		type='text'
 		value={inputValue}
 		placeholder={placeholder}
