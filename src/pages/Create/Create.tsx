@@ -17,7 +17,7 @@ function Create() {
 				console.log(1)
 				// const result = await fetchCoursesData(id)
 				// setCoursesData(result)
-				setCoursesData([])
+				// setCoursesData([])
 			} catch (error) {
 				console.error('Error fetching courses data:', error)
 			}
