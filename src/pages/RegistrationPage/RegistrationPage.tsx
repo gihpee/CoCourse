@@ -357,11 +357,13 @@ const RegistrationPage: FC = () => {
 				<div className={styles['edit-profile__section']}>
 					<h3 className={styles['edit-profile__subtitle']}>О проекте</h3>
 					<Link
-						to='https://t.me/HowToCommonCourse '
+						to='https://common-course-1.gitbook.io/common-course-app/'
 						target='_blank'
 						onClick={event => {
 							event.preventDefault()
-							window.open('https://t.me/HowToCommonCourse ')
+							window.open(
+								'https://common-course-1.gitbook.io/common-course-app/'
+							)
 						}}
 					>
 						<LinksFAQ

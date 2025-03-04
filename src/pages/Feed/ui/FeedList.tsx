@@ -1,9 +1,9 @@
-import { lazy, Suspense } from 'react'
+import { Suspense } from 'react'
 import LoadingCard from 'src/shared/card/LoadingCard'
 import { ICourse } from '../../../entities/course/model/types'
 import styles from '../Feed.module.css'
 
-const CardList = lazy(() => import('../../../widgets/cardList/CardList'))
+// const CardList = lazy(() => import('../../../widgets/cardList/CardList'))
 
 interface FeedListProps {
 	filteredCourses: ICourse[]
@@ -11,10 +11,13 @@ interface FeedListProps {
 }
 
 const FeedList = ({ filteredCourses, isPending }: FeedListProps) => {
+	console.log(filteredCourses)
+
 	return (
 		<Suspense
 			fallback={
 				<div className={styles['feed__loading']}>
+					<LoadingCard />
 					<LoadingCard />
 					<LoadingCard />
 				</div>
@@ -23,7 +26,12 @@ const FeedList = ({ filteredCourses, isPending }: FeedListProps) => {
 			{isPending ? (
 				<div className={styles['feed__loading']}></div>
 			) : (
-				<CardList courses={filteredCourses} />
+				<div className={styles['feed__loading']}>
+					<LoadingCard />
+					<LoadingCard />
+					<LoadingCard />
+				</div>
+				// <CardList courses={filteredCourses} />
 			)}
 		</Suspense>
 	)

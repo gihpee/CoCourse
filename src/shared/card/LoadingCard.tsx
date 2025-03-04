@@ -1,73 +1,46 @@
 import Skeleton from '@mui/material/Skeleton'
 import { FC } from 'react'
 import './Card.css'
+import styles from './LoadingCard.module.css'
 
 const LoadingCard: FC = () => {
 	return (
-		<div className='course_card'>
+		<div className={styles['loading-card']}>
 			<Skeleton
 				variant='rounded'
 				animation='wave'
-				width={352}
-				height={96}
+				className={styles['loading-card__skeleton']}
 				sx={{ bgcolor: 'grey.800' }}
-				style={{ margin: '0' }}
 			/>
-			<div className='card_info'>
-				<Skeleton
-					variant='rounded'
-					animation='wave'
-					width={352}
-					height={16}
-					sx={{ bgcolor: 'grey.800' }}
-					style={{ margin: '0' }}
-				/>
 
-				<div className='points'>
-					<Skeleton
-						variant='rounded'
-						animation='wave'
-						width='calc(100% - 8px)'
-						height={20}
-						style={{ margin: '0', marginTop: '8px', marginLeft: '8px' }}
-						sx={{ bgcolor: 'grey.800' }}
-					/>
-					<Skeleton
-						variant='rounded'
-						animation='wave'
-						width='calc(100% - 8px)'
-						height={14}
-						style={{ margin: '0', marginTop: '8px', marginLeft: '8px' }}
-						sx={{ bgcolor: 'grey.800' }}
-					/>
-					<Skeleton
-						variant='rounded'
-						animation='wave'
-						width={78}
-						height={14}
-						style={{ margin: '0', marginTop: '4px', marginLeft: '8px' }}
-						sx={{ bgcolor: 'grey.800' }}
-					/>
-				</div>
-				<div className='price_container price_container_loader'>
-					<Skeleton
-						variant='rounded'
-						animation='wave'
-						width={78}
-						height={20.8}
-						style={{ left: '8px', margin: '0' }}
-						sx={{ bgcolor: 'grey.800' }}
-					/>
-					<Skeleton
-						variant='rounded'
-						animation='wave'
-						width={50}
-						height={32}
-						style={{ right: '0px', margin: '0' }}
-						sx={{ bgcolor: 'grey.800' }}
-					/>
-				</div>
+			<Skeleton
+				variant='rounded'
+				animation='wave'
+				className={styles['loading-card__skeleton-people']}
+				sx={{ bgcolor: 'grey.800' }}
+			/>
+
+			<div className={styles['loading-card__content']}>
+				<Skeleton
+					variant='text'
+					sx={{ fontSize: '3.59vw' }}
+					animation='wave'
+					className={styles['loading-card__text-title']}
+				/>
+				<Skeleton
+					variant='text'
+					sx={{ fontSize: '3.077vw' }}
+					animation='wave'
+					className={styles['loading-card__text-desc']}
+				/>
 			</div>
+
+			<Skeleton
+				variant='text'
+				sx={{ fontSize: '4.615vw' }}
+				animation='wave'
+				className={styles['loading-card__price']}
+			/>
 		</div>
 	)
 }
