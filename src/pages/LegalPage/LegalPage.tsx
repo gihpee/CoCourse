@@ -4,6 +4,16 @@ import styles from './LegalPage.module.css'
 import LegalCard from './ui/LegalCard/LegalCard'
 
 const LegalPage: FC = () => {
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+		// navigate(`/course/${id}`)
+	})
+
 	return (
 		<div className={styles['legal-page']}>
 			<h1 className={styles['legal-page__title']}>Правовая информация</h1>

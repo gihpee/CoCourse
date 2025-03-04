@@ -17,8 +17,10 @@ function Create() {
 	useEffect(() => {
 		const fetchCourses = async () => {
 			try {
-				const result = await fetchCoursesData(id)
-				setCoursesData(result)
+				console.log(1)
+				// const result = await fetchCoursesData(id)
+				// setCoursesData(result)
+				setCoursesData([])
 			} catch (error) {
 				console.error('Error fetching courses data:', error)
 			}

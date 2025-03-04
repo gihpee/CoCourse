@@ -9,7 +9,6 @@ import { createTransaction } from 'src/entities/course/model/transaction'
 import { ICourse } from 'src/entities/course/model/types'
 import { useUserCourses } from 'src/entities/course/model/useUserCourses'
 import CourseCard from 'src/features/courses/components/CourseCard/CourseCard'
-import { WalletBalance } from 'src/features/WalletBalance/WalletBalance'
 import Feedback from 'src/shared/components/Feedback/Feedback'
 import MainButton from 'src/shared/components/MainButton/MainButton'
 import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
@@ -162,10 +161,10 @@ const PaymentPage: FC = () => {
 				</div>
 			</div>
 
-			<div className={styles['payment__wallet']}>
+			{/* <div className={styles['payment__wallet']}>
 				<h2 className={styles['payment__wallet-title']}>Кошелёк</h2>
 				<WalletBalance />
-			</div>
+			</div> */}
 
 			{notification && (
 				<div className={styles['payment__notification']}>

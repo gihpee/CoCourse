@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import LoadingCard from 'src/shared/card/LoadingCard'
 import { ICourse } from '../../../entities/course/model/types'
 import styles from '../Feed.module.css'
 
@@ -14,8 +15,8 @@ const FeedList = ({ filteredCourses, isPending }: FeedListProps) => {
 		<Suspense
 			fallback={
 				<div className={styles['feed__loading']}>
-					{/* <LoadingCard />
-					<LoadingCard /> */}
+					<LoadingCard />
+					<LoadingCard />
 				</div>
 			}
 		>
