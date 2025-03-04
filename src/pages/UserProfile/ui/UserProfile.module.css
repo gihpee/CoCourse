@@ -141,3 +141,13 @@
 	flex-direction: column;
 	gap: 1.282vw;
 }
+
+.user-profile__skeleton {
+	height: 47.84vw;
+	width: 47.84vw;
+}
+
+.user-profile__skeleton-name {
+	width: 39.063vw;
+	width: 5.469vw;
+}
