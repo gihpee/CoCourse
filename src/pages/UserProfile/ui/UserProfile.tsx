@@ -1,5 +1,5 @@
 import { Skeleton } from '@mui/material'
-import { FC, Suspense } from 'react'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { calculateRating } from 'src/entities/course/lib/calculateRating'
 import CourseCard from 'src/features/courses/components/CourseCard/CourseCard'
@@ -56,55 +56,56 @@ const UserProfile: FC = () => {
 		<div className={styles['user-profile']}>
 			<header className={styles['user-profile__header']}>
 				<h2 className={styles['user-profile__title']}>Профиль</h2>
-				<Suspense
-					fallback={
-						<>
-							{theme === 'dark' ? (
-								<>
-									<Skeleton
-										variant='circular'
-										animation='wave'
-										className={styles['user-profile__skeleton']}
-										sx={{ bgcolor: 'grey.800' }}
-									/>
+				{!userData ? (
+					<>
+						{theme === 'dark' ? (
+							<>
+								<Skeleton
+									variant='circular'
+									animation='wave'
+									className={styles['user-profile__skeleton']}
+									sx={{ bgcolor: 'grey.800' }}
+								/>
 
-									<Skeleton
-										variant='rounded'
-										animation='wave'
-										className={styles['user-profile__skeleton-name']}
-										sx={{ bgcolor: 'grey.800' }}
-									/>
-								</>
-							) : theme === 'light' ? (
-								<>
-									<Skeleton
-										variant='circular'
-										animation='wave'
-										className={styles['user-profile__skeleton']}
-										sx={{ bgcolor: 'grey.300' }}
-									/>
+								<Skeleton
+									variant='rounded'
+									animation='wave'
+									className={styles['user-profile__skeleton-name']}
+									sx={{ bgcolor: 'grey.800' }}
+								/>
+							</>
+						) : theme === 'light' ? (
+							<>
+								<Skeleton
+									variant='circular'
+									animation='wave'
+									className={styles['user-profile__skeleton']}
+									sx={{ bgcolor: 'grey.300' }}
+								/>
 
-									<Skeleton
-										variant='rounded'
-										animation='wave'
-										className={styles['user-profile__skeleton-name']}
-										sx={{ bgcolor: 'grey.300' }}
-									/>
-								</>
-							) : null}
-						</>
-					}
-				>
-					<div
-						className={styles['user-profile__avatar']}
-						style={{
-							backgroundImage: `url(https://${BASE_URL}.ru${userData?.photo_url})`,
-						}}
-					/>
-					<p className={styles['user-profile__name']}>
-						{userData?.first_name} {userData?.last_name}
-					</p>
-				</Suspense>
+								<Skeleton
+									variant='rounded'
+									animation='wave'
+									className={styles['user-profile__skeleton-name']}
+									sx={{ bgcolor: 'grey.300' }}
+								/>
+							</>
+						) : null}
+					</>
+				) : (
+					<>
+						<div
+							className={styles['user-profile__avatar']}
+							style={{
+								backgroundImage: `url(https://${BASE_URL}.ru${userData?.photo_url})`,
+							}}
+						/>
+						<p className={styles['user-profile__name']}>
+							{userData?.first_name} {userData?.last_name}
+						</p>
+					</>
+				)}
+
 				<Link to={`/edit-profile/${userData?.user_id}`}>
 					<button className={styles['user-profile__settings']}>
 						Настроить профиль
