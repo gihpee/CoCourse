@@ -1,0 +1,42 @@
+.loading-card {
+	align-items: flex-start;
+	background: var(--mini-background);
+	border-radius: 1.538vw;
+	display: flex;
+	flex-direction: column;
+	gap: 2.103vw;
+	padding: 2.051vw;
+	width: 91.795vw;
+	height: 57.813vw;
+}
+
+.loading-card__skeleton {
+	height: 24.359vw !important;
+	width: 87.692vw;
+}
+
+.loading-card__skeleton-people {
+	width: 50.521vw !important;
+	height: 4.167vw !important;
+}
+
+.loading-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.loading-card__text-title {
+	width: 50.521vw !important;
+	height: 4.427vw !important;
+}
+
+.loading-card__text-desc {
+	width: 50.521vw !important;
+	height: 7.552vw !important;
+}
+
+.loading-card__price {
+	height: 5.729vw !important;
+	width: 15.885vw !important;
+}
