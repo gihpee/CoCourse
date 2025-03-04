@@ -143,11 +143,11 @@
 }
 
 .user-profile__skeleton {
-	height: 47.84vw;
-	width: 47.84vw;
+	height: 47.84vw !important;
+	width: 47.84vw !important;
 }
 
 .user-profile__skeleton-name {
-	width: 39.063vw;
-	width: 5.469vw;
+	width: 47.949vw !important;
+	height: 5.469vw !important;
 }
