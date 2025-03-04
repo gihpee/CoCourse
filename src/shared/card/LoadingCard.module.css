@@ -11,13 +11,13 @@
 }
 
 .loading-card__skeleton {
-	height: 24.359vw;
+	height: 24.359vw !important;
 	width: 87.692vw;
 }
 
 .loading-card__skeleton-people {
-	width: 50.521vw;
-	height: 4.167vw;
+	width: 50.521vw !important;
+	height: 4.167vw !important;
 }
 
 .loading-card__content {
@@ -27,15 +27,16 @@
 }
 
 .loading-card__text-title {
-	width: 50.521vw;
+	width: 50.521vw !important;
+	height: 4.427vw !important;
 }
 
 .loading-card__text-desc {
-	width: 50.521vw;
-	height: 7.552vw;
+	width: 50.521vw !important;
+	height: 7.552vw !important;
 }
 
 .loading-card__price {
-	height: 5.729vw;
-	width: 15.885vw;
+	height: 5.729vw !important;
+	width: 15.885vw !important;
 }

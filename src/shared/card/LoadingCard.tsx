@@ -22,22 +22,22 @@ const LoadingCard: FC = () => {
 
 			<div className={styles['loading-card__content']}>
 				<Skeleton
-					variant='text'
-					sx={{ fontSize: '3.59vw' }}
+					variant='rounded'
 					animation='wave'
 					className={styles['loading-card__text-title']}
+					sx={{ bgcolor: 'grey.800' }}
 				/>
 				<Skeleton
-					variant='text'
-					sx={{ fontSize: '3.077vw' }}
+					variant='rounded'
+					sx={{ bgcolor: 'grey.800' }}
 					animation='wave'
 					className={styles['loading-card__text-desc']}
 				/>
 			</div>
 
 			<Skeleton
-				variant='text'
-				sx={{ fontSize: '4.615vw' }}
+				variant='rounded'
+				sx={{ bgcolor: 'grey.800' }}
 				animation='wave'
 				className={styles['loading-card__price']}
 			/>
