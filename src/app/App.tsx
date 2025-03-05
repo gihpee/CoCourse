@@ -64,12 +64,11 @@ function App() {
 
 				webApp.expand()
 
-				postEvent('web_app_request_fullscreen')
-
-				console.log(
-					'isVerticalSwipesEnabled before:',
-					webApp.isVerticalSwipesEnabled
-				)
+				if (
+					window.Telegram.WebView.initParams.tgWebAppPlatform !== 'tdesktop'
+				) {
+					postEvent('web_app_request_fullscreen')
+				}
 
 				if (webApp.isVerticalSwipesEnabled) {
 					webApp.disableVerticalSwipes()
