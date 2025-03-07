@@ -54,63 +54,71 @@ export const WalletWidget: FC = () => {
 			{isOpen && (
 				<BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
 					<div className={styles['wallet-widget']}>
-						<p className={styles['wallet-widget__transaction-date']}>
-							{formatDate(selectedTransaction?.transaction.date || '')}
-						</p>
-						<p className={styles['wallet-widget__transaction-amount']}>
-							{selectedTransaction?.transaction.return_status === 2 &&
-							selectedTransaction.transaction.buyer === id
-								? `+ ${selectedTransaction?.transaction.price}`
-								: selectedTransaction?.tType === 'Покупка'
-								? `- ${selectedTransaction?.transaction.price}`
-								: `+ ${selectedTransaction?.transaction.price}`}
-						</p>
-						<p className={styles['wallet-widget__transaction-type']}>
-							{selectedTransaction?.transaction.return_status === 2 &&
-							selectedTransaction?.transaction.buyer === id
-								? 'Возврат (в вашу пользу)'
-								: selectedTransaction?.tType}
-						</p>
-						<p className={styles['wallet-widget__transaction-id']}>
-							Transaction UID: {selectedTransaction?.transaction.id}
-						</p>
-
-						<div className={styles['wallet-widget__payment-method']}>
-							<p className={styles['wallet-widget__payment-method-title']}>
-								Способ оплаты
+						<div className={styles['wallet-widget__wrapper-main-info']}>
+							<p className={styles['wallet-widget__transaction-date']}>
+								{formatDate(selectedTransaction?.transaction.date || '')}
 							</p>
-							<div className={styles['wallet-widget__payment-method-details']}>
-								<img
-									src={Credit_Card}
-									alt=''
-									className={
-										styles['wallet-widget__payment-method-details-img']
-									}
-								/>
-								<p
-									className={
-										styles['wallet-widget__payment-method-details-desc']
-									}
-								>
-									Оплата{' '}
-									{selectedTransaction?.transaction.method === 'Card'
-										? 'картой'
-										: 'криптовалютой'}
-								</p>
-							</div>
+							<p className={styles['wallet-widget__transaction-amount']}>
+								{selectedTransaction?.transaction.return_status === 2 &&
+								selectedTransaction.transaction.buyer === id
+									? `+ ${selectedTransaction?.transaction.price} ₽`
+									: selectedTransaction?.tType === 'Покупка'
+									? `- ${selectedTransaction?.transaction.price} ₽`
+									: `+ ${selectedTransaction?.transaction.price} ₽`}
+							</p>
+							<p className={styles['wallet-widget__transaction-type']}>
+								{selectedTransaction?.transaction.return_status === 2 &&
+								selectedTransaction?.transaction.buyer === id
+									? 'Возврат (в вашу пользу)'
+									: selectedTransaction?.tType}
+							</p>
+							<p className={styles['wallet-widget__transaction-id']}>
+								Transaction UID: {selectedTransaction?.transaction.id}
+							</p>
 						</div>
 
-						<div className={styles['wallet-widget__balance']}>
-							<p className={styles['wallet-widget__payment-method-title']}>
-								Кошелёк
-							</p>
-							<div className={styles['wallet-widget__balance-details']}>
-								<p className={styles['wallet-widget__balance-details-title']}>
-									Основной счёт
+						<div className={styles['wallet-widget__wrapper-payment-method']}>
+							<div className={styles['wallet-widget__payment-method']}>
+								<p className={styles['wallet-widget__payment-method-title']}>
+									Способ оплаты
 								</p>
-								<p className={styles['wallet-widget__balance-details-numbers']}>
-									{formattedBalance} ₽
+								<div
+									className={styles['wallet-widget__payment-method-details']}
+								>
+									<img
+										src={Credit_Card}
+										alt=''
+										className={
+											styles['wallet-widget__payment-method-details-img']
+										}
+									/>
+									<p
+										className={
+											styles['wallet-widget__payment-method-details-desc']
+										}
+									>
+										Оплата{' '}
+										{selectedTransaction?.transaction.method === 'Card'
+											? 'картой'
+											: 'криптовалютой'}
+									</p>
+								</div>
+							</div>
+
+							<div className={styles['wallet-widget__balance']}>
+								<p className={styles['wallet-widget__payment-method-title']}>
+									Кошелёк
 								</p>
+								<div className={styles['wallet-widget__balance-details']}>
+									<p className={styles['wallet-widget__balance-details-title']}>
+										Основной счёт
+									</p>
+									<p
+										className={styles['wallet-widget__balance-details-numbers']}
+									>
+										{formattedBalance} ₽
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
