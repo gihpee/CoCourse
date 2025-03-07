@@ -5,13 +5,21 @@ import { fetchWithdraw } from 'src/entities/wallet/model/fetchWithdraw'
 import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import styles from './WalletBalance.module.css'
 
-export const WalletBalance: FC = () => {
+interface WalletBalanceProps {
+	onBalanceChange?: (balance: string) => void
+}
+
+export const WalletBalance: FC<WalletBalanceProps> = ({ onBalanceChange }) => {
 	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	const [balance, setBalance] = useState<number>(0)
 	const [withdrawModalOpen, setWithdrawModalOpen] = useState(false)
 
 	const formattedBalance = balance.toLocaleString('ru-RU')
+
+	useEffect(() => {
+		onBalanceChange?.(formattedBalance)
+	}, [formattedBalance, onBalanceChange])
 
 	function handleFail() {
 		setWithdrawModalOpen(false)
