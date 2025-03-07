@@ -1,6 +1,6 @@
 import { format, isToday, isYesterday, parseISO } from 'date-fns'
 import { ru } from 'date-fns/locale'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { ITransaction } from 'src/entities/course/model/types'
 import PaymentLimits from 'src/features/PaymentLimits/PaymentLimits'
 import { TransactionsHistory } from 'src/features/TransactionsHistory/TransactionsHistory'
@@ -21,9 +21,11 @@ export const WalletWidget: FC = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [formattedBalance, setFormattedBalance] = useState<string>('0')
 
-	if (selectedTransaction) {
-		setIsOpen(true)
-	}
+	useEffect(() => {
+		if (selectedTransaction) {
+			setIsOpen(true)
+		}
+	}, [selectedTransaction])
 
 	const formatDate = (dateString: string) => {
 		const date = parseISO(dateString)
@@ -41,9 +43,11 @@ export const WalletWidget: FC = () => {
 			<WalletVerification />
 			<PaymentLimits />
 			<TransactionsHistory
-				onSelectTransaction={({ transaction, tType }) =>
-					setSelectedTransaction({ transaction, tType })
-				}
+				onSelectTransaction={data => {
+					if (data.transaction) {
+						setSelectedTransaction(data)
+					}
+				}}
 			/>
 			<NavBar />
 
