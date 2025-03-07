@@ -17,10 +17,6 @@ export const WalletBalance: FC<WalletBalanceProps> = ({ onBalanceChange }) => {
 
 	const formattedBalance = balance.toLocaleString('ru-RU')
 
-	useEffect(() => {
-		onBalanceChange?.(formattedBalance)
-	}, [formattedBalance, onBalanceChange])
-
 	function handleFail() {
 		setWithdrawModalOpen(false)
 		window.document.body.style.overflow = 'visible'
@@ -31,11 +27,13 @@ export const WalletBalance: FC<WalletBalanceProps> = ({ onBalanceChange }) => {
 		const fetchData = async () => {
 			const result = await fetchUserTransactions(id)
 			if (result) {
+				const formatted = result.balance.toLocaleString('ru-RU')
 				setBalance(result.balance)
+				onBalanceChange?.(formatted)
 			}
 		}
 		fetchData()
-	}, [id])
+	}, [id, onBalanceChange])
 
 	const handleWithdraw = async () => {
 		console.log(balance)
