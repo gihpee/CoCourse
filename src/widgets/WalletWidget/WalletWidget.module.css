@@ -156,3 +156,7 @@
 	font-weight: 500;
 	line-height: normal;
 }
+
+.wallet-widget__bottom-sheet {
+	height: 104.615vw;
+}

@@ -52,7 +52,11 @@ export const WalletWidget: FC = () => {
 			<NavBar />
 
 			{isOpen && (
-				<BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
+				<BottomSheet
+					className={styles['wallet-widget__bottom-sheet']}
+					isOpen={isOpen}
+					onClose={() => setIsOpen(false)}
+				>
 					<div className={styles['wallet-widget']}>
 						<div className={styles['wallet-widget__wrapper-main-info']}>
 							<p className={styles['wallet-widget__transaction-date']}>
