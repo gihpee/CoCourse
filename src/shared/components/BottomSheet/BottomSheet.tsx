@@ -35,11 +35,11 @@ const BottomSheet: FC<BottomSheetProps> = ({
 	if (!isOpen) return null
 
 	return (
-		<div className={cn(styles['bottom-sheet'], className)}>
+		<div className={styles['bottom-sheet']}>
 			<div className={styles['bottom-sheet__overlay']} onClick={onClose}></div>
 
 			<motion.div
-				className={styles['bottom-sheet__content']}
+				className={cn(styles['bottom-sheet__content'], className)}
 				initial={{ y: '100%' }}
 				animate={{ y: 0 }}
 				exit={{ y: '100%' }}

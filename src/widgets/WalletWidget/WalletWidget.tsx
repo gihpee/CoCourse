@@ -74,7 +74,9 @@ export const WalletWidget: FC = () => {
 								{selectedTransaction?.transaction.return_status === 2 &&
 								selectedTransaction?.transaction.buyer === id
 									? 'Возврат (в вашу пользу)'
-									: selectedTransaction?.tType}
+									: 'Возврат (не в вашу пользу)'}
+								{selectedTransaction?.transaction.return_status === 0 &&
+									selectedTransaction?.tType}
 							</p>
 							<p className={styles['wallet-widget__transaction-id']}>
 								Transaction UID: {selectedTransaction?.transaction.id}
