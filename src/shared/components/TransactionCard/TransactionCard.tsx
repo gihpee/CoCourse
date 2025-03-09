@@ -10,9 +10,11 @@ interface ITransactionsHistory {
 	typeCount: string
 	className: string
 	sign: string
+	onClick?: () => void
 }
 
 const TransactionCard: FC<ITransactionsHistory> = ({
+	onClick,
 	path,
 	name,
 	operationName,
@@ -22,7 +24,7 @@ const TransactionCard: FC<ITransactionsHistory> = ({
 	sign,
 }) => {
 	return (
-		<div className={styles['transaction-card']}>
+		<div className={styles['transaction-card']} onClick={onClick}>
 			<div className={styles['transaction-card__info']}>
 				<img className={styles['transaction-card__icon']} src={path} alt='' />
 				<div className={styles['transaction-card__details']}>

@@ -27,7 +27,12 @@ const groupTransactionsByDate = (transactions: ITransaction[]) => {
 	}, {} as Record<string, ITransaction[]>)
 }
 
-export const TransactionsHistoryList: FC = () => {
+export const TransactionsHistoryList: FC<{
+	onSelectTransaction: (data: {
+		transaction: ITransaction
+		tType: string
+	}) => void
+}> = ({ onSelectTransaction }) => {
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 
 	const [coursesPaid, setCoursesPaid] = useState<ITransaction[]>([])
@@ -127,6 +132,9 @@ export const TransactionsHistoryList: FC = () => {
 													: styles[
 															'transactions-history-list__card_isActive_true'
 													  ]
+											}
+											onClick={() =>
+												onSelectTransaction({ transaction: item, tType })
 											}
 										/>
 									)

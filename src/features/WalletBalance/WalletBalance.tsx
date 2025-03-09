@@ -5,7 +5,11 @@ import { fetchWithdraw } from 'src/entities/wallet/model/fetchWithdraw'
 import ModalNotification from 'src/shared/components/ModalNotification/ModalNotification'
 import styles from './WalletBalance.module.css'
 
-export const WalletBalance: FC = () => {
+interface WalletBalanceProps {
+	onBalanceChange?: (balance: string) => void
+}
+
+export const WalletBalance: FC<WalletBalanceProps> = ({ onBalanceChange }) => {
 	const navigate = useNavigate()
 	const { id } = window.Telegram.WebApp.initDataUnsafe.user
 	const [balance, setBalance] = useState<number>(0)
@@ -22,12 +26,14 @@ export const WalletBalance: FC = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await fetchUserTransactions(id)
-			if (result) {
+			if (result?.balance !== undefined) {
+				const formatted = result.balance.toLocaleString('ru-RU')
 				setBalance(result.balance)
+				onBalanceChange?.(formatted)
 			}
 		}
 		fetchData()
-	}, [id])
+	}, [id, onBalanceChange])
 
 	const handleWithdraw = async () => {
 		console.log(balance)

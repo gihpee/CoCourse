@@ -1,0 +1,68 @@
+.course-loading-card {
+	align-items: flex-start;
+	background: var(--mini-background);
+	border-radius: 1.538vw;
+	display: flex;
+	flex-direction: column;
+	gap: 2.103vw;
+	padding: 2.051vw;
+	width: 91.795vw;
+}
+
+.course-loading-card__header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.course-loading-card__user {
+	align-items: center;
+	display: flex;
+	gap: 1.282vw;
+}
+
+.course-loading-card__avatar {
+	height: 9.231vw !important;
+	width: 9.231vw !important;
+}
+
+.course-loading-card__name {
+	width: 30vw;
+	height: 3.077vw;
+}
+
+.course-loading-card__rating {
+	display: flex;
+	gap: 2.051vw;
+}
+
+.course-loading-card__icon {
+	height: 9.231vw !important;
+	width: 9.231vw !important;
+}
+
+.course-loading-card__info-main {
+	height: 87.692vw !important;
+	width: 87.692vw !important;
+}
+
+.course-loading-card__details {
+	display: flex;
+	flex-direction: column;
+	gap: 1.026vw;
+}
+
+.course-loading-card__info-title {
+	width: 87.692vw !important;
+	height: 4.359vw !important;
+}
+.course-loading-card__info-university {
+	width: 87.692vw !important;
+	height: 3.846vw !important;
+}
+
+.course-loading-card__info-price {
+	width: 14.872vw !important;
+	height: 5.641vw !important;
+}

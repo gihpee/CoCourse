@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { motion } from 'framer-motion'
 import { FC, ReactNode, useEffect } from 'react'
 import styles from './BottomSheet.module.css'
@@ -6,9 +7,15 @@ interface BottomSheetProps {
 	isOpen: boolean
 	onClose: () => void
 	children: ReactNode
+	className?: string
 }
 
-const BottomSheet: FC<BottomSheetProps> = ({ isOpen, onClose, children }) => {
+const BottomSheet: FC<BottomSheetProps> = ({
+	isOpen,
+	onClose,
+	className,
+	children,
+}) => {
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (event.key === 'Escape') {
@@ -32,7 +39,7 @@ const BottomSheet: FC<BottomSheetProps> = ({ isOpen, onClose, children }) => {
 			<div className={styles['bottom-sheet__overlay']} onClick={onClose}></div>
 
 			<motion.div
-				className={styles['bottom-sheet__content']}
+				className={cn(styles['bottom-sheet__content'], className)}
 				initial={{ y: '100%' }}
 				animate={{ y: 0 }}
 				exit={{ y: '100%' }}

@@ -16,3 +16,147 @@
 	width: 91.282vw;
 	margin-bottom: -2.051vw;
 }
+
+.wallet-widget {
+	display: flex;
+	flex-direction: column;
+	gap: 6.41vw;
+	align-items: center;
+}
+
+.wallet-widget__transaction-date {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	width: 91.538vw;
+}
+
+.wallet-widget__transaction-amount {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	width: 91.538vw;
+}
+
+.wallet-widget__transaction-type {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.59vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	width: 91.538vw;
+}
+
+.wallet-widget__transaction-id {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.wallet-widget__payment-method {
+	display: flex;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.wallet-widget__payment-method-title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.wallet-widget__payment-method-details {
+	display: flex;
+	padding: 2.564vw 2.051vw;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2.051vw;
+	flex: 1 0 0;
+	align-self: stretch;
+	border-radius: 1.538vw;
+	background: var(--background);
+	width: 91.538vw;
+	height: 11.282vw;
+}
+
+.wallet-widget__payment-method-details-img {
+	width: 6.154vw;
+	height: 6.154vw;
+}
+
+.wallet-widget__payment-method-details-desc {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.wallet-widget__balance {
+	display: flex;
+	flex-direction: column;
+	gap: 1.282vw;
+}
+
+.wallet-widget__balance-details {
+	align-items: flex-start;
+	align-self: stretch;
+	background: var(--background);
+	border-radius: 1.538vw;
+	display: flex;
+	gap: 1.026vw;
+	height: 15.897vw;
+	padding: 2.564vw;
+	width: 91.538vw;
+	flex-direction: column;
+}
+
+.wallet-widget__wrapper-main-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.051vw;
+}
+
+.wallet-widget__balance-details-title {
+	color: var(--second-text);
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
+}
+
+.wallet-widget__wrapper-payment-method {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.051vw;
+}
+
+.wallet-widget__balance-details-numbers {
+	color: var(--main-text);
+	font-family: 'Geologica';
+	font-size: 4.615vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.wallet-widget__bottom-sheet {
+	height: 104.615vw;
+}

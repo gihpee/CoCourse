@@ -14,6 +14,7 @@ import Add_Plus from '../../shared/assets/course/Add_Plus.svg'
 import Credit_Card from '../../shared/assets/course/Credit_Card.svg'
 import Wallet_Card from '../../shared/assets/course/Wallet_Card.svg'
 import styles from './CoursePage.module.css'
+import LoadingCard from './ui/LoadingCard/LoadingCard'
 import PaymentButton from './ui/PaymentButton/PaymentButton'
 
 const CoursePage: FC = () => {
@@ -88,16 +89,20 @@ const CoursePage: FC = () => {
 
 	return (
 		<div className={styles['user-profile']}>
-			<CourseCard
-				isCoursePage={true}
-				chanelName={courseDataComponent?.channel.name || 'Название курса'}
-				chanelPhoto={courseDataComponent?.channel.photo || ''}
-				price={courseDataComponent?.price || 0}
-				university={userCourses?.university || ''}
-				itemCard={courseDataComponent as ICourse}
-				isAuthor={isAuthor}
-				cid={cid}
-			/>
+			{!courseDataComponent && !userCourses ? (
+				<LoadingCard />
+			) : (
+				<CourseCard
+					isCoursePage={true}
+					chanelName={courseDataComponent?.channel.name || 'Название курса'}
+					chanelPhoto={courseDataComponent?.channel.photo || ''}
+					price={courseDataComponent?.price || 0}
+					university={userCourses?.university || ''}
+					itemCard={courseDataComponent as ICourse}
+					isAuthor={isAuthor}
+					cid={cid}
+				/>
+			)}
 
 			<section className={styles['user-profile__stats']}>
 				<Sales count={courseDataComponent?.amount_of_students || 0} />
