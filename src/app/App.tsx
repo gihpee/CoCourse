@@ -19,6 +19,7 @@ import CreateCourse from 'src/pages/CreateCourse/CreateCourse'
 import EditCourse from 'src/pages/EditCourse/EditCourse'
 import LandingPage from 'src/pages/LandingPage/LandingPage'
 import RegistrationPage from 'src/pages/RegistrationPage/RegistrationPage'
+import SellerProfile from 'src/pages/UserProfile/ui/SellerProfile'
 import Feed from '../pages/Feed/Feed'
 import SendFeedback from '../pages/Feedback/SendFeedback'
 import NavBar from '../pages/Navbar/Navbar'
@@ -26,7 +27,6 @@ import Bio from '../pages/Profile/Bio'
 import ECourse from '../pages/Profile/ECourse'
 import Subj from '../pages/Profile/Subj'
 import Univ from '../pages/Profile/Univ'
-import User from '../pages/Profile/User'
 import Verification from '../pages/Profile/Verification'
 import ConnectPayments from '../pages/Wallet/ConnectPayments'
 import ReturnForm from '../pages/Wallet/ReturnForm'
@@ -186,7 +186,7 @@ function App() {
 								path={'user-feedback/:id'}
 								element={<FeedbackPage isFullCourses={true} />}
 							/>
-							<Route path={'user/:id'} element={<User />} />
+							<Route path={'user/:id'} element={<SellerProfile />} />
 							<Route path={'wallet'} element={<Wallet />} />
 							<Route path={'connect-bot'} element={<ConnectBotPage />} />
 							<Route path={'registration'} element={<RegistrationPage />} />

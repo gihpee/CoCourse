@@ -15,12 +15,12 @@
 	padding: calc(
 			var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top)
 		)
-		6.923vw 0 6.923vw;
+		6.923vw 5.128vw 6.923vw;
 	width: 100%;
-	height: calc(
+	/* height: calc(
 		var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top) +
 			88.462vw
-	);
+	); */
 	margin-top: calc(
 		-1 * (var(--tg-content-safe-area-inset-top) + var(--tg-safe-area-inset-top))
 	);
