@@ -38,14 +38,16 @@ const CourseCard: FC<ICourseCard> = ({
 			{isCoursePage && itemCard?.user ? (
 				<div className={styles['course-card__header']}>
 					<div className={styles['course-card__person']}>
-						<div
-							className={styles['course-card__person-avatar']}
-							style={{
-								backgroundImage: `url(https://${BASE_URL}.ru${
-									itemCard.user.photo_url || ''
-								})`,
-							}}
-						></div>
+						<Link to={`user/${itemCard?.user.user_id}`}>
+							<div
+								className={styles['course-card__person-avatar']}
+								style={{
+									backgroundImage: `url(https://${BASE_URL}.ru${
+										itemCard.user.photo_url || ''
+									})`,
+								}}
+							></div>
+						</Link>
 						<h2 className={styles['course-card__person-name']}>
 							{`${itemCard.user.first_name || ''} ${
 								itemCard.user.last_name || ''
