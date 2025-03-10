@@ -38,7 +38,7 @@ const CourseCard: FC<ICourseCard> = ({
 			{isCoursePage && itemCard?.user ? (
 				<div className={styles['course-card__header']}>
 					<div className={styles['course-card__person']}>
-						<Link to={`user/${itemCard?.user.user_id}`}>
+						<Link to={`/user/${itemCard?.user.user_id}`}>
 							<div
 								className={styles['course-card__person-avatar']}
 								style={{
