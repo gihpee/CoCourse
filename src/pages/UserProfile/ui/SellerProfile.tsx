@@ -15,8 +15,9 @@ import styles from './UserProfile.module.css'
 const SellerProfile: FC = () => {
 	window.scrollTo(0, 0)
 
-	window.scrollTo(0, 0)
 	const { id } = useParams()
+
+	console.log('id', id)
 
 	const [userData, setUserData] = useState<ITelegramUser | null>(null)
 	const [coursesData, setCoursesData] = useState<ICourse[]>([])
