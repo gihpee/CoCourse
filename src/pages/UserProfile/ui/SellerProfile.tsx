@@ -17,7 +17,18 @@ const SellerProfile: FC = () => {
 
 	const { id } = useParams()
 
-	console.log('id', id)
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
+
+	const user = window.Telegram.WebApp.initDataUnsafe.user
+
+	console.log(user)
 
 	const [userData, setUserData] = useState<ITelegramUser | null>(null)
 	const [coursesData, setCoursesData] = useState<ICourse[]>([])
@@ -50,6 +61,8 @@ const SellerProfile: FC = () => {
 		}
 	}, [id])
 
+	const isAuthor = Boolean(id) && Number(id) === user?.id
+
 	const userCourses =
 		coursesData?.map(item => (
 			<CourseCard
@@ -64,7 +77,7 @@ const SellerProfile: FC = () => {
 				isCoursePage={false}
 				cid={String(item.id)}
 				count={item.feedback.length}
-				isAuthor={true}
+				isAuthor={isAuthor}
 			/>
 		)) || []
 
@@ -140,6 +153,7 @@ const SellerProfile: FC = () => {
 					isCoursePage={false}
 					path={`/user-feedback/${userData?.user_id}`}
 					count={feedbacks.length}
+					isAuthor={isAuthor}
 				/>
 			</section>
 
@@ -182,9 +196,13 @@ const SellerProfile: FC = () => {
 							{userCourses}
 						</div>
 					) : (
-						<p className={styles['user-profile__section-description']}>
-							Вы пока не опубликовали ни один курс
-						</p>
+						<div className={styles['user-profile__empty-cards']}>
+							<p className={styles['user-profile__empty-cards-text']}>
+								Пока у тебя нет ни одного созданного курса. Чтобы опубликовать
+								свой первый курс, перейди на страницу «Курсы» и нажми на плюсик
+								в правом верхнем углу экрана
+							</p>
+						</div>
 					)}
 				</div>
 			</section>

@@ -151,3 +151,24 @@
 	width: 47.949vw !important;
 	height: 5.469vw !important;
 }
+
+.user-profile__empty-cards {
+	display: flex;
+	height: 64.615vw;
+	width: 91.282vw;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1.538vw;
+	background: var(--mini-background);
+}
+
+.user-profile__empty-cards-text {
+	color: var(--second-text);
+	text-align: center;
+	width: 87.179vw;
+	font-family: 'Geologica';
+	font-size: 3.077vw;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
