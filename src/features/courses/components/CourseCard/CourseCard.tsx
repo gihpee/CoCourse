@@ -37,8 +37,8 @@ const CourseCard: FC<ICourseCard> = ({
 		<div className={styles['course-card']}>
 			{isCoursePage && itemCard?.user ? (
 				<div className={styles['course-card__header']}>
-					<div className={styles['course-card__person']}>
-						<Link to={`/user/${itemCard?.user.user_id}`}>
+					<Link to={`/user/${itemCard?.user.user_id}`}>
+						<div className={styles['course-card__person']}>
 							<div
 								className={styles['course-card__person-avatar']}
 								style={{
@@ -52,8 +52,8 @@ const CourseCard: FC<ICourseCard> = ({
 									itemCard.user.last_name || ''
 								}`}
 							</h2>
-						</Link>
-					</div>
+						</div>
+					</Link>
 					{isAuthor ? (
 						<div
 							className={cn(styles['course-card__buttons'], {
