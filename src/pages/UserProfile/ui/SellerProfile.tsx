@@ -196,9 +196,13 @@ const SellerProfile: FC = () => {
 							{userCourses}
 						</div>
 					) : (
-						<p className={styles['user-profile__section-description']}>
-							Вы пока не опубликовали ни один курс
-						</p>
+						<div className={styles['user-profile__empty-cards']}>
+							<p className={styles['user-profile__empty-cards-text']}>
+								Пока у тебя нет ни одного созданного курса. Чтобы опубликовать
+								свой первый курс, перейди на страницу «Курсы» и нажми на плюсик
+								в правом верхнем углу экрана
+							</p>
+						</div>
 					)}
 				</div>
 			</section>
