@@ -17,7 +17,9 @@ const SellerProfile: FC = () => {
 
 	const { id } = useParams()
 
-	console.log('id', id)
+	const user = window.Telegram.WebApp.initDataUnsafe.user
+
+	console.log(user)
 
 	const [userData, setUserData] = useState<ITelegramUser | null>(null)
 	const [coursesData, setCoursesData] = useState<ICourse[]>([])
@@ -50,6 +52,8 @@ const SellerProfile: FC = () => {
 		}
 	}, [id])
 
+	const isAuthor = coursesData.some(course => course.user.user_id === user?.id)
+
 	const userCourses =
 		coursesData?.map(item => (
 			<CourseCard
@@ -64,7 +68,7 @@ const SellerProfile: FC = () => {
 				isCoursePage={false}
 				cid={String(item.id)}
 				count={item.feedback.length}
-				isAuthor={true}
+				isAuthor={isAuthor}
 			/>
 		)) || []
 

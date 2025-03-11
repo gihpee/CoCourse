@@ -47,12 +47,12 @@ const CourseCard: FC<ICourseCard> = ({
 									})`,
 								}}
 							></div>
+							<h2 className={styles['course-card__person-name']}>
+								{`${itemCard.user.first_name || ''} ${
+									itemCard.user.last_name || ''
+								}`}
+							</h2>
 						</Link>
-						<h2 className={styles['course-card__person-name']}>
-							{`${itemCard.user.first_name || ''} ${
-								itemCard.user.last_name || ''
-							}`}
-						</h2>
 					</div>
 					{isAuthor ? (
 						<div
@@ -124,40 +124,48 @@ const CourseCard: FC<ICourseCard> = ({
 			) : null}
 
 			<div className={styles['course-card__image-wrapper']}>
-				{itemCard.is_draft && !isCoursePage ? (
-					<div className={styles['course-card__status']}>
-						<div
-							className={cn(
-								styles['course-card__status-icon'],
-								styles['course-card__status-icon_status-draft']
-							)}
-						/>
-						<p className={styles['course-card__status-text']}>Черновик</p>
-					</div>
-				) : itemCard.on_moderation && !isCoursePage ? (
-					<div className={styles['course-card__status']}>
-						<div
-							className={cn(
-								styles['course-card__status-icon'],
-								styles['course-card__status-icon_status-maderation']
-							)}
-						/>
-						<p className={styles['course-card__status-text']}>На модерации</p>
-					</div>
-				) : !itemCard.on_moderation &&
-				  !itemCard.is_draft &&
-				  !isCoursePage &&
-				  !isFeedPage ? (
-					<div className={styles['course-card__status']}>
-						<div
-							className={cn(
-								styles['course-card__status-icon'],
-								styles['course-card__status-icon_status-ready']
-							)}
-						/>
-						<p className={styles['course-card__status-text']}>Опубликовано</p>
-					</div>
-				) : null}
+				{isAuthor && (
+					<>
+						{itemCard.is_draft && !isCoursePage ? (
+							<div className={styles['course-card__status']}>
+								<div
+									className={cn(
+										styles['course-card__status-icon'],
+										styles['course-card__status-icon_status-draft']
+									)}
+								/>
+								<p className={styles['course-card__status-text']}>Черновик</p>
+							</div>
+						) : itemCard.on_moderation && !isCoursePage ? (
+							<div className={styles['course-card__status']}>
+								<div
+									className={cn(
+										styles['course-card__status-icon'],
+										styles['course-card__status-icon_status-maderation']
+									)}
+								/>
+								<p className={styles['course-card__status-text']}>
+									На модерации
+								</p>
+							</div>
+						) : !itemCard.on_moderation &&
+						  !itemCard.is_draft &&
+						  !isCoursePage &&
+						  !isFeedPage ? (
+							<div className={styles['course-card__status']}>
+								<div
+									className={cn(
+										styles['course-card__status-icon'],
+										styles['course-card__status-icon_status-ready']
+									)}
+								/>
+								<p className={styles['course-card__status-text']}>
+									Опубликовано
+								</p>
+							</div>
+						) : null}
+					</>
+				)}
 
 				{!isCoursePage ? (
 					<div className={styles['course-card__buttons']}>
