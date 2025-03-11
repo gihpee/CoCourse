@@ -17,6 +17,15 @@ const SellerProfile: FC = () => {
 
 	const { id } = useParams()
 
+	var BackButton = window.Telegram.WebApp.BackButton
+	BackButton.show()
+	BackButton.onClick(function () {
+		BackButton.hide()
+	})
+	window.Telegram.WebApp.onEvent('backButtonClicked', function () {
+		window.history.back()
+	})
+
 	const user = window.Telegram.WebApp.initDataUnsafe.user
 
 	console.log(user)
@@ -52,7 +61,10 @@ const SellerProfile: FC = () => {
 		}
 	}, [id])
 
-	console.log('course', coursesData)
+	console.log(
+		'course',
+		coursesData.some(course => console.log(course?.user))
+	)
 
 	const isAuthor = coursesData.some(course => course.user?.user_id === user?.id)
 
