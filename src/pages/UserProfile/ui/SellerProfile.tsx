@@ -61,12 +61,7 @@ const SellerProfile: FC = () => {
 		}
 	}, [id])
 
-	console.log(
-		'course',
-		coursesData.some(course => console.log(course?.user))
-	)
-
-	const isAuthor = coursesData.some(course => course.user?.user_id === user?.id)
+	const isAuthor = id === user?.id
 
 	const userCourses =
 		coursesData?.map(item => (
