@@ -61,7 +61,7 @@ const SellerProfile: FC = () => {
 		}
 	}, [id])
 
-	const isAuthor = id === user?.id
+	const isAuthor = Boolean(id) && Number(id) === user?.id
 
 	const userCourses =
 		coursesData?.map(item => (
