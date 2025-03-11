@@ -153,6 +153,7 @@ const SellerProfile: FC = () => {
 					isCoursePage={false}
 					path={`/user-feedback/${userData?.user_id}`}
 					count={feedbacks.length}
+					isAuthor={isAuthor}
 				/>
 			</section>
 

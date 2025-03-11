@@ -6,9 +6,10 @@ import styles from './Feedback.module.css'
 const Feedback: FC<{
 	averageRate: number
 	isCoursePage: boolean
+	isAuthor?: boolean
 	path: string
 	count: number
-}> = ({ averageRate, isCoursePage, path, count }) => {
+}> = ({ averageRate, isCoursePage, isAuthor, path, count }) => {
 	return (
 		<Link to={path}>
 			<div className={styles['feedback']}>
@@ -22,7 +23,7 @@ const Feedback: FC<{
 				<div className={styles['feedback__content']}>
 					<div className={styles['feedback__wrapper-title']}>
 						<h3 className={styles['feedback__title']}>
-							{isCoursePage ? 'Отзывы' : 'Мои отзывы'}
+							{isCoursePage ? 'Отзывы' : !isAuthor ? 'Отзывы' : 'Мои отзывы'}
 						</h3>
 					</div>
 					<p className={styles['feedback__rating']}>
