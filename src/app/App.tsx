@@ -64,14 +64,10 @@ function App() {
 
 				webApp.expand()
 
-				console.log(
-					'tgWebAppPlatform',
-					window.Telegram.WebView.initParams.tgWebAppPlatform
-				)
-
 				if (
-					window.Telegram.WebView.initParams.tgWebAppPlatform !== 'tdesktop' ||
-					window.Telegram.WebView.initParams.tgWebAppPlatform !== 'macos'
+					window.Telegram.WebView.initParams.tgWebAppPlatform !== 'tdesktop' &&
+					window.Telegram.WebView.initParams.tgWebAppPlatform !== 'macos' &&
+					window.Telegram.WebView.initParams.tgWebAppPlatform !== 'weba'
 				) {
 					postEvent('web_app_request_fullscreen')
 				}
